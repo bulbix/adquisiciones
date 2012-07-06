@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+  <!--Build: with lujan99@usa.net Nhibernate template-->
+  <class name="Adquisiciones.Data.Entities.CatEjercicio,Adquisiciones.Data" table="cat_ejercicio" lazy="true">
+    <id name="IdEjercicio" column="id_ejercicio" type="int">
+      <generator class="assigned" />
+    </id>
+    <property name="DesEjercicio" column="des_ejercicio" type="string" />
+    <property name="Estatus" column="estatus" type="string" />
+    <bag name="ReservaAutoHis" inverse="true" lazy="true" cascade="delete">
+      <key column="id_ejercicio" />
+      <one-to-many class="Adquisiciones.Data.Entities.ReservaAutoHis,Adquisiciones.Data" />
+    </bag>
+    <bag name="ReservaAutorizada" inverse="true" lazy="true" cascade="delete">
+      <key column="id_ejercicio" />
+      <one-to-many class="Adquisiciones.Data.Entities.ReservaAutorizada,Adquisiciones.Data" />
+    </bag>
+    <bag name="ReservaSolicHist" inverse="true" lazy="true" cascade="delete">
+      <key column="id_ejercicio" />
+      <one-to-many class="Adquisiciones.Data.Entities.ReservaSolicHist,Adquisiciones.Data" />
+    </bag>
+    <bag name="ReservaSolicitud" inverse="true" lazy="true" cascade="delete">
+      <key column="id_ejercicio" />
+      <one-to-many class="Adquisiciones.Data.Entities.ReservaSolicitud,Adquisiciones.Data" />
+    </bag>
+  </class>
+</hibernate-mapping>

@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<objects xmlns="http://www.springframework.net"
+         xmlns:db="http://www.springframework.net/database"
+         xmlns:tx="http://www.springframework.net/tx">
+
+  <!-- Database Configuration -->
+  <db:provider id="DbProvider"
+         provider="Odbc-2.0"
+          connectionString=""/>
+  
+  <!-- NHibernate Configuration -->
+  <object id="NHibernateSessionFactory" 
+          type="Adquisiciones.Data.Dao.CustomLocalSessionFactory, Adquisiciones.Data">
+    
+    <!--<property name="ConfigFilenames">
+      <list>
+        <value>F:\Proyectos\adquisiciones\trunk\Adquisiciones.Data\Dao\NHibernate.xml</value>
+      </list>
+    </property>-->
+
+
+    <property name="MappingAssemblies">
+      <list>
+        <value>Adquisiciones.Data</value>
+      </list>
+    </property>
+    <property name="HibernateProperties">
+      <dictionary>
+        <entry key="hibernate.connection.provider" value="NHibernate.Connection.DriverConnectionProvider"/>
+        <entry key="use_proxy_validator" value="false" />
+
+        <!--<entry key="dialect" value="NHibernate.Dialect.MsSql2008Dialect"/>
+        <entry key="connection.driver_class" value="NHibernate.Driver.SqlClientDriver"/>
+        <entry key="connection.connection_string" value="Server=serverzeru\ALTAIR;initial catalog=movilclub;User ID=megamedia;Password=qb1t0"/>-->
+
+        <entry key="dialect" value="NHibernate.Dialect.InformixDialect1000"/>
+        <entry key="connection.driver_class" value="NHibernate.Driver.IfxDriver"/>
+        <entry key="connection.connection_string" value="Server=ol_inrserver; DataBase=almacenes; User Id=informix; Password=informix; Host=192.168.10.1; Protocol=olsoctcp; service=1526;"/>
+        <!--<entry key="hbm2ddl.auto" value="create"/>-->
+
+        <entry key="show_sql" value="true" />
+        <entry key="format_sql" value="true" />
+
+      </dictionary>
+    </property>
+    
+    
+    <!-- provides integation with Spring's declarative transaction management features -->
+    <property name="ExposeTransactionAwareSessionFactory" value="true" />
+  </object>
+
+  <!-- Transaction Management Strategy - local database transactions -->
+  <object id="transactionManager"
+        type="Spring.Data.NHibernate.HibernateTransactionManager, Spring.Data.NHibernate30">
+    <property name="DbProvider"> <null/> </property>
+    <property name="SessionFactory" ref="NHibernateSessionFactory"/>
+    <property name="entityInterceptor" ref="auditInterceptor"/>
+  </object>
+
+  <!-- Exception translation object post processor -->
+  <!--<object type="Spring.Dao.Attributes.PersistenceExceptionTranslationPostProcessor, Spring.Data"/>-->
+  
+  <object id="parentSession" abstract="true" 
+   type="Adquisiciones.Data.Dao.Catalogos.GenericDaoImp, Adquisiciones.Data">
+    <property name="SessionFactory" ref="NHibernateSessionFactory"/>
+  </object>  
+  
+  <!-- Catalogos -->
+  <object id="proveedorDao"
+   type="Adquisiciones.Data.Dao.Catalogos.ProveedorDaoImp, Adquisiciones.Data"
+   parent="parentSession"/>
+  <object id="articuloDao" 
+   type="Adquisiciones.Data.Dao.Catalogos.ArticuloDaoImp, Adquisiciones.Data"
+  parent="parentSession"/>
+  <object id="almacenDao"
+ type="Adquisiciones.Data.Dao.Catalogos.AlmacenDaoImp, Adquisiciones.Data"
+parent="parentSession"/>
+  <object id="usuarioDao" type="Adquisiciones.Data.Dao.Seguridad.UsuarioDaoImp, Adquisiciones.Data"
+  parent="parentSession"/>
+  <object id="partidaDao"
+  type="Adquisiciones.Data.Dao.Catalogos.PartidaDaoImp, Adquisiciones.Data"
+ parent="parentSession"/>
+  <object id="fundamentoDao"
+  type="Adquisiciones.Data.Dao.Catalogos.FundamentoDaoImp, Adquisiciones.Data"
+ parent="parentSession"/>
+  
+ 
+  
+  
+  <!-- Dao's de Neogocio -->
+  <object id="anexoDao" type="Adquisiciones.Data.Dao.ModAnexo.AnexoDaoImp, Adquisiciones.Data"
+  parent="parentSession"/>
+  <object id="cotizacionDao" type="Adquisiciones.Data.Dao.ModCotizacion.CotizacionDaoImp, Adquisiciones.Data"
+  parent="parentSession"/>  
+  <object id="falloDao" type="Adquisiciones.Data.Dao.ModFallo.FalloDaoImp, Adquisiciones.Data"
+  parent="parentSession"/>
+  <object id="falloDetalleDao" type="Adquisiciones.Data.Dao.ModFallo.FalloDetalleDaoImp, Adquisiciones.Data"
+  parent="parentSession"/>
+  <object id="requisicionDao" type="Adquisiciones.Data.Dao.ModPedido.RequisicionDaoImp, Adquisiciones.Data"
+  parent="parentSession"/>
+  <object id="pedidoDao" type="Adquisiciones.Data.Dao.ModPedido.PedidoDaoImp, Adquisiciones.Data"
+  parent="parentSession"/>
+  <object id="pedidoDetalleDao" type="Adquisiciones.Data.Dao.ModPedido.PedidoDetalleDaoImp, Adquisiciones.Data"
+  parent="parentSession"/>
+  <object id="pedidoEntregaDao" type="Adquisiciones.Data.Dao.ModPedido.PedidoEntregaDaoImp, Adquisiciones.Data"
+  parent="parentSession"/>
+  
+  <!-- Dao's Auditoria -->
+  <object id="anexoHistDao" type="Adquisiciones.Data.Dao.Audit.AnexoHistDaoImp, Adquisiciones.Data"    
+  parent="parentSession"/>
+  <object id="anexoDetalleHistDao" type="Adquisiciones.Data.Dao.Audit.AnexoDetalleHistDaoImp, Adquisiciones.Data"
+  parent="parentSession"/>
+
+  <tx:attribute-driven />
+  
+</objects>

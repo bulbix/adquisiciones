@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<objects xmlns="http://www.springframework.net"
+         xmlns:tx="http://www.springframework.net/tx">
+
+  <!-- Audit Logging Interceptor -->
+  <object id="auditInterceptor"
+          type="Adquisiciones.Business.Audit.AuditInterceptor, Adquisiciones.Business">
+  </object>
+
+  <!--Objetos de Negocio-->
+  <object id="anexoService" type="Adquisiciones.Business.ModAnexo.AnexoServiceImp, Adquisiciones.Business">
+    <property name="AnexoDao" ref="anexoDao"/>
+    <property name="ArticuloDao" ref="articuloDao"/>    
+  </object>
+
+  <object id="cotizacionService" type="Adquisiciones.Business.ModCotizacion.CotizacionServiceImp,
+          Adquisiciones.Business">
+    <property name="AnexoDao" ref="anexoDao"/>
+    <property name="ArticuloDao" ref="articuloDao"/>
+    <property name="ProveedorDao" ref="proveedorDao"/>
+    <property name="CotizacionDao" ref="cotizacionDao"/>    
+  </object>
+
+  <object id="falloService" type="Adquisiciones.Business.ModFallo.FalloServiceImp, Adquisiciones.Business">
+    <property name="AnexoDao" ref="anexoDao"/>
+    <property name="ArticuloDao" ref="articuloDao"/>
+    <property name="FalloDao" ref="falloDao"/>
+    <property name="FalloDetalleDao" ref="falloDetalleDao"/>
+    <property name="CotizacionDao" ref="cotizacionDao"/>
+  </object>
+  
+  <object id="pedidoService" type="Adquisiciones.Business.ModPedido.PedidoServiceImp, Adquisiciones.Business">
+    <property name="RequisicionDao" ref="requisicionDao"/>
+    <property name="PedidoDao" ref="pedidoDao"/>
+    <property name="PedidoDetalleDao" ref="pedidoDetalleDao"/>
+    <property name="AnexoDao" ref="anexoDao"/>
+    <property name="FalloDao" ref="falloDao"/>
+    <property name="FalloDetalleDao" ref="falloDetalleDao"/>
+    <property name="AnexoService" ref="anexoService"/>
+    <property name="PedidoEntregaDao" ref="pedidoEntregaDao"/>
+  </object>
+  
+
+  <object id="auditService" type="Adquisiciones.Business.Audit.AuditServiceImp, Adquisiciones.Business">
+    <property name="AnexoHistDao" ref="anexoHistDao"/>
+    <property name="AnexoDetalleHistDao" ref="anexoDetalleHistDao"/>
+  </object>
+  
+  
+  <tx:attribute-driven/>
+
+</objects>

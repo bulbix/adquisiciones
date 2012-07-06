@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+  <!--Build: with lujan99@usa.net Nhibernate template-->
+  <class name="Adquisiciones.Data.Entities.AnexoDetalle,Adquisiciones.Data" 
+         table="anexo_detalle" lazy="true" dynamic-update="true">
+    
+    <id name="IdAnexoDetalle" column="id_anexodetalle" type="long">
+      <generator class="increment" />
+    </id>
+    
+    <many-to-one name="Anexo" class="Adquisiciones.Data.Entities.Anexo,Adquisiciones.Data" column="id_anexo" />
+    <property name="RenglonAnexo" column="renglon_anexo" type="short" />    
+    
+    <many-to-one name="Articulo" >      
+      <column name="cve_art"  />      
+      <column name="id_almacen"  />
+    </many-to-one>
+    
+    <property name="Presentacion" column="presentacion" type="string" />
+    <property name="Cantidad" column="cantidad" type="Decimal" />
+    <!--<many-to-one name="Anexo" column="id_anexo"  not-null="true" />-->
+  </class> 
+ 
+</hibernate-mapping>

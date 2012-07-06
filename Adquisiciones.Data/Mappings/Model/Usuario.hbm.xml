@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+  <!--Build: with lujan99@usa.net Nhibernate template-->
+  <class name="Adquisiciones.Data.Entities.Usuario,Adquisiciones.Data" table="usuario" lazy="true">
+    <id name="IdUsuario" column="id_usuario" type="int">
+      <generator class="assigned" />
+    </id>
+    <property name="Rfc" column="rfc" type="string" />
+    <property name="Nombre" column="nombre" type="string" />
+    <property name="FechaAlta" column="fecha_alta" type="DateTime" />
+    <property name="FechaBaja" column="fecha_baja" type="DateTime" />
+    <property name="Estatus" column="estatus" type="string" />
+    <property name="Password" column="password" type="string" />
+    
+    <bag name="UsuarioModulo" inverse="true" lazy="false" cascade="delete">
+      <key column="id_usuario" />
+      <one-to-many class="Adquisiciones.Data.Entities.UsuarioModulo,Adquisiciones.Data" />
+    </bag>
+    
+  </class>
+  
+</hibernate-mapping>

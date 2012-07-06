@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+  <!--Build: with lujan99@usa.net Nhibernate template-->
+  <class name="Adquisiciones.Data.Entities.ArticuloPartida,Adquisiciones.Data" table="articulo_partida" lazy="true">
+    <composite-id name="Id" class="Adquisiciones.Data.Entities.ArticuloPartidaId,Adquisiciones.Data">
+      <key-many-to-one name="CatPartida" class="Adquisiciones.Data.Entities.CatPartida,Adquisiciones.Data" column="partida" />
+      <key-many-to-one name="Articulo" class="Adquisiciones.Data.Entities.Articulo,Adquisiciones.Data">
+        <column name="cve_art" />
+        <column name="id_almacen" />
+      </key-many-to-one>
+      <key-property name="Estatus" column="estatus" type="string" />
+    </composite-id>
+    <property name="FechaInicio" column="fecha_inicio" type="DateTime" />
+    <property name="FechaFin" column="fecha_fin" type="DateTime" />
+    <many-to-one name="CatPartida" column="partida" cascade="save-update" not-null="true" />
+  </class>
+</hibernate-mapping>

@@ -1,0 +1,365 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{B7B2B69E-049B-43DB-B323-A130D532581F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Adquisiciones.Data</RootNamespace>
+    <AssemblyName>Adquisiciones.Data</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime, Version=3.1.3.42154, Culture=neutral, PublicKeyToken=3a9cab8f8d22bfb7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Librerias\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="IBM.Data.Informix, Version=3.0.0.2, Culture=neutral, PublicKeyToken=7c307b91aa13d208, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Librerias\IBM.Data.Informix.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Iesi.Collections, Version=1.0.1.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Librerias\Iesi.Collections.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate">
+      <HintPath>..\Librerias\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate.Validator">
+      <HintPath>..\Librerias\NHibernate.Validator.dll</HintPath>
+    </Reference>
+    <Reference Include="Spring.Core">
+      <HintPath>..\Librerias\Spring.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Spring.Data">
+      <HintPath>..\Librerias\Spring.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Spring.Data.NHibernate30">
+      <HintPath>..\Librerias\Spring.Data.NHibernate30.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Audit\AuditableAttribute.cs" />
+    <Compile Include="Auxiliares\ArticuloBusqueda.cs" />
+    <Compile Include="Dao\Audit\AnexoDetalleHistDaoImp.cs" />
+    <Compile Include="Dao\Audit\AnexoHistDaoImp.cs" />
+    <Compile Include="Dao\Audit\IAnexoDetalleHistDao.cs" />
+    <Compile Include="Dao\Audit\IAnexoHistDao.cs" />
+    <Compile Include="Dao\Catalogos\AlmacenDaoImp.cs" />
+    <Compile Include="Dao\Catalogos\ArticuloDaoImp.cs" />
+    <Compile Include="Dao\Catalogos\FundamentoDaoImp.cs" />
+    <Compile Include="Dao\Catalogos\IAlmacenDao.cs" />
+    <Compile Include="Dao\Catalogos\IArticuloDao.cs" />
+    <Compile Include="Dao\Catalogos\IFundamentoDao.cs" />
+    <Compile Include="Dao\Catalogos\IPartidaDao.cs" />
+    <Compile Include="Dao\Catalogos\PartidaDaoImp.cs" />
+    <Compile Include="Dao\ModAnexo\AnexoDaoImp.cs" />
+    <Compile Include="Dao\ModAnexo\IAnexoDao.cs" />
+    <Compile Include="Dao\Catalogos\IProveedorDao.cs" />
+    <Compile Include="Dao\Catalogos\ProveedorDaoImp.cs" />
+    <Compile Include="Dao\CustomLocalSessionFactory.cs" />
+    <Compile Include="Dao\GenericDaoImp.cs" />
+    <Compile Include="Dao\IGenericDao.cs" />
+    <Compile Include="Dao\ModCotizacion\CotizacionDaoImp.cs" />
+    <Compile Include="Dao\ModCotizacion\ICotizacionDao.cs" />
+    <Compile Include="Dao\ModFallo\FalloDaoImp.cs" />
+    <Compile Include="Dao\ModFallo\FalloDetalleDaoImp.cs" />
+    <Compile Include="Dao\ModFallo\IFalloDao.cs" />
+    <Compile Include="Dao\ModFallo\IFalloDetalleDao.cs" />
+    <Compile Include="Dao\ModPedido\IPedidoDao.cs" />
+    <Compile Include="Dao\ModPedido\IPedidoDetalleDao.cs" />
+    <Compile Include="Dao\ModPedido\IPedidoEntregaDao.cs" />
+    <Compile Include="Dao\ModPedido\IRequisicionDao.cs" />
+    <Compile Include="Dao\ModPedido\PedidoDaoImp.cs" />
+    <Compile Include="Dao\ModPedido\PedidoDetalleDaoImp.cs" />
+    <Compile Include="Dao\ModPedido\PedidoEntregaDaoImp.cs" />
+    <Compile Include="Dao\ModPedido\RequisicionDaoImp.cs" />
+    <Compile Include="Dao\Seguridad\IUsuarioDao.cs" />
+    <Compile Include="Dao\Seguridad\UsuarioDaoImp.cs" />
+    <Compile Include="Entities\Model\Almacen.cs" />
+    <Compile Include="Entities\Model\Anexo.cs" />
+    <Compile Include="Entities\Model\AnexoDetalle.cs" />
+    <Compile Include="Entities\Audit\AnexoDetalleHist.cs" />
+    <Compile Include="Entities\Audit\AnexoDetalleHistId.cs" />
+    <Compile Include="Entities\Audit\AnexoHist.cs" />
+    <Compile Include="Entities\Audit\AnexoHistId.cs" />
+    <Compile Include="Entities\Model\Articulo.cs" />
+    <Compile Include="Entities\Model\ArticuloFarmacia.cs" />
+    <Compile Include="Entities\Model\ArticuloFarmaciaId.cs" />
+    <Compile Include="Entities\Model\ArticuloId.cs" />
+    <Compile Include="Entities\Model\ArticuloPartida.cs" />
+    <Compile Include="Entities\Model\ArticuloPartidaId.cs" />
+    <Compile Include="Entities\Model\Capitulo.cs" />
+    <Compile Include="Entities\Model\CatActividad.cs" />
+    <Compile Include="Entities\Model\CatArea.cs" />
+    <Compile Include="Entities\Model\CatEjercicio.cs" />
+    <Compile Include="Entities\Model\CatPartida.cs" />
+    <Compile Include="Entities\Model\CatPresupuesto.cs" />
+    <Compile Include="Entities\Model\CatRecurso.cs" />
+    <Compile Include="Entities\Model\CatTipopedido.cs" />
+    <Compile Include="Entities\Model\CatUnidad.cs" />
+    <Compile Include="Entities\Model\Cotizacion.cs" />
+    <Compile Include="Entities\Model\CotizacionDetalle.cs" />
+    <Compile Include="Entities\Audit\CotizacionDetHis.cs" />
+    <Compile Include="Entities\Audit\CotizacionDetHisId.cs" />
+    <Compile Include="Entities\Audit\CotizacionHist.cs" />
+    <Compile Include="Entities\Audit\CotizacionHistId.cs" />
+    <Compile Include="Entities\Model\Entrada.cs" />
+    <Compile Include="Entities\Model\Fallo.cs" />
+    <Compile Include="Entities\Model\FalloDetalle.cs" />
+    <Compile Include="Entities\Audit\FalloDetalleHist.cs" />
+    <Compile Include="Entities\Audit\FalloDetalleHistId.cs" />
+    <Compile Include="Entities\Model\FalloHist.cs" />
+    <Compile Include="Entities\Model\FalloHistId.cs" />
+    <Compile Include="Entities\Model\Fundamento.cs" />
+    <Compile Include="Entities\Model\Iva.cs" />
+    <Compile Include="Entities\Model\IvaId.cs" />
+    <Compile Include="Entities\Model\Modulo.cs" />
+    <Compile Include="Entities\Model\ModuloId.cs" />
+    <Compile Include="Entities\Model\Pedido.cs" />
+    <Compile Include="Entities\Model\PedidoDetalle.cs" />
+    <Compile Include="Entities\Audit\PedidoDetalleHis.cs" />
+    <Compile Include="Entities\Audit\PedidoDetalleHisId.cs" />
+    <Compile Include="Entities\Model\PedidoEntrega.cs" />
+    <Compile Include="Entities\Audit\PedidoEntregaHis.cs" />
+    <Compile Include="Entities\Audit\PedidoEntregaHisId.cs" />
+    <Compile Include="Entities\Audit\PedidoHist.cs" />
+    <Compile Include="Entities\Audit\PedidoHistId.cs" />
+    <Compile Include="Entities\Model\Proveedor.cs" />
+    <Compile Include="Entities\Audit\ReservaAutoHis.cs" />
+    <Compile Include="Entities\Audit\ReservaAutoHisId.cs" />
+    <Compile Include="Entities\Model\Requisicion.cs" />
+    <Compile Include="Entities\Model\RequisicionDetall.cs" />
+    <Compile Include="Entities\Model\RequisicionDetallId.cs" />
+    <Compile Include="Entities\Model\ReservaAutorizada.cs" />
+    <Compile Include="Entities\Audit\ReservaSolicHist.cs" />
+    <Compile Include="Entities\Audit\ReservaSolicHistId.cs" />
+    <Compile Include="Entities\Model\ReservaSolicitud.cs" />
+    <Compile Include="Entities\Model\TipoLicitacion.cs" />
+    <Compile Include="Entities\Model\Usuario.cs" />
+    <Compile Include="Entities\Model\UsuarioModulo.cs" />
+    <Compile Include="Entities\Model\UsuarioModuloId.cs" />
+    <Compile Include="Auxiliares\ReporteTabla.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Validators\DateTimeNullAttribute.cs" />
+    <Compile Include="Validators\DateTimeNullValidator.cs" />
+    <Compile Include="Validators\GroupAndAttribute.cs" />
+    <Compile Include="Validators\GroupAndValidator.cs" />
+    <Compile Include="Validators\StringOptionalAttribute.cs" />
+    <Compile Include="Validators\StringOptionalValidator.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Querys\QuerysUtil.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Querys\QuerysAnexo.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Querys\QuerysCatalogos.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Querys\QuerysCotizacion.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Querys\QuerysFallo.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dao\Dao.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dao\NHibernate.xml" />
+    <EmbeddedResource Include="Mappings\Model\Almacen.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\Model\Anexo.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\Model\AnexoDetalle.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\Audit\AnexoDetalleHist.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\Audit\AnexoHist.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\Model\Articulo.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\Model\ArticuloFarmacia.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\Model\ArticuloPartida.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\Model\Capitulo.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\Model\CatActividad.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\Model\CatArea.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\Model\CatEjercicio.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\Model\CatPartida.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\Model\CatPresupuesto.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\Model\CatRecurso.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\Model\CatTipopedido.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\Model\CatUnidad.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\Model\Cotizacion.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\Model\CotizacionDetalle.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\Audit\CotizacionDetHis.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\Audit\CotizacionHist.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\Model\Entrada.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\Model\Fallo.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\Model\FalloDetalle.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\Audit\FalloDetalleHist.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\Audit\FalloHist.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\Model\Fundamento.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\Model\Iva.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\Model\Modulo.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\Model\Pedido.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\Model\PedidoDetalle.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\Audit\PedidoDetalleHis.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\Model\PedidoEntrega.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\Audit\PedidoEntregaHis.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\Model\PedidoHist.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\Model\Proveedor.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\Audit\ReservaAutoHis.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\Model\ReservaAutorizada.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\Audit\ReservaSolicHist.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\Model\ReservaSolicitud.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\Model\TipoLicitacion.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\Model\Usuario.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\Model\UsuarioModulo.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Querys\PocosAuxiliares.hbm.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Mappings\Model\Requisicion.hbm.xml" />
+    <EmbeddedResource Include="Mappings\Model\RequisicionDetall.hbm.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Querys\QuerysPedido.hbm.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Entities\Reportes\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

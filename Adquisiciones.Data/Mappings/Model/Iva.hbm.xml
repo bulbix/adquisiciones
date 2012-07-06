@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+  <!--Build: with lujan99@usa.net Nhibernate template-->
+  <class name="Adquisiciones.Data.Entities.Iva,Adquisiciones.Data" table="iva" lazy="true">
+    <composite-id name="Id" class="Adquisiciones.Data.Entities.IvaId,Adquisiciones.Data">
+      <key-property name="IdIva" column="id_iva" type="int" />
+      <key-property name="Porcentaje" column="porcentaje" type="short" />
+    </composite-id>
+    <property name="FechaAlta" column="fecha_alta" type="DateTime" />
+    <property name="FechaBaja" column="fecha_baja" type="DateTime" />
+    <property name="Estatus" column="estatus" type="string" />
+    <bag name="Anexo" inverse="true" lazy="true" cascade="delete">
+      <key>
+        <column name="id_iva" />
+        <column name="porcentaje" />
+      </key>
+      <one-to-many class="Adquisiciones.Data.Entities.Anexo,Adquisiciones.Data" />
+    </bag>
+    <bag name="Pedido" inverse="true" lazy="true" cascade="delete">
+      <key>
+        <column name="id_iva" />
+        <column name="porcentaje" />
+      </key>
+      <one-to-many class="Adquisiciones.Data.Entities.Pedido,Adquisiciones.Data" />
+    </bag>
+    <bag name="PedidoHist" inverse="true" lazy="true" cascade="delete">
+      <key>
+        <column name="id_iva" />
+        <column name="porcentaje" />
+      </key>
+      <one-to-many class="Adquisiciones.Data.Entities.PedidoHist,Adquisiciones.Data" />
+    </bag>
+    <bag name="AnexoHist" inverse="true" lazy="true" cascade="delete">
+      <key>
+        <column name="id_iva" />
+        <column name="porcentaje" />
+      </key>
+      <one-to-many class="Adquisiciones.Data.Entities.AnexoHist,Adquisiciones.Data" />
+    </bag>
+  </class>
+  
+</hibernate-mapping>

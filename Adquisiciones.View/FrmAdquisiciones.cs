@@ -1,0 +1,157 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Text;
+using System.Windows.Forms;
+using DevExpress.XtraBars;
+
+namespace Adquisiciones.View
+{
+    public partial class FrmAdquisiciones : DevExpress.XtraBars.Ribbon.RibbonForm
+    {
+        ///<summary>
+        ///</summary>
+        public FrmAdquisiciones()
+        {
+            InitializeComponent();
+        }
+
+        private void BarButtonAnexoItemClick(object sender, ItemClickEventArgs e)
+        {
+            var forma = new FrmModuloAnexo();
+            forma.MdiParent = this;forma.Show();
+
+        }
+
+        private void BarButtonCotizacionItemClick(object sender, ItemClickEventArgs e)
+        {
+            var forma = new FrmModuloCotizacion();
+            forma.MdiParent = this;
+            forma.Show();
+        }
+
+        private void BarButtonFalloItemClick(object sender, ItemClickEventArgs e)
+        {
+            var forma = new FrmModuloFallo();
+            forma.MdiParent = this;
+            forma.Show();
+        }
+
+        private void BarButtonItem1ItemClick(object sender, ItemClickEventArgs e)
+        {
+            var forma = new FrmCatalogoProveedor();
+            forma.MdiParent = this;
+            forma.Show();
+        }
+
+        private void barButtonItem2_ItemClick(object sender, ItemClickEventArgs e)
+        {
+
+            var forma = new FrmBusquedaAnexo();
+            forma.MdiParent = this;
+            forma.Show();
+        }
+
+        private void BarButtonItem3ItemClick(object sender, ItemClickEventArgs e)
+        {
+            var forma = new FrmBusquedaCotizacion();
+            forma.MdiParent = this;
+            forma.Show();
+
+        }
+
+        private void BarButtonItem4ItemClick(object sender, ItemClickEventArgs e)
+        {
+            var forma = new FrmBusquedaProveedor();
+            forma.MdiParent = this;
+            forma.Show();
+        }
+
+        private void barButtonItem6_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            var forma = new FrmBusquedaFallo();
+            forma.MdiParent = this;
+            forma.Show();
+
+        }
+
+        private void BarButtonPedidoItemClick(object sender, ItemClickEventArgs e)
+        {
+            var forma = new FrmModuloLicitaPedido();
+            forma.MdiParent = this;
+            forma.Show();
+        }
+
+        private void BarButtonPedidoMayorItemClick(object sender, ItemClickEventArgs e)
+        {
+            var forma = new FrmModuloPedido(1);
+            forma.Text = @"Pedido Mayor";
+            forma.MdiParent = this;
+            forma.Show();
+        }
+
+        private void BarButtonPedidoMenorItemClick(object sender, ItemClickEventArgs e)
+        {
+            var forma = new FrmModuloPedido(2);
+            forma.Text = @"Pedido Menor";
+            forma.MdiParent = this;
+            forma.Show();
+
+        }
+
+        private void BarButtonPedidoDonacionItemClick(object sender, ItemClickEventArgs e)
+        {
+            var forma = new FrmModuloPedido(3);
+            forma.Text = @"Donaciones";
+            forma.MdiParent = this;
+            forma.Show();
+        }
+
+        private void BarButtonPedidoExtraItemClick(object sender, ItemClickEventArgs e)
+        {
+            var forma = new FrmModuloPedido(4);
+            forma.Text = @"Extramuros";
+            forma.MdiParent = this;
+            forma.Show();
+        }
+        private void FrmAdquisicionesLoad(object sender, EventArgs e)
+        {
+            txtFechaStatus.Caption = @"Fecha Acceso " + DateTime.Now;
+            txtUsuarioStatus.Caption = @"Bienvenid@ " + FrmModuloAcceso.UsuarioLog;
+            txtAlmacenStatus.Caption = @"Almacen Actual " + FrmModuloModulo.AlmacenSelec;
+        }
+        private void BtnCambiarAlmaItemClick(object sender, ItemClickEventArgs e)
+        {
+            new FrmModuloModulo().ShowDialog();
+            //this.Close();
+
+        }
+
+        private void BarButtonItem7ItemClick(object sender, ItemClickEventArgs e)
+        {
+            var forma = new FrmBusquedaPedido();
+            forma.MdiParent = this;forma.Show();
+
+        }
+
+        private void barButtonItem5_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            var forma = new FrmCatalogoPartida();
+            forma.MdiParent = this;
+            forma.Show();
+
+        }
+
+        private void barButtonItem8_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            var forma = new FrmCatalogoFundamento();
+            forma.MdiParent = this;
+            forma.Show();
+        }
+        
+
+       
+    }
+}

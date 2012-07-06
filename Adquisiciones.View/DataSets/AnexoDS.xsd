@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="AnexoDS" targetNamespace="http://tempuri.org/AnexoDS.xsd" xmlns:mstns="http://tempuri.org/AnexoDS.xsd" xmlns="http://tempuri.org/AnexoDS.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="AnexoDS" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="AnexoDS" msprop:Generator_UserDSName="AnexoDS">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="AnexoDetalle" msprop:Generator_TableClassName="AnexoDetalleDataTable" msprop:Generator_TableVarName="tableAnexoDetalle" msprop:Generator_TablePropName="AnexoDetalle" msprop:Generator_RowDeletingName="AnexoDetalleRowDeleting" msprop:Generator_UserTableName="AnexoDetalle" msprop:Generator_RowChangingName="AnexoDetalleRowChanging" msprop:Generator_RowEvHandlerName="AnexoDetalleRowChangeEventHandler" msprop:Generator_RowDeletedName="AnexoDetalleRowDeleted" msprop:Generator_RowEvArgName="AnexoDetalleRowChangeEvent" msprop:Generator_RowChangedName="AnexoDetalleRowChanged" msprop:Generator_RowClassName="AnexoDetalleRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Descripcion" msprop:Generator_ColumnVarNameInTable="columnDescripcion" msprop:Generator_ColumnPropNameInRow="Descripcion" msprop:Generator_ColumnPropNameInTable="DescripcionColumn" msprop:Generator_UserColumnName="Descripcion" type="xs:string" minOccurs="0" />
+              <xs:element name="Presentacion" msprop:Generator_ColumnVarNameInTable="columnPresentacion" msprop:Generator_ColumnPropNameInRow="Presentacion" msprop:Generator_ColumnPropNameInTable="PresentacionColumn" msprop:Generator_UserColumnName="Presentacion" type="xs:string" minOccurs="0" />
+              <xs:element name="Cantidad" msprop:Generator_ColumnVarNameInTable="columnCantidad" msprop:Generator_ColumnPropNameInRow="Cantidad" msprop:Generator_ColumnPropNameInTable="CantidadColumn" msprop:Generator_UserColumnName="Cantidad" type="xs:double" minOccurs="0" />
+              <xs:element name="id" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:string" minOccurs="0" />
+              <xs:element name="articulo" msprop:Generator_ColumnVarNameInTable="columnarticulo" msprop:Generator_ColumnPropNameInRow="articulo" msprop:Generator_ColumnPropNameInTable="articuloColumn" msprop:Generator_UserColumnName="articulo" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Anexo" msprop:Generator_TableClassName="AnexoDataTable" msprop:Generator_TableVarName="tableAnexo" msprop:Generator_TablePropName="Anexo" msprop:Generator_RowDeletingName="AnexoRowDeleting" msprop:Generator_UserTableName="Anexo" msprop:Generator_RowChangingName="AnexoRowChanging" msprop:Generator_RowEvHandlerName="AnexoRowChangeEventHandler" msprop:Generator_RowDeletedName="AnexoRowDeleted" msprop:Generator_RowEvArgName="AnexoRowChangeEvent" msprop:Generator_RowChangedName="AnexoRowChanged" msprop:Generator_RowClassName="AnexoRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Numero" msprop:Generator_ColumnVarNameInTable="columnNumero" msprop:Generator_ColumnPropNameInRow="Numero" msprop:Generator_ColumnPropNameInTable="NumeroColumn" msprop:Generator_UserColumnName="Numero" type="xs:string" minOccurs="0" />
+              <xs:element name="Descripcion" msprop:Generator_ColumnVarNameInTable="columnDescripcion" msprop:Generator_ColumnPropNameInRow="Descripcion" msprop:Generator_ColumnPropNameInTable="DescripcionColumn" msprop:Generator_UserColumnName="Descripcion" type="xs:string" minOccurs="0" />
+              <xs:element name="Fecha" msprop:Generator_ColumnVarNameInTable="columnFecha" msprop:Generator_ColumnPropNameInRow="Fecha" msprop:Generator_ColumnPropNameInTable="FechaColumn" msprop:Generator_UserColumnName="Fecha" type="xs:string" minOccurs="0" />
+              <xs:element name="Presupuesto" msprop:Generator_ColumnVarNameInTable="columnPresupuesto" msprop:Generator_ColumnPropNameInRow="Presupuesto" msprop:Generator_ColumnPropNameInTable="PresupuestoColumn" msprop:Generator_UserColumnName="Presupuesto" type="xs:string" minOccurs="0" />
+              <xs:element name="id" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Anexo" />
+      <xs:field xpath="mstns:id" />
+    </xs:unique>
+  </xs:element>
+  <xs:annotation>
+    <xs:appinfo>
+      <msdata:Relationship name="Anexo_AnexoDetalle" msdata:parent="Anexo" msdata:child="AnexoDetalle" msdata:parentkey="id" msdata:childkey="id" msprop:Generator_UserChildTable="AnexoDetalle" msprop:Generator_ChildPropName="GetAnexoDetalleRows" msprop:Generator_ParentPropName="AnexoRow" msprop:Generator_UserRelationName="Anexo_AnexoDetalle" msprop:Generator_RelationVarName="relationAnexo_AnexoDetalle" msprop:Generator_UserParentTable="Anexo" />
+    </xs:appinfo>
+  </xs:annotation>
+</xs:schema>

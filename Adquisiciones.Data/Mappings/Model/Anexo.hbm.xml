@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+  <!--Build: with lujan99@usa.net Nhibernate template-->
+  <class name="Adquisiciones.Data.Entities.Anexo,Adquisiciones.Data" table="anexo" 
+         lazy="true" dynamic-update="true">
+    
+    <id name="IdAnexo" column="id_anexo" type="long">
+      <generator class="increment" />
+    </id>
+    
+    <property name="NumeroAnexo" column="numero_anexo" type="string" />
+    <property name="FechaAnexo" column="fecha_anexo" type="DateTime" />
+    <property name="Instituto" column="instituto" type="string" />
+    <property name="DesAnexo" column="des_anexo" type="string" />    
+    <many-to-one name="TipoLicitacion" column="id_tipolicitacion" />   
+    <property name="TechoPresupuestal" column="techo_presupuestal" type="Decimal" />
+    <property name="ImporteIva" column="importe_iva" type="Decimal" />
+    <many-to-one name="Iva" fetch="join" >      
+      <column name="id_iva"  />     
+      <column name="porcentaje"  />
+    </many-to-one>    
+    <many-to-one name="Usuario" column="id_usuario"  />    
+    <many-to-one name="Almacen" column="id_almacen" fetch="join"  />
+    <property name="FechaModificacion" column="fecha_modificacion" type="DateTime" />
+    <property name="IpTerminal" column="ip_terminal" type="string" />
+    <property name="Modificacion" column="modificacion" type="int" />   
+    <bag name="Cotizacion" inverse="true" lazy="true" cascade="none">
+      <key column="id_anexo" />
+      <one-to-many class="Adquisiciones.Data.Entities.Cotizacion,Adquisiciones.Data" />
+    </bag>
+    <bag name="AnexoDetalle" inverse="true" lazy="true" cascade="all-delete-orphan" 
+         order-by="id_anexo asc, renglon_anexo asc" fetch="join">
+      <key column="id_anexo" />
+      <one-to-many class="Adquisiciones.Data.Entities.AnexoDetalle,Adquisiciones.Data" />
+    </bag>
+  </class>
+
+  
+  
+</hibernate-mapping>

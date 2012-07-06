@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+  
+  
+  <query name="Fallo.CargarByAnexoEager">
+    <![CDATA[
+      from Fallo f 
+      join fetch f.Cotizacion c 
+      join fetch c.Proveedor p 
+      where f.Anexo = :anexo]]>
+  </query>
+
+
+  <query name="Fallo.CargarByAnexoCompleto">
+    <![CDATA[
+      from Fallo f 
+      join fetch f.Cotizacion c 
+      join fetch c.Proveedor p 
+      join fetch f.FalloDetalle fd 
+      join fetch fd.Articulo
+      where f.Anexo = :anexo]]>
+  </query>
+
+  <query name="Fallo.CargaFallos">
+    <![CDATA[
+      select distinct f from Fallo f
+      join fetch f.Usuario 
+      join fetch f.Anexo 
+      where year(f.FechaFallo) = :anioActual
+      and f.Almacen = :almacen]]>
+  </query>
+  
+
+  <query name="Fallo.ExisteProvCotiz">
+    <![CDATA[
+      from Fallo f 
+      where f.Cotizacion = :cotizacion            
+      and f.Proveedor = :proveedor]]>
+  </query>
+
+</hibernate-mapping>

@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+  <!--Build: with lujan99@usa.net Nhibernate template-->
+  <class name="Adquisiciones.Data.Entities.PedidoDetalle,Adquisiciones.Data" table="pedido_detalle" lazy="true">
+    <!--<composite-id name="Id" class="Adquisiciones.Data.Entities.PedidoDetalleId,Adquisiciones.Data">
+      <key-many-to-one name="Pedido" class="Adquisiciones.Data.Entities.Pedido,Adquisiciones.Data" column="id_pedido" />
+      <key-property name="RenglonPedido" column="renglon_pedido" type="short" />
+    </composite-id>-->
+    
+    <id name="IdPedidoDetalle" column="id_pedidodetalle" type="long">
+      <generator class="increment" />
+    </id>
+
+    <many-to-one name="Pedido" class="Adquisiciones.Data.Entities.Pedido,Adquisiciones.Data" column="id_pedido" />
+    <property name="RenglonPedido" column="renglon_pedido" type="short" />
+    
+    <many-to-one name="Articulo">
+      <column name="cve_art"  />
+      <column name="id_almacen"  />
+    </many-to-one>
+    
+    <property name="Marca" column="marca" type="string" />
+    <property name="Cantidad" column="cantidad" type="Decimal" />
+    <property name="PrecioUnitario" column="precio_unitario" type="Decimal" /> 
+
+    <bag name="PedidoEntrega" inverse="true" lazy="true" cascade="all-delete-orphan">
+      <key column="id_pedidodetalle" />
+      <one-to-many class="Adquisiciones.Data.Entities.PedidoEntrega,Adquisiciones.Data" />
+    </bag>
+    
+  </class>  
+  
+  </hibernate-mapping>

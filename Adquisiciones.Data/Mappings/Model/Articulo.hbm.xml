@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+  <!--Build: with lujan99@usa.net Nhibernate template--> 
+  
+  <class name="Adquisiciones.Data.Entities.Articulo,Adquisiciones.Data" table="articulo" lazy="true">
+    <composite-id name="Id" class="Adquisiciones.Data.Entities.ArticuloId,Adquisiciones.Data">
+      <key-property name="CveArt" column="cve_art" type="int" />
+      <key-many-to-one name="Almacen" class="Adquisiciones.Data.Entities.Almacen,Adquisiciones.Data" column="id_almacen" />
+    </composite-id>
+    <property name="DesArticulo" column="des_articulo" type="string" />    
+    <many-to-one name="CatUnidad" column="unidad" fetch="join" lazy="false" />
+    <property name="Presentacion" column="presentacion" type="string" />
+    <property name="PresentacionCant" column="presentacion_cant" type="short" />
+    <property name="PresentacionUnid" column="presentacion_unid" type="string" />    
+    <!--<many-to-one name="CatPartida" column="partida" />-->
+    <property name="Maximo" column="maximo" type="Decimal" />
+    <property name="Minimo" column="minimo" type="Decimal" />
+    <property name="PuntoReorden" column="punto_reorden" type="Decimal" />
+    <property name="ConsumoPromedio" column="consumo_promedio" type="Decimal" />
+    <property name="MovimientoProm" column="movimiento_prom" type="Decimal" />
+    <property name="TipoMovimiento" column="tipo_movimiento" type="string" />
+    <property name="AreaLocaliza" column="area_localiza" type="string" />
+    <property name="AnaquelLocaliza" column="anaquel_localiza" type="string" />
+    <property name="NivelLocaliza" column="nivel_localiza" type="string" />
+    
+    <many-to-one name="Usuario" column="id_usuario" cascade="save-update" />
+    <property name="FechaAlta" column="fecha_alta" type="DateTime" />
+    <property name="IpTerminal" column="ip_terminal" type="string" />
+    <!--add Row-->
+    <property name="Imagen" column="imagen" type="string" />
+    
+    <bag name="ArticuloFarmacia" inverse="true" lazy="true" cascade="delete">
+      <key>
+        <column name="cve_art" />
+        <column name="id_almacen" />
+      </key>
+      <one-to-many class="Adquisiciones.Data.Entities.ArticuloFarmacia,Adquisiciones.Data" />
+    </bag>
+    <bag name="ArticuloPartida" inverse="true" lazy="true" cascade="delete">
+      <key>
+        <column name="cve_art" />
+        <column name="id_almacen" />
+      </key>
+      <one-to-many class="Adquisiciones.Data.Entities.ArticuloPartida,Adquisiciones.Data" />
+    </bag>
+  </class>
+
+  
+
+</hibernate-mapping>

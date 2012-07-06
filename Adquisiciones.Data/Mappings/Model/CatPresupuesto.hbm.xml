@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+  <!--Build: with lujan99@usa.net Nhibernate template-->
+  <class name="Adquisiciones.Data.Entities.CatPresupuesto,Adquisiciones.Data" table="cat_presupuesto" lazy="true">
+    <id name="IdPresupuesto" column="id_presupuesto" type="int">
+      <generator class="assigned" />
+    </id>
+    <property name="DesPresupuesto" column="des_presupuesto" type="string" />
+    <property name="FechaAlta" column="fecha_alta" type="DateTime" />
+    <property name="FechaBaja" column="fecha_baja" type="DateTime" />
+    <property name="Estatus" column="estatus" type="string" />   
+  </class>
+</hibernate-mapping>

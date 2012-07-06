@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+  
+  <query name="Cotizacion.CargaCotizacionByNumAnexoProvAlmacen">
+    <![CDATA[
+      from Cotizacion c 
+      join fetch c.Anexo 
+      join fetch c.CotizacionDetalle cd 
+      join fetch c.Proveedor p 
+      join fetch cd.Articulo
+      where c.Proveedor = :prov  
+      and c.Anexo = :anexo 
+      and c.Almacen = :almacen
+      ]]>
+  </query>
+  
+  <query name="Cotizacion.CargaDetalleByIdAnexoArtAlmacen">
+    <![CDATA[
+      from CotizacionDetalle cd 
+      join fetch cd.Cotizacion c  
+      join fetch c.Proveedor 
+      join fetch cd.Articulo 
+      where cd.Cotizacion.Anexo = :anexo
+      and cd.Cotizacion.Almacen = :almacen
+      and cd.Articulo = :articulo 
+      order by cd.Precio]]>
+  </query>
+  
+  <query name="Cotizacion.CargaCotizacion">
+    <![CDATA[
+      from Cotizacion c
+      join fetch c.Proveedor 
+      join fetch c.Anexo 
+      join fetch c.Usuario 
+      where year(c.FechaCotizacion) = :anioActual
+      and c.Almacen = :almacen
+      ]]>
+  </query>
+
+ 
+
+</hibernate-mapping>

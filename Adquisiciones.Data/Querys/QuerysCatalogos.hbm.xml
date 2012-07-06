@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+
+  <query name="Usuario.VerificaUsuario">
+    <![CDATA[from Usuario u where u.Rfc = :rfc and u.Password = :pwd]]>
+  </query>
+  <query name="Usuario.CargaCombo">
+    <![CDATA[from Usuario u join fetch u.UsuarioModulo um 
+              where um.Id.Modulo.Almacen.IdAlmacen = :id_almacen]]>
+  </query>
+  <query name="Usuario.TraeUsuario">
+    <![CDATA[from Usuario u 
+              where u.Nombre = :nombre_usua]]>
+  </query>
+  <query name="Articulo.CostoPromedio">
+    <![CDATA[from Articulo a where a.Id.Almacen.IdAlmacen = :idAlmacen 
+             and a.Id.CveArt = :cve_art]]>
+  </query>
+
+  <query name="CatArea.CargaAreas">
+    <![CDATA[from CatArea a  
+              where a.Tipo = :tipo order by DesArea]]>
+  </query>
+  <query name="CatArea.TraeArea">
+    <![CDATA[from CatArea c 
+              where c.DesArea = :des_area]]>
+  </query>
+  <query name="CatArea.TraeAreaCve">
+    <![CDATA[from CatArea c 
+              where c.CveArea = :cve_area]]>
+  </query>
+
+  <query name="TipoIva.Carga">
+    <![CDATA[from Iva a where a.Estatus = :estado ]]>
+  </query>
+  <query name="TipoIva.Id">
+    <![CDATA[from Iva a where a.Id.Porcentaje = :tipoiva]]>
+  </query>
+
+  <query name="TipoLicitacion.Carga">
+    <![CDATA[from TipoLicitacion ]]>
+  </query>
+  
+  <query name="TipoLicitacion.Id">
+    <![CDATA[from TipoLicitacion a where a.DesTipolicitacion = :tipolicita]]>
+  </query>
+
+
+</hibernate-mapping>

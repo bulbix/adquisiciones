@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+  
+  <query name="Anexo.CargaAnexo">
+    <![CDATA[
+      from Anexo a 
+      left join fetch a.AnexoDetalle 
+      join fetch a.TipoLicitacion
+      join fetch a.Iva
+      where a.NumeroAnexo = :numero 
+      and year(a.FechaAnexo) = :anioActual
+      and a.Almacen = :almacen]]>
+  </query>
+
+  <query name="Anexo.CargaAnexos">
+    <![CDATA[
+      from Anexo a
+      join fetch a.Usuario 
+      where year(a.FechaAnexo) = :anioActual
+      and a.Almacen = :almacen]]>
+  </query>
+
+  <query name="Anexo.CargaAnexosWithCotizacion">
+    <![CDATA[
+      from Anexo a
+      join fetch a.TipoLicitacion 
+      where year(a.FechaAnexo) = :anioActual
+      and a.Almacen = :almacen
+      and a.IdAnexo in (select c.Anexo.IdAnexo from Cotizacion c ) ]]>
+  </query>
+  
+   <query name="Anexo.CargaAnexosWithFallo">
+    <![CDATA[
+      from Anexo a
+      join fetch a.TipoLicitacion      
+      where year(a.FechaAnexo) = :anioActual
+      and a.Almacen = :almacen
+      and a.IdAnexo in (select f.Anexo.IdAnexo from Fallo f ) ]]>
+  </query>
+
+  <query name="Anexo.CargaDetalle">
+    <![CDATA[
+      from AnexoDetalle ad 
+      join fetch ad.Articulo
+      where ad.Anexo = :anexo
+      order by ad.RenglonAnexo asc ]]>
+  </query>  
+
+  <query name="Anexo.ExisteAnexo">
+    <![CDATA[
+      from Anexo a 
+      where a.NumeroAnexo = :numero 
+      and year(a.FechaAnexo) = :anioActual
+      and a.Almacen = :almacen]]>
+  </query>
+  
+  
+</hibernate-mapping>

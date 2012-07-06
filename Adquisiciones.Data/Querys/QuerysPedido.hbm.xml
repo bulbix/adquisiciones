@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+
+  <query name="Requisicion.CargarRequisicionesActivasByAlmacen">
+    <![CDATA[
+      select r from Requisicion r 
+      join fetch r.Anexo 
+      join fetch r.CatArea 
+      where r.Almacen = :almacen
+      and r.Estatus = 'A'
+      ]]>
+  </query>
+  
+  <query name="Pedido.MaximoNumeroPedido">
+    <![CDATA[
+    select max(p.NumeroPedido) from Pedido p 
+    where year(p.FechaPedido) = :anioActual
+    and p.Almacen = :almacen
+     ]]>
+  </query>
+
+
+  <query name="Pedido.CargaPedido">
+    <![CDATA[
+      from Pedido p 
+      join fetch p.CatActividad
+      join fetch p.CatPresupuesto
+      join fetch p.Iva
+      join fetch p.CatTipopedido
+      join fetch p.Proveedor
+      left join fetch p.Anexo 
+      left join fetch p.Requisicion 
+      join fetch p.Fundamento 
+      join fetch p.CatArea      
+      where p.NumeroPedido = :numero 
+      and year(p.FechaPedido) = :anioActual
+      and p.Almacen = :almacen]]>
+  </query>
+
+  <query name="Pedido.CargaPedidoDetalle">
+    <![CDATA[
+      from PedidoDetalle pd 
+      join fetch pd.Articulo 
+      where pd.Pedido = :pedido
+      order by pd.RenglonPedido asc ]]>
+  </query>
+
+  <query name="Pedido.CargaPedidoEntrega">
+    <![CDATA[
+      from PedidoEntrega pe
+      where pe.PedidoDetalle = :pedidoDetalle
+      order by pe.Entrega asc ]]>
+  </query>
+  
+  <query name="Pedido.CargaPedidos">
+    <![CDATA[
+      from Pedido p
+      join fetch p.CatTipopedido 
+      join fetch p.Proveedor 
+      left join fetch p.Anexo 
+      left join fetch p.Requisicion 
+      where year(p.FechaPedido) = :anioActual 
+      and p.Almacen = :almacen]]>
+  </query>
+
+  <query name="Pedido.ExisteRequisicionPedido">
+    <![CDATA[    
+      from Pedido p
+      where Requisicion  = :requisicion      
+    ]]>
+  </query>
+
+
+</hibernate-mapping>
