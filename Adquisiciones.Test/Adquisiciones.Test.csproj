@@ -49,6 +49,9 @@
     <Reference Include="Microsoft.CSharp">
       <Private>False</Private>
     </Reference>
+    <Reference Include="Npgsql">
+      <HintPath>..\Librerias\Npgsql.dll</HintPath>
+    </Reference>
     <Reference Include="nunit.framework">
       <HintPath>..\Librerias\nunit.framework.dll</HintPath>
     </Reference>

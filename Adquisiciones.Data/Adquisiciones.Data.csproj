@@ -44,11 +44,17 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Librerias\Iesi.Collections.dll</HintPath>
     </Reference>
+    <Reference Include="Mono.Security">
+      <HintPath>..\Librerias\Mono.Security.dll</HintPath>
+    </Reference>
     <Reference Include="NHibernate">
       <HintPath>..\Librerias\NHibernate.dll</HintPath>
     </Reference>
     <Reference Include="NHibernate.Validator">
       <HintPath>..\Librerias\NHibernate.Validator.dll</HintPath>
+    </Reference>
+    <Reference Include="Npgsql">
+      <HintPath>..\Librerias\Npgsql.dll</HintPath>
     </Reference>
     <Reference Include="Spring.Core">
       <HintPath>..\Librerias\Spring.Core.dll</HintPath>
