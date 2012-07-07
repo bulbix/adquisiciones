@@ -19,7 +19,7 @@ namespace Adquisiciones.View
     {
 
         ///<summary
-        /// Servicio de Negocio
+        /// Servicio de Negocios
         ///</summary>
         public IPedidoService PedidoService;
 
