@@ -15,19 +15,23 @@ namespace Adquisiciones.Test.Anexo
             Assert.IsNotNull(AnexoService.ConsultarAnexo("anexo3", new Almacen("C5")));
         }
 
-     
+        [Test]
+        public void TestFechaServidor()
+        {
+           Assert.NotNull(AnexoService.AnexoDao.FechaServidor());
+
+        }
+
+
 
         [Test]
         public void TestGuardarAnexo()
         {
-            //var anexo = new Anexo();
-
-            //anexo.DesAnexo = "Lola";
-            //Assert.NotNull(anexo.AnexoDetalle[0].Id);
-            //Assert.AreEqual(3, anexo.AnexoDetalle.Count);
-            //anexo.AnexoDetalle.RemoveAt(0);
-            //anexo = AnexoService.GuardarAnexo(anexo);
-            //Assert.AreEqual(2, anexo.AnexoDetalle.Count);
+            var anexo = new Data.Entities.Anexo();
+            anexo.NumeroAnexo = "anexoprueba";
+            anexo.DesAnexo = "Lola";
+            AnexoService.GuardarAnexo(ref anexo);
+            Assert.NotNull(anexo.IdAnexo);
 
         }
 
@@ -35,10 +39,10 @@ namespace Adquisiciones.Test.Anexo
         [Test]
         public void TestActualizarAnexo()
         {
-            var anexo = AnexoService.ConsultarAnexo("aaaa", new Almacen("C5"));
-            anexo.DesAnexo = "Lola";
-            //AnexoService.GuardarAnexo(ref anexo);
-            Assert.AreEqual(0, anexo.AnexoDetalle.Count);
+            var anexo = AnexoService.ConsultarAnexo("anexoprueba", new Almacen("C5"));
+            anexo.DesAnexo = "Lola2";
+            AnexoService.GuardarAnexo(ref anexo);
+            Assert.AreEqual(anexo.DesAnexo, "Lola2");
 
         }
 
@@ -48,9 +52,9 @@ namespace Adquisiciones.Test.Anexo
             base.SetComplete();
         }
 
-        [TearDown]
-        public void TearDown()
-        {  
-        }
+        //[TearDown]
+        //public void TearDown()
+        //{  
+        //}
     }
 }

@@ -3,11 +3,10 @@
 
   
 
-  <query name="Util.FechaServidor">
+  <sql-query name="Util.FechaServidor">    
     <![CDATA[
-      select current 
-      from Almacen 
-      group by 1]]>
-  </query>
+      select current_date     
+     ]]>
+  </sql-query>
 
 </hibernate-mapping>
