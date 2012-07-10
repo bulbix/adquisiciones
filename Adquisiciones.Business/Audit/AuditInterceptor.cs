@@ -27,12 +27,10 @@ namespace Adquisiciones.Business.Audit
             if (entity.GetType().
             GetCustomAttributes(typeof(AuditableAttribute), false).Length > 0)
             {
-                //if (entity is Anexo)
-                //{
-                //    var anexoHist = AnexoHist.ConstruirHistorico(id, propertyNames, state, types, "delete");
-                //    auditService.AnexoHistDao.Insert(anexoHist);
-
-                //}
+                if (entity is Anexo)
+                {
+                    var anexoHist = Util.ConstruirHistorico<AnexoHist>(id, propertyNames, state, types, "delete");
+                    auditService.AnexoHistDao.Insert(anexoHist);}
                
             }
         }
@@ -48,13 +46,13 @@ namespace Adquisiciones.Business.Audit
             if (entity.GetType().
             GetCustomAttributes(typeof(AuditableAttribute), false).Length > 0)
             {
-                //if (entity is Anexo)
-                //{
-                //    var anexoHist = AnexoHist.ConstruirHistorico(id, propertyNames, previousState, types, "update");
-                //    auditService.AnexoHistDao.Insert(anexoHist);
+                if (entity is Anexo)
+                {
+                    var anexoHist = Util.ConstruirHistorico<AnexoHist>(
+                        id, propertyNames, previousState, types, "update");
+                    auditService.AnexoHistDao.Insert(anexoHist);
 
-                //o
-            }
+                }}
 
 
             return base.OnFlushDirty(entity, id, currentState, previousState, propertyNames, types);

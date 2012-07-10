@@ -4,6 +4,7 @@ using System.Linq;
 using System.Windows.Forms;
 using System.Data;
 using System.Net;
+using NHibernate.Type;
 using NHibernate.Validator.Engine;
 
 namespace Adquisiciones.Business
@@ -119,6 +120,39 @@ namespace Adquisiciones.Business
             combo.DisplayMember = "label";
             combo.ValueMember = "value";
 
+        }
+
+        /// <summary>
+        /// Construye un historico por reflexion
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="id"></param>
+        /// <param name="propertyNames"></param>
+        /// <param name="previousState"></param>
+        /// <param name="types"></param>
+        /// <param name="tipo"></param>
+        /// <returns></returns>
+       public static T ConstruirHistorico<T>(object id, string[] propertyNames,
+          object[] previousState, IType[] types, string tipo)
+        {
+            var result = (T) Activator.CreateInstance(typeof(T));
+            int index = 0;
+            var histType = typeof(T);
+            long idExterno = long.Parse(id.ToString());
+
+            foreach (string propiedad in propertyNames)
+            {
+               if (!types[index].IsCollectionType)
+               {
+                histType.GetProperty(propiedad).SetValue(result, previousState[index], null);
+               }
+               
+                ++index;
+            }
+
+            histType.GetProperty("IdExterno").SetValue(result, idExterno, null);
+            histType.GetProperty("Tipo").SetValue(result, tipo, null);
+            return result;
         }
 
       

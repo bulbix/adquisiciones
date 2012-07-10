@@ -61,7 +61,7 @@
   <!--<object type="Spring.Dao.Attributes.PersistenceExceptionTranslationPostProcessor, Spring.Data"/>-->
   
   <object id="parentSession" abstract="true" 
-   type="Adquisiciones.Data.Dao.Catalogos.GenericDaoImp, Adquisiciones.Data">
+   type="Adquisiciones.Data.Dao.GenericDaoImp, Adquisiciones.Data">
     <property name="SessionFactory" ref="NHibernateSessionFactory"/>
   </object>  
   

@@ -37,26 +37,26 @@
       <key column="cve_proveedor" />
       <one-to-many class="Adquisiciones.Data.Entities.Cotizacion,Adquisiciones.Data" />
     </bag>
-    <bag name="CotizacionHist" inverse="true" lazy="true" cascade="delete">
+    <!--<bag name="CotizacionHist" inverse="true" lazy="true" cascade="delete">
       <key column="cve_proveedor" />
       <one-to-many class="Adquisiciones.Data.Entities.CotizacionHist,Adquisiciones.Data" />
-    </bag>
+    </bag>-->
     <bag name="Fallo" inverse="true" lazy="true" cascade="delete">
       <key column="cve_proveedor" />
       <one-to-many class="Adquisiciones.Data.Entities.Fallo,Adquisiciones.Data" />
     </bag>
-    <bag name="FalloHist" inverse="true" lazy="true" cascade="delete">
+    <!--<bag name="FalloHist" inverse="true" lazy="true" cascade="delete">
       <key column="cve_proveedor" />
       <one-to-many class="Adquisiciones.Data.Entities.FalloHist,Adquisiciones.Data" />
-    </bag>
+    </bag>-->
     <bag name="Pedido" inverse="true" lazy="true" cascade="delete">
       <key column="cve_proveedor" />
       <one-to-many class="Adquisiciones.Data.Entities.Pedido,Adquisiciones.Data" />
     </bag>
-    <bag name="PedidoHist" inverse="true" lazy="true" cascade="delete">
+    <!--<bag name="PedidoHist" inverse="true" lazy="true" cascade="delete">
       <key column="cve_proveedor" />
       <one-to-many class="Adquisiciones.Data.Entities.PedidoHist,Adquisiciones.Data" />
-    </bag>
+    </bag>-->
   </class>
  
 </hibernate-mapping>

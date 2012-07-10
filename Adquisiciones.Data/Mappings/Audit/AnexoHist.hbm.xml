@@ -3,29 +3,32 @@
   <!--Build: with lujan99@usa.net Nhibernate template-->
   <class name="Adquisiciones.Data.Entities.AnexoHist,Adquisiciones.Data" 
          table="anexo_hist" lazy="true" >
-    <composite-id name="Id" class="Adquisiciones.Data.Entities.AnexoHistId,Adquisiciones.Data">
-      <key-property name="IdAnexo" column="id_anexo" type="int" />
-      <key-property name="ModAnexo" column="mod_anexo" type="int" />
-    </composite-id>
+
+    <id name="IdAnexoHist" column="id_anexohist" type="long">
+      <generator class="increment" />
+    </id>
+    
+    <property name="IdExterno" column="id_anexo"/>
+    <property name="Modificacion" column="mod_anexo" type="int" />    
     <property name="NumeroAnexo" column="numero_anexo" type="string" />
     <property name="FechaAnexo" column="fecha_anexo" type="DateTime" />
     <property name="Instituto" column="instituto" type="string" />
     <property name="DesAnexo" column="des_anexo" type="string" />    
     <many-to-one name="TipoLicitacion" column="id_tipolicitacion" />
     <property name="TechoPresupuestal" column="techo_presupuestal" type="Decimal" />
-    <property name="ImporteIva" column="importe_iva" type="short" />     
+    <property name="ImporteIva" column="importe_iva" type="Decimal" />     
     <many-to-one name="Iva" >   
       <column name="id_iva"  />      
       <column name="porcentaje"  />
     </many-to-one>    
     <many-to-one name="Usuario" column="id_usuario" />    
     <many-to-one name="Almacen" column="id_almacen" />    
-    <property name="FechaAlta" column="fecha_alta" type="DateTime" />
+    <property name="FechaModificacion" column="fecha_alta" type="DateTime" />
     <property name="IpTerminal" column="ip_terminal" type="string" />
     <property name="Tipo" column="tipo" type="string" />
     
     
-    <bag name="CotizacionHist" inverse="true" lazy="true" cascade="delete">
+    <!--<bag name="CotizacionHist" inverse="true" lazy="true" cascade="delete">
       <key>
         <column name="id_anexo" />
         <column name="mod_anexo" />
@@ -38,6 +41,6 @@
         <column name="mod_anexo" />
       </key>
       <one-to-many class="Adquisiciones.Data.Entities.AnexoDetalleHist,Adquisiciones.Data" />
-    </bag>
+    </bag>-->
   </class>
 </hibernate-mapping>

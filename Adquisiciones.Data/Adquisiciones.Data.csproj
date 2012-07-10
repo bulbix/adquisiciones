@@ -117,7 +117,6 @@
     <Compile Include="Entities\Audit\AnexoDetalleHist.cs" />
     <Compile Include="Entities\Audit\AnexoDetalleHistId.cs" />
     <Compile Include="Entities\Audit\AnexoHist.cs" />
-    <Compile Include="Entities\Audit\AnexoHistId.cs" />
     <Compile Include="Entities\Model\Articulo.cs" />
     <Compile Include="Entities\Model\ArticuloFarmacia.cs" />
     <Compile Include="Entities\Model\ArticuloFarmaciaId.cs" />
@@ -214,9 +213,9 @@
     <EmbeddedResource Include="Mappings\Model\AnexoDetalle.hbm.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
-    <EmbeddedResource Include="Mappings\Audit\AnexoDetalleHist.hbm.xml">
+    <Content Include="Mappings\Audit\AnexoDetalleHist.hbm.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
+    </Content>
     <EmbeddedResource Include="Mappings\Audit\AnexoHist.hbm.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
@@ -263,12 +262,12 @@
     <EmbeddedResource Include="Mappings\Model\CotizacionDetalle.hbm.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
-    <EmbeddedResource Include="Mappings\Audit\CotizacionDetHis.hbm.xml">
+    <Content Include="Mappings\Audit\CotizacionDetHis.hbm.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Mappings\Audit\CotizacionHist.hbm.xml">
+    </Content>
+    <Content Include="Mappings\Audit\CotizacionHist.hbm.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
+    </Content>
     <EmbeddedResource Include="Mappings\Model\Entrada.hbm.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
@@ -278,12 +277,12 @@
     <EmbeddedResource Include="Mappings\Model\FalloDetalle.hbm.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
-    <EmbeddedResource Include="Mappings\Audit\FalloDetalleHist.hbm.xml">
+    <Content Include="Mappings\Audit\FalloDetalleHist.hbm.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Mappings\Audit\FalloHist.hbm.xml">
+    </Content>
+    <Content Include="Mappings\Audit\FalloHist.hbm.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
+    </Content>
     <EmbeddedResource Include="Mappings\Model\Fundamento.hbm.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
@@ -301,31 +300,29 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Mappings\Audit\PedidoDetalleHis.hbm.xml">
+    <Content Include="Mappings\Audit\PedidoDetalleHis.hbm.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
+    </Content>
     <EmbeddedResource Include="Mappings\Model\PedidoEntrega.hbm.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
-    <EmbeddedResource Include="Mappings\Audit\PedidoEntregaHis.hbm.xml">
+    <Content Include="Mappings\Audit\PedidoEntregaHis.hbm.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Mappings\Model\PedidoHist.hbm.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
+    </Content>
     <EmbeddedResource Include="Mappings\Model\Proveedor.hbm.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Mappings\Audit\ReservaAutoHis.hbm.xml">
+    <Content Include="Mappings\Audit\PedidoHist.hbm.xml" />
+    <Content Include="Mappings\Audit\ReservaAutoHis.hbm.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
+    </Content>
     <EmbeddedResource Include="Mappings\Model\ReservaAutorizada.hbm.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
-    <EmbeddedResource Include="Mappings\Audit\ReservaSolicHist.hbm.xml">
+    <Content Include="Mappings\Audit\ReservaSolicHist.hbm.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
+    </Content>
     <EmbeddedResource Include="Mappings\Model\ReservaSolicitud.hbm.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>

@@ -23,20 +23,20 @@
       </key>
       <one-to-many class="Adquisiciones.Data.Entities.Pedido,Adquisiciones.Data" />
     </bag>
-    <bag name="PedidoHist" inverse="true" lazy="true" cascade="delete">
+    <!--<bag name="PedidoHist" inverse="true" lazy="true" cascade="delete">
       <key>
         <column name="id_iva" />
         <column name="porcentaje" />
       </key>
       <one-to-many class="Adquisiciones.Data.Entities.PedidoHist,Adquisiciones.Data" />
-    </bag>
-    <bag name="AnexoHist" inverse="true" lazy="true" cascade="delete">
+    </bag>-->
+    <!--<bag name="AnexoHist" inverse="true" lazy="true" cascade="delete">
       <key>
         <column name="id_iva" />
         <column name="porcentaje" />
       </key>
       <one-to-many class="Adquisiciones.Data.Entities.AnexoHist,Adquisiciones.Data" />
-    </bag>
+    </bag>-->
   </class>
   
 </hibernate-mapping>

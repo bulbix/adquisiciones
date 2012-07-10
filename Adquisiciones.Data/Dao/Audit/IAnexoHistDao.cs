@@ -6,7 +6,7 @@ using Adquisiciones.Data.Entities;
 
 namespace Adquisiciones.Data.Dao.Audit
 {
-    public interface IAnexoHistDao : IGenericDao<AnexoHist, AnexoHistId>
+    public interface IAnexoHistDao : IGenericDao<AnexoHist, long>
     {
     }
 }

@@ -7,18 +7,18 @@
     </id>
     <property name="DesEjercicio" column="des_ejercicio" type="string" />
     <property name="Estatus" column="estatus" type="string" />
-    <bag name="ReservaAutoHis" inverse="true" lazy="true" cascade="delete">
+    <!--<bag name="ReservaAutoHis" inverse="true" lazy="true" cascade="delete">
       <key column="id_ejercicio" />
       <one-to-many class="Adquisiciones.Data.Entities.ReservaAutoHis,Adquisiciones.Data" />
-    </bag>
+    </bag>-->
     <bag name="ReservaAutorizada" inverse="true" lazy="true" cascade="delete">
       <key column="id_ejercicio" />
       <one-to-many class="Adquisiciones.Data.Entities.ReservaAutorizada,Adquisiciones.Data" />
     </bag>
-    <bag name="ReservaSolicHist" inverse="true" lazy="true" cascade="delete">
+    <!--<bag name="ReservaSolicHist" inverse="true" lazy="true" cascade="delete">
       <key column="id_ejercicio" />
       <one-to-many class="Adquisiciones.Data.Entities.ReservaSolicHist,Adquisiciones.Data" />
-    </bag>
+    </bag>-->
     <bag name="ReservaSolicitud" inverse="true" lazy="true" cascade="delete">
       <key column="id_ejercicio" />
       <one-to-many class="Adquisiciones.Data.Entities.ReservaSolicitud,Adquisiciones.Data" />

@@ -18,9 +18,9 @@
       <key column="cve_fundamento" />
       <one-to-many class="Adquisiciones.Data.Entities.Pedido,Adquisiciones.Data" />
     </bag>
-    <bag name="PedidoHist" inverse="true" lazy="true" cascade="delete">
+    <!--<bag name="PedidoHist" inverse="true" lazy="true" cascade="delete">
       <key column="cve_fundamento" />
       <one-to-many class="Adquisiciones.Data.Entities.PedidoHist,Adquisiciones.Data" />
-    </bag>
+    </bag>-->
   </class>
 </hibernate-mapping>

@@ -15,7 +15,10 @@ namespace Adquisiciones.Data.Entities
 	public class AnexoHist
 	{
 		#region Member Variables
-		protected AnexoHistId _id;
+
+	    private long _idAnexoHist;
+        protected long _idexterno;
+        protected int _modificacion;
 		protected string _numeroanexo;
 		protected DateTime? _fechaanexo;
 		protected string _instituto;
@@ -26,7 +29,7 @@ namespace Adquisiciones.Data.Entities
 		protected Iva _iva;
 		protected Usuario _usuario;
 		protected Almacen _almacen;
-		protected DateTime? _fechaalta;
+		protected DateTime? _fechamodificacion;
 		protected string _ipterminal;
 	    private string _tipo;
 
@@ -34,68 +37,35 @@ namespace Adquisiciones.Data.Entities
 		protected IList<AnexoDetalleHist> _anexodetallehist;
 
 
-        /// <summary>
-        /// Construye un objeto anexo opor reflexion
-        /// </summary>
-        /// <param name="propertyNames">Arreglo con las propiedades</param>
-        /// <param name="previousState">Arreglo con los valores anteriores</param>
-        /// <returns></returns>
-        public static AnexoHist ConstruirHistorico(object id, string[] propertyNames, 
-            object[] previousState, IType[] types, string tipo)
-        {
-            var result = new AnexoHist();
-            int index = 0;
-            var anexoHistType = typeof(AnexoHist);
-            var idAnexoHist = new AnexoHistId();
-            idAnexoHist.IdAnexo = (int) id;
-
-            foreach (string propiedad in propertyNames)
-            {
-                switch (propiedad)
-                {
-                    case "Modificacion":
-                        idAnexoHist.ModAnexo = (int)previousState[index];
-                        break;
-                    default:
-                        if (!types[index].IsCollectionType)
-                        {
-                            anexoHistType.GetProperty(propiedad).
-                                SetValue(result, previousState[index], null);
-                        }
-                        break;
-                }
-
-                ++index;
-            }
-
-            result.Id = idAnexoHist;
-            result.Tipo = tipo;
-
-            return result;
-        }
-
-
-
-
-
+     
 		#endregion
 		#region Constructors
 			
 		public AnexoHist() {}
 
 
-		public AnexoHist(AnexoHistId id)
-		{
-			this._id= id;
-		}
 		
 		#endregion
 		#region Public Properties
-		public  virtual AnexoHistId Id
-		{
-			get { return _id; }
-			set {_id= value; }
-		}
+
+        public virtual long IdAnexoHist
+        {
+            get { return _idAnexoHist; }
+            set { _idAnexoHist = value; }
+        }
+
+
+        public virtual long IdExterno
+        {
+            get { return _idexterno; }
+            set { _idexterno = value; }
+        }
+        public virtual int Modificacion
+        {
+            get { return _modificacion; }
+            set { _modificacion = value; }
+        }
+
 		public  virtual string NumeroAnexo
 		{
 			get { return _numeroanexo; }
@@ -146,10 +116,10 @@ namespace Adquisiciones.Data.Entities
 			get { return _almacen; }
 			set {_almacen= value; }
 		}
-		public  virtual DateTime? FechaAlta
+		public  virtual DateTime? FechaModificacion
 		{
-			get { return _fechaalta; }
-			set {_fechaalta= value; }
+			get { return _fechamodificacion; }
+			set {_fechamodificacion= value; }
 		}
 		public  virtual string IpTerminal
 		{
@@ -173,6 +143,8 @@ namespace Adquisiciones.Data.Entities
 	        set { _tipo = value; }
 	    }
 
+	 
+
 	    #endregion
 		
 		#region Equals And HashCode Overrides
@@ -184,8 +156,7 @@ namespace Adquisiciones.Data.Entities
 			if( this == obj ) return true;
 			if( ( obj == null ) || ( obj.GetType() != this.GetType() ) ) return false;
 			AnexoHist castObj = (AnexoHist)obj;
-			return ( castObj != null ) &&
-			this._id.Equals( castObj.Id);
+			return this._idAnexoHist.Equals( castObj.IdAnexoHist);
 		}
 		/// <summary>
 		/// local implementation of GetHashCode based on unique value members
@@ -193,7 +164,7 @@ namespace Adquisiciones.Data.Entities
 		public override int GetHashCode()
 		{
 			int hash = 57;
-			hash = 27 * hash * _id.GetHashCode();
+			//hash = 27 * hash * _id.GetHashCode();
 			return hash;
 		}
 		#endregion

@@ -6,7 +6,7 @@ using Adquisiciones.Data.Entities;
 
 namespace Adquisiciones.Data.Dao.Audit
 {
-    public class AnexoHistDaoImp:GenericDaoImp<AnexoHist,AnexoHistId>,IAnexoHistDao
+    public class AnexoHistDaoImp:GenericDaoImp<AnexoHist,long>,IAnexoHistDao
     {
         
     }
