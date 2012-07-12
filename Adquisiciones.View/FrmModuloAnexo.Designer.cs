@@ -381,7 +381,7 @@
             this.gvAnexoDetalle.OptionsView.ShowGroupPanel = false;
             this.gvAnexoDetalle.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
             new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.gridColumn4, DevExpress.Data.ColumnSortOrder.Descending)});
-            this.gvAnexoDetalle.InitNewRow += new DevExpress.XtraGrid.Views.Grid.InitNewRowEventHandler(this.dgvAnexo_InitNewRow);
+            
             this.gvAnexoDetalle.CellValueChanged += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.DgvAnexoCellValueChanged);
             this.gvAnexoDetalle.KeyDown += new System.Windows.Forms.KeyEventHandler(this.GvAnexoDetalleKeyDown);
             // 
@@ -460,7 +460,6 @@
             this.gcAnexoDetalle.TabIndex = 1;
             this.gcAnexoDetalle.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvAnexoDetalle});
-            this.gcAnexoDetalle.Click += new System.EventHandler(this.gcAnexoDetalle_Click);
             // 
             // lblNumErrors
             // 

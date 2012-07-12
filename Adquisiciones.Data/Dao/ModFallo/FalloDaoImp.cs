@@ -9,6 +9,20 @@ namespace Adquisiciones.Data.Dao.ModFallo
 {
     public class FalloDaoImp:GenericDaoImp<Fallo,long>,IFalloDao
     {
+        public long? MaximoId()
+        {
+            long? result = 1;
+
+            var query = CurrentSession.CreateQuery("select max(IdFallo) from Fallo");
+           
+            if (query.UniqueResult() != null)
+            {
+                result = (long)query.UniqueResult() + 1;
+            }
+
+            return result;
+        }
+
         [Transaction(ReadOnly = true)]
         public IList<Fallo> FallosByAnexo(Anexo anexo)
         {

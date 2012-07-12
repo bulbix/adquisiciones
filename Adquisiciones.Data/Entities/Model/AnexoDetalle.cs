@@ -4,7 +4,6 @@ using MyGeneration/Template/NHibernate (c) by lujan99@usa.net
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Adquisiciones.Data.Audit;
 using Adquisiciones.Data.Auxiliares;
 using NHibernate.Validator.Constraints;
 
@@ -13,8 +12,7 @@ namespace Adquisiciones.Data.Entities
 	/// <summary>
 	/// AnexoDetalle object for NHibernate mapped table 'anexo_detalle'.
 	/// </summary>
-    [Auditable]
-	public class AnexoDetalle
+	public class AnexoDetalle:IDetalle
 	{
 		#region Member Variables
         protected long  _idanexodetalle;
@@ -23,6 +21,10 @@ namespace Adquisiciones.Data.Entities
 		protected Articulo _articulo;
 		protected string _presentacion;
 		protected decimal? _cantidad;
+
+	   
+
+
         //protected Anexo _anexo;
 		#endregion
 		#region Constructors
@@ -67,7 +69,10 @@ namespace Adquisiciones.Data.Entities
 		{
 			get { return _cantidad; }
 			set {_cantidad= value; }
-		}       
+		}
+
+       
+
 		#endregion
         
         #region propiedades intermedias de bindeo
@@ -95,7 +100,10 @@ namespace Adquisiciones.Data.Entities
             get { return presentacionArt; }
             set { presentacionArt = value; }
         }
-        #endregion
+
+	   
+
+	    #endregion
 		#region Equals And HashCode Overrides
 		/// <summary>
 		/// local implementation of Equals based on unique value members

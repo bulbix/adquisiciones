@@ -1,4 +1,5 @@
-﻿using Adquisiciones.Business.ModAnexo;
+﻿using Adquisiciones.Business;
+using Adquisiciones.Business.ModAnexo;
 using Adquisiciones.Data.Entities;
 using NUnit.Framework;
 
@@ -10,6 +11,13 @@ namespace Adquisiciones.Test.Anexo
         public IAnexoService AnexoService { private get; set; }
 
         [Test]
+        public void TestConstruirHistorico()
+        {
+            
+            //Util.ConstruirHistorico()
+        }
+
+        [Test]
         public void TestConsultaAnexo()
         {
             Assert.IsNotNull(AnexoService.ConsultarAnexo("anexo3", new Almacen("C5")));
@@ -19,10 +27,7 @@ namespace Adquisiciones.Test.Anexo
         public void TestFechaServidor()
         {
            Assert.NotNull(AnexoService.AnexoDao.FechaServidor());
-
         }
-
-
 
         [Test]
         public void TestGuardarAnexo()
@@ -39,11 +44,10 @@ namespace Adquisiciones.Test.Anexo
         [Test]
         public void TestActualizarAnexo()
         {
-            var anexo = AnexoService.ConsultarAnexo("anexoprueba", new Almacen("C5"));
+            var anexo = AnexoService.ConsultarAnexo("pruebaho", new Almacen("C5"));
             anexo.DesAnexo = "Lola2";
             AnexoService.GuardarAnexo(ref anexo);
             Assert.AreEqual(anexo.DesAnexo, "Lola2");
-
         }
 
         [SetUp]
@@ -54,7 +58,7 @@ namespace Adquisiciones.Test.Anexo
 
         //[TearDown]
         //public void TearDown()
-        //{  
+        //{
         //}
     }
 }

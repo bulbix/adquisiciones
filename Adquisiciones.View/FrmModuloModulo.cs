@@ -6,6 +6,7 @@ using Adquisiciones.Data.Dao.Catalogos;
 using Adquisiciones.Data.Entities;
 using DevExpress.XtraEditors;
 using Spring.Context.Support;
+using Form = Spring.Windows.Forms.Form;
 
 namespace Adquisiciones.View
 {
@@ -17,13 +18,14 @@ namespace Adquisiciones.View
         ///</summary>
         public static  Almacen AlmacenSelec;
 
-        public IAlmacenDao AlmacenDao;
+        public IAlmacenDao AlmacenDao { get; set; }
       
         ///<summary>
         ///</summary>
         public FrmModuloModulo()
         {
-            InitializeComponent();            
+            InitializeComponent();
+
             var usuariosModulo = FrmModuloAcceso.UsuarioLog.UsuarioModulo;
 
             //leer lista de Usuarios Modulos
@@ -39,10 +41,6 @@ namespace Adquisiciones.View
                     boton.Enabled = true;
                 }
             }
-
-            var ctx = ContextRegistry.GetContext();
-            AlmacenDao = ctx["almacenDao"] as IAlmacenDao;
-
         }
 
         private void BtnAdq5000Click(object sender, EventArgs e)

@@ -16,68 +16,38 @@ namespace Adquisiciones.Data.Entities
 	{
 		#region Member Variables
 
-	    private int _id;
+	    private long _id;
+	    private long _idexterno;
 
 	    private Anexo _anexo;
-	    private int _modificacion;
 	    private short _renglonanexo;
-
-		protected Articulo _articulo;
-		protected string _presentacion;
-		protected decimal? _cantidad;
+        private Articulo _articulo;
+        private string _presentacion;
+        private decimal? _cantidad;
 	    private string _tipo;
+       
 
 		#endregion
-
-        ///// <summary>
-        ///// Construye un objeto anexo opor reflexion
-        ///// </summary>
-        ///// <param name="propertyNames">Arreglo con las propiedades</param>
-        ///// <param name="previousState">Arreglo con los valores anteriores</param>
-        ///// <returns></returns>
-        //public static AnexoDetalleHist ConstruirHistorico(object id, string[] propertyNames,
-        //    object[] previousState, IType[] types, string tipo)
-        //{
-        //    var result = new AnexoDetalleHist();
-        //    int index = 0;
-        //    var anexoDetalleHistType = typeof(AnexoDetalleHist);
-
-        //    var idAnexoDetalle = (AnexoDetalleId) id;
-
-        //    result.Anexo = idAnexoDetalle.Anexo;
-        //    result.Modificacion = idAnexoDetalle.Anexo.Modificacion - 1;
-        //    result.RenglonAnexo = idAnexoDetalle.RenglonAnexo;
-
-        //    foreach (string propiedad in propertyNames)
-        //    {
-        //        switch (propiedad)
-        //        {
-        //            default:
-        //                if (!types[index].IsCollectionType)
-        //                {
-        //                    anexoDetalleHistType.GetProperty(propiedad).
-        //                        SetValue(result, previousState[index], null);
-        //                }
-        //                break;
-        //        }
-
-        //        ++index;
-        //    }
-         
-        //    result.Tipo = tipo;
-
-        //    return result;
-        //}
-
-
 
 		#region Constructors
 
 		public AnexoDetalleHist() {}
 		
 		#endregion
+
 		#region Public Properties
-		
+
+        public virtual long Id
+        {
+            get { return _id; }
+            set { _id = value; }
+        }
+
+        public virtual long IdExterno
+        {
+            get { return _idexterno; }
+            set { _idexterno = value; }
+        }
 
 		public  virtual Articulo Articulo
 		{
@@ -95,12 +65,6 @@ namespace Adquisiciones.Data.Entities
 			set {_cantidad= value; }
 		}
 
-	    public virtual int Modificacion
-	    {
-	        get { return _modificacion; }
-	        set { _modificacion = value; }
-	    }
-
 	    public virtual Anexo Anexo
 	    {
 	        get { return _anexo; }
@@ -117,12 +81,6 @@ namespace Adquisiciones.Data.Entities
 	    {
 	        get { return _renglonanexo; }
 	        set { _renglonanexo = value; }
-	    }
-
-	    public virtual int Id
-	    {
-	        get { return _id; }
-	        set { _id = value; }
 	    }
 
 	    #endregion

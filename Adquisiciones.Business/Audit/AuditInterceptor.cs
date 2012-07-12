@@ -1,5 +1,4 @@
 ﻿using System;
-using Adquisiciones.Data.Audit;
 using Adquisiciones.Data.Entities;
 using NHibernate;
 using NHibernate.Type;
@@ -18,45 +17,44 @@ namespace Adquisiciones.Business.Audit
         private static IAuditService auditService;
 
 
+        ///<summary>
+        ///</summary>
+        ///<param name="entity"></param>
+        ///<param name="id"></param>
+        ///<param name="state"></param>
+        ///<param name="propertyNames"></param>
+        ///<param name="types"></param>
         public override void OnDelete(object entity, object id, object[] state,
             string[] propertyNames, IType[] types)
         {
-            auditService =
-       ContextRegistry.GetContext()["auditService"] as IAuditService;
-
-            if (entity.GetType().
-            GetCustomAttributes(typeof(AuditableAttribute), false).Length > 0)
-            {
-                if (entity is Anexo)
-                {
-                    var anexoHist = Util.ConstruirHistorico<AnexoHist>(id, propertyNames, state, types, "delete");
-                    auditService.AnexoHistDao.Insert(anexoHist);}
-               
-            }
+            auditService = ContextRegistry.GetContext()["auditService"] as IAuditService;
+            var hist = Util.ConstruirHistorico(entity, id, propertyNames, state, types, "delete");
+            auditService.ObjectDao.Insert(hist);
+            base.OnDelete(entity, id, state, propertyNames, types);
         }
 
 
+        ///<summary>
+        ///</summary>
+        ///<param name="entity"></param>
+        ///<param name="id"></param>
+        ///<param name="currentState"></param>
+        ///<param name="previousState"></param>
+        ///<param name="propertyNames"></param>
+        ///<param name="types"></param>
+        ///<returns></returns>
         public override bool OnFlushDirty(object entity, object id,
                             object[] currentState, object[] previousState,
                             string[] propertyNames, IType[] types)
         {
-            auditService =
-        ContextRegistry.GetContext()["auditService"] as IAuditService;
-
-            if (entity.GetType().
-            GetCustomAttributes(typeof(AuditableAttribute), false).Length > 0)
+            //if (entity is AnexoDetalle)
             {
-                if (entity is Anexo)
-                {
-                    var anexoHist = Util.ConstruirHistorico<AnexoHist>(
-                        id, propertyNames, previousState, types, "update");
-                    auditService.AnexoHistDao.Insert(anexoHist);
+                auditService = ContextRegistry.GetContext()["auditService"] as IAuditService;
+                var hist = Util.ConstruirHistorico(entity, id, propertyNames, previousState, types, "update");
+                auditService.ObjectDao.Insert(hist);
+            }
 
-                }}
-
-
-            return base.OnFlushDirty(entity, id, currentState, previousState, propertyNames, types);
-        }
+            return base.OnFlushDirty(entity, id, currentState, previousState, propertyNames, types);}
 
     }
 }

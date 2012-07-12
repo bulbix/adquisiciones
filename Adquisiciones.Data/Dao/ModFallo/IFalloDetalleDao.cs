@@ -8,5 +8,6 @@ namespace Adquisiciones.Data.Dao.ModFallo
 {
     public interface IFalloDetalleDao: IGenericDao<FalloDetalle,long>
     {
+        long? MaximoId();
     }
 }

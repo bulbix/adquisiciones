@@ -1,15 +1,12 @@
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using Adquisiciones.Data.Audit;
-using NHibernate.Validator.Constraints;
+using System.ComponentModel;using NHibernate.Validator.Constraints;
 
 namespace Adquisiciones.Data.Entities
 {
     /// <summary>
     /// Anexo object for NHibernate mapped table 'anexo'.
     /// </summary>
-    [Auditable]
     public class Anexo : INotifyPropertyChanged
     {
         #region Member Variables

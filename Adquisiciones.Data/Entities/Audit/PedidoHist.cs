@@ -14,13 +14,15 @@ namespace Adquisiciones.Data.Entities
 	public class PedidoHist
 	{
 		#region Member Variables
-		protected PedidoHistId _id;
+
+	    private long _id;
+
 		protected DateTime? _fechapedido;
 		protected int? _numeropedido;
 		protected CatTipopedido _cattipopedido;
 		protected Proveedor _proveedor;
-		protected int? _idanexo;
-		protected int? _idrequisicion;
+		protected Anexo _anexo;
+		protected Requisicion _requisicion;
 		protected Fundamento _fundamento;
 		protected int? _idreservaautoriza;
 		protected CatArea _catarea;
@@ -33,42 +35,24 @@ namespace Adquisiciones.Data.Entities
 		protected string _observaciones;
 		protected Usuario _usuario;
 		protected Almacen _almacen;
-		protected DateTime? _fechaalta;
+		protected DateTime? _fechamodificacion;
 		protected string _ipterminal;
-		protected IList<PedidoDetalleHis> _pedidodetallehis;
-		#endregion
+        protected string _numerorequisicion;
+        protected string _instituto;
+        protected long _idexterno;
+        protected int _modificacion;
+        private string _tipo;
+
+	  
+
+	    #endregion
 		#region Constructors
 			
 		public PedidoHist() {}
-					
-		public PedidoHist(PedidoHistId id, DateTime? fechapedido, int? numeropedido, int? idanexo, int? idrequisicion, int? idreservaautoriza, decimal? importedescuento, string estadopedido, decimal? importetotal, string observaciones, DateTime? fechaalta, string ipterminal) 
-		{
-			this._id= id;
-			this._fechapedido= fechapedido;
-			this._numeropedido= numeropedido;
-			this._idanexo= idanexo;
-			this._idrequisicion= idrequisicion;
-			this._idreservaautoriza= idreservaautoriza;
-			this._importedescuento= importedescuento;
-			this._estadopedido= estadopedido;
-			this._importetotal= importetotal;
-			this._observaciones= observaciones;
-			this._fechaalta= fechaalta;
-			this._ipterminal= ipterminal;
-		}
-
-		public PedidoHist(PedidoHistId id)
-		{
-			this._id= id;
-		}
 		
 		#endregion
 		#region Public Properties
-		public  virtual PedidoHistId Id
-		{
-			get { return _id; }
-			set {_id= value; }
-		}
+		
 		public  virtual DateTime? FechaPedido
 		{
 			get { return _fechapedido; }
@@ -89,15 +73,15 @@ namespace Adquisiciones.Data.Entities
 			get { return _proveedor; }
 			set {_proveedor= value; }
 		}
-		public  virtual int? IdAnexo
+		public  virtual Anexo Anexo
 		{
-			get { return _idanexo; }
-			set {_idanexo= value; }
+			get { return _anexo; }
+			set {_anexo= value; }
 		}
-		public  virtual int? IdRequisicion
+		public  virtual Requisicion Requisicion
 		{
-			get { return _idrequisicion; }
-			set {_idrequisicion= value; }
+			get { return _requisicion; }
+			set {_requisicion= value; }
 		}
 		public  virtual Fundamento Fundamento
 		{
@@ -159,22 +143,55 @@ namespace Adquisiciones.Data.Entities
 			get { return _almacen; }
 			set {_almacen= value; }
 		}
-		public  virtual DateTime? FechaAlta
+		public  virtual DateTime? FechaModificacion
 		{
-			get { return _fechaalta; }
-			set {_fechaalta= value; }
+			get { return _fechamodificacion; }
+			set {_fechamodificacion= value; }
 		}
 		public  virtual string IpTerminal
 		{
 			get { return _ipterminal; }
 			set {_ipterminal= value; }
 		}
-		public  virtual IList<PedidoDetalleHis> PedidoDetalleHis
-		{
-			get { return _pedidodetallehis; }
-			set {_pedidodetallehis= value; }
-		}
-		#endregion
+
+        public virtual string Instituto
+        {
+            get { return _instituto; }
+            set { _instituto = value; }
+        }
+
+        public virtual string NumeroRequisicion
+        {
+            get { return _numerorequisicion; }
+            set { _numerorequisicion = value; }
+        }
+
+	    public virtual long Id
+	    {
+	        get { return _id; }
+	        set { _id = value; }
+	    }
+
+        public virtual int Modificacion
+        {
+            get { return _modificacion; }
+            set { _modificacion = value; }
+        }
+
+        public virtual string Tipo
+        {
+            get { return _tipo; }
+            set { _tipo = value; }
+        }
+
+        public virtual long IdExterno
+        {
+            get { return _idexterno; }
+            set { _idexterno = value; }
+        }
+
+
+	    #endregion
 		
 		#region Equals And HashCode Overrides
 		/// <summary>
@@ -194,7 +211,7 @@ namespace Adquisiciones.Data.Entities
 		public override int GetHashCode()
 		{
 			int hash = 57;
-			hash = 27 * hash * _id.GetHashCode();
+			//hash = 27 * hash * _id.GetHashCode();
 			return hash;
 		}
 		#endregion

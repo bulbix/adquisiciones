@@ -74,12 +74,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Audit\AuditableAttribute.cs" />
     <Compile Include="Auxiliares\ArticuloBusqueda.cs" />
-    <Compile Include="Dao\Audit\AnexoDetalleHistDaoImp.cs" />
-    <Compile Include="Dao\Audit\AnexoHistDaoImp.cs" />
-    <Compile Include="Dao\Audit\IAnexoDetalleHistDao.cs" />
-    <Compile Include="Dao\Audit\IAnexoHistDao.cs" />
+    <Compile Include="Auxiliares\IDetalle.cs" />
+    <Compile Include="Dao\IObjectDao.cs" />
     <Compile Include="Dao\Catalogos\AlmacenDaoImp.cs" />
     <Compile Include="Dao\Catalogos\ArticuloDaoImp.cs" />
     <Compile Include="Dao\Catalogos\FundamentoDaoImp.cs" />
@@ -88,6 +85,7 @@
     <Compile Include="Dao\Catalogos\IFundamentoDao.cs" />
     <Compile Include="Dao\Catalogos\IPartidaDao.cs" />
     <Compile Include="Dao\Catalogos\PartidaDaoImp.cs" />
+    <Compile Include="Dao\ObjectDaoImp.cs" />
     <Compile Include="Dao\ModAnexo\AnexoDaoImp.cs" />
     <Compile Include="Dao\ModAnexo\IAnexoDao.cs" />
     <Compile Include="Dao\Catalogos\IProveedorDao.cs" />
@@ -111,11 +109,11 @@
     <Compile Include="Dao\ModPedido\RequisicionDaoImp.cs" />
     <Compile Include="Dao\Seguridad\IUsuarioDao.cs" />
     <Compile Include="Dao\Seguridad\UsuarioDaoImp.cs" />
+    <Compile Include="Entities\Audit\FalloHist.cs" />
     <Compile Include="Entities\Model\Almacen.cs" />
     <Compile Include="Entities\Model\Anexo.cs" />
     <Compile Include="Entities\Model\AnexoDetalle.cs" />
     <Compile Include="Entities\Audit\AnexoDetalleHist.cs" />
-    <Compile Include="Entities\Audit\AnexoDetalleHistId.cs" />
     <Compile Include="Entities\Audit\AnexoHist.cs" />
     <Compile Include="Entities\Model\Articulo.cs" />
     <Compile Include="Entities\Model\ArticuloFarmacia.cs" />
@@ -134,17 +132,12 @@
     <Compile Include="Entities\Model\CatUnidad.cs" />
     <Compile Include="Entities\Model\Cotizacion.cs" />
     <Compile Include="Entities\Model\CotizacionDetalle.cs" />
-    <Compile Include="Entities\Audit\CotizacionDetHis.cs" />
-    <Compile Include="Entities\Audit\CotizacionDetHisId.cs" />
+    <Compile Include="Entities\Audit\CotizacionDetalleHist.cs" />
     <Compile Include="Entities\Audit\CotizacionHist.cs" />
-    <Compile Include="Entities\Audit\CotizacionHistId.cs" />
     <Compile Include="Entities\Model\Entrada.cs" />
     <Compile Include="Entities\Model\Fallo.cs" />
     <Compile Include="Entities\Model\FalloDetalle.cs" />
     <Compile Include="Entities\Audit\FalloDetalleHist.cs" />
-    <Compile Include="Entities\Audit\FalloDetalleHistId.cs" />
-    <Compile Include="Entities\Model\FalloHist.cs" />
-    <Compile Include="Entities\Model\FalloHistId.cs" />
     <Compile Include="Entities\Model\Fundamento.cs" />
     <Compile Include="Entities\Model\Iva.cs" />
     <Compile Include="Entities\Model\IvaId.cs" />
@@ -152,22 +145,15 @@
     <Compile Include="Entities\Model\ModuloId.cs" />
     <Compile Include="Entities\Model\Pedido.cs" />
     <Compile Include="Entities\Model\PedidoDetalle.cs" />
-    <Compile Include="Entities\Audit\PedidoDetalleHis.cs" />
-    <Compile Include="Entities\Audit\PedidoDetalleHisId.cs" />
+    <Compile Include="Entities\Audit\PedidoDetalleHist.cs" />
     <Compile Include="Entities\Model\PedidoEntrega.cs" />
-    <Compile Include="Entities\Audit\PedidoEntregaHis.cs" />
-    <Compile Include="Entities\Audit\PedidoEntregaHisId.cs" />
+    <Compile Include="Entities\Audit\PedidoEntregaHist.cs" />
     <Compile Include="Entities\Audit\PedidoHist.cs" />
-    <Compile Include="Entities\Audit\PedidoHistId.cs" />
     <Compile Include="Entities\Model\Proveedor.cs" />
-    <Compile Include="Entities\Audit\ReservaAutoHis.cs" />
-    <Compile Include="Entities\Audit\ReservaAutoHisId.cs" />
     <Compile Include="Entities\Model\Requisicion.cs" />
     <Compile Include="Entities\Model\RequisicionDetall.cs" />
     <Compile Include="Entities\Model\RequisicionDetallId.cs" />
     <Compile Include="Entities\Model\ReservaAutorizada.cs" />
-    <Compile Include="Entities\Audit\ReservaSolicHist.cs" />
-    <Compile Include="Entities\Audit\ReservaSolicHistId.cs" />
     <Compile Include="Entities\Model\ReservaSolicitud.cs" />
     <Compile Include="Entities\Model\TipoLicitacion.cs" />
     <Compile Include="Entities\Model\Usuario.cs" />
@@ -213,9 +199,9 @@
     <EmbeddedResource Include="Mappings\Model\AnexoDetalle.hbm.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
-    <Content Include="Mappings\Audit\AnexoDetalleHist.hbm.xml">
+    <EmbeddedResource Include="Mappings\Audit\AnexoDetalleHist.hbm.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    </EmbeddedResource>
     <EmbeddedResource Include="Mappings\Audit\AnexoHist.hbm.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
@@ -262,12 +248,12 @@
     <EmbeddedResource Include="Mappings\Model\CotizacionDetalle.hbm.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
-    <Content Include="Mappings\Audit\CotizacionDetHis.hbm.xml">
+    <EmbeddedResource Include="Mappings\Audit\CotizacionDetalleHist.hbm.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Mappings\Audit\CotizacionHist.hbm.xml">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\Audit\CotizacionHist.hbm.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    </EmbeddedResource>
     <EmbeddedResource Include="Mappings\Model\Entrada.hbm.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
@@ -277,12 +263,12 @@
     <EmbeddedResource Include="Mappings\Model\FalloDetalle.hbm.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
-    <Content Include="Mappings\Audit\FalloDetalleHist.hbm.xml">
+    <EmbeddedResource Include="Mappings\Audit\FalloDetalleHist.hbm.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Mappings\Audit\FalloHist.hbm.xml">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\Audit\FalloHist.hbm.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    </EmbeddedResource>
     <EmbeddedResource Include="Mappings\Model\Fundamento.hbm.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
@@ -300,29 +286,23 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <Content Include="Mappings\Audit\PedidoDetalleHis.hbm.xml">
+    <EmbeddedResource Include="Mappings\Audit\PedidoDetalleHist.hbm.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    </EmbeddedResource>
     <EmbeddedResource Include="Mappings\Model\PedidoEntrega.hbm.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
-    <Content Include="Mappings\Audit\PedidoEntregaHis.hbm.xml">
+    <EmbeddedResource Include="Mappings\Audit\PedidoEntregaHist.hbm.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    </EmbeddedResource>
     <EmbeddedResource Include="Mappings\Model\Proveedor.hbm.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <Content Include="Mappings\Audit\PedidoHist.hbm.xml" />
-    <Content Include="Mappings\Audit\ReservaAutoHis.hbm.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <EmbeddedResource Include="Mappings\Audit\PedidoHist.hbm.xml" />
     <EmbeddedResource Include="Mappings\Model\ReservaAutorizada.hbm.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
-    <Content Include="Mappings\Audit\ReservaSolicHist.hbm.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <EmbeddedResource Include="Mappings\Model\ReservaSolicitud.hbm.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>

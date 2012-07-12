@@ -10,4 +10,40 @@
     <property name="UsuarioDao" ref="usuarioDao" />
   </object>
 
+  <object name="Adquisiciones.View.FrmModuloModulo">
+    <property name="AlmacenDao" ref="almacenDao" />
+  </object>
+  
+  <object name="Adquisiciones.View.FrmBusquedaAnexo">
+    <property name="AnexoService" ref="anexoService" />
+  </object> 
+
+  <object name="Adquisiciones.View.FrmBusquedaCotizacion">
+    <property name="CotizacionService" ref="cotizacionService" />
+  </object>
+  
+  <object name="Adquisiciones.View.FrmBusquedaFallo">
+    <property name="FalloService" ref="falloService" />
+  </object>
+  
+  <object name="Adquisiciones.View.FrmBusquedaPedido">
+    <property name="PedidoService" ref="pedidoService" />
+  </object>
+
+  
+  <object name="Adquisiciones.View.FrmModuloFallo">
+    <property name="FalloService" ref="falloService" />
+  </object> 
+
+  <object name="Adquisiciones.View.FrmModuloLicitaPedido">
+    <property name="PedidoService" ref="pedidoService" />
+  </object>
+
+  <object name="Adquisiciones.View.FrmModuloReportes">
+    <property name="PedidoService" ref="pedidoService" />
+    <property name="FalloService" ref="falloService" />
+    <property name="CotizacionService" ref="cotizacionService" />
+    <property name="AnexoService" ref="anexoService" />
+  </object>
+
 </objects>

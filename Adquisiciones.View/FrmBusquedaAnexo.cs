@@ -9,32 +9,33 @@ using Adquisiciones.Business.ModAnexo;
 using Adquisiciones.Data.Entities;
 using DevExpress.XtraEditors;
 using Spring.Context.Support;
+using Form = Spring.Windows.Forms.Form;
 
 namespace Adquisiciones.View
 {
-    public partial class FrmBusquedaAnexo : DevExpress.XtraEditors.XtraForm
+    public partial class FrmBusquedaAnexo : Form
     {
         ///<summary>
         ///</summary>
-        public IAnexoService AnexoService;
+        public IAnexoService AnexoService { get; set; }
 
         ///<summary>
         ///</summary>
         public FrmBusquedaAnexo()
         {
             InitializeComponent();
+        }
 
-            var ctx = ContextRegistry.GetContext();
-            AnexoService = ctx["anexoService"] as IAnexoService;
+        private void Buscar()
+        {
+            var anexos = AnexoService.AnexoDao.CargarAnexos(FrmModuloModulo.AlmacenSelec);
+            bsAnexos.DataSource = anexos;
+            
         }
 
         private void CmdBuscarClick(object sender, EventArgs e)
         {
-            var anexos = AnexoService.AnexoDao.CargarAnexos(FrmModuloModulo.AlmacenSelec);
-           
-
-
-            bsAnexos.DataSource = anexos;
+           Buscar();
         }
 
         private void CmdImprimirClick(object sender, EventArgs e)
@@ -80,6 +81,16 @@ namespace Adquisiciones.View
             anexoSelect.TieneCotizacion = AnexoService.
                 AnexoDao.ExisteAnexoCotizacion(anexoSelect);
            gvAnexo.RefreshData();
+
+        }
+
+        private void cmdEliminar_Click(object sender, EventArgs e)
+        {
+            var anexoSelect = gvAnexo.GetFocusedRow() as Anexo;
+            AnexoService.AnexoDao.Delete(anexoSelect);
+            MessageBox.Show(@"Anexo seleccionado borrado", @"Adquisiciones", MessageBoxButtons.OK,
+                   MessageBoxIcon.Information);
+            Buscar();
 
         }
 

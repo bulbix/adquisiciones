@@ -1,14 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
   <!--Build: with lujan99@usa.net Nhibernate template-->
-  <class name="Adquisiciones.Data.Entities.FalloDetalleHist,Adquisiciones.Data" table="fallo_detalle_hist" lazy="true">
-    <composite-id name="Id" class="Adquisiciones.Data.Entities.FalloDetalleHistId,Adquisiciones.Data">
-      <key-many-to-one name="FalloHist" class="Adquisiciones.Data.Entities.FalloHist,Adquisiciones.Data">
-        <column name="id_fallo" />
-        <column name="mod_fallo" />
-      </key-many-to-one>
-      <key-property name="RenglonAnexo" column="renglon_anexo" type="short" />
-    </composite-id>
+  <class name="Adquisiciones.Data.Entities.FalloDetalleHist,Adquisiciones.Data" 
+         table="fallo_detalle_hist" lazy="true">
+    
+    <id name="Id" column="id_fallodetallehist" type="long">
+      <generator class="increment" />
+    </id>
+
+    <many-to-one name="Fallo"        column="id_fallo" />
+
+    <property name="RenglonAnexo" column="renglon_anexo" type="short" />
+    <property name="IdExterno" column="id_fallodetalle" type="long"/>
     <property name="CantidadMax" column="cantidad_max" type="Decimal" />
     <property name="CantidadMin" column="cantidad_min" type="Decimal" />
     <property name="CantidadPed" column="cantidad_ped" type="Decimal" />
@@ -17,5 +20,10 @@
       <column name="cve_art"  />
       <column name="id_almacen"  />
     </many-to-one>
+
+    <property name="Tipo" column="tipo" type="string" />
+       
+    
+    
   </class>
 </hibernate-mapping>

@@ -3,26 +3,20 @@
   <!--Build: with lujan99@usa.net Nhibernate template-->
   
   <class name="Adquisiciones.Data.Entities.PedidoEntrega,Adquisiciones.Data" table="pedido_entrega" lazy="true">
-    <!--<composite-id name="Id" class="Adquisiciones.Data.Entities.PedidoEntregaId,Adquisiciones.Data">
-      <key-many-to-one name="PedidoDetalle" class="Adquisiciones.Data.Entities.PedidoDetalle,Adquisiciones.Data">
-        <column name="id_pedido" />
-        <column name="renglon_pedido" />
-      </key-many-to-one>
-    </composite-id>-->
-
+  
     <id name="IdPedidoEntrega" column="id_pedidoentrega" type="long">
       <generator class="increment" />
     </id>
-
-    <!--<many-to-one name="PedidoDetalle" class="Adquisiciones.Data.Entities.PedidoDetalle,Adquisiciones.Data" 
-                 column="id_pedidoentrega" />-->
-
+    
     <many-to-one name="PedidoDetalle" column="id_pedidodetalle" cascade="save-update" />
 
     <property name="Entrega" column="entrega" type="int" />    
     <property name="FechaInicial" column="fecha_inicial" type="DateTime" />
     <property name="FechaFinal" column="fecha_final" type="DateTime" />
-    <property name="Cantidad" column="cantidad" type="Decimal" />    
+    <property name="Cantidad" column="cantidad" type="Decimal" /> 
+    
+    
+        
     
   </class>
   

@@ -13,16 +13,24 @@ using Adquisiciones.Business.ModPedido;
 using Adquisiciones.Data.Entities;
 using Adquisiciones.View.DataSets;
 using Spring.Context.Support;
+using Spring.Objects.Factory;
+using Form = Spring.Windows.Forms.Form;
 
 namespace Adquisiciones.View
 {
     ///<summary>
     ///</summary>
-    public partial class FrmModuloReportes : Form
+    public partial class FrmModuloReportes : Form, IInitializingObject
     {
         private readonly string NombreReporte;
 
         private readonly object Entity;
+
+        public IAnexoService AnexoService { get; set; }
+        public ICotizacionService CotizacionService { get; set; }
+        public IFalloService FalloService { get; set; }
+        public IPedidoService PedidoService { get; set; }
+
 
         ///<summary>
         ///</summary>
@@ -35,8 +43,7 @@ namespace Adquisiciones.View
             Entity = entity;
         }
 
-
-        private void FrmReportesLoad(object sender, EventArgs e)
+        private void GenerarReporte()
         {
             switch (NombreReporte)
             {
@@ -54,16 +61,21 @@ namespace Adquisiciones.View
             }
         }
 
+
+        private void FrmReportesLoad(object sender, EventArgs e)
+        {
+            
+        }
+
         /// <summary>
         /// 
         /// </summary>
         private void ReporteAnexo(Anexo anexo)
         {
-            var ctx = ContextRegistry.GetContext();
-            var anexoService = ctx["anexoService"] as IAnexoService;
+           
             var anexoDs = new AnexoDS();
 
-            anexo = anexoService.ConsultarAnexo(anexo.NumeroAnexo, anexo.Almacen);
+            anexo = AnexoService.ConsultarAnexo(anexo.NumeroAnexo, anexo.Almacen);
 
             DataRow filaMain = anexoDs.Tables["Anexo"].NewRow();
             filaMain["Id"] = anexo.IdAnexo;
@@ -96,9 +108,8 @@ namespace Adquisiciones.View
 
         private void ReporteCotizacion(Cotizacion cotizacion)
         {
-            var ctx = ContextRegistry.GetContext();
-            var cotizacionService = ctx["cotizacionService"] as ICotizacionService;
-            cotizacionService.ConsultaCotizacion(ref cotizacion);
+           
+            CotizacionService.ConsultaCotizacion(ref cotizacion);
 
             var cotizacionDs = new CotizacionDS();
 
@@ -138,10 +149,9 @@ namespace Adquisiciones.View
 
         private void ReporteFallo(Anexo anexo)
         {
-            var ctx = ContextRegistry.GetContext();
-            var falloService = ctx["falloService"] as IFalloService;
+         
 
-            anexo = falloService.AnexoDao.
+            anexo = FalloService.AnexoDao.
                      ConsultaAnexo(anexo.NumeroAnexo, anexo.Almacen);
 
             var falloDs = new FalloDS();
@@ -155,7 +165,7 @@ namespace Adquisiciones.View
                 filaDetalle["ClaveArticulo"] = detalle.Articulo.Id.CveArt;
 
                 var articulo =
-                    falloService.ArticuloDao.Get(new ArticuloId(detalle.Articulo.Id.CveArt, anexo.Almacen));
+                    FalloService.ArticuloDao.Get(new ArticuloId(detalle.Articulo.Id.CveArt, anexo.Almacen));
 
                 filaDetalle["Renglon"] = detalle.RenglonAnexo;
                 filaDetalle["Descripcion"] = articulo.DesArticulo;
@@ -165,7 +175,7 @@ namespace Adquisiciones.View
                 falloDs.Tables["AnexoDetalle"].Rows.Add(filaDetalle);
 
                 var cotizacionDetalles =
-                    falloService.CotizacionDao.CargarCotizacionDetalle(anexo, detalle.Articulo, anexo.Almacen);
+                    FalloService.CotizacionDao.CargarCotizacionDetalle(anexo, detalle.Articulo, anexo.Almacen);
 
                 var count = 0;
 
@@ -196,11 +206,10 @@ namespace Adquisiciones.View
 
         private void ReportePedido(Pedido pedido)
         {
-            var ctx = ContextRegistry.GetContext();
-            var pedidoService = ctx["pedidoService"] as IPedidoService;
+
 
             pedido.PedidoDetalle = 
-                pedidoService.PedidoDao.CargarPedidoDetalle(pedido);
+                PedidoService.PedidoDao.CargarPedidoDetalle(pedido);
             
             var pedidoDs = new PedidoDS();
 
@@ -264,5 +273,9 @@ namespace Adquisiciones.View
 
             Text = @"ReportePedido::" + pedido;}
 
+        public void AfterPropertiesSet()
+        {
+            GenerarReporte();
+        }
     }
 }

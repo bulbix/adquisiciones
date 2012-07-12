@@ -17,7 +17,6 @@ namespace Adquisiciones.View
     /// </summary>
     public partial class FrmModuloPedido : DevExpress.XtraEditors.XtraForm
     {
-
         ///<summary
         /// Servicio de Negocios
         ///</summary>

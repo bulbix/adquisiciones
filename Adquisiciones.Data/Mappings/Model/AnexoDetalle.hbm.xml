@@ -17,8 +17,8 @@
     </many-to-one>
     
     <property name="Presentacion" column="presentacion" type="string" />
-    <property name="Cantidad" column="cantidad" type="Decimal" />
-    <!--<many-to-one name="Anexo" column="id_anexo"  not-null="true" />-->
+    <property name="Cantidad" column="cantidad" type="Decimal" />   
+    
   </class> 
  
 </hibernate-mapping>

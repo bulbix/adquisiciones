@@ -5,18 +5,20 @@ using Adquisiciones.Data.Entities;
 using log4net;
 using Spring.Context.Support;
 using Adquisiciones.Business;
+using Spring.Objects.Factory;
+using Form = Spring.Windows.Forms.Form;
 
 namespace Adquisiciones.View
 {
     /// <summary>
     /// 
     /// </summary>
-    public partial class FrmModuloLicitaPedido : DevExpress.XtraEditors.XtraForm
+    public partial class FrmModuloLicitaPedido : Form, IInitializingObject
     {
         ///<summary
         /// Servicio de Negocio
         ///</summary>
-        public IPedidoService PedidoService;
+        public IPedidoService PedidoService { get; set; }
 
         /// <summary>
         /// 
@@ -63,17 +65,12 @@ namespace Adquisiciones.View
         /// </summary>
         public FrmModuloLicitaPedido(){
             InitializeComponent();
-            var ctx = ContextRegistry.GetContext();
-            PedidoService = ctx["pedidoService"] as IPedidoService;
-            NuevoPedido();
-            BindearCampos();
-            CargarCombos();
         }
 
         /// <summary>
         /// Combos asociados al pedido 
         /// </summary>
-        public void CargarCombos()
+        public void InicializarCatalogos()
         {
             bsRequisicion.DataSource = PedidoService.RequisicionDao.CargarRequisiciones(FrmModuloModulo.AlmacenSelec);
             bsFundamento.DataSource = PedidoService.RequisicionDao.CargarCatalogo<Fundamento>();
@@ -232,6 +229,13 @@ namespace Adquisiciones.View
              }
 
 
+        }
+
+        public void AfterPropertiesSet()
+        {
+            InicializarCatalogos();
+            NuevoPedido();
+            BindearCampos();
         }
     }
 }

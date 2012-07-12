@@ -1,4 +1,5 @@
-﻿using Adquisiciones.Data.Dao.Audit;
+﻿using System;
+using Adquisiciones.Data.Dao;
 using Adquisiciones.Data.Dao.ModAnexo;
 
 namespace Adquisiciones.Business.Audit
@@ -9,7 +10,6 @@ namespace Adquisiciones.Business.Audit
     {
         ///<summary>
         ///</summary>
-        public IAnexoHistDao AnexoHistDao { get; set; }
-        public IAnexoDetalleHistDao AnexoDetalleHistDao { get; set; }
+        public IObjectDao ObjectDao { get; set; }
     }
 }

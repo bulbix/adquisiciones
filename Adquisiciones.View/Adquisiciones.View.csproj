@@ -106,6 +106,7 @@
     <Reference Include="FlashControlV71, Version=1.0.3187.32366, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
     <Reference Include="IBM.Data.Informix">
       <HintPath>..\Librerias\IBM.Data.Informix.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="log4net">
       <HintPath>..\Librerias\log4net.dll</HintPath>

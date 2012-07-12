@@ -11,17 +11,19 @@ using Adquisiciones.Business.ModPedido;
 using Adquisiciones.Data.Entities;
 using DevExpress.XtraEditors;
 using Spring.Context.Support;
+using Form = Spring.Windows.Forms.Form;
+
 
 namespace Adquisiciones.View
 {
     
     ///<summary>
     ///</summary>
-    public partial class FrmBusquedaPedido : DevExpress.XtraEditors.XtraForm
+    public partial class FrmBusquedaPedido : Form
     {
         ///<summary>
         ///</summary>
-        public IPedidoService PedidoService;
+        public IPedidoService PedidoService { get; set; }
 
 
         ///<summary>
@@ -29,20 +31,25 @@ namespace Adquisiciones.View
         public FrmBusquedaPedido()
         {
             InitializeComponent();
-            var ctx = ContextRegistry.GetContext();
-            PedidoService = ctx["pedidoService"] as IPedidoService;
+            
         }
 
-        private void CmdBuscarClick(object sender, EventArgs e)
+        private void Buscar()
         {
             var pedidos = PedidoService.PedidoDao.
-                CargarPedidos(FrmModuloModulo.AlmacenSelec);
+               CargarPedidos(FrmModuloModulo.AlmacenSelec);
             foreach (var pedido in pedidos)
             {
                 pedido.Automatico = pedido.Requisicion == null ? false : true;
             }
 
             bsPedidos.DataSource = pedidos;
+            
+        }
+
+        private void CmdBuscarClick(object sender, EventArgs e)
+        {
+            Buscar();
         }
 
 
@@ -82,6 +89,15 @@ namespace Adquisiciones.View
                 MessageBox.Show(@"No hay pedido seleccionado", @"Adquisiciones", MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
             }
+        }
+
+        private void cmdEliminar_Click(object sender, EventArgs e)
+        {
+            var pedidoSelect = gvPedido.GetFocusedRow() as Pedido;
+            PedidoService.PedidoDao.Delete(pedidoSelect);
+            MessageBox.Show(@"Pedido seleccionado borrado", @"Adquisiciones", MessageBoxButtons.OK,
+                  MessageBoxIcon.Information);
+            Buscar();
         }
     }
 }

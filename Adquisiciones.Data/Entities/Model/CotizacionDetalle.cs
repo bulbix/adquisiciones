@@ -22,6 +22,8 @@ namespace Adquisiciones.Data.Entities
         protected string _marca;
         protected decimal? _precio;
         protected string _observaciones;
+       
+
         #endregion
         #region Constructors
 
@@ -74,6 +76,8 @@ namespace Adquisiciones.Data.Entities
             get { return _observaciones; }
             set { _observaciones = value; }
         }
+
+      
 
         #endregion
 

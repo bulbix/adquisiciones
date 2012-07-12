@@ -5,15 +5,17 @@ using Adquisiciones.Business.ModFallo;
 using Adquisiciones.Data.Entities;
 using log4net;
 using Spring.Context.Support;
+using Spring.Objects.Factory;
+using Form = Spring.Windows.Forms.Form;
 
 namespace Adquisiciones.View
 {
-    public partial class FrmModuloFallo : DevExpress.XtraEditors.XtraForm
+    public partial class FrmModuloFallo : Form, IInitializingObject
     {
 
         ///<summary>
         ///</summary>
-        public IFalloService FalloService;
+        public IFalloService FalloService { get; set; }
 
         ///<summary>
         ///</summary>
@@ -27,10 +29,6 @@ namespace Adquisiciones.View
         public FrmModuloFallo()
         {
             InitializeComponent();
-         
-            var ctx = ContextRegistry.GetContext();
-            FalloService = ctx["falloService"] as IFalloService;
-
             dtpFallo.DateTime = DateTime.Now;
             //Nos Suscribimos al Evento
             if (FalloService != null) FalloService.FalloProceso += OnProcesoFallo;
@@ -105,12 +103,15 @@ namespace Adquisiciones.View
         }
         private void FrmCargaFalloDevLoad(object sender, EventArgs e)
         {
+           
+        }
+
+
+        public void AfterPropertiesSet()
+        {
             var anexos = FalloService.AnexoDao.
                 CargarAnexosWithCotizacion(FrmModuloModulo.AlmacenSelec);
             bsAnexos.DataSource = anexos;
         }
-
-      
-        
     }
 }

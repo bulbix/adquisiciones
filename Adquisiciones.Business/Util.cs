@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Windows.Forms;
 using System.Data;
 using System.Net;
+using Adquisiciones.Data.Entities;
 using NHibernate.Type;
 using NHibernate.Validator.Engine;
 
@@ -126,19 +128,26 @@ namespace Adquisiciones.Business
         /// Construye un historico por reflexion
         /// </summary>
         /// <typeparam name="T"></typeparam>
+        /// <param name="entity"></param>
         /// <param name="id"></param>
         /// <param name="propertyNames"></param>
         /// <param name="previousState"></param>
         /// <param name="types"></param>
         /// <param name="tipo"></param>
         /// <returns></returns>
-       public static T ConstruirHistorico<T>(object id, string[] propertyNames,
+        public static object ConstruirHistorico<T>(T entity, object id, string[] propertyNames,
           object[] previousState, IType[] types, string tipo)
-        {
-            var result = (T) Activator.CreateInstance(typeof(T));
-            int index = 0;
-            var histType = typeof(T);
-            long idExterno = long.Parse(id.ToString());
+        {   
+            var nombreTabla = entity.GetType().Name;
+            var tableHist = "Adquisiciones.Data.Entities." +  nombreTabla + "Hist";
+            var a = Assembly.LoadWithPartialName("Adquisiciones.Data");
+            var typeHist = a.GetType(tableHist);
+            var result = Activator.CreateInstance(typeHist);
+
+            var index = 0;
+            var histType = result.GetType();
+
+            var idExterno = long.Parse(id.ToString());
 
             foreach (string propiedad in propertyNames)
             {
@@ -151,7 +160,11 @@ namespace Adquisiciones.Business
             }
 
             histType.GetProperty("IdExterno").SetValue(result, idExterno, null);
+
+            //if(histType.)
+
             histType.GetProperty("Tipo").SetValue(result, tipo, null);
+
             return result;
         }
 

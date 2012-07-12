@@ -79,7 +79,8 @@ namespace Adquisiciones.Business.ModFallo
                 if (falloFound == null)
                 {
                     falloActual = new Fallo
-                    {
+                                      {
+                        IdFallo = FalloDao.MaximoId().Value,
                         Anexo = anexo,
                         Cotizacion = cotizacionDetalle.Cotizacion,
                         Proveedor = cotizacionDetalle.Cotizacion.Proveedor,
@@ -108,7 +109,7 @@ namespace Adquisiciones.Business.ModFallo
 
                 var falloDetalle = new FalloDetalle()
                 {
-                    Fallo = falloActual,
+                    IdFalloDetalle = FalloDetalleDao.MaximoId().Value,Fallo = falloActual,
                     RenglonAnexo = cotizacionDetalle.RenglonAnexo,
                     CantidadMax = anexoDetalle.Cantidad,
                     CantidadMin = decimal.Parse(minCantidad.ToString()),

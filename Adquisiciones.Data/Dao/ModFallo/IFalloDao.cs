@@ -6,6 +6,7 @@ namespace Adquisiciones.Data.Dao.ModFallo
 {
     public interface IFalloDao: IGenericDao<Fallo,long>
     {
+        long? MaximoId ();
         IList<Fallo> FallosByAnexo(Anexo anexo);
         IList<Fallo> FallosByAnexoEager(Anexo anexo);
         Fallo ExisteProvCotiz(Cotizacion cotizacion, Proveedor prov);

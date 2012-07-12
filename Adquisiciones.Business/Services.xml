@@ -42,8 +42,7 @@
   
 
   <object id="auditService" type="Adquisiciones.Business.Audit.AuditServiceImp, Adquisiciones.Business">
-    <property name="AnexoHistDao" ref="anexoHistDao"/>
-    <property name="AnexoDetalleHistDao" ref="anexoDetalleHistDao"/>
+    <property name="ObjectDao" ref="objectDao"/>    
   </object>
   
   

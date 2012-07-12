@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
+            this.cmdEliminar = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
             this.cmdImprimir = new DevExpress.XtraEditors.SimpleButton();
             this.cmdBuscar = new DevExpress.XtraEditors.SimpleButton();
@@ -52,6 +53,7 @@
             this.splitContainerControl1.Horizontal = false;
             this.splitContainerControl1.Location = new System.Drawing.Point(0, 0);
             this.splitContainerControl1.Name = "splitContainerControl1";
+            this.splitContainerControl1.Panel1.Controls.Add(this.cmdEliminar);
             this.splitContainerControl1.Panel1.Controls.Add(this.simpleButton2);
             this.splitContainerControl1.Panel1.Controls.Add(this.cmdImprimir);
             this.splitContainerControl1.Panel1.Controls.Add(this.cmdBuscar);
@@ -62,6 +64,16 @@
             this.splitContainerControl1.SplitterPosition = 90;
             this.splitContainerControl1.TabIndex = 0;
             this.splitContainerControl1.Text = "splitContainerControl1";
+            // 
+            // cmdEliminar
+            // 
+            this.cmdEliminar.Image = global::Adquisiciones.View.Properties.Resources.cancelar;
+            this.cmdEliminar.Location = new System.Drawing.Point(518, 22);
+            this.cmdEliminar.Name = "cmdEliminar";
+            this.cmdEliminar.Size = new System.Drawing.Size(133, 57);
+            this.cmdEliminar.TabIndex = 7;
+            this.cmdEliminar.Text = "Eliminar";
+            this.cmdEliminar.Click += new System.EventHandler(this.cmdEliminar_Click);
             // 
             // simpleButton2
             // 
@@ -100,7 +112,7 @@
             this.gcAnexo.Location = new System.Drawing.Point(0, 0);
             this.gcAnexo.MainView = this.gvAnexo;
             this.gcAnexo.Name = "gcAnexo";
-            this.gcAnexo.Size = new System.Drawing.Size(678, 367);
+            this.gcAnexo.Size = new System.Drawing.Size(678, 366);
             this.gcAnexo.TabIndex = 1;
             this.gcAnexo.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvAnexo});
@@ -184,6 +196,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
         private DevExpress.XtraEditors.SimpleButton simpleButton2;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
+        private DevExpress.XtraEditors.SimpleButton cmdEliminar;
 
     }
 }

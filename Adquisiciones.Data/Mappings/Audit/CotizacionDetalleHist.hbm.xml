@@ -1,25 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
   <!--Build: with lujan99@usa.net Nhibernate template-->
-  <class name="Adquisiciones.Data.Entities.CotizacionDetalle,Adquisiciones.Data" 
-         table="cotizacion_detalle" lazy="true" dynamic-update="true">
+  <class name="Adquisiciones.Data.Entities.CotizacionDetalleHist,Adquisiciones.Data" 
+         table="cotizacion_det_hist" lazy="true">
     
-    <id name="IdCotizacionDetalle" column="id_cotizaciondetalle" type="long">
+    <id name="Id" column="id_cotizaciondetallehist" type="long">
       <generator class="increment" />
     </id>
-
-    <many-to-one name="Cotizacion" class="Adquisiciones.Data.Entities.Cotizacion,Adquisiciones.Data" 
-                 column="id_cotizacion"/>
-    <property name="RenglonAnexo" column="renglon_anexo" type="short" />
-    
-    <many-to-one name="Articulo" >
+    <property name="IdExterno" column="id_cotizaciondetalle" type="long"/>
+    <many-to-one name="Cotizacion"   column="id_cotizacion"/>    
+    <property name="RenglonAnexo" column="renglon_anexo" type="short" />    
+    <many-to-one name="Articulo">
       <column name="cve_art"  />
       <column name="id_almacen"  />
     </many-to-one>
     <property name="Marca" column="marca" type="string" />
     <property name="Precio" column="precio" type="Decimal" />
     <property name="Observaciones" column="observaciones" type="string" />
-   
-    
+    <property name="Tipo" column="tipo" type="string" />
+  
   </class>
 </hibernate-mapping>

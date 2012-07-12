@@ -13,7 +13,7 @@
     <many-to-one name="CatTipopedido" column="id_tipoped" fetch="join"  />
     <many-to-one name="Proveedor" column="cve_proveedor" fetch="join" />
     <many-to-one name="Anexo" column="id_anexo" fetch="join"  />
-    <many-to-one name="Requisicion" column="id_requisicion" cascade="all-delete-orphan"  />
+    <many-to-one name="Requisicion" column="id_requisicion" fetch="join" />
     
     <many-to-one name="Fundamento" column="cve_fundamento" fetch="join" />
     <property name="IdReservaautoriza" column="id_reservaautoriza" type="int" />

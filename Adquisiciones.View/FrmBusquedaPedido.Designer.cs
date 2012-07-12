@@ -44,6 +44,7 @@
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.cmdEliminar = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             this.splitContainerControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gcPedido)).BeginInit();
@@ -57,6 +58,7 @@
             this.splitContainerControl1.Horizontal = false;
             this.splitContainerControl1.Location = new System.Drawing.Point(0, 0);
             this.splitContainerControl1.Name = "splitContainerControl1";
+            this.splitContainerControl1.Panel1.Controls.Add(this.cmdEliminar);
             this.splitContainerControl1.Panel1.Controls.Add(this.simpleButton1);
             this.splitContainerControl1.Panel1.Controls.Add(this.cmdConsultar);
             this.splitContainerControl1.Panel1.Controls.Add(this.cmdImprimir);
@@ -116,7 +118,7 @@
             this.gcPedido.Location = new System.Drawing.Point(0, 0);
             this.gcPedido.MainView = this.gvPedido;
             this.gcPedido.Name = "gcPedido";
-            this.gcPedido.Size = new System.Drawing.Size(861, 464);
+            this.gcPedido.Size = new System.Drawing.Size(861, 463);
             this.gcPedido.TabIndex = 0;
             this.gcPedido.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvPedido});
@@ -211,6 +213,16 @@
             this.gridColumn2.VisibleIndex = 5;
             this.gridColumn2.Width = 59;
             // 
+            // cmdEliminar
+            // 
+            this.cmdEliminar.Image = global::Adquisiciones.View.Properties.Resources.cancelar;
+            this.cmdEliminar.Location = new System.Drawing.Point(669, 22);
+            this.cmdEliminar.Name = "cmdEliminar";
+            this.cmdEliminar.Size = new System.Drawing.Size(133, 57);
+            this.cmdEliminar.TabIndex = 8;
+            this.cmdEliminar.Text = "Eliminar";
+            this.cmdEliminar.Click += new System.EventHandler(this.cmdEliminar_Click);
+            // 
             // FrmBusquedaPedido
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -246,6 +258,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn7;
+        private DevExpress.XtraEditors.SimpleButton cmdEliminar;
 
     }
 }

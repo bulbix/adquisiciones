@@ -11,39 +11,29 @@ namespace Adquisiciones.Data.Entities
 	/// CotizacionDetHis object for NHibernate mapped table 'cotizacion_det_his'.
 	/// </summary>
 	[Serializable]
-	public class CotizacionDetHis
+	public class CotizacionDetalleHist
 	{
 		#region Member Variables
-		protected CotizacionDetHisId _id;
+
+	    private long _id;
+	    private long _idexterno;
+        private Cotizacion _cotizacion;
+        private short _renglonanexo;
+
 		protected Articulo _articulo;
 		protected string _marca;
 		protected decimal? _precio;
 		protected string _observaciones;
+	    protected string _tipo;
+
 		#endregion
 		#region Constructors
 			
-		public CotizacionDetHis() {}
-					
-		public CotizacionDetHis(CotizacionDetHisId id, string marca, decimal? precio, string observaciones) 
-		{
-			this._id= id;
-			this._marca= marca;
-			this._precio= precio;
-			this._observaciones= observaciones;
-		}
-
-		public CotizacionDetHis(CotizacionDetHisId id)
-		{
-			this._id= id;
-		}
+		public CotizacionDetalleHist() {}
 		
 		#endregion
 		#region Public Properties
-		public  virtual CotizacionDetHisId Id
-		{
-			get { return _id; }
-			set {_id= value; }
-		}
+
 		public  virtual Articulo Articulo
 		{
 			get { return _articulo; }
@@ -64,7 +54,38 @@ namespace Adquisiciones.Data.Entities
 			get { return _observaciones; }
 			set {_observaciones= value; }
 		}
-		#endregion
+
+	    public virtual long Id
+	    {
+	        get { return _id; }
+	        set { _id = value; }
+	    }
+
+        public virtual string Tipo
+        {
+            get { return _tipo; }
+            set { _tipo = value; }
+        }
+
+	    public virtual long IdExterno
+	    {
+	        get { return _idexterno; }
+	        set { _idexterno = value; }
+	    }
+
+	    public virtual Cotizacion Cotizacion
+	    {
+	        get { return _cotizacion; }
+	        set { _cotizacion = value; }
+	    }
+
+	    public virtual short RenglonAnexo
+	    {
+	        get { return _renglonanexo; }
+	        set { _renglonanexo = value; }
+	    }
+
+	    #endregion
 		
 		#region Equals And HashCode Overrides
 		/// <summary>
@@ -74,7 +95,7 @@ namespace Adquisiciones.Data.Entities
 		{
 			if( this == obj ) return true;
 			if( ( obj == null ) || ( obj.GetType() != this.GetType() ) ) return false;
-			CotizacionDetHis castObj = (CotizacionDetHis)obj;
+			CotizacionDetalleHist castObj = (CotizacionDetalleHist)obj;
 			return ( castObj != null ) &&
 			this._id.Equals( castObj.Id);
 		}
@@ -84,7 +105,7 @@ namespace Adquisiciones.Data.Entities
 		public override int GetHashCode()
 		{
 			int hash = 57;
-			hash = 27 * hash * _id.GetHashCode();
+			//hash = 27 * hash * _id.GetHashCode();
 			return hash;
 		}
 		#endregion

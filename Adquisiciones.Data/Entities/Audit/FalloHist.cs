@@ -1,8 +1,7 @@
-/*
+﻿/*
 using MyGeneration/Template/NHibernate (c) by lujan99@usa.net
 */
 using System;
-using System.Collections;
 using System.Collections.Generic;
 
 namespace Adquisiciones.Data.Entities
@@ -14,64 +13,56 @@ namespace Adquisiciones.Data.Entities
 	public class FalloHist
 	{
 		#region Member Variables
-		protected FalloHistId _id;
-		protected int? _idcotizacion;
-		protected int? _idanexo;
+        
+        private long _id;
+
+		protected Cotizacion _cotizacion;
+		protected Anexo _anexo;
 		protected Proveedor _proveedor;
-		protected DateTime? _fecha;
+		protected DateTime? _fechafallo;
 		protected string _estado;
 		protected Usuario _usuario;
 		protected Almacen _almacen;
-		protected DateTime? _fechaalta;
+		protected DateTime? _fechamodificacion;
 		protected string _ipterminal;
-		protected IList<FalloDetalleHist> _fallodetallehist;
-		#endregion
+	    protected int _modificacion;
+	    protected string _tipo;
+        protected long _idexterno;
+
+	    #endregion
 		#region Constructors
 			
 		public FalloHist() {}
-					
-		public FalloHist(FalloHistId id, int? idcotizacion, int? idanexo, DateTime? fecha, string estado, DateTime? fechaalta, string ipterminal) 
-		{
-			this._id= id;
-			this._idcotizacion= idcotizacion;
-			this._idanexo= idanexo;
-			this._fecha= fecha;
-			this._estado= estado;
-			this._fechaalta= fechaalta;
-			this._ipterminal= ipterminal;
-		}
-
-		public FalloHist(FalloHistId id)
-		{
-			this._id= id;
-		}
+		
 		
 		#endregion
 		#region Public Properties
-		public  virtual FalloHistId Id
+
+        public virtual long Id
+        {
+            get { return _id; }
+            set { _id = value; }
+        }
+
+		public  virtual Cotizacion Cotizacion
 		{
-			get { return _id; }
-			set {_id= value; }
+			get { return _cotizacion; }
+			set {_cotizacion= value; }
 		}
-		public  virtual int? IdCotizacion
+		public  virtual Anexo Anexo
 		{
-			get { return _idcotizacion; }
-			set {_idcotizacion= value; }
-		}
-		public  virtual int? IdAnexo
-		{
-			get { return _idanexo; }
-			set {_idanexo= value; }
+			get { return _anexo; }
+			set {_anexo= value; }
 		}
 		public  virtual Proveedor Proveedor
 		{
 			get { return _proveedor; }
 			set {_proveedor= value; }
 		}
-		public  virtual DateTime? Fecha
+		public  virtual DateTime? FechaFallo
 		{
-			get { return _fecha; }
-			set {_fecha= value; }
+			get { return _fechafallo; }
+			set {_fechafallo= value; }
 		}
 		public  virtual string Estado
 		{
@@ -88,22 +79,38 @@ namespace Adquisiciones.Data.Entities
 			get { return _almacen; }
 			set {_almacen= value; }
 		}
-		public  virtual DateTime? FechaAlta
+		public  virtual DateTime? FechaModificacion
 		{
-			get { return _fechaalta; }
-			set {_fechaalta= value; }
+			get { return _fechamodificacion; }
+			set {_fechamodificacion= value; }
 		}
 		public  virtual string IpTerminal
 		{
 			get { return _ipterminal; }
 			set {_ipterminal= value; }
 		}
-		public  virtual IList<FalloDetalleHist> FalloDetalleHist
-		{
-			get { return _fallodetallehist; }
-			set {_fallodetallehist= value; }
-		}
-		#endregion
+
+        public virtual string Tipo
+        {
+            get { return _tipo; }
+            set { _tipo = value; }
+        }
+
+        public virtual long IdExterno
+        {
+            get { return _idexterno; }
+            set { _idexterno = value; }
+        }
+
+        public virtual int Modificacion
+        {
+            get { return _modificacion; }
+            set { _modificacion = value; }
+        }
+
+	    
+
+	    #endregion
 		
 		#region Equals And HashCode Overrides
 		/// <summary>
@@ -123,7 +130,7 @@ namespace Adquisiciones.Data.Entities
 		public override int GetHashCode()
 		{
 			int hash = 57;
-			hash = 27 * hash * _id.GetHashCode();
+			//hash = 27 * hash * _id.GetHashCode();
 			return hash;
 		}
 		#endregion

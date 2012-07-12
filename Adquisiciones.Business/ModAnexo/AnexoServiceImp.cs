@@ -65,8 +65,7 @@ namespace Adquisiciones.Business.ModAnexo
 
                 //Seteamos el articulo                
                 var articuloId = new ArticuloId(anexoDetalle.CveArt.Value, anexo.Almacen);
-                anexoDetalle.Articulo = new Articulo(articuloId);
-            }
+                anexoDetalle.Articulo = new Articulo(articuloId);}
 
             ++anexo.Modificacion;
             anexo = AnexoDao.Merge(anexo);

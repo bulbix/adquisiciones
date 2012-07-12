@@ -33,9 +33,6 @@ namespace Adquisiciones.View
         public FrmModuloAcceso()
         {
             InitializeComponent();
-            //Acceder al contexto de spring
-            //IApplicationContext ctx = ContextRegistry.GetContext();
-            //UsuarioDao = ctx["usuarioDao"] as IUsuarioDao;
         }
 
         private void BtnAceptarClick(object sender, EventArgs e)

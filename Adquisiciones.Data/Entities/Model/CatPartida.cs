@@ -24,9 +24,7 @@ namespace Adquisiciones.Data.Entities
 		protected string _estatus;
 		protected string _ipterminal;
         protected IList<ArticuloPartida> _articulopartida;
-		protected IList<ReservaAutoHis> _reservaautohis;
 		protected IList<ReservaAutorizada> _reservaautorizada;
-		protected IList<ReservaSolicHist> _reservasolichist;
 		protected IList<ReservaSolicitud> _reservasolicitud;
         protected IList<Articulo> _articulo;
 
@@ -131,21 +129,13 @@ namespace Adquisiciones.Data.Entities
             get { return _articulopartida; }
             set { _articulopartida = value; }
         }
-		public  virtual IList<ReservaAutoHis> ReservaAutoHis
-		{
-			get { return _reservaautohis; }
-			set {_reservaautohis= value; }
-		}
+		
 		public  virtual IList<ReservaAutorizada> ReservaAutorizada
 		{
 			get { return _reservaautorizada; }
 			set {_reservaautorizada= value; }
 		}
-		public  virtual IList<ReservaSolicHist> ReservaSolicHist
-		{
-			get { return _reservasolichist; }
-			set {_reservasolichist= value; }
-		}
+		
 		public  virtual IList<ReservaSolicitud> ReservaSolicitud
 		{
 			get { return _reservasolicitud; }

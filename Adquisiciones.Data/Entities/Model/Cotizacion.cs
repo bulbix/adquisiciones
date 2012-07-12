@@ -15,7 +15,7 @@ namespace Adquisiciones.Data.Entities
 	public class Cotizacion
 	{
 		#region Member Variables
-		protected int _idcotizacion;
+		protected long _idcotizacion;
 		protected Proveedor _proveedor;
 		protected DateTime? _fechacotizacion;
 		protected Usuario _usuario;
@@ -39,7 +39,7 @@ namespace Adquisiciones.Data.Entities
 		
 		#endregion
 		#region Public Properties
-		public  virtual int IdCotizacion
+		public  virtual long IdCotizacion
 		{
 			get { return _idcotizacion; }
 			set {_idcotizacion= value; }

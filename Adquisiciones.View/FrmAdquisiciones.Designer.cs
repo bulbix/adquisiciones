@@ -51,6 +51,7 @@
             this.txtUsuarioStatus = new DevExpress.XtraBars.BarStaticItem();
             this.txtAlmacenStatus = new DevExpress.XtraBars.BarStaticItem();
             this.btnCambiarAlma = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem8 = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup5 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -67,7 +68,9 @@
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
-            this.barButtonItem8 = new DevExpress.XtraBars.BarButtonItem();
+            this.ribbonPageCategory1 = new DevExpress.XtraBars.Ribbon.RibbonPageCategory();
+            this.ribbonPageCategory2 = new DevExpress.XtraBars.Ribbon.RibbonPageCategory();
+            this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xafBarManager1)).BeginInit();
@@ -108,11 +111,14 @@
             this.ribbon.Location = new System.Drawing.Point(0, 0);
             this.ribbon.MaxItemId = 24;
             this.ribbon.Name = "ribbon";
+            this.ribbon.PageCategories.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageCategory[] {
+            this.ribbonPageCategory1,
+            this.ribbonPageCategory2});
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1,
             this.ribbonPage2});
             this.ribbon.SelectedPage = this.ribbonPage1;
-            this.ribbon.Size = new System.Drawing.Size(1123, 147);
+            this.ribbon.Size = new System.Drawing.Size(1123, 148);
             this.ribbon.StatusBar = this.ribbonStatusBar;
             // 
             // barButtonAnexo
@@ -286,6 +292,14 @@
             this.btnCambiarAlma.Name = "btnCambiarAlma";
             this.btnCambiarAlma.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BtnCambiarAlmaItemClick);
             // 
+            // barButtonItem8
+            // 
+            this.barButtonItem8.Caption = "Fundamentos";
+            this.barButtonItem8.Id = 23;
+            this.barButtonItem8.LargeGlyph = global::Adquisiciones.View.Properties.Resources.cata3;
+            this.barButtonItem8.Name = "barButtonItem8";
+            this.barButtonItem8.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem8_ItemClick);
+            // 
             // ribbonPage1
             // 
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -364,10 +378,10 @@
             this.ribbonStatusBar.ItemLinks.Add(this.txtUsuarioStatus);
             this.ribbonStatusBar.ItemLinks.Add(this.txtAlmacenStatus);
             this.ribbonStatusBar.ItemLinks.Add(this.btnCambiarAlma);
-            this.ribbonStatusBar.Location = new System.Drawing.Point(0, 418);
+            this.ribbonStatusBar.Location = new System.Drawing.Point(0, 426);
             this.ribbonStatusBar.Name = "ribbonStatusBar";
             this.ribbonStatusBar.Ribbon = this.ribbon;
-            this.ribbonStatusBar.Size = new System.Drawing.Size(1123, 31);
+            this.ribbonStatusBar.Size = new System.Drawing.Size(1123, 23);
             // 
             // xtraTabbedMdiManager1
             // 
@@ -410,13 +424,21 @@
             this.barDockControlRight.Location = new System.Drawing.Point(1123, 0);
             this.barDockControlRight.Size = new System.Drawing.Size(0, 449);
             // 
-            // barButtonItem8
+            // ribbonPageCategory1
             // 
-            this.barButtonItem8.Caption = "Fundamentos";
-            this.barButtonItem8.Id = 23;
-            this.barButtonItem8.LargeGlyph = global::Adquisiciones.View.Properties.Resources.cata3;
-            this.barButtonItem8.Name = "barButtonItem8";
-            this.barButtonItem8.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem8_ItemClick);
+            this.ribbonPageCategory1.Color = System.Drawing.Color.Empty;
+            this.ribbonPageCategory1.Name = "ribbonPageCategory1";
+            this.ribbonPageCategory1.Text = "ribbonPageCategory1";
+            // 
+            // ribbonPageCategory2
+            // 
+            this.ribbonPageCategory2.Color = System.Drawing.Color.Empty;
+            this.ribbonPageCategory2.Name = "ribbonPageCategory2";
+            this.ribbonPageCategory2.Text = "ribbonPageCategory2";
+            // 
+            // defaultLookAndFeel1
+            // 
+            this.defaultLookAndFeel1.LookAndFeel.SkinName = "Black";
             // 
             // FrmAdquisiciones
             // 
@@ -486,5 +508,8 @@
         private DevExpress.XtraBars.BarStaticItem txtAlmacenStatus;
         private DevExpress.XtraBars.BarButtonItem btnCambiarAlma;
         private DevExpress.XtraBars.BarButtonItem barButtonItem8;
+        private DevExpress.XtraBars.Ribbon.RibbonPageCategory ribbonPageCategory1;
+        private DevExpress.XtraBars.Ribbon.RibbonPageCategory ribbonPageCategory2;
+        private DevExpress.LookAndFeel.DefaultLookAndFeel defaultLookAndFeel1;
     }
 }

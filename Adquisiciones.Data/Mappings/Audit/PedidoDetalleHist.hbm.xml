@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+  <!--Build: with lujan99@usa.net Nhibernate template-->
+  <class name="Adquisiciones.Data.Entities.PedidoDetalleHist,Adquisiciones.Data" 
+         table="pedido_detalle_hist" lazy="true">
+    
+    <id name="Id" column="id_pedidodetallehist" type="long">
+      <generator class="increment" />
+    </id>
+
+    <property name="IdExterno" column="id_pedidodetalle" type="long"/>
+    <property name="RenglonPedido" column="renglon_pedido" type="int" />
+    <many-to-one name="Articulo">
+      <column name="cve_art"  />
+      <column name="id_almacen"  />
+    </many-to-one>
+    <property name="Marca" column="marca" type="string" />
+    <property name="Cantidad" column="cantidad" type="Decimal" />
+    <property name="PrecioUnitario" column="precio_unitario" type="Decimal" />
+
+    <property name="Tipo" column="tipo" type="string" />
+   
+    
+    
+  </class>
+</hibernate-mapping>

@@ -17,9 +17,7 @@ namespace Adquisiciones.Data.Entities
 		protected int _idejercicio;
 		protected string _desejercicio;
 		protected string _estatus;
-		protected IList<ReservaAutoHis> _reservaautohis;
 		protected IList<ReservaAutorizada> _reservaautorizada;
-		protected IList<ReservaSolicHist> _reservasolichist;
 		protected IList<ReservaSolicitud> _reservasolicitud;
 		#endregion
 		#region Constructors
@@ -55,22 +53,12 @@ namespace Adquisiciones.Data.Entities
 			get { return _estatus; }
 			set {_estatus= value; }
 		}
-		public  virtual IList<ReservaAutoHis> ReservaAutoHis
-		{
-			get { return _reservaautohis; }
-			set {_reservaautohis= value; }
-		}
 		public  virtual IList<ReservaAutorizada> ReservaAutorizada
 		{
 			get { return _reservaautorizada; }
 			set {_reservaautorizada= value; }
 		}
-		public  virtual IList<ReservaSolicHist> ReservaSolicHist
-		{
-			get { return _reservasolichist; }
-			set {_reservasolichist= value; }
-		}
-		public  virtual IList<ReservaSolicitud> ReservaSolicitud
+        public  virtual IList<ReservaSolicitud> ReservaSolicitud
 		{
 			get { return _reservasolicitud; }
 			set {_reservasolicitud= value; }

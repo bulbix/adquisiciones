@@ -4,7 +4,7 @@
   <class name="Adquisiciones.Data.Entities.Cotizacion,Adquisiciones.Data" 
          table="cotizacion" lazy="true" dynamic-update="true">
     
-    <id name="IdCotizacion" column="id_cotizacion" type="int">
+    <id name="IdCotizacion" column="id_cotizacion" type="long">
       <generator class="increment" />
     </id>
     

@@ -4,7 +4,6 @@ using MyGeneration/Template/NHibernate (c) by lujan99@usa.net
 using System;
 using System.Collections;
 using System.Collections.Generic;
-
 namespace Adquisiciones.Data.Entities
 {
 	/// <summary>

@@ -10,17 +10,17 @@ using Adquisiciones.Business.ModCotizacion;
 using Adquisiciones.Data.Entities;
 using DevExpress.XtraEditors;
 using Spring.Context.Support;
-
+using Form = Spring.Windows.Forms.Form;
 namespace Adquisiciones.View
 {
     
     ///<summary>
     ///</summary>
-    public partial class FrmBusquedaCotizacion : DevExpress.XtraEditors.XtraForm
+    public partial class FrmBusquedaCotizacion : Form
     {
         ///<summary>
         ///</summary>
-        public ICotizacionService CotizacionService;
+        public ICotizacionService CotizacionService { get; set; }
 
 
         ///<summary>
@@ -28,16 +28,22 @@ namespace Adquisiciones.View
         public FrmBusquedaCotizacion()
         {
             InitializeComponent();
-            var ctx = ContextRegistry.GetContext();
-            CotizacionService = ctx["cotizacionService"] as ICotizacionService;
+           
         }
+
+        private void Buscar()
+        {
+            var cotizaciones = CotizacionService.CotizacionDao.
+               CargarCotizaciones(FrmModuloModulo.AlmacenSelec);
+
+            bsCotizaciones.DataSource = cotizaciones;
+            
+        }
+
 
         private void CmdBuscarClick(object sender, EventArgs e)
         {
-            var cotizaciones = CotizacionService.CotizacionDao.
-                CargarCotizaciones(FrmModuloModulo.AlmacenSelec);
-
-            bsCotizaciones.DataSource = cotizaciones;
+            Buscar();
         }
 
 
@@ -86,6 +92,16 @@ namespace Adquisiciones.View
             var cotizaSelect = gvCotizacion.GetFocusedRow() as Cotizacion;
             cotizaSelect.TieneFallo = CotizacionService.CotizacionDao.ExisteAnexoFallo(cotizaSelect.Anexo);
             gvCotizacion.RefreshData();
+        }
+
+        private void cmdEliminar_Click(object sender, EventArgs e)
+        {
+            var cotizaSelect = gvCotizacion.GetFocusedRow() as Cotizacion;
+            CotizacionService.CotizacionDao.Delete(cotizaSelect);
+            MessageBox.Show(@"Cotizacion seleccionada borrada", @"Adquisiciones", MessageBoxButtons.OK,
+                   MessageBoxIcon.Information);
+            Buscar();
+
         }
     }
 }

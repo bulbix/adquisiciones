@@ -3,15 +3,12 @@
   <!--Build: with lujan99@usa.net Nhibernate template-->
   <class name="Adquisiciones.Data.Entities.FalloDetalle,Adquisiciones.Data" table="fallo_detalle" lazy="true">
 
-    <!--<composite-id name="Id" class="Adquisiciones.Data.Entities.FalloDetalleId,Adquisiciones.Data">
-      <key-many-to-one name="Fallo" class="Adquisiciones.Data.Entities.Fallo,Adquisiciones.Data" column="id_fallo" />
-      <key-property name="RenglonAnexo" column="renglon_anexo" type="short" />
-    </composite-id>-->
     <id name="IdFalloDetalle" column="id_fallodetalle" type="long">
-      <generator class="increment" />
+      <generator class="assigned" />
     </id>
 
-    <many-to-one name="Fallo" class="Adquisiciones.Data.Entities.Fallo,Adquisiciones.Data" column="id_fallo" />
+    <many-to-one name="Fallo" class="Adquisiciones.Data.Entities.Fallo,Adquisiciones.Data"
+                 column="id_fallo" />
     <property name="RenglonAnexo" column="renglon_anexo" type="short" />
     
     <property name="CantidadMax" column="cantidad_max" type="Decimal" />

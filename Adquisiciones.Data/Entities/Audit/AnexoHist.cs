@@ -2,9 +2,7 @@
 using MyGeneration/Template/NHibernate (c) by lujan99@usa.net
 */
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using NHibernate.Type;
 
 namespace Adquisiciones.Data.Entities
 {
@@ -16,7 +14,7 @@ namespace Adquisiciones.Data.Entities
 	{
 		#region Member Variables
 
-	    private long _idAnexoHist;
+	    private long _id;
         protected long _idexterno;
         protected int _modificacion;
 		protected string _numeroanexo;
@@ -32,26 +30,19 @@ namespace Adquisiciones.Data.Entities
 		protected DateTime? _fechamodificacion;
 		protected string _ipterminal;
 	    private string _tipo;
-
-		protected IList<CotizacionHist> _cotizacionhist;
-		protected IList<AnexoDetalleHist> _anexodetallehist;
-
-
      
 		#endregion
 		#region Constructors
 			
 		public AnexoHist() {}
-
-
 		
 		#endregion
 		#region Public Properties
 
-        public virtual long IdAnexoHist
+        public virtual long Id
         {
-            get { return _idAnexoHist; }
-            set { _idAnexoHist = value; }
+            get { return _id; }
+            set { _id = value; }
         }
 
 
@@ -126,16 +117,6 @@ namespace Adquisiciones.Data.Entities
 			get { return _ipterminal; }
 			set {_ipterminal= value; }
 		}
-		public  virtual IList<CotizacionHist> CotizacionHist
-		{
-			get { return _cotizacionhist; }
-			set {_cotizacionhist= value; }
-		}
-		public  virtual IList<AnexoDetalleHist> AnexoDetalleHist
-		{
-			get { return _anexodetallehist; }
-			set {_anexodetallehist= value; }
-		}
 
 	    public virtual string Tipo
 	    {
@@ -156,7 +137,7 @@ namespace Adquisiciones.Data.Entities
 			if( this == obj ) return true;
 			if( ( obj == null ) || ( obj.GetType() != this.GetType() ) ) return false;
 			AnexoHist castObj = (AnexoHist)obj;
-			return this._idAnexoHist.Equals( castObj.IdAnexoHist);
+			return this._id.Equals( castObj.Id);
 		}
 		/// <summary>
 		/// local implementation of GetHashCode based on unique value members

@@ -4,18 +4,21 @@ using System.Windows.Forms;
 using Adquisiciones.Business;
 using Adquisiciones.Business.ModCotizacion;
 using Adquisiciones.Data.Entities;
+using DevExpress.XtraEditors;
 using log4net;
 using Spring.Context.Support;
+using Spring.Objects.Factory;
+using Form = Spring.Windows.Forms.Form;
 
 namespace Adquisiciones.View
 {
     ///<summary>
     ///</summary>
-    public partial class FrmModuloCotizacion : DevExpress.XtraEditors.XtraForm
+    public partial class FrmModuloCotizacion : XtraForm
     {
         ///<summary>
         ///</summary>
-        public ICotizacionService CotizacionService;
+        public ICotizacionService CotizacionService { get; set; }
 
 
         ///<summary>
@@ -56,12 +59,12 @@ namespace Adquisiciones.View
             InitializeComponent();
             var ctx = ContextRegistry.GetContext();
             CotizacionService = ctx["cotizacionService"] as ICotizacionService;
+            InicializarCatalogos();
             Nuevo();
-            CargarCombos();
         }
 
 
-        public void CargarCombos()
+        public void InicializarCatalogos()
         {
             var anexos = CotizacionService.AnexoDao.CargarAnexos(FrmModuloModulo.AlmacenSelec);
             bsAnexos.DataSource = anexos;
@@ -267,7 +270,6 @@ namespace Adquisiciones.View
         }
 
 
-
-
+       
     }
 }

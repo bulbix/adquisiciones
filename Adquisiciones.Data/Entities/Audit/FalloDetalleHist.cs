@@ -14,38 +14,29 @@ namespace Adquisiciones.Data.Entities
 	public class FalloDetalleHist
 	{
 		#region Member Variables
-		protected FalloDetalleHistId _id;
-		protected decimal? _cantidadmax;
+
+	    private long _id;
+
+        protected Fallo _fallo;
+        protected short _renglonanexo;
+
+	    protected decimal? _cantidadmax;
 		protected decimal? _cantidadmin;
 		protected decimal? _cantidadped;
 		protected decimal? _preciofallo;
 		protected Articulo _articulo;
-		#endregion
+
+        protected int _modificacion;
+        protected string _tipo;
+        protected long _idexterno;
+
+	    #endregion
 		#region Constructors
 			
 		public FalloDetalleHist() {}
-					
-		public FalloDetalleHist(FalloDetalleHistId id, decimal? cantidadmax, decimal? cantidadmin, decimal? cantidadped, decimal? preciofallo) 
-		{
-			this._id= id;
-			this._cantidadmax= cantidadmax;
-			this._cantidadmin= cantidadmin;
-			this._cantidadped= cantidadped;
-			this._preciofallo= preciofallo;
-		}
-
-		public FalloDetalleHist(FalloDetalleHistId id)
-		{
-			this._id= id;
-		}
-		
 		#endregion
 		#region Public Properties
-		public  virtual FalloDetalleHistId Id
-		{
-			get { return _id; }
-			set {_id= value; }
-		}
+		
 		public  virtual decimal? CantidadMax
 		{
 			get { return _cantidadmax; }
@@ -71,7 +62,44 @@ namespace Adquisiciones.Data.Entities
 			get { return _articulo; }
 			set {_articulo= value; }
 		}
-		#endregion
+
+	    public virtual long Id
+	    {
+	        get { return _id; }
+	        set { _id = value; }
+	    }
+
+        public virtual string Tipo
+        {
+            get { return _tipo; }
+            set { _tipo = value; }
+        }
+
+        public virtual long IdExterno
+        {
+            get { return _idexterno; }
+            set { _idexterno = value; }
+        }
+
+        public virtual int Modificacion
+        {
+            get { return _modificacion; }
+            set { _modificacion = value; }
+        }
+
+        public virtual short RenglonAnexo
+        {
+            get { return _renglonanexo; }
+            set { _renglonanexo = value; }
+        }
+
+        public virtual Fallo Fallo
+        {
+            get { return _fallo; }
+            set { _fallo = value; }
+        }
+
+	    #endregion
 		
 		#region Equals And HashCode Overrides
 		/// <summary>
@@ -91,7 +119,7 @@ namespace Adquisiciones.Data.Entities
 		public override int GetHashCode()
 		{
 			int hash = 57;
-			hash = 27 * hash * _id.GetHashCode();
+			//hash = 27 * hash * _id.GetHashCode();
 			return hash;
 		}
 		#endregion

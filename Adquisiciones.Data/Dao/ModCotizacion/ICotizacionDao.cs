@@ -12,7 +12,7 @@ namespace Adquisiciones.Data.Dao.ModCotizacion
         IList<Cotizacion> CargarCotizaciones(int anio, Almacen almacen);
         IList<Cotizacion> CargarCotizaciones(Almacen almacen);
         bool ExisteAnexoFallo(Anexo anexo);
-        int MaximoId(Almacen almacen);
+        long MaximoId(Almacen almacen);
 
     }
 }

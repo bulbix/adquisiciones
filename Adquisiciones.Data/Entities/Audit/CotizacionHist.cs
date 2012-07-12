@@ -14,39 +14,42 @@ namespace Adquisiciones.Data.Entities
 	public class CotizacionHist
 	{
 		#region Member Variables
-		protected CotizacionHistId _id;
+
+	    private long _id;
+        protected long _idexterno;
+
+	    private Anexo _anexo;
 		protected Proveedor _proveedor;
 		protected DateTime? _fechacotizacion;
 		protected Usuario _usuario;
 		protected Almacen _almacen;
-		protected DateTime? _fechaalta;
+		protected DateTime? _fechamodificacion;
 		protected string _ipterminal;
-		protected IList<CotizacionDetHis> _cotizaciondethis;
-		#endregion
+
+        private string _tipo;
+        private int _modificacion;
+
+	    #endregion
 		#region Constructors
 			
 		public CotizacionHist() {}
-					
-		public CotizacionHist(CotizacionHistId id, DateTime? fechacotizacion, DateTime? fechaalta, string ipterminal) 
-		{
-			this._id= id;
-			this._fechacotizacion= fechacotizacion;
-			this._fechaalta= fechaalta;
-			this._ipterminal= ipterminal;
-		}
-
-		public CotizacionHist(CotizacionHistId id)
-		{
-			this._id= id;
-		}
 		
 		#endregion
 		#region Public Properties
-		public  virtual CotizacionHistId Id
-		{
-			get { return _id; }
-			set {_id= value; }
-		}
+
+        public virtual long Id
+        {
+            get { return _id; }
+            set { _id = value; }
+        }
+
+        public virtual long IdExterno
+        {
+            get { return _idexterno; }
+            set { _idexterno = value; }
+        }
+        
+		
 		public  virtual Proveedor Proveedor
 		{
 			get { return _proveedor; }
@@ -67,22 +70,37 @@ namespace Adquisiciones.Data.Entities
 			get { return _almacen; }
 			set {_almacen= value; }
 		}
-		public  virtual DateTime? FechaAlta
+		public  virtual DateTime? FechaModificacion
 		{
-			get { return _fechaalta; }
-			set {_fechaalta= value; }
+			get { return _fechamodificacion; }
+			set {_fechamodificacion = value; }
 		}
+
 		public  virtual string IpTerminal
 		{
 			get { return _ipterminal; }
 			set {_ipterminal= value; }
 		}
-		public  virtual IList<CotizacionDetHis> CotizacionDetHis
-		{
-			get { return _cotizaciondethis; }
-			set {_cotizaciondethis= value; }
-		}
-		#endregion
+
+        public virtual string Tipo
+        {
+            get { return _tipo; }
+            set { _tipo = value; }
+        }
+
+        public virtual int Modificacion
+        {
+            get { return _modificacion; }
+            set { _modificacion = value; }
+        }
+
+	    public virtual Anexo Anexo
+	    {
+	        get { return _anexo; }
+	        set { _anexo = value; }
+	    }
+
+	    #endregion
 		
 		#region Equals And HashCode Overrides
 		/// <summary>
@@ -102,7 +120,7 @@ namespace Adquisiciones.Data.Entities
 		public override int GetHashCode()
 		{
 			int hash = 57;
-			hash = 27 * hash * _id.GetHashCode();
+			//hash = 27 * hash * _id.GetHashCode();
 			return hash;
 		}
 		#endregion

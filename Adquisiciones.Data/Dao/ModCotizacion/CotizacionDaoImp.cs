@@ -69,16 +69,15 @@ namespace Adquisiciones.Data.Dao.ModCotizacion
         }
 
         [Transaction(ReadOnly = true)]
-        public int MaximoId(Almacen almacen)
+        public long MaximoId(Almacen almacen)
         {
-            var result = 1;
+            long result = 1;
 
             result = CurrentSession.CreateCriteria(typeof(Cotizacion))
             .SetProjection(Projections.Max("IdCotizacion")).
-            Add(Restrictions.Eq("Almacen", almacen)).UniqueResult<int>();
+            Add(Restrictions.Eq("Almacen", almacen)).UniqueResult<long>();
 
-            if (result != null)
-                ++result;
+            if (result != null)++result;
 
             return result;
         }

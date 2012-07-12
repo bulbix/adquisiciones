@@ -17,8 +17,6 @@
         <value>F:\Proyectos\adquisiciones\trunk\Adquisiciones.Data\Dao\NHibernate.xml</value>
       </list>
     </property>-->
-
-
     <property name="MappingAssemblies">
       <list>
         <value>Adquisiciones.Data</value>
@@ -29,15 +27,16 @@
         <entry key="hibernate.connection.provider" value="NHibernate.Connection.DriverConnectionProvider"/>
         <entry key="use_proxy_validator" value="false" />
        
-        <!--<entry key="dialect" value="NHibernate.Dialect.InformixDialect1000"/>
+        <entry key="dialect" value="NHibernate.Dialect.InformixDialect1000"/>
         <entry key="connection.driver_class" value="NHibernate.Driver.IfxDriver"/>
-        <entry key="connection.connection_string" value="Server=ol_inrserver; DataBase=almacenes; User Id=informix; Password=informix; Host=192.168.10.1; Protocol=olsoctcp; service=1526;"/>-->
+        <entry key="connection.connection_string" value="Server=ol_inrserver; DataBase=almacenes; User Id=informix; Password=informix; Host=192.168.10.1; Protocol=olsoctcp; service=1526;"/>
        
-        <entry key="dialect" value="NHibernate.Dialect.PostgreSQLDialect"/>
+       
+        <!--<entry key="dialect" value="NHibernate.Dialect.PostgreSQLDialect"/>
         <entry key="connection.driver_class" value="NHibernate.Driver.NpgsqlDriver"/>
-        <entry key="connection.connection_string" value="Server=localhost; DataBase=adquisiciones; User Id=bulbo; Password=garbage"/>
-        <entry key="hbm2ddl.auto" value="update"/>
-
+        <entry key="connection.connection_string" value="Server=localhost; DataBase=adquisiciones; User Id=postgres; Password=garbage"/>
+        <entry key="hbm2ddl.auto" value="create"/>-->
+        
         <entry key="show_sql" value="true" />
         <entry key="format_sql" value="true" />
 
@@ -84,9 +83,6 @@ parent="parentSession"/>
   type="Adquisiciones.Data.Dao.Catalogos.FundamentoDaoImp, Adquisiciones.Data"
  parent="parentSession"/>
   
- 
-  
-  
   <!-- Dao's de Neogocio -->
   <object id="anexoDao" type="Adquisiciones.Data.Dao.ModAnexo.AnexoDaoImp, Adquisiciones.Data"
   parent="parentSession"/>
@@ -106,9 +102,7 @@ parent="parentSession"/>
   parent="parentSession"/>
   
   <!-- Dao's Auditoria -->
-  <object id="anexoHistDao" type="Adquisiciones.Data.Dao.Audit.AnexoHistDaoImp, Adquisiciones.Data"    
-  parent="parentSession"/>
-  <object id="anexoDetalleHistDao" type="Adquisiciones.Data.Dao.Audit.AnexoDetalleHistDaoImp, Adquisiciones.Data"
+  <object id="objectDao" type="Adquisiciones.Data.Dao.ObjectDaoImp, Adquisiciones.Data"    
   parent="parentSession"/>
 
   <tx:attribute-driven />

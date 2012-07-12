@@ -4,18 +4,21 @@ using System.Windows.Forms;
 using Adquisiciones.Business;
 using Adquisiciones.Business.ModAnexo;
 using Adquisiciones.Data.Entities;
+using DevExpress.XtraEditors;
 using DevExpress.XtraGrid.Columns;
 using log4net;
 using Spring.Context.Support;
 using System.Linq;
+using Spring.Objects.Factory;
+using Form = Spring.Windows.Forms.Form;
 
 namespace Adquisiciones.View
 {
-    public partial class FrmModuloAnexo : DevExpress.XtraEditors.XtraForm
+    public partial class FrmModuloAnexo : XtraForm
     {
         ///<summary>
         ///</summary>
-        public IAnexoService AnexoService;
+        public IAnexoService AnexoService { get; set; }
 
         ///<summary>
         ///</summary>
@@ -49,9 +52,9 @@ namespace Adquisiciones.View
         /// </summary>
         public FrmModuloAnexo()
         {
-            InitializeComponent();
             var ctx = ContextRegistry.GetContext();
             AnexoService = ctx["anexoService"] as IAnexoService;
+            InitializeComponent();
             NuevoAnexo();
             BindearCampos();
             InicializarCatalogos();
@@ -107,6 +110,11 @@ namespace Adquisiciones.View
             AnexoService.InstitutosCombo(cbxInstituto);
             AnexoService.TiposLicitacionesCombo(cbxTipolicitacion);
             AnexoService.IvasCombo(cbxIva);
+
+            repositoryItemSearchLookUpEdit2.DataSource = AnexoService.ArticuloDao.
+               ArticulosByAlmacen(FrmModuloModulo.AlmacenSelec);
+            repositoryItemSearchLookUpEdit2.DisplayMember = "CveArt";
+            repositoryItemSearchLookUpEdit2.ValueMember = "CveArt";
         }
 
         private void NuevoAnexo()
@@ -214,18 +222,11 @@ namespace Adquisiciones.View
 
 
 
-        private void dgvAnexo_InitNewRow(object sender, DevExpress.XtraGrid.Views.Grid.InitNewRowEventArgs e)
-        {
-            //var anexoDetalle = bsAnexoDetalle.DataSource as IList<AnexoDetalle>;
-            //gvAnexoDetalle.SetFocusedRowCellValue("Renglon", anexoDetalle.Max(p => p.Renglon) + 1);
-        }
-
+      
         private void FrmAnexoDevLoad(object sender, EventArgs e)
         {
-            repositoryItemSearchLookUpEdit2.DataSource = AnexoService.ArticuloDao.ArticulosByAlmacen(FrmModuloModulo.AlmacenSelec);
-            repositoryItemSearchLookUpEdit2.DisplayMember = "CveArt";
-            repositoryItemSearchLookUpEdit2.ValueMember = "CveArt";
-           }
+           
+         }
 
         private void GvAnexoDetalleKeyDown(object sender, KeyEventArgs e)
         {
@@ -300,10 +301,7 @@ namespace Adquisiciones.View
 
         }
 
-        private void gcAnexoDetalle_Click(object sender, EventArgs e)
-        {
-
-        }
+        
 
     }
 }

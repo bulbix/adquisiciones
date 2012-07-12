@@ -3,7 +3,7 @@
   <!--Build: with lujan99@usa.net Nhibernate template-->
   <class name="Adquisiciones.Data.Entities.Fallo,Adquisiciones.Data" table="fallo" lazy="true">
     <id name="IdFallo" column="id_fallo" type="long">
-      <generator class="increment" />
+      <generator class="assigned" />
     </id>
     
     

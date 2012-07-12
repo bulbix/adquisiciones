@@ -11,38 +11,32 @@ namespace Adquisiciones.Data.Entities
 	/// PedidoEntregaHis object for NHibernate mapped table 'pedido_entrega_his'.
 	/// </summary>
 	[Serializable]
-	public class PedidoEntregaHis
+	public class PedidoEntregaHist
 	{
 		#region Member Variables
-		protected PedidoEntregaHisId _id;
+
+	    private long _id;
+
+	    private int _entrega;
+
+	    private PedidoDetalle _pedidodetalle;
+
 		protected DateTime? _fechainicial;
 		protected DateTime? _fechafinal;
 		protected decimal? _cantidad;
-		#endregion
+
+
+        protected long _idexterno;
+       
+        private string _tipo;
+
+	    #endregion
 		#region Constructors
 			
-		public PedidoEntregaHis() {}
-					
-		public PedidoEntregaHis(PedidoEntregaHisId id, DateTime? fechainicial, DateTime? fechafinal, decimal? cantidad) 
-		{
-			this._id= id;
-			this._fechainicial= fechainicial;
-			this._fechafinal= fechafinal;
-			this._cantidad= cantidad;
-		}
-
-		public PedidoEntregaHis(PedidoEntregaHisId id)
-		{
-			this._id= id;
-		}
+		public PedidoEntregaHist() {}
 		
 		#endregion
 		#region Public Properties
-		public  virtual PedidoEntregaHisId Id
-		{
-			get { return _id; }
-			set {_id= value; }
-		}
 		public  virtual DateTime? FechaInicial
 		{
 			get { return _fechainicial; }
@@ -58,7 +52,41 @@ namespace Adquisiciones.Data.Entities
 			get { return _cantidad; }
 			set {_cantidad= value; }
 		}
-		#endregion
+
+	    public virtual long Id
+	    {
+	        get { return _id; }
+	        set { _id = value; }
+	    }
+
+
+        public virtual string Tipo
+        {
+            get { return _tipo; }
+            set { _tipo = value; }
+        }
+
+      
+
+        public virtual long IdExterno
+        {
+            get { return _idexterno; }
+            set { _idexterno = value; }
+        }
+
+	    public virtual int Entrega
+	    {
+	        get { return _entrega; }
+	        set { _entrega = value; }
+	    }
+
+	    public virtual PedidoDetalle PedidoDetalle
+	    {
+	        get { return _pedidodetalle; }
+	        set { _pedidodetalle = value; }
+	    }
+
+	    #endregion
 		
 		#region Equals And HashCode Overrides
 		/// <summary>
@@ -68,7 +96,7 @@ namespace Adquisiciones.Data.Entities
 		{
 			if( this == obj ) return true;
 			if( ( obj == null ) || ( obj.GetType() != this.GetType() ) ) return false;
-			PedidoEntregaHis castObj = (PedidoEntregaHis)obj;
+			PedidoEntregaHist castObj = (PedidoEntregaHist)obj;
 			return ( castObj != null ) &&
 			this._id.Equals( castObj.Id);
 		}
@@ -78,7 +106,7 @@ namespace Adquisiciones.Data.Entities
 		public override int GetHashCode()
 		{
 			int hash = 57;
-			hash = 27 * hash * _id.GetHashCode();
+			//hash = 27 * hash * _id.GetHashCode();
 			return hash;
 		}
 		#endregion
