@@ -94,7 +94,7 @@ namespace Adquisiciones.View
         private void cmdEliminar_Click(object sender, EventArgs e)
         {
             var pedidoSelect = gvPedido.GetFocusedRow() as Pedido;
-            PedidoService.PedidoDao.Delete(pedidoSelect);
+            PedidoService.EliminaPedido(pedidoSelect);
             MessageBox.Show(@"Pedido seleccionado borrado", @"Adquisiciones", MessageBoxButtons.OK,
                   MessageBoxIcon.Information);
             Buscar();

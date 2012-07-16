@@ -13,7 +13,7 @@ namespace Adquisiciones.Data.Entities
 	/// PedidoDetalle object for NHibernate mapped table 'pedido_detalle'.
 	/// </summary>
 	[Serializable]
-	public class PedidoDetalle
+	public class PedidoDetalle:IDetalle
 	{
 		#region Member Variables
 

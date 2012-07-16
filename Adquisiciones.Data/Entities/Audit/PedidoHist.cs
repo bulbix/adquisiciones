@@ -12,7 +12,7 @@ namespace Adquisiciones.Data.Entities
 	/// PedidoHist object for NHibernate mapped table 'pedido_hist'.
 	/// </summary>
 	[Serializable]
-	public class PedidoHist:IPadre
+	public class PedidoHist
 	{
 		#region Member Variables
 

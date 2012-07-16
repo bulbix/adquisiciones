@@ -51,5 +51,10 @@ namespace Adquisiciones.Business.ModFallo
         ///<returns></returns>
         IList<Fallo> ConsultarFallo(Anexo anexo);
 
+        ///<summary>
+        ///</summary>
+        ///<param name="Anexo"></param>
+        void EliminaFallo(Fallo fallo);
+
     }
 }

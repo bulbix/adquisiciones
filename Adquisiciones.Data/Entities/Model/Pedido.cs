@@ -4,6 +4,7 @@ using MyGeneration/Template/NHibernate (c) by lujan99@usa.net
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Adquisiciones.Data.Auxiliares;
 using Adquisiciones.Data.Validators;
 using NHibernate.Validator.Constraints;
 
@@ -13,7 +14,7 @@ namespace Adquisiciones.Data.Entities
 	/// Pedido object for NHibernate mapped table 'pedido'.
 	/// </summary>
 	[Serializable]
-	public class Pedido
+	public class Pedido:IPadre
 	{
 		#region Member Variables
 		protected long _idpedido;

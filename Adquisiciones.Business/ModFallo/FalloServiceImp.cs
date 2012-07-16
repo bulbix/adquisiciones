@@ -137,6 +137,12 @@ namespace Adquisiciones.Business.ModFallo
             return FalloDao.ConsultarFalloCompleto(anexo);
         }
 
+        [Transaction]
+        public void EliminaFallo(Fallo fallo)
+        {
+            FalloDao.Delete(fallo);
+        }
+
 
         /// <summary> Para delegar el porcentaje en la vista
         /// </summary>

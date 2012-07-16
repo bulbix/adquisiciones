@@ -263,5 +263,11 @@ namespace Adquisiciones.Business.ModPedido
 
             return pedidosDetalle;
         }
+
+        [Transaction]
+        public void EliminaPedido(Pedido pedido)
+        {
+            PedidoDao.Delete(pedido);
+        }
     }
 }

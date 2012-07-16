@@ -74,12 +74,10 @@ namespace Adquisiciones.View
         private void cmdEliminar_Click(object sender, EventArgs e)
         {
             var falloSelect = gvAnexo.GetFocusedRow() as Fallo;
-            FalloService.FalloDao.Delete(falloSelect);
+            FalloService.EliminaFallo(falloSelect);
             MessageBox.Show(@"Fallo seleccionado borrado", @"Adquisiciones", MessageBoxButtons.OK,
                   MessageBoxIcon.Information);
-            Buscar();
-
-        }
+            Buscar();}
 
 
     }

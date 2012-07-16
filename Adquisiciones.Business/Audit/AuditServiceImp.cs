@@ -77,8 +77,7 @@ namespace Adquisiciones.Business.Audit
                         historico.idPadre = idHist;
                         IdsDetalleHistorico[nombreTablaHijaHist] = historico;
                     }
-                    else
-                    { 
+                    else{ 
                         var historic = new Historico();
                         historic.idPadre = idHist;
                         IdsDetalleHistorico.Add(nombreTablaHijaHist, historic);
