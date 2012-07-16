@@ -22,6 +22,7 @@
     </many-to-one>
 
     <property name="Tipo" column="tipo" type="string" />
+    <property name="IdHist" column="id_hist" type="long" />
        
     
     

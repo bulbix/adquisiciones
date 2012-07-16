@@ -142,7 +142,7 @@ namespace Adquisiciones.View
             {
                 if (Util.DatosValidos(CotizacionActual, lblNumErrors, listaError))
                 {
-                    CotizacionService.ConsultaCotizacion(ref CotizacionActual);
+                    CotizacionService.ConsultarCotizacion(ref CotizacionActual);
                     bsCotizacionDetalle.DataSource = CotizacionActual.CotizacionDetalle;
 
                     AnexoActual = CotizacionActual.Anexo;
@@ -225,8 +225,8 @@ namespace Adquisiciones.View
                     }
 
                     BindearPadre();
-                    CotizacionService.GuardaCotizacion(ref CotizacionActual);
-                    CotizacionService.ConsultaCotizacion(ref CotizacionActual);
+                    CotizacionService.GuardarCotizacion(ref CotizacionActual);
+                    CotizacionService.ConsultarCotizacion(ref CotizacionActual);
                     bsCotizacionDetalle.DataSource = CotizacionActual.CotizacionDetalle;
 
                     MessageBox.Show(@"Cotización Registrada o Actualizada Exitosamente",

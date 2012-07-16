@@ -42,6 +42,10 @@
     <Reference Include="NHibernate.Validator">
       <HintPath>..\Librerias\NHibernate.Validator.dll</HintPath>
     </Reference>
+    <Reference Include="Spring.Aop, Version=1.3.1.40711, Culture=neutral, PublicKeyToken=65e474d141e25e07, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Librerias\Spring.Aop.dll</HintPath>
+    </Reference>
     <Reference Include="Spring.Core">
       <HintPath>..\Librerias\Spring.Core.dll</HintPath>
     </Reference>
@@ -60,7 +64,10 @@
   <ItemGroup>
     <Compile Include="Audit\AuditInterceptor.cs" />
     <Compile Include="Audit\AuditServiceImp.cs" />
+    <Compile Include="Audit\Historico.cs" />
     <Compile Include="Audit\IAuditService.cs" />
+    <Compile Include="Audit\UpdateAfterHistorico.cs" />
+    <Compile Include="Audit\UpdateBeforeHistorico.cs" />
     <Compile Include="Excepciones\PedidoException.cs" />
     <Compile Include="ModAnexo\AnexoServiceImp.cs" />
     <Compile Include="ModAnexo\IAnexoService.cs" />

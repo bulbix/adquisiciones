@@ -16,7 +16,7 @@ namespace Adquisiciones.View
     
     ///<summary>
     ///</summary>
-    public partial class FrmBusquedaCotizacion : Form
+    public partial class FrmBusquedaCotizacion : XtraForm
     {
         ///<summary>
         ///</summary>
@@ -28,6 +28,8 @@ namespace Adquisiciones.View
         public FrmBusquedaCotizacion()
         {
             InitializeComponent();
+            var ctx = ContextRegistry.GetContext();
+            CotizacionService = ctx["cotizacionService"] as ICotizacionService;
            
         }
 
@@ -97,7 +99,7 @@ namespace Adquisiciones.View
         private void cmdEliminar_Click(object sender, EventArgs e)
         {
             var cotizaSelect = gvCotizacion.GetFocusedRow() as Cotizacion;
-            CotizacionService.CotizacionDao.Delete(cotizaSelect);
+            CotizacionService.EliminaCotizacion(cotizaSelect);
             MessageBox.Show(@"Cotizacion seleccionada borrada", @"Adquisiciones", MessageBoxButtons.OK,
                    MessageBoxIcon.Information);
             Buscar();

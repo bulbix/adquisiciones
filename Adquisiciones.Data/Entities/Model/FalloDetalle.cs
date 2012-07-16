@@ -4,6 +4,7 @@ using MyGeneration/Template/NHibernate (c) by lujan99@usa.net
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Adquisiciones.Data.Auxiliares;
 
 namespace Adquisiciones.Data.Entities
 {
@@ -11,7 +12,7 @@ namespace Adquisiciones.Data.Entities
 	/// FalloDetalle object for NHibernate mapped table 'fallo_detalle'.
 	/// </summary>
 	[Serializable]
-	public class FalloDetalle
+	public class FalloDetalle:IDetalle
 	{
 		#region Member Variables
 

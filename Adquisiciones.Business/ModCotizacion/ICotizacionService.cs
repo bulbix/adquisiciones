@@ -39,14 +39,16 @@ namespace Adquisiciones.Business.ModCotizacion
         ///<summary>
         ///</summary>
         ///<param name="cotizacion"></param>
-        void ConsultaCotizacion(ref Cotizacion cotizacion);
+        void ConsultarCotizacion(ref Cotizacion cotizacion);
 
         ///<summary>
         ///</summary>
         ///<param name="cotizacion"></param><returns></returns>
-        void GuardaCotizacion(ref Cotizacion cotizacion);
+        void GuardarCotizacion(ref Cotizacion cotizacion);
 
         bool ExisteCotizacionDetalle(IList<CotizacionDetalle> detalle);
+
+        void EliminaCotizacion(Cotizacion cotizacion);
 
     }
 }

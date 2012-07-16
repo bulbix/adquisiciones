@@ -18,6 +18,7 @@
     <property name="Precio" column="precio" type="Decimal" />
     <property name="Observaciones" column="observaciones" type="string" />
     <property name="Tipo" column="tipo" type="string" />
+    <property name="IdHist" column="id_hist" type="long" />
   
   </class>
 </hibernate-mapping>

@@ -1,4 +1,5 @@
-﻿using Adquisiciones.Data.Entities;
+﻿using Adquisiciones.Business.Audit;
+using Adquisiciones.Data.Entities;
 using System.Windows.Forms;
 using Adquisiciones.Data.Dao.ModAnexo;
 using Adquisiciones.Data.Dao.Catalogos;
@@ -9,6 +10,7 @@ namespace Adquisiciones.Business.ModAnexo
     /// 
     /// </summary>
     public interface IAnexoService
+    
     {
         ///<summary>
         ///</summary>
@@ -48,5 +50,10 @@ namespace Adquisiciones.Business.ModAnexo
         ///<param name="idAlmacen"></param>
         ///<returns></returns>
         Anexo ConsultarAnexo(string numAnexo, Almacen almacen);
+
+        ///<summary>
+        ///</summary>
+        ///<param name="anexo"></param>
+        void EliminaAnexo(Anexo anexo);
     }
 }

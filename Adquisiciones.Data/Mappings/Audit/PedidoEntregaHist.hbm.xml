@@ -17,6 +17,8 @@
     <property name="Cantidad" column="cantidad" type="Decimal" />
 
     <property name="Tipo" column="tipo" type="string" />
+
+    <property name="IdHist" column="id_hist" type="long" />
    
     
     

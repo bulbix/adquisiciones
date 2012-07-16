@@ -13,7 +13,7 @@ using Form = Spring.Windows.Forms.Form;
 
 namespace Adquisiciones.View
 {
-    public partial class FrmBusquedaAnexo : Form
+    public partial class FrmBusquedaAnexo : XtraForm
     {
         ///<summary>
         ///</summary>
@@ -24,6 +24,8 @@ namespace Adquisiciones.View
         public FrmBusquedaAnexo()
         {
             InitializeComponent();
+            var ctx = ContextRegistry.GetContext();
+            AnexoService = ctx["anexoService"] as IAnexoService;
         }
 
         private void Buscar()
@@ -87,7 +89,7 @@ namespace Adquisiciones.View
         private void cmdEliminar_Click(object sender, EventArgs e)
         {
             var anexoSelect = gvAnexo.GetFocusedRow() as Anexo;
-            AnexoService.AnexoDao.Delete(anexoSelect);
+            AnexoService.EliminaAnexo(anexoSelect);
             MessageBox.Show(@"Anexo seleccionado borrado", @"Adquisiciones", MessageBoxButtons.OK,
                    MessageBoxIcon.Information);
             Buscar();

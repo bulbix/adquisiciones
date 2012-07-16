@@ -25,6 +25,7 @@ namespace Adquisiciones.Data.Entities
 		protected decimal? _precio;
 		protected string _observaciones;
 	    protected string _tipo;
+        private long _idhist;
 
 		#endregion
 		#region Constructors
@@ -83,6 +84,12 @@ namespace Adquisiciones.Data.Entities
 	    {
 	        get { return _renglonanexo; }
 	        set { _renglonanexo = value; }
+	    }
+
+	    public virtual long IdHist
+	    {
+	        get { return _idhist; }
+	        set { _idhist = value; }
 	    }
 
 	    #endregion

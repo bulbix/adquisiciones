@@ -37,7 +37,7 @@ namespace Adquisiciones.Business.ModFallo
         /// <param name="fechaFallo"></param>
         /// <returns></returns>
         [Transaction]
-        public List<Fallo> GenerarFallo(Anexo anexo, DateTime fechaFallo)
+        public List<Fallo> GuardarFallo(Anexo anexo, DateTime fechaFallo)
         {
             var result = new List<Fallo>();
 

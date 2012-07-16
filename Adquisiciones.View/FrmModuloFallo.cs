@@ -66,7 +66,7 @@ namespace Adquisiciones.View
                         return;
                 }
 
-                var lista = FalloService.GenerarFallo(AnexoSelect, dtpFallo.DateTime);
+                var lista = FalloService.GuardarFallo(AnexoSelect, dtpFallo.DateTime);
 
                 if (lista.Count > 0)
                 {

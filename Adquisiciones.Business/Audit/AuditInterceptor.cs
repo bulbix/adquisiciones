@@ -16,6 +16,10 @@ namespace Adquisiciones.Business.Audit
     {
         private static IAuditService auditService;
 
+        public AuditInterceptor()
+        {
+            auditService = ContextRegistry.GetContext()["auditService"] as IAuditService;
+        }
 
         ///<summary>
         ///</summary>
@@ -27,9 +31,8 @@ namespace Adquisiciones.Business.Audit
         public override void OnDelete(object entity, object id, object[] state,
             string[] propertyNames, IType[] types)
         {
-            auditService = ContextRegistry.GetContext()["auditService"] as IAuditService;
-            var hist = Util.ConstruirHistorico(entity, id, propertyNames, state, types, "delete");
-            auditService.ObjectDao.Insert(hist);
+            
+            auditService.ConstruirHistorico(entity, id, propertyNames, state, types, "delete");
             base.OnDelete(entity, id, state, propertyNames, types);
         }
 
@@ -47,14 +50,9 @@ namespace Adquisiciones.Business.Audit
                             object[] currentState, object[] previousState,
                             string[] propertyNames, IType[] types)
         {
-            //if (entity is AnexoDetalle)
-            {
-                auditService = ContextRegistry.GetContext()["auditService"] as IAuditService;
-                var hist = Util.ConstruirHistorico(entity, id, propertyNames, previousState, types, "update");
-                auditService.ObjectDao.Insert(hist);
-            }
-
-            return base.OnFlushDirty(entity, id, currentState, previousState, propertyNames, types);}
+            auditService.ConstruirHistorico(entity, id, propertyNames, previousState, types, "update");
+            return base.OnFlushDirty(entity, id, currentState, previousState, propertyNames, types);
+        }
 
     }
 }

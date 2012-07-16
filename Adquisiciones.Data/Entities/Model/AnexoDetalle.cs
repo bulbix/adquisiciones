@@ -21,7 +21,6 @@ namespace Adquisiciones.Data.Entities
 		protected Articulo _articulo;
 		protected string _presentacion;
 		protected decimal? _cantidad;
-
 	   
 
 
@@ -70,8 +69,6 @@ namespace Adquisiciones.Data.Entities
 			get { return _cantidad; }
 			set {_cantidad= value; }
 		}
-
-       
 
 		#endregion
         
@@ -124,6 +121,5 @@ namespace Adquisiciones.Data.Entities
 			return hash;
 		}
 		#endregion
-		
 	}
 }

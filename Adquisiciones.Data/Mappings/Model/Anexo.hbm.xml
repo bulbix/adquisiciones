@@ -12,7 +12,7 @@
     <property name="FechaAnexo" column="fecha_anexo" type="DateTime" />
     <property name="Instituto" column="instituto" type="string" />
     <property name="DesAnexo" column="des_anexo" type="string" />    
-    <many-to-one name="TipoLicitacion" column="id_tipolicitacion" />   
+    <many-to-one name="TipoLicitacion" column="id_tipolicitacion" fetch="join" />   
     <property name="TechoPresupuestal" column="techo_presupuestal" type="Decimal" />
     <property name="ImporteIva" column="importe_iva" type="Decimal" />
     <many-to-one name="Iva" fetch="join" >      

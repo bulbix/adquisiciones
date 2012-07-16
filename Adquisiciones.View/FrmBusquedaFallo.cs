@@ -19,7 +19,7 @@ namespace Adquisiciones.View
     
     ///<summary>
     ///</summary>
-    public partial class FrmBusquedaFallo :Form
+    public partial class FrmBusquedaFallo :XtraForm
     {
         ///<summary>
         ///</summary>
@@ -31,6 +31,8 @@ namespace Adquisiciones.View
         public FrmBusquedaFallo()
         {
             InitializeComponent();
+            var ctx = ContextRegistry.GetContext();
+            FalloService = ctx["falloService"] as IFalloService;
         }
 
         private void Buscar()

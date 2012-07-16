@@ -138,7 +138,7 @@
             // 
             // bsCotizaciones
             // 
-            this.ComponentObserver.SetObserveComponent(this.bsCotizaciones, true);
+            
             // 
             // gvCotizacion
             // 
@@ -151,7 +151,7 @@
             this.gridColumn5});
             this.gvCotizacion.GridControl = this.gcCotizacion;
             this.gvCotizacion.Name = "gvCotizacion";
-            this.ComponentObserver.SetObserveComponent(this.gvCotizacion, true);
+            
             this.gvCotizacion.OptionsView.EnableAppearanceEvenRow = true;
             this.gvCotizacion.OptionsView.ShowAutoFilterRow = true;
             this.gvCotizacion.OptionsView.ShowGroupedColumns = true;
@@ -161,7 +161,7 @@
             this.gridColumn1.Caption = "Proveedor";
             this.gridColumn1.FieldName = "Proveedor";
             this.gridColumn1.Name = "gridColumn1";
-            this.ComponentObserver.SetObserveComponent(this.gridColumn1, true);
+            
             this.gridColumn1.OptionsColumn.AllowEdit = false;
             this.gridColumn1.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.True;
             this.gridColumn1.UnboundType = DevExpress.Data.UnboundColumnType.String;
@@ -174,7 +174,7 @@
             this.gridColumn4.Caption = "Fecha";
             this.gridColumn4.FieldName = "FechaCotizacion";
             this.gridColumn4.Name = "gridColumn4";
-            this.ComponentObserver.SetObserveComponent(this.gridColumn4, true);
+           
             this.gridColumn4.OptionsColumn.AllowEdit = false;
             this.gridColumn4.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.True;
             this.gridColumn4.UnboundType = DevExpress.Data.UnboundColumnType.DateTime;
@@ -187,7 +187,7 @@
             this.gridColumn3.Caption = "Modifico";
             this.gridColumn3.FieldName = "Usuario";
             this.gridColumn3.Name = "gridColumn3";
-            this.ComponentObserver.SetObserveComponent(this.gridColumn3, true);
+            
             this.gridColumn3.OptionsColumn.AllowEdit = false;
             this.gridColumn3.UnboundType = DevExpress.Data.UnboundColumnType.String;
             this.gridColumn3.Visible = true;
@@ -199,7 +199,7 @@
             this.gridColumn2.Caption = "Anexo";
             this.gridColumn2.FieldName = "Anexo";
             this.gridColumn2.Name = "gridColumn2";
-            this.ComponentObserver.SetObserveComponent(this.gridColumn2, true);
+            
             this.gridColumn2.OptionsColumn.AllowEdit = false;
             this.gridColumn2.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.True;
             this.gridColumn2.UnboundType = DevExpress.Data.UnboundColumnType.String;
@@ -212,7 +212,7 @@
             this.gridColumn6.Caption = "Verificar";
             this.gridColumn6.ColumnEdit = this.repositoryItemButtonEdit1;
             this.gridColumn6.Name = "gridColumn6";
-            this.ComponentObserver.SetObserveComponent(this.gridColumn6, true);
+            
             this.gridColumn6.Visible = true;
             this.gridColumn6.VisibleIndex = 4;
             // 
@@ -222,7 +222,6 @@
             this.repositoryItemButtonEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
             this.repositoryItemButtonEdit1.Name = "repositoryItemButtonEdit1";
-            this.ComponentObserver.SetObserveComponent(this.repositoryItemButtonEdit1, true);
             this.repositoryItemButtonEdit1.Click += new System.EventHandler(this.repositoryItemButtonEdit1_Click);
             // 
             // gridColumn5
@@ -230,7 +229,7 @@
             this.gridColumn5.Caption = "Tiene Fallo";
             this.gridColumn5.FieldName = "TieneFallo";
             this.gridColumn5.Name = "gridColumn5";
-            this.ComponentObserver.SetObserveComponent(this.gridColumn5, true);
+            
             this.gridColumn5.OptionsColumn.AllowEdit = false;
             this.gridColumn5.UnboundType = DevExpress.Data.UnboundColumnType.Boolean;
             this.gridColumn5.Visible = true;

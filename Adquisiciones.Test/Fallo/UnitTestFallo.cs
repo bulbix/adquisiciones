@@ -15,7 +15,7 @@ namespace Adquisiciones.Test.Fallo
         public void TestMethodGenerarFallo()
         {
             var anexo = AnexoDao.Get(3);
-            var fallos = FalloService.GenerarFallo(anexo, new DateTime());
+            var fallos = FalloService.GuardarFallo(anexo, new DateTime());
             Assert.IsNotNull(fallos);
         }
 

@@ -76,6 +76,7 @@
   <ItemGroup>
     <Compile Include="Auxiliares\ArticuloBusqueda.cs" />
     <Compile Include="Auxiliares\IDetalle.cs" />
+    <Compile Include="Auxiliares\IPadre.cs" />
     <Compile Include="Dao\IObjectDao.cs" />
     <Compile Include="Dao\Catalogos\AlmacenDaoImp.cs" />
     <Compile Include="Dao\Catalogos\ArticuloDaoImp.cs" />

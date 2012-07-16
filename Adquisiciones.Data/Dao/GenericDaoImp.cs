@@ -45,7 +45,9 @@ namespace Adquisiciones.Data.Dao
         [Transaction]
         public TE Merge(TE entity)
         {
-            return (TE)CurrentSession.Merge(entity);
+            var id = (TE)CurrentSession.Merge(entity);
+            CurrentSession.Flush();//Forzar 
+            return id;
         }
 
 
@@ -53,6 +55,7 @@ namespace Adquisiciones.Data.Dao
         public void Delete(TE entity)
         {
             CurrentSession.Delete(entity);
+            CurrentSession.Flush();
         }
 
         [Transaction(ReadOnly = true)]

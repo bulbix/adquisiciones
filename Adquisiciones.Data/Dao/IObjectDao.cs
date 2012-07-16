@@ -8,5 +8,8 @@ namespace Adquisiciones.Data.Dao
     public interface IObjectDao : IGenericDao<object,long>
     {
 
+        long GetIdHistorico(String nombreTablaPadreHist, long idPadre);
+        void UpdateHistoticaHija(string nombreTablaHijaHist, List<long> listaids, long idHist);
+
     }
 }

@@ -1,13 +1,15 @@
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;using NHibernate.Validator.Constraints;
+using System.ComponentModel;
+using Adquisiciones.Data.Auxiliares;
+using NHibernate.Validator.Constraints;
 
 namespace Adquisiciones.Data.Entities
 {
     /// <summary>
     /// Anexo object for NHibernate mapped table 'anexo'.
     /// </summary>
-    public class Anexo : INotifyPropertyChanged
+    public class Anexo : INotifyPropertyChanged,IPadre
     {
         #region Member Variables
         protected long _idanexo;

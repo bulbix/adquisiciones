@@ -10,5 +10,7 @@ namespace Adquisiciones.Data.Auxiliares
     /// </summary>
     public interface IDetalle
     {
+        //string NombreTablaHija { get; }
+       
     }
 }

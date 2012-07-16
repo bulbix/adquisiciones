@@ -2,6 +2,7 @@
 using MyGeneration/Template/NHibernate (c) by lujan99@usa.net
 */
 using System;
+using Adquisiciones.Data.Auxiliares;
 using Adquisiciones.Data.Validators;
 
 namespace Adquisiciones.Data.Entities
@@ -11,7 +12,7 @@ namespace Adquisiciones.Data.Entities
     /// </summary>
     [Serializable]
     [GroupAnd]
-    public class CotizacionDetalle
+    public class CotizacionDetalle:IDetalle
     {
         #region Member Variables
         protected long _idcotizaciondetalle;

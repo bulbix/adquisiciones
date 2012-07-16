@@ -42,7 +42,7 @@ namespace Adquisiciones.Business.ModFallo
         ///<param name="anexo"></param>
         ///<param name="fechaFallo"></param>
         ///<returns></returns>
-        List<Fallo> GenerarFallo(Anexo anexo, DateTime fechaFallo);
+        List<Fallo> GuardarFallo(Anexo anexo, DateTime fechaFallo);
 
         ///<summary>
         /// 

@@ -30,6 +30,8 @@ namespace Adquisiciones.Data.Entities
         protected string _tipo;
         protected long _idexterno;
 
+        private long _idhist;
+
 	    #endregion
 		#region Constructors
 			
@@ -98,6 +100,12 @@ namespace Adquisiciones.Data.Entities
             get { return _fallo; }
             set { _fallo = value; }
         }
+
+	    public virtual long IdHist
+	    {
+	        get { return _idhist; }
+	        set { _idhist = value; }
+	    }
 
 	    #endregion
 		

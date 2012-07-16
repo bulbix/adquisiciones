@@ -4,6 +4,7 @@ using MyGeneration/Template/NHibernate (c) by lujan99@usa.net
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Adquisiciones.Data.Auxiliares;
 using NHibernate.Validator.Constraints;
 
 namespace Adquisiciones.Data.Entities
@@ -12,7 +13,7 @@ namespace Adquisiciones.Data.Entities
 	/// Fallo object for NHibernate mapped table 'fallo'.
 	/// </summary>
 	[Serializable]
-	public class Fallo
+	public class Fallo:IPadre
 	{
 		#region Member Variables
 		protected long _idfallo;

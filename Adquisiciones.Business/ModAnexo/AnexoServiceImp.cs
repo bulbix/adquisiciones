@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using Adquisiciones.Business.Audit;
 using Adquisiciones.Data.Dao.ModAnexo;
 using Adquisiciones.Data.Dao.Catalogos;
 using Adquisiciones.Data.Entities;
@@ -13,6 +15,8 @@ namespace Adquisiciones.Business.ModAnexo
     public class AnexoServiceImp : IAnexoService
     {
         public IAnexoDao AnexoDao { get; set; }
+
+        public IAuditService AuditService { get; set; }
 
         public IArticuloDao ArticuloDao { get; set; }
 
@@ -69,6 +73,8 @@ namespace Adquisiciones.Business.ModAnexo
 
             ++anexo.Modificacion;
             anexo = AnexoDao.Merge(anexo);
+
+          
         }
 
         [Transaction(ReadOnly = true)]
@@ -103,5 +109,10 @@ namespace Adquisiciones.Business.ModAnexo
 
         }
 
+         [Transaction]
+        public void EliminaAnexo(Anexo anexo)
+        {
+            AnexoDao.Delete(anexo);
+        }
     }
 }

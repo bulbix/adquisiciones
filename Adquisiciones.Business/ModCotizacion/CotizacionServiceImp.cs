@@ -49,7 +49,7 @@ namespace Adquisiciones.Business.ModCotizacion
         ///</summary>
         ///<param name="cotizacion"></param>
         [Transaction(ReadOnly = true)]
-        public void ConsultaCotizacion(ref Cotizacion cotizacion)
+        public void ConsultarCotizacion(ref Cotizacion cotizacion)
         {
             var cargaCotizacion = CotizacionDao.CargarCotizacionEager
                 (cotizacion.Proveedor, cotizacion.Anexo,
@@ -108,16 +108,14 @@ namespace Adquisiciones.Business.ModCotizacion
         ///<param name="cotizacion"></param>
         ///<returns></returns>
         [Transaction]
-        public void GuardaCotizacion(ref Cotizacion cotizacion)
+        public void GuardarCotizacion(ref Cotizacion cotizacion)
         {
             
             //Removemos de la cotizacion detalle las que no tengan precio centinela
             cotizacion.CotizacionDetalle = cotizacion.CotizacionDetalle.
-                Where(cotizacionDetalle => cotizacionDetalle.Precio != null).ToList(); 
-            cotizacion = CotizacionDao.Merge(cotizacion);
-            
+                Where(cotizacionDetalle => cotizacionDetalle.Precio != null).ToList();
             ++cotizacion.Modificacion;
-        }
+            cotizacion = CotizacionDao.Merge(cotizacion);}
 
         public bool ExisteCotizacionDetalle(IList<CotizacionDetalle> detalle)
         {
@@ -130,6 +128,12 @@ namespace Adquisiciones.Business.ModCotizacion
 
             return result;
 
+        }
+
+        [Transaction]
+        public void EliminaCotizacion(Cotizacion cotizacion)
+        {
+            CotizacionDao.Delete(cotizacion);
         }
     }
 }

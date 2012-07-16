@@ -109,7 +109,7 @@ namespace Adquisiciones.View
         private void ReporteCotizacion(Cotizacion cotizacion)
         {
            
-            CotizacionService.ConsultaCotizacion(ref cotizacion);
+            CotizacionService.ConsultarCotizacion(ref cotizacion);
 
             var cotizacionDs = new CotizacionDS();
 

@@ -139,7 +139,7 @@
             // 
             // bsAnexos
             // 
-            this.ComponentObserver.SetObserveComponent(this.bsAnexos, true);
+            
             // 
             // gvAnexo
             // 
@@ -153,7 +153,7 @@
             this.gridColumnCotizacion});
             this.gvAnexo.GridControl = this.gcAnexo;
             this.gvAnexo.Name = "gvAnexo";
-            this.ComponentObserver.SetObserveComponent(this.gvAnexo, true);
+            
             this.gvAnexo.OptionsView.EnableAppearanceEvenRow = true;
             this.gvAnexo.OptionsView.ShowAutoFilterRow = true;
             this.gvAnexo.OptionsView.ShowGroupedColumns = true;
@@ -164,7 +164,7 @@
             this.gridColumn2.Caption = "Numero";
             this.gridColumn2.FieldName = "NumeroAnexo";
             this.gridColumn2.Name = "gridColumn2";
-            this.ComponentObserver.SetObserveComponent(this.gridColumn2, true);
+            
             this.gridColumn2.OptionsColumn.AllowEdit = false;
             this.gridColumn2.UnboundType = DevExpress.Data.UnboundColumnType.String;
             this.gridColumn2.Visible = true;
@@ -176,7 +176,7 @@
             this.gridColumn1.Caption = "Fecha";
             this.gridColumn1.FieldName = "FechaAnexo";
             this.gridColumn1.Name = "gridColumn1";
-            this.ComponentObserver.SetObserveComponent(this.gridColumn1, true);
+            
             this.gridColumn1.OptionsColumn.AllowEdit = false;
             this.gridColumn1.UnboundType = DevExpress.Data.UnboundColumnType.DateTime;
             this.gridColumn1.Visible = true;
@@ -188,7 +188,6 @@
             this.gridColumn3.Caption = "Descripcion";
             this.gridColumn3.FieldName = "DesAnexo";
             this.gridColumn3.Name = "gridColumn3";
-            this.ComponentObserver.SetObserveComponent(this.gridColumn3, true);
             this.gridColumn3.OptionsColumn.AllowEdit = false;
             this.gridColumn3.UnboundType = DevExpress.Data.UnboundColumnType.String;
             this.gridColumn3.Visible = true;
@@ -202,7 +201,7 @@
             this.gridColumn4.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.gridColumn4.FieldName = "TechoPresupuestal";
             this.gridColumn4.Name = "gridColumn4";
-            this.ComponentObserver.SetObserveComponent(this.gridColumn4, true);
+            
             this.gridColumn4.OptionsColumn.AllowEdit = false;
             this.gridColumn4.UnboundType = DevExpress.Data.UnboundColumnType.Decimal;
             this.gridColumn4.Visible = true;
@@ -214,7 +213,7 @@
             this.gridColumn5.Caption = "Modifico";
             this.gridColumn5.FieldName = "Usuario";
             this.gridColumn5.Name = "gridColumn5";
-            this.ComponentObserver.SetObserveComponent(this.gridColumn5, true);
+            
             this.gridColumn5.OptionsColumn.AllowEdit = false;
             this.gridColumn5.UnboundType = DevExpress.Data.UnboundColumnType.String;
             this.gridColumn5.Visible = true;
@@ -226,7 +225,7 @@
             this.gridColumn7.Caption = "Verificar";
             this.gridColumn7.ColumnEdit = this.repositoryItemButtonEdit1;
             this.gridColumn7.Name = "gridColumn7";
-            this.ComponentObserver.SetObserveComponent(this.gridColumn7, true);
+            
             this.gridColumn7.Visible = true;
             this.gridColumn7.VisibleIndex = 5;
             // 
@@ -236,7 +235,6 @@
             this.repositoryItemButtonEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
             this.repositoryItemButtonEdit1.Name = "repositoryItemButtonEdit1";
-            this.ComponentObserver.SetObserveComponent(this.repositoryItemButtonEdit1, true);
             this.repositoryItemButtonEdit1.Click += new System.EventHandler(this.repositoryItemButtonEdit1_Click);
             // 
             // gridColumnCotizacion
@@ -244,7 +242,7 @@
             this.gridColumnCotizacion.Caption = "Tiene Cotizacion";
             this.gridColumnCotizacion.FieldName = "TieneCotizacion";
             this.gridColumnCotizacion.Name = "gridColumnCotizacion";
-            this.ComponentObserver.SetObserveComponent(this.gridColumnCotizacion, true);
+            
             this.gridColumnCotizacion.OptionsColumn.AllowEdit = false;
             this.gridColumnCotizacion.UnboundType = DevExpress.Data.UnboundColumnType.Boolean;
             this.gridColumnCotizacion.Visible = true;

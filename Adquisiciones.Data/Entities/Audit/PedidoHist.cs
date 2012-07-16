@@ -4,6 +4,7 @@ using MyGeneration/Template/NHibernate (c) by lujan99@usa.net
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Adquisiciones.Data.Auxiliares;
 
 namespace Adquisiciones.Data.Entities
 {
@@ -11,7 +12,7 @@ namespace Adquisiciones.Data.Entities
 	/// PedidoHist object for NHibernate mapped table 'pedido_hist'.
 	/// </summary>
 	[Serializable]
-	public class PedidoHist
+	public class PedidoHist:IPadre
 	{
 		#region Member Variables
 

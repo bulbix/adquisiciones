@@ -105,6 +105,6 @@ parent="parentSession"/>
   <object id="objectDao" type="Adquisiciones.Data.Dao.ObjectDaoImp, Adquisiciones.Data"    
   parent="parentSession"/>
 
-  <tx:attribute-driven />
+  <!--<tx:attribute-driven />-->
   
 </objects>

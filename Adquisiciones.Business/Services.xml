@@ -1,8 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <objects xmlns="http://www.springframework.net"
-         xmlns:tx="http://www.springframework.net/tx">
-
-  <!-- Audit Logging Interceptor -->
+         xmlns:tx="http://www.springframework.net/tx"
+         xmlns:aop="http://www.springframework.net/aop">
+         
+   <!-- Audit Logging Interceptor -->
   <object id="auditInterceptor"
           type="Adquisiciones.Business.Audit.AuditInterceptor, Adquisiciones.Business">
   </object>
@@ -10,7 +11,8 @@
   <!--Objetos de Negocio-->
   <object id="anexoService" type="Adquisiciones.Business.ModAnexo.AnexoServiceImp, Adquisiciones.Business">
     <property name="AnexoDao" ref="anexoDao"/>
-    <property name="ArticuloDao" ref="articuloDao"/>    
+    <property name="ArticuloDao" ref="articuloDao"/>
+    <property name="AuditService" ref="auditService"/>
   </object>
 
   <object id="cotizacionService" type="Adquisiciones.Business.ModCotizacion.CotizacionServiceImp,
@@ -42,10 +44,99 @@
   
 
   <object id="auditService" type="Adquisiciones.Business.Audit.AuditServiceImp, Adquisiciones.Business">
-    <property name="ObjectDao" ref="objectDao"/>    
+    <property name="ObjectDao" ref="objectDao"/>
+    <!--<property name="IdsDetalleHistorico">
+      <dictionary key-type="string" value-type="System.Collections.GenericList.List">
+      </dictionary>
+    </property>-->
   </object>
+
+  <object id="historicoAfterAdvice" 
+          type="Adquisiciones.Business.Audit.UpdateAfterHistorico,Adquisiciones.Business" />
+
+  <object id="historicoBeforeAdvice"
+          type="Adquisiciones.Business.Audit.UpdateBeforeHistorico,Adquisiciones.Business" />
+
+  <object id="historicoAfterPoint"
+        type="Spring.Aop.Support.RegularExpressionMethodPointcutAdvisor">
+    <property name="patterns" >
+      <list>
+        <value>Guardar</value>
+        <value>Elimina</value>
+      </list>
+    </property> 
+    <property name="advice" ref="historicoAfterAdvice"/>
+  </object>
+
+  <object id="historicoBeforePoint"
+        type="Spring.Aop.Support.RegularExpressionMethodPointcutAdvisor">
+    <property name="patterns" >
+      <list>
+        <value>Guardar</value>
+        <value>Elimina</value>
+      </list>
+    </property>
+    <property name="advice" ref="historicoBeforeAdvice"/>
+  </object>
+
+  <object id="ProxyCreator" type="Spring.Aop.Framework.AutoProxy.ObjectNameAutoProxyCreator, Spring.Aop">
+    <property name="ObjectNames">
+      <list>
+        <value>*Service</value>       
+      </list>
+    </property>
+    <property name="InterceptorNames">
+      <list>
+        <value>historicoAfterPoint</value>
+        <value>historicoBeforePoint</value>
+      </list>
+    </property>
+  </object>
+   
   
-  
-  <tx:attribute-driven/>
+  <!--<object id="anexoServiceProxy" type="Spring.Aop.Framework.ProxyFactoryObject">
+    <property name="target" ref ="anexoService"/>
+    <property name="interceptorNames">
+      <list>
+        <value>historicoGuardarAdvice</value>
+      </list>
+    </property>
+  </object>
+
+  <object id="cotizacionServiceProxy" type="Spring.Aop.Framework.ProxyFactoryObject">
+    <property name="target" ref ="cotizacionService"/>
+    <property name="interceptorNames">
+      <list>
+        <value>historicoGuardarAdvice</value>
+      </list>
+    </property>
+  </object>
+
+  <object id="falloServiceProxy" type="Spring.Aop.Framework.ProxyFactoryObject">
+    <property name="target" ref ="falloService"/>
+    <property name="interceptorNames">
+      <list>
+        <value>historicoGuardarAdvice</value>
+      </list>
+    </property>
+  </object>-->
+ 
+
+  <!--<tx:advice id="transactionAdvice" transaction-manager="transactionManager"/>
+  <object type="Spring.Aop.Framework.AutoProxy.ObjectNameAutoProxyCreator, Spring.Aop">
+    <property name="ObjectNames">
+      <list>
+        <value>*Dao</value>
+        
+      </list>
+    </property>
+    <property name="InterceptorNames">
+      <list>
+        <value>transactionAdvice</value>
+      </list>
+    </property>
+  </object>-->
+
+  <tx:attribute-driven transaction-manager="transactionManager" order="1" />
 
 </objects>

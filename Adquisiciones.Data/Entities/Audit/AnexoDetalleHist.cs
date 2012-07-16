@@ -25,6 +25,7 @@ namespace Adquisiciones.Data.Entities
         private string _presentacion;
         private decimal? _cantidad;
 	    private string _tipo;
+	    private long _idhist;
        
 
 		#endregion
@@ -81,6 +82,12 @@ namespace Adquisiciones.Data.Entities
 	    {
 	        get { return _renglonanexo; }
 	        set { _renglonanexo = value; }
+	    }
+
+	    public virtual long IdHist
+	    {
+	        get { return _idhist; }
+	        set { _idhist = value; }
 	    }
 
 	    #endregion
