@@ -18,9 +18,9 @@ namespace Adquisiciones.Business.Audit
             var nameHistorico = nameService.Substring(7) + "DetalleHist";
 
             if (auditService.IdsDetalleHistorico.ContainsKey(nameHistorico))
-            {
                 auditService.IdsDetalleHistorico[nameHistorico] = new Historico();
-            }
+            else
+                auditService.IdsDetalleHistorico.Add(nameHistorico,new Historico());
         }
     }
 }

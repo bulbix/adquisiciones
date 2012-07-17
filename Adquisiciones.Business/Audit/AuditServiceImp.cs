@@ -70,39 +70,19 @@ namespace Adquisiciones.Business.Audit
                 if(entity is IPadre)
                 {
                     var nombreTablaHijaHist = nombreTabla + "DetalleHist";//AnexoDetalleHist
-
-                    if(IdsDetalleHistorico.ContainsKey(nombreTablaHijaHist))
-                    {
-                        var historico = IdsDetalleHistorico[nombreTablaHijaHist];
-                        historico.idPadre = idHist;
-                        IdsDetalleHistorico[nombreTablaHijaHist] = historico;
-                    }
-                    else{ 
-                        var historic = new Historico();
-                        historic.idPadre = idHist;
-                        IdsDetalleHistorico.Add(nombreTablaHijaHist, historic);
-                    }
-                 }
-
+                    var historico = IdsDetalleHistorico[nombreTablaHijaHist];
+                    historico.idPadre = idHist;
+                    IdsDetalleHistorico[nombreTablaHijaHist] = historico;
+                   
+                }
 
                 if (entity is IDetalle)
                 {
                     var tablaHist = nombreTabla + "Hist";
-                    if (IdsDetalleHistorico.ContainsKey(tablaHist))
-                    {
-                       var historico = IdsDetalleHistorico[tablaHist];
-                        historico.ids.Add(idHist);
-                        IdsDetalleHistorico[tablaHist] = historico;
-                    }
-                    else
-                    {var historic = new Historico();
-                        historic.ids.Add(idHist);
-                        IdsDetalleHistorico.Add(tablaHist, historic);
-                    }
+                    var historico = IdsDetalleHistorico[tablaHist];
+                    historico.ids.Add(idHist);
+                    IdsDetalleHistorico[tablaHist] = historico;
                 }
-
-                   
-
 
             }
 
