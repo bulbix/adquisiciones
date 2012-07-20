@@ -203,6 +203,12 @@
     <Compile Include="Busquedas\FrmBusquedaProveedor.Designer.cs">
       <DependentUpon>FrmBusquedaProveedor.cs</DependentUpon>
     </Compile>
+    <Compile Include="Modulos\FrmModulo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modulos\FrmModulo.Designer.cs">
+      <DependentUpon>FrmModulo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Modulos\FrmModuloAcceso.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -214,6 +220,12 @@
     </Compile>
     <Compile Include="Modulos\FrmModuloAnexo.Designer.cs">
       <DependentUpon>FrmModuloAnexo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modulos\FrmModuloCotizacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modulos\FrmModuloCotizacion.Designer.cs">
+      <DependentUpon>FrmModuloCotizacion.cs</DependentUpon>
     </Compile>
     <Compile Include="Modulos\FrmModuloFallo.cs">
       <SubType>Form</SubType>
@@ -238,12 +250,6 @@
     </Compile>
     <Compile Include="Catalogos\FrmCatalogoProveedor.designer.cs">
       <DependentUpon>FrmCatalogoProveedor.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Modulos\FrmModuloCotizacion.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Modulos\FrmModuloCotizacion.Designer.cs">
-      <DependentUpon>FrmModuloCotizacion.cs</DependentUpon>
     </Compile>
     <Compile Include="Modulos\FrmModuloLicitaPedido.cs">
       <SubType>Form</SubType>
@@ -281,6 +287,7 @@
     <Compile Include="Modulos\FrmPedidoEntrega.Designer.cs">
       <DependentUpon>FrmPedidoEntrega.cs</DependentUpon>
     </Compile>
+    <Compile Include="Modulos\IModulo.cs" />
     <Compile Include="Reportes\FrmModuloReportes.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -352,11 +359,17 @@
     <EmbeddedResource Include="Catalogos\FrmCatalogoProveedor.resx">
       <DependentUpon>FrmCatalogoProveedor.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Modulos\FrmModulo.resx">
+      <DependentUpon>FrmModulo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Modulos\FrmModuloAcceso.resx">
       <DependentUpon>FrmModuloAcceso.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modulos\FrmModuloAnexo.resx">
       <DependentUpon>FrmModuloAnexo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modulos\FrmModuloCotizacion.resx">
+      <DependentUpon>FrmModuloCotizacion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modulos\FrmModuloFallo.resx">
       <DependentUpon>FrmModuloFallo.cs</DependentUpon>
@@ -366,9 +379,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Catalogos\FrmCatalogoPartida.resx">
       <DependentUpon>FrmCatalogoPartida.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Modulos\FrmModuloCotizacion.resx">
-      <DependentUpon>FrmModuloCotizacion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modulos\FrmModuloLicitaPedido.resx">
       <DependentUpon>FrmModuloLicitaPedido.cs</DependentUpon>

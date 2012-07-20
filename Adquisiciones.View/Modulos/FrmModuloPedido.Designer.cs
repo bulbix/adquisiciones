@@ -1,5 +1,4 @@
-﻿namespace Adquisiciones.View
-{
+﻿namespace Adquisiciones.View{
     partial class FrmModuloPedido
     {
         /// <summary>
@@ -31,6 +30,8 @@
             this.components = new System.ComponentModel.Container();
             DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtTotal = new System.Windows.Forms.Label();
             this.lblFundamento = new DevExpress.XtraEditors.LabelControl();
             this.searchLookUpAnexo = new DevExpress.XtraEditors.SearchLookUpEdit();
             this.bsAnexo = new System.Windows.Forms.BindingSource(this.components);
@@ -98,13 +99,10 @@
             this.gridColumn13 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemPopupContainerEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemPopupContainerEdit();
             this.bsPedido = new System.Windows.Forms.BindingSource(this.components);
-            this.btnConsultar = new DevExpress.XtraEditors.SimpleButton();
-            this.btnGuardar = new DevExpress.XtraEditors.SimpleButton();
-            this.btnNuevo = new DevExpress.XtraEditors.SimpleButton();
-            this.lblNumErrors1 = new System.Windows.Forms.Label();
-            this.listaError1 = new System.Windows.Forms.ListBox();
-            this.txtTotal = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
+            this.splitContainerControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl2)).BeginInit();
+            this.splitContainerControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.searchLookUpAnexo.Properties)).BeginInit();
@@ -137,8 +135,21 @@
             ((System.ComponentModel.ISupportInitialize)(this.bsPedido)).BeginInit();
             this.SuspendLayout();
             // 
+            // splitContainerControl1
+            // 
+            this.splitContainerControl1.Panel2.Controls.Add(this.gcPedidoDetalle);
+            this.splitContainerControl1.Size = new System.Drawing.Size(898, 552);
+            this.splitContainerControl1.SplitterPosition = 359;
+            // 
+            // splitContainerControl2
+            // 
+            this.splitContainerControl2.Panel2.Controls.Add(this.groupControl1);
+            this.splitContainerControl2.Size = new System.Drawing.Size(898, 359);
+            // 
             // groupControl1
             // 
+            this.groupControl1.Controls.Add(this.label2);
+            this.groupControl1.Controls.Add(this.txtTotal);
             this.groupControl1.Controls.Add(this.lblFundamento);
             this.groupControl1.Controls.Add(this.searchLookUpAnexo);
             this.groupControl1.Controls.Add(this.searchLookUpProveedor);
@@ -173,12 +184,33 @@
             this.groupControl1.Controls.Add(this.labelControl2);
             this.groupControl1.Controls.Add(this.deFechaPedido);
             this.groupControl1.Controls.Add(this.labelControl1);
-            this.groupControl1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl1.Location = new System.Drawing.Point(0, 0);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(1203, 265);
-            this.groupControl1.TabIndex = 0;
+            this.groupControl1.Size = new System.Drawing.Size(898, 253);
+            this.groupControl1.TabIndex = 1;
             this.groupControl1.Text = "Datos Generales del Pedido";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.label2.Location = new System.Drawing.Point(20, 223);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(107, 19);
+            this.label2.TabIndex = 125;
+            this.label2.Text = "Importe Total";
+            // 
+            // txtTotal
+            // 
+            this.txtTotal.AutoSize = true;
+            this.txtTotal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtTotal.Font = new System.Drawing.Font("Tahoma", 15F);
+            this.txtTotal.Location = new System.Drawing.Point(133, 218);
+            this.txtTotal.Name = "txtTotal";
+            this.txtTotal.Size = new System.Drawing.Size(62, 26);
+            this.txtTotal.TabIndex = 124;
+            this.txtTotal.Text = "$0.00";
             // 
             // lblFundamento
             // 
@@ -262,7 +294,7 @@
             this.searchLookUpProveedor.Properties.View = this.searchLookUpEditProveedor;
             this.searchLookUpProveedor.Size = new System.Drawing.Size(100, 20);
             this.searchLookUpProveedor.TabIndex = 65;
-            this.searchLookUpProveedor.EditValueChanged += new System.EventHandler(this.SearchLookUpProveedorEditValueChanged1);
+            this.searchLookUpProveedor.EditValueChanged += new System.EventHandler(this.SearchLookUpProveedorEditValueChanged);
             // 
             // searchLookUpEditProveedor
             // 
@@ -361,7 +393,7 @@
             // 
             // txtObservaciones
             // 
-            this.txtObservaciones.Location = new System.Drawing.Point(87, 156);
+            this.txtObservaciones.Location = new System.Drawing.Point(94, 119);
             this.txtObservaciones.Name = "txtObservaciones";
             this.txtObservaciones.Size = new System.Drawing.Size(262, 80);
             this.txtObservaciones.TabIndex = 55;
@@ -369,7 +401,7 @@
             // lblObservacion
             // 
             this.lblObservacion.AutoSize = true;
-            this.lblObservacion.Location = new System.Drawing.Point(14, 192);
+            this.lblObservacion.Location = new System.Drawing.Point(21, 155);
             this.lblObservacion.Name = "lblObservacion";
             this.lblObservacion.Size = new System.Drawing.Size(67, 13);
             this.lblObservacion.TabIndex = 54;
@@ -638,21 +670,20 @@
             // 
             // gcPedidoDetalle
             // 
-            this.gcPedidoDetalle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)));
             this.gcPedidoDetalle.DataSource = this.bsPedidoDetalle;
+            this.gcPedidoDetalle.Dock = System.Windows.Forms.DockStyle.Fill;
             gridLevelNode1.RelationName = "Level1";
             this.gcPedidoDetalle.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
             gridLevelNode1});
-            this.gcPedidoDetalle.Location = new System.Drawing.Point(13, 271);
+            this.gcPedidoDetalle.Location = new System.Drawing.Point(0, 0);
             this.gcPedidoDetalle.MainView = this.gvPedidoDetalle;
             this.gcPedidoDetalle.Name = "gcPedidoDetalle";
             this.gcPedidoDetalle.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemSearchLookUpEdit2,
             this.repositoryItemPopupContainerEdit1,
             this.repositoryItemButtonEdit1});
-            this.gcPedidoDetalle.Size = new System.Drawing.Size(971, 332);
-            this.gcPedidoDetalle.TabIndex = 2;
+            this.gcPedidoDetalle.Size = new System.Drawing.Size(898, 187);
+            this.gcPedidoDetalle.TabIndex = 3;
             this.gcPedidoDetalle.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvPedidoDetalle});
             this.gcPedidoDetalle.KeyDown += new System.Windows.Forms.KeyEventHandler(this.GcPedidoDetalleKeyDown);
@@ -905,99 +936,17 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.repositoryItemPopupContainerEdit1.Name = "repositoryItemPopupContainerEdit1";
             // 
-            // btnConsultar
-            // 
-            this.btnConsultar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnConsultar.Image = global::Adquisiciones.View.Properties.Resources.busqueda;
-            this.btnConsultar.Location = new System.Drawing.Point(657, 661);
-            this.btnConsultar.Name = "btnConsultar";
-            this.btnConsultar.Size = new System.Drawing.Size(115, 68);
-            this.btnConsultar.TabIndex = 118;
-            this.btnConsultar.Text = "Consultar";
-            this.btnConsultar.Click += new System.EventHandler(this.BtnRefrescarClick);
-            // 
-            // btnGuardar
-            // 
-            this.btnGuardar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnGuardar.Image = global::Adquisiciones.View.Properties.Resources.save_icon;
-            this.btnGuardar.Location = new System.Drawing.Point(899, 661);
-            this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(100, 68);
-            this.btnGuardar.TabIndex = 117;
-            this.btnGuardar.Text = "Guardar";
-            this.btnGuardar.Click += new System.EventHandler(this.BtnGuardarClick);
-            // 
-            // btnNuevo
-            // 
-            this.btnNuevo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnNuevo.Image = global::Adquisiciones.View.Properties.Resources.reportes;
-            this.btnNuevo.Location = new System.Drawing.Point(778, 661);
-            this.btnNuevo.Name = "btnNuevo";
-            this.btnNuevo.Size = new System.Drawing.Size(115, 68);
-            this.btnNuevo.TabIndex = 116;
-            this.btnNuevo.Text = "Nuevo";
-            this.btnNuevo.Click += new System.EventHandler(this.BtnNuevoClick);
-            // 
-            // lblNumErrors1
-            // 
-            this.lblNumErrors1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lblNumErrors1.AutoSize = true;
-            this.lblNumErrors1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNumErrors1.Location = new System.Drawing.Point(145, 629);
-            this.lblNumErrors1.Name = "lblNumErrors1";
-            this.lblNumErrors1.Size = new System.Drawing.Size(58, 13);
-            this.lblNumErrors1.TabIndex = 121;
-            this.lblNumErrors1.Text = "0 Errores";
-            // 
-            // listaError1
-            // 
-            this.listaError1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.listaError1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listaError1.ForeColor = System.Drawing.Color.Red;
-            this.listaError1.FormattingEnabled = true;
-            this.listaError1.ItemHeight = 16;
-            this.listaError1.Location = new System.Drawing.Point(148, 645);
-            this.listaError1.Name = "listaError1";
-            this.listaError1.Size = new System.Drawing.Size(331, 84);
-            this.listaError1.TabIndex = 120;
-            // 
-            // txtTotal
-            // 
-            this.txtTotal.AutoSize = true;
-            this.txtTotal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtTotal.Font = new System.Drawing.Font("Tahoma", 15F);
-            this.txtTotal.Location = new System.Drawing.Point(1068, 590);
-            this.txtTotal.Name = "txtTotal";
-            this.txtTotal.Size = new System.Drawing.Size(62, 26);
-            this.txtTotal.TabIndex = 122;
-            this.txtTotal.Text = "$0.00";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.label2.Location = new System.Drawing.Point(1045, 571);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(107, 19);
-            this.label2.TabIndex = 123;
-            this.label2.Text = "Importe Total";
-            // 
             // FrmModuloPedido
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1203, 742);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.txtTotal);
-            this.Controls.Add(this.lblNumErrors1);
-            this.Controls.Add(this.listaError1);
-            this.Controls.Add(this.btnConsultar);
-            this.Controls.Add(this.btnGuardar);
-            this.Controls.Add(this.btnNuevo);
-            this.Controls.Add(this.gcPedidoDetalle);
-            this.Controls.Add(this.groupControl1);
+            this.ClientSize = new System.Drawing.Size(898, 552);
             this.Name = "FrmModuloPedido";
-            this.Text = "FrmModuloPedido";
+            this.Text = "Captura::Pedido";
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();
+            this.splitContainerControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl2)).EndInit();
+            this.splitContainerControl2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
             this.groupControl1.PerformLayout();
@@ -1030,86 +979,80 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemPopupContainerEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsPedido)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
         private DevExpress.XtraEditors.GroupControl groupControl1;
-        private DevExpress.XtraEditors.LabelControl labelControl1;
-        private DevExpress.XtraEditors.DateEdit deFechaPedido;
-        private DevExpress.XtraEditors.LabelControl labelControl2;
-        private DevExpress.XtraEditors.SpinEdit numPedido;
-        private DevExpress.XtraEditors.LabelControl labelControl3;
-        private DevExpress.XtraEditors.TextEdit txtRequisicion;
-        private DevExpress.XtraEditors.TextEdit txtReserva;
-        private DevExpress.XtraEditors.LabelControl labelControl4;
-        private System.Windows.Forms.ComboBox cbxActividad;
-        private DevExpress.XtraEditors.LabelControl labelControl8;
-        private System.Windows.Forms.Label lblControl;
+        private DevExpress.XtraEditors.LabelControl lblFundamento;
+        private DevExpress.XtraEditors.SearchLookUpEdit searchLookUpAnexo;
+        private DevExpress.XtraGrid.Views.Grid.GridView searchLookUpEditAnexo;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn15;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn14;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn16;
+        private DevExpress.XtraEditors.SearchLookUpEdit searchLookUpProveedor;
+        private DevExpress.XtraGrid.Views.Grid.GridView searchLookUpEditProveedor;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
+        private System.Windows.Forms.ComboBox cbxInstituto;
+        private System.Windows.Forms.ComboBox cbxCargo;
+        private DevExpress.XtraEditors.LabelControl lblLicitacion;
+        private DevExpress.XtraEditors.LabelControl labelControl12;
+        private DevExpress.XtraEditors.TextEdit txtReferencia;
+        private DevExpress.XtraEditors.LabelControl labelControl11;
+        private DevExpress.XtraEditors.TextEdit txtDescuento;
+        private DevExpress.XtraEditors.LabelControl labelControl9;
+        private DevExpress.XtraEditors.MemoEdit txtObservaciones;
+        private System.Windows.Forms.Label lblObservacion;
+        private System.Windows.Forms.Label lblInstituto;
+        private System.Windows.Forms.Label lblCargo;
+        private DevExpress.XtraEditors.LabelControl lblProveedor;
+        private DevExpress.XtraEditors.LabelControl lblArea;
+        private DevExpress.XtraEditors.LabelControl labelControl6;
+        private DevExpress.XtraEditors.SearchLookUpEdit searchLookUpArea;
+        private DevExpress.XtraGrid.Views.Grid.GridView searchLookUpEditArea;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
+        private DevExpress.XtraEditors.LabelControl labelControl5;
+        private System.Windows.Forms.ComboBox cbxIva;
+        private DevExpress.XtraEditors.LabelControl labelControl10;
         private DevExpress.XtraEditors.SearchLookUpEdit searchLookUpFundamento;
         private DevExpress.XtraGrid.Views.Grid.GridView searchLookUpEditFundamento;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn10;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn11;
-        private DevExpress.XtraEditors.LabelControl labelControl10;
-        private System.Windows.Forms.ComboBox cbxIva;
-        private DevExpress.XtraEditors.LabelControl labelControl5;
-        private DevExpress.XtraEditors.SearchLookUpEdit searchLookUpArea;
-        private DevExpress.XtraGrid.Views.Grid.GridView searchLookUpEditArea;
-        private DevExpress.XtraEditors.LabelControl labelControl6;
-        private DevExpress.XtraEditors.LabelControl lblProveedor;
-        private DevExpress.XtraEditors.LabelControl lblArea;
-        private System.Windows.Forms.Label lblCargo;
-        private System.Windows.Forms.Label lblInstituto;
-        private DevExpress.XtraEditors.MemoEdit txtObservaciones;
-        private System.Windows.Forms.Label lblObservacion;
-        private DevExpress.XtraEditors.LabelControl labelControl9;
-        private DevExpress.XtraEditors.TextEdit txtDescuento;
-        private DevExpress.XtraEditors.LabelControl labelControl11;
-        private DevExpress.XtraEditors.TextEdit txtReferencia;
-        private DevExpress.XtraEditors.LabelControl lblLicitacion;
-        private DevExpress.XtraEditors.LabelControl labelControl12;
+        private System.Windows.Forms.Label lblControl;
+        private System.Windows.Forms.ComboBox cbxActividad;
+        private DevExpress.XtraEditors.LabelControl labelControl8;
+        private DevExpress.XtraEditors.TextEdit txtReserva;
+        private DevExpress.XtraEditors.LabelControl labelControl4;
+        private DevExpress.XtraEditors.TextEdit txtRequisicion;
+        private DevExpress.XtraEditors.LabelControl labelControl3;
+        private DevExpress.XtraEditors.SpinEdit numPedido;
+        private DevExpress.XtraEditors.LabelControl labelControl2;
+        private DevExpress.XtraEditors.DateEdit deFechaPedido;
+        private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraGrid.GridControl gcPedidoDetalle;
         private DevExpress.XtraGrid.Views.Grid.GridView gvPedidoDetalle;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumnArticulo;
         private DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit repositoryItemSearchLookUpEdit2;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView5;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumnDescripcion;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn8;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn12;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn13;
-        private System.Windows.Forms.ComboBox cbxInstituto;
-        private System.Windows.Forms.ComboBox cbxCargo;
-        private System.Windows.Forms.BindingSource bsFundamento;
-        private System.Windows.Forms.BindingSource bsAnexo;
-        private System.Windows.Forms.BindingSource bsProveedor;
-        private System.Windows.Forms.BindingSource bsArea;
-        private DevExpress.XtraEditors.SearchLookUpEdit searchLookUpAnexo;
-        private DevExpress.XtraGrid.Views.Grid.GridView searchLookUpEditAnexo;
-        private DevExpress.XtraEditors.SearchLookUpEdit searchLookUpProveedor;
-        private DevExpress.XtraGrid.Views.Grid.GridView searchLookUpEditProveedor;
-        private System.Windows.Forms.BindingSource bsPedidoDetalle;
-        private System.Windows.Forms.BindingSource bsPedido;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn15;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn14;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn16;
-        private DevExpress.XtraEditors.LabelControl lblFundamento;
-        private DevExpress.XtraEditors.SimpleButton btnConsultar;
-        private DevExpress.XtraEditors.SimpleButton btnGuardar;
-        private DevExpress.XtraEditors.SimpleButton btnNuevo;
-        private DevExpress.XtraEditors.Repository.RepositoryItemPopupContainerEdit repositoryItemPopupContainerEdit1;
-        private System.Windows.Forms.Label lblNumErrors1;
-        private System.Windows.Forms.ListBox listaError1;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumnCantidad;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn17;
         private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit repositoryItemButtonEdit1;
-        private System.Windows.Forms.Label txtTotal;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn12;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn13;
+        private DevExpress.XtraEditors.Repository.RepositoryItemPopupContainerEdit repositoryItemPopupContainerEdit1;
+        private System.Windows.Forms.BindingSource bsPedidoDetalle;
+        private System.Windows.Forms.BindingSource bsAnexo;
+        private System.Windows.Forms.BindingSource bsProveedor;
+        private System.Windows.Forms.BindingSource bsArea;
+        private System.Windows.Forms.BindingSource bsFundamento;
+        private System.Windows.Forms.BindingSource bsPedido;
         private System.Windows.Forms.Label label2;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
+        private System.Windows.Forms.Label txtTotal;
     }
 }

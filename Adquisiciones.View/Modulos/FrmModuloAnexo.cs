@@ -1,20 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Text;
 using System.Windows.Forms;
 using Adquisiciones.Business;
 using Adquisiciones.Business.ModAnexo;
 using Adquisiciones.Data.Entities;
+using Adquisiciones.View.Modulos;
 using DevExpress.XtraEditors;
-using DevExpress.XtraGrid.Columns;
-using log4net;
 using Spring.Context.Support;
 using System.Linq;
-using Spring.Objects.Factory;
-using Form = Spring.Windows.Forms.Form;
 
-namespace Adquisiciones.View
-{
-    public partial class FrmModuloAnexo : XtraForm
+namespace Adquisiciones.View{
+    public partial class FrmModuloAnexo : FrmModulo
     {
         ///<summary>
         ///</summary>
@@ -24,77 +24,33 @@ namespace Adquisiciones.View
         ///</summary>
         public Anexo AnexoActual;
 
-        /// <summary>
-        /// La bitacora
-        /// </summary>
-        private static readonly ILog Log =
-            LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        public FrmModuloAnexo()
+        {
+            InitializeComponent();var ctx = ContextRegistry.GetContext();
+            AnexoService = ctx["anexoService"] as IAnexoService;
+            Nuevo();
+            BindearCampos();
+            InicializarCatalogos();
+        }
 
-
-        /// <summary>
-        /// 
-        /// </summary> <param name="anexo"></param>
         public FrmModuloAnexo(Anexo anexo)
             : this()
         {
-            ConsultarAnexo(anexo.NumeroAnexo);
+            AnexoActual = anexo;
+            Consultar();
             Text = @"Anexo::" + anexo.NumeroAnexo;
 
             if (AnexoService.AnexoDao.ExisteAnexoCotizacion(AnexoActual))
             {
                 MessageBox.Show(@"El anexo tiene asociadas cotizaciones",
                 @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                btnGuardar.Enabled = false;
+                cmdGuardar.Enabled = false;
             }
         }
 
-        /// <summary> 
-        /// </summary>
-        public FrmModuloAnexo()
+        public override void BindearCampos()
         {
-            var ctx = ContextRegistry.GetContext();
-            AnexoService = ctx["anexoService"] as IAnexoService;
-            InitializeComponent();
-            NuevoAnexo();
-            BindearCampos();
-            InicializarCatalogos();
-        }
-
-        private void BtnGuardarClick(object sender, EventArgs e)
-        {
-
-            if (AnexoActual.IdAnexo == 0)
-            {
-                //No existe el numero de folio para ese anio
-                if (!AnexoService.AnexoDao.ExisteAnexo(txtnumlicitacion.Text,
-                                                       FrmModuloModulo.AlmacenSelec))
-                {
-                    GuardarAnexo();
-                }
-                else
-                    MessageBox.Show(@"El folio ya existe para este año",
-                                    @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else
-            {
-                GuardarAnexo();
-            }
-        }
-
-        private void BtnNuevoClick(object sender, EventArgs e)
-        {
-            NuevoAnexo();
-            Log.Info("Probando Nuevo en anexo");
-        }
-
-
-
-        private void BindearCampos()
-        {
-            // Initialize the DataGridView.
             bsAnexoDetalle.DataSource = new List<AnexoDetalle>();
-
-            ////Bindeamos el padre
             txtnumlicitacion.DataBindings.Add(new Binding("Text", bsAnexo, "NumeroAnexo"));
             dtpFechaanexo.DataBindings.Add(new Binding("DateTime", bsAnexo, "FechaAnexo", true));
             txtDesanexo.DataBindings.Add(new Binding("Text", bsAnexo, "DesAnexo"));
@@ -103,9 +59,10 @@ namespace Adquisiciones.View
             cbxIva.DataBindings.Add(new Binding("SelectedValue", bsAnexo, "Iva", true));
             txtTechopresupuestal.DataBindings.Add(new Binding("Text", bsAnexo, "TechoPresupuestal", true));
             bsAnexo.DataSource = AnexoActual;
+           
         }
 
-        private void InicializarCatalogos()
+        public override void InicializarCatalogos()
         {
             AnexoService.InstitutosCombo(cbxInstituto);
             AnexoService.TiposLicitacionesCombo(cbxTipolicitacion);
@@ -117,7 +74,7 @@ namespace Adquisiciones.View
             repositoryItemSearchLookUpEdit2.ValueMember = "CveArt";
         }
 
-        private void NuevoAnexo()
+        public override void Nuevo()
         {
             AnexoActual = new Anexo();
             bsAnexo.DataSource = AnexoActual;
@@ -125,18 +82,52 @@ namespace Adquisiciones.View
 
             txtnumlicitacion.Enabled = true;
             dtpFechaanexo.Enabled = true;
-            btnGuardar.Enabled = true;
+            cmdGuardar.Enabled = true;
             txtnumlicitacion.Focus();
             listaError.Items.Clear();
             lblNumErrors.Text = string.Empty;
-
         }
 
-        private void ConsultarAnexo(string numAnexo)
+        public override void Guardar()
         {
+            AnexoActual = bsAnexo.DataSource as Anexo;
+            AnexoActual.AnexoDetalle = bsAnexoDetalle.DataSource as List<AnexoDetalle>;
+
             try
             {
-                AnexoActual = AnexoService.ConsultarAnexo(numAnexo,
+                if (!Util.DatosValidos(AnexoActual, lblNumErrors, listaError))
+                {
+                    return;
+                }
+
+                AnexoActual.FechaModificacion = AnexoService.AnexoDao.FechaServidor();
+                AnexoActual.IpTerminal = Util.IpTerminal();
+                AnexoActual.Almacen = FrmModuloModulo.AlmacenSelec;
+                AnexoActual.Usuario = FrmModuloAcceso.UsuarioLog;
+                AnexoActual.FechaAnexo = dtpFechaanexo.DateTime;
+                AnexoService.GuardarAnexo(ref AnexoActual);
+
+                Consultar();
+
+                MessageBox.Show(@"Licitación Registrada o Actualizada Exitosamente",
+               @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+
+            }
+            catch (Exception ee)
+            {
+                MessageBox.Show(@"Ocurrio un error en la persistencia",
+                    @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                Log.Error("Generado por:" + FrmModuloAcceso.UsuarioLog, ee);
+            }
+        }
+
+        public override void Consultar()
+        {
+           try
+            {
+                AnexoActual = AnexoService.ConsultarAnexo(AnexoActual.NumeroAnexo,
                                                           FrmModuloModulo.AlmacenSelec);
 
                 if (AnexoActual != null)
@@ -164,69 +155,31 @@ namespace Adquisiciones.View
             }
         }
 
-        /// <summary>
-        /// Guarda un anexo valido 
-        /// siempre no exista una cotizacion asociada
-        /// </summary>
-        private void GuardarAnexo()
+        private void CmdGuardarClick(object sender, EventArgs e)
         {
-            AnexoActual = bsAnexo.DataSource as Anexo;
-            AnexoActual.AnexoDetalle = bsAnexoDetalle.DataSource as List<AnexoDetalle>;
-
-            try
+            if (AnexoActual.IdAnexo == 0)
             {
-                if (!Util.DatosValidos(AnexoActual, lblNumErrors, listaError))
+                //No existe el numero de folio para ese anio
+                if (!AnexoService.AnexoDao.ExisteAnexo(txtnumlicitacion.Text,
+                                                       FrmModuloModulo.AlmacenSelec))
                 {
-                    return;
+                    Guardar();
                 }
-
-
-                //los parametros basicos
-                    AnexoActual.FechaModificacion = AnexoService.AnexoDao.FechaServidor();
-                    AnexoActual.IpTerminal = Util.IpTerminal();
-                    AnexoActual.Almacen = FrmModuloModulo.AlmacenSelec;
-                    AnexoActual.Usuario = FrmModuloAcceso.UsuarioLog;
-                    AnexoActual.FechaAnexo = dtpFechaanexo.DateTime;
-                    AnexoService.GuardarAnexo(ref AnexoActual);
-
-                    ConsultarAnexo(AnexoActual.NumeroAnexo);
-
-                    MessageBox.Show(@"Licitación Registrada o Actualizada Exitosamente",
-                   @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                
+                else
+                    MessageBox.Show(@"El folio ya existe para este año",
+                                    @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            catch (Exception ee){
-                MessageBox.Show(@"Ocurrio un error en la persistencia Reportalo a Dep. Sistemas",
-                    @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                Log.Error("Generado por:" + FrmModuloAcceso.UsuarioLog, ee);
+            else
+            {
+                Guardar();
             }
         }
-
-        //private bool TieneRepetidoRenglon(short? renglon)
-        //{
-        //    var numOcurrencia = AnexoActual.AnexoDetalle.Count
-        //        (p => p.Renglon == renglon);
-
-        //    return numOcurrencia > 1;
-        //}
 
         private bool TieneRepetidoArticulo(int? articulo)
         {
-            var numOcurrencia = AnexoActual.AnexoDetalle.Count
-                (p => p.CveArt == articulo);
-
+            var numOcurrencia = AnexoActual.AnexoDetalle.Count(p => p.CveArt == articulo);
             return numOcurrencia > 1;
         }
-
-
-
-      
-        private void FrmAnexoDevLoad(object sender, EventArgs e)
-        {
-           
-         }
 
         private void GvAnexoDetalleKeyDown(object sender, KeyEventArgs e)
         {
@@ -236,43 +189,20 @@ namespace Adquisiciones.View
             }
         }
 
-        private void BtnRefrescarClick(object sender, EventArgs e)
-        {
-            if (AnexoActual != null)
-            {
-                ConsultarAnexo(AnexoActual.NumeroAnexo);
-            }
-        }
-
         private void DgvAnexoCellValueChanged(object sender,
-           DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
+          DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
         {
             var rowSelectValue = e.Value;
 
             //Para realizar las validaciones
             AnexoActual.AnexoDetalle = bsAnexoDetalle.DataSource as List<AnexoDetalle>;
-            ////Posicionado en renglon
-            //if (e.Column.AbsoluteIndex == 0)
-            //{
-            //    if (TieneRepetidoRenglon((short?)(rowSelectValue)))
-            //    {
 
-            //        MessageBox.Show(@"Renglon repetido numero " + rowSelectValue,
-            //                        @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //        gvAnexoDetalle.SetRowCellValue(e.RowHandle, "Renglon", "");
-            //        return;
-            //    }
-            //}
-
-
-            if (e.Column.AbsoluteIndex == 0)//posicionado en el articulo
+            if (e.Column.AbsoluteIndex == 0) //posicionado en el articulo
             {
-
-
-                if (TieneRepetidoArticulo((int?)(rowSelectValue)))
+                if (TieneRepetidoArticulo((int?) (rowSelectValue)))
                 {
                     MessageBox.Show(@"Articulo repetido clave " + rowSelectValue,
-                @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     gvAnexoDetalle.SetRowCellValue(e.RowHandle, "DescripcionArt", "");
                     gvAnexoDetalle.SetRowCellValue(e.RowHandle, "PresentacionArt", "");
                     //gvAnexoDetalle.SetRowCellValue(e.RowHandle, "CveArt", "");
@@ -289,19 +219,12 @@ namespace Adquisiciones.View
                     gvAnexoDetalle.SetRowCellValue(e.RowHandle, "DescripcionArt", articuloSelect.DesArticulo);
                     gvAnexoDetalle.SetRowCellValue(e.RowHandle, "PresentacionArt", articuloSelect.Presentacion);
                 }
-                catch(Exception ee)
+                catch (Exception ee)
                 {
                     gvAnexoDetalle.SetRowCellValue(e.RowHandle, "DescripcionArt", "");
                     gvAnexoDetalle.SetRowCellValue(e.RowHandle, "PresentacionArt", "");
-                    
+
                 }
             }
-
-
-
-        }
-
-        
-
-    }
+        }}
 }

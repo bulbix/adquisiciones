@@ -1,21 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Text;
 using System.Windows.Forms;
+using Adquisiciones.Business;
 using Adquisiciones.Business.ModPedido;
 using Adquisiciones.Data.Entities;
+using Adquisiciones.View.Modulos;
 using DevExpress.Utils;
+using DevExpress.XtraEditors;
 using DevExpress.XtraGrid.Views.Grid;
-using log4net;
 using Spring.Context.Support;
-using Adquisiciones.Business;
 using System.Linq;
 
 namespace Adquisiciones.View
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    public partial class FrmModuloPedido : DevExpress.XtraEditors.XtraForm
+    public partial class FrmModuloPedido : FrmModulo
     {
         ///<summary
         /// Servicio de Negocios
@@ -26,15 +28,39 @@ namespace Adquisiciones.View
         /// </summary>
         public Pedido PedidoActual;
 
+        public FrmModuloPedido()
+        {
+            InitializeComponent();
+        }
 
-           /// <summary>
-        /// La bitacora
-        /// </summary>
-        private static readonly ILog Log =
-            LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+         public FrmModuloPedido(int tipoPedido)
+        {
+            InitializeComponent();
+            var ctx = ContextRegistry.GetContext();
+            PedidoService = ctx["pedidoService"] as IPedidoService;
+            Nuevo();
+            PedidoActual.CatTipopedido = new CatTipopedido(tipoPedido);
 
-        
-        private void BindearCampos()
+            //Si es distinto a pedido mayor deshabilita
+            if (tipoPedido > 1)
+                searchLookUpAnexo.Enabled = false;
+
+            BindearCampos();
+            InicializarCatalogos();
+        }
+
+         public FrmModuloPedido(Pedido pedido)
+            : this(pedido.CatTipopedido.IdTipoped)
+         {
+            PedidoActual = pedido;
+            Consultar();
+            Text = @"Pedido::" + pedido;
+
+            if (pedido.Requisicion != null)
+                cmdGuardar.Enabled = false;
+        }
+
+        public override void BindearCampos()
         {
             bsPedidoDetalle.DataSource = new List<PedidoDetalle>();
 
@@ -53,45 +79,7 @@ namespace Adquisiciones.View
             txtObservaciones.DataBindings.Add(new Binding("Text", bsPedido, "Observaciones", false));
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        public FrmModuloPedido(int tipoPedido)
-        {
-            InitializeComponent();
-            var ctx = ContextRegistry.GetContext();
-            PedidoService = ctx["pedidoService"] as IPedidoService;
-            NuevoPedido();
-            PedidoActual.CatTipopedido = new CatTipopedido(tipoPedido);
-
-            //Si es distinto a pedido mayor deshabilita
-            if (tipoPedido > 1)
-                searchLookUpAnexo.Enabled = false;
-
-            BindearCampos();
-            CargarCombos();
-        }
-
-        ///<summary>
-        ///</summary>
-        ///<param name="pedido"></param>
-        public FrmModuloPedido(Pedido pedido)
-            : this(pedido.CatTipopedido.IdTipoped)
-        {
-            ConsultarPedido(pedido.NumeroPedido.Value);
-            Text = @"Pedido::" + pedido;
-
-            if (pedido.Requisicion != null)
-                btnGuardar.Enabled = false;
-        }
-
-
-
-
-        /// <summary>
-        /// Combos asociados al pedido 
-        /// </summary>
-        public void CargarCombos()
+        public override void InicializarCatalogos()
         {
             PedidoService.CatalogoActividad(cbxActividad);
             bsFundamento.DataSource = PedidoService.PedidoDao.CargarCatalogo<Fundamento>();
@@ -105,6 +93,96 @@ namespace Adquisiciones.View
                 ArticuloDao.ArticulosByAlmacen(FrmModuloModulo.AlmacenSelec);
             repositoryItemSearchLookUpEdit2.DisplayMember = "CveArt";
             repositoryItemSearchLookUpEdit2.ValueMember = "CveArt";
+        }
+
+        public override void Nuevo()
+        {
+            PedidoActual = new Pedido();
+            bsPedido.DataSource = PedidoActual;
+            bsPedidoDetalle.DataSource = new List<PedidoDetalle>();
+
+            //Cargamos el numero de pedido maximo
+            PedidoActual.NumeroPedido = PedidoService.PedidoDao.MaximoNumeroPedido(FrmModuloModulo.AlmacenSelec);
+            numPedido.Value = (decimal)PedidoActual.NumeroPedido;
+            deFechaPedido.DateTime = PedidoService.PedidoDao.FechaServidor();
+            PedidoActual.FechaPedido = deFechaPedido.DateTime;
+
+            lblNumErrors.Text = string.Empty;
+            lblArea.Text = "";
+            lblLicitacion.Text = "";
+            lblProveedor.Text = "";
+            lblFundamento.Text = "";
+        }
+
+        public override void Guardar()
+        {
+            listaError.Items.Clear();
+            lblNumErrors.Text = "";
+
+            //los parametros basicos
+            PedidoActual.Almacen = FrmModuloModulo.AlmacenSelec;
+            PedidoActual.Usuario = FrmModuloAcceso.UsuarioLog;
+
+            //Validaciones 
+            if (!Util.DatosValidos(PedidoActual, lblNumErrors, listaError))
+            {
+                return;
+            }
+
+            PedidoActual.PedidoDetalle = bsPedidoDetalle.DataSource as List<PedidoDetalle>;
+
+            try
+            {
+                PedidoService.GuardarPedido(ref PedidoActual);
+                MessageBox.Show(@"Pedido Registrado o Actualizado Exitosamente",
+                                @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ee)
+            {
+                MessageBox.Show(@"Ocurrio un error en la persistencia Reportalo a Dep. Sistemas",
+                    @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                Log.Error("Generado por:" + FrmModuloAcceso.UsuarioLog, ee);
+            }
+        }
+
+        public override void Consultar()
+        {
+            try
+            {
+                PedidoActual = PedidoService.ConsultarPedido(PedidoActual.NumeroPedido.Value,
+                                                          FrmModuloModulo.AlmacenSelec);
+
+                if (PedidoActual != null)
+                {
+                    bsPedido.DataSource = PedidoActual;
+                    bsPedidoDetalle.DataSource = PedidoActual.PedidoDetalle;
+
+                    lblFundamento.Text = PedidoActual.Fundamento.ToString();
+                    lblArea.Text = PedidoActual.CatArea.ToString();
+                    lblProveedor.Text = PedidoActual.Proveedor.ToString();
+
+                    if (PedidoActual.Anexo != null)
+                        lblLicitacion.Text = PedidoActual.Anexo.ToString();
+
+                    listaError.Items.Clear();
+                    lblNumErrors.Text = string.Empty;
+                    SumTotal();
+                }
+                else
+                {
+                    MessageBox.Show(@"Folio no existe", @"Adquisiciones",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                }
+            }
+            catch (Exception ee)
+            {
+                MessageBox.Show(@"Ocurrio un error en la consulta Reportalo a Dep. Sistemas",
+                    @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                Log.Error("Generado por:" + FrmModuloAcceso.UsuarioLog, ee);
+            }
         }
 
         private void SearchLookUpFundamentoEditValueChanged(object sender, EventArgs e)
@@ -135,7 +213,7 @@ namespace Adquisiciones.View
             }
         }
 
-        private void SearchLookUpProveedorEditValueChanged1(object sender, EventArgs e)
+        private void SearchLookUpProveedorEditValueChanged(object sender, EventArgs e)
         {
             if (searchLookUpProveedor.EditValue != null)
             {
@@ -172,7 +250,9 @@ namespace Adquisiciones.View
                 gridColumnCantidad.OptionsColumn.AllowEdit = false;
 
             }
-            else{PedidoActual.Anexo = null;
+            else
+            {
+                PedidoActual.Anexo = null;
                 lblLicitacion.Text = string.Empty;
                 gvPedidoDetalle.OptionsView.NewItemRowPosition = NewItemRowPosition.Top;
                 gvPedidoDetalle.OptionsBehavior.AllowDeleteRows = DefaultBoolean.True;
@@ -187,131 +267,12 @@ namespace Adquisiciones.View
 
         }
 
-       
-
-        private void BtnGuardarClick(object sender, EventArgs e)
-        {
-            listaError1.Items.Clear();
-            lblNumErrors1.Text = "";
-
-            //los parametros basicos
-            PedidoActual.Almacen = FrmModuloModulo.AlmacenSelec;
-            PedidoActual.Usuario = FrmModuloAcceso.UsuarioLog;
-
-            //Validaciones 
-            if (!Util.DatosValidos(PedidoActual, lblNumErrors1, listaError1))
-            {
-                return;
-            }
-
-            PedidoActual.PedidoDetalle =  bsPedidoDetalle.DataSource as List<PedidoDetalle>;
-
-            try
-            {
-                PedidoService.GuardarPedido(ref PedidoActual);
-                MessageBox.Show(@"Pedido Registrado o Actualizado Exitosamente",
-                                @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            catch (Exception ee)
-            {
-                MessageBox.Show(@"Ocurrio un error en la persistencia Reportalo a Dep. Sistemas",
-                    @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                Log.Error("Generado por:" + FrmModuloAcceso.UsuarioLog, ee);
-            }
-
-        }
-
-        private void BtnRefrescarClick(object sender, EventArgs e)
-        {
-            ConsultarPedido((int)numPedido.Value);
-        }
-
-        private void BtnNuevoClick(object sender, EventArgs e)
-        {
-            NuevoPedido();
-
-        }
-
-        private void NuevoPedido()
-        {
-            PedidoActual = new Pedido();
-            bsPedido.DataSource = PedidoActual;
-            bsPedidoDetalle.DataSource = new List<PedidoDetalle>();
-
-            //Cargamos el numero de pedido maximo
-            PedidoActual.NumeroPedido = PedidoService.PedidoDao.MaximoNumeroPedido(FrmModuloModulo.AlmacenSelec);
-            numPedido.Value = (decimal)PedidoActual.NumeroPedido;
-            deFechaPedido.DateTime = PedidoService.PedidoDao.FechaServidor();
-            PedidoActual.FechaPedido = deFechaPedido.DateTime;
-            
-            //txtnumlicitacion.Enabled = true;
-            //dtpFechaanexo.Enabled = true;btnGuardar.Enabled = true;
-            //txtnumlicitacion.Focus();listaError1.Items.Clear();
-            lblNumErrors1.Text = string.Empty;
-
-            lblArea.Text = "";
-            lblLicitacion.Text = "";
-            lblProveedor.Text = "";
-            lblFundamento.Text = "";
-        }
-        private void ConsultarPedido(int numPedido)
-        {
-            try
-            {
-                PedidoActual = PedidoService.ConsultarPedido(numPedido,
-                                                          FrmModuloModulo.AlmacenSelec);
-
-                if (PedidoActual != null){
-                    bsPedido.DataSource = PedidoActual;
-                    bsPedidoDetalle.DataSource = PedidoActual.PedidoDetalle;
-                   
-                    lblFundamento.Text = PedidoActual.Fundamento.ToString();
-                    lblArea.Text = PedidoActual.CatArea.ToString();
-                    lblProveedor.Text = PedidoActual.Proveedor.ToString();
-
-                    if(PedidoActual.Anexo != null)
-                        lblLicitacion.Text = PedidoActual.Anexo.ToString();
-
-                    listaError1.Items.Clear();
-                    lblNumErrors1.Text = string.Empty;
-                    SumTotal();
-                }
-                else
-                {
-                    MessageBox.Show(@"Folio no existe", @"Adquisiciones",
-                                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    
-                }
-            }
-            catch (Exception ee)
-            {
-                MessageBox.Show(@"Ocurrio un error en la consulta Reportalo a Dep. Sistemas",
-                    @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                Log.Error("Generado por:" + FrmModuloAcceso.UsuarioLog, ee);
-            }
-        }
-
-        private void GvPedidoDetalleCellValueChanged (object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
+        private void GvPedidoDetalleCellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
         {
             var rowSelectValue = e.Value;
 
             //Para realizar las validaciones
             PedidoActual.PedidoDetalle = bsPedidoDetalle.DataSource as List<PedidoDetalle>;
-
-            ////Posicionado en renglon
-            //if (e.Column.AbsoluteIndex == 0)
-            //{
-            //    if (TieneRepetidoRenglon((short?)(rowSelectValue)))
-            //    {
-
-            //        MessageBox.Show(@"Renglon repetido numero " + rowSelectValue,
-            //                        @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //        gvPedidoDetalle.SetRowCellValue(e.RowHandle, "Renglon", "");
-            //        return;
-            //    }
-            //}
 
             if (e.Column.AbsoluteIndex == 1)//posicionado en el articulo
             {
@@ -323,7 +284,7 @@ namespace Adquisiciones.View
                     //gvPedidoDetalle.SetRowCellValue(e.RowHandle, "PresentacionArt", "");
                     //gvAnexoDetalle.SetRowCellValue(e.RowHandle, "CveArt", "");
                     return;
-                }try
+                } try
                 {
                     var cveArt = (int)rowSelectValue;
 
@@ -370,14 +331,6 @@ namespace Adquisiciones.View
             }
         }
 
-
-        //private bool TieneRepetidoRenglon(short? renglon)
-        //{
-        //    var numOcurrencia = PedidoActual.PedidoDetalle.Count
-        //        (p => p.Renglon == renglon);
-
-        //    return numOcurrencia > 1;//}
-
         private bool TieneRepetidoArticulo(int? articulo)
         {
             var numOcurrencia = PedidoActual.PedidoDetalle.Count
@@ -409,6 +362,5 @@ namespace Adquisiciones.View
                 }
             }
         }
-
     }
 }

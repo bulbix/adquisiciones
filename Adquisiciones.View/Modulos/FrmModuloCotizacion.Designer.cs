@@ -51,8 +51,8 @@
             this.dtpFechacotizacion = new DevExpress.XtraEditors.DateEdit();
             this.lblFecha = new System.Windows.Forms.Label();
             this.lblLicitacion = new System.Windows.Forms.Label();
-            this.bsCotizacionDetalle = new System.Windows.Forms.BindingSource(this.components);
             this.gcCotizacionDetalle = new DevExpress.XtraGrid.GridControl();
+            this.bsCotizacionDetalle = new System.Windows.Forms.BindingSource(this.components);
             this.gvCotizacionDetalle = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -61,11 +61,10 @@
             this.gridColumn11 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn12 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn13 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.btnGuardar = new DevExpress.XtraEditors.SimpleButton();
-            this.btnConsultar = new DevExpress.XtraEditors.SimpleButton();
-            this.btnNuevo = new DevExpress.XtraEditors.SimpleButton();
-            this.lblNumErrors = new System.Windows.Forms.Label();
-            this.listaError = new System.Windows.Forms.ListBox();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
+            this.splitContainerControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl2)).BeginInit();
+            this.splitContainerControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gcDatosGenerales)).BeginInit();
             this.gcDatosGenerales.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.searchLookUpProv.Properties)).BeginInit();
@@ -76,10 +75,24 @@
             ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEditAnexo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtpFechacotizacion.Properties.VistaTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtpFechacotizacion.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bsCotizacionDetalle)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gcCotizacionDetalle)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsCotizacionDetalle)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvCotizacionDetalle)).BeginInit();
             this.SuspendLayout();
+            // 
+            // splitContainerControl1
+            // 
+            this.splitContainerControl1.Panel2.Controls.Add(this.gcCotizacionDetalle);
+            this.splitContainerControl1.SplitterPosition = 291;
+            // 
+            // splitContainerControl2
+            // 
+            this.splitContainerControl2.Panel2.Controls.Add(this.gcDatosGenerales);
+            this.splitContainerControl2.Size = new System.Drawing.Size(721, 291);
+            // 
+            // cmdConsultar
+            // 
+            this.cmdConsultar.Click += new System.EventHandler(this.cmdConsultar_Click);
             // 
             // gcDatosGenerales
             // 
@@ -95,11 +108,11 @@
             this.gcDatosGenerales.Controls.Add(this.dtpFechacotizacion);
             this.gcDatosGenerales.Controls.Add(this.lblFecha);
             this.gcDatosGenerales.Controls.Add(this.lblLicitacion);
-            this.gcDatosGenerales.Dock = System.Windows.Forms.DockStyle.Top;
+            this.gcDatosGenerales.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gcDatosGenerales.Location = new System.Drawing.Point(0, 0);
             this.gcDatosGenerales.Name = "gcDatosGenerales";
-            this.gcDatosGenerales.Size = new System.Drawing.Size(903, 160);
-            this.gcDatosGenerales.TabIndex = 7;
+            this.gcDatosGenerales.Size = new System.Drawing.Size(721, 185);
+            this.gcDatosGenerales.TabIndex = 8;
             this.gcDatosGenerales.Text = "Datos Generales";
             // 
             // lblProveedor
@@ -306,17 +319,15 @@
             // 
             // gcCotizacionDetalle
             // 
-            this.gcCotizacionDetalle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
             this.gcCotizacionDetalle.DataSource = this.bsCotizacionDetalle;
-            this.gcCotizacionDetalle.Location = new System.Drawing.Point(1, 178);
+            this.gcCotizacionDetalle.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gcCotizacionDetalle.Location = new System.Drawing.Point(0, 0);
             this.gcCotizacionDetalle.MainView = this.gvCotizacionDetalle;
             this.gcCotizacionDetalle.Name = "gcCotizacionDetalle";
-            this.gcCotizacionDetalle.Size = new System.Drawing.Size(864, 125);
-            this.gcCotizacionDetalle.TabIndex = 108;
+            this.gcCotizacionDetalle.Size = new System.Drawing.Size(721, 156);
+            this.gcCotizacionDetalle.TabIndex = 109;
             this.gcCotizacionDetalle.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvCotizacionDetalle});
-            this.gcCotizacionDetalle.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gvCotizacionDetalle_KeyDown);
             // 
             // gvCotizacionDetalle
             // 
@@ -529,76 +540,17 @@
             this.gridColumn13.VisibleIndex = 6;
             this.gridColumn13.Width = 199;
             // 
-            // btnGuardar
-            // 
-            this.btnGuardar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnGuardar.Image = global::Adquisiciones.View.Properties.Resources.save_icon;
-            this.btnGuardar.Location = new System.Drawing.Point(567, 317);
-            this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(104, 74);
-            this.btnGuardar.TabIndex = 115;
-            this.btnGuardar.Text = "Guardar";
-            this.btnGuardar.Click += new System.EventHandler(this.BtnGuardarClick);
-            // 
-            // btnConsultar
-            // 
-            this.btnConsultar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnConsultar.Image = global::Adquisiciones.View.Properties.Resources.busqueda;
-            this.btnConsultar.Location = new System.Drawing.Point(699, 317);
-            this.btnConsultar.Name = "btnConsultar";
-            this.btnConsultar.Size = new System.Drawing.Size(96, 74);
-            this.btnConsultar.TabIndex = 114;
-            this.btnConsultar.Text = "Consultar";
-            this.btnConsultar.Click += new System.EventHandler(this.BtnConsultarClick);
-            // 
-            // btnNuevo
-            // 
-            this.btnNuevo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnNuevo.Image = global::Adquisiciones.View.Properties.Resources.reportes;
-            this.btnNuevo.Location = new System.Drawing.Point(425, 317);
-            this.btnNuevo.Name = "btnNuevo";
-            this.btnNuevo.Size = new System.Drawing.Size(117, 74);
-            this.btnNuevo.TabIndex = 113;
-            this.btnNuevo.Text = "Nuevo";
-            this.btnNuevo.Click += new System.EventHandler(this.BtnNuevoClick);
-            // 
-            // lblNumErrors
-            // 
-            this.lblNumErrors.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lblNumErrors.AutoSize = true;
-            this.lblNumErrors.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNumErrors.Location = new System.Drawing.Point(49, 306);
-            this.lblNumErrors.Name = "lblNumErrors";
-            this.lblNumErrors.Size = new System.Drawing.Size(58, 13);
-            this.lblNumErrors.TabIndex = 112;
-            this.lblNumErrors.Text = "0 Errores";
-            // 
-            // listaError
-            // 
-            this.listaError.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.listaError.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listaError.ForeColor = System.Drawing.Color.Red;
-            this.listaError.FormattingEnabled = true;
-            this.listaError.ItemHeight = 16;
-            this.listaError.Location = new System.Drawing.Point(46, 322);
-            this.listaError.Name = "listaError";
-            this.listaError.Size = new System.Drawing.Size(358, 68);
-            this.listaError.TabIndex = 111;
-            // 
             // FrmModuloCotizacion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(903, 458);
-            this.Controls.Add(this.btnGuardar);
-            this.Controls.Add(this.btnConsultar);
-            this.Controls.Add(this.btnNuevo);
-            this.Controls.Add(this.lblNumErrors);
-            this.Controls.Add(this.listaError);
-            this.Controls.Add(this.gcCotizacionDetalle);
-            this.Controls.Add(this.gcDatosGenerales);
+            this.ClientSize = new System.Drawing.Size(721, 453);
             this.Name = "FrmModuloCotizacion";
             this.Text = "Captura::Cotizacion";
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();
+            this.splitContainerControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl2)).EndInit();
+            this.splitContainerControl2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gcDatosGenerales)).EndInit();
             this.gcDatosGenerales.ResumeLayout(false);
             this.gcDatosGenerales.PerformLayout();
@@ -610,35 +562,35 @@
             ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEditAnexo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtpFechacotizacion.Properties.VistaTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtpFechacotizacion.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bsCotizacionDetalle)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gcCotizacionDetalle)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsCotizacionDetalle)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvCotizacionDetalle)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
         private DevExpress.XtraEditors.GroupControl gcDatosGenerales;
+        private DevExpress.XtraEditors.LabelControl lblProveedor;
+        private System.Windows.Forms.Label label3;
+        private DevExpress.XtraEditors.LabelControl lblInstituto;
+        private DevExpress.XtraEditors.LabelControl lblDesLicitacion;
+        private DevExpress.XtraEditors.SearchLookUpEdit searchLookUpProv;
+        private DevExpress.XtraGrid.Views.Grid.GridView searchLookUpEditProv;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
         private DevExpress.XtraEditors.SearchLookUpEdit searchLookUpAnexo;
-        private System.Windows.Forms.BindingSource bsAnexos;
         private DevExpress.XtraGrid.Views.Grid.GridView searchLookUpEditAnexo;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
         private System.Windows.Forms.Label label45;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private DevExpress.XtraEditors.DateEdit dtpFechacotizacion;
         private System.Windows.Forms.Label lblFecha;
         private System.Windows.Forms.Label lblLicitacion;
-        private DevExpress.XtraEditors.SearchLookUpEdit searchLookUpProv;
-        private DevExpress.XtraGrid.Views.Grid.GridView searchLookUpEditProv;
-        private System.Windows.Forms.BindingSource bsProveedor;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
-        private System.Windows.Forms.BindingSource bsCotizacionDetalle;
         private DevExpress.XtraGrid.GridControl gcCotizacionDetalle;
         private DevExpress.XtraGrid.Views.Grid.GridView gvCotizacionDetalle;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn7;
@@ -648,14 +600,8 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn11;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn12;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn13;
-        private DevExpress.XtraEditors.SimpleButton btnGuardar;
-        private DevExpress.XtraEditors.SimpleButton btnConsultar;
-        private DevExpress.XtraEditors.SimpleButton btnNuevo;
-        private System.Windows.Forms.Label lblNumErrors;
-        private System.Windows.Forms.ListBox listaError;
-        private DevExpress.XtraEditors.LabelControl lblInstituto;
-        private DevExpress.XtraEditors.LabelControl lblDesLicitacion;
-        private DevExpress.XtraEditors.LabelControl lblProveedor;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.BindingSource bsCotizacionDetalle;
+        private System.Windows.Forms.BindingSource bsProveedor;
+        private System.Windows.Forms.BindingSource bsAnexos;
     }
 }

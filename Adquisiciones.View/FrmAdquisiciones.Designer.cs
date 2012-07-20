@@ -52,6 +52,8 @@
             this.txtAlmacenStatus = new DevExpress.XtraBars.BarStaticItem();
             this.btnCambiarAlma = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem8 = new DevExpress.XtraBars.BarButtonItem();
+            this.ribbonPageCategory1 = new DevExpress.XtraBars.Ribbon.RibbonPageCategory();
+            this.ribbonPageCategory2 = new DevExpress.XtraBars.Ribbon.RibbonPageCategory();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup5 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -68,8 +70,6 @@
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
-            this.ribbonPageCategory1 = new DevExpress.XtraBars.Ribbon.RibbonPageCategory();
-            this.ribbonPageCategory2 = new DevExpress.XtraBars.Ribbon.RibbonPageCategory();
             this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).BeginInit();
@@ -300,6 +300,18 @@
             this.barButtonItem8.Name = "barButtonItem8";
             this.barButtonItem8.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem8_ItemClick);
             // 
+            // ribbonPageCategory1
+            // 
+            this.ribbonPageCategory1.Color = System.Drawing.Color.Empty;
+            this.ribbonPageCategory1.Name = "ribbonPageCategory1";
+            this.ribbonPageCategory1.Text = "ribbonPageCategory1";
+            // 
+            // ribbonPageCategory2
+            // 
+            this.ribbonPageCategory2.Color = System.Drawing.Color.Empty;
+            this.ribbonPageCategory2.Name = "ribbonPageCategory2";
+            this.ribbonPageCategory2.Text = "ribbonPageCategory2";
+            // 
             // ribbonPage1
             // 
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -424,18 +436,6 @@
             this.barDockControlRight.Location = new System.Drawing.Point(1123, 0);
             this.barDockControlRight.Size = new System.Drawing.Size(0, 449);
             // 
-            // ribbonPageCategory1
-            // 
-            this.ribbonPageCategory1.Color = System.Drawing.Color.Empty;
-            this.ribbonPageCategory1.Name = "ribbonPageCategory1";
-            this.ribbonPageCategory1.Text = "ribbonPageCategory1";
-            // 
-            // ribbonPageCategory2
-            // 
-            this.ribbonPageCategory2.Color = System.Drawing.Color.Empty;
-            this.ribbonPageCategory2.Name = "ribbonPageCategory2";
-            this.ribbonPageCategory2.Text = "ribbonPageCategory2";
-            // 
             // defaultLookAndFeel1
             // 
             this.defaultLookAndFeel1.LookAndFeel.SkinName = "Black";
@@ -458,7 +458,7 @@
             this.Name = "FrmAdquisiciones";
             this.Ribbon = this.ribbon;
             this.StatusBar = this.ribbonStatusBar;
-            this.Text = "Adquisiciones V 1.1 @ Instituto Nacional Rehabilitación";
+            this.Text = "Adquisiciones V 1.0 @ Instituto Nacional Rehabilitación";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FrmAdquisicionesLoad);
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).EndInit();

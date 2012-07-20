@@ -87,7 +87,6 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(241)))), ((int)(((byte)(254)))));
             this.ClientSize = new System.Drawing.Size(704, 196);
             this.Controls.Add(this.btnAdqconacyt5000);
             this.Controls.Add(this.btnAdq5000);

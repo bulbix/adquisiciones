@@ -6,13 +6,13 @@ using Adquisiciones.Data.Dao.Catalogos;
 using Adquisiciones.Data.Entities;
 using DevExpress.XtraEditors;
 using Spring.Context.Support;
-using Form = Spring.Windows.Forms.Form;
+
 
 namespace Adquisiciones.View
 {
     ///<summary>
     ///</summary>
-    public partial class FrmModuloModulo : Form
+    public partial class FrmModuloModulo : XtraForm
     {        
         ///<summary>
         ///</summary>
@@ -25,6 +25,9 @@ namespace Adquisiciones.View
         public FrmModuloModulo()
         {
             InitializeComponent();
+
+            var ctx = ContextRegistry.GetContext();
+            AlmacenDao = ctx["almacenDao"] as IAlmacenDao;
 
             var usuariosModulo = FrmModuloAcceso.UsuarioLog.UsuarioModulo;
 

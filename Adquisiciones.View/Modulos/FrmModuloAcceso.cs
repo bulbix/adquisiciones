@@ -11,13 +11,13 @@ using DevExpress.XtraEditors;
 using Spring.Context;
 using Spring.Context.Support;
 using Spring.Windows.Forms;
-using Form = Spring.Windows.Forms.Form;
+
 
 namespace Adquisiciones.View
 {
     ///<summary>
     ///</summary>
-    public partial class FrmModuloAcceso : Form
+    public partial class FrmModuloAcceso : XtraForm
     {
         ///<summary>
         ///</summary>
@@ -33,6 +33,8 @@ namespace Adquisiciones.View
         public FrmModuloAcceso()
         {
             InitializeComponent();
+            var ctx = ContextRegistry.GetContext();
+            UsuarioDao = ctx["usuarioDao"] as IUsuarioDao;
         }
 
         private void BtnAceptarClick(object sender, EventArgs e)
@@ -135,11 +137,11 @@ namespace Adquisiciones.View
             // 
             // defaultLookAndFeel1
             // 
-            this.defaultLookAndFeel1.LookAndFeel.SkinName = "Money Twins";
+            this.defaultLookAndFeel1.LookAndFeel.SkinName = "Black";
             // 
             // FrmModuloAcceso
             // 
-            this.ClientSize = new System.Drawing.Size(550, 340);
+            this.ClientSize = new System.Drawing.Size(558, 351);
             this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.labelControl2);
             this.Controls.Add(this.labelControl1);
@@ -147,12 +149,11 @@ namespace Adquisiciones.View
             this.Controls.Add(this.cmdCancelar);
             this.Controls.Add(this.cmdAceptar);
             this.Controls.Add(this.pictureBox1);
-            //this.LookAndFeel.SkinName = "Money Twins";
             this.MaximumSize = new System.Drawing.Size(566, 378);
             this.MinimumSize = new System.Drawing.Size(566, 378);
             this.Name = "FrmModuloAcceso";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Adquisiciones V 1.1 @ Instituto Nacional Rehabilitación";
+            this.Text = "Adquisiciones V 1.0 @ Instituto Nacional Rehabilitación";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtId.Properties)).EndInit();
             this.ResumeLayout(false);
