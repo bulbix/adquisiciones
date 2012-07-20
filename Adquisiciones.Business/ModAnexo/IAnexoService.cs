@@ -51,9 +51,5 @@ namespace Adquisiciones.Business.ModAnexo
         ///<returns></returns>
         Anexo ConsultarAnexo(string numAnexo, Almacen almacen);
 
-        ///<summary>
-        ///</summary>
-        ///<param name="anexo"></param>
-        void EliminaAnexo(Anexo anexo);
     }
 }

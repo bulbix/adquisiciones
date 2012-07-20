@@ -59,6 +59,7 @@
       join fetch p.Proveedor 
       left join fetch p.Anexo 
       left join fetch p.Requisicion 
+      join fetch p.Usuario 
       where year(p.FechaPedido) = :anioActual 
       and p.Almacen = :almacen]]>
   </query>

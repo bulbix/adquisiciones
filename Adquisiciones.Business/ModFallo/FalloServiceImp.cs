@@ -14,7 +14,7 @@ using Spring.Transaction.Interceptor;
 
 namespace Adquisiciones.Business.ModFallo
 {
-    public class FalloServiceImp : IFalloService
+    public class FalloServiceImp : IFalloService,IFormBusqueda
     {public event FalloEventHandler FalloProceso;
 
         public IArticuloDao ArticuloDao { get; set; }
@@ -137,13 +137,6 @@ namespace Adquisiciones.Business.ModFallo
             return FalloDao.ConsultarFalloCompleto(anexo);
         }
 
-        [Transaction]
-        public void EliminaFallo(Fallo fallo)
-        {
-            FalloDao.Delete(fallo);
-        }
-
-
         /// <summary> Para delegar el porcentaje en la vista
         /// </summary>
         /// <param name="e"></param>
@@ -154,6 +147,18 @@ namespace Adquisiciones.Business.ModFallo
                 FalloProceso(this, e);
 
             }
+        }
+
+         [Transaction(ReadOnly = true)]
+        public object ConsultarEntityAll(Almacen almacen, string nombreEntity)
+         {
+             return FalloDao.CargarFallos(almacen);
+         }
+
+         [Transaction]
+        public void EliminarEntity(object entity, string nombreEntity)
+        {
+            FalloDao.Delete(entity as Fallo);
         }
     }
 }

@@ -12,7 +12,7 @@ namespace Adquisiciones.Business.ModCotizacion
 {
     ///<summary>
     ///</summary>
-    public class CotizacionServiceImp : ICotizacionService
+    public class CotizacionServiceImp : ICotizacionService,IFormBusqueda
     {
         ///<summary>
         ///</summary>
@@ -130,10 +130,16 @@ namespace Adquisiciones.Business.ModCotizacion
 
         }
 
-        [Transaction]
-        public void EliminaCotizacion(Cotizacion cotizacion)
+         [Transaction(ReadOnly = true)]
+        public object ConsultarEntityAll(Almacen almacen, string nombreEntity)
+         {
+             return CotizacionDao.CargarCotizaciones(almacen);
+         }
+
+         [Transaction]
+        public void EliminarEntity(object entity, string nombreEntity)
         {
-            CotizacionDao.Delete(cotizacion);
+            CotizacionDao.Delete(entity as Cotizacion);
         }
     }
 }

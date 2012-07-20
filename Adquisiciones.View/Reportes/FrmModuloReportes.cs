@@ -52,8 +52,9 @@ namespace Adquisiciones.View
                     break;
                 case "reporteCotizacion":
                     ReporteCotizacion(Entity as Cotizacion);
-                    break;case "reporteTabla":
-                    ReporteFallo(Entity as Anexo);
+                    break;
+                case "reporteTabla":
+                    ReporteFallo(Entity as Fallo);
                     break;
                 case "reportePedido":
                     ReportePedido(Entity as Pedido);
@@ -147,10 +148,10 @@ namespace Adquisiciones.View
             Text = @"ReporteCotizacion::" + cotizacion;
         }
 
-        private void ReporteFallo(Anexo anexo)
+        private void ReporteFallo(Fallo fallo)
         {
-         
 
+            var anexo = fallo.Anexo;
             anexo = FalloService.AnexoDao.
                      ConsultaAnexo(anexo.NumeroAnexo, anexo.Almacen);
 

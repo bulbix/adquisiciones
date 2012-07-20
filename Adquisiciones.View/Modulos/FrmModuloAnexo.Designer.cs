@@ -381,7 +381,6 @@
             this.gvAnexoDetalle.OptionsView.ShowGroupPanel = false;
             this.gvAnexoDetalle.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
             new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.gridColumn4, DevExpress.Data.ColumnSortOrder.Descending)});
-            
             this.gvAnexoDetalle.CellValueChanged += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.DgvAnexoCellValueChanged);
             this.gvAnexoDetalle.KeyDown += new System.Windows.Forms.KeyEventHandler(this.GvAnexoDetalleKeyDown);
             // 

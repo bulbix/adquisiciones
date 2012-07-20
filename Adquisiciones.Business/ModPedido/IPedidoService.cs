@@ -101,8 +101,5 @@ namespace Adquisiciones.Business.ModPedido
         /// <returns></returns>
         List<PedidoDetalle> CargarPedidoDetalle(Anexo anexo);
 
-        void EliminaPedido(Pedido pedido);
-
-
     }
 }

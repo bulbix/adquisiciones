@@ -10,13 +10,8 @@
   
   <!-- NHibernate Configuration -->
   <object id="NHibernateSessionFactory" 
-          type="Adquisiciones.Data.Dao.CustomLocalSessionFactory, Adquisiciones.Data">
-    
-    <!--<property name="ConfigFilenames">
-      <list>
-        <value>F:\Proyectos\adquisiciones\trunk\Adquisiciones.Data\Dao\NHibernate.xml</value>
-      </list>
-    </property>-->
+          type="Adquisiciones.Data.Dao.CustomLocalSessionFactory, Adquisiciones.Data">    
+  
     <property name="MappingAssemblies">
       <list>
         <value>Adquisiciones.Data</value>
@@ -29,12 +24,14 @@
        
         <entry key="dialect" value="NHibernate.Dialect.InformixDialect1000"/>
         <entry key="connection.driver_class" value="NHibernate.Driver.IfxDriver"/>
-        <entry key="connection.connection_string" value="Server=ol_inrserver; DataBase=almacenes; User Id=informix; Password=informix; Host=192.168.10.1; Protocol=olsoctcp; service=1526;"/>
-       
+        <entry key="connection.connection_string" value="Server=ol_inrserver;
+               DataBase=almacenes; User Id=informix; Password=informix; Host=192.168.10.1;
+               Protocol=olsoctcp; service=1526;"/>       
        
         <!--<entry key="dialect" value="NHibernate.Dialect.PostgreSQLDialect"/>
         <entry key="connection.driver_class" value="NHibernate.Driver.NpgsqlDriver"/>
-        <entry key="connection.connection_string" value="Server=localhost; DataBase=adquisiciones; User Id=postgres; Password=garbage"/>
+        <entry key="connection.connection_string" value="Server=localhost; DataBase=adquisiciones;
+        User Id=postgres; Password=garbage"/>
         <entry key="hbm2ddl.auto" value="create"/>-->
         
         <entry key="show_sql" value="true" />
@@ -103,8 +100,6 @@ parent="parentSession"/>
   
   <!-- Dao's Auditoria -->
   <object id="objectDao" type="Adquisiciones.Data.Dao.ObjectDaoImp, Adquisiciones.Data"    
-  parent="parentSession"/>
-
-  <!--<tx:attribute-driven />-->
+  parent="parentSession"/>  
   
 </objects>

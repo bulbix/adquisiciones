@@ -45,10 +45,10 @@
 
   <object id="auditService" type="Adquisiciones.Business.Audit.AuditServiceImp, Adquisiciones.Business">
     <property name="ObjectDao" ref="objectDao"/>
-    <!--<property name="IdsDetalleHistorico">
-      <dictionary key-type="string" value-type="System.Collections.GenericList.List">
-      </dictionary>
-    </property>-->
+    <property name="IdsDetalleHistorico">
+      <dictionary key-type="string" 
+                  value-type="Adquisiciones.Business.Audit.Historico,  Adquisiciones.Business"/>      
+    </property>
   </object>
 
   <object id="historicoAfterAdvice" 
@@ -73,7 +73,7 @@
     <property name="patterns" >
       <list>
         <value>Guardar</value>
-        <value>Elimina</value>
+        <value>EliminarEntity</value>
       </list>
     </property>
     <property name="advice" ref="historicoBeforeAdvice"/>
@@ -92,51 +92,7 @@
       </list>
     </property>
   </object>
-   
   
-  <!--<object id="anexoServiceProxy" type="Spring.Aop.Framework.ProxyFactoryObject">
-    <property name="target" ref ="anexoService"/>
-    <property name="interceptorNames">
-      <list>
-        <value>historicoGuardarAdvice</value>
-      </list>
-    </property>
-  </object>
-
-  <object id="cotizacionServiceProxy" type="Spring.Aop.Framework.ProxyFactoryObject">
-    <property name="target" ref ="cotizacionService"/>
-    <property name="interceptorNames">
-      <list>
-        <value>historicoGuardarAdvice</value>
-      </list>
-    </property>
-  </object>
-
-  <object id="falloServiceProxy" type="Spring.Aop.Framework.ProxyFactoryObject">
-    <property name="target" ref ="falloService"/>
-    <property name="interceptorNames">
-      <list>
-        <value>historicoGuardarAdvice</value>
-      </list>
-    </property>
-  </object>-->
- 
-
-  <!--<tx:advice id="transactionAdvice" transaction-manager="transactionManager"/>
-  <object type="Spring.Aop.Framework.AutoProxy.ObjectNameAutoProxyCreator, Spring.Aop">
-    <property name="ObjectNames">
-      <list>
-        <value>*Dao</value>
-        
-      </list>
-    </property>
-    <property name="InterceptorNames">
-      <list>
-        <value>transactionAdvice</value>
-      </list>
-    </property>
-  </object>-->
-
-  <tx:attribute-driven transaction-manager="transactionManager" order="1" />
+  <tx:attribute-driven/>
 
 </objects>

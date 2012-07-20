@@ -48,7 +48,5 @@ namespace Adquisiciones.Business.ModCotizacion
 
         bool ExisteCotizacionDetalle(IList<CotizacionDetalle> detalle);
 
-        void EliminaCotizacion(Cotizacion cotizacion);
-
     }
 }

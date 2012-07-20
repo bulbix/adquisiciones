@@ -1,5 +1,4 @@
-﻿namespace Adquisiciones.View
-{
+﻿namespace Adquisiciones.View{
     partial class FrmBusquedaPedido
     {
         /// <summary>
@@ -28,14 +27,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
-            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
-            this.cmdConsultar = new DevExpress.XtraEditors.SimpleButton();
-            this.cmdImprimir = new DevExpress.XtraEditors.SimpleButton();
-            this.cmdBuscar = new DevExpress.XtraEditors.SimpleButton();
             this.gcPedido = new DevExpress.XtraGrid.GridControl();
-            this.bsPedidos = new System.Windows.Forms.BindingSource(this.components);
             this.gvPedido = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -44,82 +36,30 @@
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.cmdEliminar = new DevExpress.XtraEditors.SimpleButton();
+            this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl2)).BeginInit();
+            this.splitContainerControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             this.splitContainerControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bsSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gcPedido)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bsPedidos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvPedido)).BeginInit();
             this.SuspendLayout();
             // 
-            // splitContainerControl1
+            // splitContainerControl2
             // 
-            this.splitContainerControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainerControl1.Horizontal = false;
-            this.splitContainerControl1.Location = new System.Drawing.Point(0, 0);
-            this.splitContainerControl1.Name = "splitContainerControl1";
-            this.splitContainerControl1.Panel1.Controls.Add(this.cmdEliminar);
-            this.splitContainerControl1.Panel1.Controls.Add(this.simpleButton1);
-            this.splitContainerControl1.Panel1.Controls.Add(this.cmdConsultar);
-            this.splitContainerControl1.Panel1.Controls.Add(this.cmdImprimir);
-            this.splitContainerControl1.Panel1.Controls.Add(this.cmdBuscar);
-            this.splitContainerControl1.Panel1.Text = "Panel1";
-            this.splitContainerControl1.Panel2.Controls.Add(this.gcPedido);
-            this.splitContainerControl1.Panel2.Text = "Panel2";
-            this.splitContainerControl1.Size = new System.Drawing.Size(861, 559);
-            this.splitContainerControl1.SplitterPosition = 90;
-            this.splitContainerControl1.TabIndex = 0;
-            this.splitContainerControl1.Text = "splitContainerControl1";
-            // 
-            // simpleButton1
-            // 
-            this.simpleButton1.Image = global::Adquisiciones.View.Properties.Resources.printer;
-            this.simpleButton1.Location = new System.Drawing.Point(501, 22);
-            this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(145, 57);
-            this.simpleButton1.TabIndex = 5;
-            this.simpleButton1.Text = "Imprimir Pedido";
-            this.simpleButton1.Click += new System.EventHandler(this.SimpleButton1Click);
-            // 
-            // cmdConsultar
-            // 
-            this.cmdConsultar.Image = global::Adquisiciones.View.Properties.Resources.busqueda;
-            this.cmdConsultar.Location = new System.Drawing.Point(179, 22);
-            this.cmdConsultar.Name = "cmdConsultar";
-            this.cmdConsultar.Size = new System.Drawing.Size(133, 57);
-            this.cmdConsultar.TabIndex = 3;
-            this.cmdConsultar.Text = "Consultar";
-            this.cmdConsultar.Click += new System.EventHandler(this.CmdConsultarClick);
-            // 
-            // cmdImprimir
-            // 
-            this.cmdImprimir.Image = global::Adquisiciones.View.Properties.Resources.printer;
-            this.cmdImprimir.Location = new System.Drawing.Point(335, 22);
-            this.cmdImprimir.Name = "cmdImprimir";
-            this.cmdImprimir.Size = new System.Drawing.Size(145, 57);
-            this.cmdImprimir.TabIndex = 1;
-            this.cmdImprimir.Text = "Imprimir Listado";
-            this.cmdImprimir.Click += new System.EventHandler(this.CmdImprimirClick);
-            // 
-            // cmdBuscar
-            // 
-            this.cmdBuscar.Image = global::Adquisiciones.View.Properties.Resources.busqueda;
-            this.cmdBuscar.Location = new System.Drawing.Point(12, 22);
-            this.cmdBuscar.Name = "cmdBuscar";
-            this.cmdBuscar.Size = new System.Drawing.Size(133, 57);
-            this.cmdBuscar.TabIndex = 0;
-            this.cmdBuscar.Text = "Buscar";
-            this.cmdBuscar.Click += new System.EventHandler(this.CmdBuscarClick);
+            this.splitContainerControl2.Panel2.Controls.Add(this.gcPedido);
             // 
             // gcPedido
             // 
-            this.gcPedido.DataSource = this.bsPedidos;
+            this.gcPedido.DataSource = this.bsSource;
             this.gcPedido.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gcPedido.Location = new System.Drawing.Point(0, 0);
             this.gcPedido.MainView = this.gvPedido;
             this.gcPedido.Name = "gcPedido";
-            this.gcPedido.Size = new System.Drawing.Size(861, 463);
-            this.gcPedido.TabIndex = 0;
+            this.gcPedido.Size = new System.Drawing.Size(824, 399);
+            this.gcPedido.TabIndex = 1;
             this.gcPedido.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvPedido});
             // 
@@ -132,7 +72,9 @@
             this.gridColumn4,
             this.gridColumn1,
             this.gridColumn3,
-            this.gridColumn2});
+            this.gridColumn2,
+            this.gridColumn8,
+            this.gridColumn9});
             this.gvPedido.GridControl = this.gcPedido;
             this.gvPedido.Name = "gvPedido";
             this.gvPedido.OptionsBehavior.Editable = false;
@@ -150,7 +92,7 @@
             this.gridColumn7.UnboundType = DevExpress.Data.UnboundColumnType.String;
             this.gridColumn7.Visible = true;
             this.gridColumn7.VisibleIndex = 2;
-            this.gridColumn7.Width = 63;
+            this.gridColumn7.Width = 65;
             // 
             // gridColumn6
             // 
@@ -160,7 +102,7 @@
             this.gridColumn6.UnboundType = DevExpress.Data.UnboundColumnType.String;
             this.gridColumn6.Visible = true;
             this.gridColumn6.VisibleIndex = 6;
-            this.gridColumn6.Width = 259;
+            this.gridColumn6.Width = 226;
             // 
             // gridColumn5
             // 
@@ -170,7 +112,7 @@
             this.gridColumn5.UnboundType = DevExpress.Data.UnboundColumnType.String;
             this.gridColumn5.Visible = true;
             this.gridColumn5.VisibleIndex = 4;
-            this.gridColumn5.Width = 212;
+            this.gridColumn5.Width = 219;
             // 
             // gridColumn4
             // 
@@ -180,7 +122,7 @@
             this.gridColumn4.UnboundType = DevExpress.Data.UnboundColumnType.String;
             this.gridColumn4.Visible = true;
             this.gridColumn4.VisibleIndex = 3;
-            this.gridColumn4.Width = 127;
+            this.gridColumn4.Width = 131;
             // 
             // gridColumn1
             // 
@@ -190,7 +132,7 @@
             this.gridColumn1.UnboundType = DevExpress.Data.UnboundColumnType.DateTime;
             this.gridColumn1.Visible = true;
             this.gridColumn1.VisibleIndex = 0;
-            this.gridColumn1.Width = 51;
+            this.gridColumn1.Width = 52;
             // 
             // gridColumn3
             // 
@@ -200,7 +142,7 @@
             this.gridColumn3.UnboundType = DevExpress.Data.UnboundColumnType.Integer;
             this.gridColumn3.Visible = true;
             this.gridColumn3.VisibleIndex = 1;
-            this.gridColumn3.Width = 72;
+            this.gridColumn3.Width = 74;
             // 
             // gridColumn2
             // 
@@ -211,31 +153,45 @@
             this.gridColumn2.UnboundType = DevExpress.Data.UnboundColumnType.Boolean;
             this.gridColumn2.Visible = true;
             this.gridColumn2.VisibleIndex = 5;
-            this.gridColumn2.Width = 59;
+            this.gridColumn2.Width = 61;
             // 
-            // cmdEliminar
+            // gridColumn8
             // 
-            this.cmdEliminar.Image = global::Adquisiciones.View.Properties.Resources.cancelar;
-            this.cmdEliminar.Location = new System.Drawing.Point(669, 22);
-            this.cmdEliminar.Name = "cmdEliminar";
-            this.cmdEliminar.Size = new System.Drawing.Size(133, 57);
-            this.cmdEliminar.TabIndex = 8;
-            this.cmdEliminar.Text = "Eliminar";
-            this.cmdEliminar.Click += new System.EventHandler(this.cmdEliminar_Click);
+            this.gridColumn8.Caption = "Modifico";
+            this.gridColumn8.FieldName = "Usuario";
+            this.gridColumn8.Name = "gridColumn8";
+            this.gridColumn8.OptionsColumn.AllowEdit = false;
+            this.gridColumn8.OptionsColumn.ReadOnly = true;
+            this.gridColumn8.UnboundType = DevExpress.Data.UnboundColumnType.String;
+            this.gridColumn8.Visible = true;
+            this.gridColumn8.VisibleIndex = 7;
+            this.gridColumn8.Width = 97;
+            // 
+            // gridColumn9
+            // 
+            this.gridColumn9.Caption = "Fecha Mod";
+            this.gridColumn9.DisplayFormat.FormatString = "dd/MM/yyyy HH:mm";
+            this.gridColumn9.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.gridColumn9.FieldName = "FechaModificacion";
+            this.gridColumn9.Name = "gridColumn9";
+            this.gridColumn9.UnboundType = DevExpress.Data.UnboundColumnType.DateTime;
+            this.gridColumn9.Visible = true;
+            this.gridColumn9.VisibleIndex = 8;
+            this.gridColumn9.Width = 104;
             // 
             // FrmBusquedaPedido
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(861, 559);
-            this.Controls.Add(this.splitContainerControl1);
+            this.ClientSize = new System.Drawing.Size(824, 500);
             this.Name = "FrmBusquedaPedido";
             this.Text = "Pedido::Busqueda";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl2)).EndInit();
+            this.splitContainerControl2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();
             this.splitContainerControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.bsSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gcPedido)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bsPedidos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvPedido)).EndInit();
             this.ResumeLayout(false);
 
@@ -243,22 +199,16 @@
 
         #endregion
 
-        private DevExpress.XtraEditors.SplitContainerControl splitContainerControl1;
-        private DevExpress.XtraEditors.SimpleButton cmdBuscar;
         private DevExpress.XtraGrid.GridControl gcPedido;
         private DevExpress.XtraGrid.Views.Grid.GridView gvPedido;
-        private DevExpress.XtraEditors.SimpleButton cmdImprimir;
-        private System.Windows.Forms.BindingSource bsPedidos;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
-        private DevExpress.XtraEditors.SimpleButton cmdConsultar;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
-        private DevExpress.XtraEditors.SimpleButton simpleButton1;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn7;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn7;
-        private DevExpress.XtraEditors.SimpleButton cmdEliminar;
-
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn8;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn9;
     }
 }

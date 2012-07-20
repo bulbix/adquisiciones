@@ -15,7 +15,7 @@ namespace Adquisiciones.Business.ModPedido
     /// <summary>
     /// 
     /// </summary>
-    public class PedidoServiceImp : IPedidoService
+    public class PedidoServiceImp : IPedidoService,IFormBusqueda
     {
         public IRequisicionDao RequisicionDao { get; set; }
 
@@ -264,10 +264,16 @@ namespace Adquisiciones.Business.ModPedido
             return pedidosDetalle;
         }
 
-        [Transaction]
-        public void EliminaPedido(Pedido pedido)
+         [Transaction(ReadOnly = true)]
+        public object ConsultarEntityAll(Almacen almacen, string nombreEntity)
+         {
+             return PedidoDao.CargarPedidos(almacen);
+         }
+
+         [Transaction]
+        public void EliminarEntity(object entity, string nombreEntity)
         {
-            PedidoDao.Delete(pedido);
+            PedidoDao.Delete(entity as Pedido);
         }
     }
 }

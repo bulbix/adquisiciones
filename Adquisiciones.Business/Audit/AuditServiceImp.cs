@@ -19,11 +19,6 @@ namespace Adquisiciones.Business.Audit
 
         public Dictionary<string,Historico> IdsDetalleHistorico { get; set; }
 
-        public AuditServiceImp()
-        {
-            IdsDetalleHistorico = new Dictionary<string, Historico>();
-        }
-
         /// <summary>
         /// COnstruye historico por reflexion
         /// </summary>
@@ -44,6 +39,7 @@ namespace Adquisiciones.Business.Audit
 
             if (nombreTabla.IndexOf("Hist") < 0)
             {
+                
                 var tableHist = "Adquisiciones.Data.Entities." + nombreTabla + "Hist";
                 var a = Assembly.LoadWithPartialName("Adquisiciones.Data");
                 var histType = a.GetType(tableHist); //Type AnexoDetalleHist
@@ -67,7 +63,7 @@ namespace Adquisiciones.Business.Audit
                
                 var idHist = ObjectDao.Insert(result);
 
-                if(entity is IPadre)
+                if(entity is IPadre)//Anexo
                 {
                     var nombreTablaHijaHist = nombreTabla + "DetalleHist";//AnexoDetalleHist
                     var historico = IdsDetalleHistorico[nombreTablaHijaHist];
@@ -76,7 +72,7 @@ namespace Adquisiciones.Business.Audit
                    
                 }
 
-                if (entity is IDetalle)
+                if (entity is IDetalle)//AnexoDetalle
                 {
                     var tablaHist = nombreTabla + "Hist";
                     var historico = IdsDetalleHistorico[tablaHist];

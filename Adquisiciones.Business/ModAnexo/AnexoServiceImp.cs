@@ -12,7 +12,7 @@ namespace Adquisiciones.Business.ModAnexo
 {
     ///<summary>
     ///</summary>
-    public class AnexoServiceImp : IAnexoService
+    public class AnexoServiceImp : IAnexoService,IFormBusqueda
     {
         public IAnexoDao AnexoDao { get; set; }
 
@@ -109,10 +109,18 @@ namespace Adquisiciones.Business.ModAnexo
 
         }
 
-         [Transaction]
-        public void EliminaAnexo(Anexo anexo)
+
+        [Transaction(ReadOnly = true)]
+        public object ConsultarEntityAll(Almacen almacen, string nombreEntity)
         {
-            AnexoDao.Delete(anexo);
+            var anexos = AnexoDao.CargarAnexos(almacen);
+            return anexos;
+        }
+
+        [Transaction]
+        public void EliminarEntity(object entity, string nombreEntity)
+        {
+            AnexoDao.Delete(entity as Anexo);
         }
     }
 }
