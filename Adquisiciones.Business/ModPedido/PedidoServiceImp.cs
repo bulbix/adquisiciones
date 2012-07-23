@@ -265,7 +265,7 @@ namespace Adquisiciones.Business.ModPedido
         }
 
          [Transaction(ReadOnly = true)]
-        public object ConsultarEntityAll(Almacen almacen, string nombreEntity)
+        public object ConsultarEntityAll(Almacen almacen)
          {
              return PedidoDao.CargarPedidos(almacen);
          }

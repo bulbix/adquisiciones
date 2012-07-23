@@ -8,18 +8,16 @@ using System.Windows.Forms;
 using Adquisiciones.Business;
 using Adquisiciones.Business.ModCotizacion;
 using Adquisiciones.Data.Entities;
-using Adquisiciones.View.Modulos;using DevExpress.XtraEditors;
+using DevExpress.XtraEditors;
 using Spring.Context.Support;
 
-namespace Adquisiciones.View
+namespace Adquisiciones.View.Modulos
 {
     public partial class FrmModuloCotizacion : FrmModulo
     {
         ///<summary>
         ///</summary>
         public ICotizacionService CotizacionService { get; set; }
-
-
         ///<summary>
         ///</summary>
         public Cotizacion CotizacionActual;
@@ -95,7 +93,7 @@ namespace Adquisiciones.View
                 if (!CotizacionService.
                         ExisteCotizacionDetalle(CotizacionActual.CotizacionDetalle))
                 {
-                    MessageBox.Show(@"Cotización requiere al menos un registro",
+                    XtraMessageBox.Show(@"Cotización requiere al menos un registro",
                    @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
@@ -105,7 +103,7 @@ namespace Adquisiciones.View
                 CotizacionService.ConsultarCotizacion(ref CotizacionActual);
                 bsCotizacionDetalle.DataSource = CotizacionActual.CotizacionDetalle;
 
-                MessageBox.Show(@"Cotización Registrada o Actualizada Exitosamente",
+                XtraMessageBox.Show(@"Cotización Registrada o Actualizada Exitosamente",
                     @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
 
@@ -113,7 +111,7 @@ namespace Adquisiciones.View
             }
             catch (Exception ee)
             {
-                MessageBox.Show(@"Ocurrio un error en la insercion o actualizacion " + ee.Message,
+                XtraMessageBox.Show(@"Ocurrio un error en la insercion o actualizacion " + ee.Message,
                     @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 Log.Error("Generado por:" + FrmModuloAcceso.UsuarioLog, ee);
@@ -138,7 +136,7 @@ namespace Adquisiciones.View
 
                     if (CotizacionService.CotizacionDao.ExisteAnexoFallo(CotizacionActual.Anexo))
                     {
-                        MessageBox.Show(@"El anexo tiene fallo",
+                        XtraMessageBox.Show(@"El anexo tiene fallo",
                         @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         cmdGuardar.Enabled = false;
                     }
@@ -155,7 +153,7 @@ namespace Adquisiciones.View
             }
             catch (Exception ee)
             {
-                MessageBox.Show(@"Rellene los campos para la consulta");
+                XtraMessageBox.Show(@"Rellene los campos para la consulta");
                 Log.Error("Generado por:" + FrmModuloAcceso.UsuarioLog, ee);
             }
         }
@@ -216,11 +214,14 @@ namespace Adquisiciones.View
             }
         }
 
-        private void cmdConsultar_Click(object sender, EventArgs e)
+        protected override void CmdConsultarClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             Nuevo();
             Consultar();
         }
+
+      
+
 
     }
 }

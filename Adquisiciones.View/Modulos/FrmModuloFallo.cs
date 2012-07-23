@@ -1,16 +1,19 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Text;
 using System.Windows.Forms;
 using Adquisiciones.Business;
 using Adquisiciones.Business.ModFallo;
 using Adquisiciones.Data.Entities;
-using log4net;
+using DevExpress.XtraEditors;
 using Spring.Context.Support;
-using Spring.Objects.Factory;
-using Form = Spring.Windows.Forms.Form;
 
-namespace Adquisiciones.View
+namespace Adquisiciones.View.Modulos
 {
-    public partial class FrmModuloFallo : Form, IInitializingObject
+    public partial class FrmModuloFallo : FrmModulo
     {
 
         ///<summary>
@@ -21,19 +24,20 @@ namespace Adquisiciones.View
         ///</summary>
         public Anexo AnexoSelect;
 
-        private static readonly ILog Log =
-           LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-
-        ///<summary>
-        ///</summary>
         public FrmModuloFallo()
         {
             InitializeComponent();
+            var ctx = ContextRegistry.GetContext();
+            FalloService = ctx["falloService"] as IFalloService;
+
+            var anexos = FalloService.AnexoDao.
+               CargarAnexosWithCotizacion(FrmModuloModulo.AlmacenSelec);
+            bsAnexos.DataSource = anexos;
+
             dtpFallo.DateTime = DateTime.Now;
             //Nos Suscribimos al Evento
             if (FalloService != null) FalloService.FalloProceso += OnProcesoFallo;
         }
-
 
         protected void OnProcesoFallo(object sender, FalloProcesoEvento e)
         {
@@ -41,8 +45,7 @@ namespace Adquisiciones.View
             pgbFallo.Text = e.Porcentaje.ToString();
         }
 
-        
-        private void BtnProcesarClick(object sender, EventArgs e)
+        public override void Guardar()
         {
             try
             {
@@ -59,7 +62,7 @@ namespace Adquisiciones.View
 
                 if (FalloService.CotizacionDao.ExisteAnexoFallo(AnexoSelect))
                 {
-                    var result = MessageBox.Show(@"El anexo ya tiene fallo desea continuar",
+                    var result = XtraMessageBox.Show(@"El anexo ya tiene fallo desea continuar",
                                                  @"Adquisiciones", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                     if (result == DialogResult.No)
@@ -70,21 +73,30 @@ namespace Adquisiciones.View
 
                 if (lista.Count > 0)
                 {
-                    MessageBox.Show(@"Fallo realizado Exitosamente Anexo " + AnexoSelect.NumeroAnexo,
+                    XtraMessageBox.Show(@"Fallo realizado Exitosamente Anexo " + AnexoSelect.NumeroAnexo,
                                     @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
-                    MessageBox.Show(@"El anexo no tiene ni una cotizacion",
-                    @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Information);}
+                    XtraMessageBox.Show(@"El anexo no tiene ni una cotizacion",
+                    @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
             catch (Exception ee)
             {
-                MessageBox.Show(@"Ocurrio un error en el fallo " + ee.Message,
+                XtraMessageBox.Show(@"Ocurrio un error en el fallo " + ee.Message,
                     @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 Log.Error("Generado por:" + FrmModuloAcceso.UsuarioLog, ee);
             }
+        }
+
+        public override void Nuevo()
+        {
+            AnexoSelect = null;
+            dtpFallo.DateTime = DateTime.Now;
+            pgbFallo.EditValue = 0;
+            pgbFallo.Text = string.Empty;
         }
 
         private void SearchLookUpAnexoEditValueChanged(object sender, EventArgs e)
@@ -94,24 +106,13 @@ namespace Adquisiciones.View
                 //Pinta el instituto y la descripcion del anexo
                 var idAnexo = (long)searchLookUpAnexo.EditValue;
                 AnexoSelect = FalloService.AnexoDao.Get(idAnexo);
-                this.Text = @"Fallo-Anexo::" + AnexoSelect;}
+                this.Text = @"Fallo-Anexo::" + AnexoSelect;
+            }
             else
             {
                 AnexoSelect = null;
-                
+
             }
-        }
-        private void FrmCargaFalloDevLoad(object sender, EventArgs e)
-        {
-           
-        }
-
-
-        public void AfterPropertiesSet()
-        {
-            var anexos = FalloService.AnexoDao.
-                CargarAnexosWithCotizacion(FrmModuloModulo.AlmacenSelec);
-            bsAnexos.DataSource = anexos;
         }
     }
 }

@@ -49,7 +49,7 @@ namespace Adquisiciones.View
             {
                 if (pedidoEntrega.FechaInicial == null || pedidoEntrega.FechaFinal == null)
                 {
-                    MessageBox.Show(@"Fecha inicial y fecha final requeridos",
+                    XtraMessageBox.Show(@"Fecha inicial y fecha final requeridos",
                                        @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
@@ -59,7 +59,7 @@ namespace Adquisiciones.View
 
                 if (fechaInicial.CompareTo(fechaFinal) > 0)
                 {
-                    MessageBox.Show(@"Fecha inicial debe ser mayor fecha final",
+                    XtraMessageBox.Show(@"Fecha inicial debe ser mayor fecha final",
                                     @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
@@ -69,7 +69,7 @@ namespace Adquisiciones.View
 
             if (cantidad != suma)
             {
-                MessageBox.Show(@"La suma de los renglones debe coincidir con " + cantidad,
+                XtraMessageBox.Show(@"La suma de los renglones debe coincidir con " + cantidad,
                                     @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else

@@ -1,4 +1,4 @@
-﻿namespace Adquisiciones.View
+﻿namespace Adquisiciones.View.Catalogos
 {
     partial class FrmCatalogoFundamento
     {

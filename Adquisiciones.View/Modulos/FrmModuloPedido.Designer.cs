@@ -1,4 +1,5 @@
-﻿namespace Adquisiciones.View{
+﻿namespace Adquisiciones.View.Modulos
+{
     partial class FrmModuloPedido
     {
         /// <summary>
@@ -101,8 +102,6 @@
             this.bsPedido = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             this.splitContainerControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl2)).BeginInit();
-            this.splitContainerControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.searchLookUpAnexo.Properties)).BeginInit();
@@ -137,14 +136,18 @@
             // 
             // splitContainerControl1
             // 
+            this.splitContainerControl1.Panel1.Controls.Add(this.groupControl1);
             this.splitContainerControl1.Panel2.Controls.Add(this.gcPedidoDetalle);
-            this.splitContainerControl1.Size = new System.Drawing.Size(898, 552);
-            this.splitContainerControl1.SplitterPosition = 359;
+            this.splitContainerControl1.Size = new System.Drawing.Size(787, 497);
+            this.splitContainerControl1.SplitterPosition = 272;
             // 
-            // splitContainerControl2
+            // listaError
             // 
-            this.splitContainerControl2.Panel2.Controls.Add(this.groupControl1);
-            this.splitContainerControl2.Size = new System.Drawing.Size(898, 359);
+            this.listaError.Location = new System.Drawing.Point(443, 7);
+            // 
+            // lblNumErrors
+            // 
+            this.lblNumErrors.Location = new System.Drawing.Point(255, 167);
             // 
             // groupControl1
             // 
@@ -187,8 +190,8 @@
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl1.Location = new System.Drawing.Point(0, 0);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(898, 253);
-            this.groupControl1.TabIndex = 1;
+            this.groupControl1.Size = new System.Drawing.Size(787, 272);
+            this.groupControl1.TabIndex = 2;
             this.groupControl1.Text = "Datos Generales del Pedido";
             // 
             // label2
@@ -682,8 +685,8 @@
             this.repositoryItemSearchLookUpEdit2,
             this.repositoryItemPopupContainerEdit1,
             this.repositoryItemButtonEdit1});
-            this.gcPedidoDetalle.Size = new System.Drawing.Size(898, 187);
-            this.gcPedidoDetalle.TabIndex = 3;
+            this.gcPedidoDetalle.Size = new System.Drawing.Size(787, 219);
+            this.gcPedidoDetalle.TabIndex = 4;
             this.gcPedidoDetalle.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvPedidoDetalle});
             this.gcPedidoDetalle.KeyDown += new System.Windows.Forms.KeyEventHandler(this.GcPedidoDetalleKeyDown);
@@ -940,13 +943,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(898, 552);
+            this.ClientSize = new System.Drawing.Size(787, 568);
             this.Name = "FrmModuloPedido";
             this.Text = "Captura::Pedido";
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();
             this.splitContainerControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl2)).EndInit();
-            this.splitContainerControl2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
             this.groupControl1.PerformLayout();
@@ -979,12 +980,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemPopupContainerEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsPedido)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
         private DevExpress.XtraEditors.GroupControl groupControl1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label txtTotal;
         private DevExpress.XtraEditors.LabelControl lblFundamento;
         private DevExpress.XtraEditors.SearchLookUpEdit searchLookUpAnexo;
         private DevExpress.XtraGrid.Views.Grid.GridView searchLookUpEditAnexo;
@@ -1046,13 +1050,11 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn12;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn13;
         private DevExpress.XtraEditors.Repository.RepositoryItemPopupContainerEdit repositoryItemPopupContainerEdit1;
-        private System.Windows.Forms.BindingSource bsPedidoDetalle;
         private System.Windows.Forms.BindingSource bsAnexo;
         private System.Windows.Forms.BindingSource bsProveedor;
         private System.Windows.Forms.BindingSource bsArea;
         private System.Windows.Forms.BindingSource bsFundamento;
+        private System.Windows.Forms.BindingSource bsPedidoDetalle;
         private System.Windows.Forms.BindingSource bsPedido;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label txtTotal;
     }
 }

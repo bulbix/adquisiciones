@@ -1,4 +1,4 @@
-﻿namespace Adquisiciones.View
+﻿namespace Adquisiciones.View.Modulos
 {
     partial class FrmModuloAnexo
     {
@@ -56,8 +56,6 @@
             this.bsAnexo = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             this.splitContainerControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl2)).BeginInit();
-            this.splitContainerControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gcDatosGenerales)).BeginInit();
             this.gcDatosGenerales.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtnumlicitacion.Properties)).BeginInit();
@@ -75,18 +73,10 @@
             // 
             // splitContainerControl1
             // 
+            this.splitContainerControl1.Panel1.Controls.Add(this.gcDatosGenerales);
             this.splitContainerControl1.Panel2.Controls.Add(this.gcAnexoDetalle);
-            this.splitContainerControl1.Size = new System.Drawing.Size(856, 438);
-            this.splitContainerControl1.SplitterPosition = 248;
-            // 
-            // splitContainerControl2
-            // 
-            this.splitContainerControl2.Panel2.Controls.Add(this.gcDatosGenerales);
-            this.splitContainerControl2.Size = new System.Drawing.Size(856, 248);
-            // 
-            // cmdGuardar
-            // 
-            this.cmdGuardar.Click += new System.EventHandler(this.CmdGuardarClick);
+            this.splitContainerControl1.Size = new System.Drawing.Size(628, 352);
+            this.splitContainerControl1.SplitterPosition = 153;
             // 
             // gcDatosGenerales
             // 
@@ -107,8 +97,8 @@
             this.gcDatosGenerales.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gcDatosGenerales.Location = new System.Drawing.Point(0, 0);
             this.gcDatosGenerales.Name = "gcDatosGenerales";
-            this.gcDatosGenerales.Size = new System.Drawing.Size(856, 142);
-            this.gcDatosGenerales.TabIndex = 1;
+            this.gcDatosGenerales.Size = new System.Drawing.Size(628, 153);
+            this.gcDatosGenerales.TabIndex = 2;
             this.gcDatosGenerales.Text = "Datos Generales";
             // 
             // txtnumlicitacion
@@ -239,8 +229,8 @@
             this.gcAnexoDetalle.Name = "gcAnexoDetalle";
             this.gcAnexoDetalle.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemSearchLookUpEdit2});
-            this.gcAnexoDetalle.Size = new System.Drawing.Size(856, 184);
-            this.gcAnexoDetalle.TabIndex = 2;
+            this.gcAnexoDetalle.Size = new System.Drawing.Size(628, 193);
+            this.gcAnexoDetalle.TabIndex = 3;
             this.gcAnexoDetalle.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvAnexoDetalle});
             this.gcAnexoDetalle.KeyDown += new System.Windows.Forms.KeyEventHandler(this.GvAnexoDetalleKeyDown);
@@ -444,13 +434,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(856, 438);
+            this.ClientSize = new System.Drawing.Size(628, 423);
             this.Name = "FrmModuloAnexo";
             this.Text = "Captura::Anexo";
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();
             this.splitContainerControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl2)).EndInit();
-            this.splitContainerControl2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gcDatosGenerales)).EndInit();
             this.gcDatosGenerales.ResumeLayout(false);
             this.gcDatosGenerales.PerformLayout();
@@ -466,6 +454,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsAnexo)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 

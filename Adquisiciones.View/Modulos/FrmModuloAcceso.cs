@@ -42,7 +42,7 @@ namespace Adquisiciones.View
             UsuarioLog = UsuarioDao.AccessAllow(txtId.Text, txtPassword.Text);
             if (UsuarioLog == null)
             {  //Credenciales No Validas
-                MessageBox.Show(@"No tiene Acceso al Sistema, Verifique credenciales",
+                XtraMessageBox.Show(@"No tiene Acceso al Sistema, Verifique credenciales",
                     @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else //Redireccionamos

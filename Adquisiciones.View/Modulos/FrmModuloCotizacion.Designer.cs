@@ -1,4 +1,4 @@
-﻿namespace Adquisiciones.View
+﻿namespace Adquisiciones.View.Modulos
 {
     partial class FrmModuloCotizacion
     {
@@ -63,8 +63,6 @@
             this.gridColumn13 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             this.splitContainerControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl2)).BeginInit();
-            this.splitContainerControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gcDatosGenerales)).BeginInit();
             this.gcDatosGenerales.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.searchLookUpProv.Properties)).BeginInit();
@@ -82,17 +80,9 @@
             // 
             // splitContainerControl1
             // 
+            this.splitContainerControl1.Panel1.Controls.Add(this.gcDatosGenerales);
             this.splitContainerControl1.Panel2.Controls.Add(this.gcCotizacionDetalle);
-            this.splitContainerControl1.SplitterPosition = 291;
-            // 
-            // splitContainerControl2
-            // 
-            this.splitContainerControl2.Panel2.Controls.Add(this.gcDatosGenerales);
-            this.splitContainerControl2.Size = new System.Drawing.Size(721, 291);
-            // 
-            // cmdConsultar
-            // 
-            this.cmdConsultar.Click += new System.EventHandler(this.cmdConsultar_Click);
+            this.splitContainerControl1.Size = new System.Drawing.Size(1130, 352);
             // 
             // gcDatosGenerales
             // 
@@ -111,8 +101,8 @@
             this.gcDatosGenerales.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gcDatosGenerales.Location = new System.Drawing.Point(0, 0);
             this.gcDatosGenerales.Name = "gcDatosGenerales";
-            this.gcDatosGenerales.Size = new System.Drawing.Size(721, 185);
-            this.gcDatosGenerales.TabIndex = 8;
+            this.gcDatosGenerales.Size = new System.Drawing.Size(1130, 121);
+            this.gcDatosGenerales.TabIndex = 9;
             this.gcDatosGenerales.Text = "Datos Generales";
             // 
             // lblProveedor
@@ -287,7 +277,7 @@
             // dtpFechacotizacion
             // 
             this.dtpFechacotizacion.EditValue = null;
-            this.dtpFechacotizacion.Location = new System.Drawing.Point(501, 31);
+            this.dtpFechacotizacion.Location = new System.Drawing.Point(501, 29);
             this.dtpFechacotizacion.Name = "dtpFechacotizacion";
             this.dtpFechacotizacion.Properties.Appearance.ForeColor = System.Drawing.Color.Navy;
             this.dtpFechacotizacion.Properties.Appearance.Options.UseForeColor = true;
@@ -302,7 +292,7 @@
             // lblFecha
             // 
             this.lblFecha.AutoSize = true;
-            this.lblFecha.Location = new System.Drawing.Point(401, 34);
+            this.lblFecha.Location = new System.Drawing.Point(401, 32);
             this.lblFecha.Name = "lblFecha";
             this.lblFecha.Size = new System.Drawing.Size(88, 13);
             this.lblFecha.TabIndex = 17;
@@ -324,8 +314,8 @@
             this.gcCotizacionDetalle.Location = new System.Drawing.Point(0, 0);
             this.gcCotizacionDetalle.MainView = this.gvCotizacionDetalle;
             this.gcCotizacionDetalle.Name = "gcCotizacionDetalle";
-            this.gcCotizacionDetalle.Size = new System.Drawing.Size(721, 156);
-            this.gcCotizacionDetalle.TabIndex = 109;
+            this.gcCotizacionDetalle.Size = new System.Drawing.Size(1130, 225);
+            this.gcCotizacionDetalle.TabIndex = 110;
             this.gcCotizacionDetalle.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvCotizacionDetalle});
             // 
@@ -544,13 +534,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(721, 453);
+            this.ClientSize = new System.Drawing.Size(1130, 423);
             this.Name = "FrmModuloCotizacion";
             this.Text = "Captura::Cotizacion";
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();
             this.splitContainerControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl2)).EndInit();
-            this.splitContainerControl2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gcDatosGenerales)).EndInit();
             this.gcDatosGenerales.ResumeLayout(false);
             this.gcDatosGenerales.PerformLayout();
@@ -566,6 +554,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.bsCotizacionDetalle)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvCotizacionDetalle)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 

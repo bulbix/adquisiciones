@@ -150,7 +150,7 @@ namespace Adquisiciones.Business.ModFallo
         }
 
          [Transaction(ReadOnly = true)]
-        public object ConsultarEntityAll(Almacen almacen, string nombreEntity)
+        public object ConsultarEntityAll(Almacen almacen)
          {
              return FalloDao.CargarFallos(almacen);
          }

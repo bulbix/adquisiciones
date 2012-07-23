@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using Adquisiciones.Business.ModAnexo;
 using Adquisiciones.Business.ModCotizacion;
 using Adquisiciones.Data.Entities;
+using Adquisiciones.View.Catalogos;
 using DevExpress.XtraEditors;
 using Spring.Context.Support;
 
@@ -47,7 +48,7 @@ namespace Adquisiciones.View
             }
             catch (Exception ee)
             {
-                MessageBox.Show(@"No hay proveedor seleccionado", @"Adquisiciones", MessageBoxButtons.OK,
+                XtraMessageBox.Show(@"No hay proveedor seleccionado", @"Adquisiciones", MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
             }
 

@@ -5,11 +5,12 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
-using Adquisiciones.Data.Entities;
-using DevExpress.XtraEditors;
 using Adquisiciones.Business.ModAnexo;
+using Adquisiciones.Data.Entities;
+using Adquisiciones.View.Modulos;
+using DevExpress.XtraEditors;
 
-namespace Adquisiciones.View
+namespace Adquisiciones.View.Busquedas
 {
     public partial class FrmBusquedaAnexo : FrmBusqueda
     {
@@ -18,14 +19,13 @@ namespace Adquisiciones.View
         public FrmBusquedaAnexo()
         {
             InitializeComponent();
-            base.TypeEntity = typeof (Anexo);
+            base.TypeEntity = typeof(Anexo);
             base.NombreService = "anexoService";
             base.NombreReporte = "reporteAnexo";
-            base.TypeForma = typeof (FrmModuloAnexo);
+            base.TypeForma = typeof(FrmModuloAnexo);
             base.GvGeneral = gvAnexo;
             GetServicio();
             AnexoService = base.Servicio as IAnexoService;
-
         }
 
         private void TieneCotizacionClick(object sender, EventArgs e)
@@ -35,6 +35,5 @@ namespace Adquisiciones.View
             gvAnexo.RefreshData();
 
         }
-
     }
 }

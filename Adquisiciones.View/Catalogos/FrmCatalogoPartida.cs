@@ -1,16 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-using Adquisiciones.Data.Dao.Catalogos;using Adquisiciones.Data.Entities;
+using Adquisiciones.Data.Dao.Catalogos;
+using Adquisiciones.Data.Entities;
 using Adquisiciones.Business;
+using DevExpress.XtraEditors;
 using Spring.Context.Support;
 
-namespace Adquisiciones.View
+namespace Adquisiciones.View.Catalogos
 {
     ///<summary>
     ///</summary>
@@ -70,19 +67,18 @@ namespace Adquisiciones.View
                     if (partidaExiste == null)
                     {
                         PartidaDao.Update(PartidaActual);
-                        MessageBox.Show(@"Partida Registrado o Actualizado Exitosamente",
+                        XtraMessageBox.Show(@"Partida Registrado o Actualizado Exitosamente",
                                         @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
-                    else
-                    {
-                       MessageBox.Show(@"La partida ya existe, consultela y actualize",
+                    else{
+                       XtraMessageBox.Show(@"La partida ya existe, consultela y actualize",
                           @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
             catch (Exception ee)
             {
-                MessageBox.Show(@"Ocurrio un error en la insercion o actualizacion de la partida" + ee.Message,
+                XtraMessageBox.Show(@"Ocurrio un error en la insercion o actualizacion de la partida" + ee.Message,
                     @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
@@ -119,14 +115,14 @@ namespace Adquisiciones.View
                 }
                 else
                 {
-                    MessageBox.Show(@"No existe la partida",
+                    XtraMessageBox.Show(@"No existe la partida",
                     @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
             }
             catch (Exception ee)
             {
-                MessageBox.Show(@"Ocurrio un error en la consulta" + ee.Message,
+                XtraMessageBox.Show(@"Ocurrio un error en la consulta" + ee.Message,
                     @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 

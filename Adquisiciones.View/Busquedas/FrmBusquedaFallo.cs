@@ -9,15 +9,15 @@ using Adquisiciones.Business.ModFallo;
 using Adquisiciones.Data.Entities;
 using DevExpress.XtraEditors;
 
-namespace Adquisiciones.View
+namespace Adquisiciones.View.Busquedas
 {
     public partial class FrmBusquedaFallo : FrmBusqueda
     {
         public IFalloService FalloService { get; set; }
 
-        public FrmBusquedaFallo(){
+        public FrmBusquedaFallo()
+        {
             InitializeComponent();
-
             base.TypeEntity = typeof(Fallo);
             base.NombreService = "falloService";
             base.NombreReporte = "reporteTabla";

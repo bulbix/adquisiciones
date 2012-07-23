@@ -227,12 +227,6 @@
     <Compile Include="Modulos\FrmModuloCotizacion.Designer.cs">
       <DependentUpon>FrmModuloCotizacion.cs</DependentUpon>
     </Compile>
-    <Compile Include="Modulos\FrmModuloFallo.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Modulos\FrmModuloFallo.Designer.cs">
-      <DependentUpon>FrmModuloFallo.cs</DependentUpon>
-    </Compile>
     <Compile Include="Catalogos\FrmCatalogoFundamento.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -250,6 +244,12 @@
     </Compile>
     <Compile Include="Catalogos\FrmCatalogoProveedor.designer.cs">
       <DependentUpon>FrmCatalogoProveedor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modulos\FrmModuloFallo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modulos\FrmModuloFallo.Designer.cs">
+      <DependentUpon>FrmModuloFallo.cs</DependentUpon>
     </Compile>
     <Compile Include="Modulos\FrmModuloLicitaPedido.cs">
       <SubType>Form</SubType>
@@ -371,14 +371,14 @@
     <EmbeddedResource Include="Modulos\FrmModuloCotizacion.resx">
       <DependentUpon>FrmModuloCotizacion.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Modulos\FrmModuloFallo.resx">
-      <DependentUpon>FrmModuloFallo.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Catalogos\FrmCatalogoFundamento.resx">
       <DependentUpon>FrmCatalogoFundamento.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Catalogos\FrmCatalogoPartida.resx">
       <DependentUpon>FrmCatalogoPartida.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modulos\FrmModuloFallo.resx">
+      <DependentUpon>FrmModuloFallo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modulos\FrmModuloLicitaPedido.resx">
       <DependentUpon>FrmModuloLicitaPedido.cs</DependentUpon>

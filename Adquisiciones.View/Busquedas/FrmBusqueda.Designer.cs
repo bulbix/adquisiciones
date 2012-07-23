@@ -1,4 +1,5 @@
-﻿namespace Adquisiciones.View{
+﻿namespace Adquisiciones.View.Busquedas
+{
     partial class FrmBusqueda
     {
         /// <summary>
@@ -28,113 +29,159 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.cmdReporte = new DevExpress.XtraEditors.SimpleButton();
-            this.cmdEliminar = new DevExpress.XtraEditors.SimpleButton();
-            this.splitContainerControl2 = new DevExpress.XtraEditors.SplitContainerControl();
-            this.cmdConsultar = new DevExpress.XtraEditors.SimpleButton();
-            this.cmdImprimir = new DevExpress.XtraEditors.SimpleButton();
-            this.cmdBuscar = new DevExpress.XtraEditors.SimpleButton();
-            this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
+            this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
+            this.bar1 = new DevExpress.XtraBars.Bar();
+            this.bar2 = new DevExpress.XtraBars.Bar();
+            this.cmdBuscar = new DevExpress.XtraBars.BarButtonItem();
+            this.cmdConsultar = new DevExpress.XtraBars.BarButtonItem();
+            this.cmdImprimir = new DevExpress.XtraBars.BarButtonItem();
+            this.cmdReporte = new DevExpress.XtraBars.BarButtonItem();
+            this.cmdEliminar = new DevExpress.XtraBars.BarButtonItem();
+            this.bar3 = new DevExpress.XtraBars.Bar();
+            this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.bsSource = new System.Windows.Forms.BindingSource(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl2)).BeginInit();
-            this.splitContainerControl2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
-            this.splitContainerControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsSource)).BeginInit();
             this.SuspendLayout();
             // 
-            // cmdReporte
+            // barManager1
             // 
-            this.cmdReporte.Image = global::Adquisiciones.View.Properties.Resources.printer;
-            this.cmdReporte.Location = new System.Drawing.Point(474, 22);
-            this.cmdReporte.Name = "cmdReporte";
-            this.cmdReporte.Size = new System.Drawing.Size(145, 57);
-            this.cmdReporte.TabIndex = 4;
-            this.cmdReporte.Text = "Generar Reporte";
-            this.cmdReporte.Click += new System.EventHandler(this.CmdReporteClick);
+            this.barManager1.AllowCustomization = false;
+            this.barManager1.AllowQuickCustomization = false;
+            this.barManager1.AllowShowToolbarsPopup = false;
+            this.barManager1.Bars.AddRange(new DevExpress.XtraBars.Bar[] {
+            this.bar1,
+            this.bar2,
+            this.bar3});
+            this.barManager1.DockControls.Add(this.barDockControlTop);
+            this.barManager1.DockControls.Add(this.barDockControlBottom);
+            this.barManager1.DockControls.Add(this.barDockControlLeft);
+            this.barManager1.DockControls.Add(this.barDockControlRight);
+            this.barManager1.Form = this;
+            this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
+            this.cmdBuscar,
+            this.cmdConsultar,
+            this.cmdImprimir,
+            this.cmdReporte,
+            this.cmdEliminar});
+            this.barManager1.MainMenu = this.bar2;
+            this.barManager1.MaxItemId = 5;
+            this.barManager1.StatusBar = this.bar3;
             // 
-            // cmdEliminar
+            // bar1
             // 
-            this.cmdEliminar.Image = global::Adquisiciones.View.Properties.Resources.cancelar;
-            this.cmdEliminar.Location = new System.Drawing.Point(635, 22);
-            this.cmdEliminar.Name = "cmdEliminar";
-            this.cmdEliminar.Size = new System.Drawing.Size(133, 57);
-            this.cmdEliminar.TabIndex = 5;
-            this.cmdEliminar.Text = "Eliminar";
-            this.cmdEliminar.Click += new System.EventHandler(this.CmdEliminarClick);
+            this.bar1.BarName = "Tools";
+            this.bar1.DockCol = 0;
+            this.bar1.DockRow = 1;
+            this.bar1.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
+            this.bar1.Text = "Tools";
             // 
-            // splitContainerControl2
+            // bar2
             // 
-            this.splitContainerControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainerControl2.Horizontal = false;
-            this.splitContainerControl2.Location = new System.Drawing.Point(0, 0);
-            this.splitContainerControl2.Name = "splitContainerControl2";
-            this.splitContainerControl2.Panel1.Controls.Add(this.cmdEliminar);
-            this.splitContainerControl2.Panel1.Controls.Add(this.cmdReporte);
-            this.splitContainerControl2.Panel1.Controls.Add(this.cmdConsultar);
-            this.splitContainerControl2.Panel1.Controls.Add(this.cmdImprimir);
-            this.splitContainerControl2.Panel1.Controls.Add(this.cmdBuscar);
-            this.splitContainerControl2.Panel1.Text = "Panel1";
-            this.splitContainerControl2.Panel2.Text = "Panel2";
-            this.splitContainerControl2.Size = new System.Drawing.Size(824, 500);
-            this.splitContainerControl2.SplitterPosition = 95;
-            this.splitContainerControl2.TabIndex = 3;
-            this.splitContainerControl2.Text = "splitContainerControl2";
-            // 
-            // cmdConsultar
-            // 
-            this.cmdConsultar.Image = global::Adquisiciones.View.Properties.Resources.busqueda;
-            this.cmdConsultar.Location = new System.Drawing.Point(164, 22);
-            this.cmdConsultar.Name = "cmdConsultar";
-            this.cmdConsultar.Size = new System.Drawing.Size(133, 57);
-            this.cmdConsultar.TabIndex = 3;
-            this.cmdConsultar.Text = "Consultar";
-            this.cmdConsultar.Click += new System.EventHandler(this.CmdConsultarClick);
-            // 
-            // cmdImprimir
-            // 
-            this.cmdImprimir.Image = global::Adquisiciones.View.Properties.Resources.printer;
-            this.cmdImprimir.Location = new System.Drawing.Point(313, 22);
-            this.cmdImprimir.Name = "cmdImprimir";
-            this.cmdImprimir.Size = new System.Drawing.Size(145, 57);
-            this.cmdImprimir.TabIndex = 1;
-            this.cmdImprimir.Text = "Imprimir Listado";
-            this.cmdImprimir.Click += new System.EventHandler(this.CmdImprimirClick);
+            this.bar2.BarName = "Main menu";
+            this.bar2.DockCol = 0;
+            this.bar2.DockRow = 0;
+            this.bar2.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
+            this.bar2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.cmdBuscar),
+            new DevExpress.XtraBars.LinkPersistInfo(this.cmdConsultar),
+            new DevExpress.XtraBars.LinkPersistInfo(this.cmdImprimir),
+            new DevExpress.XtraBars.LinkPersistInfo(this.cmdReporte),
+            new DevExpress.XtraBars.LinkPersistInfo(this.cmdEliminar)});
+            this.bar2.OptionsBar.MultiLine = true;
+            this.bar2.OptionsBar.UseWholeRow = true;
+            this.bar2.Text = "Main menu";
             // 
             // cmdBuscar
             // 
-            this.cmdBuscar.Image = global::Adquisiciones.View.Properties.Resources.busqueda;
-            this.cmdBuscar.Location = new System.Drawing.Point(12, 21);
+            this.cmdBuscar.Caption = "Buscar";
+            this.cmdBuscar.Id = 0;
             this.cmdBuscar.Name = "cmdBuscar";
-            this.cmdBuscar.Size = new System.Drawing.Size(133, 57);
-            this.cmdBuscar.TabIndex = 0;
-            this.cmdBuscar.Text = "Buscar";
-            this.cmdBuscar.Click += new System.EventHandler(this.CmdBuscarClick);
+            this.cmdBuscar.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.CmdBuscarItemClick);
             // 
-            // splitContainerControl1
+            // cmdConsultar
             // 
-            this.splitContainerControl1.Location = new System.Drawing.Point(217, 359);
-            this.splitContainerControl1.Name = "splitContainerControl1";
-            this.splitContainerControl1.Panel1.Text = "Panel1";
-            this.splitContainerControl1.Panel2.Text = "Panel2";
-            this.splitContainerControl1.Size = new System.Drawing.Size(200, 100);
-            this.splitContainerControl1.TabIndex = 2;
-            this.splitContainerControl1.Text = "splitContainerControl1";
+            this.cmdConsultar.Caption = "Consultar";
+            this.cmdConsultar.Id = 1;
+            this.cmdConsultar.Name = "cmdConsultar";
+            this.cmdConsultar.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.CmdConsultarItemClick);
+            // 
+            // cmdImprimir
+            // 
+            this.cmdImprimir.Caption = "Imprimir Listado";
+            this.cmdImprimir.Id = 2;
+            this.cmdImprimir.Name = "cmdImprimir";
+            this.cmdImprimir.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.CmdImprimirItemClick);
+            // 
+            // cmdReporte
+            // 
+            this.cmdReporte.Caption = "Generar Reporte";
+            this.cmdReporte.Id = 3;
+            this.cmdReporte.Name = "cmdReporte";
+            this.cmdReporte.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.CmdReporteItemClick);
+            // 
+            // cmdEliminar
+            // 
+            this.cmdEliminar.Caption = "Eliminar";
+            this.cmdEliminar.Id = 4;
+            this.cmdEliminar.Name = "cmdEliminar";
+            this.cmdEliminar.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.CmdEliminarItemClick);
+            // 
+            // bar3
+            // 
+            this.bar3.BarName = "Status bar";
+            this.bar3.CanDockStyle = DevExpress.XtraBars.BarCanDockStyle.Bottom;
+            this.bar3.DockCol = 0;
+            this.bar3.DockRow = 0;
+            this.bar3.DockStyle = DevExpress.XtraBars.BarDockStyle.Bottom;
+            this.bar3.OptionsBar.AllowQuickCustomization = false;
+            this.bar3.OptionsBar.DrawDragBorder = false;
+            this.bar3.OptionsBar.UseWholeRow = true;
+            this.bar3.Text = "Status bar";
+            // 
+            // barDockControlTop
+            // 
+            this.barDockControlTop.CausesValidation = false;
+            this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
+            this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
+            this.barDockControlTop.Size = new System.Drawing.Size(708, 49);
+            // 
+            // barDockControlBottom
+            // 
+            this.barDockControlBottom.CausesValidation = false;
+            this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 371);
+            this.barDockControlBottom.Size = new System.Drawing.Size(708, 26);
+            // 
+            // barDockControlLeft
+            // 
+            this.barDockControlLeft.CausesValidation = false;
+            this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 49);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 322);
+            // 
+            // barDockControlRight
+            // 
+            this.barDockControlRight.CausesValidation = false;
+            this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
+            this.barDockControlRight.Location = new System.Drawing.Point(708, 49);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 322);
             // 
             // FrmBusqueda
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(824, 500);
-            this.Controls.Add(this.splitContainerControl2);
-            this.Controls.Add(this.splitContainerControl1);
+            this.ClientSize = new System.Drawing.Size(708, 397);
+            this.Controls.Add(this.barDockControlLeft);
+            this.Controls.Add(this.barDockControlRight);
+            this.Controls.Add(this.barDockControlBottom);
+            this.Controls.Add(this.barDockControlTop);
             this.Name = "FrmBusqueda";
-            this.Text = "FrmBusquedaGeneral";
-            this.Load += new System.EventHandler(this.FrmBusquedaGeneralLoad);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl2)).EndInit();
-            this.splitContainerControl2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();
-            this.splitContainerControl1.ResumeLayout(false);
+            this.Text = "FrmBusqueda2";
+            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsSource)).EndInit();
             this.ResumeLayout(false);
 
@@ -142,14 +189,19 @@
 
         #endregion
 
-        protected DevExpress.XtraEditors.SimpleButton cmdReporte;
-        protected DevExpress.XtraEditors.SimpleButton cmdEliminar;
-        protected DevExpress.XtraEditors.SplitContainerControl splitContainerControl2;
-        protected DevExpress.XtraEditors.SimpleButton cmdConsultar;
-        protected DevExpress.XtraEditors.SimpleButton cmdImprimir;
-        protected DevExpress.XtraEditors.SimpleButton cmdBuscar;
-        protected DevExpress.XtraEditors.SplitContainerControl splitContainerControl1;
+        private DevExpress.XtraBars.BarManager barManager1;
+        private DevExpress.XtraBars.Bar bar1;
+        private DevExpress.XtraBars.Bar bar2;
+        private DevExpress.XtraBars.BarButtonItem cmdBuscar;
+        private DevExpress.XtraBars.BarButtonItem cmdConsultar;
+        private DevExpress.XtraBars.BarButtonItem cmdImprimir;
+        private DevExpress.XtraBars.BarButtonItem cmdReporte;
+        private DevExpress.XtraBars.BarButtonItem cmdEliminar;
+        private DevExpress.XtraBars.Bar bar3;
+        private DevExpress.XtraBars.BarDockControl barDockControlTop;
+        private DevExpress.XtraBars.BarDockControl barDockControlBottom;
+        private DevExpress.XtraBars.BarDockControl barDockControlLeft;
+        private DevExpress.XtraBars.BarDockControl barDockControlRight;
         protected System.Windows.Forms.BindingSource bsSource;
-
     }
 }

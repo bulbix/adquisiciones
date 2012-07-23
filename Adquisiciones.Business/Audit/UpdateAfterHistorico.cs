@@ -20,7 +20,15 @@ namespace Adquisiciones.Business.Audit
         public void AfterReturning(object returnValue, MethodInfo method, object[] args, object target)
         {
             var ctx = ContextRegistry.GetContext();
-            var auditService = ctx["auditService"] as IAuditService;var nameHistorico = args[1] + "DetalleHist";
+            var auditService = ctx["auditService"] as IAuditService;
+            string nameMethod = method.Name;
+            string nameHistorico = "";
+
+            if (nameMethod == "EliminarEntity")
+                nameHistorico = args[1] + "DetalleHist";
+            else if (nameMethod.StartsWith("Guardar"))
+                nameHistorico = nameMethod.Substring(7);
+
 
             if (auditService.IdsDetalleHistorico.ContainsKey(nameHistorico))
             {

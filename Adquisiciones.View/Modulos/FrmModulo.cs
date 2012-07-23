@@ -11,7 +11,7 @@ using log4net;
 namespace Adquisiciones.View.Modulos
 {
     public partial class FrmModulo : XtraForm,IModulo
-    {  
+    {
         protected static readonly ILog Log =
             LogManager.GetLogger(System.Reflection.MethodBase.
             GetCurrentMethod().DeclaringType);
@@ -19,22 +19,21 @@ namespace Adquisiciones.View.Modulos
         public FrmModulo()
         {
             InitializeComponent();
-           
         }
 
-        private void CmdNuevoClick(object sender, EventArgs e)
+        protected virtual void CmdNuevoClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-           Nuevo();
+            Nuevo();
         }
 
-        private void CmdConsultarClick(object sender, EventArgs e)
+        protected virtual void CmdGuardarClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-          Consultar();
+            Guardar();
         }
 
-        private void FrmModuloLoad(object sender, EventArgs e)
+        protected virtual void CmdConsultarClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-           
+            Consultar();
         }
 
         public virtual void BindearCampos()
@@ -56,6 +55,5 @@ namespace Adquisiciones.View.Modulos
         public virtual void Consultar()
         {
         }
-       
     }
 }

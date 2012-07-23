@@ -1,4 +1,5 @@
-﻿namespace Adquisiciones.View{
+﻿namespace Adquisiciones.View.Busquedas
+{
     partial class FrmBusquedaPedido
     {
         /// <summary>
@@ -38,28 +39,21 @@
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl2)).BeginInit();
-            this.splitContainerControl2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
-            this.splitContainerControl1.SuspendLayout();
+            
             ((System.ComponentModel.ISupportInitialize)(this.bsSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gcPedido)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvPedido)).BeginInit();
             this.SuspendLayout();
-            // 
-            // splitContainerControl2
-            // 
-            this.splitContainerControl2.Panel2.Controls.Add(this.gcPedido);
-            // 
+           
             // gcPedido
             // 
             this.gcPedido.DataSource = this.bsSource;
             this.gcPedido.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gcPedido.Location = new System.Drawing.Point(0, 0);
+            this.gcPedido.Location = new System.Drawing.Point(0, 49);
             this.gcPedido.MainView = this.gvPedido;
             this.gcPedido.Name = "gcPedido";
-            this.gcPedido.Size = new System.Drawing.Size(824, 399);
-            this.gcPedido.TabIndex = 1;
+            this.gcPedido.Size = new System.Drawing.Size(708, 322);
+            this.gcPedido.TabIndex = 4;
             this.gcPedido.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvPedido});
             // 
@@ -183,13 +177,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(824, 500);
+            this.ClientSize = new System.Drawing.Size(708, 397);
+            this.Controls.Add(this.gcPedido);
             this.Name = "FrmBusquedaPedido";
-            this.Text = "Pedido::Busqueda";
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl2)).EndInit();
-            this.splitContainerControl2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();
-            this.splitContainerControl1.ResumeLayout(false);
+            this.Text = "Busqueda::Pedido";
+            
+            this.Controls.SetChildIndex(this.gcPedido, 0);
             ((System.ComponentModel.ISupportInitialize)(this.bsSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gcPedido)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvPedido)).EndInit();

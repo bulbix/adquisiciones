@@ -14,7 +14,13 @@ namespace Adquisiciones.Business.Audit
         {
             var ctx = ContextRegistry.GetContext();
             var auditService = ctx["auditService"] as IAuditService;
-            var nameHistorico = args[1] + "DetalleHist";
+            string nameMethod = method.Name;
+            string nameHistorico = "";
+
+            if (nameMethod == "EliminarEntity")
+                nameHistorico = args[1] + "DetalleHist";
+            else if (nameMethod.StartsWith("Guardar"))
+                nameHistorico = nameMethod.Substring(7);
 
             if (auditService.IdsDetalleHistorico.ContainsKey(nameHistorico))
                 auditService.IdsDetalleHistorico[nameHistorico] = new Historico();

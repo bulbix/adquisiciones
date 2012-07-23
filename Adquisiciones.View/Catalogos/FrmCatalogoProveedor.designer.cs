@@ -1,6 +1,6 @@
 ﻿using System.Windows.Forms;
 
-namespace Adquisiciones.View
+namespace Adquisiciones.View.Catalogos
 {
     partial class FrmCatalogoProveedor
     {

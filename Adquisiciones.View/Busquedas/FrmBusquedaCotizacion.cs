@@ -7,9 +7,10 @@ using System.Text;
 using System.Windows.Forms;
 using Adquisiciones.Business.ModCotizacion;
 using Adquisiciones.Data.Entities;
+using Adquisiciones.View.Modulos;
 using DevExpress.XtraEditors;
 
-namespace Adquisiciones.View
+namespace Adquisiciones.View.Busquedas
 {
     public partial class FrmBusquedaCotizacion : FrmBusqueda
     {
@@ -20,8 +21,7 @@ namespace Adquisiciones.View
             InitializeComponent();
             base.TypeEntity = typeof(Cotizacion);
             base.NombreService = "cotizacionService";
-            base.NombreReporte = "reporteCotizacion";
-            base.TypeForma = typeof(FrmModuloCotizacion);
+            base.NombreReporte = "reporteCotizacion"; base.TypeForma = typeof(FrmModuloCotizacion);
             base.GvGeneral = gvCotizacion;
             GetServicio();
             CotizacionService = base.Servicio as ICotizacionService;

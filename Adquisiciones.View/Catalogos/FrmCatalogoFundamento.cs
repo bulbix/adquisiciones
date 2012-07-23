@@ -1,17 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using Adquisiciones.Business;
 using Adquisiciones.Data.Dao.Catalogos;
 using Adquisiciones.Data.Entities;
+using DevExpress.XtraEditors;
 using Spring.Context.Support;
 
-namespace Adquisiciones.View
+namespace Adquisiciones.View.Catalogos
 {
     ///<summary>
     ///</summary>
@@ -86,19 +81,19 @@ namespace Adquisiciones.View
                     if (fundamentoExiste == null)
                     {
                         FundamentoDao.Update(FundamentoActual);
-                        MessageBox.Show(@"Fundamento Registrado o Actualizado Exitosamente",
+                        XtraMessageBox.Show(@"Fundamento Registrado o Actualizado Exitosamente",
                                         @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
                     {
-                        MessageBox.Show(@"El fundamento ya existe, consultelo y actualize",
+                        XtraMessageBox.Show(@"El fundamento ya existe, consultelo y actualize",
                          @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
             catch (Exception ee)
             {
-                MessageBox.Show(@"Ocurrio un error en la insercion o actualizacion del fundamento " + ee.Message,
+                XtraMessageBox.Show(@"Ocurrio un error en la insercion o actualizacion del fundamento " + ee.Message,
                     @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
@@ -116,14 +111,14 @@ namespace Adquisiciones.View
                 }
                 else
                 {
-                    MessageBox.Show(@"No existe el fundamento",
+                    XtraMessageBox.Show(@"No existe el fundamento",
                     @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
             }
             catch (Exception ee)
             {
-                MessageBox.Show(@"Ocurrio un error en la consulta" + ee.Message,
+                XtraMessageBox.Show(@"Ocurrio un error en la consulta" + ee.Message,
                     @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 

@@ -111,7 +111,7 @@ namespace Adquisiciones.Business.ModAnexo
 
 
         [Transaction(ReadOnly = true)]
-        public object ConsultarEntityAll(Almacen almacen, string nombreEntity)
+        public object ConsultarEntityAll(Almacen almacen)
         {
             var anexos = AnexoDao.CargarAnexos(almacen);
             return anexos;

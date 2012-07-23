@@ -2,12 +2,11 @@
 using System.Windows.Forms;
 using Adquisiciones.Data.Entities;
 using Adquisiciones.Data.Dao.Catalogos;
-using Spring.Context;
+using DevExpress.XtraEditors;
 using Spring.Context.Support;
 using Adquisiciones.Business;
 
-
-namespace Adquisiciones.View
+namespace Adquisiciones.View.Catalogos
 {
     ///<summary>
     ///</summary>
@@ -71,13 +70,13 @@ namespace Adquisiciones.View
                 }
                 else
                 {
-                    MessageBox.Show(@"Clave proveedor no existe", @"Adquisiciones",
+                    XtraMessageBox.Show(@"Clave proveedor no existe", @"Adquisiciones",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             catch (Exception ee)
             {
-                MessageBox.Show(@"Ocurrio un error en la consulta ", @"Adquisiciones",
+                XtraMessageBox.Show(@"Ocurrio un error en la consulta ", @"Adquisiciones",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -98,14 +97,14 @@ namespace Adquisiciones.View
                 if (Util.DatosValidos<Proveedor>(ProveedorActual, lblNumErrors, listaError))
                 {
                     ProveedorDao.Update(ProveedorActual);
-                    MessageBox.Show(@"Proveedor Registrado o Actualizado Exitosamente",
+                    XtraMessageBox.Show(@"Proveedor Registrado o Actualizado Exitosamente",
                         @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     LimpiarValidacion();
                 }
             }
             catch (Exception ee)
             {
-                MessageBox.Show(@"Ocurrio un error en la insercion o actualizacion",
+                XtraMessageBox.Show(@"Ocurrio un error en la insercion o actualizacion",
                     @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 

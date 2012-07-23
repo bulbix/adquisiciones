@@ -7,9 +7,10 @@ using System.Text;
 using System.Windows.Forms;
 using Adquisiciones.Business.ModPedido;
 using Adquisiciones.Data.Entities;
+using Adquisiciones.View.Modulos;
 using DevExpress.XtraEditors;
 
-namespace Adquisiciones.View
+namespace Adquisiciones.View.Busquedas
 {
     public partial class FrmBusquedaPedido : FrmBusqueda
     {

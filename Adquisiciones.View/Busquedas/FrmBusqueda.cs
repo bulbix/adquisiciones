@@ -10,7 +10,7 @@ using DevExpress.XtraEditors;
 using DevExpress.XtraGrid.Views.Grid;
 using Spring.Context.Support;
 
-namespace Adquisiciones.View
+namespace Adquisiciones.View.Busquedas
 {
     public partial class FrmBusqueda : DevExpress.XtraEditors.XtraForm
     {
@@ -27,26 +27,32 @@ namespace Adquisiciones.View
 
         protected GridView GvGeneral { get; set; }
 
-
         public FrmBusqueda()
         {
             InitializeComponent();
         }
 
-       
+
         protected virtual void Buscar()
         {
             GetServicio();
-            var source = Servicio.ConsultarEntityAll(FrmModuloModulo.AlmacenSelec, "");
+            var source = Servicio.ConsultarEntityAll(FrmModuloModulo.AlmacenSelec);
             bsSource.DataSource = source;
         }
-
-        private void CmdBuscarClick(object sender, EventArgs e)
+        protected void GetServicio()
+        {
+            var ctx = ContextRegistry.GetContext();
+            Servicio = ctx[NombreService] as IFormBusqueda;
+        }
+      
+      
+        private void CmdBuscarItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             Buscar();
+
         }
 
-        private void CmdConsultarClick(object sender, EventArgs e)
+        private void CmdConsultarItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             try
             {
@@ -59,35 +65,20 @@ namespace Adquisiciones.View
             }
             catch (Exception ee)
             {
-                MessageBox.Show(@"No hay elemento seleccionado", @"Adquisiciones",
+                XtraMessageBox.Show(@"No hay elemento seleccionado", @"Adquisiciones",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
         }
 
-        private void CmdEliminarClick(object sender, EventArgs e)
+        private void CmdImprimirItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            try
-            {
-                if (MessageBox.Show(@"Esta seguro de eliminar el elemento seleccionado?", @"Adquisiciones",
-                    MessageBoxButtons.YesNo,MessageBoxIcon.Question) == DialogResult.Yes)
-                {
-
-                    GetServicio();
-                    Servicio.EliminarEntity(GvGeneral.GetFocusedRow(), TypeEntity.Name);
-                    MessageBox.Show(@"Elemento seleccionado borrado", @"Adquisiciones",
-                                    MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    Buscar();
-                }
-            }
-            catch (Exception ee)
-            {
-                MessageBox.Show(@"Elemento seleccionado aosciado otro modulo", @"Adquisiciones",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            GvGeneral.ShowPrintPreview();
         }
 
-        private void CmdReporteClick(object sender, EventArgs e)
+        private void CmdReporteItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+
             try
             {
                 var select = Convert.
@@ -99,25 +90,34 @@ namespace Adquisiciones.View
             }
             catch (Exception ee)
             {
-                MessageBox.Show(@"No hay elemento seleccionado", @"Adquisiciones",
+                XtraMessageBox.Show(@"No hay elemento seleccionado", @"Adquisiciones",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
+
+        private void CmdEliminarItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            try
+            {
+                if (XtraMessageBox.Show(@"Esta seguro de eliminar el elemento seleccionado?", @"Adquisiciones",
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+
+                    GetServicio();
+                    Servicio.EliminarEntity(GvGeneral.GetFocusedRow(), TypeEntity.Name);
+                    XtraMessageBox.Show(@"Elemento seleccionado borrado", @"Adquisiciones",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Buscar();
+                }
+            }
+            catch (Exception ee)
+            {
+                XtraMessageBox.Show(@"Elemento seleccionado aosciado otro modulo", @"Adquisiciones",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        protected void GetServicio()
-        {
-            var ctx = ContextRegistry.GetContext();
-            Servicio = ctx[NombreService] as IFormBusqueda;
-        }
-
-        private void FrmBusquedaGeneralLoad(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void CmdImprimirClick(object sender, EventArgs e)
-        {
-            GvGeneral.ShowPrintPreview();
-        }
+       
     }
 }

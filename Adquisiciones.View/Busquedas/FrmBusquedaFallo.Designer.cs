@@ -1,4 +1,4 @@
-﻿namespace Adquisiciones.View
+﻿namespace Adquisiciones.View.Busquedas
 {
     partial class FrmBusquedaFallo
     {
@@ -34,10 +34,6 @@
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl2)).BeginInit();
-            this.splitContainerControl2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
-            this.splitContainerControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bsSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gcAnexo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvAnexo)).BeginInit();
@@ -45,22 +41,17 @@
             // 
             // splitContainerControl2
             // 
-            this.splitContainerControl2.Panel2.Controls.Add(this.gcAnexo);
-            // 
-            // cmdConsultar
-            // 
-            this.cmdConsultar.Enabled = false;
-            this.cmdConsultar.Visible = false;
+            
             // 
             // gcAnexo
             // 
             this.gcAnexo.DataSource = this.bsSource;
             this.gcAnexo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gcAnexo.Location = new System.Drawing.Point(0, 0);
+            this.gcAnexo.Location = new System.Drawing.Point(0, 49);
             this.gcAnexo.MainView = this.gvAnexo;
             this.gcAnexo.Name = "gcAnexo";
-            this.gcAnexo.Size = new System.Drawing.Size(824, 399);
-            this.gcAnexo.TabIndex = 2;
+            this.gcAnexo.Size = new System.Drawing.Size(708, 322);
+            this.gcAnexo.TabIndex = 4;
             this.gcAnexo.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvAnexo});
             // 
@@ -126,13 +117,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(824, 500);
+            this.ClientSize = new System.Drawing.Size(708, 397);
+            this.Controls.Add(this.gcAnexo);
             this.Name = "FrmBusquedaFallo";
-            this.Text = "Fallo::Busqueda";
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl2)).EndInit();
-            this.splitContainerControl2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();
-            this.splitContainerControl1.ResumeLayout(false);
+            this.Text = "Busqueda::Fallo";
+           
+            this.Controls.SetChildIndex(this.gcAnexo, 0);
             ((System.ComponentModel.ISupportInitialize)(this.bsSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gcAnexo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvAnexo)).EndInit();

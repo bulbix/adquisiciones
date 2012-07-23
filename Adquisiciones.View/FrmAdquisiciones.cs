@@ -5,6 +5,9 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using Adquisiciones.View.Busquedas;
+using Adquisiciones.View.Catalogos;
+using Adquisiciones.View.Modulos;
 using DevExpress.XtraBars;
 
 namespace Adquisiciones.View

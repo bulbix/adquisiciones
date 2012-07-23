@@ -131,7 +131,7 @@ namespace Adquisiciones.Business.ModCotizacion
         }
 
          [Transaction(ReadOnly = true)]
-        public object ConsultarEntityAll(Almacen almacen, string nombreEntity)
+        public object ConsultarEntityAll(Almacen almacen)
          {
              return CotizacionDao.CargarCotizaciones(almacen);
          }

@@ -8,15 +8,15 @@ using System.Windows.Forms;
 using Adquisiciones.Business;
 using Adquisiciones.Business.ModAnexo;
 using Adquisiciones.Data.Entities;
-using Adquisiciones.View.Modulos;
 using DevExpress.XtraEditors;
 using Spring.Context.Support;
 using System.Linq;
 
-namespace Adquisiciones.View{
+namespace Adquisiciones.View.Modulos
+{
     public partial class FrmModuloAnexo : FrmModulo
     {
-        ///<summary>
+       ///<summary>
         ///</summary>
         public IAnexoService AnexoService { get; set; }
 
@@ -42,7 +42,7 @@ namespace Adquisiciones.View{
 
             if (AnexoService.AnexoDao.ExisteAnexoCotizacion(AnexoActual))
             {
-                MessageBox.Show(@"El anexo tiene asociadas cotizaciones",
+                XtraMessageBox.Show(@"El anexo tiene asociadas cotizaciones",
                 @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 cmdGuardar.Enabled = false;
             }
@@ -109,14 +109,14 @@ namespace Adquisiciones.View{
 
                 Consultar();
 
-                MessageBox.Show(@"Licitación Registrada o Actualizada Exitosamente",
+                XtraMessageBox.Show(@"Licitación Registrada o Actualizada Exitosamente",
                @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
 
             }
             catch (Exception ee)
             {
-                MessageBox.Show(@"Ocurrio un error en la persistencia",
+                XtraMessageBox.Show(@"Ocurrio un error en la persistencia",
                     @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 Log.Error("Generado por:" + FrmModuloAcceso.UsuarioLog, ee);
@@ -141,21 +141,21 @@ namespace Adquisiciones.View{
                 }
                 else
                 {
-                    MessageBox.Show(@"Folio no existe", @"Adquisiciones",
+                    XtraMessageBox.Show(@"Folio no existe", @"Adquisiciones",
                                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                     txtnumlicitacion.Select();
                 }
             }
             catch (Exception ee)
             {
-                MessageBox.Show(@"Ocurrio un error en la consulta Reportalo a Dep. Sistemas",
+                XtraMessageBox.Show(@"Ocurrio un error en la consulta Reportalo a Dep. Sistemas",
                     @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 Log.Error("Generado por:" + FrmModuloAcceso.UsuarioLog, ee);
             }
         }
 
-        private void CmdGuardarClick(object sender, EventArgs e)
+        protected override void CmdGuardarClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             if (AnexoActual.IdAnexo == 0)
             {
@@ -166,7 +166,7 @@ namespace Adquisiciones.View{
                     Guardar();
                 }
                 else
-                    MessageBox.Show(@"El folio ya existe para este año",
+                    XtraMessageBox.Show(@"El folio ya existe para este año",
                                     @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
@@ -176,8 +176,7 @@ namespace Adquisiciones.View{
         }
 
         private bool TieneRepetidoArticulo(int? articulo)
-        {
-            var numOcurrencia = AnexoActual.AnexoDetalle.Count(p => p.CveArt == articulo);
+        {var numOcurrencia = AnexoActual.AnexoDetalle.Count(p => p.CveArt == articulo);
             return numOcurrencia > 1;
         }
 
@@ -201,7 +200,7 @@ namespace Adquisiciones.View{
             {
                 if (TieneRepetidoArticulo((int?) (rowSelectValue)))
                 {
-                    MessageBox.Show(@"Articulo repetido clave " + rowSelectValue,
+                    XtraMessageBox.Show(@"Articulo repetido clave " + rowSelectValue,
                                     @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     gvAnexoDetalle.SetRowCellValue(e.RowHandle, "DescripcionArt", "");
                     gvAnexoDetalle.SetRowCellValue(e.RowHandle, "PresentacionArt", "");
@@ -226,5 +225,8 @@ namespace Adquisiciones.View{
 
                 }
             }
-        }}
+        }
+
+       
+    }
 }
