@@ -103,7 +103,7 @@ namespace Adquisiciones.View.Modulos
             deFechaPedido.DateTime = PedidoService.PedidoDao.FechaServidor();
             PedidoActual.FechaPedido = deFechaPedido.DateTime;
 
-            lblNumErrors.Text = string.Empty;
+            lblNumErrors.Caption = string.Empty;
             lblArea.Text = "";
             lblLicitacion.Text = "";
             lblProveedor.Text = "";
@@ -112,8 +112,8 @@ namespace Adquisiciones.View.Modulos
 
         public override void Guardar()
         {
-            listaError.Items.Clear();
-            lblNumErrors.Text = "";
+            listaError.Strings.Clear();
+            lblNumErrors.Caption = "";
 
             //los parametros basicos
             PedidoActual.Almacen = FrmModuloModulo.AlmacenSelec;
@@ -161,8 +161,8 @@ namespace Adquisiciones.View.Modulos
                     if (PedidoActual.Anexo != null)
                         lblLicitacion.Text = PedidoActual.Anexo.ToString();
 
-                    listaError.Items.Clear();
-                    lblNumErrors.Text = string.Empty;
+                    listaError.Strings.Clear();
+                    lblNumErrors.Caption = string.Empty;
                     SumTotal();
                 }
                 else

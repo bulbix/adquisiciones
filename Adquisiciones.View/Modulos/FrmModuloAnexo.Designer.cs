@@ -75,7 +75,6 @@
             // 
             this.splitContainerControl1.Panel1.Controls.Add(this.gcDatosGenerales);
             this.splitContainerControl1.Panel2.Controls.Add(this.gcAnexoDetalle);
-            this.splitContainerControl1.Size = new System.Drawing.Size(628, 352);
             this.splitContainerControl1.SplitterPosition = 153;
             // 
             // gcDatosGenerales

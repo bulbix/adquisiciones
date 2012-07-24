@@ -6,8 +6,7 @@ using Adquisiciones.Data.Entities;
 using DevExpress.XtraEditors;
 using Spring.Context.Support;
 
-namespace Adquisiciones.View.Catalogos
-{
+namespace Adquisiciones.View.Catalogos{
     ///<summary>
     ///</summary>
     /// 

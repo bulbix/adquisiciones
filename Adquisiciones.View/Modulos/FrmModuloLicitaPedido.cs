@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using Adquisiciones.Business;
 using Adquisiciones.Business.ModPedido;
 using Adquisiciones.Data.Entities;
+using DevExpress.XtraBars;
 using DevExpress.XtraEditors;
 using Spring.Context.Support;
 
@@ -70,8 +71,8 @@ namespace Adquisiciones.View.Modulos
 
         public override void Guardar()
         {
-            listaError.Items.Clear();
-            lblNumErrors.Text = "";
+            listaError.Strings.Clear();
+            lblNumErrors.Caption = "";
 
             PedidoActual.FechaPedido = deFechaPedido.DateTime;
 
@@ -161,56 +162,56 @@ namespace Adquisiciones.View.Modulos
         /// <param name="pedido"></param>
         /// <param name="lista"></param>
         /// <returns></returns>
-        public bool DatosValidosPedido(Pedido pedido, ListBox lista)
+        public bool DatosValidosPedido(Pedido pedido, BarListItem lista)
         {
             bool result = true;
 
             if (pedido.Requisicion == null)
             {
                 result = false;
-                lista.Items.Add("Requisicion requerida");
+                lista.Strings.Add("Requisicion requerida");
             }
 
             if (!Util.FechaValida(pedido.FechaPedido))
             {
                 result = false;
-                lista.Items.Add("Fecha Pedido requerida");
+                lista.Strings.Add("Fecha Pedido requerida");
             }
 
             if (!Util.FechaValida(deFechaInicial.DateTime))
             {
                 result = false;
-                lista.Items.Add("Fecha Inicial requerida");
+                lista.Strings.Add("Fecha Inicial requerida");
             }
 
             if (!Util.FechaValida(deFechaFinal.DateTime))
             {
                 result = false;
-                lista.Items.Add("Fecha Final requerida");
+                lista.Strings.Add("Fecha Final requerida");
             }
 
             if (pedido.Fundamento == null)
             {
                 result = false;
-                lista.Items.Add("Fundamento requerido");
+                lista.Strings.Add("Fundamento requerido");
             }
 
             if (pedido.CatActividad == null)
             {
                 result = false;
-                lista.Items.Add("Actividad requerida");
+                lista.Strings.Add("Actividad requerida");
             }
 
             if (pedido.Iva == null)
             {
                 result = false;
-                lista.Items.Add("Iva requerido");
+                lista.Strings.Add("Iva requerido");
             }
 
             if (pedido.CatPresupuesto == null)
             {
                 result = false;
-                lista.Items.Add("Cargo a requerido");
+                lista.Strings.Add("Cargo a requerido");
             }
 
             return result;

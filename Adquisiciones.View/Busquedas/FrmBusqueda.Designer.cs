@@ -97,6 +97,8 @@
             // 
             // cmdBuscar
             // 
+            this.cmdBuscar.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmdBuscar.Appearance.Options.UseFont = true;
             this.cmdBuscar.Caption = "Buscar";
             this.cmdBuscar.Id = 0;
             this.cmdBuscar.Name = "cmdBuscar";
@@ -104,6 +106,8 @@
             // 
             // cmdConsultar
             // 
+            this.cmdConsultar.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmdConsultar.Appearance.Options.UseFont = true;
             this.cmdConsultar.Caption = "Consultar";
             this.cmdConsultar.Id = 1;
             this.cmdConsultar.Name = "cmdConsultar";
@@ -111,6 +115,8 @@
             // 
             // cmdImprimir
             // 
+            this.cmdImprimir.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmdImprimir.Appearance.Options.UseFont = true;
             this.cmdImprimir.Caption = "Imprimir Listado";
             this.cmdImprimir.Id = 2;
             this.cmdImprimir.Name = "cmdImprimir";
@@ -118,6 +124,8 @@
             // 
             // cmdReporte
             // 
+            this.cmdReporte.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmdReporte.Appearance.Options.UseFont = true;
             this.cmdReporte.Caption = "Generar Reporte";
             this.cmdReporte.Id = 3;
             this.cmdReporte.Name = "cmdReporte";
@@ -125,6 +133,8 @@
             // 
             // cmdEliminar
             // 
+            this.cmdEliminar.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmdEliminar.Appearance.Options.UseFont = true;
             this.cmdEliminar.Caption = "Eliminar";
             this.cmdEliminar.Id = 4;
             this.cmdEliminar.Name = "cmdEliminar";
@@ -147,28 +157,28 @@
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Size = new System.Drawing.Size(708, 49);
+            this.barDockControlTop.Size = new System.Drawing.Size(708, 57);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 371);
-            this.barDockControlBottom.Size = new System.Drawing.Size(708, 26);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 369);
+            this.barDockControlBottom.Size = new System.Drawing.Size(708, 28);
             // 
             // barDockControlLeft
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 49);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 322);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 57);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 312);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(708, 49);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 322);
+            this.barDockControlRight.Location = new System.Drawing.Point(708, 57);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 312);
             // 
             // FrmBusqueda
             // 

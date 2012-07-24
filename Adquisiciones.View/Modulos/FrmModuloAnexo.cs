@@ -84,14 +84,26 @@ namespace Adquisiciones.View.Modulos
             dtpFechaanexo.Enabled = true;
             cmdGuardar.Enabled = true;
             txtnumlicitacion.Focus();
-            listaError.Items.Clear();
-            lblNumErrors.Text = string.Empty;
+            listaError.Strings.Clear();
+            lblNumErrors.Caption = string.Empty;
         }
 
         public override void Guardar()
         {
             AnexoActual = bsAnexo.DataSource as Anexo;
             AnexoActual.AnexoDetalle = bsAnexoDetalle.DataSource as List<AnexoDetalle>;
+
+            if (AnexoActual.IdAnexo == 0)
+            {
+                //No existe el numero de folio para ese anio
+                if (AnexoService.AnexoDao.ExisteAnexo(txtnumlicitacion.Text,FrmModuloModulo.AlmacenSelec))
+                {
+                      XtraMessageBox.Show(@"El folio ya existe para este año",
+                                    @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+            }
+
 
             try
             {
@@ -116,7 +128,7 @@ namespace Adquisiciones.View.Modulos
             }
             catch (Exception ee)
             {
-                XtraMessageBox.Show(@"Ocurrio un error en la persistencia",
+                XtraMessageBox.Show(@"Ocurrio un error en el guardado",
                     @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 Log.Error("Generado por:" + FrmModuloAcceso.UsuarioLog, ee);
@@ -136,12 +148,11 @@ namespace Adquisiciones.View.Modulos
                     bsAnexoDetalle.DataSource = AnexoActual.AnexoDetalle;
                     txtnumlicitacion.Enabled = false;
                     dtpFechaanexo.Enabled = false;
-                    listaError.Items.Clear();
-                    lblNumErrors.Text = string.Empty;
+                    listaError.Strings.Clear();
+                    lblNumErrors.Caption = string.Empty;
                 }
                 else
-                {
-                    XtraMessageBox.Show(@"Folio no existe", @"Adquisiciones",
+                {XtraMessageBox.Show(@"Folio no existe", @"Adquisiciones",
                                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                     txtnumlicitacion.Select();
                 }
@@ -155,28 +166,9 @@ namespace Adquisiciones.View.Modulos
             }
         }
 
-        protected override void CmdGuardarClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            if (AnexoActual.IdAnexo == 0)
-            {
-                //No existe el numero de folio para ese anio
-                if (!AnexoService.AnexoDao.ExisteAnexo(txtnumlicitacion.Text,
-                                                       FrmModuloModulo.AlmacenSelec))
-                {
-                    Guardar();
-                }
-                else
-                    XtraMessageBox.Show(@"El folio ya existe para este año",
-                                    @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else
-            {
-                Guardar();
-            }
-        }
-
         private bool TieneRepetidoArticulo(int? articulo)
-        {var numOcurrencia = AnexoActual.AnexoDetalle.Count(p => p.CveArt == articulo);
+        {
+            var numOcurrencia = AnexoActual.AnexoDetalle.Count(p => p.CveArt == articulo);
             return numOcurrencia > 1;
         }
 

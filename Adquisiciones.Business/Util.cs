@@ -7,6 +7,7 @@ using System.Data;
 using System.Net;
 using Adquisiciones.Data.Auxiliares;
 using Adquisiciones.Data.Entities;
+using DevExpress.XtraBars;
 using NHibernate.Type;
 using NHibernate.Validator.Engine;
 
@@ -51,6 +52,21 @@ namespace Adquisiciones.Business
         /// <param name="numErrores">El numero de errores al momento</param>
         /// <param name="listaErrores"></param>
         /// <returns></returns>
+        public static bool DatosValidos<TE>(TE entity, BarStaticItem numErrores, BarListItem listaErrores)
+        {
+            var result = true;
+            var engine = new ValidatorEngine();
+            engine.Configure();
+            if (!engine.IsValid(entity))
+            {
+                var values = engine.Validate(entity);
+                numErrores.Caption = values.Length + " Errores";
+                LlenarErroresEnLista(values, ref listaErrores);
+                result = false;
+            }
+            return result;
+        }
+
         public static bool DatosValidos<TE>(TE entity, Label numErrores, ListBox listaErrores)
         {
             var result = true;
@@ -87,11 +103,22 @@ namespace Adquisiciones.Business
         /// </summary>
         /// <param name="values"></param>
         /// <param name="listaError"></param>
+        public static void LlenarErroresEnLista(InvalidValue[] values, ref BarListItem listaError)
+        {
+            listaError.Strings.Clear();
+
+            foreach (var message in 
+                values.Select(value => value.PropertyName + ":" + value.Message))
+            {
+                listaError.Strings.Add(message);
+            }
+        }
+
         public static void LlenarErroresEnLista(InvalidValue[] values, ref ListBox listaError)
         {
             listaError.Items.Clear();
 
-            foreach (var message in 
+            foreach (var message in
                 values.Select(value => value.PropertyName + ":" + value.Message))
             {
                 listaError.Items.Add(message);

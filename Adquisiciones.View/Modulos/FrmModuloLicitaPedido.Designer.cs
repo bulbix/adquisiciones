@@ -108,7 +108,7 @@
             this.splitContainerControl1.Panel1.Controls.Add(this.labelControl1);
             this.splitContainerControl1.Panel2.Controls.Add(this.txtObservaciones);
             this.splitContainerControl1.Panel2.Controls.Add(this.labelControl11);
-            this.splitContainerControl1.Size = new System.Drawing.Size(941, 352);
+            this.splitContainerControl1.Size = new System.Drawing.Size(941, 507);
             this.splitContainerControl1.SplitterPosition = 289;
             // 
             // cbxActividad
@@ -209,6 +209,7 @@
             this.searchLookUpFundamento.Name = "searchLookUpFundamento";
             this.searchLookUpFundamento.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.searchLookUpFundamento.Properties.DataSource = this.bsFundamento;
             this.searchLookUpFundamento.Properties.DisplayMember = "CveFundamento";
             this.searchLookUpFundamento.Properties.NullText = "";
             this.searchLookUpFundamento.Properties.ValueMember = "CveFundamento";
@@ -336,6 +337,7 @@
             this.searchLookUpRequisicion.Name = "searchLookUpRequisicion";
             this.searchLookUpRequisicion.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.searchLookUpRequisicion.Properties.DataSource = this.bsRequisicion;
             this.searchLookUpRequisicion.Properties.DisplayMember = "NumeroRequisicion";
             this.searchLookUpRequisicion.Properties.NullText = "";
             this.searchLookUpRequisicion.Properties.ValueMember = "NumeroRequisicion";
@@ -418,12 +420,12 @@
             this.labelControl11.TabIndex = 40;
             this.labelControl11.Text = "Observaciones";
             // 
-            // FrmModuloLictaPedido
+            // FrmModuloLicitaPedido
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(941, 423);
-            this.Name = "FrmModuloLictaPedido";
+            this.ClientSize = new System.Drawing.Size(941, 582);
+            this.Name = "FrmModuloLicitaPedido";
             this.Text = "Generar::Pedido";
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();
             this.splitContainerControl1.ResumeLayout(false);
@@ -442,7 +444,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.bsFundamento)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsPedido)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 

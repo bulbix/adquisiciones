@@ -21,6 +21,14 @@ namespace Adquisiciones.View.Modulos
             InitializeComponent();
         }
 
+        private void HayErrores()
+        {
+            if (listaError.Strings.Count > 0)
+                listaError.Appearance.ForeColor = Color.Red;
+            else
+                listaError.Appearance.ForeColor = Color.White;
+        }
+
         protected virtual void CmdNuevoClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             Nuevo();
@@ -29,11 +37,13 @@ namespace Adquisiciones.View.Modulos
         protected virtual void CmdGuardarClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             Guardar();
+            HayErrores();
         }
 
         protected virtual void CmdConsultarClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             Consultar();
+            HayErrores();
         }
 
         public virtual void BindearCampos()
@@ -44,8 +54,7 @@ namespace Adquisiciones.View.Modulos
         {
         }
 
-        public virtual void Nuevo()
-        {
+        public virtual void Nuevo(){
         }
 
         public virtual void Guardar()

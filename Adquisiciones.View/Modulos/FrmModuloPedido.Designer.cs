@@ -140,14 +140,7 @@
             this.splitContainerControl1.Panel2.Controls.Add(this.gcPedidoDetalle);
             this.splitContainerControl1.Size = new System.Drawing.Size(787, 497);
             this.splitContainerControl1.SplitterPosition = 272;
-            // 
-            // listaError
-            // 
-            this.listaError.Location = new System.Drawing.Point(443, 7);
-            // 
-            // lblNumErrors
-            // 
-            this.lblNumErrors.Location = new System.Drawing.Point(255, 167);
+            
             // 
             // groupControl1
             // 

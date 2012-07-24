@@ -82,7 +82,8 @@
             // 
             this.splitContainerControl1.Panel1.Controls.Add(this.gcDatosGenerales);
             this.splitContainerControl1.Panel2.Controls.Add(this.gcCotizacionDetalle);
-            this.splitContainerControl1.Size = new System.Drawing.Size(1130, 352);
+            this.splitContainerControl1.Size = new System.Drawing.Size(1130, 348);
+            this.splitContainerControl1.SplitterPosition = 167;
             // 
             // gcDatosGenerales
             // 
@@ -101,7 +102,7 @@
             this.gcDatosGenerales.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gcDatosGenerales.Location = new System.Drawing.Point(0, 0);
             this.gcDatosGenerales.Name = "gcDatosGenerales";
-            this.gcDatosGenerales.Size = new System.Drawing.Size(1130, 121);
+            this.gcDatosGenerales.Size = new System.Drawing.Size(1130, 167);
             this.gcDatosGenerales.TabIndex = 9;
             this.gcDatosGenerales.Text = "Datos Generales";
             // 
@@ -314,7 +315,7 @@
             this.gcCotizacionDetalle.Location = new System.Drawing.Point(0, 0);
             this.gcCotizacionDetalle.MainView = this.gvCotizacionDetalle;
             this.gcCotizacionDetalle.Name = "gcCotizacionDetalle";
-            this.gcCotizacionDetalle.Size = new System.Drawing.Size(1130, 225);
+            this.gcCotizacionDetalle.Size = new System.Drawing.Size(1130, 175);
             this.gcCotizacionDetalle.TabIndex = 110;
             this.gcCotizacionDetalle.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvCotizacionDetalle});
@@ -554,7 +555,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.bsCotizacionDetalle)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvCotizacionDetalle)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 

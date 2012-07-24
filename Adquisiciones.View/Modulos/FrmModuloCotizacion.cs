@@ -74,8 +74,8 @@ namespace Adquisiciones.View.Modulos
             BindearCampos();
 
             bsCotizacionDetalle.DataSource = new List<CotizacionDetalle>();
-            listaError.Items.Clear();
-            lblNumErrors.Text = string.Empty;
+            listaError.Strings.Clear();
+            lblNumErrors.Caption = string.Empty;
 
             gcDatosGenerales.Enabled = true;
             cmdGuardar.Enabled = false;
@@ -122,6 +122,8 @@ namespace Adquisiciones.View.Modulos
         {
             try
             {
+                Nuevo();
+
                 if (Util.DatosValidos(CotizacionActual, lblNumErrors, listaError))
                 {
                     CotizacionService.ConsultarCotizacion(ref CotizacionActual);
@@ -213,15 +215,6 @@ namespace Adquisiciones.View.Modulos
                 gcCotizacionDetalle.Focus();
             }
         }
-
-        protected override void CmdConsultarClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            Nuevo();
-            Consultar();
-        }
-
-      
-
 
     }
 }
