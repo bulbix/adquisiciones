@@ -26,6 +26,7 @@ namespace Adquisiciones.View.Busquedas
             base.GvGeneral = gvAnexo;
             GetServicio();
             AnexoService = base.Servicio as IAnexoService;
+            base.ObtenerPerfil();
         }
 
         private void TieneCotizacionClick(object sender, EventArgs e)

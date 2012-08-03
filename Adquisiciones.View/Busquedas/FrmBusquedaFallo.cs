@@ -23,6 +23,7 @@ namespace Adquisiciones.View.Busquedas
             base.NombreReporte = "reporteTabla";
             base.GvGeneral = gvAnexo;
             FalloService = base.Servicio as IFalloService;
+            base.ObtenerPerfil();
         }
     }
 }

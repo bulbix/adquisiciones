@@ -27,6 +27,8 @@ namespace Adquisiciones.View.Modulos
         public FrmModuloFallo()
         {
             InitializeComponent();
+            base.TypeEntity = typeof(Fallo);
+            base.ObtenerPerfil();
             var ctx = ContextRegistry.GetContext();
             FalloService = ctx["falloService"] as IFalloService;
 

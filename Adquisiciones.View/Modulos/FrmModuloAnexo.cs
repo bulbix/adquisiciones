@@ -26,7 +26,10 @@ namespace Adquisiciones.View.Modulos
 
         public FrmModuloAnexo()
         {
-            InitializeComponent();var ctx = ContextRegistry.GetContext();
+            InitializeComponent();
+            base.TypeEntity = typeof(Anexo);
+            base.ObtenerPerfil();
+            var ctx = ContextRegistry.GetContext();
             AnexoService = ctx["anexoService"] as IAnexoService;
             Nuevo();
             BindearCampos();

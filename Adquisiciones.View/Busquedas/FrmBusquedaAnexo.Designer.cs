@@ -39,22 +39,22 @@
             this.gridColumnCotizacion = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
-            
             ((System.ComponentModel.ISupportInitialize)(this.bsSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gcAnexo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvAnexo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).BeginInit();
             this.SuspendLayout();
+            // 
             // gcAnexo
             // 
             this.gcAnexo.DataSource = this.bsSource;
             this.gcAnexo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gcAnexo.Location = new System.Drawing.Point(0, 49);
+            this.gcAnexo.Location = new System.Drawing.Point(0, 55);
             this.gcAnexo.MainView = this.gvAnexo;
             this.gcAnexo.Name = "gcAnexo";
             this.gcAnexo.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemButtonEdit1});
-            this.gcAnexo.Size = new System.Drawing.Size(708, 322);
+            this.gcAnexo.Size = new System.Drawing.Size(708, 316);
             this.gcAnexo.TabIndex = 4;
             this.gcAnexo.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvAnexo});
@@ -184,7 +184,6 @@
             this.Controls.Add(this.gcAnexo);
             this.Name = "FrmBusquedaAnexo";
             this.Text = "Busqueda::Anexo";
-            
             this.Controls.SetChildIndex(this.gcAnexo, 0);
             ((System.ComponentModel.ISupportInitialize)(this.bsSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gcAnexo)).EndInit();

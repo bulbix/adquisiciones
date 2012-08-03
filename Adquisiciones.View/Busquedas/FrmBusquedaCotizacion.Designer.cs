@@ -43,18 +43,17 @@
             ((System.ComponentModel.ISupportInitialize)(this.gvCotizacion)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).BeginInit();
             this.SuspendLayout();
-           
             // 
             // gcCotizacion
             // 
             this.gcCotizacion.DataSource = this.bsSource;
             this.gcCotizacion.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gcCotizacion.Location = new System.Drawing.Point(0, 49);
+            this.gcCotizacion.Location = new System.Drawing.Point(0, 55);
             this.gcCotizacion.MainView = this.gvCotizacion;
             this.gcCotizacion.Name = "gcCotizacion";
             this.gcCotizacion.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemButtonEdit1});
-            this.gcCotizacion.Size = new System.Drawing.Size(708, 322);
+            this.gcCotizacion.Size = new System.Drawing.Size(708, 316);
             this.gcCotizacion.TabIndex = 4;
             this.gcCotizacion.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvCotizacion});
@@ -124,6 +123,7 @@
             this.repositoryItemButtonEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
             this.repositoryItemButtonEdit1.Name = "repositoryItemButtonEdit1";
+            this.repositoryItemButtonEdit1.Click += new System.EventHandler(this.TieneFalloClick);
             // 
             // gridColumn5
             // 
@@ -163,9 +163,8 @@
             this.Controls.Add(this.gcCotizacion);
             this.Name = "FrmBusquedaCotizacion";
             this.Text = "Busqueda::Cotizacion";
-            
             this.Controls.SetChildIndex(this.gcCotizacion, 0);
-          ((System.ComponentModel.ISupportInitialize)(this.bsSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gcCotizacion)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvCotizacion)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).EndInit();

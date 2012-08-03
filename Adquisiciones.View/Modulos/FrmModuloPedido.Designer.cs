@@ -138,9 +138,8 @@
             // 
             this.splitContainerControl1.Panel1.Controls.Add(this.groupControl1);
             this.splitContainerControl1.Panel2.Controls.Add(this.gcPedidoDetalle);
-            this.splitContainerControl1.Size = new System.Drawing.Size(787, 497);
+            this.splitContainerControl1.Size = new System.Drawing.Size(787, 493);
             this.splitContainerControl1.SplitterPosition = 272;
-            
             // 
             // groupControl1
             // 
@@ -678,7 +677,7 @@
             this.repositoryItemSearchLookUpEdit2,
             this.repositoryItemPopupContainerEdit1,
             this.repositoryItemButtonEdit1});
-            this.gcPedidoDetalle.Size = new System.Drawing.Size(787, 219);
+            this.gcPedidoDetalle.Size = new System.Drawing.Size(787, 215);
             this.gcPedidoDetalle.TabIndex = 4;
             this.gcPedidoDetalle.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvPedidoDetalle});
@@ -973,7 +972,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemPopupContainerEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsPedido)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 

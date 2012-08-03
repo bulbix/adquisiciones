@@ -19,12 +19,51 @@ namespace Adquisiciones.View
         public FrmAdquisiciones()
         {
             InitializeComponent();
+            ObtenerPerfil();
+        }
+
+        protected void ObtenerPerfil()
+        {
+            var modulosUsuario = FrmModuloAcceso.UsuarioLog.UsuarioModulo;
+           
+            foreach (var moduloUsuario in modulosUsuario)
+            {
+                if (moduloUsuario.Estatus != "A")
+                    continue; 
+                
+                var desModulo = moduloUsuario.Id.Modulo.DesModulo.ToLower().Trim();
+               
+                if (desModulo.Contains("anexo guardar"))
+                {
+                    barButtonAnexo.Visibility = BarItemVisibility.Always;
+                }
+
+                if (desModulo.Contains("cotizacion guardar"))
+                {
+                    barButtonCotizacion.Visibility = BarItemVisibility.Always;
+                }
+
+                if (desModulo.Contains("fallo guardar"))
+                {
+                    barButtonFallo.Visibility = BarItemVisibility.Always;
+                }
+
+                if (desModulo.Contains("pedido guardar"))
+                {
+                    barButtonPedidoAuto.Visibility = BarItemVisibility.Always;
+                    barButtonPedidoMenor.Visibility = BarItemVisibility.Always;
+                    barButtonPedidoMayor.Visibility = BarItemVisibility.Always;
+                    barButtonPedidoDonacion.Visibility = BarItemVisibility.Always;
+                }
+                
+            }
         }
 
         private void BarButtonAnexoItemClick(object sender, ItemClickEventArgs e)
         {
             var forma = new FrmModuloAnexo();
-            forma.MdiParent = this;forma.Show();
+            forma.MdiParent = this;
+            forma.Show();
 
         }
 

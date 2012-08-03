@@ -27,11 +27,11 @@ namespace Adquisiciones.View.Modulos
         public FrmModuloPedido()
         {
             InitializeComponent();
-        }
+            base.TypeEntity = typeof(Pedido);
+            base.ObtenerPerfil();}
 
-         public FrmModuloPedido(int tipoPedido)
+        public FrmModuloPedido(int tipoPedido):this()
         {
-            InitializeComponent();
             var ctx = ContextRegistry.GetContext();
             PedidoService = ctx["pedidoService"] as IPedidoService;
             Nuevo();

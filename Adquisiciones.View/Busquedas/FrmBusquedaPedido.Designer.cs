@@ -39,20 +39,19 @@
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
-            
             ((System.ComponentModel.ISupportInitialize)(this.bsSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gcPedido)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvPedido)).BeginInit();
             this.SuspendLayout();
-           
+            // 
             // gcPedido
             // 
             this.gcPedido.DataSource = this.bsSource;
             this.gcPedido.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gcPedido.Location = new System.Drawing.Point(0, 49);
+            this.gcPedido.Location = new System.Drawing.Point(0, 55);
             this.gcPedido.MainView = this.gvPedido;
             this.gcPedido.Name = "gcPedido";
-            this.gcPedido.Size = new System.Drawing.Size(708, 322);
+            this.gcPedido.Size = new System.Drawing.Size(708, 316);
             this.gcPedido.TabIndex = 4;
             this.gcPedido.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvPedido});
@@ -181,7 +180,6 @@
             this.Controls.Add(this.gcPedido);
             this.Name = "FrmBusquedaPedido";
             this.Text = "Busqueda::Pedido";
-            
             this.Controls.SetChildIndex(this.gcPedido, 0);
             ((System.ComponentModel.ISupportInitialize)(this.bsSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gcPedido)).EndInit();

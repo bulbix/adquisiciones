@@ -100,6 +100,7 @@
             this.cmdBuscar.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmdBuscar.Appearance.Options.UseFont = true;
             this.cmdBuscar.Caption = "Buscar";
+            this.cmdBuscar.Enabled = false;
             this.cmdBuscar.Id = 0;
             this.cmdBuscar.Name = "cmdBuscar";
             this.cmdBuscar.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.CmdBuscarItemClick);
@@ -109,6 +110,7 @@
             this.cmdConsultar.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmdConsultar.Appearance.Options.UseFont = true;
             this.cmdConsultar.Caption = "Consultar";
+            this.cmdConsultar.Enabled = false;
             this.cmdConsultar.Id = 1;
             this.cmdConsultar.Name = "cmdConsultar";
             this.cmdConsultar.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.CmdConsultarItemClick);
@@ -118,6 +120,7 @@
             this.cmdImprimir.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmdImprimir.Appearance.Options.UseFont = true;
             this.cmdImprimir.Caption = "Imprimir Listado";
+            this.cmdImprimir.Enabled = false;
             this.cmdImprimir.Id = 2;
             this.cmdImprimir.Name = "cmdImprimir";
             this.cmdImprimir.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.CmdImprimirItemClick);
@@ -127,6 +130,7 @@
             this.cmdReporte.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmdReporte.Appearance.Options.UseFont = true;
             this.cmdReporte.Caption = "Generar Reporte";
+            this.cmdReporte.Enabled = false;
             this.cmdReporte.Id = 3;
             this.cmdReporte.Name = "cmdReporte";
             this.cmdReporte.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.CmdReporteItemClick);
@@ -136,6 +140,7 @@
             this.cmdEliminar.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmdEliminar.Appearance.Options.UseFont = true;
             this.cmdEliminar.Caption = "Eliminar";
+            this.cmdEliminar.Enabled = false;
             this.cmdEliminar.Id = 4;
             this.cmdEliminar.Name = "cmdEliminar";
             this.cmdEliminar.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.CmdEliminarItemClick);
@@ -157,28 +162,28 @@
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Size = new System.Drawing.Size(708, 57);
+            this.barDockControlTop.Size = new System.Drawing.Size(708, 53);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 369);
-            this.barDockControlBottom.Size = new System.Drawing.Size(708, 28);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 375);
+            this.barDockControlBottom.Size = new System.Drawing.Size(708, 22);
             // 
             // barDockControlLeft
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 57);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 312);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 53);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 322);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(708, 57);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 312);
+            this.barDockControlRight.Location = new System.Drawing.Point(708, 53);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 322);
             // 
             // FrmBusqueda
             // 

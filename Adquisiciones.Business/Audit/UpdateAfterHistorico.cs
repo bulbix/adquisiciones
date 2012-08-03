@@ -27,7 +27,7 @@ namespace Adquisiciones.Business.Audit
             if (nameMethod == "EliminarEntity")
                 nameHistorico = args[1] + "DetalleHist";
             else if (nameMethod.StartsWith("Guardar"))
-                nameHistorico = nameMethod.Substring(7);
+                nameHistorico = nameMethod.Substring(7) + "DetalleHist";
 
 
             if (auditService.IdsDetalleHistorico.ContainsKey(nameHistorico))

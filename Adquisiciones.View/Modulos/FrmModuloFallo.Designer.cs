@@ -56,7 +56,6 @@
             // 
             this.splitContainerControl1.Panel1.Controls.Add(this.groupControl1);
             this.splitContainerControl1.Panel2.Controls.Add(this.pgbFallo);
-            this.splitContainerControl1.Size = new System.Drawing.Size(628, 352);
             // 
             // groupControl1
             // 
@@ -67,7 +66,7 @@
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl1.Location = new System.Drawing.Point(0, 0);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(628, 121);
+            this.groupControl1.Size = new System.Drawing.Size(628, 92);
             this.groupControl1.TabIndex = 34;
             this.groupControl1.Text = "Datos Generales";
             // 
@@ -183,7 +182,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dtpFallo.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pgbFallo.Properties)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 

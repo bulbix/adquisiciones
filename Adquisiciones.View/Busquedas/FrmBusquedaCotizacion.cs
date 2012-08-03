@@ -21,10 +21,12 @@ namespace Adquisiciones.View.Busquedas
             InitializeComponent();
             base.TypeEntity = typeof(Cotizacion);
             base.NombreService = "cotizacionService";
-            base.NombreReporte = "reporteCotizacion"; base.TypeForma = typeof(FrmModuloCotizacion);
+            base.NombreReporte = "reporteCotizacion"; 
+            base.TypeForma = typeof(FrmModuloCotizacion);
             base.GvGeneral = gvCotizacion;
             GetServicio();
             CotizacionService = base.Servicio as ICotizacionService;
+            base.ObtenerPerfil();
         }
 
         private void TieneFalloClick(object sender, EventArgs e)

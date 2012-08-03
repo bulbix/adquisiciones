@@ -12,7 +12,7 @@ using Spring.Context.Support;
 
 namespace Adquisiciones.View.Busquedas
 {
-    public partial class FrmBusqueda : DevExpress.XtraEditors.XtraForm
+    public partial class FrmBusqueda : XtraForm
     {
 
         protected Type TypeEntity { get; set; }
@@ -30,6 +30,38 @@ namespace Adquisiciones.View.Busquedas
         public FrmBusqueda()
         {
             InitializeComponent();
+        }
+
+       
+
+        protected void ObtenerPerfil(){
+            var modulosUsuario = FrmModuloAcceso.UsuarioLog.UsuarioModulo;
+            var nombreModulo = TypeEntity.Name.ToLower();
+            foreach (var moduloUsuario in modulosUsuario)
+            {
+                if(moduloUsuario.Estatus != "A")
+                    continue;
+
+                var desModulo = moduloUsuario.Id.Modulo.DesModulo.ToLower().Trim();
+                if (desModulo.Contains(nombreModulo))
+                {if (desModulo.Contains("consultar"))
+                    {
+                        cmdBuscar.Enabled = true;
+                        cmdConsultar.Enabled = true;
+                    }
+
+                    if (desModulo.Contains("eliminar"))
+                    {
+                        cmdEliminar.Enabled = true;
+                    }
+
+                    if (desModulo.Contains("reportear"))
+                    {
+                        cmdImprimir.Enabled = true;
+                        cmdReporte.Enabled = true;
+                    }
+                }
+            }
         }
 
 
@@ -117,6 +149,8 @@ namespace Adquisiciones.View.Busquedas
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+       
 
        
     }

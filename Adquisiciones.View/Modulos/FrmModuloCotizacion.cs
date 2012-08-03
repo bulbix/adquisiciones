@@ -33,16 +33,18 @@ namespace Adquisiciones.View.Modulos
         public FrmModuloCotizacion()
         {
             InitializeComponent();
+            base.TypeEntity = typeof(Cotizacion);
+            base.ObtenerPerfil();
             var ctx = ContextRegistry.GetContext();
             CotizacionService = ctx["cotizacionService"] as ICotizacionService;
-            InicializarCatalogos();
-            Nuevo();
+            InicializarCatalogos();Nuevo();
         }
-
         public FrmModuloCotizacion(Cotizacion cotizacion)
             : this()
         {
             CotizacionActual = cotizacion;
+            AnexoActual = cotizacion.Anexo;
+            ProveedorActual = cotizacion.Proveedor;
             Consultar();
         }
 

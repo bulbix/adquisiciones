@@ -99,7 +99,7 @@
             this.gcProveedor.Location = new System.Drawing.Point(0, 0);
             this.gcProveedor.MainView = this.gvProveedor;
             this.gcProveedor.Name = "gcProveedor";
-            this.gcProveedor.Size = new System.Drawing.Size(889, 533);
+            this.gcProveedor.Size = new System.Drawing.Size(889, 532);
             this.gcProveedor.TabIndex = 1;
             this.gcProveedor.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvProveedor});

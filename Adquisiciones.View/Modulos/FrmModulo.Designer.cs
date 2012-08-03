@@ -36,6 +36,8 @@
             this.cmdNuevo = new DevExpress.XtraBars.BarButtonItem();
             this.cmdGuardar = new DevExpress.XtraBars.BarButtonItem();
             this.cmdConsultar = new DevExpress.XtraBars.BarButtonItem();
+            this.cmdEliminar = new DevExpress.XtraBars.BarButtonItem();
+            this.cmdReporte = new DevExpress.XtraBars.BarButtonItem();
             this.listaError = new DevExpress.XtraBars.BarListItem();
             this.lblNumErrors = new DevExpress.XtraBars.BarStaticItem();
             this.bar3 = new DevExpress.XtraBars.Bar();
@@ -43,6 +45,8 @@
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
+            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             this.splitContainerControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
@@ -57,7 +61,7 @@
             this.splitContainerControl1.Panel1.Text = "Panel1";
             this.splitContainerControl1.Panel2.Text = "Panel2";
             this.splitContainerControl1.Size = new System.Drawing.Size(628, 348);
-            this.splitContainerControl1.SplitterPosition = 121;
+            this.splitContainerControl1.SplitterPosition = 92;
             this.splitContainerControl1.TabIndex = 0;
             this.splitContainerControl1.Text = "splitContainerControl1";
             // 
@@ -77,9 +81,11 @@
             this.cmdGuardar,
             this.cmdConsultar,
             this.listaError,
-            this.lblNumErrors});
+            this.lblNumErrors,
+            this.cmdEliminar,
+            this.cmdReporte});
             this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 5;
+            this.barManager1.MaxItemId = 8;
             this.barManager1.StatusBar = this.bar3;
             // 
             // bar1
@@ -100,6 +106,8 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.cmdNuevo),
             new DevExpress.XtraBars.LinkPersistInfo(this.cmdGuardar),
             new DevExpress.XtraBars.LinkPersistInfo(this.cmdConsultar),
+            new DevExpress.XtraBars.LinkPersistInfo(this.cmdEliminar),
+            new DevExpress.XtraBars.LinkPersistInfo(this.cmdReporte),
             new DevExpress.XtraBars.LinkPersistInfo(this.listaError),
             new DevExpress.XtraBars.LinkPersistInfo(this.lblNumErrors)});
             this.bar2.OptionsBar.MultiLine = true;
@@ -111,6 +119,7 @@
             this.cmdNuevo.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmdNuevo.Appearance.Options.UseFont = true;
             this.cmdNuevo.Caption = "Nuevo";
+            this.cmdNuevo.Enabled = false;
             this.cmdNuevo.Id = 0;
             this.cmdNuevo.Name = "cmdNuevo";
             this.cmdNuevo.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.CmdNuevoClick);
@@ -120,6 +129,7 @@
             this.cmdGuardar.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmdGuardar.Appearance.Options.UseFont = true;
             this.cmdGuardar.Caption = "Guardar";
+            this.cmdGuardar.Enabled = false;
             this.cmdGuardar.Id = 1;
             this.cmdGuardar.Name = "cmdGuardar";
             this.cmdGuardar.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.CmdGuardarClick);
@@ -129,9 +139,24 @@
             this.cmdConsultar.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmdConsultar.Appearance.Options.UseFont = true;
             this.cmdConsultar.Caption = "Consultar";
+            this.cmdConsultar.Enabled = false;
             this.cmdConsultar.Id = 2;
             this.cmdConsultar.Name = "cmdConsultar";
             this.cmdConsultar.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.CmdConsultarClick);
+            // 
+            // cmdEliminar
+            // 
+            this.cmdEliminar.Caption = "Eliminar";
+            this.cmdEliminar.Enabled = false;
+            this.cmdEliminar.Id = 6;
+            this.cmdEliminar.Name = "cmdEliminar";
+            // 
+            // cmdReporte
+            // 
+            this.cmdReporte.Caption = "Reporte";
+            this.cmdReporte.Enabled = false;
+            this.cmdReporte.Id = 7;
+            this.cmdReporte.Name = "cmdReporte";
             // 
             // listaError
             // 
@@ -140,6 +165,7 @@
             this.listaError.Appearance.Options.UseFont = true;
             this.listaError.Appearance.Options.UseForeColor = true;
             this.listaError.Caption = "Errores";
+            this.listaError.Enabled = false;
             this.listaError.Id = 3;
             this.listaError.Name = "listaError";
             // 
@@ -150,6 +176,7 @@
             this.lblNumErrors.Appearance.Options.UseFont = true;
             this.lblNumErrors.Appearance.Options.UseForeColor = true;
             this.lblNumErrors.Caption = "0 Errores";
+            this.lblNumErrors.Enabled = false;
             this.lblNumErrors.Id = 4;
             this.lblNumErrors.Name = "lblNumErrors";
             this.lblNumErrors.TextAlignment = System.Drawing.StringAlignment.Near;
@@ -194,6 +221,22 @@
             this.barDockControlRight.Location = new System.Drawing.Point(628, 53);
             this.barDockControlRight.Size = new System.Drawing.Size(0, 348);
             // 
+            // barButtonItem1
+            // 
+            this.barButtonItem1.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.barButtonItem1.Appearance.Options.UseFont = true;
+            this.barButtonItem1.Caption = "Consultar";
+            this.barButtonItem1.Id = 2;
+            this.barButtonItem1.Name = "barButtonItem1";
+            // 
+            // barButtonItem2
+            // 
+            this.barButtonItem2.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.barButtonItem2.Appearance.Options.UseFont = true;
+            this.barButtonItem2.Caption = "Consultar";
+            this.barButtonItem2.Id = 2;
+            this.barButtonItem2.Name = "barButtonItem2";
+            // 
             // FrmModulo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -229,5 +272,9 @@
         protected DevExpress.XtraBars.BarButtonItem cmdConsultar;
         protected DevExpress.XtraBars.BarListItem listaError;
         protected DevExpress.XtraBars.BarStaticItem lblNumErrors;
+        private DevExpress.XtraBars.BarButtonItem cmdEliminar;
+        private DevExpress.XtraBars.BarButtonItem cmdReporte;
+        protected DevExpress.XtraBars.BarButtonItem barButtonItem1;
+        protected DevExpress.XtraBars.BarButtonItem barButtonItem2;
     }
 }

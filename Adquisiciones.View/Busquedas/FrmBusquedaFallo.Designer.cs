@@ -39,18 +39,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.gvAnexo)).BeginInit();
             this.SuspendLayout();
             // 
-            // splitContainerControl2
-            // 
-            
-            // 
             // gcAnexo
             // 
             this.gcAnexo.DataSource = this.bsSource;
             this.gcAnexo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gcAnexo.Location = new System.Drawing.Point(0, 49);
+            this.gcAnexo.Location = new System.Drawing.Point(0, 55);
             this.gcAnexo.MainView = this.gvAnexo;
             this.gcAnexo.Name = "gcAnexo";
-            this.gcAnexo.Size = new System.Drawing.Size(708, 322);
+            this.gcAnexo.Size = new System.Drawing.Size(708, 316);
             this.gcAnexo.TabIndex = 4;
             this.gcAnexo.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvAnexo});
@@ -121,7 +117,6 @@
             this.Controls.Add(this.gcAnexo);
             this.Name = "FrmBusquedaFallo";
             this.Text = "Busqueda::Fallo";
-           
             this.Controls.SetChildIndex(this.gcAnexo, 0);
             ((System.ComponentModel.ISupportInitialize)(this.bsSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gcAnexo)).EndInit();

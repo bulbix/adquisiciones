@@ -34,6 +34,8 @@ namespace Adquisiciones.View.Modulos
         public FrmModuloLicitaPedido()
         {
             InitializeComponent();
+            base.TypeEntity = typeof(Pedido);
+            base.ObtenerPerfil();
             var ctx = ContextRegistry.GetContext();
             PedidoService = ctx["pedidoService"] as IPedidoService;
             InicializarCatalogos();

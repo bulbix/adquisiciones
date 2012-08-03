@@ -128,6 +128,7 @@
             this.barButtonAnexo.LargeGlyph = global::Adquisiciones.View.Properties.Resources.licitaciones;
             this.barButtonAnexo.LargeWidth = 75;
             this.barButtonAnexo.Name = "barButtonAnexo";
+            this.barButtonAnexo.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             this.barButtonAnexo.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BarButtonAnexoItemClick);
             // 
             // barButtonCotizacion
@@ -137,6 +138,7 @@
             this.barButtonCotizacion.LargeGlyph = global::Adquisiciones.View.Properties.Resources.Cotizaciones;
             this.barButtonCotizacion.LargeWidth = 75;
             this.barButtonCotizacion.Name = "barButtonCotizacion";
+            this.barButtonCotizacion.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             this.barButtonCotizacion.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BarButtonCotizacionItemClick);
             // 
             // barButtonFallo
@@ -146,6 +148,7 @@
             this.barButtonFallo.LargeGlyph = global::Adquisiciones.View.Properties.Resources.order;
             this.barButtonFallo.LargeWidth = 75;
             this.barButtonFallo.Name = "barButtonFallo";
+            this.barButtonFallo.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             this.barButtonFallo.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BarButtonFalloItemClick);
             // 
             // barMdiChildrenListItem1
@@ -206,6 +209,7 @@
             this.barButtonPedidoAuto.Id = 11;
             this.barButtonPedidoAuto.LargeGlyph = global::Adquisiciones.View.Properties.Resources.pedi2;
             this.barButtonPedidoAuto.Name = "barButtonPedidoAuto";
+            this.barButtonPedidoAuto.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             this.barButtonPedidoAuto.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BarButtonPedidoItemClick);
             // 
             // barButtonPedidoMayor
@@ -215,6 +219,7 @@
             this.barButtonPedidoMayor.LargeGlyph = global::Adquisiciones.View.Properties.Resources.Pedido3;
             this.barButtonPedidoMayor.LargeWidth = 75;
             this.barButtonPedidoMayor.Name = "barButtonPedidoMayor";
+            this.barButtonPedidoMayor.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             this.barButtonPedidoMayor.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BarButtonPedidoMayorItemClick);
             // 
             // barButtonPedidoMenor
@@ -224,6 +229,7 @@
             this.barButtonPedidoMenor.LargeGlyph = global::Adquisiciones.View.Properties.Resources.Pedido3;
             this.barButtonPedidoMenor.LargeWidth = 75;
             this.barButtonPedidoMenor.Name = "barButtonPedidoMenor";
+            this.barButtonPedidoMenor.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             this.barButtonPedidoMenor.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BarButtonPedidoMenorItemClick);
             // 
             // barButtonPedidoDonacion
@@ -233,6 +239,7 @@
             this.barButtonPedidoDonacion.LargeGlyph = global::Adquisiciones.View.Properties.Resources.Pedido3;
             this.barButtonPedidoDonacion.LargeWidth = 75;
             this.barButtonPedidoDonacion.Name = "barButtonPedidoDonacion";
+            this.barButtonPedidoDonacion.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             this.barButtonPedidoDonacion.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BarButtonPedidoDonacionItemClick);
             // 
             // barButtonPedidoExtra
@@ -242,6 +249,7 @@
             this.barButtonPedidoExtra.LargeGlyph = global::Adquisiciones.View.Properties.Resources.Pedido3;
             this.barButtonPedidoExtra.LargeWidth = 75;
             this.barButtonPedidoExtra.Name = "barButtonPedidoExtra";
+            this.barButtonPedidoExtra.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             this.barButtonPedidoExtra.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BarButtonPedidoExtraItemClick);
             // 
             // barButtonItem6

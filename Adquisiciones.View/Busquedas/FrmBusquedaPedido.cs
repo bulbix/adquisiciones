@@ -25,6 +25,7 @@ namespace Adquisiciones.View.Busquedas
             base.TypeForma = typeof(FrmModuloPedido);
             base.GvGeneral = gvPedido;
             PedidoService = base.Servicio as IPedidoService;
+            base.ObtenerPerfil();
         }
 
         protected override void Buscar()

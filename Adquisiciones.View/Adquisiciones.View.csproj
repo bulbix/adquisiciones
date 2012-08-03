@@ -269,12 +269,6 @@
     <Compile Include="Modulos\FrmModuloPedido.Designer.cs">
       <DependentUpon>FrmModuloPedido.cs</DependentUpon>
     </Compile>
-    <Compile Include="Modulos\FrmModuloPrecio.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Modulos\FrmModuloPrecio.designer.cs">
-      <DependentUpon>FrmModuloPrecio.cs</DependentUpon>
-    </Compile>
     <Compile Include="FrmAdquisiciones.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -391,9 +385,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Modulos\FrmModuloPedido.resx">
       <DependentUpon>FrmModuloPedido.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Modulos\FrmModuloPrecio.resx">
-      <DependentUpon>FrmModuloPrecio.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\FrmModuloReportes.resx">
       <DependentUpon>FrmModuloReportes.cs</DependentUpon>

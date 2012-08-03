@@ -6,12 +6,14 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using Adquisiciones.Business;
 using Adquisiciones.Business.ModAnexo;
 using Adquisiciones.Business.ModCotizacion;
 using Adquisiciones.Business.ModFallo;
 using Adquisiciones.Business.ModPedido;
 using Adquisiciones.Data.Entities;
 using Adquisiciones.View.DataSets;
+using DevExpress.XtraEditors;
 using Spring.Context.Support;
 using Spring.Objects.Factory;
 using Form = Spring.Windows.Forms.Form;
@@ -20,7 +22,7 @@ namespace Adquisiciones.View
 {
     ///<summary>
     ///</summary>
-    public partial class FrmModuloReportes : Form, IInitializingObject
+    public partial class FrmModuloReportes : XtraForm
     {
         private readonly string NombreReporte;
 
@@ -32,8 +34,7 @@ namespace Adquisiciones.View
         public IPedidoService PedidoService { get; set; }
 
 
-        ///<summary>
-        ///</summary>
+        ///<summary></summary>
         ///<param name="nombreReporte"></param>
         ///<param name="entity"></param>
         public FrmModuloReportes(string nombreReporte, object entity)
@@ -41,6 +42,16 @@ namespace Adquisiciones.View
             InitializeComponent();
             NombreReporte = nombreReporte;
             Entity = entity;
+            IniciarServicios();
+            GenerarReporte();
+        }
+        private void IniciarServicios()
+        {
+            var ctx = ContextRegistry.GetContext();
+            AnexoService = ctx["anexoService"] as IAnexoService;
+            CotizacionService = ctx["cotizacionService"] as ICotizacionService;
+            FalloService = ctx["falloService"] as IFalloService;
+            PedidoService = ctx["pedidoService"] as IPedidoService;
         }
 
         private void GenerarReporte()
@@ -274,9 +285,9 @@ namespace Adquisiciones.View
 
             Text = @"ReportePedido::" + pedido;}
 
-        public void AfterPropertiesSet()
-        {
-            GenerarReporte();
-        }
+        //public void AfterPropertiesSet()
+        //{
+        //    GenerarReporte();
+        //}
     }
 }

@@ -16,10 +16,51 @@ namespace Adquisiciones.View.Modulos
             LogManager.GetLogger(System.Reflection.MethodBase.
             GetCurrentMethod().DeclaringType);
 
+        protected Type TypeEntity { get; set; }
+
         public FrmModulo()
         {
             InitializeComponent();
         }
+
+        protected void ObtenerPerfil()
+        {
+            var modulosUsuario = FrmModuloAcceso.UsuarioLog.UsuarioModulo;
+            var nombreModulo = TypeEntity.Name.ToLower();
+            foreach (var moduloUsuario in modulosUsuario)
+            {
+                if (moduloUsuario.Estatus != "A")
+                    continue;var desModulo = moduloUsuario.Id.Modulo.DesModulo.ToLower().Trim();
+                if (desModulo.Contains(nombreModulo))
+                {
+                    if (desModulo.Contains("consultar"))
+                    {
+                        cmdConsultar.Enabled = true;
+                    }
+
+                    if (desModulo.Contains("eliminar"))
+                    {
+                        cmdEliminar.Enabled = true;
+                    }
+
+                    if (desModulo.Contains("guardar"))
+                    {
+                        cmdNuevo.Enabled = true;
+                        cmdGuardar.Enabled = true;
+                        listaError.Enabled = true;
+                        lblNumErrors.Enabled = true;
+                    }
+
+                    if (desModulo.Contains("reportear"))
+                    {
+                        cmdReporte.Enabled = true;
+                    }
+
+                    
+                }
+            }
+        }
+
 
         private void HayErrores()
         {

@@ -52,7 +52,8 @@ namespace Adquisiciones.Business.Audit
                 foreach (string propiedad in propertyNames)
                 {
                     if (!types[index].IsCollectionType)
-                    {histType.GetProperty(propiedad).SetValue(result, previousState[index], null);
+                    {
+                        histType.GetProperty(propiedad).SetValue(result, previousState[index], null);
                     }
 
                     ++index;
@@ -61,7 +62,7 @@ namespace Adquisiciones.Business.Audit
                 histType.GetProperty("IdExterno").SetValue(result, idExterno, null);
                 histType.GetProperty("Tipo").SetValue(result, tipo, null);
                
-                var idHist = ObjectDao.Insert(result);
+                var idHist = ObjectDao.Insert(result);//ANEXODETALLEHIST
 
                 if(entity is IPadre)//Anexo
                 {
