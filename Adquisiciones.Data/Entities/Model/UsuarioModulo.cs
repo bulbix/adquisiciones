@@ -18,27 +18,12 @@ namespace Adquisiciones.Data.Entities
 		protected DateTime? _fechaalta;
 		protected DateTime? _fechabaja;
 		protected string _estatus;
-		protected Usuario _usuario;
+		//protected Usuario _usuario;
 		#endregion
 		#region Constructors
 			
 		public UsuarioModulo() {}
 					
-		public UsuarioModulo(UsuarioModuloId id, DateTime? fechaalta, DateTime? fechabaja, string estatus, Usuario usuario) 
-		{
-			this._id= id;
-			this._fechaalta= fechaalta;
-			this._fechabaja= fechabaja;
-			this._estatus= estatus;
-			this._usuario= usuario;
-		}
-
-		public UsuarioModulo(UsuarioModuloId id, Usuario usuario)
-		{
-			this._id= id;
-			this._usuario= usuario;
-		}
-		
 		#endregion
 		#region Public Properties
 		public  virtual UsuarioModuloId Id
@@ -58,14 +43,13 @@ namespace Adquisiciones.Data.Entities
 		}
 		public  virtual string Estatus
 		{
-			get { return _estatus; }
-			set {_estatus= value; }
+			get { return _estatus; }set {_estatus= value; }
 		}
-		public  virtual Usuario Usuario
-		{
-			get { return _usuario; }
-			set {_usuario= value; }
-		}
+        //public  virtual Usuario Usuario
+        //{
+        //    get { return _usuario; }
+        //    set {_usuario= value; }
+        //}
 		#endregion
 		
 		#region Equals And HashCode Overrides
@@ -86,7 +70,7 @@ namespace Adquisiciones.Data.Entities
 		public override int GetHashCode()
 		{
 			int hash = 57;
-			hash = 27 * hash * _id.GetHashCode();
+			//hash = 27 * hash * _id.GetHashCode();
 			return hash;
 		}
 		#endregion

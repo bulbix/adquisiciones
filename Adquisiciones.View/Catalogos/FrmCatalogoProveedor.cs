@@ -10,7 +10,7 @@ namespace Adquisiciones.View.Catalogos
 {
     ///<summary>
     ///</summary>
-    public partial class FrmCatalogoProveedor : Form
+    public partial class FrmCatalogoProveedor : XtraForm
     {
         #region Variables Miembro
 

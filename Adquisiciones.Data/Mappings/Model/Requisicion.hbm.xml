@@ -13,7 +13,7 @@
     <property name="DuracionAbastc" column="duracion_abastc" type="short" />
     <many-to-one name="Usuario" column="id_usuario"  />
     <many-to-one name="Almacen" column="id_almacen"  />
-    <property name="FechaAlta" column="fecha_alta" type="DateTime" />
+    <property name="FechaModificacion" column="fecha_modificacion" type="DateTime" />
     <property name="IpTerminal" column="ip_terminal" type="string" />
     <property name="Modificacion" column="modificacion" type="int" />
     <bag name="RequisicionDetall" inverse="true" lazy="true" cascade="delete">

@@ -34,10 +34,13 @@ namespace Adquisiciones.View.Modulos
         {
             InitializeComponent();
             base.TypeEntity = typeof(Cotizacion);
+            base.NombreReporte = "reporteCotizacion";
+            base.NombreService = "cotizacionService";
+            base.GetServicio();
+            CotizacionService = base.Servicio as ICotizacionService;
+            InicializarCatalogos();
+            Nuevo();
             base.ObtenerPerfil();
-            var ctx = ContextRegistry.GetContext();
-            CotizacionService = ctx["cotizacionService"] as ICotizacionService;
-            InicializarCatalogos();Nuevo();
         }
         public FrmModuloCotizacion(Cotizacion cotizacion)
             : this()
@@ -46,6 +49,7 @@ namespace Adquisiciones.View.Modulos
             AnexoActual = cotizacion.Anexo;
             ProveedorActual = cotizacion.Proveedor;
             Consultar();
+            base.ObtenerPerfil();
         }
 
         public override void BindearCampos()
@@ -105,6 +109,8 @@ namespace Adquisiciones.View.Modulos
                 CotizacionService.ConsultarCotizacion(ref CotizacionActual);
                 bsCotizacionDetalle.DataSource = CotizacionActual.CotizacionDetalle;
 
+                base.EntityActual = CotizacionActual;
+
                 XtraMessageBox.Show(@"Cotización Registrada o Actualizada Exitosamente",
                     @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -137,6 +143,8 @@ namespace Adquisiciones.View.Modulos
                     ProveedorActual = CotizacionActual.Proveedor;
                     lblProveedor.Text = CotizacionActual.Proveedor.ToString();
                     dtpFechacotizacion.DateTime = CotizacionActual.FechaCotizacion.Value;
+
+                    base.EntityActual = CotizacionActual;
 
                     if (CotizacionService.CotizacionDao.ExisteAnexoFallo(CotizacionActual.Anexo))
                     {

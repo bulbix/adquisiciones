@@ -40,6 +40,7 @@
             this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
             this.searchLookUpFundamento = new DevExpress.XtraEditors.SearchLookUpEdit();
+            this.bsFundamento = new System.Windows.Forms.BindingSource(this.components);
             this.searchLookUpEditFundamento = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn10 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn11 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -53,6 +54,7 @@
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.searchLookUpRequisicion = new DevExpress.XtraEditors.SearchLookUpEdit();
+            this.bsRequisicion = new System.Windows.Forms.BindingSource(this.components);
             this.searchLookUpEditRequisicion = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -61,12 +63,11 @@
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.txtObservaciones = new DevExpress.XtraEditors.MemoEdit();
             this.labelControl11 = new DevExpress.XtraEditors.LabelControl();
-            this.bsRequisicion = new System.Windows.Forms.BindingSource(this.components);
-            this.bsFundamento = new System.Windows.Forms.BindingSource(this.components);
             this.bsPedido = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             this.splitContainerControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.searchLookUpFundamento.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsFundamento)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEditFundamento)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.deFechaFinal.Properties.VistaTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.deFechaFinal.Properties)).BeginInit();
@@ -75,15 +76,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.deFechaPedido.Properties.VistaTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.deFechaPedido.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.searchLookUpRequisicion.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsRequisicion)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEditRequisicion)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtObservaciones.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bsRequisicion)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bsFundamento)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsPedido)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainerControl1
             // 
+            this.splitContainerControl1.Location = new System.Drawing.Point(0, 55);
             this.splitContainerControl1.Panel1.Controls.Add(this.cbxActividad);
             this.splitContainerControl1.Panel1.Controls.Add(this.cbxIva);
             this.splitContainerControl1.Panel1.Controls.Add(this.cbxCargo);
@@ -108,7 +109,7 @@
             this.splitContainerControl1.Panel1.Controls.Add(this.labelControl1);
             this.splitContainerControl1.Panel2.Controls.Add(this.txtObservaciones);
             this.splitContainerControl1.Panel2.Controls.Add(this.labelControl11);
-            this.splitContainerControl1.Size = new System.Drawing.Size(941, 507);
+            this.splitContainerControl1.Size = new System.Drawing.Size(941, 501);
             this.splitContainerControl1.SplitterPosition = 289;
             // 
             // cbxActividad
@@ -430,6 +431,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();
             this.splitContainerControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.searchLookUpFundamento.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsFundamento)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEditFundamento)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.deFechaFinal.Properties.VistaTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.deFechaFinal.Properties)).EndInit();
@@ -438,10 +440,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.deFechaPedido.Properties.VistaTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.deFechaPedido.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.searchLookUpRequisicion.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsRequisicion)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEditRequisicion)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtObservaciones.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bsRequisicion)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bsFundamento)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsPedido)).EndInit();
             this.ResumeLayout(false);
 

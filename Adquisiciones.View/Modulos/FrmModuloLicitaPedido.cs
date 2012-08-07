@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using Adquisiciones.Business;
 using Adquisiciones.Business.ModPedido;
 using Adquisiciones.Data.Entities;
+using Adquisiciones.View.Busquedas;
 using DevExpress.XtraBars;
 using DevExpress.XtraEditors;
 using Spring.Context.Support;
@@ -35,12 +36,12 @@ namespace Adquisiciones.View.Modulos
         {
             InitializeComponent();
             base.TypeEntity = typeof(Pedido);
-            base.ObtenerPerfil();
             var ctx = ContextRegistry.GetContext();
             PedidoService = ctx["pedidoService"] as IPedidoService;
             InicializarCatalogos();
             Nuevo();
             BindearCampos();
+            base.ObtenerPerfil();
         }
 
         public override void InicializarCatalogos()
@@ -217,6 +218,29 @@ namespace Adquisiciones.View.Modulos
             }
 
             return result;
+        }
+
+        private void CallPedidoBusqueda()
+        {
+            var forma = new FrmBusquedaPedido();
+            forma.MdiParent = this.MdiParent;
+            forma.Show();
+
+        }
+
+        protected override void CmdConsultarClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            CallPedidoBusqueda();
+        }
+
+        protected override void CmdEliminarItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            CallPedidoBusqueda();
+        }
+
+        protected override void CmdReporteItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            CallPedidoBusqueda();
         }
     }
 }

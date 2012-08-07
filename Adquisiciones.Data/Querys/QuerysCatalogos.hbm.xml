@@ -2,11 +2,23 @@
 <hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
 
   <query name="Usuario.VerificaUsuario">
-    <![CDATA[from Usuario u where u.Rfc = :rfc and u.Password = :pwd]]>
+    <![CDATA[
+    
+    select u 
+    from Usuario u 
+    join fetch u.UsuarioModulo um 
+    join fetch um.Id.Modulo m 
+    join fetch m.Id.Almacen a 
+    where u.Rfc = :rfc and u.Password = :pwd 
+    order by m.Id.IdModulo asc  ]]>
   </query>
+  
+  
+  
+  
   <query name="Usuario.CargaCombo">
     <![CDATA[from Usuario u join fetch u.UsuarioModulo um 
-              where um.Id.Modulo.Almacen.IdAlmacen = :id_almacen]]>
+              where um.Id.Modulo.Id.Almacen.IdAlmacen = :id_almacen]]>
   </query>
   <query name="Usuario.TraeUsuario">
     <![CDATA[from Usuario u 

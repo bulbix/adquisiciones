@@ -28,12 +28,14 @@ namespace Adquisiciones.View.Modulos
         {
             InitializeComponent();
             base.TypeEntity = typeof(Anexo);
-            base.ObtenerPerfil();
-            var ctx = ContextRegistry.GetContext();
-            AnexoService = ctx["anexoService"] as IAnexoService;
+            base.NombreReporte = "reporteAnexo";
+            base.NombreService = "anexoService";
+            base.GetServicio();
+            AnexoService = base.Servicio as IAnexoService;
             Nuevo();
             BindearCampos();
             InicializarCatalogos();
+            base.ObtenerPerfil();
         }
 
         public FrmModuloAnexo(Anexo anexo)
@@ -43,12 +45,16 @@ namespace Adquisiciones.View.Modulos
             Consultar();
             Text = @"Anexo::" + anexo.NumeroAnexo;
 
+            base.ObtenerPerfil();
+
             if (AnexoService.AnexoDao.ExisteAnexoCotizacion(AnexoActual))
             {
                 XtraMessageBox.Show(@"El anexo tiene asociadas cotizaciones",
                 @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 cmdGuardar.Enabled = false;
             }
+
+           
         }
 
         public override void BindearCampos()
@@ -145,6 +151,8 @@ namespace Adquisiciones.View.Modulos
                 AnexoActual = AnexoService.ConsultarAnexo(AnexoActual.NumeroAnexo,
                                                           FrmModuloModulo.AlmacenSelec);
 
+               
+
                 if (AnexoActual != null)
                 {
                     bsAnexo.DataSource = AnexoActual;
@@ -153,9 +161,12 @@ namespace Adquisiciones.View.Modulos
                     dtpFechaanexo.Enabled = false;
                     listaError.Strings.Clear();
                     lblNumErrors.Caption = string.Empty;
+
+                    base.EntityActual = AnexoActual;
                 }
                 else
-                {XtraMessageBox.Show(@"Folio no existe", @"Adquisiciones",
+                {
+                    XtraMessageBox.Show(@"Folio no existe", @"Adquisiciones",
                                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                     txtnumlicitacion.Select();
                 }

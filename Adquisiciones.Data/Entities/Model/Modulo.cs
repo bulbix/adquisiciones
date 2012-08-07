@@ -19,26 +19,12 @@ namespace Adquisiciones.Data.Entities
 		protected string _estatus;
 		protected string _tipo;
 		protected IList<UsuarioModulo> _usuariomodulo;
-		protected Almacen _almacen;
+		//protected Almacen _almacen;
 		#endregion
 		#region Constructors
 			
 		public Modulo() {}
 					
-		public Modulo(ModuloId id, string desmodulo, string estatus, string tipo, Almacen almacen) 
-		{
-			this._id= id;
-			this._desmodulo= desmodulo;
-			this._estatus= estatus;
-			this._tipo= tipo;
-			this._almacen= almacen;
-		}
-
-		public Modulo(ModuloId id, Almacen almacen)
-		{
-			this._id= id;
-			this._almacen= almacen;
-		}
 		
 		#endregion
 		#region Public Properties
@@ -67,11 +53,11 @@ namespace Adquisiciones.Data.Entities
 			get { return _usuariomodulo; }
 			set {_usuariomodulo= value; }
 		}
-		public  virtual Almacen Almacen
-		{
-			get { return _almacen; }
-			set {_almacen= value; }
-		}
+        //public  virtual Almacen Almacen
+        //{
+        //    get { return _almacen; }
+        //    set {_almacen= value; }
+        //}
 		#endregion
 		
 		#region Equals And HashCode Overrides

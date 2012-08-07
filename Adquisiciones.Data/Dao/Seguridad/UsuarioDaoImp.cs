@@ -17,10 +17,10 @@ namespace Adquisiciones.Data.Dao.Seguridad
         [Transaction(ReadOnly = true)]
         public Usuario AccessAllow(string rfc, string password)
         {
-            return CurrentSession.CreateCriteria<Usuario>().
-                Add(Restrictions.Eq("Rfc", rfc)).
-                Add(Restrictions.Eq("Password", ReverseString(password))).
-                UniqueResult<Usuario>();
+            var query = CurrentSession.GetNamedQuery("Usuario.VerificaUsuario");
+            query.SetParameter("rfc", rfc);
+            query.SetParameter("pwd", ReverseString(password));
+            return query.UniqueResult<Usuario>();
         }
 
     }

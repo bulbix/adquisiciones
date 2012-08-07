@@ -54,14 +54,13 @@ namespace Adquisiciones.Data.Entities
 			this._usuario.Equals( castObj.Usuario) &&
 			this._modulo.Equals( castObj.Modulo);
 		}
-		/// <summary>
-		/// local implementation of GetHashCode based on unique value members
+		/// <summary> local implementation of GetHashCode based on unique value members
 		/// </summary>
 		public override int GetHashCode()
 		{
 			int hash = 57;
-			hash = 27 * hash * _usuario.GetHashCode();
-			hash = 27 * hash * _modulo.GetHashCode();
+            //hash = 27 * hash * _usuario.GetHashCode();
+            //hash = 27 * hash * _modulo.GetHashCode();
 			return hash;
 		}
 		#endregion

@@ -44,7 +44,8 @@ namespace Adquisiciones.View.Busquedas
 
                 var desModulo = moduloUsuario.Id.Modulo.DesModulo.ToLower().Trim();
                 if (desModulo.Contains(nombreModulo))
-                {if (desModulo.Contains("consultar"))
+                {
+                    if (desModulo.Contains("consultar"))
                     {
                         cmdBuscar.Enabled = true;
                         cmdConsultar.Enabled = true;
@@ -71,6 +72,7 @@ namespace Adquisiciones.View.Busquedas
             var source = Servicio.ConsultarEntityAll(FrmModuloModulo.AlmacenSelec);
             bsSource.DataSource = source;
         }
+
         protected void GetServicio()
         {
             var ctx = ContextRegistry.GetContext();
@@ -145,7 +147,7 @@ namespace Adquisiciones.View.Busquedas
             }
             catch (Exception ee)
             {
-                XtraMessageBox.Show(@"Elemento seleccionado aosciado otro modulo", @"Adquisiciones",
+                XtraMessageBox.Show(@"Elemento seleccionado asociado otro modulo", @"Adquisiciones",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }

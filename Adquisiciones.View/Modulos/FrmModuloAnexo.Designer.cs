@@ -75,6 +75,8 @@
             // 
             this.splitContainerControl1.Panel1.Controls.Add(this.gcDatosGenerales);
             this.splitContainerControl1.Panel2.Controls.Add(this.gcAnexoDetalle);
+            this.splitContainerControl1.Size = new System.Drawing.Size(837, 479);
+            this.splitContainerControl1.SplitterPosition = 191;
             // 
             // gcDatosGenerales
             // 
@@ -95,7 +97,7 @@
             this.gcDatosGenerales.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gcDatosGenerales.Location = new System.Drawing.Point(0, 0);
             this.gcDatosGenerales.Name = "gcDatosGenerales";
-            this.gcDatosGenerales.Size = new System.Drawing.Size(628, 92);
+            this.gcDatosGenerales.Size = new System.Drawing.Size(837, 191);
             this.gcDatosGenerales.TabIndex = 2;
             this.gcDatosGenerales.Text = "Datos Generales";
             // 
@@ -227,7 +229,7 @@
             this.gcAnexoDetalle.Name = "gcAnexoDetalle";
             this.gcAnexoDetalle.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemSearchLookUpEdit2});
-            this.gcAnexoDetalle.Size = new System.Drawing.Size(628, 250);
+            this.gcAnexoDetalle.Size = new System.Drawing.Size(837, 282);
             this.gcAnexoDetalle.TabIndex = 3;
             this.gcAnexoDetalle.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvAnexoDetalle});
@@ -432,7 +434,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(628, 423);
+            this.ClientSize = new System.Drawing.Size(837, 554);
             this.Name = "FrmModuloAnexo";
             this.Text = "Captura::Anexo";
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();

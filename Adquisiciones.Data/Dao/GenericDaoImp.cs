@@ -54,6 +54,8 @@ namespace Adquisiciones.Data.Dao
         [Transaction]
         public void Delete(TE entity)
         {
+            if(!CurrentSession.Contains(entity))
+                CurrentSession.Refresh(entity);
             CurrentSession.Delete(entity);
             CurrentSession.Flush();
         }

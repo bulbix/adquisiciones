@@ -11,7 +11,7 @@ namespace Adquisiciones.View.Catalogos{
     ///</summary>
     /// 
     /// 
-    public partial class FrmCatalogoFundamento : Form
+    public partial class FrmCatalogoFundamento : XtraForm
     {
         ///<summary>
         ///</summary>

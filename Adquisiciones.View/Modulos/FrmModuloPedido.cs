@@ -28,12 +28,15 @@ namespace Adquisiciones.View.Modulos
         {
             InitializeComponent();
             base.TypeEntity = typeof(Pedido);
-            base.ObtenerPerfil();}
+            base.NombreReporte = "reportePedido";
+            base.NombreService = "pedidoService";
+            base.GetServicio();
+            PedidoService = base.Servicio as IPedidoService;
+            base.ObtenerPerfil();
+        }
 
         public FrmModuloPedido(int tipoPedido):this()
         {
-            var ctx = ContextRegistry.GetContext();
-            PedidoService = ctx["pedidoService"] as IPedidoService;
             Nuevo();
             PedidoActual.CatTipopedido = new CatTipopedido(tipoPedido);
 
@@ -43,6 +46,7 @@ namespace Adquisiciones.View.Modulos
 
             BindearCampos();
             InicializarCatalogos();
+            base.ObtenerPerfil();
         }
 
          public FrmModuloPedido(Pedido pedido)
@@ -52,8 +56,12 @@ namespace Adquisiciones.View.Modulos
             Consultar();
             Text = @"Pedido::" + pedido;
 
+            base.ObtenerPerfil();
+
             if (pedido.Requisicion != null)
                 cmdGuardar.Enabled = false;
+
+
         }
 
         public override void BindearCampos()
@@ -130,6 +138,8 @@ namespace Adquisiciones.View.Modulos
             try
             {
                 PedidoService.GuardarPedido(ref PedidoActual);
+                base.EntityActual = PedidoActual;
+
                 XtraMessageBox.Show(@"Pedido Registrado o Actualizado Exitosamente",
                                 @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -164,6 +174,9 @@ namespace Adquisiciones.View.Modulos
                     listaError.Strings.Clear();
                     lblNumErrors.Caption = string.Empty;
                     SumTotal();
+
+                    base.EntityActual = PedidoActual;
+
                 }
                 else
                 {

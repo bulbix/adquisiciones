@@ -12,7 +12,7 @@
     <property name="Estatus" column="estatus" type="string" />
     <property name="Password" column="password" type="string" />
     
-    <bag name="UsuarioModulo" inverse="true" lazy="false" cascade="delete">
+    <bag name="UsuarioModulo" inverse="true" lazy="true" cascade="none"> 
       <key column="id_usuario" />
       <one-to-many class="Adquisiciones.Data.Entities.UsuarioModulo,Adquisiciones.Data" />
     </bag>

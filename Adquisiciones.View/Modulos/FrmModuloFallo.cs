@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using Adquisiciones.Business;
 using Adquisiciones.Business.ModFallo;
 using Adquisiciones.Data.Entities;
+using Adquisiciones.View.Busquedas;
 using DevExpress.XtraEditors;
 using Spring.Context.Support;
 
@@ -28,9 +29,11 @@ namespace Adquisiciones.View.Modulos
         {
             InitializeComponent();
             base.TypeEntity = typeof(Fallo);
+            base.NombreService = "falloService";
+            base.NombreReporte = "reporteTabla";
+            base.GetServicio();
+            FalloService = base.Servicio as IFalloService;
             base.ObtenerPerfil();
-            var ctx = ContextRegistry.GetContext();
-            FalloService = ctx["falloService"] as IFalloService;
 
             var anexos = FalloService.AnexoDao.
                CargarAnexosWithCotizacion(FrmModuloModulo.AlmacenSelec);
@@ -64,11 +67,11 @@ namespace Adquisiciones.View.Modulos
 
                 if (FalloService.CotizacionDao.ExisteAnexoFallo(AnexoSelect))
                 {
-                    var result = XtraMessageBox.Show(@"El anexo ya tiene fallo desea continuar",
-                                                 @"Adquisiciones", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                   XtraMessageBox.Show(@"El anexo ya tiene fallo eliminelo antes",
+                                                 @"Adquisiciones", MessageBoxButtons.OK,
+                                                 MessageBoxIcon.Information);
 
-                    if (result == DialogResult.No)
-                        return;
+                  return;
                 }
 
                 var lista = FalloService.GuardarFallo(AnexoSelect, dtpFallo.DateTime);
@@ -116,5 +119,29 @@ namespace Adquisiciones.View.Modulos
 
             }
         }
+
+        private void CallFalloBusqueda()
+        {
+            var forma = new FrmBusquedaFallo();
+            forma.MdiParent = this.MdiParent;
+            forma.Show();
+            
+        }
+
+         protected override void CmdConsultarClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+         {
+             CallFalloBusqueda();
+         }
+
+         protected override void CmdEliminarItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+         {
+             CallFalloBusqueda();
+         }
+
+         protected override void CmdReporteItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+         {
+             CallFalloBusqueda();
+         }
+
     }
 }

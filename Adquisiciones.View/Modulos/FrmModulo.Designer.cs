@@ -146,17 +146,23 @@
             // 
             // cmdEliminar
             // 
+            this.cmdEliminar.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmdEliminar.Appearance.Options.UseFont = true;
             this.cmdEliminar.Caption = "Eliminar";
             this.cmdEliminar.Enabled = false;
             this.cmdEliminar.Id = 6;
             this.cmdEliminar.Name = "cmdEliminar";
+            this.cmdEliminar.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.CmdEliminarItemClick);
             // 
             // cmdReporte
             // 
+            this.cmdReporte.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmdReporte.Appearance.Options.UseFont = true;
             this.cmdReporte.Caption = "Reporte";
             this.cmdReporte.Enabled = false;
             this.cmdReporte.Id = 7;
             this.cmdReporte.Name = "cmdReporte";
+            this.cmdReporte.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.CmdReporteItemClick);
             // 
             // listaError
             // 

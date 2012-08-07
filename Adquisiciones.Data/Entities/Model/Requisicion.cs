@@ -24,7 +24,7 @@ namespace Adquisiciones.Data.Entities
 		protected short? _duracionabastc;
 		protected Usuario _usuario;
 		protected Almacen _almacen;
-		protected DateTime? _fechaalta;
+		protected DateTime? _fechamodificacion;
 		protected string _ipterminal;
 		protected int? _modificacion;
 		protected IList<RequisicionDetall> _requisiciondetall;
@@ -34,18 +34,7 @@ namespace Adquisiciones.Data.Entities
 			
 		public Requisicion() {}
 					
-		public Requisicion(int idrequisicion, int? numerorequisicon, DateTime? fecharequisicion, string estatus, short? duracionabastc, DateTime? fechaalta, string ipterminal, int? modificacion) 
-		{
-			this._idrequisicion= idrequisicion;
-			this._numerorequisicion= numerorequisicon;
-			this._fecharequisicion= fecharequisicion;
-			this._estatus= estatus;
-			this._duracionabastc= duracionabastc;
-			this._fechaalta= fechaalta;
-			this._ipterminal= ipterminal;
-			this._modificacion= modificacion;
-		}
-
+		
 		public Requisicion(int idrequisicion)
 		{
 			this._idrequisicion= idrequisicion;
@@ -98,10 +87,10 @@ namespace Adquisiciones.Data.Entities
 			get { return _almacen; }
 			set {_almacen= value; }
 		}
-		public  virtual DateTime? FechaAlta
+		public  virtual DateTime? FechaModificacion
 		{
-			get { return _fechaalta; }
-			set {_fechaalta= value; }
+			get { return _fechamodificacion; }
+			set {_fechamodificacion= value; }
 		}
 		public  virtual string IpTerminal
 		{

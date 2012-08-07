@@ -39,7 +39,7 @@ namespace Adquisiciones.View
                                       where type == typeof (SimpleButton)
                                       select (SimpleButton)control
                                       into boton where boton.Tag.ToString().
-                                      Equals(usuarioModulo.Id.Modulo.Almacen.IdAlmacen) select boton)
+                                      Equals(usuarioModulo.Id.Modulo.Id.Almacen.IdAlmacen) select boton)
                 {
                     boton.Enabled = true;
                 }

@@ -4,18 +4,11 @@
   <class name="Adquisiciones.Data.Entities.Modulo,Adquisiciones.Data" table="modulo" lazy="true">
     <composite-id name="Id" class="Adquisiciones.Data.Entities.ModuloId,Adquisiciones.Data">
       <key-property name="IdModulo" column="id_modulo" type="string" />
-      <key-many-to-one name="Almacen" class="Adquisiciones.Data.Entities.Almacen,Adquisiciones.Data" column="id_almacen" />
+      <key-many-to-one name="Almacen" class="Adquisiciones.Data.Entities.Almacen,Adquisiciones.Data" 
+                       column="id_almacen" />
     </composite-id>
     <property name="DesModulo" column="des_modulo" type="string" />
     <property name="Estatus" column="estatus" type="string" />
-    <property name="Tipo" column="tipo" type="string" />
-    <bag name="UsuarioModulo" inverse="true" lazy="true" cascade="delete">
-      <key>
-        <column name="id_modulo" />
-        <column name="id_almacen" />
-      </key>
-      <one-to-many class="Adquisiciones.Data.Entities.UsuarioModulo,Adquisiciones.Data" />
-    </bag>
-    <many-to-one name="Almacen" column="id_almacen"  not-null="true" />
+    <property name="Tipo" column="tipo" type="string" />    
   </class>
 </hibernate-mapping>

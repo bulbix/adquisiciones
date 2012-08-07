@@ -33,22 +33,22 @@ namespace Adquisiciones.View
                 
                 var desModulo = moduloUsuario.Id.Modulo.DesModulo.ToLower().Trim();
                
-                if (desModulo.Contains("anexo guardar"))
+                if (desModulo.Contains("anexo trabajar"))
                 {
                     barButtonAnexo.Visibility = BarItemVisibility.Always;
                 }
 
-                if (desModulo.Contains("cotizacion guardar"))
+                if (desModulo.Contains("cotizacion trabajar"))
                 {
                     barButtonCotizacion.Visibility = BarItemVisibility.Always;
                 }
 
-                if (desModulo.Contains("fallo guardar"))
+                if (desModulo.Contains("fallo trabajar"))
                 {
                     barButtonFallo.Visibility = BarItemVisibility.Always;
                 }
 
-                if (desModulo.Contains("pedido guardar"))
+                if (desModulo.Contains("pedido trabajar"))
                 {
                     barButtonPedidoAuto.Visibility = BarItemVisibility.Always;
                     barButtonPedidoMenor.Visibility = BarItemVisibility.Always;
