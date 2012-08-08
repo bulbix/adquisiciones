@@ -75,6 +75,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Auxiliares\ArticuloBusqueda.cs" />
+    <Compile Include="Auxiliares\ICatalogo.cs" />
     <Compile Include="Auxiliares\IDetalle.cs" />
     <Compile Include="Auxiliares\IPadre.cs" />
     <Compile Include="Dao\IObjectDao.cs" />
@@ -202,10 +203,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Mappings\Audit\AnexoDetalleHist.hbm.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Mappings\Audit\AnexoHist.hbm.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Mappings\Model\Articulo.hbm.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -337,6 +334,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Entities\Reportes\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Mappings\Audit\AnexoHist.hbm.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

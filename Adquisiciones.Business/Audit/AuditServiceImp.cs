@@ -37,7 +37,7 @@ namespace Adquisiciones.Business.Audit
         {
             var nombreTabla = entity.GetType().Name; //AnexoDetalle
 
-            if (nombreTabla.IndexOf("Hist") < 0)
+            if (nombreTabla.IndexOf("Hist") < 0 && !(entity is ICatalogo))
             {
                 
                 var tableHist = "Adquisiciones.Data.Entities." + nombreTabla + "Hist";

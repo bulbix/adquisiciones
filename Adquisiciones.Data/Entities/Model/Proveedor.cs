@@ -6,6 +6,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 using System.ComponentModel;
+using Adquisiciones.Data.Auxiliares;
 using Adquisiciones.Data.Validators;
 using NHibernate.Validator.Constraints;
 
@@ -15,14 +16,14 @@ namespace Adquisiciones.Data.Entities
     /// Proveedor object for NHibernate mapped table 'proveedor'.
     /// </summary>
     [Serializable]
-    public class Proveedor : INotifyPropertyChanged
+    public class Proveedor : INotifyPropertyChanged,ICatalogo
     {
 
         // property change events
         public virtual event PropertyChangedEventHandler PropertyChanged;
 
         #region Member Variables
-        protected int _cveproveedor;
+        protected int? _cveproveedor;
         protected string _nombrefiscal;
         protected string _nombrecomercial;
         protected string _paterno;
@@ -77,8 +78,8 @@ namespace Adquisiciones.Data.Entities
         #endregion
         #region Public Properties
 
-        [NotNullNotEmpty(Message = ("Campo Requerido"))]
-        public virtual int CveProveedor
+        [NotNull(Message = ("Campo Requerido"))]
+        public virtual int? CveProveedor
         {
             get
             { return _cveproveedor; }
@@ -97,7 +98,7 @@ namespace Adquisiciones.Data.Entities
         [NotNullNotEmpty(Message = ("Campo Requerido"))]
         public virtual string NombreFiscal
         {
-            get { return _nombrefiscal; }
+            get { return _nombrefiscal!=null?_nombrefiscal.Trim():""; }
 
             set
             {
@@ -114,7 +115,7 @@ namespace Adquisiciones.Data.Entities
         [NotNullNotEmpty(Message = ("Campo Requerido"))]
         public virtual string NombreComercial
         {
-            get { return _nombrecomercial; }
+            get { return _nombrecomercial!=null?_nombrecomercial.Trim():""; }
 
             set
             {
@@ -127,10 +128,10 @@ namespace Adquisiciones.Data.Entities
         }
 
         [StringOptional]
-        [NotNullNotEmpty(Message = ("Campo Requerido"))]
+        //[NotNullNotEmpty(Message = ("Campo Requerido"))]
         public virtual string Paterno
         {
-            get { return _paterno; }
+            get { return _paterno!= null?_paterno.Trim():""; }
             set
             {
                 if (_paterno != value)
@@ -142,10 +143,10 @@ namespace Adquisiciones.Data.Entities
         }
 
         [StringOptional]
-        [NotNullNotEmpty(Message = ("Campo Requerido"))]
+        //[NotNullNotEmpty(Message = ("Campo Requerido"))]
         public virtual string Materno
         {
-            get { return _materno; }
+            get { return _materno!=null?_materno.Trim():""; }
             set
             {
                 if (_materno != value)
@@ -158,10 +159,10 @@ namespace Adquisiciones.Data.Entities
         }
 
         [StringOptional]
-        [NotNullNotEmpty(Message = ("Campo Requerido"))]
+        //[NotNullNotEmpty(Message = ("Campo Requerido"))]
         public virtual string Nombre
         {
-            get { return _nombre; }
+            get { return _nombre!=null?_nombre.Trim():""; }
             set
             {
                 if (_nombre != value)
@@ -175,7 +176,7 @@ namespace Adquisiciones.Data.Entities
         [NotNullNotEmpty(Message = ("Campo Requerido"))]
         public virtual string Calle
         {
-            get { return _calle; }
+            get { return _calle!=null?_calle.Trim():""; }
 
             set
             {
@@ -191,7 +192,7 @@ namespace Adquisiciones.Data.Entities
         [NotNullNotEmpty(Message = ("Campo Requerido"))]
         public virtual string Colonia
         {
-            get { return _colonia; }
+            get { return _colonia!=null?_colonia.Trim():""; }
 
             set
             {
@@ -207,7 +208,7 @@ namespace Adquisiciones.Data.Entities
         [NotNullNotEmpty(Message = ("Campo Requerido"))]
         public virtual string Delegacion
         {
-            get { return _delegacion; }
+            get { return _delegacion!=null?_delegacion.Trim():""; }
 
             set
             {
@@ -223,7 +224,7 @@ namespace Adquisiciones.Data.Entities
         [NotNullNotEmpty(Message = ("Campo Requerido"))]
         public virtual string Estado
         {
-            get { return _estado; }
+            get { return _estado!=null?_estado.Trim():""; }
 
             set
             {
@@ -239,7 +240,7 @@ namespace Adquisiciones.Data.Entities
         [NotNullNotEmpty(Message = ("Campo Requerido"))]
         public virtual string Pais
         {
-            get { return _pais; }
+            get { return _pais!=null?_pais.Trim():""; }
             set
             {
                 if (_pais != value)
@@ -253,7 +254,7 @@ namespace Adquisiciones.Data.Entities
         [NotNullNotEmpty(Message = ("Campo Requerido"))]
         public virtual string CodigoP
         {
-            get { return _codigop; }
+            get { return _codigop!=null?_codigop.Trim():""; }
             set
             {
                 if (_codigop != value)
@@ -267,7 +268,7 @@ namespace Adquisiciones.Data.Entities
         [NotNullNotEmpty(Message = ("Campo Requerido"))]
         public virtual string Rfc
         {
-            get { return _rfc; }
+            get { return _rfc!=null?_rfc.Trim():""; }
             set
             {
                 if (_rfc != value)
@@ -281,7 +282,7 @@ namespace Adquisiciones.Data.Entities
         [NotNullNotEmpty(Message = ("Campo Requerido"))]
         public virtual string Tel
         {
-            get { return _tel; }
+            get { return _tel!=null?_tel.Trim():""; }
 
             set
             {
@@ -294,7 +295,7 @@ namespace Adquisiciones.Data.Entities
         }
         public virtual string Tel2
         {
-            get { return _tel2; }
+            get { return _tel2!=null?_tel2.Trim():""; }
             set
             {
                 if (_tel2 != value)
@@ -306,7 +307,7 @@ namespace Adquisiciones.Data.Entities
         }
         public virtual string Tel3
         {
-            get { return _tel3; }
+            get { return _tel3!=null?_tel3.Trim():""; }
             set
             {
                 if (_tel3 != value)
@@ -318,7 +319,7 @@ namespace Adquisiciones.Data.Entities
         }
         public virtual string Fax
         {
-            get { return _fax; }
+            get { return _fax!=null?_fax.Trim():""; }
             set
             {
                 if (_fax != value)
@@ -333,7 +334,7 @@ namespace Adquisiciones.Data.Entities
         [Email(Message = "Correo no valido")]
         public virtual string Correo
         {
-            get { return _correo; }
+            get { return _correo!=null?_correo.Trim():""; }
             set
             {
                 if (_correo != value)
@@ -348,7 +349,7 @@ namespace Adquisiciones.Data.Entities
         [NotNullNotEmpty(Message = ("Campo Requerido"))]
         public virtual string Rpaterno
         {
-            get { return _rpaterno; }
+            get { return _rpaterno!=null?_rpaterno.Trim():""; }
             set
             {
                 if (_rpaterno != value)
@@ -363,7 +364,7 @@ namespace Adquisiciones.Data.Entities
         [NotNullNotEmpty(Message = ("Campo Requerido"))]
         public virtual string Rmaterno
         {
-            get { return _rmaterno; }
+            get { return _rmaterno!=null?_rmaterno.Trim():""; }
             set
             {
                 if (_rmaterno != value)
@@ -378,7 +379,7 @@ namespace Adquisiciones.Data.Entities
         [NotNullNotEmpty(Message = ("Campo Requerido"))]
         public virtual string Rnombre
         {
-            get { return _rnombre; }
+            get { return _rnombre!=null?_rnombre.Trim():""; }
             set
             {
                 if (_rnombre != value)
@@ -393,7 +394,7 @@ namespace Adquisiciones.Data.Entities
         [NotNullNotEmpty(Message = ("Campo Requerido"))]
         public virtual string Giro
         {
-            get { return _giro; }
+            get { return _giro!=null?_giro.Trim():""; }
             set
             {
                 if (_giro != value)
@@ -405,7 +406,7 @@ namespace Adquisiciones.Data.Entities
         }
         public virtual string Observacion
         {
-            get { return _observacion; }
+            get { return _observacion!=null?_observacion.Trim():""; }
             set
             {
                 if (_observacion != value)
@@ -417,13 +418,12 @@ namespace Adquisiciones.Data.Entities
         }
         public virtual string IpTerminal
         {
-            get { return _ipterminal; }
+            get { return _ipterminal.Trim(); }
             set { _ipterminal = value; }
         }
         public virtual DateTime? FechaAlta
         {
-            get { return _fechaalta; }
-            set { _fechaalta = value; }
+            get { return _fechaalta; }set { _fechaalta = value; }
         }
 
         public virtual Usuario Usuario
@@ -434,8 +434,7 @@ namespace Adquisiciones.Data.Entities
 
         public virtual string Estatus
         {
-            get { return _estatus; }
-            set { _estatus = value; }
+            get { return _estatus; }set { _estatus = value; }
         }
         public virtual IList<Cotizacion> Cotizacion
         {
@@ -487,7 +486,7 @@ namespace Adquisiciones.Data.Entities
         public override int GetHashCode()
         {
             int hash = 57;
-            hash = 27 * hash * _cveproveedor.GetHashCode();
+            //hash = 27 * hash * _cveproveedor.GetHashCode();
             return hash;
         }
         #endregion

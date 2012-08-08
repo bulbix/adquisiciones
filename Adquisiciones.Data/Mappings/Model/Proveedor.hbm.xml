@@ -1,7 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" >
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="Adquisiciones.Data"
+                   namespace="Adquisiciones.Data.Entities">
   <!--Build: with lujan99@usa.net Nhibernate template-->
-  <class name="Adquisiciones.Data.Entities.Proveedor,Adquisiciones.Data" table="proveedor" lazy="true" dynamic-update="true">
+  <class name="Proveedor" table="proveedor" lazy="true" dynamic-update="true">
     <id name="CveProveedor" column="cve_proveedor" type="int">
       <generator class="assigned" />
     </id>
@@ -29,34 +31,24 @@
     <property name="Observacion" column="observacion" type="string" />
     <property name="IpTerminal" column="ip_terminal" type="string" />
     <property name="FechaAlta" column="fecha_alta" type="DateTime" />
-
     <property name="Estatus" column="estatus" type="string" />
     
     <many-to-one name="Usuario" column="id_usuario"  />
     <bag name="Cotizacion" inverse="true" lazy="true" cascade="delete">
       <key column="cve_proveedor" />
       <one-to-many class="Adquisiciones.Data.Entities.Cotizacion,Adquisiciones.Data" />
-    </bag>
-    <!--<bag name="CotizacionHist" inverse="true" lazy="true" cascade="delete">
-      <key column="cve_proveedor" />
-      <one-to-many class="Adquisiciones.Data.Entities.CotizacionHist,Adquisiciones.Data" />
-    </bag>-->
+    </bag>    
     <bag name="Fallo" inverse="true" lazy="true" cascade="delete">
       <key column="cve_proveedor" />
       <one-to-many class="Adquisiciones.Data.Entities.Fallo,Adquisiciones.Data" />
-    </bag>
-    <!--<bag name="FalloHist" inverse="true" lazy="true" cascade="delete">
-      <key column="cve_proveedor" />
-      <one-to-many class="Adquisiciones.Data.Entities.FalloHist,Adquisiciones.Data" />
-    </bag>-->
+    </bag>   
     <bag name="Pedido" inverse="true" lazy="true" cascade="delete">
       <key column="cve_proveedor" />
       <one-to-many class="Adquisiciones.Data.Entities.Pedido,Adquisiciones.Data" />
     </bag>
-    <!--<bag name="PedidoHist" inverse="true" lazy="true" cascade="delete">
-      <key column="cve_proveedor" />
-      <one-to-many class="Adquisiciones.Data.Entities.PedidoHist,Adquisiciones.Data" />
-    </bag>-->
+
+   
+
   </class>
  
 </hibernate-mapping>

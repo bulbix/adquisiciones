@@ -17,7 +17,7 @@ namespace Adquisiciones.Data.Validators
 
         public void Initialize(StringOptionalAttribute parameters)
         {
-            _regex = new Regex(@"^[a-zA-Z]+(\,*\.*\s*[a-zA-Z]*)*[a-zA-Z]+$");
+            _regex = new Regex(@"^[a-zA-ZÑñ\.\,\s ]*$");
         }
     }
 }

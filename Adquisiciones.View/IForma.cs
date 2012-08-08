@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace Adquisiciones.View
+﻿namespace Adquisiciones.View
 {
-    public interface IModulo
+    public interface IForma
     {
         void BindearCampos();
         void InicializarCatalogos();

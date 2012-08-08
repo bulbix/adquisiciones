@@ -14,7 +14,7 @@ using Spring.Context.Support;
 
 namespace Adquisiciones.View.Modulos
 {
-    public partial class FrmModulo : XtraForm,IModulo
+    public partial class FrmModulo : XtraForm,IForma
     {
         protected static readonly ILog Log =
             LogManager.GetLogger(System.Reflection.MethodBase.

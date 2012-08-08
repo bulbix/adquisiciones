@@ -169,6 +169,18 @@
     <Compile Include="Busquedas\FrmBusquedaPedido.Designer.cs">
       <DependentUpon>FrmBusquedaPedido.cs</DependentUpon>
     </Compile>
+    <Compile Include="Catalogos\FrmCatalogo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Catalogos\FrmCatalogo.Designer.cs">
+      <DependentUpon>FrmCatalogo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogos\FrmCatalogoProveedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Catalogos\FrmCatalogoProveedor.Designer.cs">
+      <DependentUpon>FrmCatalogoProveedor.cs</DependentUpon>
+    </Compile>
     <Compile Include="DataSets\AnexoDS.cs">
       <DependentUpon>AnexoDS.xsd</DependentUpon>
       <SubType>Component</SubType>
@@ -203,6 +215,7 @@
     <Compile Include="Busquedas\FrmBusquedaProveedor.Designer.cs">
       <DependentUpon>FrmBusquedaProveedor.cs</DependentUpon>
     </Compile>
+    <Compile Include="IForma.cs" />
     <Compile Include="Modulos\FrmModulo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -238,12 +251,6 @@
     </Compile>
     <Compile Include="Catalogos\FrmCatalogoPartida.designer.cs">
       <DependentUpon>FrmCatalogoPartida.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Catalogos\FrmCatalogoProveedor.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Catalogos\FrmCatalogoProveedor.designer.cs">
-      <DependentUpon>FrmCatalogoProveedor.cs</DependentUpon>
     </Compile>
     <Compile Include="Modulos\FrmModuloFallo.cs">
       <SubType>Form</SubType>
@@ -281,7 +288,6 @@
     <Compile Include="Modulos\FrmPedidoEntrega.Designer.cs">
       <DependentUpon>FrmPedidoEntrega.cs</DependentUpon>
     </Compile>
-    <Compile Include="Modulos\IModulo.cs" />
     <Compile Include="Reportes\FrmModuloReportes.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -349,6 +355,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Busquedas\FrmBusquedaProveedor.resx">
       <DependentUpon>FrmBusquedaProveedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Catalogos\FrmCatalogo.resx">
+      <DependentUpon>FrmCatalogo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Catalogos\FrmCatalogoProveedor.resx">
       <DependentUpon>FrmCatalogoProveedor.cs</DependentUpon>
