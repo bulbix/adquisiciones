@@ -28,10 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.btnConsultar = new DevExpress.XtraEditors.SimpleButton();
-            this.btnGuardar = new DevExpress.XtraEditors.SimpleButton();
-            this.btnNuevo = new DevExpress.XtraEditors.SimpleButton();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.txtDescripcion = new System.Windows.Forms.RichTextBox();
             this.cbxClase = new System.Windows.Forms.ComboBox();
@@ -39,43 +35,10 @@
             this.lblClase = new System.Windows.Forms.Label();
             this.lblDescripcion = new System.Windows.Forms.Label();
             this.lblClave = new System.Windows.Forms.Label();
-            this.lblNumErrors = new System.Windows.Forms.Label();
-            this.listaError = new System.Windows.Forms.ListBox();
-            this.bsPartida = new System.Windows.Forms.BindingSource(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.bsSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bsPartida)).BeginInit();
             this.SuspendLayout();
-            // 
-            // btnConsultar
-            // 
-            this.btnConsultar.Image = global::Adquisiciones.View.Properties.Resources.search;
-            this.btnConsultar.Location = new System.Drawing.Point(548, 244);
-            this.btnConsultar.Name = "btnConsultar";
-            this.btnConsultar.Size = new System.Drawing.Size(120, 95);
-            this.btnConsultar.TabIndex = 104;
-            this.btnConsultar.Text = "Consultar";
-            this.btnConsultar.Click += new System.EventHandler(this.BtnConsultarClick);
-            // 
-            // btnGuardar
-            // 
-            this.btnGuardar.Image = global::Adquisiciones.View.Properties.Resources.save_icon;
-            this.btnGuardar.Location = new System.Drawing.Point(427, 244);
-            this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(115, 95);
-            this.btnGuardar.TabIndex = 103;
-            this.btnGuardar.Text = "Guardar";
-            this.btnGuardar.Click += new System.EventHandler(this.BtnGuardarClick);
-            // 
-            // btnNuevo
-            // 
-            this.btnNuevo.Image = global::Adquisiciones.View.Properties.Resources.reportes;
-            this.btnNuevo.Location = new System.Drawing.Point(298, 244);
-            this.btnNuevo.Name = "btnNuevo";
-            this.btnNuevo.Size = new System.Drawing.Size(123, 95);
-            this.btnNuevo.TabIndex = 102;
-            this.btnNuevo.Text = "Nuevo";
-            this.btnNuevo.Click += new System.EventHandler(this.BtnNuevoClick);
             // 
             // groupControl1
             // 
@@ -85,10 +48,10 @@
             this.groupControl1.Controls.Add(this.lblClase);
             this.groupControl1.Controls.Add(this.lblDescripcion);
             this.groupControl1.Controls.Add(this.lblClave);
-            this.groupControl1.Location = new System.Drawing.Point(12, 12);
+            this.groupControl1.Location = new System.Drawing.Point(33, 130);
             this.groupControl1.Name = "groupControl1";
             this.groupControl1.Size = new System.Drawing.Size(656, 210);
-            this.groupControl1.TabIndex = 105;
+            this.groupControl1.TabIndex = 106;
             this.groupControl1.Text = "Partida";
             // 
             // txtDescripcion
@@ -112,7 +75,7 @@
             // 
             this.txtClave.Location = new System.Drawing.Point(107, 45);
             this.txtClave.Name = "txtClave";
-            this.txtClave.Size = new System.Drawing.Size(95, 20);
+            this.txtClave.Size = new System.Drawing.Size(95, 21);
             this.txtClave.TabIndex = 10;
             // 
             // lblClase
@@ -129,7 +92,7 @@
             this.lblDescripcion.AutoSize = true;
             this.lblDescripcion.Location = new System.Drawing.Point(11, 100);
             this.lblDescripcion.Name = "lblDescripcion";
-            this.lblDescripcion.Size = new System.Drawing.Size(63, 13);
+            this.lblDescripcion.Size = new System.Drawing.Size(61, 13);
             this.lblDescripcion.TabIndex = 8;
             this.lblDescripcion.Text = "Descripción";
             // 
@@ -142,57 +105,25 @@
             this.lblClave.TabIndex = 7;
             this.lblClave.Text = "Clave";
             // 
-            // lblNumErrors
-            // 
-            this.lblNumErrors.AutoSize = true;
-            this.lblNumErrors.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNumErrors.Location = new System.Drawing.Point(12, 228);
-            this.lblNumErrors.Name = "lblNumErrors";
-            this.lblNumErrors.Size = new System.Drawing.Size(58, 13);
-            this.lblNumErrors.TabIndex = 107;
-            this.lblNumErrors.Text = "0 Errores";
-            // 
-            // listaError
-            // 
-            this.listaError.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listaError.ForeColor = System.Drawing.Color.Red;
-            this.listaError.FormattingEnabled = true;
-            this.listaError.ItemHeight = 16;
-            this.listaError.Location = new System.Drawing.Point(12, 244);
-            this.listaError.Name = "listaError";
-            this.listaError.Size = new System.Drawing.Size(268, 100);
-            this.listaError.TabIndex = 106;
-            // 
             // FrmCatalogoPartida
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(241)))), ((int)(((byte)(254)))));
-            this.ClientSize = new System.Drawing.Size(691, 354);
-            this.Controls.Add(this.lblNumErrors);
-            this.Controls.Add(this.listaError);
+            this.ClientSize = new System.Drawing.Size(723, 470);
             this.Controls.Add(this.groupControl1);
-            this.Controls.Add(this.btnConsultar);
-            this.Controls.Add(this.btnGuardar);
-            this.Controls.Add(this.btnNuevo);
-            this.MaximizeBox = false;
             this.Name = "FrmCatalogoPartida";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Catálogo de Partidas";
+            this.Text = "Catálogo Partida";
+            this.Controls.SetChildIndex(this.groupControl1, 0);
+            ((System.ComponentModel.ISupportInitialize)(this.bsSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
             this.groupControl1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bsPartida)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private DevExpress.XtraEditors.SimpleButton btnConsultar;
-        private DevExpress.XtraEditors.SimpleButton btnGuardar;
-        private DevExpress.XtraEditors.SimpleButton btnNuevo;
         private DevExpress.XtraEditors.GroupControl groupControl1;
         private System.Windows.Forms.RichTextBox txtDescripcion;
         private System.Windows.Forms.ComboBox cbxClase;
@@ -200,8 +131,5 @@
         private System.Windows.Forms.Label lblClase;
         private System.Windows.Forms.Label lblDescripcion;
         private System.Windows.Forms.Label lblClave;
-        private System.Windows.Forms.Label lblNumErrors;
-        private System.Windows.Forms.ListBox listaError;
-        private System.Windows.Forms.BindingSource bsPartida;
     }
 }

@@ -117,7 +117,7 @@
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1,
             this.ribbonPage2});
-            this.ribbon.SelectedPage = this.ribbonPage1;
+            this.ribbon.SelectedPage = this.ribbonPage2;
             this.ribbon.Size = new System.Drawing.Size(1123, 148);
             this.ribbon.StatusBar = this.ribbonStatusBar;
             // 
@@ -155,7 +155,7 @@
             // 
             this.barMdiChildrenListItem1.Caption = "Ventanas";
             this.barMdiChildrenListItem1.Id = 4;
-            this.barMdiChildrenListItem1.LargeGlyph = global::Adquisiciones.View.Properties.Resources.busqueda;
+            this.barMdiChildrenListItem1.LargeGlyph = global::Adquisiciones.View.Properties.Resources.search;
             this.barMdiChildrenListItem1.Name = "barMdiChildrenListItem1";
             // 
             // barButtonItem1
@@ -171,7 +171,7 @@
             // 
             this.barButtonItem2.Caption = "Anexo";
             this.barButtonItem2.Id = 6;
-            this.barButtonItem2.LargeGlyph = global::Adquisiciones.View.Properties.Resources.search;
+            this.barButtonItem2.LargeGlyph = global::Adquisiciones.View.Properties.Resources.busqueda;
             this.barButtonItem2.LargeWidth = 75;
             this.barButtonItem2.Name = "barButtonItem2";
             this.barButtonItem2.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem2_ItemClick);
@@ -180,7 +180,7 @@
             // 
             this.barButtonItem3.Caption = "Cotizacion";
             this.barButtonItem3.Id = 7;
-            this.barButtonItem3.LargeGlyph = global::Adquisiciones.View.Properties.Resources.search;
+            this.barButtonItem3.LargeGlyph = global::Adquisiciones.View.Properties.Resources.busqueda;
             this.barButtonItem3.LargeWidth = 75;
             this.barButtonItem3.Name = "barButtonItem3";
             this.barButtonItem3.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BarButtonItem3ItemClick);
@@ -189,7 +189,7 @@
             // 
             this.barButtonItem4.Caption = "Proveedor";
             this.barButtonItem4.Id = 8;
-            this.barButtonItem4.LargeGlyph = global::Adquisiciones.View.Properties.Resources.search;
+            this.barButtonItem4.LargeGlyph = global::Adquisiciones.View.Properties.Resources.busqueda;
             this.barButtonItem4.LargeWidth = 75;
             this.barButtonItem4.Name = "barButtonItem4";
             this.barButtonItem4.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BarButtonItem4ItemClick);
@@ -256,7 +256,7 @@
             // 
             this.barButtonItem6.Caption = "Fallo";
             this.barButtonItem6.Id = 16;
-            this.barButtonItem6.LargeGlyph = global::Adquisiciones.View.Properties.Resources.search;
+            this.barButtonItem6.LargeGlyph = global::Adquisiciones.View.Properties.Resources.busqueda;
             this.barButtonItem6.LargeWidth = 75;
             this.barButtonItem6.Name = "barButtonItem6";
             this.barButtonItem6.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem6_ItemClick);
@@ -265,7 +265,7 @@
             // 
             this.barButtonItem7.Caption = "Pedido";
             this.barButtonItem7.Id = 17;
-            this.barButtonItem7.LargeGlyph = global::Adquisiciones.View.Properties.Resources.search;
+            this.barButtonItem7.LargeGlyph = global::Adquisiciones.View.Properties.Resources.busqueda;
             this.barButtonItem7.LargeWidth = 75;
             this.barButtonItem7.Name = "barButtonItem7";
             this.barButtonItem7.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BarButtonItem7ItemClick);

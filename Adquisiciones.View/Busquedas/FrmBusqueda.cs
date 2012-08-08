@@ -43,14 +43,13 @@ namespace Adquisiciones.View.Busquedas
                     continue;
 
                 var desModulo = moduloUsuario.Id.Modulo.DesModulo.ToLower().Trim();
-                if (desModulo.Contains(nombreModulo))
+                if (desModulo.Contains(nombreModulo) || desModulo.Contains("catalogo"))
                 {
                     if (desModulo.Contains("consultar"))
                     {
                         cmdBuscar.Enabled = true;
                         cmdConsultar.Enabled = true;
                     }
-
                     if (desModulo.Contains("eliminar"))
                     {
                         cmdEliminar.Enabled = true;

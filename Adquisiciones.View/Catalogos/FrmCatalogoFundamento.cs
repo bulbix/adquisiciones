@@ -1,4 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Text;
 using System.Windows.Forms;
 using Adquisiciones.Business;
 using Adquisiciones.Data.Dao.Catalogos;
@@ -6,13 +11,11 @@ using Adquisiciones.Data.Entities;
 using DevExpress.XtraEditors;
 using Spring.Context.Support;
 
-namespace Adquisiciones.View.Catalogos{
-    ///<summary>
-    ///</summary>
-    /// 
-    /// 
-    public partial class FrmCatalogoFundamento : XtraForm
+namespace Adquisiciones.View.Catalogos
+{
+    public partial class FrmCatalogoFundamento : FrmCatalogo
     {
+
         ///<summary>
         ///</summary>
         public IFundamentoDao FundamentoDao { private get; set; }
@@ -22,50 +25,45 @@ namespace Adquisiciones.View.Catalogos{
         /// </summary>
         public Fundamento FundamentoActual = new Fundamento();
 
-        /// <summary>
-        /// 
-        /// </summary>
         public FrmCatalogoFundamento()
         {
             InitializeComponent();
-
             var ctx = ContextRegistry.GetContext();
             FundamentoDao = ctx["fundamentoDao"] as IFundamentoDao;
-
             Nuevo();
+            BindearCampos();
+            base.ObtenerPerfil();
+        }
 
-            //bindear campos
-            txtClave.DataBindings.Add(new Binding("Text", bsFundamento, "CveFundamento",true));
-            txtArticulo.DataBindings.Add(new Binding("Text", bsFundamento, "ArtiFundamento",true));
-            txtInciso.DataBindings.Add(new Binding("Text", bsFundamento, "IncisoFundamento",true));
-            txtFraccion.DataBindings.Add(new Binding("Text", bsFundamento, "FraccFundamento",true));
-            txtDescripcion.DataBindings.Add(new Binding("Text", bsFundamento, "DesFundamento",true));
 
-            txtClave.Text = FundamentoDao.SiguienteCveFundamento().ToString();}
-
-        /// <summary>
-        /// 
-        /// </summary>
-        private void Nuevo()
+        public override void BindearCampos()
         {
-            listaError.Items.Clear();
-            lblNumErrors.Text = @"0 Errores";
+            txtClave.DataBindings.Add(new Binding("Text", bsSource, "CveFundamento", true));
+            txtArticulo.DataBindings.Add(new Binding("Text", bsSource, "ArtiFundamento", true));
+            txtInciso.DataBindings.Add(new Binding("Text", bsSource, "IncisoFundamento", true));
+            txtFraccion.DataBindings.Add(new Binding("Text", bsSource, "FraccFundamento", true));
+            txtDescripcion.DataBindings.Add(new Binding("Text", bsSource, "DesFundamento", true));
+
+            txtClave.Text = FundamentoDao.SiguienteCveFundamento().ToString();
+        }
+
+        public override void Nuevo()
+        {
+            LimpiarValidacion();
             FundamentoActual = new Fundamento();
-            bsFundamento.DataSource = FundamentoActual;
+            bsSource.DataSource = FundamentoActual;
             txtClave.Enabled = true;
-            btnGuardar.Enabled = true;
+            cmdGuardar.Enabled = true;
             txtClave.Text = String.Empty;
             txtArticulo.Text = String.Empty;
             txtInciso.Text = String.Empty;
             txtFraccion.Text = String.Empty;
             txtDescripcion.Text = String.Empty;
-
             txtClave.Text = FundamentoDao.SiguienteCveFundamento().ToString();
-
             txtClave.Focus();
         }
 
-        private void BtnGuardarClick(object sender, EventArgs e)
+        public override void Guardar()
         {
             try
             {
@@ -95,10 +93,9 @@ namespace Adquisiciones.View.Catalogos{
                 XtraMessageBox.Show(@"Ocurrio un error en la insercion o actualizacion del fundamento " + ee.Message,
                     @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
         }
 
-        private void BtnConsultarClick(object sender, EventArgs e)
+        public override void Consultar()
         {
             try
             {
@@ -106,7 +103,7 @@ namespace Adquisiciones.View.Catalogos{
                 if (FundamentoActual != null)
                 {
                     txtClave.Enabled = false;
-                    bsFundamento.DataSource = FundamentoActual;
+                    bsSource.DataSource = FundamentoActual;
                 }
                 else
                 {
@@ -120,14 +117,6 @@ namespace Adquisiciones.View.Catalogos{
                 XtraMessageBox.Show(@"Ocurrio un error en la consulta" + ee.Message,
                     @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
         }
-
-        private void BtnNuevoClick(object sender, EventArgs e)
-        {
-            Nuevo();
-        }
-
-
     }
 }
