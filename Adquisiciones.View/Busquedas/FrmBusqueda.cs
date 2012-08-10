@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using Adquisiciones.Business;
+using Adquisiciones.Data.Auxiliares;
 using DevExpress.XtraEditors;
 using DevExpress.XtraGrid.Views.Grid;
 using Spring.Context.Support;
@@ -37,13 +38,17 @@ namespace Adquisiciones.View.Busquedas
         protected void ObtenerPerfil(){
             var modulosUsuario = FrmModuloAcceso.UsuarioLog.UsuarioModulo;
             var nombreModulo = TypeEntity.Name.ToLower();
+
+            if (TypeEntity is ICatalogo)
+                nombreModulo = "catalogo";
+
             foreach (var moduloUsuario in modulosUsuario)
             {
                 if(moduloUsuario.Estatus != "A")
                     continue;
 
                 var desModulo = moduloUsuario.Id.Modulo.DesModulo.ToLower().Trim();
-                if (desModulo.Contains(nombreModulo) || desModulo.Contains("catalogo"))
+                if (desModulo.Contains(nombreModulo))
                 {
                     if (desModulo.Contains("consultar"))
                     {

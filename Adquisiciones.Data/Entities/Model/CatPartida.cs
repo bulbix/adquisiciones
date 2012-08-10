@@ -5,6 +5,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using Adquisiciones.Data.Auxiliares;
 using NHibernate.Validator.Constraints;
 
 namespace Adquisiciones.Data.Entities
@@ -13,7 +14,7 @@ namespace Adquisiciones.Data.Entities
 	/// CatPartida object for NHibernate mapped table 'cat_partida'.
 	/// </summary>
 	[Serializable]
-    public class CatPartida : INotifyPropertyChanged
+    public class CatPartida : INotifyPropertyChanged,ICatalogo
 	{
 		#region Member Variables
 		protected string _partida;

@@ -45,8 +45,6 @@ namespace Adquisiciones.View.Modulos
             Consultar();
             Text = @"Anexo::" + anexo.NumeroAnexo;
 
-            base.ObtenerPerfil();
-
             if (AnexoService.AnexoDao.ExisteAnexoCotizacion(AnexoActual))
             {
                 XtraMessageBox.Show(@"El anexo tiene asociadas cotizaciones",
@@ -91,7 +89,7 @@ namespace Adquisiciones.View.Modulos
 
             txtnumlicitacion.Enabled = true;
             dtpFechaanexo.Enabled = true;
-            cmdGuardar.Enabled = true;
+            //cmdGuardar.Enabled = true;
             txtnumlicitacion.Focus();
             listaError.Strings.Clear();
             lblNumErrors.Caption = string.Empty;

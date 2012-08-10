@@ -59,8 +59,10 @@
             this.crystalReportViewer.Location = new System.Drawing.Point(0, 0);
             this.crystalReportViewer.Name = "crystalReportViewer";
             this.crystalReportViewer.ReportSource = this.ReporteCotizacion1;
+            this.crystalReportViewer.ShowGroupTreeButton = false;
             this.crystalReportViewer.Size = new System.Drawing.Size(787, 634);
             this.crystalReportViewer.TabIndex = 8;
+            this.crystalReportViewer.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None;
             // 
             // FrmModuloReportes
             // 

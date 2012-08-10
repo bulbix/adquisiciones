@@ -107,6 +107,9 @@
       <HintPath>..\Librerias\IBM.Data.Informix.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="itextsharp">
+      <HintPath>..\Librerias\itextsharp.dll</HintPath>
+    </Reference>
     <Reference Include="log4net">
       <HintPath>..\Librerias\log4net.dll</HintPath>
     </Reference>

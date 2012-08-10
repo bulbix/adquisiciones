@@ -5,6 +5,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using Adquisiciones.Data.Auxiliares;
 using NHibernate.Validator.Constraints;
 
 namespace Adquisiciones.Data.Entities
@@ -13,7 +14,7 @@ namespace Adquisiciones.Data.Entities
 	/// Fundamento object for NHibernate mapped table 'fundamento'.
 	/// </summary>
 	[Serializable]
-    public class Fundamento : INotifyPropertyChanged
+    public class Fundamento : INotifyPropertyChanged,ICatalogo
 	{
 		#region Member Variables
 		protected short _cvefundamento;

@@ -46,7 +46,6 @@ namespace Adquisiciones.View.Modulos
 
             BindearCampos();
             InicializarCatalogos();
-            base.ObtenerPerfil();
         }
 
          public FrmModuloPedido(Pedido pedido)
@@ -56,12 +55,9 @@ namespace Adquisiciones.View.Modulos
             Consultar();
             Text = @"Pedido::" + pedido;
 
-            base.ObtenerPerfil();
 
             if (pedido.Requisicion != null)
                 cmdGuardar.Enabled = false;
-
-
         }
 
         public override void BindearCampos()

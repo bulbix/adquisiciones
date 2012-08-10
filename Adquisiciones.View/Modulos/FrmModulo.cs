@@ -26,24 +26,28 @@ namespace Adquisiciones.View.Modulos
         protected string NombreService { get; set; }
         protected object EntityActual { get; set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public FrmModulo()
         {
             InitializeComponent();
         }
 
-        private void HabilitarBuscadores(bool habilitar)
+        /// <summary>
+        /// Habilita o Deshabilita hasta encontrar un control SearchLookUpEdit
+        /// </summary>
+        /// <param name="controls"></param>
+        /// <param name="habilitar"></param>
+        private static void HabilitarBuscadores(Control controls, bool habilitar)
         {
-            foreach (var boton in from object control in Controls
-                                  let type = control.GetType()
-                                  where type == typeof(SearchLookUpEdit)
-                                  select (SearchLookUpEdit)control
-                                      into boton
-
-                                      select boton)
+            foreach (var control  in controls.Controls)
             {
-                boton.Enabled = habilitar;
+                if (control is SearchLookUpEdit)
+                    (control as SearchLookUpEdit).Enabled = habilitar;
+                else
+                    HabilitarBuscadores((control as Control),habilitar);
             }
-            
         }
 
         protected void ObtenerPerfil()
@@ -55,7 +59,6 @@ namespace Adquisiciones.View.Modulos
                 if (moduloUsuario.Estatus != "A")
                     continue;
                 
-                
                 var desModulo = moduloUsuario.Id.Modulo.DesModulo.ToLower().Trim();
 
                 if (desModulo.Contains(nombreModulo))
@@ -64,7 +67,7 @@ namespace Adquisiciones.View.Modulos
                     if (desModulo.Contains("consultar"))
                     {
                         cmdConsultar.Enabled = true;
-                        HabilitarBuscadores(false);
+                        HabilitarBuscadores(this,false);
                     }
 
                     if (desModulo.Contains("trabajar"))
@@ -74,7 +77,7 @@ namespace Adquisiciones.View.Modulos
                         listaError.Enabled = true;
                         lblNumErrors.Enabled = true;
                         cmdConsultar.Enabled = true;
-                        HabilitarBuscadores(true);
+                        HabilitarBuscadores(this,true);
                     }
 
                     if (desModulo.Contains("eliminar"))

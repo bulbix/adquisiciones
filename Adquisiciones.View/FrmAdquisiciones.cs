@@ -50,12 +50,15 @@ namespace Adquisiciones.View
 
                 if (desModulo.Contains("pedido trabajar"))
                 {
-                    barButtonPedidoAuto.Visibility = BarItemVisibility.Always;
-                    barButtonPedidoMenor.Visibility = BarItemVisibility.Always;
-                    barButtonPedidoMayor.Visibility = BarItemVisibility.Always;
-                    barButtonPedidoDonacion.Visibility = BarItemVisibility.Always;
+
+                    ribbonPagePedido.Visible = true;
                 }
-                
+
+                if (desModulo.Contains("catalogo trabajar"))
+                {
+
+                    ribbonPageCatalogo.Visible = true;
+                }
             }
         }
 

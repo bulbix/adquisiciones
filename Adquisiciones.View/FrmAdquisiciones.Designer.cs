@@ -57,8 +57,8 @@
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup5 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribbonPageGroup4 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPagePedido = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageCatalogo = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPage2 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup7 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -117,7 +117,7 @@
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1,
             this.ribbonPage2});
-            this.ribbon.SelectedPage = this.ribbonPage2;
+            this.ribbon.SelectedPage = this.ribbonPage1;
             this.ribbon.Size = new System.Drawing.Size(1123, 148);
             this.ribbon.StatusBar = this.ribbonStatusBar;
             // 
@@ -219,7 +219,6 @@
             this.barButtonPedidoMayor.LargeGlyph = global::Adquisiciones.View.Properties.Resources.Pedido3;
             this.barButtonPedidoMayor.LargeWidth = 75;
             this.barButtonPedidoMayor.Name = "barButtonPedidoMayor";
-            this.barButtonPedidoMayor.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             this.barButtonPedidoMayor.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BarButtonPedidoMayorItemClick);
             // 
             // barButtonPedidoMenor
@@ -229,7 +228,6 @@
             this.barButtonPedidoMenor.LargeGlyph = global::Adquisiciones.View.Properties.Resources.Pedido3;
             this.barButtonPedidoMenor.LargeWidth = 75;
             this.barButtonPedidoMenor.Name = "barButtonPedidoMenor";
-            this.barButtonPedidoMenor.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             this.barButtonPedidoMenor.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BarButtonPedidoMenorItemClick);
             // 
             // barButtonPedidoDonacion
@@ -239,7 +237,6 @@
             this.barButtonPedidoDonacion.LargeGlyph = global::Adquisiciones.View.Properties.Resources.Pedido3;
             this.barButtonPedidoDonacion.LargeWidth = 75;
             this.barButtonPedidoDonacion.Name = "barButtonPedidoDonacion";
-            this.barButtonPedidoDonacion.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             this.barButtonPedidoDonacion.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BarButtonPedidoDonacionItemClick);
             // 
             // barButtonPedidoExtra
@@ -249,7 +246,6 @@
             this.barButtonPedidoExtra.LargeGlyph = global::Adquisiciones.View.Properties.Resources.Pedido3;
             this.barButtonPedidoExtra.LargeWidth = 75;
             this.barButtonPedidoExtra.Name = "barButtonPedidoExtra";
-            this.barButtonPedidoExtra.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             this.barButtonPedidoExtra.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BarButtonPedidoExtraItemClick);
             // 
             // barButtonItem6
@@ -325,8 +321,8 @@
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
             this.ribbonPageGroup5,
             this.ribbonPageGroup1,
-            this.ribbonPageGroup4,
-            this.ribbonPageGroup3});
+            this.ribbonPagePedido,
+            this.ribbonPageCatalogo});
             this.ribbonPage1.Name = "ribbonPage1";
             this.ribbonPage1.Text = "Adquisiciones";
             // 
@@ -341,26 +337,27 @@
             this.ribbonPageGroup1.ItemLinks.Add(this.barButtonAnexo);
             this.ribbonPageGroup1.ItemLinks.Add(this.barButtonCotizacion);
             this.ribbonPageGroup1.ItemLinks.Add(this.barButtonFallo);
-            this.ribbonPageGroup1.ItemLinks.Add(this.barButtonPedidoAuto);
             this.ribbonPageGroup1.Name = "ribbonPageGroup1";
-            this.ribbonPageGroup1.Text = "Modulos";
             // 
-            // ribbonPageGroup4
+            // ribbonPagePedido
             // 
-            this.ribbonPageGroup4.ItemLinks.Add(this.barButtonPedidoMayor);
-            this.ribbonPageGroup4.ItemLinks.Add(this.barButtonPedidoMenor);
-            this.ribbonPageGroup4.ItemLinks.Add(this.barButtonPedidoDonacion);
-            this.ribbonPageGroup4.ItemLinks.Add(this.barButtonPedidoExtra);
-            this.ribbonPageGroup4.Name = "ribbonPageGroup4";
-            this.ribbonPageGroup4.Text = "Pedidos";
+            this.ribbonPagePedido.ItemLinks.Add(this.barButtonPedidoAuto);
+            this.ribbonPagePedido.ItemLinks.Add(this.barButtonPedidoMayor);
+            this.ribbonPagePedido.ItemLinks.Add(this.barButtonPedidoMenor);
+            this.ribbonPagePedido.ItemLinks.Add(this.barButtonPedidoDonacion);
+            this.ribbonPagePedido.ItemLinks.Add(this.barButtonPedidoExtra);
+            this.ribbonPagePedido.Name = "ribbonPagePedido";
+            this.ribbonPagePedido.Text = "Pedidos";
+            this.ribbonPagePedido.Visible = false;
             // 
-            // ribbonPageGroup3
+            // ribbonPageCatalogo
             // 
-            this.ribbonPageGroup3.ItemLinks.Add(this.barButtonItem1);
-            this.ribbonPageGroup3.ItemLinks.Add(this.barButtonItem5);
-            this.ribbonPageGroup3.ItemLinks.Add(this.barButtonItem8);
-            this.ribbonPageGroup3.Name = "ribbonPageGroup3";
-            this.ribbonPageGroup3.Text = "Catalogos";
+            this.ribbonPageCatalogo.ItemLinks.Add(this.barButtonItem1);
+            this.ribbonPageCatalogo.ItemLinks.Add(this.barButtonItem5);
+            this.ribbonPageCatalogo.ItemLinks.Add(this.barButtonItem8);
+            this.ribbonPageCatalogo.Name = "ribbonPageCatalogo";
+            this.ribbonPageCatalogo.Text = "Catalogos";
+            this.ribbonPageCatalogo.Visible = false;
             // 
             // ribbonPage2
             // 
@@ -492,14 +489,14 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem3;
         private DevExpress.XtraBars.BarButtonItem barButtonItem4;
         private DevExpress.XtraBars.BarButtonItem barButtonItem5;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup3;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageCatalogo;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup2;
         private DevExpress.XtraBars.BarButtonItem barButtonPedidoAuto;
         private DevExpress.XtraBars.BarButtonItem barButtonPedidoMayor;
         private DevExpress.XtraBars.BarButtonItem barButtonPedidoMenor;
         private DevExpress.XtraBars.BarButtonItem barButtonPedidoDonacion;
         private DevExpress.XtraBars.BarButtonItem barButtonPedidoExtra;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup4;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPagePedido;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup5;
         private DevExpress.XtraBars.BarButtonItem barButtonItem6;
         private DevExpress.XtraBars.BarButtonItem barButtonItem7;

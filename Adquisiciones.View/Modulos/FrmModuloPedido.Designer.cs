@@ -453,7 +453,7 @@
             // searchLookUpArea
             // 
             this.searchLookUpArea.EditValue = "<Null>";
-            this.searchLookUpArea.Location = new System.Drawing.Point(433, 151);
+            this.searchLookUpArea.Location = new System.Drawing.Point(435, 151);
             this.searchLookUpArea.Name = "searchLookUpArea";
             this.searchLookUpArea.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -523,7 +523,7 @@
             // searchLookUpFundamento
             // 
             this.searchLookUpFundamento.EditValue = "<Null>";
-            this.searchLookUpFundamento.Location = new System.Drawing.Point(433, 119);
+            this.searchLookUpFundamento.Location = new System.Drawing.Point(437, 119);
             this.searchLookUpFundamento.Name = "searchLookUpFundamento";
             this.searchLookUpFundamento.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});

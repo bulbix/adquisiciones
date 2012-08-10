@@ -49,7 +49,6 @@ namespace Adquisiciones.View.Modulos
             AnexoActual = cotizacion.Anexo;
             ProveedorActual = cotizacion.Proveedor;
             Consultar();
-            base.ObtenerPerfil();
         }
 
         public override void BindearCampos()
@@ -152,10 +151,10 @@ namespace Adquisiciones.View.Modulos
                         @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         cmdGuardar.Enabled = false;
                     }
-                    else
-                    {
-                        cmdGuardar.Enabled = true;
-                    }
+                    //else
+                    //{
+                    //    cmdGuardar.Enabled = true;
+                    //}
 
                     gcDatosGenerales.Enabled = false;
                     this.Text = lblDesLicitacion.Text + "@" + lblProveedor.Text;
