@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using Adquisiciones.Business;
+using Adquisiciones.Data;
 using DevExpress.XtraEditors;
 using log4net;
 
@@ -18,10 +19,7 @@ namespace Adquisiciones.View.Catalogos
             GetCurrentMethod().DeclaringType);
 
         protected Type TypeEntity { get; set; }
-        protected IFormBusqueda Servicio { get; set; }
-        protected string NombreReporte { get; set; }
-        protected string NombreService { get; set; }
-        protected object EntityActual { get; set; }
+        
 
 
         public FrmCatalogo()
@@ -130,6 +128,18 @@ namespace Adquisiciones.View.Catalogos
         private void cmdConsultar_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             Consultar();
+        }
+
+        private void CmdEliminarItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+
+            XtraMessageBox.Show("Borrelo desde la busqueda!!");
+
+        }
+
+        private void cmdReporte_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            XtraMessageBox.Show("No hay reporte asociado en los catalogos");
         }
     }
 }

@@ -171,7 +171,7 @@ namespace Adquisiciones.View.Modulos
             }
             catch (Exception ee)
             {
-                XtraMessageBox.Show(@"Ocurrio un error en la consulta Reportalo a Dep. Sistemas",
+                XtraMessageBox.Show(@"Ocurrio un error en la consulta",
                     @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 Log.Error("Generado por:" + FrmModuloAcceso.UsuarioLog, ee);

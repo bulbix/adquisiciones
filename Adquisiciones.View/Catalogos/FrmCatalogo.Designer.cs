@@ -152,6 +152,7 @@
             this.cmdEliminar.Enabled = false;
             this.cmdEliminar.Id = 6;
             this.cmdEliminar.Name = "cmdEliminar";
+            this.cmdEliminar.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.CmdEliminarItemClick);
             // 
             // cmdReporte
             // 
@@ -161,6 +162,7 @@
             this.cmdReporte.Enabled = false;
             this.cmdReporte.Id = 7;
             this.cmdReporte.Name = "cmdReporte";
+            this.cmdReporte.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.cmdReporte_ItemClick);
             // 
             // listaError
             // 

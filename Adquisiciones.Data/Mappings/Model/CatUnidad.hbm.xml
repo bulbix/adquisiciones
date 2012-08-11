@@ -10,7 +10,7 @@
     <property name="Estatus" column="estatus" type="string" />
     <property name="IpTerminal" column="ip_terminal" type="string" />    
     <many-to-one name="Usuario" column="id_usuario"  />
-    <bag name="Articulo" inverse="true" lazy="true" cascade="delete">
+    <bag name="Articulo" inverse="true" lazy="true" cascade="none">
       <key column="unidad" />
       <one-to-many class="Adquisiciones.Data.Entities.Articulo,Adquisiciones.Data" />
     </bag>

@@ -149,16 +149,22 @@ namespace Adquisiciones.View
             this.Controls.Add(this.cmdCancelar);
             this.Controls.Add(this.cmdAceptar);
             this.Controls.Add(this.pictureBox1);
-            this.MaximumSize = new System.Drawing.Size(566, 378);
+            this.MaximumSize = new System.Drawing.Size(574, 389);
             this.MinimumSize = new System.Drawing.Size(566, 378);
             this.Name = "FrmModuloAcceso";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Adquisiciones V 1.0 @ Instituto Nacional Rehabilitación";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmModuloAcceso_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtId.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
+        }
+
+        private void FrmModuloAcceso_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
 
     }

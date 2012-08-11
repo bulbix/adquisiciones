@@ -10,11 +10,11 @@
     <property name="FechaBaja" column="fecha_baja" type="DateTime" />
     <property name="Estatus" column="estatus" type="string" />
     <property name="IpTerminal" column="ip_terminal" type="string" />
-    <bag name="Pedido" inverse="true" lazy="true" cascade="delete">
+    <bag name="Pedido" inverse="true" lazy="true" cascade="none">
       <key column="id_tipoped" />
       <one-to-many class="Adquisiciones.Data.Entities.Pedido,Adquisiciones.Data" />
     </bag>
-    <!--<bag name="PedidoHist" inverse="true" lazy="true" cascade="delete">
+    <!--<bag name="PedidoHist" inverse="true" lazy="true" cascade="none">
       <key column="id_tipoped" />
       <one-to-many class="Adquisiciones.Data.Entities.PedidoHist,Adquisiciones.Data" />
     </bag>-->

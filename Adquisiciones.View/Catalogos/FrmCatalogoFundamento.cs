@@ -35,7 +35,13 @@ namespace Adquisiciones.View.Catalogos
             base.ObtenerPerfil();
         }
 
-
+        public FrmCatalogoFundamento(Fundamento fundamento):this()
+        {
+            FundamentoActual = fundamento;
+            txtClave.Text = fundamento.CveFundamento.ToString();
+            Consultar();
+        }
+        
         public override void BindearCampos()
         {
             txtClave.DataBindings.Add(new Binding("Text", bsSource, "CveFundamento", true));
@@ -90,8 +96,9 @@ namespace Adquisiciones.View.Catalogos
             }
             catch (Exception ee)
             {
-                XtraMessageBox.Show(@"Ocurrio un error en la insercion o actualizacion del fundamento " + ee.Message,
+                XtraMessageBox.Show(@"Ocurrio un error en la insercion o actualizacion del fundamento ",
                     @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Log.Error("Generado por:" + FrmModuloAcceso.UsuarioLog, ee);
             }
         }
 
@@ -114,8 +121,9 @@ namespace Adquisiciones.View.Catalogos
             }
             catch (Exception ee)
             {
-                XtraMessageBox.Show(@"Ocurrio un error en la consulta" + ee.Message,
+                XtraMessageBox.Show(@"Ocurrio un error en la consulta",
                     @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Log.Error("Generado por:" + FrmModuloAcceso.UsuarioLog, ee);
             }
         }
     }

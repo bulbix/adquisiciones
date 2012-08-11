@@ -29,14 +29,14 @@
     <!--add Row-->
     <property name="Imagen" column="imagen" type="string" />
     
-    <bag name="ArticuloFarmacia" inverse="true" lazy="true" cascade="delete">
+    <bag name="ArticuloFarmacia" inverse="true" lazy="true" cascade="none">
       <key>
         <column name="cve_art" />
         <column name="id_almacen" />
       </key>
       <one-to-many class="Adquisiciones.Data.Entities.ArticuloFarmacia,Adquisiciones.Data" />
     </bag>
-    <bag name="ArticuloPartida" inverse="true" lazy="true" cascade="delete">
+    <bag name="ArticuloPartida" inverse="true" lazy="true" cascade="none">
       <key>
         <column name="cve_art" />
         <column name="id_almacen" />

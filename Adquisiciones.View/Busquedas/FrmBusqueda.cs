@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using Adquisiciones.Business;
+using Adquisiciones.Data;
 using Adquisiciones.Data.Auxiliares;
 using DevExpress.XtraEditors;
 using DevExpress.XtraGrid.Views.Grid;
@@ -39,7 +40,7 @@ namespace Adquisiciones.View.Busquedas
             var modulosUsuario = FrmModuloAcceso.UsuarioLog.UsuarioModulo;
             var nombreModulo = TypeEntity.Name.ToLower();
 
-            if (TypeEntity is ICatalogo)
+            if (TypeEntity.GetInterface("ICatalogo") != null)
                 nombreModulo = "catalogo";
 
             foreach (var moduloUsuario in modulosUsuario)
@@ -114,7 +115,7 @@ namespace Adquisiciones.View.Busquedas
             GvGeneral.ShowPrintPreview();
         }
 
-        private void CmdReporteItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        protected virtual void CmdReporteItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
 
             try

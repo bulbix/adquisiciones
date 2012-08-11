@@ -39,48 +39,48 @@
             // 
             this.btnAdqconacyt5000.Enabled = false;
             this.btnAdqconacyt5000.Image = global::Adquisiciones.View.Properties.Resources.conacyt;
-            this.btnAdqconacyt5000.Location = new System.Drawing.Point(508, 42);
+            this.btnAdqconacyt5000.Location = new System.Drawing.Point(396, 84);
             this.btnAdqconacyt5000.Name = "btnAdqconacyt5000";
-            this.btnAdqconacyt5000.Size = new System.Drawing.Size(129, 100);
+            this.btnAdqconacyt5000.Size = new System.Drawing.Size(250, 74);
             this.btnAdqconacyt5000.TabIndex = 17;
             this.btnAdqconacyt5000.Tag = "C5";
-            this.btnAdqconacyt5000.Text = "5000";
+            this.btnAdqconacyt5000.Text = "ADQUISICIONES CONACYT 5000";
             this.btnAdqconacyt5000.Click += new System.EventHandler(this.BtnAdqconacyt5000Click);
             // 
             // btnAdq5000
             // 
             this.btnAdq5000.Enabled = false;
             this.btnAdq5000.Image = global::Adquisiciones.View.Properties.Resources.conacyt;
-            this.btnAdq5000.Location = new System.Drawing.Point(359, 42);
+            this.btnAdq5000.Location = new System.Drawing.Point(396, 12);
             this.btnAdq5000.Name = "btnAdq5000";
-            this.btnAdq5000.Size = new System.Drawing.Size(129, 100);
+            this.btnAdq5000.Size = new System.Drawing.Size(250, 69);
             this.btnAdq5000.TabIndex = 16;
             this.btnAdq5000.Tag = "P5";
-            this.btnAdq5000.Text = "5000";
+            this.btnAdq5000.Text = "ADQUISICIONES 5000";
             this.btnAdq5000.Click += new System.EventHandler(this.BtnAdq5000Click);
             // 
             // btnAdqconacyt2000
             // 
             this.btnAdqconacyt2000.Enabled = false;
             this.btnAdqconacyt2000.Image = global::Adquisiciones.View.Properties.Resources.conacyt;
-            this.btnAdqconacyt2000.Location = new System.Drawing.Point(204, 42);
+            this.btnAdqconacyt2000.Location = new System.Drawing.Point(94, 87);
             this.btnAdqconacyt2000.Name = "btnAdqconacyt2000";
-            this.btnAdqconacyt2000.Size = new System.Drawing.Size(129, 100);
+            this.btnAdqconacyt2000.Size = new System.Drawing.Size(252, 71);
             this.btnAdqconacyt2000.TabIndex = 15;
             this.btnAdqconacyt2000.Tag = "C2";
-            this.btnAdqconacyt2000.Text = "2000";
+            this.btnAdqconacyt2000.Text = "ADQUISICIONES CONACYT 2000";
             this.btnAdqconacyt2000.Click += new System.EventHandler(this.BtnAdqconacyt2000Click);
             // 
             // btnAdq2000
             // 
             this.btnAdq2000.Enabled = false;
             this.btnAdq2000.Image = global::Adquisiciones.View.Properties.Resources.conacyt;
-            this.btnAdq2000.Location = new System.Drawing.Point(42, 42);
+            this.btnAdq2000.Location = new System.Drawing.Point(94, 12);
             this.btnAdq2000.Name = "btnAdq2000";
-            this.btnAdq2000.Size = new System.Drawing.Size(129, 100);
+            this.btnAdq2000.Size = new System.Drawing.Size(252, 69);
             this.btnAdq2000.TabIndex = 14;
             this.btnAdq2000.Tag = "P2";
-            this.btnAdq2000.Text = "2000";
+            this.btnAdq2000.Text = "ADQUISICIONES 2000";
             this.btnAdq2000.Click += new System.EventHandler(this.BtnAdq2000Click);
             // 
             // FrmModuloModulo
@@ -94,7 +94,7 @@
             this.Controls.Add(this.btnAdq2000);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(712, 223);
+            this.MaximumSize = new System.Drawing.Size(720, 234);
             this.MinimumSize = new System.Drawing.Size(712, 223);
             this.Name = "FrmModuloModulo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

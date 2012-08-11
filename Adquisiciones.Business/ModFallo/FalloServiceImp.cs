@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text;
+using Adquisiciones.Data;
 using Adquisiciones.Data.Auxiliares;
 using Adquisiciones.Data.Dao.Catalogos;
 using Adquisiciones.Data.Dao.ModAnexo;

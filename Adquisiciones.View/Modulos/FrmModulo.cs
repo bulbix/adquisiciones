@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using Adquisiciones.Business;
+using Adquisiciones.Data;
 using Adquisiciones.Data.Entities;
 using DevExpress.XtraEditors;
 using log4net;

@@ -6,11 +6,11 @@
       <generator class="assigned" />
     </id>
     <property name="DesTipolicitacion" column="des_tipolicitacion" type="string" />
-    <bag name="AnexoHist" inverse="true" lazy="true" cascade="delete">
+    <bag name="AnexoHist" inverse="true" lazy="true" cascade="none">
       <key column="id_tipolicitacion" />
       <one-to-many class="Adquisiciones.Data.Entities.AnexoHist,Adquisiciones.Data" />
     </bag>
-    <bag name="Anexo" inverse="true" lazy="true" cascade="delete">
+    <bag name="Anexo" inverse="true" lazy="true" cascade="none">
       <key column="id_tipolicitacion" />
       <one-to-many class="Adquisiciones.Data.Entities.Anexo,Adquisiciones.Data" />
     </bag>

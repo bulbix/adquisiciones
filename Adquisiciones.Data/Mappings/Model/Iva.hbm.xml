@@ -9,28 +9,28 @@
     <property name="FechaAlta" column="fecha_alta" type="DateTime" />
     <property name="FechaBaja" column="fecha_baja" type="DateTime" />
     <property name="Estatus" column="estatus" type="string" />
-    <bag name="Anexo" inverse="true" lazy="true" cascade="delete">
+    <bag name="Anexo" inverse="true" lazy="true" cascade="none">
       <key>
         <column name="id_iva" />
         <column name="porcentaje" />
       </key>
       <one-to-many class="Adquisiciones.Data.Entities.Anexo,Adquisiciones.Data" />
     </bag>
-    <bag name="Pedido" inverse="true" lazy="true" cascade="delete">
+    <bag name="Pedido" inverse="true" lazy="true" cascade="none">
       <key>
         <column name="id_iva" />
         <column name="porcentaje" />
       </key>
       <one-to-many class="Adquisiciones.Data.Entities.Pedido,Adquisiciones.Data" />
     </bag>
-    <!--<bag name="PedidoHist" inverse="true" lazy="true" cascade="delete">
+    <!--<bag name="PedidoHist" inverse="true" lazy="true" cascade="none">
       <key>
         <column name="id_iva" />
         <column name="porcentaje" />
       </key>
       <one-to-many class="Adquisiciones.Data.Entities.PedidoHist,Adquisiciones.Data" />
     </bag>-->
-    <!--<bag name="AnexoHist" inverse="true" lazy="true" cascade="delete">
+    <!--<bag name="AnexoHist" inverse="true" lazy="true" cascade="none">
       <key>
         <column name="id_iva" />
         <column name="porcentaje" />

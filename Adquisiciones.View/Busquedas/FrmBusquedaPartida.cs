@@ -11,15 +11,17 @@ using DevExpress.XtraEditors;
 
 namespace Adquisiciones.View.Busquedas
 {
-    public partial class FrmBusquedaProveedor : FrmBusqueda
-    {
-        public FrmBusquedaProveedor()
+    public partial class FrmBusquedaPartida : FrmBusqueda {
+
+        public FrmBusquedaPartida()
         {
-            InitializeComponent();base.TypeEntity = typeof(Proveedor);
-            base.NombreService = "proveedorDao";
+            InitializeComponent();
+
+            InitializeComponent(); base.TypeEntity = typeof(CatPartida);
+            base.NombreService = "partidaDao";
             base.NombreReporte = "";
-            base.TypeForma = typeof(FrmCatalogoProveedor);
-            base.GvGeneral = gvProveedor;
+            base.TypeForma = typeof(FrmCatalogoPartida);
+            base.GvGeneral = gvPartida;
             base.ObtenerPerfil();
         }
 
@@ -27,6 +29,5 @@ namespace Adquisiciones.View.Busquedas
         {
             XtraMessageBox.Show("No hay reporte asociado");
         }
-       
     }
 }

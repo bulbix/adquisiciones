@@ -48,10 +48,10 @@
             // 
             this.gcPedido.DataSource = this.bsSource;
             this.gcPedido.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gcPedido.Location = new System.Drawing.Point(0, 55);
+            this.gcPedido.Location = new System.Drawing.Point(0, 57);
             this.gcPedido.MainView = this.gvPedido;
             this.gcPedido.Name = "gcPedido";
-            this.gcPedido.Size = new System.Drawing.Size(708, 316);
+            this.gcPedido.Size = new System.Drawing.Size(708, 312);
             this.gcPedido.TabIndex = 4;
             this.gcPedido.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvPedido});

@@ -547,7 +547,7 @@
             this.txtCorreo.Location = new System.Drawing.Point(587, 247);
             this.txtCorreo.MenuManager = this.barManager1;
             this.txtCorreo.Name = "txtCorreo";
-            this.txtCorreo.Size = new System.Drawing.Size(164, 20);
+            this.txtCorreo.Size = new System.Drawing.Size(270, 20);
             this.txtCorreo.TabIndex = 17;
             // 
             // FrmCatalogoProveedor

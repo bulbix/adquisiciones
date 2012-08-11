@@ -1,6 +1,6 @@
 ﻿namespace Adquisiciones.View.Busquedas
 {
-    partial class FrmBusquedaProveedor
+    partial class FrmBusquedaPartida
     {
         /// <summary>
         /// Required designer variable.
@@ -28,43 +28,43 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.gcProveedor = new DevExpress.XtraGrid.GridControl();
-            this.gvProveedor = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gcPartida = new DevExpress.XtraGrid.GridControl();
+            this.gvPartida = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.bsSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gcProveedor)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gvProveedor)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gcPartida)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvPartida)).BeginInit();
             this.SuspendLayout();
             // 
-            // gcProveedor
+            // gcPartida
             // 
-            this.gcProveedor.DataSource = this.bsSource;
-            this.gcProveedor.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gcProveedor.Location = new System.Drawing.Point(0, 57);
-            this.gcProveedor.MainView = this.gvProveedor;
-            this.gcProveedor.Name = "gcProveedor";
-            this.gcProveedor.Size = new System.Drawing.Size(708, 312);
-            this.gcProveedor.TabIndex = 4;
-            this.gcProveedor.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gvProveedor});
+            this.gcPartida.DataSource = this.bsSource;
+            this.gcPartida.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gcPartida.Location = new System.Drawing.Point(0, 57);
+            this.gcPartida.MainView = this.gvPartida;
+            this.gcPartida.Name = "gcPartida";
+            this.gcPartida.Size = new System.Drawing.Size(665, 455);
+            this.gcPartida.TabIndex = 5;
+            this.gcPartida.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gvPartida});
             // 
-            // gvProveedor
+            // gvPartida
             // 
-            this.gvProveedor.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gvPartida.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.gridColumn2,
             this.gridColumn1});
-            this.gvProveedor.GridControl = this.gcProveedor;
-            this.gvProveedor.Name = "gvProveedor";
-            this.gvProveedor.OptionsBehavior.Editable = false;
-            this.gvProveedor.OptionsView.EnableAppearanceEvenRow = true;
-            this.gvProveedor.OptionsView.ShowAutoFilterRow = true;
-            this.gvProveedor.OptionsView.ShowGroupPanel = false;
+            this.gvPartida.GridControl = this.gcPartida;
+            this.gvPartida.Name = "gvPartida";
+            this.gvPartida.OptionsBehavior.Editable = false;
+            this.gvPartida.OptionsView.EnableAppearanceEvenRow = true;
+            this.gvPartida.OptionsView.ShowAutoFilterRow = true;
+            this.gvPartida.OptionsView.ShowGroupPanel = false;
             // 
             // gridColumn2
             // 
             this.gridColumn2.Caption = "Clave";
-            this.gridColumn2.FieldName = "CveProveedor";
+            this.gridColumn2.FieldName = "Partida";
             this.gridColumn2.Name = "gridColumn2";
             this.gridColumn2.UnboundType = DevExpress.Data.UnboundColumnType.Integer;
             this.gridColumn2.Visible = true;
@@ -73,34 +73,34 @@
             // 
             // gridColumn1
             // 
-            this.gridColumn1.Caption = "Nombre Fiscal";
-            this.gridColumn1.FieldName = "NombreFiscal";
+            this.gridColumn1.Caption = "Descripcion";
+            this.gridColumn1.FieldName = "DesPartida";
             this.gridColumn1.Name = "gridColumn1";
             this.gridColumn1.UnboundType = DevExpress.Data.UnboundColumnType.String;
             this.gridColumn1.Visible = true;
             this.gridColumn1.VisibleIndex = 1;
             this.gridColumn1.Width = 680;
             // 
-            // FrmBusquedaProveedor
+            // FrmBusquedaPartida
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(708, 397);
-            this.Controls.Add(this.gcProveedor);
-            this.Name = "FrmBusquedaProveedor";
-            this.Text = "Proveedor::Busqueda";
-            this.Controls.SetChildIndex(this.gcProveedor, 0);
+            this.ClientSize = new System.Drawing.Size(665, 540);
+            this.Controls.Add(this.gcPartida);
+            this.Name = "FrmBusquedaPartida";
+            this.Text = "Partida::Busqueda";
+            this.Controls.SetChildIndex(this.gcPartida, 0);
             ((System.ComponentModel.ISupportInitialize)(this.bsSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gcProveedor)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gvProveedor)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gcPartida)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvPartida)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private DevExpress.XtraGrid.GridControl gcProveedor;
-        private DevExpress.XtraGrid.Views.Grid.GridView gvProveedor;
+        private DevExpress.XtraGrid.GridControl gcPartida;
+        private DevExpress.XtraGrid.Views.Grid.GridView gvPartida;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
     }

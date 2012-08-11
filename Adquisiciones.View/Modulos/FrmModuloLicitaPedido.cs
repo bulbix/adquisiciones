@@ -122,7 +122,7 @@ namespace Adquisiciones.View.Modulos
             }
             catch (Exception ee)
             {
-                XtraMessageBox.Show(@"Ocurrio un error en la persistencia Reportalo a Dep. Sistemas",
+                XtraMessageBox.Show(@"Ocurrio un error en el guardado",
                     @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 Log.Error("Generado por:" + FrmModuloAcceso.UsuarioLog, ee);

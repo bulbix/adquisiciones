@@ -37,6 +37,15 @@ namespace Adquisiciones.View.Catalogos
         }
 
 
+        public FrmCatalogoPartida(CatPartida partida):this()
+        {
+            PartidaActual = partida;
+            txtClave.Text = partida.Partida;
+            Consultar();
+        }
+
+
+
         public override void InicializarCatalogos()
         {
             //Cargar lista
@@ -90,8 +99,11 @@ namespace Adquisiciones.View.Catalogos
             }
             catch (Exception ee)
             {
-                XtraMessageBox.Show(@"Ocurrio un error en la insercion o actualizacion de la partida" + ee.Message,
+                XtraMessageBox.Show(@"Ocurrio un error en la insercion o actualizacion de la partida",
                     @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                Log.Error("Generado por:" + FrmModuloAcceso.UsuarioLog, ee);
+
             }
         }
 
@@ -114,8 +126,9 @@ namespace Adquisiciones.View.Catalogos
             }
             catch (Exception ee)
             {
-                XtraMessageBox.Show(@"Ocurrio un error en la consulta" + ee.Message,
+                XtraMessageBox.Show(@"Ocurrio un error en la consulta",
                     @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Log.Error("Generado por:" + FrmModuloAcceso.UsuarioLog, ee);
             }
             
         }

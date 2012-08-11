@@ -14,11 +14,11 @@
     <property name="Estatus" column="estatus" type="string" />
     <property name="IpTerminal" column="ip_terminal" type="string" />
     <many-to-one name="Usuario" column="id_usuario"  />
-    <bag name="Pedido" inverse="true" lazy="true" cascade="delete">
+    <bag name="Pedido" inverse="true" lazy="true" cascade="none">
       <key column="cve_fundamento" />
       <one-to-many class="Adquisiciones.Data.Entities.Pedido,Adquisiciones.Data" />
     </bag>
-    <!--<bag name="PedidoHist" inverse="true" lazy="true" cascade="delete">
+    <!--<bag name="PedidoHist" inverse="true" lazy="true" cascade="none">
       <key column="cve_fundamento" />
       <one-to-many class="Adquisiciones.Data.Entities.PedidoHist,Adquisiciones.Data" />
     </bag>-->

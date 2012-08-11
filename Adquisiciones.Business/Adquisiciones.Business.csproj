@@ -72,7 +72,6 @@
     <Compile Include="Audit\UpdateAfterHistorico.cs" />
     <Compile Include="Audit\UpdateBeforeHistorico.cs" />
     <Compile Include="Excepciones\PedidoException.cs" />
-    <Compile Include="IFormBusqueda.cs" />
     <Compile Include="ModAnexo\AnexoServiceImp.cs" />
     <Compile Include="ModAnexo\IAnexoService.cs" />
     <Compile Include="ModCotizacion\CotizacionServiceImp.cs" />

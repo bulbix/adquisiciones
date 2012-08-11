@@ -118,7 +118,7 @@ namespace Adquisiciones.View.Modulos
             }
             catch (Exception ee)
             {
-                XtraMessageBox.Show(@"Ocurrio un error en la insercion o actualizacion " + ee.Message,
+                XtraMessageBox.Show(@"Ocurrio un error en la insercion o actualizacion ",
                     @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 Log.Error("Generado por:" + FrmModuloAcceso.UsuarioLog, ee);

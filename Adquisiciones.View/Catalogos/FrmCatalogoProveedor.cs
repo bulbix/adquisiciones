@@ -36,8 +36,8 @@ namespace Adquisiciones.View.Catalogos
         public FrmCatalogoProveedor(Proveedor proveedor):this()
         {
             ProveedorActual = proveedor;
-            Consultar();
             txtClave.Value = proveedor.CveProveedor.Value;
+            Consultar();
         }
 
 
@@ -100,6 +100,7 @@ namespace Adquisiciones.View.Catalogos
             {
                 XtraMessageBox.Show(@"Ocurrio un error en la insercion o actualizacion",
                     @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Log.Error("Generado por:" + FrmModuloAcceso.UsuarioLog, ee);
             }
         }
 
@@ -128,6 +129,7 @@ namespace Adquisiciones.View.Catalogos
             {
                 XtraMessageBox.Show(@"Ocurrio un error en la consulta ", @"Adquisiciones",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Log.Error("Generado por:" + FrmModuloAcceso.UsuarioLog, ee);
             }
         }
 

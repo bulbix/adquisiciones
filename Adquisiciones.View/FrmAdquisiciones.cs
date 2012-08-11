@@ -195,6 +195,30 @@ namespace Adquisiciones.View
             forma.MdiParent = this;
             forma.Show();
         }
+
+        private void barButtonItem9_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            var forma = new FrmBusquedaFundamento();
+            forma.MdiParent = this;
+            forma.Show();
+        }
+
+        private void barButtonItem10_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            var forma = new FrmBusquedaPartida();
+            forma.MdiParent = this;
+            forma.Show();
+        }
+
+        private void barButtonItem12_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void FrmAdquisiciones_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
         
 
        

@@ -36,7 +36,7 @@
 
     <property name="Instituto" column="instituto" type="string" />   
     
-    <bag name="Entrada" inverse="true" lazy="true" cascade="delete">
+    <bag name="Entrada" inverse="true" lazy="true" cascade="none">
       <key column="id_pedido" />
       <one-to-many class="Adquisiciones.Data.Entities.Entrada,Adquisiciones.Data" />
     </bag>

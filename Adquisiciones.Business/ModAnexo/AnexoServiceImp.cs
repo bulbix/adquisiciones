@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Adquisiciones.Business.Audit;
+using Adquisiciones.Data;
 using Adquisiciones.Data.Dao.ModAnexo;
 using Adquisiciones.Data.Dao.Catalogos;
 using Adquisiciones.Data.Entities;

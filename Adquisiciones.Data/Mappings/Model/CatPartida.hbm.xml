@@ -12,28 +12,20 @@
     <property name="Estatus" column="estatus" type="string" />
     <property name="IpTerminal" column="ip_terminal" type="string" />
     <!--add parrafo-->
-    <bag name="ArticuloPartida" inverse="true" lazy="true" cascade="delete">
+    <bag name="ArticuloPartida" inverse="true" lazy="true" cascade="none">
       <key column="partida" />
       <one-to-many class="Adquisiciones.Data.Entities.ArticuloPartida,Adquisiciones.Data" />
     </bag>
-    <!--add parrafo-->
-    <!--<bag name="ReservaAutoHis" inverse="true" lazy="true" cascade="delete">
-      <key column="partida" />
-      <one-to-many class="Adquisiciones.Data.Entities.ReservaAutoHis,Adquisiciones.Data" />
-    </bag>-->
-    <bag name="ReservaAutorizada" inverse="true" lazy="true" cascade="delete">
+    
+    <bag name="ReservaAutorizada" inverse="true" lazy="true" cascade="none">
       <key column="partida" />
       <one-to-many class="Adquisiciones.Data.Entities.ReservaAutorizada,Adquisiciones.Data" />
-    </bag>
-    <!--<bag name="ReservaSolicHist" inverse="true" lazy="true" cascade="delete">
-      <key column="partida" />
-      <one-to-many class="Adquisiciones.Data.Entities.ReservaSolicHist,Adquisiciones.Data" />
-    </bag>-->
-    <bag name="ReservaSolicitud" inverse="true" lazy="true" cascade="delete">
+    </bag>    
+    <bag name="ReservaSolicitud" inverse="true" lazy="true" cascade="none">
       <key column="partida" />
       <one-to-many class="Adquisiciones.Data.Entities.ReservaSolicitud,Adquisiciones.Data" />
     </bag>
-    <bag name="Articulo" inverse="true" lazy="true" cascade="delete">
+    <bag name="Articulo" inverse="true" lazy="true" cascade="none">
       <key column="partida" />
       <one-to-many class="Adquisiciones.Data.Entities.Articulo,Adquisiciones.Data" />
     </bag>

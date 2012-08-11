@@ -5,7 +5,7 @@ using Spring.Transaction.Interceptor;
 namespace Adquisiciones.Data.Dao.Catalogos
 {
    
-    public class ProveedorDaoImp:GenericDaoImp<Proveedor,int>,IProveedorDao
+    public class ProveedorDaoImp:GenericDaoImp<Proveedor,int>,IProveedorDao,IFormBusqueda
     {
 
         [Transaction(ReadOnly = true)]
@@ -14,6 +14,18 @@ namespace Adquisiciones.Data.Dao.Catalogos
             var query = CurrentSession.CreateQuery("select max(p.CveProveedor) from Proveedor p");
             int? result = query.UniqueResult<Int32>();
             return ++result;
+        }
+
+        [Transaction(ReadOnly = true)]
+        public object ConsultarEntityAll(Almacen almacen)
+        {
+            return this.CargarCatalogo<Proveedor>();
+        }
+
+        [Transaction]
+        public void EliminarEntity(object entity, string nombreEntity)
+        {
+           Delete(entity as Proveedor);
         }
     }
 }

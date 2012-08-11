@@ -34,15 +34,15 @@
     <property name="Estatus" column="estatus" type="string" />
     
     <many-to-one name="Usuario" column="id_usuario"  />
-    <bag name="Cotizacion" inverse="true" lazy="true" cascade="delete">
+    <bag name="Cotizacion" inverse="true" lazy="true" cascade="none">
       <key column="cve_proveedor" />
       <one-to-many class="Adquisiciones.Data.Entities.Cotizacion,Adquisiciones.Data" />
     </bag>    
-    <bag name="Fallo" inverse="true" lazy="true" cascade="delete">
+    <bag name="Fallo" inverse="true" lazy="true" cascade="none">
       <key column="cve_proveedor" />
       <one-to-many class="Adquisiciones.Data.Entities.Fallo,Adquisiciones.Data" />
     </bag>   
-    <bag name="Pedido" inverse="true" lazy="true" cascade="delete">
+    <bag name="Pedido" inverse="true" lazy="true" cascade="none">
       <key column="cve_proveedor" />
       <one-to-many class="Adquisiciones.Data.Entities.Pedido,Adquisiciones.Data" />
     </bag>
