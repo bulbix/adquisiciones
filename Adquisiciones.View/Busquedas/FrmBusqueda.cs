@@ -91,7 +91,7 @@ namespace Adquisiciones.View.Busquedas
 
         }
 
-        private void CmdConsultarItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        protected virtual void CmdConsultarItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             try
             {

@@ -54,11 +54,13 @@
             this.barButtonItem8 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem9 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem10 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem12 = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup5 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPagePedido = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageCatalogo = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPage2 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup7 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -71,8 +73,6 @@
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
-            this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.barButtonItem12 = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xafBarManager1)).BeginInit();
@@ -120,7 +120,7 @@
             this.ribbonPage1,
             this.ribbonPage2});
             this.ribbon.SelectedPage = this.ribbonPage1;
-            this.ribbon.Size = new System.Drawing.Size(1123, 148);
+            this.ribbon.Size = new System.Drawing.Size(1131, 148);
             this.ribbon.StatusBar = this.ribbonStatusBar;
             // 
             // barButtonAnexo
@@ -324,6 +324,15 @@
             this.barButtonItem10.Name = "barButtonItem10";
             this.barButtonItem10.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem10_ItemClick);
             // 
+            // barButtonItem12
+            // 
+            this.barButtonItem12.Caption = "Cerrar Sesion";
+            this.barButtonItem12.Id = 33;
+            this.barButtonItem12.LargeGlyph = global::Adquisiciones.View.Properties.Resources.cancelar;
+            this.barButtonItem12.LargeWidth = 75;
+            this.barButtonItem12.Name = "barButtonItem12";
+            this.barButtonItem12.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem12_ItemClick);
+            // 
             // ribbonPage1
             // 
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -368,6 +377,12 @@
             this.ribbonPageCatalogo.Text = "Catalogos";
             this.ribbonPageCatalogo.Visible = false;
             // 
+            // ribbonPageGroup3
+            // 
+            this.ribbonPageGroup3.ItemLinks.Add(this.barButtonItem12);
+            this.ribbonPageGroup3.Name = "ribbonPageGroup3";
+            this.ribbonPageGroup3.Text = "Salir";
+            // 
             // ribbonPage2
             // 
             this.ribbonPage2.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -406,10 +421,10 @@
             this.ribbonStatusBar.ItemLinks.Add(this.txtUsuarioStatus);
             this.ribbonStatusBar.ItemLinks.Add(this.txtAlmacenStatus);
             this.ribbonStatusBar.ItemLinks.Add(this.btnCambiarAlma);
-            this.ribbonStatusBar.Location = new System.Drawing.Point(0, 426);
+            this.ribbonStatusBar.Location = new System.Drawing.Point(0, 437);
             this.ribbonStatusBar.Name = "ribbonStatusBar";
             this.ribbonStatusBar.Ribbon = this.ribbon;
-            this.ribbonStatusBar.Size = new System.Drawing.Size(1123, 23);
+            this.ribbonStatusBar.Size = new System.Drawing.Size(1131, 23);
             // 
             // xtraTabbedMdiManager1
             // 
@@ -429,47 +444,32 @@
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Size = new System.Drawing.Size(1123, 0);
+            this.barDockControlTop.Size = new System.Drawing.Size(1131, 0);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 449);
-            this.barDockControlBottom.Size = new System.Drawing.Size(1123, 0);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 460);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1131, 0);
             // 
             // barDockControlLeft
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 449);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 460);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1123, 0);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 449);
+            this.barDockControlRight.Location = new System.Drawing.Point(1131, 0);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 460);
             // 
             // defaultLookAndFeel1
             // 
             this.defaultLookAndFeel1.LookAndFeel.SkinName = "Black";
-            // 
-            // ribbonPageGroup3
-            // 
-            this.ribbonPageGroup3.ItemLinks.Add(this.barButtonItem12);
-            this.ribbonPageGroup3.Name = "ribbonPageGroup3";
-            this.ribbonPageGroup3.Text = "Salir";
-            // 
-            // barButtonItem12
-            // 
-            this.barButtonItem12.Caption = "Cerrar Sesion";
-            this.barButtonItem12.Id = 33;
-            this.barButtonItem12.LargeGlyph = global::Adquisiciones.View.Properties.Resources.cancelar;
-            this.barButtonItem12.LargeWidth = 75;
-            this.barButtonItem12.Name = "barButtonItem12";
-            this.barButtonItem12.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem12_ItemClick);
             // 
             // FrmAdquisiciones
             // 
@@ -477,7 +477,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayoutStore = System.Windows.Forms.ImageLayout.Tile;
             this.BackgroundImageStore = global::Adquisiciones.View.Properties.Resources.fondo_gris;
-            this.ClientSize = new System.Drawing.Size(1123, 449);
+            this.ClientSize = new System.Drawing.Size(1131, 460);
             this.Controls.Add(this.ribbonStatusBar);
             this.Controls.Add(this.ribbon);
             this.Controls.Add(this.barDockControlLeft);

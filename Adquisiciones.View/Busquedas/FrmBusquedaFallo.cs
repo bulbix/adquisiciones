@@ -25,5 +25,12 @@ namespace Adquisiciones.View.Busquedas
             FalloService = base.Servicio as IFalloService;
             base.ObtenerPerfil();
         }
+
+
+
+        protected override void CmdConsultarItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            XtraMessageBox.Show("Genere el reporte");
+        }
     }
 }

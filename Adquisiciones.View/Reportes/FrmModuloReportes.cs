@@ -13,6 +13,7 @@ using Adquisiciones.Business.ModFallo;
 using Adquisiciones.Business.ModPedido;
 using Adquisiciones.Data.Entities;
 using Adquisiciones.View.DataSets;
+using Adquisiciones.View.Reportes;
 using DevExpress.XtraEditors;
 using Spring.Context.Support;
 using Spring.Objects.Factory;
@@ -218,76 +219,17 @@ namespace Adquisiciones.View
 
         private void ReportePedido(Pedido pedido)
         {
-
-
             pedido.PedidoDetalle = 
                 PedidoService.PedidoDao.CargarPedidoDetalle(pedido);
-            
-            var pedidoDs = new PedidoDS();
 
-            foreach (var detalle in pedido.PedidoDetalle){
-                
-                DataRow filaDetalle = pedidoDs.Tables["Pedido"].NewRow();
-                //Campos para la cabecera
-                filaDetalle["Proveedor"] = pedido.Proveedor.NombreFiscal;
-                filaDetalle["Numero"] = pedido.NumeroPedido;
-                filaDetalle["Fecha"] = String.Format("{0:MM/dd/yyyy}", pedido.FechaPedido);
-
-                if(pedido.Requisicion == null)
-                    filaDetalle["Requisicion"] = null;
-                else
-                    filaDetalle["Requisicion"] = pedido.Requisicion.NumeroRequisicion;
+            var reporte = new ReportePedido(pedido);
+            reporte.GenerarReporte();
+            crystalReportViewer.ReportSource = null;
+            crystalReportViewer.Refresh();Text = @"ReportePedido::" + pedido;
 
 
-                filaDetalle["Partida"] = "partida";filaDetalle["Articulo"] = detalle.Articulo.Id +  "/"  + detalle.Articulo.DesArticulo;
-                filaDetalle["Cantidad"] = detalle.Cantidad;
-                filaDetalle["Unidad"] = detalle.Articulo.CatUnidad.Unidad;
-                filaDetalle["Precio"] = detalle.PrecioUnitario;
-                filaDetalle["Total"] = detalle.Cantidad * detalle.PrecioUnitario;
-                pedidoDs.Tables["Pedido"].Rows.Add(filaDetalle);
-            }
+        }
 
-            const int numRenglones = 13;
-
-            if (pedido.PedidoDetalle.Count <= numRenglones)
-            {
-                var residuo = pedido.PedidoDetalle.Count % numRenglones;
-
-                if (residuo != 0)
-                {
-                    var faltantes = numRenglones - residuo;
-
-                    for (int renglon = 1; renglon <= faltantes; renglon++)
-                    {
-                        DataRow filaDetalle = pedidoDs.Tables["Pedido"].NewRow();
-                        //Campos para la cabecera
-                        filaDetalle["Proveedor"] = null;
-                        filaDetalle["Numero"] = null;
-                        filaDetalle["Fecha"] = null;
-                        filaDetalle["Requisicion"] = null;
-                        filaDetalle["Partida"] = ".";
-                        filaDetalle["Articulo"] = null;
-                        filaDetalle["Cantidad"] = null;
-                        filaDetalle["Unidad"] = null;
-                        filaDetalle["Precio"] = null;
-                        filaDetalle["Total"] = null;
-                        pedidoDs.Tables["Pedido"].Rows.Add(filaDetalle);
-                    }
-                }
-
-            }
-
-
-            pedidoDs.Tables["Pedido"].AcceptChanges();
-            ReportePedido1.SetDataSource(pedidoDs);
-            crystalReportViewer.ReportSource = ReportePedido1;
-            crystalReportViewer.Refresh();
-
-            Text = @"ReportePedido::" + pedido;}
-
-        //public void AfterPropertiesSet()
-        //{
-        //    GenerarReporte();
-        //}
+       
     }
 }

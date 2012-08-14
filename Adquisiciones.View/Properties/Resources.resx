@@ -229,4 +229,16 @@
   <data name="almacen" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\almacen.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="clausula1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\clausula1.TXT;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="clausula2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\clausula2.TXT;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="logotipo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\logotipo.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="logo_salud" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\logo_salud.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

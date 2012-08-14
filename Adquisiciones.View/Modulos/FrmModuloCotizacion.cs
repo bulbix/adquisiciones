@@ -83,7 +83,7 @@ namespace Adquisiciones.View.Modulos
             lblNumErrors.Caption = string.Empty;
 
             gcDatosGenerales.Enabled = true;
-            cmdGuardar.Enabled = false;
+            //cmdGuardar.Enabled = false;
         }
 
         public override void Guardar()
@@ -151,10 +151,6 @@ namespace Adquisiciones.View.Modulos
                         @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         cmdGuardar.Enabled = false;
                     }
-                    //else
-                    //{
-                    //    cmdGuardar.Enabled = true;
-                    //}
 
                     gcDatosGenerales.Enabled = false;
                     this.Text = lblDesLicitacion.Text + "@" + lblProveedor.Text;
@@ -222,6 +218,14 @@ namespace Adquisiciones.View.Modulos
                 CotizacionActual.Proveedor = null;
                 lblProveedor.Text = string.Empty;
                 gcCotizacionDetalle.Focus();
+            }
+        }
+
+        private void GvAnexoDetalleKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Delete)
+            {
+                gvCotizacionDetalle.DeleteRow(gvCotizacionDetalle.FocusedRowHandle);
             }
         }
 

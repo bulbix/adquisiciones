@@ -319,6 +319,7 @@
             this.gcCotizacionDetalle.TabIndex = 110;
             this.gcCotizacionDetalle.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvCotizacionDetalle});
+            this.gcCotizacionDetalle.KeyDown += new System.Windows.Forms.KeyEventHandler(this.GvAnexoDetalleKeyDown);
             // 
             // gvCotizacionDetalle
             // 
