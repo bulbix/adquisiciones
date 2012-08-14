@@ -22,6 +22,10 @@ namespace Adquisiciones.View.Reportes
         Assembly assembly = Assembly.GetExecutingAssembly();
 
         Pedido pedido;
+        string fileAnverso = "";
+        string fileReverso = "";
+
+
 
 
         public ReportePedido(Pedido pedido)
@@ -273,7 +277,9 @@ namespace Adquisiciones.View.Reportes
         {
             var document = new Document(PageSize.LETTER.Rotate(), 10, 10, 10, 80);
 
-            var writer = PdfWriter.GetInstance(document, new FileStream("PedidoAnverso.pdf",
+            fileAnverso = System.IO.Path.GetTempFileName();
+
+            var writer = PdfWriter.GetInstance(document, new FileStream(fileAnverso,
                 FileMode.Create));
             writer.PageEvent = this;
 
@@ -309,7 +315,9 @@ namespace Adquisiciones.View.Reportes
 
             var document = new Document(PageSize.LETTER.Rotate(), 10, 10, 10, 10);
 
-            var writer = PdfWriter.GetInstance(document, new FileStream("PedidoReverso.pdf",
+            fileReverso = System.IO.Path.GetTempFileName();
+
+            var writer = PdfWriter.GetInstance(document, new FileStream(fileReverso,
                FileMode.Create));
 
             var reverso = new PdfPTable(1);
@@ -328,11 +336,14 @@ namespace Adquisiciones.View.Reportes
             GenerarAnverso();
             GenerarReverso();
 
-            var anversoReader = new PdfReader("PedidoAnverso.pdf");
-            var reversoReader = new PdfReader("PedidoReverso.pdf");
+            var anversoReader = new PdfReader(fileAnverso);
+            var reversoReader = new PdfReader(fileReverso);
 
             var document = new Document(PageSize.LETTER.Rotate(), 10, 10, 10, 10);
-            var copy = new PdfCopy(document, new FileStream("ReportePedido.pdf", FileMode.Create));
+
+            var filePedido = System.IO.Path.GetTempFileName() + ".pdf";
+
+            var copy = new PdfCopy(document, new FileStream(filePedido, FileMode.Create));
 
             document.Open();
 
@@ -343,10 +354,9 @@ namespace Adquisiciones.View.Reportes
             }
 
             copy.Close();
-            anversoReader.Close();
-            reversoReader.Close();
+            anversoReader.Close();reversoReader.Close();
 
-            Process.Start("cmd", "/c " + "ReportePedido.pdf");
+            Process.Start("cmd", "/c " + filePedido);
 
         }
 
