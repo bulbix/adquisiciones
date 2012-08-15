@@ -174,14 +174,14 @@ namespace Adquisiciones.View
                 var filaDetalle = falloDs.Tables["AnexoDetalle"].NewRow();
 
                 filaDetalle["Anexo"] = detalle.Anexo;
-
+                filaDetalle["Fecha"] = fallo.FechaFallo;
                 filaDetalle["ClaveArticulo"] = detalle.Articulo.Id.CveArt;
 
                 var articulo =
                     FalloService.ArticuloDao.Get(new ArticuloId(detalle.Articulo.Id.CveArt, anexo.Almacen));
 
                 filaDetalle["Renglon"] = detalle.RenglonAnexo;
-                filaDetalle["Descripcion"] = articulo.DesArticulo;
+                filaDetalle["Descripcion"] = articulo.Id.CveArt + " / " + articulo.DesArticulo;
                 filaDetalle["Unidad"] = articulo.CatUnidad.Unidad;
                 filaDetalle["Presentacion"] = articulo.Presentacion;
                 filaDetalle["Cantidad"] = detalle.Cantidad;

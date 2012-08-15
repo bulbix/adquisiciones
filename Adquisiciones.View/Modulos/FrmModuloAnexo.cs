@@ -155,8 +155,8 @@ namespace Adquisiciones.View.Modulos
                 {
                     bsAnexo.DataSource = AnexoActual;
                     bsAnexoDetalle.DataSource = AnexoActual.AnexoDetalle;
-                    txtnumlicitacion.Enabled = false;
-                    dtpFechaanexo.Enabled = false;
+                    //txtnumlicitacion.Enabled = false;
+                    //dtpFechaanexo.Enabled = false;
                     listaError.Strings.Clear();
                     lblNumErrors.Caption = string.Empty;
 
