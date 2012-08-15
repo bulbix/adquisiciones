@@ -14,5 +14,7 @@ namespace Adquisiciones.Data.Dao.ModFallo
         IList<Fallo> CargarFallos(int anio, Almacen almacen);
         IList<Fallo> CargarFallos(Almacen almacen);
 
+        void BorrarFallos(Anexo anexo);
+
     }
 }

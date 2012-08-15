@@ -148,8 +148,7 @@ namespace Adquisiciones.View.Busquedas
                     XtraMessageBox.Show(@"Elemento seleccionado borrado", @"Adquisiciones",
                                     MessageBoxButtons.OK, MessageBoxIcon.Information);
                     Buscar();
-                }
-            }
+                }}
             catch (Exception ee)
             {
                 XtraMessageBox.Show(@"Elemento seleccionado asociado otro modulo", @"Adquisiciones",

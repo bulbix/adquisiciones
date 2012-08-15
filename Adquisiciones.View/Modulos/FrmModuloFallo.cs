@@ -80,6 +80,8 @@ namespace Adquisiciones.View.Modulos
                 {
                     XtraMessageBox.Show(@"Fallo realizado Exitosamente Anexo " + AnexoSelect.NumeroAnexo,
                                     @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    base.EntityActual = lista[0];
                 }
                 else
                 {
@@ -133,15 +135,15 @@ namespace Adquisiciones.View.Modulos
              CallFalloBusqueda();
          }
 
-         protected override void CmdEliminarItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-         {
-             CallFalloBusqueda();
-         }
+         //protected override void CmdEliminarItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+         //{
+         //    CallFalloBusqueda();
+         //}
 
-         protected override void CmdReporteItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-         {
-             CallFalloBusqueda();
-         }
+         //protected override void CmdReporteItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+         //{
+         //    CallFalloBusqueda();
+         //}
 
     }
 }

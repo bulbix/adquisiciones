@@ -41,10 +41,10 @@
             // 
             this.gcFundamento.DataSource = this.bsSource;
             this.gcFundamento.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gcFundamento.Location = new System.Drawing.Point(0, 57);
+            this.gcFundamento.Location = new System.Drawing.Point(0, 67);
             this.gcFundamento.MainView = this.gvFundamento;
             this.gcFundamento.Name = "gcFundamento";
-            this.gcFundamento.Size = new System.Drawing.Size(784, 455);
+            this.gcFundamento.Size = new System.Drawing.Size(784, 450);
             this.gcFundamento.TabIndex = 5;
             this.gcFundamento.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvFundamento});

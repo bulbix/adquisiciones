@@ -45,9 +45,9 @@ namespace Adquisiciones.Business.ModFallo
             var anexosDetalle = AnexoDao.CargarAnexoDetalle(anexo);
 
             //Borramos en cascada padre con sus hijos
-            var fallos = FalloDao.FallosByAnexo(anexo);
-            foreach (var fallo in fallos)
-                FalloDao.Delete(fallo);
+            //var fallos = FalloDao.FallosByAnexo(anexo);
+            //foreach (var fallo in fallos)
+            //    FalloDao.Delete(fallo);
 
             double index = 1.0;
 
@@ -153,13 +153,12 @@ namespace Adquisiciones.Business.ModFallo
          [Transaction(ReadOnly = true)]
         public object ConsultarEntityAll(Almacen almacen)
          {
-             return FalloDao.CargarFallos(almacen);
-         }
+             return FalloDao.CargarFallos(almacen);}
 
          [Transaction]
         public void EliminarEntity(object entity, string nombreEntity)
         {
-            FalloDao.Delete(entity as Fallo);
+            FalloDao.BorrarFallos((entity as Fallo).Anexo);
         }
     }
 }

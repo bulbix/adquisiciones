@@ -66,11 +66,22 @@ namespace Adquisiciones.Data.Dao.ModFallo
             query.SetParameter("almacen", almacen);
 
             var lista = query.List<Fallo>();
-            return lista.GroupBy(x => x.Anexo.NumeroAnexo).Select(y => y.First()).ToList();}
+            return lista.GroupBy(x => x.Anexo.NumeroAnexo).Select(y => y.First()).ToList();
+        }
+
+
         [Transaction(ReadOnly = true)]
         public IList<Fallo> CargarFallos(Almacen almacen)
         {
             return CargarFallos(FechaServidor().Year, almacen);
+        }
+
+        [Transaction]
+        public void BorrarFallos(Anexo anexo)
+        {
+            var fallos = FallosByAnexo(anexo);
+            foreach (var fallo in fallos)
+                Delete(fallo);
         }
     }
 }

@@ -17,7 +17,9 @@
     <property name="FechaModificacion" column="fecha_modificacion" type="DateTime" />
     <property name="IpTerminal" column="ip_terminal" type="string" />
     <property name="Modificacion" column="modificacion" type="int" />
-    <bag name="FalloDetalle" inverse="true" lazy="true" cascade="none" fetch="join">
+    
+    
+    <bag name="FalloDetalle" inverse="true" lazy="true" cascade="delete" fetch="join">
       <key column="id_fallo" />
       <one-to-many 
      class="Adquisiciones.Data.Entities.FalloDetalle,Adquisiciones.Data" />

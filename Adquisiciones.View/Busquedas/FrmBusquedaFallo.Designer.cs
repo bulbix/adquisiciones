@@ -43,10 +43,10 @@
             // 
             this.gcAnexo.DataSource = this.bsSource;
             this.gcAnexo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gcAnexo.Location = new System.Drawing.Point(0, 57);
+            this.gcAnexo.Location = new System.Drawing.Point(0, 67);
             this.gcAnexo.MainView = this.gvAnexo;
             this.gcAnexo.Name = "gcAnexo";
-            this.gcAnexo.Size = new System.Drawing.Size(708, 312);
+            this.gcAnexo.Size = new System.Drawing.Size(708, 307);
             this.gcAnexo.TabIndex = 4;
             this.gcAnexo.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvAnexo});
