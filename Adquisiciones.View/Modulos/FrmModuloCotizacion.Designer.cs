@@ -80,9 +80,10 @@
             // 
             // splitContainerControl1
             // 
+            this.splitContainerControl1.Location = new System.Drawing.Point(0, 70);
             this.splitContainerControl1.Panel1.Controls.Add(this.gcDatosGenerales);
             this.splitContainerControl1.Panel2.Controls.Add(this.gcCotizacionDetalle);
-            this.splitContainerControl1.Size = new System.Drawing.Size(1130, 348);
+            this.splitContainerControl1.Size = new System.Drawing.Size(1130, 330);
             this.splitContainerControl1.SplitterPosition = 167;
             // 
             // gcDatosGenerales
@@ -160,7 +161,7 @@
             this.searchLookUpProv.Properties.ValueMember = "CveProveedor";
             this.searchLookUpProv.Properties.View = this.searchLookUpEditProv;
             this.searchLookUpProv.Size = new System.Drawing.Size(368, 20);
-            this.searchLookUpProv.TabIndex = 25;
+            this.searchLookUpProv.TabIndex = 3;
             this.searchLookUpProv.EditValueChanged += new System.EventHandler(this.SearchLookUpProvEditValueChanged);
             // 
             // searchLookUpEditProv
@@ -206,7 +207,7 @@
             this.searchLookUpAnexo.Properties.ValueMember = "IdAnexo";
             this.searchLookUpAnexo.Properties.View = this.searchLookUpEditAnexo;
             this.searchLookUpAnexo.Size = new System.Drawing.Size(196, 20);
-            this.searchLookUpAnexo.TabIndex = 24;
+            this.searchLookUpAnexo.TabIndex = 1;
             this.searchLookUpAnexo.Tag = "";
             this.searchLookUpAnexo.EditValueChanged += new System.EventHandler(this.SearchLookUpAnexoEditValueChanged);
             // 
@@ -288,7 +289,7 @@
             this.dtpFechacotizacion.Properties.VistaTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
             this.dtpFechacotizacion.Size = new System.Drawing.Size(100, 20);
-            this.dtpFechacotizacion.TabIndex = 18;
+            this.dtpFechacotizacion.TabIndex = 2;
             // 
             // lblFecha
             // 
@@ -315,8 +316,8 @@
             this.gcCotizacionDetalle.Location = new System.Drawing.Point(0, 0);
             this.gcCotizacionDetalle.MainView = this.gvCotizacionDetalle;
             this.gcCotizacionDetalle.Name = "gcCotizacionDetalle";
-            this.gcCotizacionDetalle.Size = new System.Drawing.Size(1130, 175);
-            this.gcCotizacionDetalle.TabIndex = 110;
+            this.gcCotizacionDetalle.Size = new System.Drawing.Size(1130, 158);
+            this.gcCotizacionDetalle.TabIndex = 4;
             this.gcCotizacionDetalle.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvCotizacionDetalle});
             this.gcCotizacionDetalle.KeyDown += new System.Windows.Forms.KeyEventHandler(this.GvAnexoDetalleKeyDown);

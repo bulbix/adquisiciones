@@ -73,10 +73,11 @@
             // 
             // splitContainerControl1
             // 
+            this.splitContainerControl1.Location = new System.Drawing.Point(0, 72);
             this.splitContainerControl1.Panel1.Controls.Add(this.gcDatosGenerales);
             this.splitContainerControl1.Panel2.Controls.Add(this.gcAnexoDetalle);
-            this.splitContainerControl1.Size = new System.Drawing.Size(837, 479);
-            this.splitContainerControl1.SplitterPosition = 191;
+            this.splitContainerControl1.Size = new System.Drawing.Size(837, 454);
+            this.splitContainerControl1.SplitterPosition = 134;
             // 
             // gcDatosGenerales
             // 
@@ -97,7 +98,7 @@
             this.gcDatosGenerales.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gcDatosGenerales.Location = new System.Drawing.Point(0, 0);
             this.gcDatosGenerales.Name = "gcDatosGenerales";
-            this.gcDatosGenerales.Size = new System.Drawing.Size(837, 191);
+            this.gcDatosGenerales.Size = new System.Drawing.Size(837, 134);
             this.gcDatosGenerales.TabIndex = 2;
             this.gcDatosGenerales.Text = "Datos Generales";
             // 
@@ -106,7 +107,7 @@
             this.txtnumlicitacion.Location = new System.Drawing.Point(83, 32);
             this.txtnumlicitacion.Name = "txtnumlicitacion";
             this.txtnumlicitacion.Size = new System.Drawing.Size(194, 20);
-            this.txtnumlicitacion.TabIndex = 16;
+            this.txtnumlicitacion.TabIndex = 1;
             // 
             // cbxIva
             // 
@@ -114,7 +115,7 @@
             this.cbxIva.Location = new System.Drawing.Point(489, 90);
             this.cbxIva.Name = "cbxIva";
             this.cbxIva.Size = new System.Drawing.Size(121, 21);
-            this.cbxIva.TabIndex = 15;
+            this.cbxIva.TabIndex = 7;
             // 
             // cbxTipolicitacion
             // 
@@ -122,7 +123,7 @@
             this.cbxTipolicitacion.Location = new System.Drawing.Point(86, 90);
             this.cbxTipolicitacion.Name = "cbxTipolicitacion";
             this.cbxTipolicitacion.Size = new System.Drawing.Size(121, 21);
-            this.cbxTipolicitacion.TabIndex = 14;
+            this.cbxTipolicitacion.TabIndex = 5;
             // 
             // cbxInstituto
             // 
@@ -130,7 +131,7 @@
             this.cbxInstituto.Location = new System.Drawing.Point(485, 28);
             this.cbxInstituto.Name = "cbxInstituto";
             this.cbxInstituto.Size = new System.Drawing.Size(121, 21);
-            this.cbxInstituto.TabIndex = 13;
+            this.cbxInstituto.TabIndex = 3;
             // 
             // labelControl7
             // 
@@ -149,7 +150,7 @@
             this.txtTechopresupuestal.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.txtTechopresupuestal.Properties.LookAndFeel.SkinName = "Blue";
             this.txtTechopresupuestal.Size = new System.Drawing.Size(100, 20);
-            this.txtTechopresupuestal.TabIndex = 11;
+            this.txtTechopresupuestal.TabIndex = 6;
             // 
             // labelControl6
             // 
@@ -173,7 +174,7 @@
             this.txtDesanexo.Name = "txtDesanexo";
             this.txtDesanexo.Properties.LookAndFeel.SkinName = "Blue";
             this.txtDesanexo.Size = new System.Drawing.Size(344, 20);
-            this.txtDesanexo.TabIndex = 7;
+            this.txtDesanexo.TabIndex = 4;
             // 
             // labelControl4
             // 
@@ -202,7 +203,7 @@
             this.dtpFechaanexo.Properties.VistaTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
             this.dtpFechaanexo.Size = new System.Drawing.Size(100, 20);
-            this.dtpFechaanexo.TabIndex = 3;
+            this.dtpFechaanexo.TabIndex = 2;
             // 
             // labelControl2
             // 
@@ -229,8 +230,8 @@
             this.gcAnexoDetalle.Name = "gcAnexoDetalle";
             this.gcAnexoDetalle.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemSearchLookUpEdit2});
-            this.gcAnexoDetalle.Size = new System.Drawing.Size(837, 282);
-            this.gcAnexoDetalle.TabIndex = 3;
+            this.gcAnexoDetalle.Size = new System.Drawing.Size(837, 314);
+            this.gcAnexoDetalle.TabIndex = 8;
             this.gcAnexoDetalle.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvAnexoDetalle});
             this.gcAnexoDetalle.KeyDown += new System.Windows.Forms.KeyEventHandler(this.GvAnexoDetalleKeyDown);

@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmBusqueda));
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.bar2 = new DevExpress.XtraBars.Bar();
@@ -86,11 +87,11 @@
             this.bar2.DockRow = 0;
             this.bar2.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
             this.bar2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.cmdBuscar),
-            new DevExpress.XtraBars.LinkPersistInfo(this.cmdConsultar),
-            new DevExpress.XtraBars.LinkPersistInfo(this.cmdImprimir),
-            new DevExpress.XtraBars.LinkPersistInfo(this.cmdReporte),
-            new DevExpress.XtraBars.LinkPersistInfo(this.cmdEliminar)});
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.cmdBuscar, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.cmdConsultar, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.cmdImprimir, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.cmdReporte, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.cmdEliminar, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
             this.bar2.OptionsBar.MultiLine = true;
             this.bar2.OptionsBar.UseWholeRow = true;
             this.bar2.Text = "Main menu";
@@ -101,6 +102,7 @@
             this.cmdBuscar.Appearance.Options.UseFont = true;
             this.cmdBuscar.Caption = "Buscar";
             this.cmdBuscar.Enabled = false;
+            this.cmdBuscar.Glyph = ((System.Drawing.Image)(resources.GetObject("cmdBuscar.Glyph")));
             this.cmdBuscar.Id = 0;
             this.cmdBuscar.Name = "cmdBuscar";
             this.cmdBuscar.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.CmdBuscarItemClick);
@@ -111,6 +113,7 @@
             this.cmdConsultar.Appearance.Options.UseFont = true;
             this.cmdConsultar.Caption = "Consultar";
             this.cmdConsultar.Enabled = false;
+            this.cmdConsultar.Glyph = ((System.Drawing.Image)(resources.GetObject("cmdConsultar.Glyph")));
             this.cmdConsultar.Id = 1;
             this.cmdConsultar.Name = "cmdConsultar";
             this.cmdConsultar.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.CmdConsultarItemClick);
@@ -121,6 +124,7 @@
             this.cmdImprimir.Appearance.Options.UseFont = true;
             this.cmdImprimir.Caption = "Imprimir Listado";
             this.cmdImprimir.Enabled = false;
+            this.cmdImprimir.Glyph = ((System.Drawing.Image)(resources.GetObject("cmdImprimir.Glyph")));
             this.cmdImprimir.Id = 2;
             this.cmdImprimir.Name = "cmdImprimir";
             this.cmdImprimir.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.CmdImprimirItemClick);
@@ -131,6 +135,7 @@
             this.cmdReporte.Appearance.Options.UseFont = true;
             this.cmdReporte.Caption = "Generar Reporte";
             this.cmdReporte.Enabled = false;
+            this.cmdReporte.Glyph = ((System.Drawing.Image)(resources.GetObject("cmdReporte.Glyph")));
             this.cmdReporte.Id = 3;
             this.cmdReporte.Name = "cmdReporte";
             this.cmdReporte.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.CmdReporteItemClick);
@@ -141,6 +146,7 @@
             this.cmdEliminar.Appearance.Options.UseFont = true;
             this.cmdEliminar.Caption = "Eliminar";
             this.cmdEliminar.Enabled = false;
+            this.cmdEliminar.Glyph = ((System.Drawing.Image)(resources.GetObject("cmdEliminar.Glyph")));
             this.cmdEliminar.Id = 4;
             this.cmdEliminar.Name = "cmdEliminar";
             this.cmdEliminar.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.CmdEliminarItemClick);
@@ -162,7 +168,7 @@
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Size = new System.Drawing.Size(708, 55);
+            this.barDockControlTop.Size = new System.Drawing.Size(708, 69);
             // 
             // barDockControlBottom
             // 
@@ -175,15 +181,15 @@
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 55);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 319);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 69);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 305);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(708, 55);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 319);
+            this.barDockControlRight.Location = new System.Drawing.Point(708, 69);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 305);
             // 
             // FrmBusqueda
             // 

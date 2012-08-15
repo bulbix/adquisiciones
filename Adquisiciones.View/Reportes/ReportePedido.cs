@@ -15,6 +15,7 @@ namespace Adquisiciones.View.Reportes
     public class ReportePedido : PdfPageEventHelper
     {
         readonly Font fuente = FontFactory.GetFont("ARIAL", 7, Font.NORMAL);
+        readonly Font fuenteBold = FontFactory.GetFont("ARIAL", 7, Font.BOLD);
         readonly Font fuenteTitulo = FontFactory.GetFont("ARIAL", 10, Font.NORMAL);
         readonly Font fuenteRojo = FontFactory.GetFont("ARIAL", 10, Font.NORMAL, BaseColor.RED);
 
@@ -40,7 +41,7 @@ namespace Adquisiciones.View.Reportes
 
         private PdfPTable Encabezado()
         {
-            var encabezado = new PdfPTable(3);
+            var encabezado = new PdfPTable(new float[]{10,50,10});
             encabezado.DefaultCell.Border = 0;
             encabezado.DefaultCell.HorizontalAlignment = Element.ALIGN_CENTER;
             try
@@ -103,6 +104,9 @@ namespace Adquisiciones.View.Reportes
             //result.DefaultCell.Border = 1;
             result.DefaultCell.HorizontalAlignment = Element.ALIGN_CENTER;
 
+            result.DefaultCell.BorderWidthBottom = 0;
+            result.DefaultCell.BorderWidthTop = 0;
+
             foreach (var pedidoDetalle in pedido.PedidoDetalle)
             {
                 result.AddCell(new Paragraph("partida", fuente));
@@ -136,6 +140,8 @@ namespace Adquisiciones.View.Reportes
             result.DefaultCell.HorizontalAlignment = Element.ALIGN_CENTER;
 
             var etiqueta1 = new PdfPTable(1);
+            etiqueta1.DefaultCell.Border = 0;
+            etiqueta1.DefaultCell.HorizontalAlignment = Element.ALIGN_LEFT;
             etiqueta1.AddCell(new Paragraph("FAVOR DE CITAR", fuente));
             etiqueta1.AddCell(new Paragraph("ESTE NUMERO EN", fuente));
             etiqueta1.AddCell(new Paragraph("TODA SU", fuente));
@@ -144,22 +150,26 @@ namespace Adquisiciones.View.Reportes
             etiqueta1.AddCell(new Paragraph("EMPAQUES", fuente));
 
             var contrato = new PdfPTable(1);
+            contrato.DefaultCell.Border = 0;
             contrato.AddCell(new Paragraph("CONTRATO/PEDIDO DE ADQUISICION POR MONTO:", fuente));
-            contrato.AddCell(new Paragraph("ART. 42 LA LEY DE ADQUISICIONES, ARRENDAMIENTOS", fuente));
-            contrato.AddCell(new Paragraph("Y SERVICIOS DEL SECTOR PUBLICO.", fuente));
-            contrato.AddCell(new Paragraph("NUMERO: "  + pedido.NumeroPedido , fuente));
-            contrato.AddCell(new Paragraph("FECHA: " + String.Format("{0:MM/dd/yyyy}", pedido.FechaPedido), fuente));
-            contrato.AddCell(new Paragraph("REQUISICION: " + pedido.NumeroRequisicion, fuente));
+            contrato.AddCell(new Paragraph("ART. 42 LA LEY DE ADQUISICIONES, ARRENDAMIENTOS Y SERVICIOS DEL SECTOR PUBLICO.", fuente));
+            contrato.AddCell(new Paragraph("NUMERO: "  + pedido.NumeroPedido , fuenteBold));
+            contrato.AddCell(new Paragraph("FECHA: " + String.Format("{0:MM/dd/yyyy}", pedido.FechaPedido), fuenteBold));
+            contrato.AddCell(new Paragraph("REQUISICION: " + pedido.NumeroRequisicion, fuenteBold));
             //contrato.AddCell(new Paragraph("HOJA No. " , fuente));
             //contrato.AddCell(new Paragraph("DE", fuente));
 
             var etiqueta2 = new PdfPTable(1);
+            etiqueta2.DefaultCell.Border = 0;
+            etiqueta2.DefaultCell.HorizontalAlignment = Element.ALIGN_CENTER;
             etiqueta2.AddCell(new Paragraph("CONDICIONES DE ENTREGA:", fuente));
             etiqueta2.AddCell(new Paragraph("ALMACEN", fuente));
             etiqueta2.AddCell(new Paragraph("DE LUNES A VIERNES", fuente));
             etiqueta2.AddCell(new Paragraph("DE 8:00 A 14:00 HRS.", fuente));
 
             var etiqueta3 = new PdfPTable(1);
+            etiqueta3.DefaultCell.Border = 0;
+            etiqueta3.DefaultCell.HorizontalAlignment = Element.ALIGN_CENTER;
             etiqueta3.AddCell(new Paragraph("CONDICIONES DE PAGO A PARTIR", fuente));
             etiqueta3.AddCell(new Paragraph("DE LA ENTREGA:", fuente));
             etiqueta3.AddCell(new Paragraph("20 DIAS NATURALES, CONTADOS A", fuente));
@@ -167,11 +177,13 @@ namespace Adquisiciones.View.Reportes
             etiqueta3.AddCell(new Paragraph("DE LA FACTURA", fuente));
 
             var etiqueta4 = new PdfPTable(1);
+            etiqueta4.DefaultCell.Border = 0;
             etiqueta4.AddCell(new Paragraph("FACTURAR A: INSTITUTO NACIONAL DE REHABILITACION RFC. INR0506235L1", fuente));
             etiqueta4.AddCell(new Paragraph("Av. México Xochimilco, No.289, Col.Arenal de Guadalupe, Del. Tlalpan, C.P, 14389,", fuente));
             etiqueta4.AddCell(new Paragraph("Méx.. D.F., Tel. 59-99-10-00, Ext. 100023", fuente));
 
             var etiqueta5 = new PdfPTable(1);
+            etiqueta5.DefaultCell.Border = 0;
             etiqueta5.AddCell(new Paragraph("LAS CONDICIONES DE ESTE CONTRATO / PEDIDO DE ADQUISIICON SE CONSIGNARAN AL REVERSO.", fuente));
 
 
@@ -188,25 +200,51 @@ namespace Adquisiciones.View.Reportes
 
         }
 
+
+        public PdfPTable Subrayado(String txt, Font fuente)
+        {
+
+            var tabla = new PdfPTable(1);
+            tabla.DefaultCell.BorderWidthTop = 0;
+            tabla.DefaultCell.BorderWidthLeft = 0;
+            tabla.DefaultCell.BorderWidthRight = 0;
+            tabla.DefaultCell.BorderWidthBottom = 1;
+            tabla.AddCell(new Paragraph("" + txt, fuente));
+            return tabla;
+        }
+
+
         private PdfPTable Firmas()
         {
             var result = new PdfPTable(4);
-            result.DefaultCell.Border = 1;
+            result.DefaultCell.Border = 0;
             result.DefaultCell.HorizontalAlignment = Element.ALIGN_LEFT;
 
             var firma1 = new PdfPTable(1);
+            firma1.DefaultCell.HorizontalAlignment = Element.ALIGN_CENTER;
+            firma1.DefaultCell.Border = 0;
+            //firma1.DefaultCell.BorderWidthBottom = 0;
             firma1.AddCell(new Paragraph("COMPRADOR", fuente));
-            firma1.AddCell(new Paragraph("", fuente));
+            firma1.AddCell(Subrayado("          ", fuente));
 
             var firma2 = new PdfPTable(1);
+            firma2.DefaultCell.HorizontalAlignment = Element.ALIGN_CENTER;
+            firma2.DefaultCell.Border = 0;
+            //firma2.DefaultCell.BorderWidthBottom = 0;
             firma2.AddCell(new Paragraph("DEPTO DE COMPRAS", fuente));
-            firma2.AddCell(new Paragraph("", fuente));
+            firma2.AddCell(Subrayado("          ", fuente));
 
             var firma3 = new PdfPTable(1);
+            firma3.DefaultCell.HorizontalAlignment = Element.ALIGN_CENTER;
+            firma3.DefaultCell.Border = 0;
+            //firma3.DefaultCell.BorderWidthBottom = 0;
             firma3.AddCell(new Paragraph("SUBDIRECTOR DE COMPRAS Y SUMINISTROS", fuente));
-            firma3.AddCell(new Paragraph("", fuente));
+            firma3.AddCell(Subrayado("          ", fuente));
 
             var etiqueta1 = new PdfPTable(1);
+            etiqueta1.DefaultCell.HorizontalAlignment = Element.ALIGN_CENTER;
+            etiqueta1.DefaultCell.Border = 0;
+            //etiqueta1.DefaultCell.BorderWidthBottom = 0;
             etiqueta1.AddCell(new Paragraph("DIAS DE RECEPCION DE FACTURAS EN EL", fuente));
             etiqueta1.AddCell(new Paragraph("DEPTO. DE CONTROL PRESUPUESTAL", fuente));
             etiqueta1.AddCell(new Paragraph("", fuente));
@@ -226,6 +264,15 @@ namespace Adquisiciones.View.Reportes
         }
 
 
+        private void GenerarCeldas(int numCeldas, PdfPTable tabla)
+        {
+            for (int i = 1; i <= numCeldas; i++)
+            {
+                tabla.AddCell("");
+            }
+        }
+
+
         private PdfPTable Reverso()
         {
             var result = new PdfPTable(3);
@@ -235,40 +282,74 @@ namespace Adquisiciones.View.Reportes
 
             result.DefaultCell.Colspan = 3;
             var arriba = new PdfPTable(1);
-            //result.DefaultCell.Border = 1;
+            arriba.DefaultCell.Border = 0;
             arriba.AddCell(new Paragraph("PEDIDO/CONTRATO POR MONTO DE ADQUISICIÓN DE BIENES QUE CELEBRAN POR UNA PARTE EL INSTITUTO NACIONAL DE REHABILITACIÓN, A QUIEN EN LO SUCESIVO Y PARA EFECTO DEL PRESENTE INSTRUMENTO SE LE", fuente));
             arriba.AddCell(new Paragraph(" DENOMINARÁ “EL INR” Y POR OTRA PARTE A QUIEN SE DESIGNARÁ COMO  “EL PROVEEDOR”, LOS NOMBRES Y LOS DOMICILIOS DE LAS PARTES SON LOS QUE SE SEÑALAN EN EL ANVERSO DE ESTE DOCUMENTO.", fuente));
             result.AddCell(arriba);
             result.DefaultCell.Colspan = 1;
+            //result.DefaultCell.Border = 1;
 
+// ReSharper disable AssignNullToNotNullAttribute
             var sr1 = new StreamReader(assembly.GetManifestResourceStream("Adquisiciones.View.Resources.clausula1.txt"),Encoding.Default);
+// ReSharper restore AssignNullToNotNullAttribute
+// ReSharper disable AssignNullToNotNullAttribute
             var sr2 = new StreamReader(assembly.GetManifestResourceStream("Adquisiciones.View.Resources.clausula2.txt"),Encoding.Default);
+// ReSharper restore AssignNullToNotNullAttribute
             string clausula1 = sr1.ReadToEnd();
             string clausula2 = sr2.ReadToEnd(); 
             sr2.Close();
             sr1.Close();
-
             result.AddCell(new Paragraph(clausula1, fuente));
             result.AddCell(new Paragraph(clausula2, fuente));
 
             var anotacion = new PdfPTable(1);
-            //anotacion.DefaultCell.Border = 0;
-            //anotacion.DefaultCell. = 100.0;
-            //anotacion.DefaultCell.FixedHeight = 10f;
+            anotacion.DefaultCell.Border = 0;
             anotacion.AddCell(new Paragraph("EL PROVEEDOR ACEPTA LAS CONDICIONES EN ESTE PEDIDO/CONTRATO POR MONTO DE ADQUISICIÓN.", fuente));
-            //anotacion.AddCell("");
+            GenerarCeldas(10,anotacion);
+            
             anotacion.AddCell(new Paragraph("NOMBRE DEL REPRESENTANTE LEGAL", fuente));
-            //anotacion.AddCell("");
+            GenerarCeldas(10, anotacion);
+
             anotacion.AddCell(new Paragraph("CARGO:", fuente));
-            //anotacion.AddCell("");
-            anotacion.AddCell(new Paragraph("FIRMA DE CONFORMIDAD:", fuente));
-            anotacion.AddCell(new Paragraph("EEL PROVEEDOR ACREDITA SU EXISTENCIA LEGAL Y FACULTADES DE SU REPRESENTANTE LEGAL MEDIANTE.", fuente));
-            //anotacion.AddCell("");
+            GenerarCeldas(10, anotacion);
+
+            var subTabla = new PdfPTable(2);
+            subTabla.DefaultCell.Border = 0;
+
+            var firma = new PdfPTable(1);
+            firma.DefaultCell.Border = 0;
+            firma.AddCell(new Paragraph("FIRMA DE CONFORMIDAD:", fuente));
+            GenerarCeldas(10, anotacion);
+
+            var telefono = new PdfPTable(4);
+            telefono.DefaultCell.Colspan = 4;
+            telefono.DefaultCell.Border = 0;
+            telefono.AddCell(new Paragraph("TELÉFONO(S)",fuente));
+            telefono.AddCell("");
+            telefono.AddCell("");
+            telefono.AddCell("");
+            telefono.DefaultCell.Colspan = 1;
+            telefono.AddCell("");
+            telefono.AddCell(new Paragraph("DIA",fuente));
+            telefono.AddCell(new Paragraph("MES",fuente));
+            telefono.AddCell(new Paragraph("AÑO",fuente));
+            telefono.AddCell(new Paragraph("FECHA",fuente));
+            telefono.AddCell("");
+            telefono.AddCell("");
+            telefono.AddCell("");
+
+            subTabla.AddCell(firma);
+            subTabla.AddCell(telefono);
+
+            anotacion.AddCell(subTabla);
+
+            anotacion.AddCell(new Paragraph("EL PROVEEDOR ACREDITA SU EXISTENCIA LEGAL Y FACULTADES DE SU REPRESENTANTE LEGAL MEDIANTE.", fuente));
+            GenerarCeldas(10, anotacion);
+            
             anotacion.AddCell(new Paragraph("OBSERVACIONES", fuente));
+            GenerarCeldas(10, anotacion);
 
-            result.AddCell(anotacion);
-
-            return result;
+            result.AddCell(anotacion);return result;
 
         }
 
@@ -292,6 +373,7 @@ namespace Adquisiciones.View.Reportes
             anverso.HeaderRows = 1;
 
             var cabeza = new PdfPTable(new float[] { 60, 40 });
+            cabeza.DefaultCell.Border = 0;
             cabeza.AddCell(this.Encabezado());
             cabeza.AddCell(this.Etiquetas());
             cabeza.DefaultCell.Colspan = 2;

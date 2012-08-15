@@ -98,7 +98,7 @@
             // 
             // txtRfc
             // 
-            this.txtRfc.Location = new System.Drawing.Point(677, 101);
+            this.txtRfc.Location = new System.Drawing.Point(677, 123);
             this.txtRfc.Mask = "LLLL000000LL0";
             this.txtRfc.Name = "txtRfc";
             this.txtRfc.Size = new System.Drawing.Size(96, 21);
@@ -107,7 +107,7 @@
             // 
             // txtFax
             // 
-            this.txtFax.Location = new System.Drawing.Point(467, 246);
+            this.txtFax.Location = new System.Drawing.Point(467, 268);
             this.txtFax.Mask = "00000000";
             this.txtFax.Name = "txtFax";
             this.txtFax.Size = new System.Drawing.Size(61, 21);
@@ -115,7 +115,7 @@
             // 
             // txtTel3
             // 
-            this.txtTel3.Location = new System.Drawing.Point(349, 247);
+            this.txtTel3.Location = new System.Drawing.Point(349, 269);
             this.txtTel3.Mask = "00000000";
             this.txtTel3.Name = "txtTel3";
             this.txtTel3.Size = new System.Drawing.Size(60, 21);
@@ -123,7 +123,7 @@
             // 
             // txtTel2
             // 
-            this.txtTel2.Location = new System.Drawing.Point(217, 247);
+            this.txtTel2.Location = new System.Drawing.Point(217, 269);
             this.txtTel2.Mask = "00000000";
             this.txtTel2.Name = "txtTel2";
             this.txtTel2.Size = new System.Drawing.Size(61, 21);
@@ -131,7 +131,7 @@
             // 
             // txtCodigoP
             // 
-            this.txtCodigoP.Location = new System.Drawing.Point(922, 214);
+            this.txtCodigoP.Location = new System.Drawing.Point(922, 236);
             this.txtCodigoP.Mask = "00000";
             this.txtCodigoP.Name = "txtCodigoP";
             this.txtCodigoP.Size = new System.Drawing.Size(41, 21);
@@ -139,7 +139,7 @@
             // 
             // txtTel
             // 
-            this.txtTel.Location = new System.Drawing.Point(89, 247);
+            this.txtTel.Location = new System.Drawing.Point(89, 269);
             this.txtTel.Mask = "00000000";
             this.txtTel.Name = "txtTel";
             this.txtTel.Size = new System.Drawing.Size(59, 21);
@@ -148,7 +148,7 @@
             // lblObservaciones
             // 
             this.lblObservaciones.AutoSize = true;
-            this.lblObservaciones.Location = new System.Drawing.Point(26, 360);
+            this.lblObservaciones.Location = new System.Drawing.Point(26, 382);
             this.lblObservaciones.Name = "lblObservaciones";
             this.lblObservaciones.Size = new System.Drawing.Size(78, 13);
             this.lblObservaciones.TabIndex = 141;
@@ -158,7 +158,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.label5.Location = new System.Drawing.Point(25, 324);
+            this.label5.Location = new System.Drawing.Point(25, 346);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(81, 13);
             this.label5.TabIndex = 140;
@@ -168,7 +168,7 @@
             // 
             this.lblNombre2.AutoSize = true;
             this.lblNombre2.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.lblNombre2.Location = new System.Drawing.Point(763, 288);
+            this.lblNombre2.Location = new System.Drawing.Point(763, 310);
             this.lblNombre2.Name = "lblNombre2";
             this.lblNombre2.Size = new System.Drawing.Size(44, 13);
             this.lblNombre2.TabIndex = 139;
@@ -178,7 +178,7 @@
             // 
             this.lblMaterno2.AutoSize = true;
             this.lblMaterno2.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.lblMaterno2.Location = new System.Drawing.Point(457, 288);
+            this.lblMaterno2.Location = new System.Drawing.Point(457, 310);
             this.lblMaterno2.Name = "lblMaterno2";
             this.lblMaterno2.Size = new System.Drawing.Size(47, 13);
             this.lblMaterno2.TabIndex = 138;
@@ -188,7 +188,7 @@
             // 
             this.lblPaterno2.AutoSize = true;
             this.lblPaterno2.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.lblPaterno2.Location = new System.Drawing.Point(148, 288);
+            this.lblPaterno2.Location = new System.Drawing.Point(148, 310);
             this.lblPaterno2.Name = "lblPaterno2";
             this.lblPaterno2.Size = new System.Drawing.Size(45, 13);
             this.lblPaterno2.TabIndex = 137;
@@ -198,7 +198,7 @@
             // 
             this.lblRepresentante.AutoSize = true;
             this.lblRepresentante.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.lblRepresentante.Location = new System.Drawing.Point(24, 287);
+            this.lblRepresentante.Location = new System.Drawing.Point(24, 309);
             this.lblRepresentante.Name = "lblRepresentante";
             this.lblRepresentante.Size = new System.Drawing.Size(103, 13);
             this.lblRepresentante.TabIndex = 136;
@@ -208,7 +208,7 @@
             // 
             this.lblCorreo.AutoSize = true;
             this.lblCorreo.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.lblCorreo.Location = new System.Drawing.Point(545, 250);
+            this.lblCorreo.Location = new System.Drawing.Point(545, 272);
             this.lblCorreo.Name = "lblCorreo";
             this.lblCorreo.Size = new System.Drawing.Size(40, 13);
             this.lblCorreo.TabIndex = 135;
@@ -217,7 +217,7 @@
             // lblTel3
             // 
             this.lblTel3.AutoSize = true;
-            this.lblTel3.Location = new System.Drawing.Point(284, 251);
+            this.lblTel3.Location = new System.Drawing.Point(284, 273);
             this.lblTel3.Name = "lblTel3";
             this.lblTel3.Size = new System.Drawing.Size(58, 13);
             this.lblTel3.TabIndex = 134;
@@ -226,7 +226,7 @@
             // lblTel2
             // 
             this.lblTel2.AutoSize = true;
-            this.lblTel2.Location = new System.Drawing.Point(154, 251);
+            this.lblTel2.Location = new System.Drawing.Point(154, 273);
             this.lblTel2.Name = "lblTel2";
             this.lblTel2.Size = new System.Drawing.Size(58, 13);
             this.lblTel2.TabIndex = 133;
@@ -236,7 +236,7 @@
             // 
             this.lblTel1.AutoSize = true;
             this.lblTel1.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.lblTel1.Location = new System.Drawing.Point(27, 251);
+            this.lblTel1.Location = new System.Drawing.Point(27, 273);
             this.lblTel1.Name = "lblTel1";
             this.lblTel1.Size = new System.Drawing.Size(58, 13);
             this.lblTel1.TabIndex = 132;
@@ -245,7 +245,7 @@
             // lblFax
             // 
             this.lblFax.AutoSize = true;
-            this.lblFax.Location = new System.Drawing.Point(440, 251);
+            this.lblFax.Location = new System.Drawing.Point(440, 273);
             this.lblFax.Name = "lblFax";
             this.lblFax.Size = new System.Drawing.Size(25, 13);
             this.lblFax.TabIndex = 131;
@@ -255,7 +255,7 @@
             // 
             this.lblRfc.AutoSize = true;
             this.lblRfc.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.lblRfc.Location = new System.Drawing.Point(644, 104);
+            this.lblRfc.Location = new System.Drawing.Point(644, 126);
             this.lblRfc.Name = "lblRfc";
             this.lblRfc.Size = new System.Drawing.Size(27, 13);
             this.lblRfc.TabIndex = 130;
@@ -265,7 +265,7 @@
             // 
             this.lblCodigo.AutoSize = true;
             this.lblCodigo.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.lblCodigo.Location = new System.Drawing.Point(847, 221);
+            this.lblCodigo.Location = new System.Drawing.Point(847, 243);
             this.lblCodigo.Name = "lblCodigo";
             this.lblCodigo.Size = new System.Drawing.Size(72, 13);
             this.lblCodigo.TabIndex = 129;
@@ -275,7 +275,7 @@
             // 
             this.lblPais.AutoSize = true;
             this.lblPais.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.lblPais.Location = new System.Drawing.Point(644, 219);
+            this.lblPais.Location = new System.Drawing.Point(644, 241);
             this.lblPais.Name = "lblPais";
             this.lblPais.Size = new System.Drawing.Size(26, 13);
             this.lblPais.TabIndex = 128;
@@ -285,7 +285,7 @@
             // 
             this.lblEstado.AutoSize = true;
             this.lblEstado.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.lblEstado.Location = new System.Drawing.Point(395, 221);
+            this.lblEstado.Location = new System.Drawing.Point(395, 243);
             this.lblEstado.Name = "lblEstado";
             this.lblEstado.Size = new System.Drawing.Size(40, 13);
             this.lblEstado.TabIndex = 127;
@@ -295,7 +295,7 @@
             // 
             this.lblDelegacion.AutoSize = true;
             this.lblDelegacion.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.lblDelegacion.Location = new System.Drawing.Point(26, 220);
+            this.lblDelegacion.Location = new System.Drawing.Point(26, 242);
             this.lblDelegacion.Name = "lblDelegacion";
             this.lblDelegacion.Size = new System.Drawing.Size(59, 13);
             this.lblDelegacion.TabIndex = 126;
@@ -305,7 +305,7 @@
             // 
             this.lblColonia.AutoSize = true;
             this.lblColonia.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.lblColonia.Location = new System.Drawing.Point(26, 191);
+            this.lblColonia.Location = new System.Drawing.Point(26, 213);
             this.lblColonia.Name = "lblColonia";
             this.lblColonia.Size = new System.Drawing.Size(42, 13);
             this.lblColonia.TabIndex = 125;
@@ -315,7 +315,7 @@
             // 
             this.lblCalle.AutoSize = true;
             this.lblCalle.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.lblCalle.Location = new System.Drawing.Point(26, 162);
+            this.lblCalle.Location = new System.Drawing.Point(26, 184);
             this.lblCalle.Name = "lblCalle";
             this.lblCalle.Size = new System.Drawing.Size(67, 13);
             this.lblCalle.TabIndex = 124;
@@ -325,7 +325,7 @@
             // 
             this.lblComercial.AutoSize = true;
             this.lblComercial.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.lblComercial.Location = new System.Drawing.Point(26, 133);
+            this.lblComercial.Location = new System.Drawing.Point(26, 155);
             this.lblComercial.Name = "lblComercial";
             this.lblComercial.Size = new System.Drawing.Size(93, 13);
             this.lblComercial.TabIndex = 123;
@@ -335,7 +335,7 @@
             // 
             this.lblFiscal.AutoSize = true;
             this.lblFiscal.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.lblFiscal.Location = new System.Drawing.Point(26, 104);
+            this.lblFiscal.Location = new System.Drawing.Point(26, 126);
             this.lblFiscal.Name = "lblFiscal";
             this.lblFiscal.Size = new System.Drawing.Size(73, 13);
             this.lblFiscal.TabIndex = 122;
@@ -345,7 +345,7 @@
             // 
             this.lblNombre.AutoSize = true;
             this.lblNombre.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.lblNombre.Location = new System.Drawing.Point(762, 68);
+            this.lblNombre.Location = new System.Drawing.Point(762, 90);
             this.lblNombre.Name = "lblNombre";
             this.lblNombre.Size = new System.Drawing.Size(44, 13);
             this.lblNombre.TabIndex = 121;
@@ -355,7 +355,7 @@
             // 
             this.lblMaterno.AutoSize = true;
             this.lblMaterno.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.lblMaterno.Location = new System.Drawing.Point(467, 68);
+            this.lblMaterno.Location = new System.Drawing.Point(467, 90);
             this.lblMaterno.Name = "lblMaterno";
             this.lblMaterno.Size = new System.Drawing.Size(47, 13);
             this.lblMaterno.TabIndex = 120;
@@ -365,7 +365,7 @@
             // 
             this.lblPaterno.AutoSize = true;
             this.lblPaterno.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.lblPaterno.Location = new System.Drawing.Point(179, 71);
+            this.lblPaterno.Location = new System.Drawing.Point(179, 93);
             this.lblPaterno.Name = "lblPaterno";
             this.lblPaterno.Size = new System.Drawing.Size(45, 13);
             this.lblPaterno.TabIndex = 119;
@@ -376,7 +376,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.label1.Location = new System.Drawing.Point(674, 162);
+            this.label1.Location = new System.Drawing.Point(674, 184);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(334, 16);
             this.label1.TabIndex = 143;
@@ -386,7 +386,7 @@
             // 
             this.lblProveedor.AutoSize = true;
             this.lblProveedor.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.lblProveedor.Location = new System.Drawing.Point(26, 69);
+            this.lblProveedor.Location = new System.Drawing.Point(26, 91);
             this.lblProveedor.Name = "lblProveedor";
             this.lblProveedor.Size = new System.Drawing.Size(34, 13);
             this.lblProveedor.TabIndex = 118;
@@ -399,7 +399,7 @@
             0,
             0,
             0});
-            this.txtClave.Location = new System.Drawing.Point(89, 65);
+            this.txtClave.Location = new System.Drawing.Point(89, 87);
             this.txtClave.MenuManager = this.barManager1;
             this.txtClave.Name = "txtClave";
             this.txtClave.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -409,7 +409,7 @@
             // 
             // txtPaterno
             // 
-            this.txtPaterno.Location = new System.Drawing.Point(222, 65);
+            this.txtPaterno.Location = new System.Drawing.Point(222, 87);
             this.txtPaterno.MenuManager = this.barManager1;
             this.txtPaterno.Name = "txtPaterno";
             this.txtPaterno.Size = new System.Drawing.Size(239, 20);
@@ -418,7 +418,7 @@
             // 
             // txtMaterno
             // 
-            this.txtMaterno.Location = new System.Drawing.Point(517, 65);
+            this.txtMaterno.Location = new System.Drawing.Point(517, 87);
             this.txtMaterno.MenuManager = this.barManager1;
             this.txtMaterno.Name = "txtMaterno";
             this.txtMaterno.Size = new System.Drawing.Size(239, 20);
@@ -427,7 +427,7 @@
             // 
             // txtNombre
             // 
-            this.txtNombre.Location = new System.Drawing.Point(812, 64);
+            this.txtNombre.Location = new System.Drawing.Point(812, 86);
             this.txtNombre.MenuManager = this.barManager1;
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(239, 20);
@@ -436,7 +436,7 @@
             // 
             // txtNombreFiscal
             // 
-            this.txtNombreFiscal.Location = new System.Drawing.Point(151, 101);
+            this.txtNombreFiscal.Location = new System.Drawing.Point(151, 123);
             this.txtNombreFiscal.MenuManager = this.barManager1;
             this.txtNombreFiscal.Name = "txtNombreFiscal";
             this.txtNombreFiscal.Size = new System.Drawing.Size(475, 20);
@@ -445,7 +445,7 @@
             // 
             // txtNombreComercial
             // 
-            this.txtNombreComercial.Location = new System.Drawing.Point(151, 130);
+            this.txtNombreComercial.Location = new System.Drawing.Point(151, 152);
             this.txtNombreComercial.MenuManager = this.barManager1;
             this.txtNombreComercial.Name = "txtNombreComercial";
             this.txtNombreComercial.Size = new System.Drawing.Size(475, 20);
@@ -454,7 +454,7 @@
             // 
             // txtCalle
             // 
-            this.txtCalle.Location = new System.Drawing.Point(151, 159);
+            this.txtCalle.Location = new System.Drawing.Point(151, 181);
             this.txtCalle.MenuManager = this.barManager1;
             this.txtCalle.Name = "txtCalle";
             this.txtCalle.Size = new System.Drawing.Size(475, 20);
@@ -463,7 +463,7 @@
             // 
             // txtColonia
             // 
-            this.txtColonia.Location = new System.Drawing.Point(151, 188);
+            this.txtColonia.Location = new System.Drawing.Point(151, 210);
             this.txtColonia.MenuManager = this.barManager1;
             this.txtColonia.Name = "txtColonia";
             this.txtColonia.Size = new System.Drawing.Size(475, 20);
@@ -472,7 +472,7 @@
             // 
             // txtDelegacion
             // 
-            this.txtDelegacion.Location = new System.Drawing.Point(151, 217);
+            this.txtDelegacion.Location = new System.Drawing.Point(151, 239);
             this.txtDelegacion.MenuManager = this.barManager1;
             this.txtDelegacion.Name = "txtDelegacion";
             this.txtDelegacion.Size = new System.Drawing.Size(215, 20);
@@ -481,7 +481,7 @@
             // 
             // txtEstado
             // 
-            this.txtEstado.Location = new System.Drawing.Point(443, 217);
+            this.txtEstado.Location = new System.Drawing.Point(443, 239);
             this.txtEstado.MenuManager = this.barManager1;
             this.txtEstado.Name = "txtEstado";
             this.txtEstado.Size = new System.Drawing.Size(183, 20);
@@ -490,7 +490,7 @@
             // 
             // txtPais
             // 
-            this.txtPais.Location = new System.Drawing.Point(674, 218);
+            this.txtPais.Location = new System.Drawing.Point(674, 240);
             this.txtPais.MenuManager = this.barManager1;
             this.txtPais.Name = "txtPais";
             this.txtPais.Size = new System.Drawing.Size(164, 20);
@@ -499,7 +499,7 @@
             // 
             // txtRpaterno
             // 
-            this.txtRpaterno.Location = new System.Drawing.Point(196, 285);
+            this.txtRpaterno.Location = new System.Drawing.Point(196, 307);
             this.txtRpaterno.MenuManager = this.barManager1;
             this.txtRpaterno.Name = "txtRpaterno";
             this.txtRpaterno.Size = new System.Drawing.Size(239, 20);
@@ -508,7 +508,7 @@
             // 
             // txtRmaterno
             // 
-            this.txtRmaterno.Location = new System.Drawing.Point(510, 285);
+            this.txtRmaterno.Location = new System.Drawing.Point(510, 307);
             this.txtRmaterno.MenuManager = this.barManager1;
             this.txtRmaterno.Name = "txtRmaterno";
             this.txtRmaterno.Size = new System.Drawing.Size(239, 20);
@@ -517,7 +517,7 @@
             // 
             // txtRnombre
             // 
-            this.txtRnombre.Location = new System.Drawing.Point(812, 285);
+            this.txtRnombre.Location = new System.Drawing.Point(812, 307);
             this.txtRnombre.MenuManager = this.barManager1;
             this.txtRnombre.Name = "txtRnombre";
             this.txtRnombre.Size = new System.Drawing.Size(239, 20);
@@ -526,7 +526,7 @@
             // 
             // txtGiro
             // 
-            this.txtGiro.Location = new System.Drawing.Point(151, 321);
+            this.txtGiro.Location = new System.Drawing.Point(151, 343);
             this.txtGiro.MenuManager = this.barManager1;
             this.txtGiro.Name = "txtGiro";
             this.txtGiro.Size = new System.Drawing.Size(396, 20);
@@ -535,7 +535,7 @@
             // 
             // txtObservaciones
             // 
-            this.txtObservaciones.Location = new System.Drawing.Point(151, 360);
+            this.txtObservaciones.Location = new System.Drawing.Point(151, 382);
             this.txtObservaciones.MenuManager = this.barManager1;
             this.txtObservaciones.Name = "txtObservaciones";
             this.txtObservaciones.Size = new System.Drawing.Size(396, 96);
@@ -544,7 +544,7 @@
             // 
             // txtCorreo
             // 
-            this.txtCorreo.Location = new System.Drawing.Point(587, 247);
+            this.txtCorreo.Location = new System.Drawing.Point(587, 269);
             this.txtCorreo.MenuManager = this.barManager1;
             this.txtCorreo.Name = "txtCorreo";
             this.txtCorreo.Size = new System.Drawing.Size(270, 20);

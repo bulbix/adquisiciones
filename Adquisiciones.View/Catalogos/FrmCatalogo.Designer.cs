@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCatalogo));
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControl1 = new DevExpress.XtraBars.BarDockControl();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
@@ -103,11 +104,11 @@
             this.bar2.DockRow = 0;
             this.bar2.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
             this.bar2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.cmdNuevo),
-            new DevExpress.XtraBars.LinkPersistInfo(this.cmdGuardar),
-            new DevExpress.XtraBars.LinkPersistInfo(this.cmdConsultar),
-            new DevExpress.XtraBars.LinkPersistInfo(this.cmdEliminar),
-            new DevExpress.XtraBars.LinkPersistInfo(this.cmdReporte),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.cmdNuevo, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.cmdGuardar, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.cmdConsultar, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.cmdEliminar, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.cmdReporte, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(this.listaError),
             new DevExpress.XtraBars.LinkPersistInfo(this.lblNumErrors)});
             this.bar2.OptionsBar.MultiLine = true;
@@ -120,6 +121,7 @@
             this.cmdNuevo.Appearance.Options.UseFont = true;
             this.cmdNuevo.Caption = "Nuevo";
             this.cmdNuevo.Enabled = false;
+            this.cmdNuevo.Glyph = ((System.Drawing.Image)(resources.GetObject("cmdNuevo.Glyph")));
             this.cmdNuevo.Id = 0;
             this.cmdNuevo.Name = "cmdNuevo";
             this.cmdNuevo.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.CmdNuevoItemClick);
@@ -130,6 +132,7 @@
             this.cmdGuardar.Appearance.Options.UseFont = true;
             this.cmdGuardar.Caption = "Guardar";
             this.cmdGuardar.Enabled = false;
+            this.cmdGuardar.Glyph = ((System.Drawing.Image)(resources.GetObject("cmdGuardar.Glyph")));
             this.cmdGuardar.Id = 1;
             this.cmdGuardar.Name = "cmdGuardar";
             this.cmdGuardar.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.cmdGuardar_ItemClick);
@@ -140,6 +143,7 @@
             this.cmdConsultar.Appearance.Options.UseFont = true;
             this.cmdConsultar.Caption = "Consultar";
             this.cmdConsultar.Enabled = false;
+            this.cmdConsultar.Glyph = ((System.Drawing.Image)(resources.GetObject("cmdConsultar.Glyph")));
             this.cmdConsultar.Id = 2;
             this.cmdConsultar.Name = "cmdConsultar";
             this.cmdConsultar.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.cmdConsultar_ItemClick);
@@ -150,6 +154,7 @@
             this.cmdEliminar.Appearance.Options.UseFont = true;
             this.cmdEliminar.Caption = "Eliminar";
             this.cmdEliminar.Enabled = false;
+            this.cmdEliminar.Glyph = ((System.Drawing.Image)(resources.GetObject("cmdEliminar.Glyph")));
             this.cmdEliminar.Id = 6;
             this.cmdEliminar.Name = "cmdEliminar";
             this.cmdEliminar.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.CmdEliminarItemClick);
@@ -160,6 +165,7 @@
             this.cmdReporte.Appearance.Options.UseFont = true;
             this.cmdReporte.Caption = "Reporte";
             this.cmdReporte.Enabled = false;
+            this.cmdReporte.Glyph = ((System.Drawing.Image)(resources.GetObject("cmdReporte.Glyph")));
             this.cmdReporte.Id = 7;
             this.cmdReporte.Name = "cmdReporte";
             this.cmdReporte.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.cmdReporte_ItemClick);
@@ -204,28 +210,28 @@
             this.barDockControl2.CausesValidation = false;
             this.barDockControl2.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControl2.Location = new System.Drawing.Point(0, 0);
-            this.barDockControl2.Size = new System.Drawing.Size(723, 53);
+            this.barDockControl2.Size = new System.Drawing.Size(723, 70);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 448);
-            this.barDockControlBottom.Size = new System.Drawing.Size(723, 22);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 447);
+            this.barDockControlBottom.Size = new System.Drawing.Size(723, 23);
             // 
             // barDockControlLeft
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 53);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 395);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 70);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 377);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(723, 53);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 395);
+            this.barDockControlRight.Location = new System.Drawing.Point(723, 70);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 377);
             // 
             // FrmCatalogo
             // 

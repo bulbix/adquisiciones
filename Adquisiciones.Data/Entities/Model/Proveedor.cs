@@ -493,7 +493,7 @@ namespace Adquisiciones.Data.Entities
 
         public override string ToString()
         {
-            return CveProveedor + "-" + NombreFiscal;
+            return CveProveedor + " - " + NombreFiscal;
         }
 
         #region business logic

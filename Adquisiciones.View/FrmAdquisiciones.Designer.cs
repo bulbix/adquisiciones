@@ -211,7 +211,6 @@
             this.barButtonPedidoAuto.Id = 11;
             this.barButtonPedidoAuto.LargeGlyph = global::Adquisiciones.View.Properties.Resources.pedi2;
             this.barButtonPedidoAuto.Name = "barButtonPedidoAuto";
-            this.barButtonPedidoAuto.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             this.barButtonPedidoAuto.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BarButtonPedidoItemClick);
             // 
             // barButtonPedidoMayor

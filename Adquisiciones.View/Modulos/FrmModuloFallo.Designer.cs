@@ -85,7 +85,7 @@
             this.searchLookUpAnexo.Properties.ValueMember = "IdAnexo";
             this.searchLookUpAnexo.Properties.View = this.searchLookUpEdit1View;
             this.searchLookUpAnexo.Size = new System.Drawing.Size(196, 20);
-            this.searchLookUpAnexo.TabIndex = 28;
+            this.searchLookUpAnexo.TabIndex = 1;
             this.searchLookUpAnexo.EditValueChanged += new System.EventHandler(this.SearchLookUpAnexoEditValueChanged);
             // 
             // searchLookUpEdit1View
@@ -154,7 +154,7 @@
             this.dtpFallo.Properties.VistaTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
             this.dtpFallo.Size = new System.Drawing.Size(131, 20);
-            this.dtpFallo.TabIndex = 28;
+            this.dtpFallo.TabIndex = 2;
             // 
             // pgbFallo
             // 

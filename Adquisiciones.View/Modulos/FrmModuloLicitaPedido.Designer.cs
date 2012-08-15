@@ -84,7 +84,7 @@
             // 
             // splitContainerControl1
             // 
-            this.splitContainerControl1.Location = new System.Drawing.Point(0, 55);
+            this.splitContainerControl1.Location = new System.Drawing.Point(0, 72);
             this.splitContainerControl1.Panel1.Controls.Add(this.cbxActividad);
             this.splitContainerControl1.Panel1.Controls.Add(this.cbxIva);
             this.splitContainerControl1.Panel1.Controls.Add(this.cbxCargo);
@@ -109,7 +109,7 @@
             this.splitContainerControl1.Panel1.Controls.Add(this.labelControl1);
             this.splitContainerControl1.Panel2.Controls.Add(this.txtObservaciones);
             this.splitContainerControl1.Panel2.Controls.Add(this.labelControl11);
-            this.splitContainerControl1.Size = new System.Drawing.Size(941, 501);
+            this.splitContainerControl1.Size = new System.Drawing.Size(941, 482);
             this.splitContainerControl1.SplitterPosition = 289;
             // 
             // cbxActividad
@@ -118,7 +118,7 @@
             this.cbxActividad.Location = new System.Drawing.Point(123, 205);
             this.cbxActividad.Name = "cbxActividad";
             this.cbxActividad.Size = new System.Drawing.Size(229, 21);
-            this.cbxActividad.TabIndex = 59;
+            this.cbxActividad.TabIndex = 6;
             // 
             // cbxIva
             // 
@@ -126,7 +126,7 @@
             this.cbxIva.Location = new System.Drawing.Point(407, 205);
             this.cbxIva.Name = "cbxIva";
             this.cbxIva.Size = new System.Drawing.Size(229, 21);
-            this.cbxIva.TabIndex = 58;
+            this.cbxIva.TabIndex = 7;
             // 
             // cbxCargo
             // 
@@ -134,7 +134,7 @@
             this.cbxCargo.Location = new System.Drawing.Point(123, 244);
             this.cbxCargo.Name = "cbxCargo";
             this.cbxCargo.Size = new System.Drawing.Size(229, 21);
-            this.cbxCargo.TabIndex = 57;
+            this.cbxCargo.TabIndex = 8;
             // 
             // lblFundamento
             // 
@@ -216,7 +216,8 @@
             this.searchLookUpFundamento.Properties.ValueMember = "CveFundamento";
             this.searchLookUpFundamento.Properties.View = this.searchLookUpEditFundamento;
             this.searchLookUpFundamento.Size = new System.Drawing.Size(229, 20);
-            this.searchLookUpFundamento.TabIndex = 49;
+            this.searchLookUpFundamento.TabIndex = 5;
+            this.searchLookUpFundamento.EditValueChanged += new System.EventHandler(this.SearchLookUpFundamentoEditValueChanged);
             // 
             // searchLookUpEditFundamento
             // 
@@ -259,26 +260,26 @@
             // deFechaFinal
             // 
             this.deFechaFinal.EditValue = null;
-            this.deFechaFinal.Location = new System.Drawing.Point(558, 131);
+            this.deFechaFinal.Location = new System.Drawing.Point(550, 133);
             this.deFechaFinal.Name = "deFechaFinal";
             this.deFechaFinal.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.deFechaFinal.Properties.VistaTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
             this.deFechaFinal.Size = new System.Drawing.Size(106, 20);
-            this.deFechaFinal.TabIndex = 47;
+            this.deFechaFinal.TabIndex = 4;
             // 
             // deFechaInicial
             // 
             this.deFechaInicial.EditValue = null;
-            this.deFechaInicial.Location = new System.Drawing.Point(425, 131);
+            this.deFechaInicial.Location = new System.Drawing.Point(429, 133);
             this.deFechaInicial.Name = "deFechaInicial";
             this.deFechaInicial.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.deFechaInicial.Properties.VistaTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
             this.deFechaInicial.Size = new System.Drawing.Size(106, 20);
-            this.deFechaInicial.TabIndex = 46;
+            this.deFechaInicial.TabIndex = 3;
             // 
             // labelControl6
             // 
@@ -298,7 +299,7 @@
             this.deFechaPedido.Properties.VistaTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
             this.deFechaPedido.Size = new System.Drawing.Size(151, 20);
-            this.deFechaPedido.TabIndex = 44;
+            this.deFechaPedido.TabIndex = 2;
             // 
             // labelControl5
             // 
@@ -344,7 +345,8 @@
             this.searchLookUpRequisicion.Properties.ValueMember = "NumeroRequisicion";
             this.searchLookUpRequisicion.Properties.View = this.searchLookUpEditRequisicion;
             this.searchLookUpRequisicion.Size = new System.Drawing.Size(229, 20);
-            this.searchLookUpRequisicion.TabIndex = 39;
+            this.searchLookUpRequisicion.TabIndex = 1;
+            this.searchLookUpRequisicion.EditValueChanged += new System.EventHandler(this.SearchLookUpRequisicionEditValueChanged);
             // 
             // searchLookUpEditRequisicion
             // 
@@ -411,7 +413,7 @@
             this.txtObservaciones.Location = new System.Drawing.Point(253, 12);
             this.txtObservaciones.Name = "txtObservaciones";
             this.txtObservaciones.Size = new System.Drawing.Size(229, 114);
-            this.txtObservaciones.TabIndex = 41;
+            this.txtObservaciones.TabIndex = 9;
             // 
             // labelControl11
             // 

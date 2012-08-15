@@ -136,9 +136,10 @@
             // 
             // splitContainerControl1
             // 
+            this.splitContainerControl1.Location = new System.Drawing.Point(0, 70);
             this.splitContainerControl1.Panel1.Controls.Add(this.groupControl1);
             this.splitContainerControl1.Panel2.Controls.Add(this.gcPedidoDetalle);
-            this.splitContainerControl1.Size = new System.Drawing.Size(787, 493);
+            this.splitContainerControl1.Size = new System.Drawing.Size(873, 475);
             this.splitContainerControl1.SplitterPosition = 272;
             // 
             // groupControl1
@@ -182,7 +183,7 @@
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl1.Location = new System.Drawing.Point(0, 0);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(787, 272);
+            this.groupControl1.Size = new System.Drawing.Size(873, 272);
             this.groupControl1.TabIndex = 2;
             this.groupControl1.Text = "Datos Generales del Pedido";
             // 
@@ -231,7 +232,7 @@
             this.searchLookUpAnexo.Properties.ValueMember = "NumAnexo";
             this.searchLookUpAnexo.Properties.View = this.searchLookUpEditAnexo;
             this.searchLookUpAnexo.Size = new System.Drawing.Size(100, 20);
-            this.searchLookUpAnexo.TabIndex = 66;
+            this.searchLookUpAnexo.TabIndex = 14;
             this.searchLookUpAnexo.EditValueChanged += new System.EventHandler(this.SearchLookUpAnexoEditValueChanged);
             // 
             // searchLookUpEditAnexo
@@ -288,7 +289,7 @@
             this.searchLookUpProveedor.Properties.ValueMember = "CveProveedor";
             this.searchLookUpProveedor.Properties.View = this.searchLookUpEditProveedor;
             this.searchLookUpProveedor.Size = new System.Drawing.Size(100, 20);
-            this.searchLookUpProveedor.TabIndex = 65;
+            this.searchLookUpProveedor.TabIndex = 13;
             this.searchLookUpProveedor.EditValueChanged += new System.EventHandler(this.SearchLookUpProveedorEditValueChanged);
             // 
             // searchLookUpEditProveedor
@@ -327,7 +328,7 @@
             this.cbxInstituto.Location = new System.Drawing.Point(748, 68);
             this.cbxInstituto.Name = "cbxInstituto";
             this.cbxInstituto.Size = new System.Drawing.Size(98, 21);
-            this.cbxInstituto.TabIndex = 64;
+            this.cbxInstituto.TabIndex = 10;
             // 
             // cbxCargo
             // 
@@ -335,7 +336,7 @@
             this.cbxCargo.Location = new System.Drawing.Point(413, 68);
             this.cbxCargo.Name = "cbxCargo";
             this.cbxCargo.Size = new System.Drawing.Size(120, 21);
-            this.cbxCargo.TabIndex = 63;
+            this.cbxCargo.TabIndex = 8;
             // 
             // lblLicitacion
             // 
@@ -361,7 +362,7 @@
             this.txtReferencia.Location = new System.Drawing.Point(748, 34);
             this.txtReferencia.Name = "txtReferencia";
             this.txtReferencia.Size = new System.Drawing.Size(63, 20);
-            this.txtReferencia.TabIndex = 59;
+            this.txtReferencia.TabIndex = 5;
             // 
             // labelControl11
             // 
@@ -376,7 +377,7 @@
             this.txtDescuento.Location = new System.Drawing.Point(605, 33);
             this.txtDescuento.Name = "txtDescuento";
             this.txtDescuento.Size = new System.Drawing.Size(63, 20);
-            this.txtDescuento.TabIndex = 57;
+            this.txtDescuento.TabIndex = 4;
             // 
             // labelControl9
             // 
@@ -391,7 +392,7 @@
             this.txtObservaciones.Location = new System.Drawing.Point(94, 119);
             this.txtObservaciones.Name = "txtObservaciones";
             this.txtObservaciones.Size = new System.Drawing.Size(262, 80);
-            this.txtObservaciones.TabIndex = 55;
+            this.txtObservaciones.TabIndex = 15;
             // 
             // lblObservacion
             // 
@@ -463,7 +464,7 @@
             this.searchLookUpArea.Properties.ValueMember = "CveArea";
             this.searchLookUpArea.Properties.View = this.searchLookUpEditArea;
             this.searchLookUpArea.Size = new System.Drawing.Size(100, 20);
-            this.searchLookUpArea.TabIndex = 45;
+            this.searchLookUpArea.TabIndex = 12;
             this.searchLookUpArea.EditValueChanged += new System.EventHandler(this.SearchLookUpAreaEditValueChanged);
             // 
             // searchLookUpEditArea
@@ -510,7 +511,7 @@
             this.cbxIva.Location = new System.Drawing.Point(605, 68);
             this.cbxIva.Name = "cbxIva";
             this.cbxIva.Size = new System.Drawing.Size(63, 21);
-            this.cbxIva.TabIndex = 43;
+            this.cbxIva.TabIndex = 9;
             // 
             // labelControl10
             // 
@@ -533,7 +534,7 @@
             this.searchLookUpFundamento.Properties.ValueMember = "CveFundamento";
             this.searchLookUpFundamento.Properties.View = this.searchLookUpEditFundamento;
             this.searchLookUpFundamento.Size = new System.Drawing.Size(98, 20);
-            this.searchLookUpFundamento.TabIndex = 41;
+            this.searchLookUpFundamento.TabIndex = 11;
             this.searchLookUpFundamento.EditValueChanged += new System.EventHandler(this.SearchLookUpFundamentoEditValueChanged);
             // 
             // searchLookUpEditFundamento
@@ -581,7 +582,7 @@
             this.cbxActividad.Location = new System.Drawing.Point(244, 71);
             this.cbxActividad.Name = "cbxActividad";
             this.cbxActividad.Size = new System.Drawing.Size(98, 21);
-            this.cbxActividad.TabIndex = 39;
+            this.cbxActividad.TabIndex = 7;
             // 
             // labelControl8
             // 
@@ -596,7 +597,7 @@
             this.txtReserva.Location = new System.Drawing.Point(65, 72);
             this.txtReserva.Name = "txtReserva";
             this.txtReserva.Size = new System.Drawing.Size(100, 20);
-            this.txtReserva.TabIndex = 7;
+            this.txtReserva.TabIndex = 6;
             // 
             // labelControl4
             // 
@@ -611,7 +612,7 @@
             this.txtRequisicion.Location = new System.Drawing.Point(427, 33);
             this.txtRequisicion.Name = "txtRequisicion";
             this.txtRequisicion.Size = new System.Drawing.Size(98, 20);
-            this.txtRequisicion.TabIndex = 5;
+            this.txtRequisicion.TabIndex = 3;
             // 
             // labelControl3
             // 
@@ -633,7 +634,7 @@
             this.numPedido.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
             this.numPedido.Size = new System.Drawing.Size(98, 20);
-            this.numPedido.TabIndex = 3;
+            this.numPedido.TabIndex = 2;
             // 
             // labelControl2
             // 
@@ -677,8 +678,8 @@
             this.repositoryItemSearchLookUpEdit2,
             this.repositoryItemPopupContainerEdit1,
             this.repositoryItemButtonEdit1});
-            this.gcPedidoDetalle.Size = new System.Drawing.Size(787, 215);
-            this.gcPedidoDetalle.TabIndex = 4;
+            this.gcPedidoDetalle.Size = new System.Drawing.Size(873, 198);
+            this.gcPedidoDetalle.TabIndex = 16;
             this.gcPedidoDetalle.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvPedidoDetalle});
             this.gcPedidoDetalle.KeyDown += new System.Windows.Forms.KeyEventHandler(this.GcPedidoDetalleKeyDown);
@@ -935,7 +936,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(787, 568);
+            this.ClientSize = new System.Drawing.Size(873, 568);
             this.Name = "FrmModuloPedido";
             this.Text = "Captura::Pedido";
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();
