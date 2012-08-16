@@ -212,8 +212,7 @@ namespace Adquisiciones.View
 
         private void barButtonItem12_ItemClick(object sender, ItemClickEventArgs e)
         {
-            Application.Exit();
-        }
+            Application.Restart();}
 
         private void FrmAdquisiciones_FormClosed(object sender, FormClosedEventArgs e)
         {

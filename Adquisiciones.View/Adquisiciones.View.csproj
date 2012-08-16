@@ -30,7 +30,7 @@
     <PublisherName>INR</PublisherName>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publicacion.htm</WebPage>
-    <ApplicationRevision>26</ApplicationRevision>
+    <ApplicationRevision>29</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -190,6 +190,7 @@
     <Compile Include="Busquedas\FrmBusquedaProveedor.Designer.cs">
       <DependentUpon>FrmBusquedaProveedor.cs</DependentUpon>
     </Compile>
+    <Compile Include="CaptchaImage.cs" />
     <Compile Include="Catalogos\FrmCatalogo.cs">
       <SubType>Form</SubType>
     </Compile>

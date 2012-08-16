@@ -154,7 +154,7 @@ namespace Adquisiciones.View.Reportes
             contrato.AddCell(new Paragraph("CONTRATO/PEDIDO DE ADQUISICION POR MONTO:", fuente));
             contrato.AddCell(new Paragraph("ART. 42 LA LEY DE ADQUISICIONES, ARRENDAMIENTOS Y SERVICIOS DEL SECTOR PUBLICO.", fuente));
             contrato.AddCell(new Paragraph("NUMERO: "  + pedido.NumeroPedido , fuenteBold));
-            contrato.AddCell(new Paragraph("FECHA: " + String.Format("{0:MM/dd/yyyy}", pedido.FechaPedido), fuenteBold));
+            contrato.AddCell(new Paragraph("FECHA: " + String.Format("{0:dd/MM/yyyy}", pedido.FechaPedido), fuenteBold));
             contrato.AddCell(new Paragraph("REQUISICION: " + pedido.NumeroRequisicion, fuenteBold));
             //contrato.AddCell(new Paragraph("HOJA No. " , fuente));
             //contrato.AddCell(new Paragraph("DE", fuente));

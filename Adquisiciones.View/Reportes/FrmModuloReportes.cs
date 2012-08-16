@@ -94,8 +94,8 @@ namespace Adquisiciones.View
             filaMain["Id"] = anexo.IdAnexo;
             filaMain["Numero"] = anexo.NumeroAnexo;
             filaMain["Descripcion"] = anexo.DesAnexo;
-            filaMain["Fecha"] = anexo.FechaAnexo;
-            filaMain["Presupuesto"] = anexo.TechoPresupuestal;
+            filaMain["Fecha"] = String.Format("{0:dd/MM/yyyy}", anexo.FechaAnexo);
+            filaMain["Presupuesto"] = anexo.TechoPresupuestal.Value.ToString("C");
             anexoDs.Tables["Anexo"].Rows.Add(filaMain);
             anexoDs.Tables["Anexo"].AcceptChanges();
 
@@ -128,7 +128,7 @@ namespace Adquisiciones.View
 
             DataRow filaMain = cotizacionDs.Tables["Cotizacion"].NewRow();
             filaMain["Id"] = cotizacion.IdCotizacion;
-            filaMain["Fecha"] = cotizacion.FechaCotizacion;
+            filaMain["Fecha"] = String.Format("{0:dd/MM/yyyy}", cotizacion.FechaCotizacion);
             filaMain["Anexo"] = cotizacion.Anexo;
             filaMain["Proveedor"] = cotizacion.Proveedor;
             cotizacionDs.Tables["Cotizacion"].Rows.Add(filaMain);
@@ -174,7 +174,7 @@ namespace Adquisiciones.View
                 var filaDetalle = falloDs.Tables["AnexoDetalle"].NewRow();
 
                 filaDetalle["Anexo"] = detalle.Anexo;
-                filaDetalle["Fecha"] = fallo.FechaFallo;
+                filaDetalle["Fecha"] = String.Format("{0:dd/MM/yyyy}",fallo.FechaFallo);
                 filaDetalle["ClaveArticulo"] = detalle.Articulo.Id.CveArt;
 
                 var articulo =
