@@ -73,10 +73,10 @@
             // 
             // splitContainerControl1
             // 
-            this.splitContainerControl1.Location = new System.Drawing.Point(0, 72);
+            this.splitContainerControl1.Location = new System.Drawing.Point(0, 70);
             this.splitContainerControl1.Panel1.Controls.Add(this.gcDatosGenerales);
             this.splitContainerControl1.Panel2.Controls.Add(this.gcAnexoDetalle);
-            this.splitContainerControl1.Size = new System.Drawing.Size(837, 454);
+            this.splitContainerControl1.Size = new System.Drawing.Size(837, 461);
             this.splitContainerControl1.SplitterPosition = 134;
             // 
             // gcDatosGenerales
@@ -127,6 +127,7 @@
             // 
             // cbxInstituto
             // 
+            this.cbxInstituto.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.cbxInstituto.FormattingEnabled = true;
             this.cbxInstituto.Location = new System.Drawing.Point(485, 28);
             this.cbxInstituto.Name = "cbxInstituto";
@@ -230,7 +231,7 @@
             this.gcAnexoDetalle.Name = "gcAnexoDetalle";
             this.gcAnexoDetalle.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemSearchLookUpEdit2});
-            this.gcAnexoDetalle.Size = new System.Drawing.Size(837, 314);
+            this.gcAnexoDetalle.Size = new System.Drawing.Size(837, 322);
             this.gcAnexoDetalle.TabIndex = 8;
             this.gcAnexoDetalle.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvAnexoDetalle});

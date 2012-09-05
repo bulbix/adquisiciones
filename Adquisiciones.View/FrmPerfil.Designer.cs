@@ -30,26 +30,26 @@
         {
             this.components = new System.ComponentModel.Container();
             this.lstUsuario = new DevExpress.XtraEditors.SearchLookUpEdit();
+            this.bsUsuario = new System.Windows.Forms.BindingSource(this.components);
             this.searchLookUpEdit1View = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.lstOrigen = new DevExpress.XtraEditors.ListBoxControl();
+            this.bsOrigen = new System.Windows.Forms.BindingSource(this.components);
             this.lstDestino = new DevExpress.XtraEditors.ListBoxControl();
+            this.bsDestino = new System.Windows.Forms.BindingSource(this.components);
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.cmdDerecha = new DevExpress.XtraEditors.SimpleButton();
             this.cmdIzquierda = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
-            this.bsOrigen = new System.Windows.Forms.BindingSource(this.components);
-            this.bsDestino = new System.Windows.Forms.BindingSource(this.components);
-            this.bsUsuario = new System.Windows.Forms.BindingSource(this.components);
             this.cmdGuardar = new DevExpress.XtraEditors.SimpleButton();
             this.cmdOmitir = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.lstUsuario.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsUsuario)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEdit1View)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lstOrigen)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lstDestino)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsOrigen)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lstDestino)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsDestino)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bsUsuario)).BeginInit();
             this.SuspendLayout();
             // 
             // lstUsuario
@@ -160,15 +160,16 @@
             this.Controls.Add(this.lstOrigen);
             this.Controls.Add(this.lstUsuario);
             this.Name = "FrmPerfil";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Asociacion Usuario Perfil";
             this.Load += new System.EventHandler(this.FrmPerfil_Load);
             ((System.ComponentModel.ISupportInitialize)(this.lstUsuario.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsUsuario)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEdit1View)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lstOrigen)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lstDestino)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsOrigen)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lstDestino)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsDestino)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bsUsuario)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

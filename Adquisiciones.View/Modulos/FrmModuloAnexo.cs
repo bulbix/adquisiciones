@@ -51,8 +51,6 @@ namespace Adquisiciones.View.Modulos
                 @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 cmdGuardar.Enabled = false;
             }
-
-           
         }
 
         public override void BindearCampos()
@@ -146,11 +144,11 @@ namespace Adquisiciones.View.Modulos
         {
            try
             {
+               if(AnexoActual.NumeroAnexo == null)
+                   AnexoActual.NumeroAnexo = txtnumlicitacion.Text;
+
                 AnexoActual = AnexoService.ConsultarAnexo(AnexoActual.NumeroAnexo,
                                                           FrmModuloModulo.AlmacenSelec);
-
-               
-
                 if (AnexoActual != null)
                 {
                     bsAnexo.DataSource = AnexoActual;

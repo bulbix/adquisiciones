@@ -66,10 +66,10 @@ namespace Adquisiciones.View.Modulos
         {
             PedidoActual = new Pedido();
             bsPedido.DataSource = PedidoActual;
-            lblFechaRequisicion.Text = "";
-            lblArea.Text = "";
-            lblLicitacion.Text = "";
+            LimpiarRequisicion();
             lblFundamento.Text = "";
+            listaError.Strings.Clear();
+            lblNumErrors.Caption = "";
         }
 
         public override void Guardar()
@@ -85,13 +85,6 @@ namespace Adquisiciones.View.Modulos
                 return;
             }
 
-            if (PedidoService.PedidoDao.ExisteRequisicionPedido(RequisicionActual))
-            {
-                XtraMessageBox.Show(@"La requisicion ya tiene pedido automatico",
-                @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-
             //los parametros basicos
             PedidoActual.FechaModificacion = PedidoService.PedidoDao.FechaServidor();
             PedidoActual.IpTerminal = Util.IpTerminal();
@@ -101,23 +94,11 @@ namespace Adquisiciones.View.Modulos
             PedidoActual.Modificacion = 0;
 
             try
-            {
-
-                bool tieneFalloAnexo = PedidoService.GenerarPedidoAutomatico(PedidoActual, RequisicionActual,
+            {PedidoService.GenerarPedidoAutomatico(PedidoActual, RequisicionActual,
                     deFechaInicial.DateTime, deFechaFinal.DateTime);
-
-
-                if (tieneFalloAnexo)
-                {
-                    XtraMessageBox.Show(@"Pedido Automatico realizado Exitosamente Requisicion #" + PedidoActual.Requisicion.NumeroRequisicion,
-                    @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else
-                {
-                    XtraMessageBox.Show(@"El anexo de la requisicion no tiene fallo: " + RequisicionActual.Anexo,
-                   @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-
+                
+                XtraMessageBox.Show(@"Pedido Automatico realizado Exitosamente Requisicion #" + PedidoActual.Requisicion.NumeroRequisicion,
+                @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             }
             catch (Exception ee)
@@ -130,11 +111,36 @@ namespace Adquisiciones.View.Modulos
 
         }
 
+        private void LimpiarRequisicion()
+        {
+            lblFechaRequisicion.Text = "";
+            lblArea.Text = "";
+            lblLicitacion.Text = "";
+            PedidoActual.Requisicion = null;}
+
         private void SearchLookUpRequisicionEditValueChanged(object sender, EventArgs e)
         {
             if (searchLookUpRequisicion.EditValue != null)
             {
                 var reqSeleccionada = searchLookUpEditRequisicion.GetFocusedRow() as Requisicion;
+
+                if (PedidoService.PedidoDao.ExisteRequisicionPedido(reqSeleccionada))
+                {
+                    XtraMessageBox.Show(@"La requisicion ya tiene pedido automatico",
+                    @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    LimpiarRequisicion();
+                    return;
+                }
+
+                if (!PedidoService.TieneFalloRequisicion(reqSeleccionada))
+                {
+                    XtraMessageBox.Show(@"El anexo de la requisicion no tiene fallo: " 
+                        + RequisicionActual.Anexo,
+                    @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    LimpiarRequisicion();
+                    return;
+                }
+
                 RequisicionActual = reqSeleccionada;
                 PedidoActual.Requisicion = RequisicionActual;
 
@@ -216,6 +222,8 @@ namespace Adquisiciones.View.Modulos
                 result = false;
                 lista.Strings.Add("Cargo a requerido");
             }
+
+            lblNumErrors.Caption = lista.Strings.Count + " Errores";
 
             return result;
         }

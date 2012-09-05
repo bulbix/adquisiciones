@@ -90,14 +90,10 @@ namespace Adquisiciones.Business.ModPedido
         }
 
          [Transaction]
-        public bool GenerarPedidoAutomatico(Pedido pedidoCentinela, Requisicion requisicion, DateTime fechaInicial, DateTime fechaFinal)
+        public void GenerarPedidoAutomatico(Pedido pedidoCentinela, Requisicion requisicion, DateTime fechaInicial, DateTime fechaFinal)
          {
 
-             bool result = false;
-
-            var fallos = FalloDao.FallosByAnexoEager(requisicion.Anexo);
-
-             result = fallos.Count > 0;
+             var fallos = FalloDao.FallosByAnexoEager(requisicion.Anexo);
 
              foreach (var fallo in fallos)
             {
@@ -158,9 +154,18 @@ namespace Adquisiciones.Business.ModPedido
                     }
                 }
 
-             return result;
+             
 
          }
+
+        [Transaction(ReadOnly = true)]
+        public bool TieneFalloRequisicion(Requisicion requisicion)
+        {
+            bool result = false;
+            var fallos = FalloDao.FallosByAnexoEager(requisicion.Anexo);
+            result = fallos.Count > 0;
+            return result;
+        }
 
         /// <summary>
         /// 

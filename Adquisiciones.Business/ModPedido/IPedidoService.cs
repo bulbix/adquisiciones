@@ -79,8 +79,11 @@ namespace Adquisiciones.Business.ModPedido
         /// <param name="fechaInicial"></param>
         /// <param name="fechaFinal"></param>
         /// Regresa true si encontro fallo
-        bool GenerarPedidoAutomatico(Pedido pedido, 
+        void GenerarPedidoAutomatico(Pedido pedido, 
             Requisicion requisicion, DateTime fechaInicial, DateTime fechaFinal);
+
+
+        bool TieneFalloRequisicion(Requisicion requisicion);
 
         /// <summary>
         /// 
