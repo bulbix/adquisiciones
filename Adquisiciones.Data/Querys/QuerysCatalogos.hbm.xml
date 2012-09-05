@@ -12,14 +12,41 @@
     where u.Rfc = :rfc and u.Password = :pwd 
     order by m.Id.IdModulo asc  ]]>
   </query>
+
+  <query name="Usuario.SinPerfiles">
+    <![CDATA[ 
+    select m
+    from Modulo m 
+    where m.Id.IdModulo not in 
+    (select um.Id.Modulo.Id.IdModulo 
+    from UsuarioModulo um 
+    where um.Id.Usuario = :usuario 
+    and um.Id.Modulo.Id.Almacen = :almacen)
+    and m.Id.Almacen = :almacen 
+    
+   ]]>
+  </query>
+
+  <query name="Usuario.ConPerfiles">
+    <![CDATA[    
+    select m
+    from Modulo m 
+    where m.Id.IdModulo in 
+    (select um.Id.Modulo.Id.IdModulo 
+    from UsuarioModulo um 
+    where um.Id.Usuario = :usuario 
+    and um.Id.Modulo.Id.Almacen = :almacen)
+    order by m.DesModulo]]>
+  </query>
   
   
   
   
   <query name="Usuario.CargaCombo">
-    <![CDATA[from Usuario u join fetch u.UsuarioModulo um 
-              where um.Id.Modulo.Id.Almacen.IdAlmacen = :id_almacen]]>
+    <![CDATA[from Usuario]]>
   </query>
+  
+  
   <query name="Usuario.TraeUsuario">
     <![CDATA[from Usuario u 
               where u.Nombre = :nombre_usua]]>

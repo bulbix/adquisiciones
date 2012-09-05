@@ -81,7 +81,12 @@ namespace Adquisiciones.Data.Entities
 			//hash = 27 * hash * _id.GetHashCode();
 			return hash;
 		}
-		#endregion
+
+	    public override string ToString()
+	    {
+	        return DesModulo;}
+
+	    #endregion
 		
 	}
 }

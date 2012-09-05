@@ -57,7 +57,8 @@ namespace Adquisiciones.View.Modulos
             var nombreModulo = TypeEntity.Name.ToLower();
             foreach (var moduloUsuario in modulosUsuario)
             {
-                if (moduloUsuario.Estatus != "A")
+                if (moduloUsuario.Estatus != "A" 
+                    || !moduloUsuario.Id.Modulo.Id.Almacen.Equals(FrmModuloModulo.AlmacenSelec))
                     continue;
                 
                 var desModulo = moduloUsuario.Id.Modulo.DesModulo.ToLower().Trim();

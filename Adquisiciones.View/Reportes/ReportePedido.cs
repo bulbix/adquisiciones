@@ -418,12 +418,15 @@ namespace Adquisiciones.View.Reportes
             GenerarAnverso();
             GenerarReverso();
 
-            var anversoReader = new PdfReader(fileAnverso);
-            var reversoReader = new PdfReader(fileReverso);
+            var fileAnversoMarca = MarcaAgua(fileAnverso);
+            var fileReversoMarca = MarcaAgua(fileReverso);
+
+            var anversoReader = new PdfReader(fileAnversoMarca);
+            var reversoReader = new PdfReader(fileReversoMarca);
 
             var document = new Document(PageSize.LETTER.Rotate(), 10, 10, 10, 10);
 
-            var filePedido = System.IO.Path.GetTempFileName() + ".pdf";
+            var filePedido = Path.GetTempFileName() + ".pdf";
 
             var copy = new PdfCopy(document, new FileStream(filePedido, FileMode.Create));
 
@@ -436,52 +439,102 @@ namespace Adquisiciones.View.Reportes
             }
 
             copy.Close();
-            anversoReader.Close();reversoReader.Close();
+            anversoReader.Close();
+            reversoReader.Close();
 
             Process.Start("cmd", "/c " + filePedido);
 
         }
 
-        public static byte[] AddPageNumbers(byte[] pdf)
+        private String MarcaAgua(String path)
         {
-            MemoryStream ms = new MemoryStream();
-            ms.Write(pdf, 0, pdf.Length);
-            // we create a reader for a certain document
-            PdfReader reader = new PdfReader(pdf);
-            // we retrieve the total number of pages
-            int n = reader.NumberOfPages;
-            // we retrieve the size of the first page
-            Rectangle psize = reader.GetPageSize(1);
+            PdfReader reader = new PdfReader(path);
+            FileStream fs = null;
+            PdfStamper stamp = null;
 
-            // step 1: creation of a document-object
-            Document document = new Document(psize, 50, 50, 50, 50);
-            // step 2: we create a writer that listens to the document
-            PdfWriter writer = PdfWriter.GetInstance(document, ms);
-            // step 3: we open the document
+            var fileOutput = Path.GetTempFileName() + ".pdf";
 
-            document.Open();
-            // step 4: we add content
-            PdfContentByte cb = writer.DirectContent;
+            string outputPdf = String.Format(fileOutput,Guid.NewGuid().ToString());
+            fs = new FileStream(outputPdf,FileMode.CreateNew,FileAccess.Write);
+            stamp = new PdfStamper(reader, fs);
 
-            int p = 0;
-            Console.WriteLine("There are " + n + " pages in the document.");
-            for (int page = 1; page <= reader.NumberOfPages; page++)
+            BaseFont bf = BaseFont.CreateFont(@"c:\windows\fonts\arial.ttf",BaseFont.CP1252, true);
+            PdfGState gs = new PdfGState();
+
+            gs.FillOpacity = 0.35F;
+
+            gs.StrokeOpacity = 0.35F;
+            for (int nPag = 1; nPag <= reader.NumberOfPages; nPag++)
             {
-                document.NewPage();
-                p++;
 
-                PdfImportedPage importedPage = writer.GetImportedPage(reader, page);
-                cb.AddTemplate(importedPage, 0, 0);
+                Rectangle tamPagina = reader.GetPageSizeWithRotation(nPag);
+                PdfContentByte over = stamp.GetOverContent(nPag);
+                over.BeginText();
+                WriteTextToDocument(bf,tamPagina,over,gs,"www.inr.gob.mx");
+                over.EndText();
 
-                BaseFont bf = BaseFont.CreateFont(BaseFont.HELVETICA, BaseFont.CP1252, BaseFont.NOT_EMBEDDED);
-                cb.BeginText();
-                cb.SetFontAndSize(bf, 10);
-                cb.ShowTextAligned(PdfContentByte.ALIGN_LEFT, +p + "/" + n, 7, 44, 0);
-                cb.EndText();
             }
-            // step 5: we close the document
-            document.Close();
-            return ms.ToArray();
+
+            reader.Close();
+            if (stamp != null) stamp.Close();
+            if (fs != null) fs.Close();
+
+            return fileOutput;
+
+        }
+
+
+
+        private static void WriteTextToDocument(BaseFont bf,
+
+                       Rectangle tamPagina,
+
+                       PdfContentByte over,
+
+                       PdfGState gs,
+
+                       string texto)
+        {
+
+            over.SetGState(gs);
+
+            over.SetRGBColorFill(220, 220, 220);
+
+            over.SetTextRenderingMode(PdfContentByte.TEXT_RENDER_MODE_STROKE);
+
+            over.SetFontAndSize(bf, 46);
+
+            Single anchoDiag =
+
+                (Single)Math.Sqrt(Math.Pow((tamPagina.Height - 120), 2)
+
+                + Math.Pow((tamPagina.Width - 60), 2));
+
+            Single porc = (Single)100
+
+                * (anchoDiag / bf.GetWidthPoint(texto, 46));
+
+            over.SetHorizontalScaling(porc);
+
+            double angPage = (-1)
+
+            * Math.Atan((tamPagina.Height - 60) / (tamPagina.Width - 60));
+
+            over.SetTextMatrix((float)Math.Cos(angPage),
+
+                       (float)Math.Sin(angPage),
+
+                       (float)((-1F) * Math.Sin(angPage)),
+
+                       (float)Math.Cos(angPage),
+
+                       30F,
+
+                       (float)tamPagina.Height - 60);
+
+            over.ShowText(texto);
+
+
         }
        
 

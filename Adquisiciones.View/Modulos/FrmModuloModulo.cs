@@ -19,6 +19,8 @@ namespace Adquisiciones.View
         public static  Almacen AlmacenSelec;
 
         public IAlmacenDao AlmacenDao { get; set; }
+
+        private bool PermisoAsignarPerfil = false;
       
         ///<summary>
         ///</summary>
@@ -34,6 +36,9 @@ namespace Adquisiciones.View
             //leer lista de Usuarios Modulos
             foreach (var usuarioModulo in usuariosModulo)
             {
+                if (usuarioModulo.Id.Modulo.DesModulo.Trim().Equals("ASIGNAR PERFIL"))
+                    PermisoAsignarPerfil = true;
+
                 foreach (var boton in from object control in Controls
                                       let type = control.GetType()
                                       where type == typeof (SimpleButton)
@@ -46,32 +51,41 @@ namespace Adquisiciones.View
             }
         }
 
+        private void LanzarPantallaInicio()
+        {
+            this.Hide();
+            if (PermisoAsignarPerfil)
+                new FrmPerfil().ShowDialog();
+            else
+                new FrmAdquisiciones().ShowDialog();
+            
+        }
+
         private void BtnAdq5000Click(object sender, EventArgs e)
         {
             AlmacenSelec = AlmacenDao.Get(btnAdq5000.Tag.ToString());
-            this.Hide();
-            new FrmAdquisiciones().ShowDialog();
+            LanzarPantallaInicio();
+
         }
 
         private void BtnAdq2000Click(object sender, EventArgs e)
         {
             AlmacenSelec = AlmacenDao.Get(btnAdq2000.Tag.ToString());
-            this.Hide();
-            new FrmAdquisiciones().ShowDialog();
+            LanzarPantallaInicio();
         }
 
         private void BtnAdqconacyt2000Click(object sender, EventArgs e)
         {
             AlmacenSelec = AlmacenDao.Get(btnAdqconacyt2000.Tag.ToString());
-             this.Hide();
-             new FrmAdquisiciones().ShowDialog();
+            LanzarPantallaInicio();
+
         }
 
         private void BtnAdqconacyt5000Click(object sender, EventArgs e)
         {
             AlmacenSelec = AlmacenDao.Get(btnAdqconacyt5000.Tag.ToString());
-             this.Hide();
-             new FrmAdquisiciones().ShowDialog();
+            LanzarPantallaInicio();
+
         }
     }
 }

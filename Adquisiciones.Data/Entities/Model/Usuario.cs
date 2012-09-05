@@ -121,7 +121,7 @@ namespace Adquisiciones.Data.Entities
 
         public override string ToString()
         {
-            return Rfc.Trim();
+            return Rfc.Trim() + "/" + Nombre.Trim();
         }
 	}
 }
