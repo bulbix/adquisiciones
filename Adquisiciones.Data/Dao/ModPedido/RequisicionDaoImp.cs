@@ -10,14 +10,16 @@ namespace Adquisiciones.Data.Dao.ModPedido
 {
     public class RequisicionDaoImp : GenericDaoImp<Requisicion, int>, IRequisicionDao
     {
-
-
+        
         [Transaction(ReadOnly = true)]
         public IList<Requisicion> CargarRequisiciones(Almacen almacen)
         {
             var query = CurrentSession.GetNamedQuery("Requisicion.CargarRequisicionesActivasByAlmacen");
             query.SetParameter("almacen", almacen);
-            return query.List<Requisicion>();
+            var fecha = FechaServidor().Year;
+            query.SetParameter("anioActual", fecha);
+            var requisiciones = query.List<Requisicion>();
+            return requisiciones;
 
         }
 

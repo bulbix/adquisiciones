@@ -6,7 +6,8 @@
       select r from Requisicion r 
       join fetch r.Anexo 
       join fetch r.CatArea 
-      where r.Almacen = :almacen
+      where r.Almacen = :almacen 
+      and year(r.FechaRequisicion) = :anioActual
       and r.Estatus = 'A'
       ]]>
   </query>

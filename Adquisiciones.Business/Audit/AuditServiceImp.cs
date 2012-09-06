@@ -35,52 +35,58 @@ namespace Adquisiciones.Business.Audit
             object[] previousState,
             IType[] types, string tipo)
         {
-            var nombreTabla = entity.GetType().Name; //AnexoDetalle
-
-            if (nombreTabla.IndexOf("Hist") < 0 && !(entity is ICatalogo))
+            try
             {
-                
-                var tableHist = "Adquisiciones.Data.Entities." + nombreTabla + "Hist";
-                var a = Assembly.LoadWithPartialName("Adquisiciones.Data");
-                var histType = a.GetType(tableHist); //Type AnexoDetalleHist
-                var result = Activator.CreateInstance(histType); // new AnexoDetalleHist
+                var nombreTabla = entity.GetType().Name; //AnexoDetalle
 
-                var index = 0;
-
-                var idExterno = long.Parse(id.ToString());
-
-                foreach (string propiedad in propertyNames)
+                if (nombreTabla.IndexOf("Hist") < 0 && !(entity is ICatalogo))
                 {
-                    if (!types[index].IsCollectionType)
+
+                    var tableHist = "Adquisiciones.Data.Entities." + nombreTabla + "Hist";
+                    var a = Assembly.LoadWithPartialName("Adquisiciones.Data");
+                    var histType = a.GetType(tableHist); //Type AnexoDetalleHist
+                    var result = Activator.CreateInstance(histType); // new AnexoDetalleHist
+
+                    var index = 0;
+
+                    var idExterno = long.Parse(id.ToString());
+
+                    foreach (string propiedad in propertyNames)
                     {
-                        histType.GetProperty(propiedad).SetValue(result, previousState[index], null);
+                        if (!types[index].IsCollectionType)
+                        {
+                            histType.GetProperty(propiedad).SetValue(result, previousState[index], null);
+                        }
+
+                        ++index;
                     }
 
-                    ++index;
-                }
+                    histType.GetProperty("IdExterno").SetValue(result, idExterno, null);
+                    histType.GetProperty("Tipo").SetValue(result, tipo, null);
 
-                histType.GetProperty("IdExterno").SetValue(result, idExterno, null);
-                histType.GetProperty("Tipo").SetValue(result, tipo, null);
-               
-                var idHist = ObjectDao.Insert(result);//ANEXODETALLEHIST
+                    var idHist = ObjectDao.Insert(result); //ANEXODETALLEHIST
 
-                if(entity is IPadre)//Anexo
-                {
-                    var nombreTablaHijaHist = nombreTabla + "DetalleHist";//AnexoDetalleHist
-                    var historico = IdsDetalleHistorico[nombreTablaHijaHist];
-                    historico.idPadre = idHist;
-                    IdsDetalleHistorico[nombreTablaHijaHist] = historico;
-                   
-                }
+                    if (entity is IPadre) //Anexo
+                    {
+                        var nombreTablaHijaHist = nombreTabla + "DetalleHist"; //AnexoDetalleHist
+                        var historico = IdsDetalleHistorico[nombreTablaHijaHist];
+                        historico.idPadre = idHist;
+                        IdsDetalleHistorico[nombreTablaHijaHist] = historico;
 
-                if (entity is IDetalle)//AnexoDetalle
-                {
-                    var tablaHist = nombreTabla + "Hist";
-                    var historico = IdsDetalleHistorico[tablaHist];
-                    historico.ids.Add(idHist);
-                    IdsDetalleHistorico[tablaHist] = historico;
-                }
+                    }
 
+                    if (entity is IDetalle) //AnexoDetalle
+                    {
+                        var tablaHist = nombreTabla + "Hist";
+                        var historico = IdsDetalleHistorico[tablaHist];
+                        historico.ids.Add(idHist);
+                        IdsDetalleHistorico[tablaHist] = historico;
+                    }
+
+                }}
+            catch(Exception e)
+            {
+                
             }
 
         }

@@ -291,7 +291,7 @@
             // 
             // deFechaPedido
             // 
-            this.deFechaPedido.EditValue = new System.DateTime(2011, 11, 10, 14, 37, 50, 614);
+            this.deFechaPedido.EditValue = null;
             this.deFechaPedido.Location = new System.Drawing.Point(123, 135);
             this.deFechaPedido.Name = "deFechaPedido";
             this.deFechaPedido.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {

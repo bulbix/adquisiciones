@@ -56,15 +56,14 @@ namespace Adquisiciones.View.Modulos
         public override void BindearCampos()
         {
             //deFechaPedido.DataBindings.Add(new Binding("DateTime", bsPedido, "FechaPedido", true));
-            txtObservaciones.DataBindings.Add(new Binding("Text", bsPedido, "Observaciones", true));
+            //txtObservaciones.DataBindings.Add(new Binding("Text", bsPedido, "Observaciones", true));
             cbxIva.DataBindings.Add(new Binding("SelectedValue", bsPedido, "Iva", true));
             cbxActividad.DataBindings.Add(new Binding("SelectedValue", bsPedido, "CatActividad", true));
             cbxCargo.DataBindings.Add(new Binding("SelectedValue", bsPedido, "CatPresupuesto", true));
         }
 
         public override void Nuevo()
-        {
-            PedidoActual = new Pedido();
+        {PedidoActual = new Pedido();
             bsPedido.DataSource = PedidoActual;
             LimpiarRequisicion();
             lblFundamento.Text = "";
@@ -86,12 +85,12 @@ namespace Adquisiciones.View.Modulos
             }
 
             //los parametros basicos
+            PedidoActual.Observaciones = txtObservaciones.Text;
             PedidoActual.FechaModificacion = PedidoService.PedidoDao.FechaServidor();
             PedidoActual.IpTerminal = Util.IpTerminal();
             PedidoActual.Almacen = FrmModuloModulo.AlmacenSelec;
             PedidoActual.Usuario = FrmModuloAcceso.UsuarioLog;
             PedidoActual.EstadoPedido = "A";
-            PedidoActual.Modificacion = 0;
 
             try
             {PedidoService.GenerarPedidoAutomatico(PedidoActual, RequisicionActual,
@@ -134,12 +133,10 @@ namespace Adquisiciones.View.Modulos
 
                 if (!PedidoService.TieneFalloRequisicion(reqSeleccionada))
                 {
-                    XtraMessageBox.Show(@"El anexo de la requisicion no tiene fallo: " 
-                        + RequisicionActual.Anexo,
+                    XtraMessageBox.Show(@"El anexo de la requisicion no tiene fallo",
                     @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     LimpiarRequisicion();
-                    return;
-                }
+                    return;}
 
                 RequisicionActual = reqSeleccionada;
                 PedidoActual.Requisicion = RequisicionActual;

@@ -108,7 +108,8 @@ namespace Adquisiciones.Business.ModPedido
                 pedido.Iva = pedidoCentinela.Iva;
                 pedido.CatPresupuesto = pedidoCentinela.CatPresupuesto;
                 pedido.Observaciones = pedidoCentinela.Observaciones;
-                pedido.Modificacion = ++pedidoCentinela.Modificacion;pedido.Instituto = fallo.Anexo.Instituto;
+                pedido.Modificacion = 1;
+                pedido.Instituto = fallo.Anexo.Instituto;
                 pedido.NumeroPedido = PedidoDao.MaximoNumeroPedido(pedido.Almacen);
                 pedido.CatTipopedido = new CatTipopedido(1);//Pedido Mayor
                 pedido.Proveedor = fallo.Cotizacion.Proveedor;
@@ -117,21 +118,21 @@ namespace Adquisiciones.Business.ModPedido
                 pedido.CatPresupuesto = pedido.CatPresupuesto;
                 pedido.EstadoPedido = "A";
                 pedido.ImporteTotal = ImporteTotal(requisicion, fallo.FalloDetalle);
-
-                //Cambiar el estatus a P de la requisicion
-                requisicion.Estatus = "P";
                 pedido.Requisicion = requisicion;
-
                 
                 pedido = PedidoDao.Merge(pedido);
 
                 short renglonPedido = 1;
                 int entrega = 1;
-                 
                 foreach(var falloDetalle in fallo.FalloDetalle)
                 {
                     var requisicionDetalle = RequisicionDao.ObtenerRequisicionDetalleByArticulo(requisicion,
                                             falloDetalle.Articulo);
+
+                    //Actualizamos la cantidad pedida fallo
+                    falloDetalle.CantidadPed = requisicionDetalle.Cantidad;
+                    FalloDetalleDao.Merge(falloDetalle);
+
 
                     var pedidoDetalle = new PedidoDetalle();
                     pedidoDetalle.Pedido = pedido;
@@ -150,9 +151,13 @@ namespace Adquisiciones.Business.ModPedido
                     pedidoDetalle.PedidoEntrega.Add(pedidoEntrega);
                     PedidoDetalleDao.Merge(pedidoDetalle);
                     ++renglonPedido;
-
-                    }
                 }
+
+
+                //Cambiar el estatus a P de la requisicion
+                requisicion.Estatus = "P";
+                RequisicionDao.Merge(requisicion);
+             }
 
              
 
@@ -198,7 +203,6 @@ namespace Adquisiciones.Business.ModPedido
 
                 //Calcula el importe total
                 importeTotal += (pedidoDetalle.PrecioUnitario*pedidoDetalle.Cantidad);
-
                 var entrega = 1;
 
                 foreach (var pedidoEntrega in pedidoDetalle.PedidoEntrega)

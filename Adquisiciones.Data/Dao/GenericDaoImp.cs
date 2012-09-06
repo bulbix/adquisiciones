@@ -30,8 +30,7 @@ namespace Adquisiciones.Data.Dao
         /// </summary>
         /// <param name="entity">Entidad a persistir</param>
         /// <returns>El id generado por la estrategia</returns>
-        [Transaction]
-        public virtual TId Insert(TE entity)
+        [Transaction]public virtual TId Insert(TE entity)
         {
             return (TId)CurrentSession.Save(entity);
         }
