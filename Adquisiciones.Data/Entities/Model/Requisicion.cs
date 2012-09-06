@@ -12,7 +12,7 @@ namespace Adquisiciones.Data.Entities
 	/// Requisicion object for NHibernate mapped table 'requisicion'.
 	/// </summary>
 	[Serializable]
-	public class Requisicion
+	public class Requisicion:IComparable
 	{
 		#region Member Variables
 		protected int _idrequisicion;
@@ -135,6 +135,10 @@ namespace Adquisiciones.Data.Entities
 			//hash = 27 * hash * _idrequisicion.GetHashCode();
 			return hash;
 		}
+
+	    public int CompareTo(object other)
+	    {
+	        return IdRequisicion.CompareTo((other as Requisicion).IdRequisicion);}
 
 	    public override string ToString()
 	    {

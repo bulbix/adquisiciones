@@ -9,7 +9,7 @@ namespace Adquisiciones.Data.Entities
     /// <summary>
     /// Anexo object for NHibernate mapped table 'anexo'.
     /// </summary>
-    public class Anexo : INotifyPropertyChanged,IPadre
+    public class Anexo : INotifyPropertyChanged,IPadre,IComparable
     {
         #region Member Variables
         protected long _idanexo;
@@ -214,7 +214,7 @@ namespace Adquisiciones.Data.Entities
 
 
         public virtual bool TieneCotizacion { get; set; }
-
+      
 
         public override string ToString()
         {
@@ -242,6 +242,12 @@ namespace Adquisiciones.Data.Entities
             //hash = 27 * hash * _idanexo.GetHashCode();
             return hash;
         }
+
+        public int CompareTo(object obj)
+        {
+            return IdAnexo.CompareTo((obj as Anexo).IdAnexo);
+        }
+
         #endregion
 
         public event PropertyChangedEventHandler PropertyChanged;

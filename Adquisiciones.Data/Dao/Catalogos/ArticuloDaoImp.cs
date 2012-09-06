@@ -19,5 +19,15 @@ namespace Adquisiciones.Data.Dao.Catalogos
             
             return query.List<ArticuloBusqueda>();
         }
+
+        [Transaction(ReadOnly = true)]
+        public ArticuloPartida ArticuloPartida(Articulo articulo)
+        {
+            var query = CurrentSession.
+                CreateQuery(@"select ap from ArticuloPartida ap where ap.Id.Articulo = :articulo");
+            query.SetParameter("articulo", articulo);
+
+            return query.UniqueResult<ArticuloPartida>();
+        }
     }
 }

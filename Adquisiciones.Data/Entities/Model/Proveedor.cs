@@ -16,7 +16,7 @@ namespace Adquisiciones.Data.Entities
     /// Proveedor object for NHibernate mapped table 'proveedor'.
     /// </summary>
     [Serializable]
-    public class Proveedor : INotifyPropertyChanged,ICatalogo
+    public class Proveedor : INotifyPropertyChanged,ICatalogo,IComparable
     {
 
         // property change events
@@ -490,6 +490,11 @@ namespace Adquisiciones.Data.Entities
             return hash;
         }
         #endregion
+
+        public int CompareTo(object other)
+        {
+            return CveProveedor.Value.CompareTo((other as Proveedor).CveProveedor.Value);
+        }
 
         public override string ToString()
         {

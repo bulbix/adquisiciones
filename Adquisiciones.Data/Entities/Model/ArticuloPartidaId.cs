@@ -16,18 +16,13 @@ namespace Adquisiciones.Data.Entities
 		#region Member Variables
 		protected CatPartida _catpartida;
         protected Articulo _articulo;
-		protected String _estatus;
+		protected int _movimiento;
 		#endregion
 		#region Constructors
 			
 		public ArticuloPartidaId() {}
 
-        public ArticuloPartidaId(CatPartida catpartida, Articulo articulo, String estatus) 
-		{
-			this._catpartida= catpartida;
-            this._articulo = articulo;
-			this._estatus= estatus;
-		}
+       
 
 		#endregion
 		#region Public Properties
@@ -41,10 +36,10 @@ namespace Adquisiciones.Data.Entities
             get { return _articulo; }
             set { _articulo = value; }
         }
-        public virtual String Estatus
+        public virtual int Movimiento
 		{
-			get { return _estatus; }
-			set {_estatus= value; }
+			get { return _movimiento; }
+			set {_movimiento= value; }
 		}
 		#endregion
 		
@@ -60,17 +55,16 @@ namespace Adquisiciones.Data.Entities
 			return ( castObj != null ) &&
 			this._catpartida.Equals( castObj.CatPartida) &&
             this._articulo.Equals( castObj.Articulo) &&
-			this._estatus == castObj.Estatus;
-		}
-		/// <summary>
+			this._movimiento == castObj.Movimiento;
+		}/// <summary>
 		/// local implementation of GetHashCode based on unique value members
 		/// </summary>
 		public override int GetHashCode()
 		{
 			int hash = 57;
-			hash = 27 * hash * _catpartida.GetHashCode();
-            hash = 27 * hash * _articulo.GetHashCode();
-			hash = 27 * hash * _estatus.GetHashCode();
+            //hash = 27 * hash * _catpartida.GetHashCode();
+            //hash = 27 * hash * _articulo.GetHashCode();
+            //hash = 27 * hash * _estatus.GetHashCode();
 			return hash;
 		}
 		#endregion

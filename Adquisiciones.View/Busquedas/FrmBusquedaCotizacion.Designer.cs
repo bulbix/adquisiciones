@@ -48,12 +48,12 @@
             // 
             this.gcCotizacion.DataSource = this.bsSource;
             this.gcCotizacion.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gcCotizacion.Location = new System.Drawing.Point(0, 57);
+            this.gcCotizacion.Location = new System.Drawing.Point(0, 67);
             this.gcCotizacion.MainView = this.gvCotizacion;
             this.gcCotizacion.Name = "gcCotizacion";
             this.gcCotizacion.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemButtonEdit1});
-            this.gcCotizacion.Size = new System.Drawing.Size(708, 312);
+            this.gcCotizacion.Size = new System.Drawing.Size(708, 307);
             this.gcCotizacion.TabIndex = 4;
             this.gcCotizacion.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvCotizacion});
@@ -68,6 +68,7 @@
             this.gridColumn5,
             this.gridColumn3,
             this.gridColumn7});
+            this.gvCotizacion.CustomizationFormBounds = new System.Drawing.Rectangle(725, 381, 208, 175);
             this.gvCotizacion.GridControl = this.gcCotizacion;
             this.gvCotizacion.Name = "gvCotizacion";
             this.gvCotizacion.OptionsView.EnableAppearanceEvenRow = true;
@@ -80,6 +81,7 @@
             this.gridColumn1.Name = "gridColumn1";
             this.gridColumn1.OptionsColumn.AllowEdit = false;
             this.gridColumn1.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.True;
+            this.gridColumn1.SortMode = DevExpress.XtraGrid.ColumnSortMode.Value;
             this.gridColumn1.UnboundType = DevExpress.Data.UnboundColumnType.String;
             this.gridColumn1.Visible = true;
             this.gridColumn1.VisibleIndex = 2;
@@ -104,6 +106,7 @@
             this.gridColumn2.Name = "gridColumn2";
             this.gridColumn2.OptionsColumn.AllowEdit = false;
             this.gridColumn2.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.True;
+            this.gridColumn2.SortMode = DevExpress.XtraGrid.ColumnSortMode.Value;
             this.gridColumn2.UnboundType = DevExpress.Data.UnboundColumnType.String;
             this.gridColumn2.Visible = true;
             this.gridColumn2.VisibleIndex = 1;
@@ -140,6 +143,7 @@
             this.gridColumn3.Caption = "Modifico";
             this.gridColumn3.FieldName = "Usuario";
             this.gridColumn3.Name = "gridColumn3";
+            this.gridColumn3.SortMode = DevExpress.XtraGrid.ColumnSortMode.Value;
             this.gridColumn3.UnboundType = DevExpress.Data.UnboundColumnType.String;
             this.gridColumn3.Visible = true;
             this.gridColumn3.VisibleIndex = 5;

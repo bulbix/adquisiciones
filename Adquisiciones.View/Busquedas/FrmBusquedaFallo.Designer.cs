@@ -63,7 +63,6 @@
             this.gvAnexo.OptionsBehavior.Editable = false;
             this.gvAnexo.OptionsView.EnableAppearanceEvenRow = true;
             this.gvAnexo.OptionsView.ShowAutoFilterRow = true;
-            this.gvAnexo.OptionsView.ShowGroupPanel = false;
             this.gvAnexo.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
             new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.gridColumn1, DevExpress.Data.ColumnSortOrder.Ascending)});
             // 
@@ -72,6 +71,7 @@
             this.gridColumn2.Caption = "Modifico";
             this.gridColumn2.FieldName = "Usuario";
             this.gridColumn2.Name = "gridColumn2";
+            this.gridColumn2.SortMode = DevExpress.XtraGrid.ColumnSortMode.Value;
             this.gridColumn2.UnboundType = DevExpress.Data.UnboundColumnType.String;
             this.gridColumn2.Visible = true;
             this.gridColumn2.VisibleIndex = 2;
@@ -92,6 +92,7 @@
             this.gridColumn3.Caption = "Anexo";
             this.gridColumn3.FieldName = "Anexo";
             this.gridColumn3.Name = "gridColumn3";
+            this.gridColumn3.SortMode = DevExpress.XtraGrid.ColumnSortMode.Value;
             this.gridColumn3.UnboundType = DevExpress.Data.UnboundColumnType.String;
             this.gridColumn3.Visible = true;
             this.gridColumn3.VisibleIndex = 1;

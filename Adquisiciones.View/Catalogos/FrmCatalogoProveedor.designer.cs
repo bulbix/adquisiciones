@@ -107,7 +107,7 @@
             // 
             // txtFax
             // 
-            this.txtFax.Location = new System.Drawing.Point(467, 268);
+            this.txtFax.Location = new System.Drawing.Point(485, 268);
             this.txtFax.Mask = "00000000";
             this.txtFax.Name = "txtFax";
             this.txtFax.Size = new System.Drawing.Size(61, 21);
@@ -115,18 +115,16 @@
             // 
             // txtTel3
             // 
-            this.txtTel3.Location = new System.Drawing.Point(349, 269);
-            this.txtTel3.Mask = "00000000";
+            this.txtTel3.Location = new System.Drawing.Point(368, 269);
             this.txtTel3.Name = "txtTel3";
-            this.txtTel3.Size = new System.Drawing.Size(60, 21);
+            this.txtTel3.Size = new System.Drawing.Size(85, 21);
             this.txtTel3.TabIndex = 15;
             // 
             // txtTel2
             // 
-            this.txtTel2.Location = new System.Drawing.Point(217, 269);
-            this.txtTel2.Mask = "00000000";
+            this.txtTel2.Location = new System.Drawing.Point(226, 269);
             this.txtTel2.Name = "txtTel2";
-            this.txtTel2.Size = new System.Drawing.Size(61, 21);
+            this.txtTel2.Size = new System.Drawing.Size(80, 21);
             this.txtTel2.TabIndex = 14;
             // 
             // txtCodigoP
@@ -140,9 +138,8 @@
             // txtTel
             // 
             this.txtTel.Location = new System.Drawing.Point(89, 269);
-            this.txtTel.Mask = "00000000";
             this.txtTel.Name = "txtTel";
-            this.txtTel.Size = new System.Drawing.Size(59, 21);
+            this.txtTel.Size = new System.Drawing.Size(75, 21);
             this.txtTel.TabIndex = 13;
             // 
             // lblObservaciones
@@ -208,7 +205,7 @@
             // 
             this.lblCorreo.AutoSize = true;
             this.lblCorreo.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.lblCorreo.Location = new System.Drawing.Point(545, 272);
+            this.lblCorreo.Location = new System.Drawing.Point(549, 272);
             this.lblCorreo.Name = "lblCorreo";
             this.lblCorreo.Size = new System.Drawing.Size(40, 13);
             this.lblCorreo.TabIndex = 135;
@@ -217,7 +214,7 @@
             // lblTel3
             // 
             this.lblTel3.AutoSize = true;
-            this.lblTel3.Location = new System.Drawing.Point(284, 273);
+            this.lblTel3.Location = new System.Drawing.Point(312, 273);
             this.lblTel3.Name = "lblTel3";
             this.lblTel3.Size = new System.Drawing.Size(58, 13);
             this.lblTel3.TabIndex = 134;
@@ -226,7 +223,7 @@
             // lblTel2
             // 
             this.lblTel2.AutoSize = true;
-            this.lblTel2.Location = new System.Drawing.Point(154, 273);
+            this.lblTel2.Location = new System.Drawing.Point(169, 273);
             this.lblTel2.Name = "lblTel2";
             this.lblTel2.Size = new System.Drawing.Size(58, 13);
             this.lblTel2.TabIndex = 133;
@@ -245,7 +242,7 @@
             // lblFax
             // 
             this.lblFax.AutoSize = true;
-            this.lblFax.Location = new System.Drawing.Point(440, 273);
+            this.lblFax.Location = new System.Drawing.Point(457, 273);
             this.lblFax.Name = "lblFax";
             this.lblFax.Size = new System.Drawing.Size(25, 13);
             this.lblFax.TabIndex = 131;
@@ -544,7 +541,7 @@
             // 
             // txtCorreo
             // 
-            this.txtCorreo.Location = new System.Drawing.Point(587, 269);
+            this.txtCorreo.Location = new System.Drawing.Point(593, 269);
             this.txtCorreo.MenuManager = this.barManager1;
             this.txtCorreo.Name = "txtCorreo";
             this.txtCorreo.Size = new System.Drawing.Size(270, 20);

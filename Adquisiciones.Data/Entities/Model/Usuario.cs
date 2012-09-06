@@ -13,7 +13,7 @@ namespace Adquisiciones.Data.Entities
 	/// Usuario object for NHibernate mapped table 'usuario'.
 	/// </summary>
 	[Serializable]
-	public class Usuario
+	public class Usuario:IComparable
 	{
 		#region Member Variables
 		protected int _idusuario;
@@ -119,7 +119,12 @@ namespace Adquisiciones.Data.Entities
 		}
 		#endregion
 
-        public override string ToString()
+	    public int CompareTo(object other)
+	    {
+	        return IdUsuario.CompareTo((other as Usuario).IdUsuario);
+	    }
+
+	    public override string ToString()
         {
             return Rfc.Trim() + "/" + Nombre.Trim();
         }

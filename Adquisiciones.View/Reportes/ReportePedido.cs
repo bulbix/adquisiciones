@@ -6,9 +6,12 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
+using Adquisiciones.Data;
+using Adquisiciones.Data.Dao.Catalogos;
 using Adquisiciones.Data.Entities;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
+using Spring.Context.Support;
 
 namespace Adquisiciones.View.Reportes
 {
@@ -109,7 +112,13 @@ namespace Adquisiciones.View.Reportes
 
             foreach (var pedidoDetalle in pedido.PedidoDetalle)
             {
-                result.AddCell(new Paragraph("partida", fuente));
+                var ctx = ContextRegistry.GetContext();
+                var articuloDao = ctx["articuloDao"] as IArticuloDao;
+                var partida = articuloDao.ArticuloPartida(pedidoDetalle.Articulo);
+
+                result.AddCell(partida == null ? new Paragraph("", fuente) : 
+                    new Paragraph(partida.ToString(), fuente));
+
                 var articulo = pedidoDetalle.Articulo.Id.CveArt + " / " + pedidoDetalle.Articulo.DesArticulo;
                 result.AddCell(new Paragraph(articulo, fuente));
                 result.AddCell(new Paragraph(pedidoDetalle.Cantidad.Value.ToString("N"), fuente));
@@ -155,7 +164,10 @@ namespace Adquisiciones.View.Reportes
             contrato.AddCell(new Paragraph("ART. 42 LA LEY DE ADQUISICIONES, ARRENDAMIENTOS Y SERVICIOS DEL SECTOR PUBLICO.", fuente));
             contrato.AddCell(new Paragraph("NUMERO: "  + pedido.NumeroPedido , fuenteBold));
             contrato.AddCell(new Paragraph("FECHA: " + String.Format("{0:dd/MM/yyyy}", pedido.FechaPedido), fuenteBold));
-            contrato.AddCell(new Paragraph("REQUISICION: " + pedido.NumeroRequisicion, fuenteBold));
+            
+            var requisicion = pedido.NumeroRequisicion ?? pedido.Requisicion.ToString();
+
+            contrato.AddCell(new Paragraph("REQUISICION: " + requisicion, fuenteBold));
             //contrato.AddCell(new Paragraph("HOJA No. " , fuente));
             //contrato.AddCell(new Paragraph("DE", fuente));
 
@@ -306,11 +318,18 @@ namespace Adquisiciones.View.Reportes
             anotacion.DefaultCell.Border = 0;
             anotacion.AddCell(new Paragraph("EL PROVEEDOR ACEPTA LAS CONDICIONES EN ESTE PEDIDO/CONTRATO POR MONTO DE ADQUISICIÓN.", fuente));
             GenerarCeldas(10,anotacion);
+
+            var prov = pedido.Proveedor;
+
+            var representanteLegal = prov.Rnombre + " " + prov.Rpaterno + " " + prov.Rmaterno;
             
             anotacion.AddCell(new Paragraph("NOMBRE DEL REPRESENTANTE LEGAL", fuente));
+            anotacion.AddCell(new Paragraph(representanteLegal, fuenteBold));
             GenerarCeldas(10, anotacion);
 
             anotacion.AddCell(new Paragraph("CARGO:", fuente));
+            anotacion.AddCell(new Paragraph(prov.Giro, fuenteBold));
+
             GenerarCeldas(10, anotacion);
 
             var subTabla = new PdfPTable(2);
@@ -325,6 +344,9 @@ namespace Adquisiciones.View.Reportes
             telefono.DefaultCell.Colspan = 4;
             telefono.DefaultCell.Border = 0;
             telefono.AddCell(new Paragraph("TELÉFONO(S)",fuente));
+            telefono.AddCell(new Paragraph(prov.Tel, fuenteBold));
+            telefono.AddCell(new Paragraph(prov.Tel2, fuenteBold));
+            telefono.AddCell(new Paragraph(prov.Tel3, fuenteBold));
             telefono.AddCell("");
             telefono.AddCell("");
             telefono.AddCell("");
@@ -334,10 +356,13 @@ namespace Adquisiciones.View.Reportes
             telefono.AddCell(new Paragraph("MES",fuente));
             telefono.AddCell(new Paragraph("AÑO",fuente));
             telefono.AddCell(new Paragraph("FECHA",fuente));
+            //telefono.DefaultCell.HorizontalAlignment = Element.ALIGN_CENTER;
+            telefono.AddCell(new Paragraph(DateTime.Now.Day.ToString(), fuenteBold));
+            telefono.AddCell(new Paragraph(DateTime.Now.Month.ToString(), fuenteBold));
+            telefono.AddCell(new Paragraph(DateTime.Now.Year.ToString(), fuenteBold));
             telefono.AddCell("");
             telefono.AddCell("");
             telefono.AddCell("");
-
             subTabla.AddCell(firma);
             subTabla.AddCell(telefono);
 
@@ -347,6 +372,8 @@ namespace Adquisiciones.View.Reportes
             GenerarCeldas(10, anotacion);
             
             anotacion.AddCell(new Paragraph("OBSERVACIONES", fuente));
+            anotacion.AddCell(new Paragraph(pedido.Observaciones, fuenteBold));
+
             GenerarCeldas(10, anotacion);
 
             result.AddCell(anotacion);return result;
@@ -378,12 +405,12 @@ namespace Adquisiciones.View.Reportes
             cabeza.AddCell(this.Etiquetas());
             cabeza.DefaultCell.Colspan = 2;
             cabeza.AddCell(this.CabeceraDetalle());
-
             anverso.AddCell(cabeza);
             anverso.AddCell(this.Detalle());
-            //anverso.AddCell(this.Firmas());
 
-            //anverso.FooterRows = 1;
+            anverso.DefaultCell.HorizontalAlignment = Element.ALIGN_RIGHT;
+            anverso.AddCell(new Paragraph("Importe Total: " +pedido.ImporteTotal.Value.ToString("C"), fuente));
+            
 
             document.Add(anverso);
 
@@ -441,6 +468,11 @@ namespace Adquisiciones.View.Reportes
             copy.Close();
             anversoReader.Close();
             reversoReader.Close();
+
+            File.Delete(fileReversoMarca);
+            File.Delete(fileAnversoMarca);
+            File.Delete(fileAnverso);
+            File.Delete(fileReverso);
 
             Process.Start("cmd", "/c " + filePedido);
 

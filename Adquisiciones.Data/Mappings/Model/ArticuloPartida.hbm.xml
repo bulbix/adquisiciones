@@ -8,10 +8,10 @@
         <column name="cve_art" />
         <column name="id_almacen" />
       </key-many-to-one>
-      <key-property name="Estatus" column="estatus" type="string" />
+      <key-property name="Movimiento" column="movimiento" type="int" />
     </composite-id>
     <property name="FechaInicio" column="fecha_inicio" type="DateTime" />
     <property name="FechaFin" column="fecha_fin" type="DateTime" />
-    <many-to-one name="CatPartida" column="partida" cascade="save-update" not-null="true" />
+    <!--<many-to-one name="CatPartida" column="partida" cascade="save-update" not-null="true" />-->
   </class>
 </hibernate-mapping>

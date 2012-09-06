@@ -170,7 +170,13 @@ namespace Adquisiciones.Data.Entities
 			//hash = 27 * hash * _partida.GetHashCode();
 			return hash;
 		}
-		#endregion
+
+
+	    public override string ToString()
+	    {
+	        return _partida + "/" + _despartida;}
+
+	    #endregion
 		
 	}
 }

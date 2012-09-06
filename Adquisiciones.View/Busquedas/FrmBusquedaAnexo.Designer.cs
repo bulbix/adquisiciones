@@ -49,12 +49,12 @@
             // 
             this.gcAnexo.DataSource = this.bsSource;
             this.gcAnexo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gcAnexo.Location = new System.Drawing.Point(0, 55);
+            this.gcAnexo.Location = new System.Drawing.Point(0, 67);
             this.gcAnexo.MainView = this.gvAnexo;
             this.gcAnexo.Name = "gcAnexo";
             this.gcAnexo.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemButtonEdit1});
-            this.gcAnexo.Size = new System.Drawing.Size(708, 316);
+            this.gcAnexo.Size = new System.Drawing.Size(708, 307);
             this.gcAnexo.TabIndex = 4;
             this.gcAnexo.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvAnexo});
@@ -75,7 +75,6 @@
             this.gvAnexo.OptionsView.EnableAppearanceEvenRow = true;
             this.gvAnexo.OptionsView.ShowAutoFilterRow = true;
             this.gvAnexo.OptionsView.ShowGroupedColumns = true;
-            this.gvAnexo.OptionsView.ShowGroupPanel = false;
             // 
             // gridColumn2
             // 
@@ -157,6 +156,7 @@
             this.gridColumn5.FieldName = "Usuario";
             this.gridColumn5.Name = "gridColumn5";
             this.gridColumn5.OptionsColumn.AllowEdit = false;
+            this.gridColumn5.SortMode = DevExpress.XtraGrid.ColumnSortMode.Value;
             this.gridColumn5.UnboundType = DevExpress.Data.UnboundColumnType.String;
             this.gridColumn5.Visible = true;
             this.gridColumn5.VisibleIndex = 6;

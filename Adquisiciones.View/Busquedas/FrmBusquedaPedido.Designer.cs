@@ -73,7 +73,7 @@
             this.gvPedido.OptionsBehavior.Editable = false;
             this.gvPedido.OptionsView.EnableAppearanceEvenRow = true;
             this.gvPedido.OptionsView.ShowAutoFilterRow = true;
-            this.gvPedido.OptionsView.ShowGroupPanel = false;
+            this.gvPedido.OptionsView.ShowGroupedColumns = true;
             this.gvPedido.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
             new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.gridColumn6, DevExpress.Data.ColumnSortOrder.Ascending)});
             // 
@@ -92,6 +92,7 @@
             this.gridColumn6.Caption = "Requisicion";
             this.gridColumn6.FieldName = "Requisicion";
             this.gridColumn6.Name = "gridColumn6";
+            this.gridColumn6.SortMode = DevExpress.XtraGrid.ColumnSortMode.Value;
             this.gridColumn6.UnboundType = DevExpress.Data.UnboundColumnType.String;
             this.gridColumn6.Visible = true;
             this.gridColumn6.VisibleIndex = 6;
@@ -102,6 +103,7 @@
             this.gridColumn5.Caption = "Proveedor";
             this.gridColumn5.FieldName = "Proveedor";
             this.gridColumn5.Name = "gridColumn5";
+            this.gridColumn5.SortMode = DevExpress.XtraGrid.ColumnSortMode.Value;
             this.gridColumn5.UnboundType = DevExpress.Data.UnboundColumnType.String;
             this.gridColumn5.Visible = true;
             this.gridColumn5.VisibleIndex = 4;
@@ -112,6 +114,7 @@
             this.gridColumn4.Caption = "Anexo";
             this.gridColumn4.FieldName = "Anexo";
             this.gridColumn4.Name = "gridColumn4";
+            this.gridColumn4.SortMode = DevExpress.XtraGrid.ColumnSortMode.Value;
             this.gridColumn4.UnboundType = DevExpress.Data.UnboundColumnType.String;
             this.gridColumn4.Visible = true;
             this.gridColumn4.VisibleIndex = 3;
@@ -155,6 +158,7 @@
             this.gridColumn8.Name = "gridColumn8";
             this.gridColumn8.OptionsColumn.AllowEdit = false;
             this.gridColumn8.OptionsColumn.ReadOnly = true;
+            this.gridColumn8.SortMode = DevExpress.XtraGrid.ColumnSortMode.Value;
             this.gridColumn8.UnboundType = DevExpress.Data.UnboundColumnType.String;
             this.gridColumn8.Visible = true;
             this.gridColumn8.VisibleIndex = 7;

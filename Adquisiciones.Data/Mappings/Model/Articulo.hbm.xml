@@ -36,7 +36,8 @@
       </key>
       <one-to-many class="Adquisiciones.Data.Entities.ArticuloFarmacia,Adquisiciones.Data" />
     </bag>
-    <bag name="ArticuloPartida" inverse="true" lazy="true" cascade="none">
+    
+    <bag name="ArticuloPartida" inverse="true" lazy="true" cascade="none" >
       <key>
         <column name="cve_art" />
         <column name="id_almacen" />
