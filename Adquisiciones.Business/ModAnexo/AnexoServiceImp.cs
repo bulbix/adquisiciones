@@ -99,7 +99,8 @@ namespace Adquisiciones.Business.ModAnexo
                                                CveArt = anexoDetalleConsulta.Articulo.Id.CveArt,
                                                DescripcionArt = anexoDetalleConsulta.Articulo.DesArticulo,
                                                PresentacionArt = anexoDetalleConsulta.Articulo.Presentacion,
-                                               Cantidad = anexoDetalleConsulta.Cantidad
+                                               CantidadMinimo = anexoDetalleConsulta.CantidadMinimo,
+                                               CantidadMaximo =  anexoDetalleConsulta.CantidadMaximo
                                            };
 
                     anexoConsulta.AnexoDetalle.Add(anexoDetalle);

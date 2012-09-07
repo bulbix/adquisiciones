@@ -84,7 +84,7 @@
             // 
             // splitContainerControl1
             // 
-            this.splitContainerControl1.Location = new System.Drawing.Point(0, 70);
+            this.splitContainerControl1.Location = new System.Drawing.Point(0, 68);
             this.splitContainerControl1.Panel1.Controls.Add(this.cbxActividad);
             this.splitContainerControl1.Panel1.Controls.Add(this.cbxIva);
             this.splitContainerControl1.Panel1.Controls.Add(this.cbxCargo);
@@ -109,7 +109,7 @@
             this.splitContainerControl1.Panel1.Controls.Add(this.labelControl1);
             this.splitContainerControl1.Panel2.Controls.Add(this.txtObservaciones);
             this.splitContainerControl1.Panel2.Controls.Add(this.labelControl11);
-            this.splitContainerControl1.Size = new System.Drawing.Size(941, 489);
+            this.splitContainerControl1.Size = new System.Drawing.Size(941, 492);
             this.splitContainerControl1.SplitterPosition = 289;
             // 
             // cbxActividad

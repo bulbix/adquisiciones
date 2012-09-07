@@ -83,5 +83,26 @@ namespace Adquisiciones.Data.Dao.ModFallo
             foreach (var fallo in fallos)
                 Delete(fallo);
         }
+
+         [Transaction(ReadOnly = true)]
+        public bool ExisteFalloRequisicion(Anexo anexo)
+         {
+             bool result = false;
+            var criteria = CurrentSession.CreateCriteria(typeof(Fallo));
+            criteria.Add(Restrictions.Eq("Anexo", anexo));
+
+            if (anexo != null && anexo.IdAnexo == 0) return false;
+            var fallos = criteria.List<Fallo>();
+             foreach (var fallo in fallos)
+             {
+                 if(fallo.Estado == "R")
+                 {
+                     result = true;
+                     break;
+                 }
+             }
+
+             return result;
+         }
     }
 }

@@ -119,6 +119,9 @@ namespace Adquisiciones.View.Modulos
         protected virtual void CmdConsultarClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             Consultar();
+            
+           
+
             HayErrores();
         }
 
@@ -139,6 +142,15 @@ namespace Adquisiciones.View.Modulos
 
         public virtual void Consultar()
         {
+            var usuarioModifico = (Usuario)TypeEntity.GetProperty("Usuario").GetValue(EntityActual, null);
+
+
+            if (FrmModuloAcceso.UsuarioLog.IdUsuario != FrmModuloAcceso.SuperUsario && 
+                FrmModuloAcceso.UsuarioLog.IdUsuario != usuarioModifico.IdUsuario)
+            {
+                cmdGuardar.Enabled = false;
+                cmdEliminar.Enabled = false;
+            }
         }
 
         protected void GetServicio()
@@ -147,7 +159,7 @@ namespace Adquisiciones.View.Modulos
             Servicio = ctx[NombreService] as IFormBusqueda;
         }
 
-        protected virtual void CmdEliminarItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        protected virtual void Eliminar()
         {
             try
             {
@@ -167,8 +179,12 @@ namespace Adquisiciones.View.Modulos
                 XtraMessageBox.Show(@"Elemento asociado otro modulo", @"Adquisiciones",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-           
+            
+        }
 
+        protected virtual void CmdEliminarItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Eliminar();
         }
 
         protected virtual void CmdReporteItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

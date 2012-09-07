@@ -29,6 +29,8 @@ namespace Adquisiciones.View
 
         private CaptchaImage captcha;
 
+        public const int SuperUsario = 4192;
+
         /// <summary>
         ///  </summary>
         public FrmModuloAcceso()

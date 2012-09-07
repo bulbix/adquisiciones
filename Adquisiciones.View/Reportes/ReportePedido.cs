@@ -29,6 +29,8 @@ namespace Adquisiciones.View.Reportes
         string fileAnverso = "";
         string fileReverso = "";
 
+        private string piePagina = "PAGO";
+
 
 
 
@@ -128,16 +130,15 @@ namespace Adquisiciones.View.Reportes
                 result.AddCell(new Paragraph(total.ToString("C"), fuente));
             }
 
-            for (int renglon = 1; renglon <= 200; renglon++)
-            {
-                result.AddCell(new Paragraph("11111", fuente));
-                result.AddCell(new Paragraph("11111/AAAAAA", fuente));
-                result.AddCell(new Paragraph("100", fuente));
-                result.AddCell(new Paragraph("PIEZA", fuente));
-                result.AddCell(new Paragraph("$100.00", fuente));
-                result.AddCell(new Paragraph("$100000.00", fuente));
+            //for (int renglon = 1; renglon <= 200; renglon++)//{
+            //    result.AddCell(new Paragraph("11111", fuente));
+            //    result.AddCell(new Paragraph("11111/AAAAAA", fuente));
+            //    result.AddCell(new Paragraph("100", fuente));
+            //    result.AddCell(new Paragraph("PIEZA", fuente));
+            //    result.AddCell(new Paragraph("$100.00", fuente));
+            //    result.AddCell(new Paragraph("$100000.00", fuente));
 
-            }
+            //}
 
             return result;
         }
@@ -226,7 +227,7 @@ namespace Adquisiciones.View.Reportes
         }
 
 
-        private PdfPTable Firmas()
+        private PdfPTable Firmas(string piePagina)
         {
             var result = new PdfPTable(4);
             result.DefaultCell.Border = 0;
@@ -267,7 +268,9 @@ namespace Adquisiciones.View.Reportes
             result.AddCell(firma3);
             result.AddCell(etiqueta1);
 
-            result.DefaultCell.Colspan = 4;
+            result.DefaultCell.Colspan = 2;
+            result.DefaultCell.HorizontalAlignment = Element.ALIGN_LEFT;
+            result.AddCell(new Paragraph(piePagina, fuenteRojo));
             result.DefaultCell.HorizontalAlignment = Element.ALIGN_RIGHT;
             result.AddCell(new Paragraph("PAGO VER OBSERVACIONES AL REVERSO", fuenteRojo));
 
@@ -324,11 +327,11 @@ namespace Adquisiciones.View.Reportes
             var representanteLegal = prov.Rnombre + " " + prov.Rpaterno + " " + prov.Rmaterno;
             
             anotacion.AddCell(new Paragraph("NOMBRE DEL REPRESENTANTE LEGAL", fuente));
-            anotacion.AddCell(new Paragraph(representanteLegal, fuenteBold));
+            //anotacion.AddCell(new Paragraph(representanteLegal, fuenteBold));
             GenerarCeldas(10, anotacion);
 
             anotacion.AddCell(new Paragraph("CARGO:", fuente));
-            anotacion.AddCell(new Paragraph(prov.Giro, fuenteBold));
+            //anotacion.AddCell(new Paragraph(prov.Giro, fuenteBold));
 
             GenerarCeldas(10, anotacion);
 
@@ -440,7 +443,31 @@ namespace Adquisiciones.View.Reportes
             document.Close();
         }
 
-        public void GenerarReporte()
+        public void GenerarReporteCompleto()
+        {
+            string[] piesPagina = {
+                                      "PAGO", "CONSECUTIVO DE PEDIDOS",
+                                      "PROVEEDOR", "ACUSE DE RECIBO", "EXPEDIENTE","COMPRADOR"
+                                  };
+
+           var filePedidoCompleto = Path.GetTempFileName() + ".pdf";
+           var concatenate = new PdfConcatenate(new FileStream(filePedidoCompleto, FileMode.Create));
+           
+            for (var numReporte = 0; numReporte < piesPagina.Count();numReporte++)
+            {
+                this.piePagina = piesPagina[numReporte];
+                var fileReporte = GenerarReporte();
+                var reporte = new PdfReader(fileReporte);
+                concatenate.AddPages(reporte);
+                File.Delete(fileReporte);
+            }
+
+           concatenate.Close();
+
+           Process.Start("cmd", "/c " + filePedidoCompleto);
+        }
+
+        private string GenerarReporte()
         {
             GenerarAnverso();
             GenerarReverso();
@@ -474,7 +501,9 @@ namespace Adquisiciones.View.Reportes
             File.Delete(fileAnverso);
             File.Delete(fileReverso);
 
-            Process.Start("cmd", "/c " + filePedido);
+            return filePedido;
+
+           
 
         }
 
@@ -575,7 +604,7 @@ namespace Adquisiciones.View.Reportes
             var footerTbl = new PdfPTable(1);
             footerTbl.TotalWidth = 790;
             //footerTbl.HorizontalAlignment = Element.ALIGN_CENTER;
-            var cell = new PdfPCell(this.Firmas());
+            var cell = new PdfPCell(this.Firmas(this.piePagina));
             cell.Border = 0;
             cell.PaddingLeft = 10;
             footerTbl.AddCell(cell);

@@ -7,6 +7,7 @@ using System.Text;
 using System.Windows.Forms;
 using Adquisiciones.Business;
 using Adquisiciones.Business.ModAnexo;
+using Adquisiciones.Business.ModFallo;
 using Adquisiciones.Data.Entities;
 using DevExpress.XtraEditors;
 using Spring.Context.Support;
@@ -19,6 +20,7 @@ namespace Adquisiciones.View.Modulos
        ///<summary>
         ///</summary>
         public IAnexoService AnexoService { get; set; }
+        public IFalloService FalloService { get; set; }
 
         ///<summary>
         ///</summary>
@@ -31,7 +33,14 @@ namespace Adquisiciones.View.Modulos
             base.NombreReporte = "reporteAnexo";
             base.NombreService = "anexoService";
             base.GetServicio();
+            
             AnexoService = base.Servicio as IAnexoService;
+            
+            var ctx = ContextRegistry.GetContext();
+            FalloService = ctx["falloService"] as IFalloService;
+
+
+
             Nuevo();
             BindearCampos();
             InicializarCatalogos();
@@ -45,9 +54,10 @@ namespace Adquisiciones.View.Modulos
             Consultar();
             Text = @"Anexo::" + anexo.NumeroAnexo;
 
-            if (AnexoService.AnexoDao.ExisteAnexoCotizacion(AnexoActual))
+            if (AnexoService.AnexoDao.ExisteAnexoCotizacion(AnexoActual) ||
+                AnexoService.AnexoDao.ExisteAnexoPedido(AnexoActual))
             {
-                XtraMessageBox.Show(@"El anexo tiene asociadas cotizaciones",
+                XtraMessageBox.Show(@"El anexo tiene asociadas cotizaciones o pedidos",
                 @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 cmdGuardar.Enabled = false;
             }
@@ -87,7 +97,8 @@ namespace Adquisiciones.View.Modulos
 
             txtnumlicitacion.Enabled = true;
             dtpFechaanexo.Enabled = true;
-            //cmdGuardar.Enabled = true;
+            cmdGuardar.Enabled = true;
+
             txtnumlicitacion.Focus();
             listaError.Strings.Clear();
             lblNumErrors.Caption = string.Empty;
@@ -129,7 +140,6 @@ namespace Adquisiciones.View.Modulos
                 XtraMessageBox.Show(@"Licitación Registrada o Actualizada Exitosamente",
                @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-
             }
             catch (Exception ee)
             {
@@ -142,6 +152,8 @@ namespace Adquisiciones.View.Modulos
 
         public override void Consultar()
         {
+          
+
            try
             {
                if(AnexoActual.NumeroAnexo == null)
@@ -159,6 +171,18 @@ namespace Adquisiciones.View.Modulos
                     lblNumErrors.Caption = string.Empty;
 
                     base.EntityActual = AnexoActual;
+                    base.Consultar();
+
+                    if (AnexoService.AnexoDao.ExisteAnexoCotizacion(AnexoActual))
+                    {
+                        XtraMessageBox.Show(@"El anexo tiene cotizacion",
+                        @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        cmdGuardar.Enabled = false;
+                    }
+
+                    if (FalloService.CotizacionDao.ExisteAnexoFallo(AnexoActual))
+                        cmdMaximos.Enabled = true;
+
                 }
                 else
                 {
@@ -227,6 +251,15 @@ namespace Adquisiciones.View.Modulos
 
                 }
             }
+        }
+
+        private void CmdMaximosClick(object sender, EventArgs e)
+        {
+            FalloService.ActualizarFalloMaximos(AnexoActual);
+            XtraMessageBox.Show(@"Se actualizaron los maximos del fallo asociado",
+                       @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+
         }
 
        

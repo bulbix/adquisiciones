@@ -80,10 +80,10 @@
             // 
             // splitContainerControl1
             // 
-            this.splitContainerControl1.Location = new System.Drawing.Point(0, 70);
+            this.splitContainerControl1.Location = new System.Drawing.Point(0, 68);
             this.splitContainerControl1.Panel1.Controls.Add(this.gcDatosGenerales);
             this.splitContainerControl1.Panel2.Controls.Add(this.gcCotizacionDetalle);
-            this.splitContainerControl1.Size = new System.Drawing.Size(1130, 330);
+            this.splitContainerControl1.Size = new System.Drawing.Size(1130, 333);
             this.splitContainerControl1.SplitterPosition = 167;
             // 
             // gcDatosGenerales
@@ -316,7 +316,7 @@
             this.gcCotizacionDetalle.Location = new System.Drawing.Point(0, 0);
             this.gcCotizacionDetalle.MainView = this.gvCotizacionDetalle;
             this.gcCotizacionDetalle.Name = "gcCotizacionDetalle";
-            this.gcCotizacionDetalle.Size = new System.Drawing.Size(1130, 158);
+            this.gcCotizacionDetalle.Size = new System.Drawing.Size(1130, 160);
             this.gcCotizacionDetalle.TabIndex = 4;
             this.gcCotizacionDetalle.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvCotizacionDetalle});
@@ -490,7 +490,7 @@
             // 
             // gridColumn10
             // 
-            this.gridColumn10.Caption = "Cantidad";
+            this.gridColumn10.Caption = "Cantidad Minimo";
             this.gridColumn10.DisplayFormat.FormatString = "0";
             this.gridColumn10.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.gridColumn10.FieldName = "Cantidad";
@@ -500,7 +500,7 @@
             this.gridColumn10.UnboundType = DevExpress.Data.UnboundColumnType.Decimal;
             this.gridColumn10.Visible = true;
             this.gridColumn10.VisibleIndex = 3;
-            this.gridColumn10.Width = 64;
+            this.gridColumn10.Width = 91;
             // 
             // gridColumn11
             // 

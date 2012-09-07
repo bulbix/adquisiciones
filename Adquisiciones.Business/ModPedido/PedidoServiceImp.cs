@@ -113,7 +113,8 @@ namespace Adquisiciones.Business.ModPedido
                 pedido.NumeroPedido = PedidoDao.MaximoNumeroPedido(pedido.Almacen);
                 pedido.CatTipopedido = new CatTipopedido(1);//Pedido Mayor
                 pedido.Proveedor = fallo.Cotizacion.Proveedor;
-                pedido.Anexo = fallo.Anexo;pedido.CatArea = requisicion.CatArea;
+                pedido.Anexo = fallo.Anexo;
+                pedido.CatArea = requisicion.CatArea;
                 pedido.ImporteDescuento = new decimal(0.0);
                 pedido.CatPresupuesto = pedido.CatPresupuesto;
                 pedido.EstadoPedido = "A";
@@ -123,38 +124,44 @@ namespace Adquisiciones.Business.ModPedido
                 pedido = PedidoDao.Merge(pedido);
 
                 short renglonPedido = 1;
-                int entrega = 1;
-                foreach(var falloDetalle in fallo.FalloDetalle)
+                //int entrega = 1;
+
+                var requisicionesDetalle = RequisicionDao.CargarRequisicionDetalle(requisicion);
+
+                foreach (var requisicionDetalle in requisicionesDetalle)
                 {
-                    var requisicionDetalle = RequisicionDao.ObtenerRequisicionDetalleByArticulo(requisicion,
-                                            falloDetalle.Articulo);
+                    foreach (var falloDetalle in fallo.FalloDetalle)
+                    {
+                        if(requisicionDetalle.Articulo == falloDetalle.Articulo)
+                        {
+                            //Actualizamos la cantidad pedida fallo
+                            falloDetalle.CantidadPed += requisicionDetalle.Cantidad;
+                            FalloDetalleDao.Merge(falloDetalle);
 
-                    //Actualizamos la cantidad pedida fallo
-                    falloDetalle.CantidadPed = requisicionDetalle.Cantidad;
-                    FalloDetalleDao.Merge(falloDetalle);
+                            var pedidoDetalle = new PedidoDetalle();
+                            pedidoDetalle.Pedido = pedido;
+                            pedidoDetalle.RenglonPedido = renglonPedido;
+                            pedidoDetalle.Articulo = falloDetalle.Articulo;
+                            pedidoDetalle.Cantidad = requisicionDetalle.Cantidad;
+                            pedidoDetalle.PrecioUnitario = falloDetalle.PrecioFallo;
+                            //pedidoDetalle.Marca = falloDetalle.
 
+                            var pedidoEntrega = new PedidoEntrega();
+                            pedidoEntrega.Entrega = 1;
+                            pedidoEntrega.FechaInicial = fechaInicial;
+                            pedidoEntrega.FechaFinal = fechaFinal;
+                            pedidoEntrega.Cantidad = requisicionDetalle.Cantidad;
+                            pedidoEntrega.PedidoDetalle = pedidoDetalle;
+                            //++entrega;
 
-                    var pedidoDetalle = new PedidoDetalle();
-                    pedidoDetalle.Pedido = pedido;
-                    pedidoDetalle.RenglonPedido = renglonPedido;
-                    pedidoDetalle.Articulo = falloDetalle.Articulo;
-                    pedidoDetalle.Cantidad = requisicionDetalle.Cantidad;
-                    pedidoDetalle.PrecioUnitario = falloDetalle.PrecioFallo;
-                    ++entrega;
+                            pedidoDetalle.PedidoEntrega.Add(pedidoEntrega);
+                            PedidoDetalleDao.Merge(pedidoDetalle);
+                            ++renglonPedido;
 
-                    var pedidoEntrega = new PedidoEntrega();
-                    pedidoEntrega.Entrega = entrega;
-                    pedidoEntrega.FechaInicial = fechaInicial;
-                    pedidoEntrega.FechaFinal = fechaFinal;pedidoEntrega.Cantidad = requisicionDetalle.Cantidad;
-                    pedidoEntrega.PedidoDetalle = pedidoDetalle;
-                    
-                    pedidoDetalle.PedidoEntrega.Add(pedidoEntrega);
-                    PedidoDetalleDao.Merge(pedidoDetalle);
-                    ++renglonPedido;
+                        }
+                    }
                 }
 
-
-                //Cambiar el estatus a P de la requisicion
                 requisicion.Estatus = "P";
                 RequisicionDao.Merge(requisicion);
              }
@@ -267,7 +274,8 @@ namespace Adquisiciones.Business.ModPedido
                 pedidoDetalle.RenglonPedido = anexoDetalle.RenglonAnexo;
                 pedidoDetalle.CveArt = anexoDetalle.Articulo.Id.CveArt;
                 pedidoDetalle.DescripcionArt = anexoDetalle.Articulo.DesArticulo;
-                pedidoDetalle.Cantidad = anexoDetalle.Cantidad;pedidosDetalle.Add(pedidoDetalle);
+                pedidoDetalle.Cantidad = 0;//anexoDetalle.CantidadMinimo;
+                pedidosDetalle.Add(pedidoDetalle);
             }
 
 

@@ -101,5 +101,16 @@ namespace Adquisiciones.Data.Dao.ModAnexo
             return cotizaciones.Count != 0 ? true : false;
 
         }
+
+        [Transaction(ReadOnly = true)]
+        public bool ExisteAnexoPedido(Anexo anexo)
+        {
+            var criteria = CurrentSession.CreateCriteria(typeof(Pedido));
+            criteria.Add(Restrictions.Eq("Anexo", anexo));
+
+            if (anexo != null && anexo.IdAnexo == 0) return false;
+            var pedidos = criteria.List<Pedido>();
+            return pedidos.Count != 0 ? true : false;
+        }
     }
 }

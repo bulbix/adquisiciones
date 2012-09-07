@@ -44,11 +44,6 @@ namespace Adquisiciones.Business.ModFallo
 
             var anexosDetalle = AnexoDao.CargarAnexoDetalle(anexo);
 
-            //Borramos en cascada padre con sus hijos
-            //var fallos = FalloDao.FallosByAnexo(anexo);
-            //foreach (var fallo in fallos)
-            //    FalloDao.Delete(fallo);
-
             double index = 1.0;
 
             foreach (var anexoDetalle in anexosDetalle)
@@ -103,17 +98,13 @@ namespace Adquisiciones.Business.ModFallo
                 falloActual.FalloDetalle = new List<FalloDetalle>();
                 result.Add(falloActual);
 
-                var minCantidad =
-                    double.Parse(anexoDetalle.Cantidad.ToString()) * 0.40;
-
-                //var id = new FalloDetalleId(falloActual, cotizacionDetalle.Id.RenglonAnexo);
-
                 var falloDetalle = new FalloDetalle()
                 {
-                    IdFalloDetalle = FalloDetalleDao.MaximoId().Value,Fallo = falloActual,
+                    IdFalloDetalle = FalloDetalleDao.MaximoId().Value,
+                    Fallo = falloActual,
                     RenglonAnexo = cotizacionDetalle.RenglonAnexo,
-                    CantidadMax = anexoDetalle.Cantidad,
-                    CantidadMin = decimal.Parse(minCantidad.ToString()),
+                    CantidadMax = anexoDetalle.CantidadMaximo,
+                    CantidadMin = anexoDetalle.CantidadMinimo,
                     CantidadPed = 0,
                     PrecioFallo = cotizacionDetalle.Precio,
                     Articulo = cotizacionDetalle.Articulo
@@ -138,6 +129,21 @@ namespace Adquisiciones.Business.ModFallo
             return FalloDao.ConsultarFalloCompleto(anexo);
         }
 
+         [Transaction]
+        public void ActualizarFalloMaximos(Anexo anexo)
+        {
+            var fallos = FalloDao.FallosByAnexo(anexo);
+            foreach (var fallo in fallos)
+            {
+                foreach (var fallodetalle in fallo.FalloDetalle)
+                {
+                    fallodetalle.CantidadMin = fallodetalle.CantidadMax;
+                    FalloDetalleDao.Update(fallodetalle);
+                }
+
+            }
+        }
+
         /// <summary> Para delegar el porcentaje en la vista
         /// </summary>
         /// <param name="e"></param>
@@ -153,7 +159,8 @@ namespace Adquisiciones.Business.ModFallo
          [Transaction(ReadOnly = true)]
         public object ConsultarEntityAll(Almacen almacen)
          {
-             return FalloDao.CargarFallos(almacen);}
+             return FalloDao.CargarFallos(almacen);
+         }
 
          [Transaction]
         public void EliminarEntity(object entity, string nombreEntity)

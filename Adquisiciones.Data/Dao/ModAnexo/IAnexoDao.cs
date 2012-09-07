@@ -15,6 +15,7 @@ namespace Adquisiciones.Data.Dao.ModAnexo
         IList<Anexo> CargarAnexosWithFallo(Almacen almacen);
         IList<AnexoDetalle> CargarAnexoDetalle(Anexo anexo);
         bool ExisteAnexoCotizacion(Anexo anexo);
+        bool ExisteAnexoPedido(Anexo anexo);
     
     }
 }

@@ -51,5 +51,14 @@ namespace Adquisiciones.Business.ModFallo
         ///<returns></returns>
         IList<Fallo> ConsultarFallo(Anexo anexo);
 
+        /// <summary>
+        /// Actualiza el campo CantidadMinimo de los fallos de talle
+        /// de cada fallo
+        /// </summary>
+        /// <param name="anexo"></param>
+        /// <returns></returns>
+        void ActualizarFalloMaximos(Anexo anexo);
+
+
     }
 }

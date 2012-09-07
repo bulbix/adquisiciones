@@ -136,7 +136,7 @@ namespace Adquisiciones.View.Busquedas
 
         }
 
-        private void CmdEliminarItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        protected virtual void Eliminar()
         {
             try
             {
@@ -149,12 +149,19 @@ namespace Adquisiciones.View.Busquedas
                     XtraMessageBox.Show(@"Elemento seleccionado borrado", @"Adquisiciones",
                                     MessageBoxButtons.OK, MessageBoxIcon.Information);
                     Buscar();
-                }}
+                }
+            }
             catch (Exception ee)
             {
                 XtraMessageBox.Show(@"Elemento seleccionado asociado otro modulo", @"Adquisiciones",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            
+        }
+
+        private void CmdEliminarItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+           Eliminar();
         }
 
        

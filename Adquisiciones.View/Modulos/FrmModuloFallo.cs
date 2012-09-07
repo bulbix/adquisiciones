@@ -135,15 +135,16 @@ namespace Adquisiciones.View.Modulos
              CallFalloBusqueda();
          }
 
-         //protected override void CmdEliminarItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-         //{
-         //    CallFalloBusqueda();
-         //}
+        protected override void Eliminar()
+        {
+            if(FalloService.FalloDao.ExisteFalloRequisicion((EntityActual as Fallo).Anexo))
+            {
+                XtraMessageBox.Show(@"El fallo ya tiene requisicion",
+                   @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
 
-         //protected override void CmdReporteItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-         //{
-         //    CallFalloBusqueda();
-         //}
-
+            base.Eliminar();
+        }
     }
 }

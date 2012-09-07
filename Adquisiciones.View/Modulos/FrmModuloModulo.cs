@@ -19,9 +19,6 @@ namespace Adquisiciones.View
         public static  Almacen AlmacenSelec;
 
         public IAlmacenDao AlmacenDao { get; set; }
-
-        private bool PermisoAsignarPerfil = false;
-      
         ///<summary>
         ///</summary>
         public FrmModuloModulo()
@@ -36,9 +33,6 @@ namespace Adquisiciones.View
             //leer lista de Usuarios Modulos
             foreach (var usuarioModulo in usuariosModulo)
             {
-                if (usuarioModulo.Id.Modulo.DesModulo.Trim().Equals("ASIGNAR PERFIL"))
-                    PermisoAsignarPerfil = true;
-
                 foreach (var boton in from object control in Controls
                                       let type = control.GetType()
                                       where type == typeof (SimpleButton)
@@ -54,7 +48,8 @@ namespace Adquisiciones.View
         private void LanzarPantallaInicio()
         {
             this.Hide();
-            if (PermisoAsignarPerfil)
+
+            if (FrmModuloAcceso.UsuarioLog.IdUsuario == FrmModuloAcceso.SuperUsario)
                 new FrmPerfil().ShowDialog();
             else
                 new FrmAdquisiciones().ShowDialog();

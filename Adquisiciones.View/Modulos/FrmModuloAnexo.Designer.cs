@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.gcDatosGenerales = new DevExpress.XtraEditors.GroupControl();
+            this.cmdMaximos = new DevExpress.XtraEditors.SimpleButton();
             this.txtnumlicitacion = new DevExpress.XtraEditors.TextEdit();
             this.cbxIva = new System.Windows.Forms.ComboBox();
             this.cbxTipolicitacion = new System.Windows.Forms.ComboBox();
@@ -53,6 +54,7 @@
             this.gridColumnDescripcion = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.bsAnexo = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             this.splitContainerControl1.SuspendLayout();
@@ -73,14 +75,15 @@
             // 
             // splitContainerControl1
             // 
-            this.splitContainerControl1.Location = new System.Drawing.Point(0, 70);
+            this.splitContainerControl1.Location = new System.Drawing.Point(0, 68);
             this.splitContainerControl1.Panel1.Controls.Add(this.gcDatosGenerales);
             this.splitContainerControl1.Panel2.Controls.Add(this.gcAnexoDetalle);
-            this.splitContainerControl1.Size = new System.Drawing.Size(837, 461);
+            this.splitContainerControl1.Size = new System.Drawing.Size(837, 464);
             this.splitContainerControl1.SplitterPosition = 134;
             // 
             // gcDatosGenerales
             // 
+            this.gcDatosGenerales.Controls.Add(this.cmdMaximos);
             this.gcDatosGenerales.Controls.Add(this.txtnumlicitacion);
             this.gcDatosGenerales.Controls.Add(this.cbxIva);
             this.gcDatosGenerales.Controls.Add(this.cbxTipolicitacion);
@@ -101,6 +104,16 @@
             this.gcDatosGenerales.Size = new System.Drawing.Size(837, 134);
             this.gcDatosGenerales.TabIndex = 2;
             this.gcDatosGenerales.Text = "Datos Generales";
+            // 
+            // cmdMaximos
+            // 
+            this.cmdMaximos.Enabled = false;
+            this.cmdMaximos.Location = new System.Drawing.Point(638, 60);
+            this.cmdMaximos.Name = "cmdMaximos";
+            this.cmdMaximos.Size = new System.Drawing.Size(144, 50);
+            this.cmdMaximos.TabIndex = 13;
+            this.cmdMaximos.Text = "Ampliar Maximos";
+            this.cmdMaximos.Click += new System.EventHandler(this.CmdMaximosClick);
             // 
             // txtnumlicitacion
             // 
@@ -231,7 +244,7 @@
             this.gcAnexoDetalle.Name = "gcAnexoDetalle";
             this.gcAnexoDetalle.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemSearchLookUpEdit2});
-            this.gcAnexoDetalle.Size = new System.Drawing.Size(837, 322);
+            this.gcAnexoDetalle.Size = new System.Drawing.Size(837, 324);
             this.gcAnexoDetalle.TabIndex = 8;
             this.gcAnexoDetalle.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvAnexoDetalle});
@@ -353,7 +366,8 @@
             this.gridColumnArticulo,
             this.gridColumnDescripcion,
             this.gridColumn4,
-            this.gridColumn5});
+            this.gridColumn5,
+            this.gridColumn1});
             this.gvAnexoDetalle.GridControl = this.gcAnexoDetalle;
             this.gvAnexoDetalle.Name = "gvAnexoDetalle";
             this.gvAnexoDetalle.NewItemRowText = "Clck aqui para agregar un nuevo registro";
@@ -422,15 +436,25 @@
             // 
             // gridColumn5
             // 
-            this.gridColumn5.Caption = "Cantidad";
+            this.gridColumn5.Caption = "Cantidad Min";
             this.gridColumn5.DisplayFormat.FormatString = "d0";
             this.gridColumn5.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.gridColumn5.FieldName = "Cantidad";
+            this.gridColumn5.FieldName = "CantidadMinimo";
             this.gridColumn5.Name = "gridColumn5";
             this.gridColumn5.UnboundType = DevExpress.Data.UnboundColumnType.Decimal;
             this.gridColumn5.Visible = true;
             this.gridColumn5.VisibleIndex = 3;
-            this.gridColumn5.Width = 84;
+            this.gridColumn5.Width = 96;
+            // 
+            // gridColumn1
+            // 
+            this.gridColumn1.Caption = "Cantidad Max";
+            this.gridColumn1.FieldName = "CantidadMaximo";
+            this.gridColumn1.Name = "gridColumn1";
+            this.gridColumn1.UnboundType = DevExpress.Data.UnboundColumnType.Decimal;
+            this.gridColumn1.Visible = true;
+            this.gridColumn1.VisibleIndex = 4;
+            this.gridColumn1.Width = 83;
             // 
             // FrmModuloAnexo
             // 
@@ -486,5 +510,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
         private System.Windows.Forms.BindingSource bsAnexo;
         private System.Windows.Forms.BindingSource bsAnexoDetalle;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
+        private DevExpress.XtraEditors.SimpleButton cmdMaximos;
     }
 }

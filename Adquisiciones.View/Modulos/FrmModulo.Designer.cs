@@ -284,8 +284,8 @@
         protected DevExpress.XtraBars.BarButtonItem cmdConsultar;
         protected DevExpress.XtraBars.BarListItem listaError;
         protected DevExpress.XtraBars.BarStaticItem lblNumErrors;
-        private DevExpress.XtraBars.BarButtonItem cmdEliminar;
-        private DevExpress.XtraBars.BarButtonItem cmdReporte;
+        protected DevExpress.XtraBars.BarButtonItem cmdEliminar;
+        protected DevExpress.XtraBars.BarButtonItem cmdReporte;
         protected DevExpress.XtraBars.BarButtonItem barButtonItem1;
         protected DevExpress.XtraBars.BarButtonItem barButtonItem2;
     }

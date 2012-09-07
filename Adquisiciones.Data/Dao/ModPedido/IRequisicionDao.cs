@@ -18,5 +18,7 @@ namespace Adquisiciones.Data.Dao.ModPedido
         RequisicionDetall ObtenerRequisicionDetalleByArticulo(Requisicion requisicion, Articulo articulo);
 
 
+        IList<RequisicionDetall> CargarRequisicionDetalle(Requisicion requisicion);
+
     }
 }

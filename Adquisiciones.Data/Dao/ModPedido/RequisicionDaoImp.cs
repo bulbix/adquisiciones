@@ -31,5 +31,13 @@ namespace Adquisiciones.Data.Dao.ModPedido
             criteria.Add(Restrictions.Eq("Articulo", articulo));
             return criteria.UniqueResult<RequisicionDetall>();
         }
+
+        [Transaction(ReadOnly = true)]
+        public IList<RequisicionDetall> CargarRequisicionDetalle(Requisicion requisicion)
+        {
+            var criteria = CurrentSession.CreateCriteria<RequisicionDetall>();
+            criteria.Add(Restrictions.Eq("Id.Requisicion", requisicion));
+            return criteria.List<RequisicionDetall>();
+        }
     }
 }

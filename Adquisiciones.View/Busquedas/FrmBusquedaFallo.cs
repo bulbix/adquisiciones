@@ -32,5 +32,19 @@ namespace Adquisiciones.View.Busquedas
         {
             XtraMessageBox.Show("Genere el reporte");
         }
+
+        protected override void Eliminar()
+        {
+            if (FalloService.FalloDao.ExisteFalloRequisicion
+                ((GvGeneral.GetFocusedRow() as Fallo).Anexo))
+            {
+                XtraMessageBox.Show(@"El fallo ya tiene requisicion",
+                   @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            base.Eliminar();
+        }
+    
     }
 }

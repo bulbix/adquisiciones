@@ -17,8 +17,9 @@
     </many-to-one>
     
     <property name="Presentacion" column="presentacion" type="string" />
-    <property name="Cantidad" column="cantidad" type="Decimal" />   
-    
+    <property name="CantidadMinimo" column="cantidad_minimo" type="Decimal" />
+    <property name="CantidadMaximo" column="cantidad_maximo" type="Decimal" />
+
   </class> 
  
 </hibernate-mapping>

@@ -81,9 +81,8 @@ namespace Adquisiciones.View.Modulos
             bsCotizacionDetalle.DataSource = new List<CotizacionDetalle>();
             listaError.Strings.Clear();
             lblNumErrors.Caption = string.Empty;
-
             gcDatosGenerales.Enabled = true;
-            //cmdGuardar.Enabled = false;
+            cmdGuardar.Enabled = true;
         }
 
         public override void Guardar()
@@ -111,11 +110,7 @@ namespace Adquisiciones.View.Modulos
                 base.EntityActual = CotizacionActual;
 
                 XtraMessageBox.Show(@"Cotización Registrada o Actualizada Exitosamente",
-                    @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-
-
-            }
+                    @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Information);}
             catch (Exception ee)
             {
                 XtraMessageBox.Show(@"Ocurrio un error en la insercion o actualizacion ",
@@ -131,6 +126,8 @@ namespace Adquisiciones.View.Modulos
             {
                 Nuevo();
 
+               
+
                 if (Util.DatosValidos(CotizacionActual, lblNumErrors, listaError))
                 {
                     CotizacionService.ConsultarCotizacion(ref CotizacionActual);
@@ -144,6 +141,7 @@ namespace Adquisiciones.View.Modulos
                     dtpFechacotizacion.DateTime = CotizacionActual.FechaCotizacion.Value;
 
                     base.EntityActual = CotizacionActual;
+                    base.Consultar();
 
                     if (CotizacionService.CotizacionDao.ExisteAnexoFallo(CotizacionActual.Anexo))
                     {

@@ -16,6 +16,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Adquisiciones.View", "Adqui
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Adquisiciones.Business", "Adquisiciones.Business\Adquisiciones.Business.csproj", "{F647632A-13DC-4B88-BF03-C21550F74685}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "SetupAdquisiciones", "SetupAdquisiciones\SetupAdquisiciones.vdproj", "{5BBFEAF0-4C89-4D66-AE78-9480D58E2205}"
+EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = WpfAdquisiciones.vsmdi
@@ -69,6 +71,12 @@ Global
 		{F647632A-13DC-4B88-BF03-C21550F74685}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{F647632A-13DC-4B88-BF03-C21550F74685}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{F647632A-13DC-4B88-BF03-C21550F74685}.Release|x86.ActiveCfg = Release|Any CPU
+		{5BBFEAF0-4C89-4D66-AE78-9480D58E2205}.Debug|Any CPU.ActiveCfg = Debug
+		{5BBFEAF0-4C89-4D66-AE78-9480D58E2205}.Debug|Mixed Platforms.ActiveCfg = Debug
+		{5BBFEAF0-4C89-4D66-AE78-9480D58E2205}.Debug|x86.ActiveCfg = Debug
+		{5BBFEAF0-4C89-4D66-AE78-9480D58E2205}.Release|Any CPU.ActiveCfg = Release
+		{5BBFEAF0-4C89-4D66-AE78-9480D58E2205}.Release|Mixed Platforms.ActiveCfg = Release
+		{5BBFEAF0-4C89-4D66-AE78-9480D58E2205}.Release|x86.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

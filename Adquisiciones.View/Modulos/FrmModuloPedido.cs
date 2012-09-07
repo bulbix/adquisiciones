@@ -57,8 +57,11 @@ namespace Adquisiciones.View.Modulos
 
 
             if (pedido.Requisicion != null)
+            {
                 cmdGuardar.Enabled = false;
-        }
+                cmdEliminar.Enabled = false;
+            }
+         }
 
         public override void BindearCampos()
         {
@@ -172,6 +175,7 @@ namespace Adquisiciones.View.Modulos
                     SumTotal();
 
                     base.EntityActual = PedidoActual;
+                    base.Consultar();
 
                 }
                 else
@@ -252,7 +256,7 @@ namespace Adquisiciones.View.Modulos
                 gvPedidoDetalle.OptionsBehavior.AllowDeleteRows = DefaultBoolean.False;
 
                 gridColumnArticulo.OptionsColumn.AllowEdit = false;
-                gridColumnCantidad.OptionsColumn.AllowEdit = false;
+                //gridColumnCantidad.OptionsColumn.AllowEdit = false;
 
             }
             else
@@ -265,7 +269,7 @@ namespace Adquisiciones.View.Modulos
                 txtTotal.Text = @"$0.00";
 
                 gridColumnArticulo.OptionsColumn.AllowEdit = true;
-                gridColumnCantidad.OptionsColumn.AllowEdit = true;
+                //gridColumnCantidad.OptionsColumn.AllowEdit = true;
 
 
             }

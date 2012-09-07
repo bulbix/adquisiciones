@@ -15,6 +15,8 @@ namespace Adquisiciones.Data.Dao.ModFallo
         IList<Fallo> CargarFallos(Almacen almacen);
 
         void BorrarFallos(Anexo anexo);
+        bool ExisteFalloRequisicion(Anexo anexo);
 
+        
     }
 }

@@ -107,7 +107,8 @@ namespace Adquisiciones.View
                 filaDetalle["Articulo"] = detalle.Articulo.Id.CveArt;
                 filaDetalle["Descripcion"] = detalle.Articulo.DesArticulo;
                 filaDetalle["Presentacion"] = detalle.Articulo.Presentacion;
-                filaDetalle["Cantidad"] = detalle.Cantidad;
+                filaDetalle["CantidadMinimo"] = detalle.CantidadMinimo;
+                filaDetalle["CantidadMaximo"] = detalle.CantidadMaximo;
                 anexoDs.Tables["AnexoDetalle"].Rows.Add(filaDetalle);
             }
 
@@ -184,7 +185,7 @@ namespace Adquisiciones.View
                 filaDetalle["Descripcion"] = articulo.Id.CveArt + " / " + articulo.DesArticulo;
                 filaDetalle["Unidad"] = articulo.CatUnidad.Unidad;
                 filaDetalle["Presentacion"] = articulo.Presentacion;
-                filaDetalle["Cantidad"] = detalle.Cantidad;
+                filaDetalle["Cantidad"] = detalle.CantidadMinimo;
                 falloDs.Tables["AnexoDetalle"].Rows.Add(filaDetalle);
 
                 var cotizacionDetalles =
@@ -199,7 +200,7 @@ namespace Adquisiciones.View
                     filaSubDetalle["ClaveArticulo"] = subdetalle.Articulo.Id.CveArt;
                     filaSubDetalle["Descripcion"] = asterisk + subdetalle.Cotizacion.Proveedor.NombreFiscal;
                     filaSubDetalle["Precio"] = subdetalle.Precio;
-                    filaSubDetalle["Total"] = subdetalle.Precio * detalle.Cantidad;
+                    filaSubDetalle["Total"] = subdetalle.Precio * detalle.CantidadMinimo;
                     filaSubDetalle["Marca"] = subdetalle.Marca;
                     filaSubDetalle["Porcentaje"] = DBNull.Value;
                     filaSubDetalle["Observaciones"] = subdetalle.Observaciones;
@@ -223,12 +224,9 @@ namespace Adquisiciones.View
                 PedidoService.PedidoDao.CargarPedidoDetalle(pedido);
 
             var reporte = new ReportePedido(pedido);
-            reporte.GenerarReporte();
+            reporte.GenerarReporteCompleto();
             crystalReportViewer.ReportSource = null;
-            crystalReportViewer.Refresh();Text = @"ReportePedido::" + pedido;
-
-
-        }
+            crystalReportViewer.Refresh();Text = @"ReportePedido::" + pedido;}
 
        
     }

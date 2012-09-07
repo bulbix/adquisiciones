@@ -20,7 +20,8 @@ namespace Adquisiciones.Data.Entities
         protected short _renglonanexo;
 		protected Articulo _articulo;
 		protected string _presentacion;
-		protected decimal? _cantidad;
+		protected decimal? _cantidadminimo;
+        protected decimal? _cantidadmaximo;
 	   
 
 
@@ -64,11 +65,18 @@ namespace Adquisiciones.Data.Entities
 		}
        
         [NotNull(Message = ("Campo Requerido"))]
-		public  virtual decimal? Cantidad
+		public  virtual decimal? CantidadMinimo
 		{
-			get { return _cantidad; }
-			set {_cantidad= value; }
+			get { return _cantidadminimo; }
+			set {_cantidadminimo= value; }
 		}
+
+        [NotNull(Message = ("Campo Requerido"))]
+        public virtual decimal? CantidadMaximo
+        {
+            get { return _cantidadmaximo; }
+            set { _cantidadmaximo = value; }
+        }
 
 		#endregion
         
