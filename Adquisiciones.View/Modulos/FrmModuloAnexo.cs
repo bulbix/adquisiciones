@@ -17,8 +17,7 @@ namespace Adquisiciones.View.Modulos
 {
     public partial class FrmModuloAnexo : FrmModulo
     {
-       ///<summary>
-        ///</summary>
+       ///<summary></summary>
         public IAnexoService AnexoService { get; set; }
         public IFalloService FalloService { get; set; }
 
@@ -53,23 +52,16 @@ namespace Adquisiciones.View.Modulos
             AnexoActual = anexo;
             Consultar();
             Text = @"Anexo::" + anexo.NumeroAnexo;
-
-            if (AnexoService.AnexoDao.ExisteAnexoCotizacion(AnexoActual) ||
-                AnexoService.AnexoDao.ExisteAnexoPedido(AnexoActual))
-            {
-                XtraMessageBox.Show(@"El anexo tiene asociadas cotizaciones o pedidos",
-                @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                cmdGuardar.Enabled = false;
-            }
         }
 
+        
         public override void BindearCampos()
         {
             bsAnexoDetalle.DataSource = new List<AnexoDetalle>();
-            txtnumlicitacion.DataBindings.Add(new Binding("Text", bsAnexo, "NumeroAnexo"));
+            txtnumlicitacion.DataBindings.Add(new Binding("Text", bsAnexo, "NumeroAnexo",false));
             dtpFechaanexo.DataBindings.Add(new Binding("DateTime", bsAnexo, "FechaAnexo", true));
-            txtDesanexo.DataBindings.Add(new Binding("Text", bsAnexo, "DesAnexo"));
-            cbxInstituto.DataBindings.Add(new Binding("SelectedValue", bsAnexo, "Instituto"));
+            txtDesanexo.DataBindings.Add(new Binding("Text", bsAnexo, "DesAnexo",true));
+            cbxInstituto.DataBindings.Add(new Binding("SelectedValue", bsAnexo, "Instituto",true));
             cbxTipolicitacion.DataBindings.Add(new Binding("SelectedValue", bsAnexo, "TipoLicitacion", true));
             cbxIva.DataBindings.Add(new Binding("SelectedValue", bsAnexo, "Iva", true));
             txtTechopresupuestal.DataBindings.Add(new Binding("Text", bsAnexo, "TechoPresupuestal", true));
@@ -98,6 +90,8 @@ namespace Adquisiciones.View.Modulos
             txtnumlicitacion.Enabled = true;
             dtpFechaanexo.Enabled = true;
             cmdGuardar.Enabled = true;
+            cmdEliminar.Enabled = true;
+            cmdMaximos.Enabled = false;
 
             txtnumlicitacion.Focus();
             listaError.Strings.Clear();
@@ -109,18 +103,6 @@ namespace Adquisiciones.View.Modulos
             AnexoActual = bsAnexo.DataSource as Anexo;
             AnexoActual.AnexoDetalle = bsAnexoDetalle.DataSource as List<AnexoDetalle>;
 
-            if (AnexoActual.IdAnexo == 0)
-            {
-                //No existe el numero de folio para ese anio
-                if (AnexoService.AnexoDao.ExisteAnexo(txtnumlicitacion.Text,FrmModuloModulo.AlmacenSelec))
-                {
-                      XtraMessageBox.Show(@"El folio ya existe para este año",
-                                    @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-            }
-
-
             try
             {
                 if (!Util.DatosValidos(AnexoActual, lblNumErrors, listaError))
@@ -128,8 +110,6 @@ namespace Adquisiciones.View.Modulos
                     return;
                 }
 
-                AnexoActual.FechaModificacion = AnexoService.AnexoDao.FechaServidor();
-                AnexoActual.IpTerminal = Util.IpTerminal();
                 AnexoActual.Almacen = FrmModuloModulo.AlmacenSelec;
                 AnexoActual.Usuario = FrmModuloAcceso.UsuarioLog;
                 AnexoActual.FechaAnexo = dtpFechaanexo.DateTime;
@@ -172,12 +152,13 @@ namespace Adquisiciones.View.Modulos
 
                     base.EntityActual = AnexoActual;
                     base.Consultar();
-
-                    if (AnexoService.AnexoDao.ExisteAnexoCotizacion(AnexoActual))
+                    if (AnexoService.AnexoDao.ExisteAnexoCotizacion(AnexoActual) ||
+                    AnexoService.AnexoDao.ExisteAnexoPedido(AnexoActual))
                     {
-                        XtraMessageBox.Show(@"El anexo tiene cotizacion",
+                        XtraMessageBox.Show(@"El anexo tiene asociadas cotizaciones o pedidos",
                         @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         cmdGuardar.Enabled = false;
+                        cmdEliminar.Enabled = false;
                     }
 
                     if (FalloService.CotizacionDao.ExisteAnexoFallo(AnexoActual))
@@ -255,10 +236,33 @@ namespace Adquisiciones.View.Modulos
 
         private void CmdMaximosClick(object sender, EventArgs e)
         {
-            FalloService.ActualizarFalloMaximos(AnexoActual);
+            FalloService.ActualizarFallo(AnexoActual);
             XtraMessageBox.Show(@"Se actualizaron los maximos del fallo asociado",
                        @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
+
+        }
+
+        private void txtnumlicitacion_Leave(object sender, EventArgs e)
+        {
+            //if (AnexoActual.IdAnexo == 0){
+                //No existe el numero de folio para ese anio
+            if((AnexoActual.NumeroAnexo != txtnumlicitacion.Text && AnexoActual.IdAnexo != 0)
+                || AnexoActual.IdAnexo == 0 ){if (AnexoService.AnexoDao.ExisteAnexo(txtnumlicitacion.Text, FrmModuloModulo.AlmacenSelec))
+                {
+                    
+                    //dxErrorProvider1.SetError(txtnumlicitacion,"El folio ya existe para este año NO SIGA CAPTURANDO!!");
+                    //txtnumlicitacion.SelectAll();
+                    //txtnumlicitacion.ErrorText ="Huevos" ;
+                    XtraMessageBox.Show(@"El folio ya existe para este año NO SIGA CAPTURANDO!!",
+                                  @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    txtnumlicitacion.Select();
+                }
+            }
+        }
+
+        private void gcDatosGenerales_Paint(object sender, PaintEventArgs e)
+        {
 
         }
 

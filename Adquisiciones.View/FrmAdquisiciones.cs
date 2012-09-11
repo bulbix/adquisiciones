@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
@@ -217,6 +218,10 @@ namespace Adquisiciones.View
         private void FrmAdquisiciones_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
+        }
+        private void barButtonItem11_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            Process.Start("mailto:lprado@inr.gob.mx");
         }
         
 

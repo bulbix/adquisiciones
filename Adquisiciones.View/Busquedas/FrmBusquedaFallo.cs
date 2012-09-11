@@ -22,6 +22,7 @@ namespace Adquisiciones.View.Busquedas
             base.NombreService = "falloService";
             base.NombreReporte = "reporteTabla";
             base.GvGeneral = gvAnexo;
+            GetServicio();
             FalloService = base.Servicio as IFalloService;
             base.ObtenerPerfil();
         }

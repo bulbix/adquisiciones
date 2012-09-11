@@ -67,7 +67,8 @@ namespace Adquisiciones.View
                 //Credenciales No Validas
                 XtraMessageBox.Show(@"Verifique credenciales",
                                     @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtRfc.Focus();
+                GenerarCaptcha();
+                txtCaptcha.Text = "";txtRfc.Focus();
             }
             else //Redireccionamos
             {
@@ -124,6 +125,7 @@ namespace Adquisiciones.View
             // 
             // cmdCancelar
             // 
+            this.cmdCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.cmdCancelar.Image = global::Adquisiciones.View.Properties.Resources.cancelar;
             this.cmdCancelar.Location = new System.Drawing.Point(418, 252);
             this.cmdCancelar.Name = "cmdCancelar";
@@ -164,7 +166,6 @@ namespace Adquisiciones.View
             this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(242, 21);
             this.txtPassword.TabIndex = 7;
-            this.txtPassword.Text = "bulbo";
             // 
             // defaultLookAndFeel1
             // 
@@ -195,6 +196,8 @@ namespace Adquisiciones.View
             // 
             // FrmModuloAcceso
             // 
+            this.AcceptButton = this.cmdAceptar;
+            this.CancelButton = this.cmdCancelar;
             this.ClientSize = new System.Drawing.Size(558, 351);
             this.Controls.Add(this.labelControl3);
             this.Controls.Add(this.txtCaptcha);

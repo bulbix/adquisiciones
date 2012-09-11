@@ -65,6 +65,10 @@
             this.ribbonPageGroup7 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup6 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.repositoryItemHyperLinkEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemHyperLinkEdit();
+            this.repositoryItemHyperLinkEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemHyperLinkEdit();
+            this.repositoryItemHyperLinkEdit3 = new DevExpress.XtraEditors.Repository.RepositoryItemHyperLinkEdit();
+            this.repositoryItemHyperLinkEdit4 = new DevExpress.XtraEditors.Repository.RepositoryItemHyperLinkEdit();
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.xtraTabbedMdiManager1 = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
             this.xafBarManager1 = new DevExpress.ExpressApp.Win.Templates.Controls.XafBarManager(this.components);
@@ -73,7 +77,12 @@
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
+            this.barButtonItem11 = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemHyperLinkEdit1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemHyperLinkEdit2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemHyperLinkEdit3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemHyperLinkEdit4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xafBarManager1)).BeginInit();
             this.SuspendLayout();
@@ -112,13 +121,19 @@
             this.barButtonItem8,
             this.barButtonItem9,
             this.barButtonItem10,
-            this.barButtonItem12});
+            this.barButtonItem12,
+            this.barButtonItem11});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
-            this.ribbon.MaxItemId = 34;
+            this.ribbon.MaxItemId = 40;
             this.ribbon.Name = "ribbon";
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1,
             this.ribbonPage2});
+            this.ribbon.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemHyperLinkEdit1,
+            this.repositoryItemHyperLinkEdit2,
+            this.repositoryItemHyperLinkEdit3,
+            this.repositoryItemHyperLinkEdit4});
             this.ribbon.SelectedPage = this.ribbonPage1;
             this.ribbon.Size = new System.Drawing.Size(1131, 148);
             this.ribbon.StatusBar = this.ribbonStatusBar;
@@ -414,12 +429,33 @@
             this.ribbonPageGroup6.Name = "ribbonPageGroup6";
             this.ribbonPageGroup6.Text = "Catalogos";
             // 
+            // repositoryItemHyperLinkEdit1
+            // 
+            this.repositoryItemHyperLinkEdit1.AutoHeight = false;
+            this.repositoryItemHyperLinkEdit1.Name = "repositoryItemHyperLinkEdit1";
+            // 
+            // repositoryItemHyperLinkEdit2
+            // 
+            this.repositoryItemHyperLinkEdit2.AutoHeight = false;
+            this.repositoryItemHyperLinkEdit2.Name = "repositoryItemHyperLinkEdit2";
+            // 
+            // repositoryItemHyperLinkEdit3
+            // 
+            this.repositoryItemHyperLinkEdit3.AutoHeight = false;
+            this.repositoryItemHyperLinkEdit3.Name = "repositoryItemHyperLinkEdit3";
+            // 
+            // repositoryItemHyperLinkEdit4
+            // 
+            this.repositoryItemHyperLinkEdit4.AutoHeight = false;
+            this.repositoryItemHyperLinkEdit4.Name = "repositoryItemHyperLinkEdit4";
+            // 
             // ribbonStatusBar
             // 
             this.ribbonStatusBar.ItemLinks.Add(this.txtFechaStatus);
             this.ribbonStatusBar.ItemLinks.Add(this.txtUsuarioStatus);
             this.ribbonStatusBar.ItemLinks.Add(this.txtAlmacenStatus);
             this.ribbonStatusBar.ItemLinks.Add(this.btnCambiarAlma);
+            this.ribbonStatusBar.ItemLinks.Add(this.barButtonItem11);
             this.ribbonStatusBar.Location = new System.Drawing.Point(0, 437);
             this.ribbonStatusBar.Name = "ribbonStatusBar";
             this.ribbonStatusBar.Ribbon = this.ribbon;
@@ -470,6 +506,17 @@
             // 
             this.defaultLookAndFeel1.LookAndFeel.SkinName = "Black";
             // 
+            // barButtonItem11
+            // 
+            this.barButtonItem11.Appearance.BackColor = System.Drawing.Color.White;
+            this.barButtonItem11.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.barButtonItem11.Appearance.Options.UseBackColor = true;
+            this.barButtonItem11.Appearance.Options.UseForeColor = true;
+            this.barButtonItem11.Caption = "Enviar comentarios y errores";
+            this.barButtonItem11.Id = 39;
+            this.barButtonItem11.Name = "barButtonItem11";
+            this.barButtonItem11.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem11_ItemClick);
+            // 
             // FrmAdquisiciones
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -493,6 +540,10 @@
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmAdquisiciones_FormClosed);
             this.Load += new System.EventHandler(this.FrmAdquisicionesLoad);
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemHyperLinkEdit1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemHyperLinkEdit2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemHyperLinkEdit3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemHyperLinkEdit4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xafBarManager1)).EndInit();
             this.ResumeLayout(false);
@@ -544,5 +595,10 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem10;
         private DevExpress.XtraBars.BarButtonItem barButtonItem12;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup3;
+        private DevExpress.XtraEditors.Repository.RepositoryItemHyperLinkEdit repositoryItemHyperLinkEdit1;
+        private DevExpress.XtraEditors.Repository.RepositoryItemHyperLinkEdit repositoryItemHyperLinkEdit2;
+        private DevExpress.XtraEditors.Repository.RepositoryItemHyperLinkEdit repositoryItemHyperLinkEdit3;
+        private DevExpress.XtraEditors.Repository.RepositoryItemHyperLinkEdit repositoryItemHyperLinkEdit4;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem11;
     }
 }

@@ -38,7 +38,6 @@
             this.bsAnexo = new System.Windows.Forms.BindingSource(this.components);
             this.searchLookUpEditAnexo = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn15 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn14 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn16 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.searchLookUpProveedor = new DevExpress.XtraEditors.SearchLookUpEdit();
             this.bsProveedor = new System.Windows.Forms.BindingSource(this.components);
@@ -136,10 +135,10 @@
             // 
             // splitContainerControl1
             // 
-            this.splitContainerControl1.Location = new System.Drawing.Point(0, 70);
+            this.splitContainerControl1.Location = new System.Drawing.Point(0, 68);
             this.splitContainerControl1.Panel1.Controls.Add(this.groupControl1);
             this.splitContainerControl1.Panel2.Controls.Add(this.gcPedidoDetalle);
-            this.splitContainerControl1.Size = new System.Drawing.Size(873, 475);
+            this.splitContainerControl1.Size = new System.Drawing.Size(873, 478);
             this.splitContainerControl1.SplitterPosition = 272;
             // 
             // groupControl1
@@ -239,7 +238,6 @@
             // 
             this.searchLookUpEditAnexo.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.gridColumn15,
-            this.gridColumn14,
             this.gridColumn16});
             this.searchLookUpEditAnexo.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
             this.searchLookUpEditAnexo.Name = "searchLookUpEditAnexo";
@@ -253,18 +251,8 @@
             this.gridColumn15.Name = "gridColumn15";
             this.gridColumn15.UnboundType = DevExpress.Data.UnboundColumnType.String;
             this.gridColumn15.Visible = true;
-            this.gridColumn15.VisibleIndex = 1;
-            this.gridColumn15.Width = 90;
-            // 
-            // gridColumn14
-            // 
-            this.gridColumn14.Caption = "IdAnexo";
-            this.gridColumn14.FieldName = "IdAnexo";
-            this.gridColumn14.Name = "gridColumn14";
-            this.gridColumn14.UnboundType = DevExpress.Data.UnboundColumnType.Integer;
-            this.gridColumn14.Visible = true;
-            this.gridColumn14.VisibleIndex = 0;
-            this.gridColumn14.Width = 87;
+            this.gridColumn15.VisibleIndex = 0;
+            this.gridColumn15.Width = 189;
             // 
             // gridColumn16
             // 
@@ -273,8 +261,8 @@
             this.gridColumn16.Name = "gridColumn16";
             this.gridColumn16.UnboundType = DevExpress.Data.UnboundColumnType.String;
             this.gridColumn16.Visible = true;
-            this.gridColumn16.VisibleIndex = 2;
-            this.gridColumn16.Width = 744;
+            this.gridColumn16.VisibleIndex = 1;
+            this.gridColumn16.Width = 838;
             // 
             // searchLookUpProveedor
             // 
@@ -678,7 +666,7 @@
             this.repositoryItemSearchLookUpEdit2,
             this.repositoryItemPopupContainerEdit1,
             this.repositoryItemButtonEdit1});
-            this.gcPedidoDetalle.Size = new System.Drawing.Size(873, 198);
+            this.gcPedidoDetalle.Size = new System.Drawing.Size(873, 200);
             this.gcPedidoDetalle.TabIndex = 16;
             this.gcPedidoDetalle.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvPedidoDetalle});
@@ -985,7 +973,6 @@
         private DevExpress.XtraEditors.SearchLookUpEdit searchLookUpAnexo;
         private DevExpress.XtraGrid.Views.Grid.GridView searchLookUpEditAnexo;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn15;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn14;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn16;
         private DevExpress.XtraEditors.SearchLookUpEdit searchLookUpProveedor;
         private DevExpress.XtraGrid.Views.Grid.GridView searchLookUpEditProveedor;

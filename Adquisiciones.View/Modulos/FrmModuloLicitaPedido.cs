@@ -86,11 +86,8 @@ namespace Adquisiciones.View.Modulos
 
             //los parametros basicos
             PedidoActual.Observaciones = txtObservaciones.Text;
-            PedidoActual.FechaModificacion = PedidoService.PedidoDao.FechaServidor();
-            PedidoActual.IpTerminal = Util.IpTerminal();
             PedidoActual.Almacen = FrmModuloModulo.AlmacenSelec;
             PedidoActual.Usuario = FrmModuloAcceso.UsuarioLog;
-            PedidoActual.EstadoPedido = "A";
 
             try
             {PedidoService.GenerarPedidoAutomatico(PedidoActual, RequisicionActual,

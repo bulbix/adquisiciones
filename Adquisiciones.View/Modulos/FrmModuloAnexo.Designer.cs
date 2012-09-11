@@ -104,6 +104,7 @@
             this.gcDatosGenerales.Size = new System.Drawing.Size(837, 134);
             this.gcDatosGenerales.TabIndex = 2;
             this.gcDatosGenerales.Text = "Datos Generales";
+            this.gcDatosGenerales.Paint += new System.Windows.Forms.PaintEventHandler(this.gcDatosGenerales_Paint);
             // 
             // cmdMaximos
             // 
@@ -121,6 +122,7 @@
             this.txtnumlicitacion.Name = "txtnumlicitacion";
             this.txtnumlicitacion.Size = new System.Drawing.Size(194, 20);
             this.txtnumlicitacion.TabIndex = 1;
+            this.txtnumlicitacion.Leave += new System.EventHandler(this.txtnumlicitacion_Leave);
             // 
             // cbxIva
             // 
@@ -163,6 +165,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.txtTechopresupuestal.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.txtTechopresupuestal.Properties.LookAndFeel.SkinName = "Blue";
+            this.txtTechopresupuestal.Properties.Mask.EditMask = "c";
             this.txtTechopresupuestal.Size = new System.Drawing.Size(100, 20);
             this.txtTechopresupuestal.TabIndex = 6;
             // 

@@ -23,7 +23,8 @@ namespace Adquisiciones.Data.Entities
 	    private short _renglonanexo;
         private Articulo _articulo;
         private string _presentacion;
-        private decimal? _cantidad;
+        protected decimal? _cantidadminimo;
+        protected decimal? _cantidadmaximo;
 	    private string _tipo;
 	    private long _idhist;
        
@@ -60,11 +61,19 @@ namespace Adquisiciones.Data.Entities
 			get { return _presentacion; }
 			set {_presentacion= value; }
 		}
-		public  virtual decimal? Cantidad
-		{
-			get { return _cantidad; }
-			set {_cantidad= value; }
-		}
+       
+        public virtual decimal? CantidadMinimo
+        {
+            get { return _cantidadminimo; }
+            set { _cantidadminimo = value; }
+        }
+
+       
+        public virtual decimal? CantidadMaximo
+        {
+            get { return _cantidadmaximo; }
+            set { _cantidadmaximo = value; }
+        }
 
 	    public virtual Anexo Anexo
 	    {

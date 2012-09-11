@@ -110,6 +110,8 @@ namespace Adquisiciones.View.Modulos
             deFechaPedido.DateTime = PedidoService.PedidoDao.FechaServidor();
             PedidoActual.FechaPedido = deFechaPedido.DateTime;
 
+            cmdGuardar.Enabled = true;
+            cmdEliminar.Enabled = true;
             lblNumErrors.Caption = string.Empty;
             lblArea.Text = "";
             lblLicitacion.Text = "";

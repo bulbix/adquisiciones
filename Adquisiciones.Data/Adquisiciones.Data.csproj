@@ -183,6 +183,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Querys\QuerysCotizacion.hbm.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Querys\QuerysFallo.hbm.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

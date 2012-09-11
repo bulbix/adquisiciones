@@ -60,7 +60,7 @@
             this.splitContainerControl1.Location = new System.Drawing.Point(0, 92);
             this.splitContainerControl1.Name = "splitContainerControl1";
             this.splitContainerControl1.Panel1.Text = "Panel1";
-            this.splitContainerControl1.Panel2.Text = "Panel2";
+            this.splitContainerControl1.Panel2.Text = "panelDetalle";
             this.splitContainerControl1.Size = new System.Drawing.Size(628, 309);
             this.splitContainerControl1.SplitterPosition = 92;
             this.splitContainerControl1.TabIndex = 0;

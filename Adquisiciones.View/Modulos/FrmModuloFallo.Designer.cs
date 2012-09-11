@@ -33,7 +33,6 @@
             this.searchLookUpAnexo = new DevExpress.XtraEditors.SearchLookUpEdit();
             this.bsAnexos = new System.Windows.Forms.BindingSource(this.components);
             this.searchLookUpEdit1View = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.lblLicitacion = new System.Windows.Forms.Label();
@@ -91,7 +90,6 @@
             // searchLookUpEdit1View
             // 
             this.searchLookUpEdit1View.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.gridColumn3,
             this.gridColumn4,
             this.gridColumn5});
             this.searchLookUpEdit1View.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
@@ -99,22 +97,13 @@
             this.searchLookUpEdit1View.OptionsSelection.EnableAppearanceFocusedCell = false;
             this.searchLookUpEdit1View.OptionsView.ShowGroupPanel = false;
             // 
-            // gridColumn3
-            // 
-            this.gridColumn3.Caption = "IdAnexo";
-            this.gridColumn3.FieldName = "IdAnexo";
-            this.gridColumn3.Name = "gridColumn3";
-            this.gridColumn3.Visible = true;
-            this.gridColumn3.VisibleIndex = 0;
-            this.gridColumn3.Width = 56;
-            // 
             // gridColumn4
             // 
             this.gridColumn4.Caption = "Numero Anexo";
             this.gridColumn4.FieldName = "NumeroAnexo";
             this.gridColumn4.Name = "gridColumn4";
             this.gridColumn4.Visible = true;
-            this.gridColumn4.VisibleIndex = 1;
+            this.gridColumn4.VisibleIndex = 0;
             this.gridColumn4.Width = 137;
             // 
             // gridColumn5
@@ -123,7 +112,7 @@
             this.gridColumn5.FieldName = "DesAnexo";
             this.gridColumn5.Name = "gridColumn5";
             this.gridColumn5.Visible = true;
-            this.gridColumn5.VisibleIndex = 2;
+            this.gridColumn5.VisibleIndex = 1;
             this.gridColumn5.Width = 597;
             // 
             // lblLicitacion
@@ -190,7 +179,6 @@
         private DevExpress.XtraEditors.GroupControl groupControl1;
         private DevExpress.XtraEditors.SearchLookUpEdit searchLookUpAnexo;
         private DevExpress.XtraGrid.Views.Grid.GridView searchLookUpEdit1View;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
         private System.Windows.Forms.Label lblLicitacion;

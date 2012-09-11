@@ -111,12 +111,16 @@ namespace Adquisiciones.Business.ModCotizacion
         [Transaction]
         public void GuardarCotizacion(ref Cotizacion cotizacion)
         {
+            cotizacion.FechaCaptura = CotizacionDao.FechaServidor();
+            cotizacion.FechaModificacion = CotizacionDao.FechaServidor();
+            cotizacion.IpTerminal = Util.IpTerminal();
             
             //Removemos de la cotizacion detalle las que no tengan precio centinela
             cotizacion.CotizacionDetalle = cotizacion.CotizacionDetalle.
                 Where(cotizacionDetalle => cotizacionDetalle.Precio != null).ToList();
             ++cotizacion.Modificacion;
-            cotizacion = CotizacionDao.Merge(cotizacion);}
+            cotizacion = CotizacionDao.Merge(cotizacion);
+        }
 
         public bool ExisteCotizacionDetalle(IList<CotizacionDetalle> detalle)
         {

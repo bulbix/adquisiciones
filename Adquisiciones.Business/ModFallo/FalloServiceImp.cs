@@ -85,6 +85,7 @@ namespace Adquisiciones.Business.ModFallo
                         Almacen = anexo.Almacen,
                         FechaFallo = fechaFallo,
                         FechaModificacion = fechaActual,
+                        FechaCaptura = fechaActual,
                         IpTerminal = Util.IpTerminal(),
                         Modificacion = 0
                     };
@@ -130,16 +131,26 @@ namespace Adquisiciones.Business.ModFallo
         }
 
          [Transaction]
-        public void ActualizarFalloMaximos(Anexo anexo)
+        public void ActualizarFallo(Anexo anexo)
         {
             var fallos = FalloDao.FallosByAnexo(anexo);
+             bool updateFalloDetalle = false;
             foreach (var fallo in fallos)
             {
                 foreach (var fallodetalle in fallo.FalloDetalle)
                 {
                     fallodetalle.CantidadMin = fallodetalle.CantidadMax;
                     FalloDetalleDao.Update(fallodetalle);
+                    updateFalloDetalle = true;
                 }
+
+                if(updateFalloDetalle)
+                {
+                    fallo.FechaModificacion = FalloDao.FechaServidor();
+                    FalloDao.Update(fallo);
+                }
+
+                updateFalloDetalle = false;
 
             }
         }

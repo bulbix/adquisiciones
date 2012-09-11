@@ -63,6 +63,7 @@
       <list>
         <value>Guardar</value>
         <value>Elimina</value>
+        <value>Actualizar</value>
       </list>
     </property> 
     <property name="advice" ref="historicoAfterAdvice"/>
@@ -74,6 +75,7 @@
       <list>
         <value>Guardar</value>
         <value>EliminarEntity</value>
+        <value>Actualizar</value>
       </list>
     </property>
     <property name="advice" ref="historicoBeforeAdvice"/>

@@ -24,6 +24,7 @@ namespace Adquisiciones.View.Busquedas
             base.NombreReporte = "reportePedido";
             base.TypeForma = typeof(FrmModuloPedido);
             base.GvGeneral = gvPedido;
+            GetServicio();
             PedidoService = base.Servicio as IPedidoService;
             base.ObtenerPerfil();
         }
@@ -35,6 +36,18 @@ namespace Adquisiciones.View.Busquedas
             {
                 pedido.Automatico = pedido.Requisicion == null ? false : true;
             }
+        }
+
+        protected override void Eliminar()
+        {
+            if ((GvGeneral.GetFocusedRow() as Pedido).Requisicion!=null)
+            {
+                XtraMessageBox.Show(@"El pedido es automatico",
+                   @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            base.Eliminar();
         }
     }
 }

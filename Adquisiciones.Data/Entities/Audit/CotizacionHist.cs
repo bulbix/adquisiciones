@@ -24,6 +24,7 @@ namespace Adquisiciones.Data.Entities
 		protected Usuario _usuario;
 		protected Almacen _almacen;
 		protected DateTime? _fechamodificacion;
+        protected DateTime? _fechacaptura;
 		protected string _ipterminal;
 
         private string _tipo;
@@ -75,6 +76,12 @@ namespace Adquisiciones.Data.Entities
 			get { return _fechamodificacion; }
 			set {_fechamodificacion = value; }
 		}
+
+        public virtual DateTime? FechaCaptura
+        {
+            get { return _fechacaptura; }
+            set { _fechacaptura = value; }
+        }
 
 		public  virtual string IpTerminal
 		{

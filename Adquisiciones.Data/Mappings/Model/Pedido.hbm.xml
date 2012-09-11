@@ -34,7 +34,8 @@
     <property name="IpTerminal" column="ip_terminal" type="string" />
     <property name="Modificacion" column="modificacion" type="int" />
 
-    <property name="Instituto" column="instituto" type="string" />   
+    <property name="Instituto" column="instituto" type="string" />
+    <property name="FechaCaptura" column="fecha_captura" update="false" type="DateTime" />
     
     <bag name="Entrada" inverse="true" lazy="true" cascade="none">
       <key column="id_pedido" />

@@ -60,6 +60,10 @@ namespace Adquisiciones.Business.ModAnexo
         [Transaction]
         public void GuardarAnexo(ref Anexo anexo)
         {
+            anexo.FechaCaptura = AnexoDao.FechaServidor();
+            anexo.FechaModificacion = AnexoDao.FechaServidor();
+            anexo.IpTerminal = Util.IpTerminal();
+            
             //Le cargamos el Articulo y la llave compuesta
             for (var index = 0; index < anexo.AnexoDetalle.Count; index++)
             {

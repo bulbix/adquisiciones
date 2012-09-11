@@ -150,6 +150,7 @@ namespace Adquisiciones.View.Modulos
             {
                 cmdGuardar.Enabled = false;
                 cmdEliminar.Enabled = false;
+                splitContainerControl1.Panel1.Enabled = false;
             }
         }
 

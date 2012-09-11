@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using Adquisiciones.Business;
 using Adquisiciones.Data;
 using Adquisiciones.Data.Auxiliares;
+using Adquisiciones.Data.Entities;
 using DevExpress.XtraEditors;
 using DevExpress.XtraGrid.Views.Grid;
 using Spring.Context.Support;
@@ -140,6 +141,17 @@ namespace Adquisiciones.View.Busquedas
         {
             try
             {
+                var usuarioModifico = (Usuario)TypeEntity.
+                GetProperty("Usuario").GetValue(GvGeneral.GetFocusedRow(), null);
+
+
+                if (FrmModuloAcceso.UsuarioLog.IdUsuario != FrmModuloAcceso.SuperUsario &&
+                    FrmModuloAcceso.UsuarioLog.IdUsuario != usuarioModifico.IdUsuario)
+                {
+                    XtraMessageBox.Show(@"No es dueno del registro", @"Adquisiciones",
+                                       MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
                 if (XtraMessageBox.Show(@"Esta seguro de eliminar el elemento seleccionado?", @"Adquisiciones",
                     MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {

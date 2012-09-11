@@ -16,7 +16,9 @@
       <column name="id_almacen"  />
     </many-to-one>    
     <property name="Presentacion" column="presentacion" type="string" />
-    <property name="Cantidad" column="cantidad" type="decimal" />    
+    <property name="CantidadMinimo" column="cantidad_minimo" type="decimal" />
+    <property name="CantidadMaximo" column="cantidad_maximo" type="decimal" />
+
     <property name="Tipo" column="tipo" type="string" />
     <property name="IdHist" column="id_hist" type="long" />
    

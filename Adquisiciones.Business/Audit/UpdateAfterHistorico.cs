@@ -28,8 +28,9 @@ namespace Adquisiciones.Business.Audit
                 nameHistorico = args[1] + "DetalleHist";
             else if (nameMethod.StartsWith("Guardar"))
                 nameHistorico = nameMethod.Substring(7) + "DetalleHist";
-
-
+            else if (nameMethod.StartsWith("Actualizar"))
+                nameHistorico = nameMethod.Substring(10) + "DetalleHist";
+            
             if (auditService.IdsDetalleHistorico.ContainsKey(nameHistorico))
             {
                 var historico = auditService.IdsDetalleHistorico[nameHistorico];

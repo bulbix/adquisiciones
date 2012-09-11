@@ -56,8 +56,6 @@ namespace Adquisiciones.View.Modulos
             CotizacionActual.FechaCotizacion = dtpFechacotizacion.DateTime;
             CotizacionActual.Usuario = FrmModuloAcceso.UsuarioLog;
             CotizacionActual.Almacen = FrmModuloModulo.AlmacenSelec;
-            CotizacionActual.FechaModificacion = CotizacionService.AnexoDao.FechaServidor();
-            CotizacionActual.IpTerminal = Util.IpTerminal();
         }
 
         public override void InicializarCatalogos()
@@ -83,6 +81,7 @@ namespace Adquisiciones.View.Modulos
             lblNumErrors.Caption = string.Empty;
             gcDatosGenerales.Enabled = true;
             cmdGuardar.Enabled = true;
+            cmdEliminar.Enabled = true;
         }
 
         public override void Guardar()
@@ -148,6 +147,7 @@ namespace Adquisiciones.View.Modulos
                         XtraMessageBox.Show(@"El anexo tiene fallo",
                         @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         cmdGuardar.Enabled = false;
+                        cmdEliminar.Enabled = false;
                     }
 
                     gcDatosGenerales.Enabled = false;

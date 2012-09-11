@@ -100,8 +100,9 @@ namespace Adquisiciones.Business.ModPedido
                 var pedido = new Pedido();
                 pedido.Almacen = pedidoCentinela.Almacen;
                 pedido.Usuario = pedidoCentinela.Usuario;
-                pedido.IpTerminal = pedidoCentinela.IpTerminal;
-                pedido.FechaModificacion = pedidoCentinela.FechaModificacion;
+                pedido.IpTerminal = Util.IpTerminal();
+                pedido.FechaCaptura = PedidoDao.FechaServidor();
+                pedido.FechaModificacion = PedidoDao.FechaServidor();
                 pedido.FechaPedido = pedidoCentinela.FechaPedido;
                 pedido.Fundamento = pedidoCentinela.Fundamento;
                 pedido.CatActividad = pedidoCentinela.CatActividad;
@@ -188,6 +189,7 @@ namespace Adquisiciones.Business.ModPedido
         public void GuardarPedido(ref Pedido pedido)
         {
             //Genere un id nuevo
+            pedido.FechaCaptura = PedidoDao.FechaServidor();
             pedido.FechaModificacion = PedidoDao.FechaServidor();
             pedido.IpTerminal = Util.IpTerminal();
             ++pedido.Modificacion;

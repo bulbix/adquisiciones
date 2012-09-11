@@ -24,6 +24,7 @@ namespace Adquisiciones.Data.Entities
 		protected DateTime? _fechamodificacion;
 		protected string _ipterminal;
 		protected int _modificacion;
+        protected DateTime? _fechacaptura;
 		protected IList<CotizacionDetalle> _cotizaciondetalle = new List<CotizacionDetalle>();
 		protected IList<Fallo> _fallo;
 		protected Anexo _anexo;
@@ -74,6 +75,12 @@ namespace Adquisiciones.Data.Entities
 			get { return _fechamodificacion; }
             set { _fechamodificacion = value; }
 		}
+
+        public virtual DateTime? FechaCaptura
+        {
+            get { return _fechacaptura; }
+            set { _fechacaptura = value; }
+        }
 		public  virtual string IpTerminal
 		{
 			get { return _ipterminal; }

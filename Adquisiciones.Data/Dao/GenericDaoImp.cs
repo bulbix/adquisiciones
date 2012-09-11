@@ -39,6 +39,7 @@ namespace Adquisiciones.Data.Dao
         public void Update(TE entity)
         {
             CurrentSession.SaveOrUpdate(entity);
+            CurrentSession.Flush();//Forzar
         }
 
         [Transaction]

@@ -57,7 +57,7 @@ namespace Adquisiciones.Business.ModFallo
         /// </summary>
         /// <param name="anexo"></param>
         /// <returns></returns>
-        void ActualizarFalloMaximos(Anexo anexo);
+        void ActualizarFallo(Anexo anexo);
 
 
     }
