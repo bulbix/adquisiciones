@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Text;
 using System.Windows.Forms;
 using Adquisiciones.View.Busquedas;
@@ -213,7 +214,8 @@ namespace Adquisiciones.View
 
         private void barButtonItem12_ItemClick(object sender, ItemClickEventArgs e)
         {
-            Application.Restart();}
+            Application.Restart();
+        }
 
         private void FrmAdquisiciones_FormClosed(object sender, FormClosedEventArgs e)
         {
@@ -222,6 +224,15 @@ namespace Adquisiciones.View
         private void barButtonItem11_ItemClick(object sender, ItemClickEventArgs e)
         {
             Process.Start("mailto:lprado@inr.gob.mx");
+        }
+
+       
+        private void barButtonItem13_ItemClick_1(object sender, ItemClickEventArgs e)
+        {
+            var forma = new FrmAyuda();
+            forma.MdiParent = this;
+            forma.Show();
+
         }
         
 

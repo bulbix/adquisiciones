@@ -55,6 +55,7 @@
             this.barButtonItem9 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem10 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem12 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem11 = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup5 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -77,7 +78,7 @@
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
-            this.barButtonItem11 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem13 = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemHyperLinkEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemHyperLinkEdit2)).BeginInit();
@@ -122,9 +123,10 @@
             this.barButtonItem9,
             this.barButtonItem10,
             this.barButtonItem12,
-            this.barButtonItem11});
+            this.barButtonItem11,
+            this.barButtonItem13});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
-            this.ribbon.MaxItemId = 40;
+            this.ribbon.MaxItemId = 42;
             this.ribbon.Name = "ribbon";
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1,
@@ -347,6 +349,17 @@
             this.barButtonItem12.Name = "barButtonItem12";
             this.barButtonItem12.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem12_ItemClick);
             // 
+            // barButtonItem11
+            // 
+            this.barButtonItem11.Appearance.BackColor = System.Drawing.Color.White;
+            this.barButtonItem11.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.barButtonItem11.Appearance.Options.UseBackColor = true;
+            this.barButtonItem11.Appearance.Options.UseForeColor = true;
+            this.barButtonItem11.Caption = "Enviar comentarios y errores";
+            this.barButtonItem11.Id = 39;
+            this.barButtonItem11.Name = "barButtonItem11";
+            this.barButtonItem11.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem11_ItemClick);
+            // 
             // ribbonPage1
             // 
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -456,6 +469,7 @@
             this.ribbonStatusBar.ItemLinks.Add(this.txtAlmacenStatus);
             this.ribbonStatusBar.ItemLinks.Add(this.btnCambiarAlma);
             this.ribbonStatusBar.ItemLinks.Add(this.barButtonItem11);
+            this.ribbonStatusBar.ItemLinks.Add(this.barButtonItem13);
             this.ribbonStatusBar.Location = new System.Drawing.Point(0, 437);
             this.ribbonStatusBar.Name = "ribbonStatusBar";
             this.ribbonStatusBar.Ribbon = this.ribbon;
@@ -506,16 +520,16 @@
             // 
             this.defaultLookAndFeel1.LookAndFeel.SkinName = "Black";
             // 
-            // barButtonItem11
+            // barButtonItem13
             // 
-            this.barButtonItem11.Appearance.BackColor = System.Drawing.Color.White;
-            this.barButtonItem11.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.barButtonItem11.Appearance.Options.UseBackColor = true;
-            this.barButtonItem11.Appearance.Options.UseForeColor = true;
-            this.barButtonItem11.Caption = "Enviar comentarios y errores";
-            this.barButtonItem11.Id = 39;
-            this.barButtonItem11.Name = "barButtonItem11";
-            this.barButtonItem11.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem11_ItemClick);
+            this.barButtonItem13.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.barButtonItem13.Appearance.ForeColor = System.Drawing.Color.Red;
+            this.barButtonItem13.Appearance.Options.UseFont = true;
+            this.barButtonItem13.Appearance.Options.UseForeColor = true;
+            this.barButtonItem13.Caption = "Ayuda";
+            this.barButtonItem13.Id = 41;
+            this.barButtonItem13.Name = "barButtonItem13";
+            this.barButtonItem13.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem13_ItemClick_1);
             // 
             // FrmAdquisiciones
             // 
@@ -600,5 +614,6 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemHyperLinkEdit repositoryItemHyperLinkEdit3;
         private DevExpress.XtraEditors.Repository.RepositoryItemHyperLinkEdit repositoryItemHyperLinkEdit4;
         private DevExpress.XtraBars.BarButtonItem barButtonItem11;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem13;
     }
 }

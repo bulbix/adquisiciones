@@ -50,7 +50,7 @@ namespace Adquisiciones.View
             this.Hide();
 
             if (FrmModuloAcceso.UsuarioLog.IdUsuario == FrmModuloAcceso.SuperUsario)
-                new FrmPerfil().ShowDialog();
+                new FrmPanelControl().ShowDialog();
             else
                 new FrmAdquisiciones().ShowDialog();
             

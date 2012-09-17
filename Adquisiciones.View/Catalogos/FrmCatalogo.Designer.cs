@@ -210,28 +210,28 @@
             this.barDockControl2.CausesValidation = false;
             this.barDockControl2.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControl2.Location = new System.Drawing.Point(0, 0);
-            this.barDockControl2.Size = new System.Drawing.Size(723, 70);
+            this.barDockControl2.Size = new System.Drawing.Size(723, 68);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 447);
-            this.barDockControlBottom.Size = new System.Drawing.Size(723, 23);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 448);
+            this.barDockControlBottom.Size = new System.Drawing.Size(723, 22);
             // 
             // barDockControlLeft
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 70);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 377);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 68);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 380);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(723, 70);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 377);
+            this.barDockControlRight.Location = new System.Drawing.Point(723, 68);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 380);
             // 
             // FrmCatalogo
             // 

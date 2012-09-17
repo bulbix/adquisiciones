@@ -244,6 +244,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Mappings\Model\Cotizacion.hbm.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Mappings\Model\CotizacionDetalle.hbm.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
