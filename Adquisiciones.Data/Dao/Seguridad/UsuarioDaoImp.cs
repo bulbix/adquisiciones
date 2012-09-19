@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using Adquisiciones.Data.Entities;
 using NHibernate.Criterion;
+using NHibernate.Transform;
 using Spring.Transaction.Interceptor;
+using System.Linq;
 
 namespace Adquisiciones.Data.Dao.Seguridad
 {
@@ -48,7 +50,13 @@ namespace Adquisiciones.Data.Dao.Seguridad
          public IList<Usuario> CargarUsuarios()
          {
              var criteria = CurrentSession.CreateCriteria(typeof(Usuario));
-             return criteria.List<Usuario>();
-         }
+             criteria.CreateAlias("UsuarioModulo", "um");
+            criteria.Add(Restrictions.In("um.Id.Modulo.Id.Almacen.IdAlmacen",
+                                         new string[] {"C2", "C5", "P2", "P5"}));
+            criteria.SetResultTransformer(Transformers.DistinctRootEntity);
+
+               
+
+             return criteria.List<Usuario>();}
     }
 }

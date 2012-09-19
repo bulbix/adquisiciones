@@ -61,6 +61,8 @@ namespace Adquisiciones.Data.Entities
 		public override bool Equals( object obj )
 		{	
 			Almacen derecha = obj as Almacen;
+            if (derecha == null) return
+		    false;
 			return (this._idalmacen == derecha.IdAlmacen);
 		}
 		/// <summary>

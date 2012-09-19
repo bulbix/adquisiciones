@@ -168,6 +168,8 @@ namespace Adquisiciones.View
                 UsuarioActual.Rfc = txtRfc.Text.Trim();
                 UsuarioActual.Nombre = txtNombre.Text.Trim();
                 UsuarioActual.Estatus = chkActivo.Enabled ? "A" : "B";
+                UsuarioActual.UsuarioModulo = bsDestino.DataSource as List<UsuarioModulo>;
+
                 if (UsuarioActual.IdUsuario == 0)
                     UsuarioActual.Password = txtNewPass.Text;
 
@@ -212,7 +214,7 @@ namespace Adquisiciones.View
                         UsuarioActual.Password = txtNewPass.Text;
                     }
 
-                    UsuarioActual.UsuarioModulo = bsDestino.DataSource as List<UsuarioModulo>;
+                    
                     UsuarioService.GuardarUsuario(UsuarioActual, updatePassword);
 
                     XtraMessageBox.Show(@"Usuario Registrado o Actualizado",
@@ -239,7 +241,7 @@ namespace Adquisiciones.View
 
         private void FrmPanelControlFormClosed(object sender, FormClosedEventArgs e)
         {
-            Cerrar();
+            Application.Restart();;
             
         }
 

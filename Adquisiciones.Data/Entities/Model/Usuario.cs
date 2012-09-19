@@ -128,6 +128,7 @@ namespace Adquisiciones.Data.Entities
             }
 		}
 
+        [NotEmpty(Message = "Se requiere al menos un modulo")]
 		public  virtual IList<UsuarioModulo> UsuarioModulo
 		{
 			get { return _usuariomodulo; }

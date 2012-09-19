@@ -89,7 +89,7 @@ namespace Adquisiciones.View
 
         private void FrmModuloModulo_FormClosed(object sender, FormClosedEventArgs e)
         {
-            Application.Exit();
+            Application.Restart();
         }
     }
 }

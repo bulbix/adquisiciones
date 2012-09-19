@@ -22,7 +22,7 @@ namespace Adquisiciones.Test.Seguridad
         [Test]
         public void TestGetPassword()
         {
-            var pass = Util.GetSHA1("bulbo");
+            var pass = Util.GetSHA1("tibro");
             Console.WriteLine(pass);
 
         }

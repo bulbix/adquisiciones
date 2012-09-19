@@ -65,6 +65,7 @@
             this.cmdEliminar = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
             this.lstAlmacen = new System.Windows.Forms.ComboBox();
+            this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.bsUsuarios)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsOrigen)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsDestino)).BeginInit();
@@ -90,7 +91,7 @@
             // 
             // chkActivo
             // 
-            this.chkActivo.Location = new System.Drawing.Point(441, 20);
+            this.chkActivo.Location = new System.Drawing.Point(482, 20);
             this.chkActivo.Name = "chkActivo";
             this.chkActivo.Size = new System.Drawing.Size(107, 23);
             this.chkActivo.TabIndex = 15;
@@ -98,7 +99,7 @@
             // 
             // txtConfirmPass
             // 
-            this.txtConfirmPass.Location = new System.Drawing.Point(82, 149);
+            this.txtConfirmPass.Location = new System.Drawing.Point(119, 149);
             this.txtConfirmPass.Name = "txtConfirmPass";
             this.txtConfirmPass.Properties.PasswordChar = '*';
             this.txtConfirmPass.Size = new System.Drawing.Size(152, 20);
@@ -108,13 +109,13 @@
             // 
             this.labelControl4.Location = new System.Drawing.Point(16, 155);
             this.labelControl4.Name = "labelControl4";
-            this.labelControl4.Size = new System.Drawing.Size(51, 13);
+            this.labelControl4.Size = new System.Drawing.Size(100, 13);
             this.labelControl4.TabIndex = 13;
-            this.labelControl4.Text = "Confirmar:";
+            this.labelControl4.Text = "Password Confirmar:";
             // 
             // txtNewPass
             // 
-            this.txtNewPass.Location = new System.Drawing.Point(82, 115);
+            this.txtNewPass.Location = new System.Drawing.Point(119, 115);
             this.txtNewPass.Name = "txtNewPass";
             this.txtNewPass.Properties.PasswordChar = '*';
             this.txtNewPass.Size = new System.Drawing.Size(152, 20);
@@ -124,9 +125,9 @@
             // 
             this.labelControl5.Location = new System.Drawing.Point(16, 119);
             this.labelControl5.Name = "labelControl5";
-            this.labelControl5.Size = new System.Drawing.Size(35, 13);
+            this.labelControl5.Size = new System.Drawing.Size(84, 13);
             this.labelControl5.TabIndex = 11;
-            this.labelControl5.Text = "Nueva:";
+            this.labelControl5.Text = "Password Nuevo:";
             // 
             // groupBox1
             // 
@@ -141,23 +142,23 @@
             this.groupBox1.Size = new System.Drawing.Size(602, 492);
             this.groupBox1.TabIndex = 16;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Perfiles";
+            this.groupBox1.Text = "Modulos";
             // 
             // labelControl3
             // 
             this.labelControl3.Location = new System.Drawing.Point(354, 36);
             this.labelControl3.Name = "labelControl3";
-            this.labelControl3.Size = new System.Drawing.Size(86, 13);
+            this.labelControl3.Size = new System.Drawing.Size(90, 13);
             this.labelControl3.TabIndex = 16;
-            this.labelControl3.Text = "Perfiles asignados";
+            this.labelControl3.Text = "Modulos asignados";
             // 
             // labelControl2
             // 
             this.labelControl2.Location = new System.Drawing.Point(18, 36);
             this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(89, 13);
+            this.labelControl2.Size = new System.Drawing.Size(93, 13);
             this.labelControl2.TabIndex = 15;
-            this.labelControl2.Text = "Perfiles sin asignar";
+            this.labelControl2.Text = "Modulos sin asignar";
             // 
             // cmdIzquierda
             // 
@@ -229,7 +230,7 @@
             // 
             this.listaError.ForeColor = System.Drawing.Color.Red;
             this.listaError.FormattingEnabled = true;
-            this.listaError.Location = new System.Drawing.Point(245, 99);
+            this.listaError.Location = new System.Drawing.Point(298, 99);
             this.listaError.Name = "listaError";
             this.listaError.Size = new System.Drawing.Size(294, 69);
             this.listaError.TabIndex = 27;
@@ -244,9 +245,9 @@
             // 
             // txtNombre
             // 
-            this.txtNombre.Location = new System.Drawing.Point(82, 48);
+            this.txtNombre.Location = new System.Drawing.Point(121, 48);
             this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(333, 20);
+            this.txtNombre.Size = new System.Drawing.Size(328, 20);
             this.txtNombre.TabIndex = 2;
             this.txtNombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtMayusculaKeyPress);
             // 
@@ -254,13 +255,13 @@
             // 
             this.labelControl8.Location = new System.Drawing.Point(15, 51);
             this.labelControl8.Name = "labelControl8";
-            this.labelControl8.Size = new System.Drawing.Size(41, 13);
+            this.labelControl8.Size = new System.Drawing.Size(89, 13);
             this.labelControl8.TabIndex = 23;
-            this.labelControl8.Text = "Nombre:";
+            this.labelControl8.Text = "Nombre Completo:";
             // 
             // txtRfc
             // 
-            this.txtRfc.Location = new System.Drawing.Point(82, 17);
+            this.txtRfc.Location = new System.Drawing.Point(122, 17);
             this.txtRfc.Mask = "LLLL000000";
             this.txtRfc.Name = "txtRfc";
             this.txtRfc.Size = new System.Drawing.Size(72, 21);
@@ -269,7 +270,7 @@
             // 
             // labelControl7
             // 
-            this.labelControl7.Location = new System.Drawing.Point(15, 20);
+            this.labelControl7.Location = new System.Drawing.Point(76, 20);
             this.labelControl7.Name = "labelControl7";
             this.labelControl7.Size = new System.Drawing.Size(24, 13);
             this.labelControl7.TabIndex = 21;
@@ -277,7 +278,7 @@
             // 
             // txtCurrentPass
             // 
-            this.txtCurrentPass.Location = new System.Drawing.Point(82, 81);
+            this.txtCurrentPass.Location = new System.Drawing.Point(119, 81);
             this.txtCurrentPass.Name = "txtCurrentPass";
             this.txtCurrentPass.Properties.PasswordChar = '*';
             this.txtCurrentPass.Size = new System.Drawing.Size(152, 20);
@@ -287,13 +288,13 @@
             // 
             this.labelControl6.Location = new System.Drawing.Point(17, 84);
             this.labelControl6.Name = "labelControl6";
-            this.labelControl6.Size = new System.Drawing.Size(34, 13);
+            this.labelControl6.Size = new System.Drawing.Size(83, 13);
             this.labelControl6.TabIndex = 19;
-            this.labelControl6.Text = "Actual:";
+            this.labelControl6.Text = "Password Actual:";
             // 
             // cmdGuardarUsuario
             // 
-            this.cmdGuardarUsuario.Location = new System.Drawing.Point(441, 49);
+            this.cmdGuardarUsuario.Location = new System.Drawing.Point(482, 49);
             this.cmdGuardarUsuario.Name = "cmdGuardarUsuario";
             this.cmdGuardarUsuario.Size = new System.Drawing.Size(107, 37);
             this.cmdGuardarUsuario.TabIndex = 18;
@@ -329,7 +330,8 @@
             this.searchLookUpUsuarioView.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.gridColumn1,
             this.gridColumn2,
-            this.gridColumn3});
+            this.gridColumn3,
+            this.gridColumn4});
             this.searchLookUpUsuarioView.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
             this.searchLookUpUsuarioView.Name = "searchLookUpUsuarioView";
             this.searchLookUpUsuarioView.OptionsBehavior.Editable = false;
@@ -344,7 +346,7 @@
             this.gridColumn1.UnboundType = DevExpress.Data.UnboundColumnType.String;
             this.gridColumn1.Visible = true;
             this.gridColumn1.VisibleIndex = 0;
-            this.gridColumn1.Width = 384;
+            this.gridColumn1.Width = 102;
             // 
             // gridColumn2
             // 
@@ -354,7 +356,7 @@
             this.gridColumn2.UnboundType = DevExpress.Data.UnboundColumnType.String;
             this.gridColumn2.Visible = true;
             this.gridColumn2.VisibleIndex = 1;
-            this.gridColumn2.Width = 368;
+            this.gridColumn2.Width = 398;
             // 
             // gridColumn3
             // 
@@ -364,7 +366,7 @@
             this.gridColumn3.UnboundType = DevExpress.Data.UnboundColumnType.Boolean;
             this.gridColumn3.Visible = true;
             this.gridColumn3.VisibleIndex = 2;
-            this.gridColumn3.Width = 100;
+            this.gridColumn3.Width = 56;
             // 
             // cmdEliminar
             // 
@@ -397,6 +399,16 @@
             this.lstAlmacen.Size = new System.Drawing.Size(165, 21);
             this.lstAlmacen.TabIndex = 28;
             this.lstAlmacen.SelectedIndexChanged += new System.EventHandler(this.LstAlmacenSelectedIndexChanged);
+            // 
+            // gridColumn4
+            // 
+            this.gridColumn4.Caption = "Password";
+            this.gridColumn4.FieldName = "Password";
+            this.gridColumn4.Name = "gridColumn4";
+            this.gridColumn4.UnboundType = DevExpress.Data.UnboundColumnType.String;
+            this.gridColumn4.Visible = true;
+            this.gridColumn4.VisibleIndex = 3;
+            this.gridColumn4.Width = 299;
             // 
             // FrmPanelControl
             // 
@@ -474,5 +486,6 @@
         private DevExpress.XtraEditors.SimpleButton cmdEliminar;
         private DevExpress.XtraEditors.LabelControl labelControl9;
         private System.Windows.Forms.ComboBox lstAlmacen;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
     }
 }
