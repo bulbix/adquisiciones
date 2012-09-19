@@ -29,9 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.lstUsuario = new DevExpress.XtraEditors.SearchLookUpEdit();
             this.bsUsuarios = new System.Windows.Forms.BindingSource(this.components);
-            this.searchLookUpUsuario = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.bsOrigen = new System.Windows.Forms.BindingSource(this.components);
             this.bsDestino = new System.Windows.Forms.BindingSource(this.components);
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
@@ -41,7 +39,6 @@
             this.txtNewPass = new DevExpress.XtraEditors.TextEdit();
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.cmdGuardarPerfil = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.cmdIzquierda = new DevExpress.XtraEditors.SimpleButton();
@@ -50,19 +47,24 @@
             this.lstOrigen = new DevExpress.XtraEditors.ListBoxControl();
             this.cmdOmitir = new DevExpress.XtraEditors.SimpleButton();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
+            this.listaError = new System.Windows.Forms.ListBox();
+            this.lblNumErrors = new System.Windows.Forms.Label();
             this.txtNombre = new DevExpress.XtraEditors.TextEdit();
             this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
             this.txtRfc = new System.Windows.Forms.MaskedTextBox();
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
             this.txtCurrentPass = new DevExpress.XtraEditors.TextEdit();
             this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
-            this.cmdGuardarPassword = new DevExpress.XtraEditors.SimpleButton();
+            this.cmdGuardarUsuario = new DevExpress.XtraEditors.SimpleButton();
             this.cmdNuevo = new DevExpress.XtraEditors.SimpleButton();
-            this.bsUsuario = new System.Windows.Forms.BindingSource(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.lstUsuario.Properties)).BeginInit();
+            this.searchLookUpUsuario = new DevExpress.XtraEditors.SearchLookUpEdit();
+            this.searchLookUpUsuarioView = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.cmdEliminar = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.bsUsuarios)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.searchLookUpUsuario)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsOrigen)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsDestino)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtConfirmPass.Properties)).BeginInit();
@@ -73,31 +75,13 @@
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtNombre.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCurrentPass.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bsUsuario)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.searchLookUpUsuario.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.searchLookUpUsuarioView)).BeginInit();
             this.SuspendLayout();
-            // 
-            // lstUsuario
-            // 
-            this.lstUsuario.Location = new System.Drawing.Point(60, 12);
-            this.lstUsuario.Name = "lstUsuario";
-            this.lstUsuario.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.lstUsuario.Properties.DataSource = this.bsUsuarios;
-            this.lstUsuario.Properties.View = this.searchLookUpUsuario;
-            this.lstUsuario.Size = new System.Drawing.Size(360, 20);
-            this.lstUsuario.TabIndex = 0;
-            this.lstUsuario.EditValueChanged += new System.EventHandler(this.lstUsuario_EditValueChanged);
-            // 
-            // searchLookUpUsuario
-            // 
-            this.searchLookUpUsuario.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
-            this.searchLookUpUsuario.Name = "searchLookUpUsuario";
-            this.searchLookUpUsuario.OptionsSelection.EnableAppearanceFocusedCell = false;
-            this.searchLookUpUsuario.OptionsView.ShowGroupPanel = false;
             // 
             // labelControl1
             // 
-            this.labelControl1.Location = new System.Drawing.Point(12, 16);
+            this.labelControl1.Location = new System.Drawing.Point(12, 12);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(41, 13);
             this.labelControl1.TabIndex = 3;
@@ -105,9 +89,9 @@
             // 
             // chkActivo
             // 
-            this.chkActivo.Location = new System.Drawing.Point(450, 20);
+            this.chkActivo.Location = new System.Drawing.Point(441, 20);
             this.chkActivo.Name = "chkActivo";
-            this.chkActivo.Size = new System.Drawing.Size(89, 23);
+            this.chkActivo.Size = new System.Drawing.Size(107, 23);
             this.chkActivo.TabIndex = 15;
             this.chkActivo.Text = "Usuario Activo";
             // 
@@ -117,7 +101,7 @@
             this.txtConfirmPass.Name = "txtConfirmPass";
             this.txtConfirmPass.Properties.PasswordChar = '*';
             this.txtConfirmPass.Size = new System.Drawing.Size(152, 20);
-            this.txtConfirmPass.TabIndex = 14;
+            this.txtConfirmPass.TabIndex = 5;
             // 
             // labelControl4
             // 
@@ -133,7 +117,7 @@
             this.txtNewPass.Name = "txtNewPass";
             this.txtNewPass.Properties.PasswordChar = '*';
             this.txtNewPass.Size = new System.Drawing.Size(152, 20);
-            this.txtNewPass.TabIndex = 12;
+            this.txtNewPass.TabIndex = 4;
             // 
             // labelControl5
             // 
@@ -145,7 +129,6 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.cmdGuardarPerfil);
             this.groupBox1.Controls.Add(this.labelControl3);
             this.groupBox1.Controls.Add(this.labelControl2);
             this.groupBox1.Controls.Add(this.cmdIzquierda);
@@ -154,18 +137,10 @@
             this.groupBox1.Controls.Add(this.lstOrigen);
             this.groupBox1.Location = new System.Drawing.Point(13, 234);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(564, 492);
+            this.groupBox1.Size = new System.Drawing.Size(602, 492);
             this.groupBox1.TabIndex = 16;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Perfiles";
-            // 
-            // cmdGuardarPerfil
-            // 
-            this.cmdGuardarPerfil.Location = new System.Drawing.Point(225, 258);
-            this.cmdGuardarPerfil.Name = "cmdGuardarPerfil";
-            this.cmdGuardarPerfil.Size = new System.Drawing.Size(106, 23);
-            this.cmdGuardarPerfil.TabIndex = 17;
-            this.cmdGuardarPerfil.Text = "Guardar Perfiles";
             // 
             // labelControl3
             // 
@@ -190,6 +165,7 @@
             this.cmdIzquierda.Size = new System.Drawing.Size(75, 23);
             this.cmdIzquierda.TabIndex = 14;
             this.cmdIzquierda.Text = "<";
+            this.cmdIzquierda.Click += new System.EventHandler(this.CmdIzquierdaClick);
             // 
             // cmdDerecha
             // 
@@ -198,6 +174,7 @@
             this.cmdDerecha.Size = new System.Drawing.Size(75, 23);
             this.cmdDerecha.TabIndex = 13;
             this.cmdDerecha.Text = ">";
+            this.cmdDerecha.Click += new System.EventHandler(this.CmdDerechaClick);
             // 
             // lstDestino
             // 
@@ -213,27 +190,28 @@
             this.lstOrigen.Location = new System.Drawing.Point(17, 55);
             this.lstOrigen.Name = "lstOrigen";
             this.lstOrigen.Size = new System.Drawing.Size(186, 402);
-            this.lstOrigen.TabIndex = 11;
+            this.lstOrigen.TabIndex = 6;
             // 
             // cmdOmitir
             // 
-            this.cmdOmitir.Location = new System.Drawing.Point(428, 11);
+            this.cmdOmitir.Location = new System.Drawing.Point(378, 8);
             this.cmdOmitir.Name = "cmdOmitir";
             this.cmdOmitir.Size = new System.Drawing.Size(75, 23);
             this.cmdOmitir.TabIndex = 18;
             this.cmdOmitir.Text = "Omitir";
-            this.cmdOmitir.Click += new System.EventHandler(this.cmdOmitir_Click);
+            this.cmdOmitir.Click += new System.EventHandler(this.CmdOmitirClick);
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.labelControl9);
+            this.groupBox2.Controls.Add(this.listaError);
+            this.groupBox2.Controls.Add(this.lblNumErrors);
             this.groupBox2.Controls.Add(this.txtNombre);
             this.groupBox2.Controls.Add(this.labelControl8);
             this.groupBox2.Controls.Add(this.txtRfc);
             this.groupBox2.Controls.Add(this.labelControl7);
             this.groupBox2.Controls.Add(this.txtCurrentPass);
             this.groupBox2.Controls.Add(this.labelControl6);
-            this.groupBox2.Controls.Add(this.cmdGuardarPassword);
+            this.groupBox2.Controls.Add(this.cmdGuardarUsuario);
             this.groupBox2.Controls.Add(this.labelControl5);
             this.groupBox2.Controls.Add(this.txtNewPass);
             this.groupBox2.Controls.Add(this.chkActivo);
@@ -241,25 +219,35 @@
             this.groupBox2.Controls.Add(this.txtConfirmPass);
             this.groupBox2.Location = new System.Drawing.Point(13, 38);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(564, 174);
+            this.groupBox2.Size = new System.Drawing.Size(602, 174);
             this.groupBox2.TabIndex = 17;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Contraseña";
             // 
-            // labelControl9
+            // listaError
             // 
-            this.labelControl9.Location = new System.Drawing.Point(264, 21);
-            this.labelControl9.Name = "labelControl9";
-            this.labelControl9.Size = new System.Drawing.Size(63, 13);
-            this.labelControl9.TabIndex = 25;
-            this.labelControl9.Text = "labelControl9";
+            this.listaError.ForeColor = System.Drawing.Color.Red;
+            this.listaError.FormattingEnabled = true;
+            this.listaError.Location = new System.Drawing.Point(245, 99);
+            this.listaError.Name = "listaError";
+            this.listaError.Size = new System.Drawing.Size(294, 69);
+            this.listaError.TabIndex = 27;
+            // 
+            // lblNumErrors
+            // 
+            this.lblNumErrors.AutoSize = true;
+            this.lblNumErrors.Location = new System.Drawing.Point(249, 84);
+            this.lblNumErrors.Name = "lblNumErrors";
+            this.lblNumErrors.Size = new System.Drawing.Size(0, 13);
+            this.lblNumErrors.TabIndex = 26;
             // 
             // txtNombre
             // 
             this.txtNombre.Location = new System.Drawing.Point(82, 48);
             this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(152, 20);
-            this.txtNombre.TabIndex = 24;
+            this.txtNombre.Size = new System.Drawing.Size(333, 20);
+            this.txtNombre.TabIndex = 2;
+            this.txtNombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtMayusculaKeyPress);
             // 
             // labelControl8
             // 
@@ -272,10 +260,11 @@
             // txtRfc
             // 
             this.txtRfc.Location = new System.Drawing.Point(82, 17);
-            this.txtRfc.Mask = "LLLL000000LL0";
+            this.txtRfc.Mask = "LLLL000000";
             this.txtRfc.Name = "txtRfc";
-            this.txtRfc.Size = new System.Drawing.Size(91, 21);
-            this.txtRfc.TabIndex = 22;
+            this.txtRfc.Size = new System.Drawing.Size(72, 21);
+            this.txtRfc.TabIndex = 1;
+            this.txtRfc.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtMayusculaKeyPress);
             // 
             // labelControl7
             // 
@@ -291,7 +280,7 @@
             this.txtCurrentPass.Name = "txtCurrentPass";
             this.txtCurrentPass.Properties.PasswordChar = '*';
             this.txtCurrentPass.Size = new System.Drawing.Size(152, 20);
-            this.txtCurrentPass.TabIndex = 20;
+            this.txtCurrentPass.TabIndex = 3;
             // 
             // labelControl6
             // 
@@ -300,42 +289,119 @@
             this.labelControl6.Size = new System.Drawing.Size(34, 13);
             this.labelControl6.TabIndex = 19;
             this.labelControl6.Text = "Actual:";
-            this.labelControl6.Click += new System.EventHandler(this.labelControl6_Click);
             // 
-            // cmdGuardarPassword
+            // cmdGuardarUsuario
             // 
-            this.cmdGuardarPassword.Location = new System.Drawing.Point(429, 68);
-            this.cmdGuardarPassword.Name = "cmdGuardarPassword";
-            this.cmdGuardarPassword.Size = new System.Drawing.Size(129, 46);
-            this.cmdGuardarPassword.TabIndex = 18;
-            this.cmdGuardarPassword.Text = "Guardar Contraseña";
+            this.cmdGuardarUsuario.Location = new System.Drawing.Point(441, 49);
+            this.cmdGuardarUsuario.Name = "cmdGuardarUsuario";
+            this.cmdGuardarUsuario.Size = new System.Drawing.Size(107, 37);
+            this.cmdGuardarUsuario.TabIndex = 18;
+            this.cmdGuardarUsuario.Text = "Guardar Usuario";
+            this.cmdGuardarUsuario.Click += new System.EventHandler(this.CmdGuardarUsuarioClick);
             // 
             // cmdNuevo
             // 
-            this.cmdNuevo.Location = new System.Drawing.Point(506, 11);
+            this.cmdNuevo.Location = new System.Drawing.Point(459, 8);
             this.cmdNuevo.Name = "cmdNuevo";
             this.cmdNuevo.Size = new System.Drawing.Size(75, 23);
             this.cmdNuevo.TabIndex = 19;
             this.cmdNuevo.Text = "Nuevo";
+            this.cmdNuevo.Click += new System.EventHandler(this.CmdNuevoClick);
+            // 
+            // searchLookUpUsuario
+            // 
+            this.searchLookUpUsuario.EditValue = "";
+            this.searchLookUpUsuario.Location = new System.Drawing.Point(59, 9);
+            this.searchLookUpUsuario.Name = "searchLookUpUsuario";
+            this.searchLookUpUsuario.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.searchLookUpUsuario.Properties.DataSource = this.bsUsuarios;
+            this.searchLookUpUsuario.Properties.DisplayMember = "Nombre";
+            this.searchLookUpUsuario.Properties.ValueMember = "IdUsuario";
+            this.searchLookUpUsuario.Properties.View = this.searchLookUpUsuarioView;
+            this.searchLookUpUsuario.Size = new System.Drawing.Size(310, 20);
+            this.searchLookUpUsuario.TabIndex = 20;
+            this.searchLookUpUsuario.EditValueChanged += new System.EventHandler(this.LstUsuarioEditValueChanged);
+            // 
+            // searchLookUpUsuarioView
+            // 
+            this.searchLookUpUsuarioView.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn1,
+            this.gridColumn2,
+            this.gridColumn3,
+            this.gridColumn4});
+            this.searchLookUpUsuarioView.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            this.searchLookUpUsuarioView.Name = "searchLookUpUsuarioView";
+            this.searchLookUpUsuarioView.OptionsBehavior.Editable = false;
+            this.searchLookUpUsuarioView.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.searchLookUpUsuarioView.OptionsView.ShowGroupPanel = false;
+            // 
+            // gridColumn1
+            // 
+            this.gridColumn1.Caption = "RFC";
+            this.gridColumn1.FieldName = "Rfc";
+            this.gridColumn1.Name = "gridColumn1";
+            this.gridColumn1.UnboundType = DevExpress.Data.UnboundColumnType.String;
+            this.gridColumn1.Visible = true;
+            this.gridColumn1.VisibleIndex = 0;
+            this.gridColumn1.Width = 213;
+            // 
+            // gridColumn2
+            // 
+            this.gridColumn2.Caption = "Nombre";
+            this.gridColumn2.FieldName = "Nombre";
+            this.gridColumn2.Name = "gridColumn2";
+            this.gridColumn2.UnboundType = DevExpress.Data.UnboundColumnType.String;
+            this.gridColumn2.Visible = true;
+            this.gridColumn2.VisibleIndex = 1;
+            this.gridColumn2.Width = 213;
+            // 
+            // gridColumn3
+            // 
+            this.gridColumn3.Caption = "Estatus";
+            this.gridColumn3.FieldName = "Estatus";
+            this.gridColumn3.Name = "gridColumn3";
+            this.gridColumn3.UnboundType = DevExpress.Data.UnboundColumnType.Boolean;
+            this.gridColumn3.Visible = true;
+            this.gridColumn3.VisibleIndex = 2;
+            this.gridColumn3.Width = 46;
+            // 
+            // gridColumn4
+            // 
+            this.gridColumn4.Caption = "Password";
+            this.gridColumn4.FieldName = "Password";
+            this.gridColumn4.Name = "gridColumn4";
+            this.gridColumn4.UnboundType = DevExpress.Data.UnboundColumnType.String;
+            this.gridColumn4.Visible = true;
+            this.gridColumn4.VisibleIndex = 3;
+            this.gridColumn4.Width = 380;
+            // 
+            // cmdEliminar
+            // 
+            this.cmdEliminar.Location = new System.Drawing.Point(540, 8);
+            this.cmdEliminar.Name = "cmdEliminar";
+            this.cmdEliminar.Size = new System.Drawing.Size(75, 23);
+            this.cmdEliminar.TabIndex = 21;
+            this.cmdEliminar.Text = "Eliminar";
+            this.cmdEliminar.Click += new System.EventHandler(this.SimpleButton1Click);
             // 
             // FrmPanelControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(609, 705);
+            this.ClientSize = new System.Drawing.Size(635, 705);
+            this.Controls.Add(this.cmdEliminar);
+            this.Controls.Add(this.searchLookUpUsuario);
             this.Controls.Add(this.cmdNuevo);
             this.Controls.Add(this.cmdOmitir);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.labelControl1);
-            this.Controls.Add(this.lstUsuario);
             this.Name = "FrmPanelControl";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Panel Control";
-            this.Load += new System.EventHandler(this.FrmPerfil_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.lstUsuario.Properties)).EndInit();
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmPanelControlFormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.bsUsuarios)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.searchLookUpUsuario)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsOrigen)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsDestino)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtConfirmPass.Properties)).EndInit();
@@ -348,7 +414,8 @@
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtNombre.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCurrentPass.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bsUsuario)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.searchLookUpUsuario.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.searchLookUpUsuarioView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -356,8 +423,6 @@
 
         #endregion
 
-        private DevExpress.XtraEditors.SearchLookUpEdit lstUsuario;
-        private DevExpress.XtraGrid.Views.Grid.GridView searchLookUpUsuario;
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private System.Windows.Forms.BindingSource bsOrigen;
         private System.Windows.Forms.BindingSource bsDestino;
@@ -369,7 +434,6 @@
         private DevExpress.XtraEditors.LabelControl labelControl5;
         private System.Windows.Forms.GroupBox groupBox1;
         private DevExpress.XtraEditors.SimpleButton cmdOmitir;
-        private DevExpress.XtraEditors.SimpleButton cmdGuardarPerfil;
         private DevExpress.XtraEditors.LabelControl labelControl3;
         private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.XtraEditors.SimpleButton cmdIzquierda;
@@ -378,14 +442,21 @@
         private DevExpress.XtraEditors.ListBoxControl lstOrigen;
         private System.Windows.Forms.GroupBox groupBox2;
         private DevExpress.XtraEditors.LabelControl labelControl6;
-        private DevExpress.XtraEditors.SimpleButton cmdGuardarPassword;
+        private DevExpress.XtraEditors.SimpleButton cmdGuardarUsuario;
         private DevExpress.XtraEditors.TextEdit txtCurrentPass;
         private DevExpress.XtraEditors.LabelControl labelControl7;
         private DevExpress.XtraEditors.SimpleButton cmdNuevo;
         private DevExpress.XtraEditors.TextEdit txtNombre;
         private DevExpress.XtraEditors.LabelControl labelControl8;
         private System.Windows.Forms.MaskedTextBox txtRfc;
-        private DevExpress.XtraEditors.LabelControl labelControl9;
-        private System.Windows.Forms.BindingSource bsUsuario;
+        private System.Windows.Forms.ListBox listaError;
+        private System.Windows.Forms.Label lblNumErrors;
+        private DevExpress.XtraEditors.SearchLookUpEdit searchLookUpUsuario;
+        private DevExpress.XtraGrid.Views.Grid.GridView searchLookUpUsuarioView;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
+        private DevExpress.XtraEditors.SimpleButton cmdEliminar;
     }
 }

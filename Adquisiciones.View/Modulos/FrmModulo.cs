@@ -144,9 +144,7 @@ namespace Adquisiciones.View.Modulos
         {
             var usuarioModifico = (Usuario)TypeEntity.GetProperty("Usuario").GetValue(EntityActual, null);
 
-
-            if (FrmModuloAcceso.UsuarioLog.IdUsuario != FrmModuloAcceso.SuperUsario && 
-                FrmModuloAcceso.UsuarioLog.IdUsuario != usuarioModifico.IdUsuario)
+            if (FrmModuloAcceso.UsuarioLog.IdUsuario != usuarioModifico.IdUsuario)
             {
                 cmdGuardar.Enabled = false;
                 cmdEliminar.Enabled = false;

@@ -161,7 +161,6 @@
     <Compile Include="Entities\Model\Usuario.cs" />
     <Compile Include="Entities\Model\UsuarioModulo.cs" />
     <Compile Include="Entities\Model\UsuarioModuloId.cs" />
-    <Compile Include="Auxiliares\ReporteTabla.cs" />
     <Compile Include="IFormBusqueda.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Validators\DateTimeNullAttribute.cs" />
@@ -178,7 +177,7 @@
     <EmbeddedResource Include="Querys\QuerysAnexo.hbm.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
-    <EmbeddedResource Include="Querys\QuerysCatalogos.hbm.xml">
+    <EmbeddedResource Include="Querys\QuerysSeguridad.hbm.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="Querys\QuerysCotizacion.hbm.xml">
@@ -323,9 +322,6 @@
     <None Include="app.config">
       <SubType>Designer</SubType>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Querys\PocosAuxiliares.hbm.xml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Mappings\Model\Requisicion.hbm.xml" />

@@ -1,7 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="Adquisiciones.Data"
+                   
+                   namespace="Adquisiciones.Data.Auxiliares">
 
   <!-- select current_date -->
+
+  <import class="ArticuloBusqueda" /> 
 
   <sql-query name="Util.FechaServidor">    
     <![CDATA[

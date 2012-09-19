@@ -32,8 +32,8 @@
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.windowsMedia = new AxWMPLib.AxWindowsMediaPlayer();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.lstModulo = new System.Windows.Forms.ComboBox();
             this.cmdPlay = new DevExpress.XtraEditors.SimpleButton();
+            this.lstModulo = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.windowsMedia)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -56,7 +56,7 @@
             this.windowsMedia.Location = new System.Drawing.Point(0, 0);
             this.windowsMedia.Name = "windowsMedia";
             this.windowsMedia.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("windowsMedia.OcxState")));
-            this.windowsMedia.Size = new System.Drawing.Size(581, 400);
+            this.windowsMedia.Size = new System.Drawing.Size(605, 441);
             this.windowsMedia.TabIndex = 1;
             // 
             // splitContainer1
@@ -74,9 +74,18 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.windowsMedia);
-            this.splitContainer1.Size = new System.Drawing.Size(581, 446);
-            this.splitContainer1.SplitterDistance = 42;
+            this.splitContainer1.Size = new System.Drawing.Size(605, 491);
+            this.splitContainer1.SplitterDistance = 46;
             this.splitContainer1.TabIndex = 3;
+            // 
+            // cmdPlay
+            // 
+            this.cmdPlay.Location = new System.Drawing.Point(210, 12);
+            this.cmdPlay.Name = "cmdPlay";
+            this.cmdPlay.Size = new System.Drawing.Size(90, 23);
+            this.cmdPlay.TabIndex = 4;
+            this.cmdPlay.Text = "Reproducir";
+            this.cmdPlay.Click += new System.EventHandler(this.SimpleButton2Click);
             // 
             // lstModulo
             // 
@@ -91,20 +100,11 @@
             this.lstModulo.Size = new System.Drawing.Size(172, 21);
             this.lstModulo.TabIndex = 3;
             // 
-            // cmdPlay
-            // 
-            this.cmdPlay.Location = new System.Drawing.Point(210, 12);
-            this.cmdPlay.Name = "cmdPlay";
-            this.cmdPlay.Size = new System.Drawing.Size(90, 23);
-            this.cmdPlay.TabIndex = 4;
-            this.cmdPlay.Text = "Reproducir";
-            this.cmdPlay.Click += new System.EventHandler(this.SimpleButton2Click);
-            // 
             // FrmAyuda
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(581, 446);
+            this.ClientSize = new System.Drawing.Size(605, 491);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.simpleButton1);
             this.Name = "FrmAyuda";

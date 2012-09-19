@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+
+  <query name="Usuario.VerificaUsuario">
+    <![CDATA[
+    
+    select u 
+    from Usuario u 
+    join fetch u.UsuarioModulo um 
+    join fetch um.Id.Modulo m 
+    join fetch m.Id.Almacen a 
+    where u.Rfc = :rfc 
+    and u.Password =:pwd
+    order by m.Id.IdModulo asc  ]]>
+  </query>
+
+  <query name="Usuario.SinPerfiles">
+    <![CDATA[ 
+    select m
+    from Modulo m 
+    where m.Id.IdModulo not in 
+    (select um.Id.Modulo.Id.IdModulo 
+    from UsuarioModulo um 
+    where um.Id.Usuario = :usuario 
+    and um.Id.Modulo.Id.Almacen = :almacen)
+    and m.Id.Almacen = :almacen 
+    
+   ]]>
+  </query>
+
+  <query name="Usuario.ConPerfiles">
+    <![CDATA[    
+    select um 
+    from UsuarioModulo um 
+    join fetch um.Id.Modulo     
+    join fetch um.Id.Usuario      
+    where um.Id.Usuario = :usuario 
+    and um.Id.Modulo.Id.Almacen = :almacen
+    order by um.Id.Modulo.DesModulo]]>
+  </query>  
+
+
+</hibernate-mapping>

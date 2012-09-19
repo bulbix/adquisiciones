@@ -145,8 +145,7 @@ namespace Adquisiciones.View.Busquedas
                 GetProperty("Usuario").GetValue(GvGeneral.GetFocusedRow(), null);
 
 
-                if (FrmModuloAcceso.UsuarioLog.IdUsuario != FrmModuloAcceso.SuperUsario &&
-                    FrmModuloAcceso.UsuarioLog.IdUsuario != usuarioModifico.IdUsuario)
+                if (FrmModuloAcceso.UsuarioLog.IdUsuario != usuarioModifico.IdUsuario)
                 {
                     XtraMessageBox.Show(@"No es dueno del registro", @"Adquisiciones",
                                        MessageBoxButtons.OK, MessageBoxIcon.Information);

@@ -4,7 +4,8 @@ using MyGeneration/Template/NHibernate (c) by lujan99@usa.net
 using System;
 using System.Collections;
 using System.Collections.Generic;
-
+using System.ComponentModel;
+using NHibernate.Validator.Constraints;
 
 
 namespace Adquisiciones.Data.Entities
@@ -13,7 +14,7 @@ namespace Adquisiciones.Data.Entities
 	/// Usuario object for NHibernate mapped table 'usuario'.
 	/// </summary>
 	[Serializable]
-	public class Usuario:IComparable
+    public class Usuario : IComparable, INotifyPropertyChanged
 	{
 		#region Member Variables
 		protected int _idusuario;
@@ -54,37 +55,69 @@ namespace Adquisiciones.Data.Entities
 			set {_idusuario= value; }
 		}
 
-       
+
+        [NotNullNotEmpty(Message = ("Campo Requerido"))]
 		public  virtual string Rfc
 		{
 			get { return _rfc; }
-			set {_rfc= value; }
+
+            set
+            {
+                if (_rfc != value)
+                {
+                    _rfc = value;
+                    OnPropertyChanged("Rfc");
+                }
+            }
 		}
+
+        [NotNullNotEmpty(Message = ("Campo Requerido"))]
 		public  virtual string Nombre
 		{
 			get { return _nombre; }
-			set {_nombre= value; }
+
+
+            set
+            {
+                if (_nombre != value)
+                {
+                    _nombre = value;
+                    OnPropertyChanged("Nombre");
+                }
+            }
 		}
+
 		public  virtual DateTime? FechaAlta
 		{
 			get { return _fechaalta; }
 			set {_fechaalta= value; }
 		}
+
 		public  virtual DateTime? FechaBaja
 		{
 			get { return _fechabaja; }
 			set {_fechabaja= value; }
 		}
+
+        [NotNullNotEmpty(Message = ("Campo Requerido"))]
 		public  virtual string Estatus
 		{
 			get { return _estatus; }
 			set {_estatus= value; }
 		}
 
+        [NotNullNotEmpty(Message = ("Campo Requerido"))]
 		public  virtual string Password
 		{
 			get { return _password; }
-			set {_password= value; }
+
+            set{
+                if (_password != value)
+                {
+                    _password = value;
+                    OnPropertyChanged("Password");
+                }
+            }
 		}
 
 		public  virtual IList<UsuarioModulo> UsuarioModulo
@@ -128,5 +161,16 @@ namespace Adquisiciones.Data.Entities
         {
             return Rfc.Trim() + "/" + Nombre.Trim();
         }
+
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        #region business logic
+
+        private void OnPropertyChanged(string propertyName)
+        {
+            if (PropertyChanged != null)
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+        }
+        #endregion
 	}
 }

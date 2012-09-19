@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Security.Cryptography;
+using System.Text;
 using System.Windows.Forms;
 using System.Data;
 using System.Net;
@@ -151,5 +153,38 @@ namespace Adquisiciones.Business
             combo.ValueMember = "value";
 
         }
+
+        public static string ReverseString(string s)
+        {
+            var arr = s.ToCharArray();
+            Array.Reverse(arr);
+            return new string(arr);
+        }
+
+        /// <summary>
+        /// Crea un sha1 que es el hash
+        /// </summary>
+        /// <param name="password"></param>
+        /// <returns></returns>
+        public static string GetSHA1(string password)
+        {
+            password = ReverseString(password);
+
+            var UE = new UnicodeEncoding();
+            byte[] hashValue;
+            byte[] message = UE.GetBytes(password);
+
+            var hashString = new SHA1Managed();
+            string hex = "";
+
+            hashValue = hashString.ComputeHash(message);
+
+            hex = Convert.ToBase64String(hashValue);
+
+            return hex;
+        }
+
+
+
     }
 }

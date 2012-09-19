@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using Adquisiciones.Business.Seguridad;
 using Adquisiciones.Data.Dao.Seguridad;
 using Adquisiciones.Data.Entities;
 using DevExpress.XtraEditors;
@@ -25,7 +26,7 @@ namespace Adquisiciones.View
 
         /// <summary>
         /// </summary>
-        public IUsuarioDao UsuarioDao { private get; set; }
+        public IUsuarioService UsuarioService { private get; set; }
 
         private CaptchaImage captcha;
 
@@ -37,7 +38,7 @@ namespace Adquisiciones.View
         {
             InitializeComponent();
             var ctx = ContextRegistry.GetContext();
-            UsuarioDao = ctx["usuarioDao"] as IUsuarioDao;
+            UsuarioService = ctx["usuarioService"] as IUsuarioService;
             
         }
 
@@ -50,8 +51,8 @@ namespace Adquisiciones.View
 
         private void BtnAceptarClick(object sender, EventArgs e)
         {
-            UsuarioLog = UsuarioDao.AccessAllow(txtRfc.Text, txtPassword.Text);
-            
+            UsuarioLog = UsuarioService.AccessAllow(txtRfc.Text, txtPassword.Text);
+
             if(txtCaptcha.Text.Trim() != captcha.Text)
             {
                 XtraMessageBox.Show(@"Codigo de seguridad incorrecto",
@@ -68,10 +69,19 @@ namespace Adquisiciones.View
                 XtraMessageBox.Show(@"Verifique credenciales",
                                     @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 GenerarCaptcha();
-                txtCaptcha.Text = "";txtRfc.Focus();
+                txtCaptcha.Text = "";
+                txtPassword.Text = "";
+                txtRfc.Focus();
             }
             else //Redireccionamos
             {
+                if(UsuarioLog.Estatus != "A")
+                {
+                    XtraMessageBox.Show(@"Usuario dado de baja, pregunte a su administrador",
+                                    @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
                 this.Hide();
                 new FrmModuloModulo().ShowDialog();
             }
@@ -136,7 +146,7 @@ namespace Adquisiciones.View
             // 
             // txtRfc
             // 
-            this.txtRfc.EditValue = "SUPERUSUARIO";
+            this.txtRfc.EditValue = "SAIH940101";
             this.txtRfc.Location = new System.Drawing.Point(278, 63);
             this.txtRfc.Name = "txtRfc";
             this.txtRfc.Size = new System.Drawing.Size(242, 20);

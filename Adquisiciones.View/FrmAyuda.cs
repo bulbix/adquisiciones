@@ -22,12 +22,11 @@ namespace Adquisiciones.View
             try
             {
                 var directorio = new
-                    DirectoryInfo("\\\\192.168.16.65" + "\\" + "ManualAdquisiciones");
+                    DirectoryInfo(@"\\192.168.16.65\users\Public\Documents\ManualAdquisiciones");
                 string video = "";
 
                 switch (lstModulo.SelectedItem.ToString())
-                {
-                    case "Anexo":
+                {case "Anexo":
                         video = directorio.GetFiles("Anexo.mp4")[0].FullName;
                         break;
                     case "Cotizacion":

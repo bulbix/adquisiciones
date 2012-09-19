@@ -1,4 +1,6 @@
-﻿using Adquisiciones.Data.Dao.Seguridad;
+﻿using System;
+using Adquisiciones.Business;
+using Adquisiciones.Data.Dao.Seguridad;
 using NUnit.Framework;
 
 namespace Adquisiciones.Test.Seguridad
@@ -9,13 +11,21 @@ namespace Adquisiciones.Test.Seguridad
         public IUsuarioDao UsuarioDao { private get; set; }
 
         [Test]
-        public void TestMethodAccess()
-        {
+        public void TestMethodAccess(){
             var usuario = UsuarioDao.AccessAllow("BULBIX", "adios");
             Assert.AreEqual("bulbo", usuario.Nombre);
             Assert.AreEqual(2, usuario.UsuarioModulo.Count);
         }
 
+
+
+        [Test]
+        public void TestGetPassword()
+        {
+            var pass = Util.GetSHA1("bulbo");
+            Console.WriteLine(pass);
+
+        }
 
     }
 }

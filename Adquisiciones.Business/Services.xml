@@ -4,8 +4,13 @@
          xmlns:aop="http://www.springframework.net/aop">
          
    <!-- Audit Logging Interceptor -->
-  <object id="auditInterceptor"
+  <!--<object id="auditInterceptor"
           type="Adquisiciones.Business.Audit.AuditInterceptor, Adquisiciones.Business">
+  </object>-->
+
+
+  <object id="usuarioService" type="Adquisiciones.Business.Seguridad.UsuarioServiceImp, Adquisiciones.Business">
+    <property name="UsuarioDao" ref="usuarioDao"/>
   </object>
 
   <!--Objetos de Negocio-->
