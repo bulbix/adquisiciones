@@ -62,8 +62,9 @@
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.cmdEliminar = new DevExpress.XtraEditors.SimpleButton();
+            this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
+            this.lstAlmacen = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.bsUsuarios)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsOrigen)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsDestino)).BeginInit();
@@ -81,7 +82,7 @@
             // 
             // labelControl1
             // 
-            this.labelControl1.Location = new System.Drawing.Point(12, 12);
+            this.labelControl1.Location = new System.Drawing.Point(295, 35);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(41, 13);
             this.labelControl1.TabIndex = 3;
@@ -194,7 +195,7 @@
             // 
             // cmdOmitir
             // 
-            this.cmdOmitir.Location = new System.Drawing.Point(378, 8);
+            this.cmdOmitir.Location = new System.Drawing.Point(205, 4);
             this.cmdOmitir.Name = "cmdOmitir";
             this.cmdOmitir.Size = new System.Drawing.Size(75, 23);
             this.cmdOmitir.TabIndex = 18;
@@ -217,7 +218,7 @@
             this.groupBox2.Controls.Add(this.chkActivo);
             this.groupBox2.Controls.Add(this.labelControl4);
             this.groupBox2.Controls.Add(this.txtConfirmPass);
-            this.groupBox2.Location = new System.Drawing.Point(13, 38);
+            this.groupBox2.Location = new System.Drawing.Point(13, 54);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(602, 174);
             this.groupBox2.TabIndex = 17;
@@ -301,7 +302,7 @@
             // 
             // cmdNuevo
             // 
-            this.cmdNuevo.Location = new System.Drawing.Point(459, 8);
+            this.cmdNuevo.Location = new System.Drawing.Point(286, 4);
             this.cmdNuevo.Name = "cmdNuevo";
             this.cmdNuevo.Size = new System.Drawing.Size(75, 23);
             this.cmdNuevo.TabIndex = 19;
@@ -310,8 +311,8 @@
             // 
             // searchLookUpUsuario
             // 
-            this.searchLookUpUsuario.EditValue = "";
-            this.searchLookUpUsuario.Location = new System.Drawing.Point(59, 9);
+            this.searchLookUpUsuario.EditValue = "<Null>";
+            this.searchLookUpUsuario.Location = new System.Drawing.Point(342, 31);
             this.searchLookUpUsuario.Name = "searchLookUpUsuario";
             this.searchLookUpUsuario.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -319,7 +320,7 @@
             this.searchLookUpUsuario.Properties.DisplayMember = "Nombre";
             this.searchLookUpUsuario.Properties.ValueMember = "IdUsuario";
             this.searchLookUpUsuario.Properties.View = this.searchLookUpUsuarioView;
-            this.searchLookUpUsuario.Size = new System.Drawing.Size(310, 20);
+            this.searchLookUpUsuario.Size = new System.Drawing.Size(281, 20);
             this.searchLookUpUsuario.TabIndex = 20;
             this.searchLookUpUsuario.EditValueChanged += new System.EventHandler(this.LstUsuarioEditValueChanged);
             // 
@@ -328,8 +329,7 @@
             this.searchLookUpUsuarioView.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.gridColumn1,
             this.gridColumn2,
-            this.gridColumn3,
-            this.gridColumn4});
+            this.gridColumn3});
             this.searchLookUpUsuarioView.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
             this.searchLookUpUsuarioView.Name = "searchLookUpUsuarioView";
             this.searchLookUpUsuarioView.OptionsBehavior.Editable = false;
@@ -344,7 +344,7 @@
             this.gridColumn1.UnboundType = DevExpress.Data.UnboundColumnType.String;
             this.gridColumn1.Visible = true;
             this.gridColumn1.VisibleIndex = 0;
-            this.gridColumn1.Width = 213;
+            this.gridColumn1.Width = 384;
             // 
             // gridColumn2
             // 
@@ -354,7 +354,7 @@
             this.gridColumn2.UnboundType = DevExpress.Data.UnboundColumnType.String;
             this.gridColumn2.Visible = true;
             this.gridColumn2.VisibleIndex = 1;
-            this.gridColumn2.Width = 213;
+            this.gridColumn2.Width = 368;
             // 
             // gridColumn3
             // 
@@ -364,32 +364,47 @@
             this.gridColumn3.UnboundType = DevExpress.Data.UnboundColumnType.Boolean;
             this.gridColumn3.Visible = true;
             this.gridColumn3.VisibleIndex = 2;
-            this.gridColumn3.Width = 46;
-            // 
-            // gridColumn4
-            // 
-            this.gridColumn4.Caption = "Password";
-            this.gridColumn4.FieldName = "Password";
-            this.gridColumn4.Name = "gridColumn4";
-            this.gridColumn4.UnboundType = DevExpress.Data.UnboundColumnType.String;
-            this.gridColumn4.Visible = true;
-            this.gridColumn4.VisibleIndex = 3;
-            this.gridColumn4.Width = 380;
+            this.gridColumn3.Width = 100;
             // 
             // cmdEliminar
             // 
-            this.cmdEliminar.Location = new System.Drawing.Point(540, 8);
+            this.cmdEliminar.Location = new System.Drawing.Point(367, 4);
             this.cmdEliminar.Name = "cmdEliminar";
             this.cmdEliminar.Size = new System.Drawing.Size(75, 23);
             this.cmdEliminar.TabIndex = 21;
             this.cmdEliminar.Text = "Eliminar";
             this.cmdEliminar.Click += new System.EventHandler(this.SimpleButton1Click);
             // 
+            // labelControl9
+            // 
+            this.labelControl9.Location = new System.Drawing.Point(12, 34);
+            this.labelControl9.Name = "labelControl9";
+            this.labelControl9.Size = new System.Drawing.Size(97, 13);
+            this.labelControl9.TabIndex = 23;
+            this.labelControl9.Text = "Seleccionar Almacen";
+            // 
+            // lstAlmacen
+            // 
+            this.lstAlmacen.FormattingEnabled = true;
+            this.lstAlmacen.Items.AddRange(new object[] {
+            "",
+            "C2",
+            "C5",
+            "P2",
+            "P5"});
+            this.lstAlmacen.Location = new System.Drawing.Point(115, 33);
+            this.lstAlmacen.Name = "lstAlmacen";
+            this.lstAlmacen.Size = new System.Drawing.Size(165, 21);
+            this.lstAlmacen.TabIndex = 28;
+            this.lstAlmacen.SelectedIndexChanged += new System.EventHandler(this.LstAlmacenSelectedIndexChanged);
+            // 
             // FrmPanelControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(635, 705);
+            this.Controls.Add(this.lstAlmacen);
+            this.Controls.Add(this.labelControl9);
             this.Controls.Add(this.cmdEliminar);
             this.Controls.Add(this.searchLookUpUsuario);
             this.Controls.Add(this.cmdNuevo);
@@ -456,7 +471,8 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
         private DevExpress.XtraEditors.SimpleButton cmdEliminar;
+        private DevExpress.XtraEditors.LabelControl labelControl9;
+        private System.Windows.Forms.ComboBox lstAlmacen;
     }
 }

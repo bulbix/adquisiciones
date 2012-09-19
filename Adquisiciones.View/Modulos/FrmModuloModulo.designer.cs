@@ -99,6 +99,7 @@
             this.Name = "FrmModuloModulo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Seleccionar Almacen";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmModuloModulo_FormClosed);
             this.ResumeLayout(false);
 
         }

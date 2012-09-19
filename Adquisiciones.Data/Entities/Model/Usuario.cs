@@ -24,7 +24,15 @@ namespace Adquisiciones.Data.Entities
 		protected DateTime? _fechabaja;
 		protected string _estatus;
 		protected string _password;
-		protected IList<UsuarioModulo> _usuariomodulo;
+        protected bool _panelcontrol;
+
+	    public virtual bool PanelControl
+	    {
+	        get { return _panelcontrol; }
+	        set { _panelcontrol = value; }
+	    }
+
+	    protected IList<UsuarioModulo> _usuariomodulo;
 		
 		#endregion
 		#region Constructors

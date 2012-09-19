@@ -37,7 +37,18 @@
     where um.Id.Usuario = :usuario 
     and um.Id.Modulo.Id.Almacen = :almacen
     order by um.Id.Modulo.DesModulo]]>
-  </query>  
+  </query>
+
+  <query name="Usuario.AllSinPerfiles">
+    <![CDATA[    
+    select um 
+    from UsuarioModulo um 
+    join fetch um.Id.Modulo     
+    join fetch um.Id.Usuario      
+    where um.Id.Usuario = :usuario 
+    and um.Id.Modulo.Id.Almacen <> :almacen
+    order by um.Id.Modulo.DesModulo]]>
+  </query>
 
 
 </hibernate-mapping>

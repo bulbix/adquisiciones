@@ -11,7 +11,7 @@ namespace Adquisiciones.Business.Seguridad
     {
         IUsuarioDao UsuarioDao { get; set; }
         Usuario AccessAllow(string rfc, string password);
-        void GuardarUsuario(Usuario usuario);
+        void GuardarUsuario(Usuario usuario, bool updatePassword);
         void Update(Usuario usuario);
         void Delete(Usuario usuario);
     }

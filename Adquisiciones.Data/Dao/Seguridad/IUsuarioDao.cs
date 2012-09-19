@@ -8,6 +8,7 @@ namespace Adquisiciones.Data.Dao.Seguridad
         Usuario AccessAllow(string rfc, string password);
         IList<Modulo> ModulosSinPerfil(Usuario usuario, Almacen almacen);
         IList<UsuarioModulo> ModulosConPerfil(Usuario usuario, Almacen almacen);
+        IList<UsuarioModulo> ModulosAllSinPerfil(Usuario usuario, Almacen almacen);
         IList<Usuario> CargarUsuarios();
     }
 }

@@ -20,6 +20,7 @@ namespace Adquisiciones.View
 
         public IUsuarioService UsuarioService { private get; set; }
         private Usuario UsuarioActual;
+        private Almacen AlmacenActual;
 
         public FrmPanelControl()
         {
@@ -30,13 +31,15 @@ namespace Adquisiciones.View
 
         }
 
-
-        private void CargarPerfiles(Usuario usuario)
+        
+        
+        private void CargarPerfiles(Usuario usuario, Almacen almacen)
         {
             bsOrigen.DataSource = UsuarioService.UsuarioDao.
-                ModulosSinPerfil(usuario, FrmModuloModulo.AlmacenSelec);
+                ModulosSinPerfil(usuario, almacen);
+
             bsDestino.DataSource = UsuarioService.UsuarioDao.
-                ModulosConPerfil(usuario, FrmModuloModulo.AlmacenSelec);
+                ModulosConPerfil(usuario,almacen);
         }
 
 
@@ -112,9 +115,9 @@ namespace Adquisiciones.View
                     chkActivo.Enabled = UsuarioActual.Estatus == "A" ? true : false;
 
                     bsOrigen.DataSource = UsuarioService.UsuarioDao.
-                    ModulosSinPerfil(UsuarioActual, FrmModuloModulo.AlmacenSelec);
+                    ModulosSinPerfil(UsuarioActual, AlmacenActual);
 
-                    CargarPerfiles(UsuarioActual);
+                    CargarPerfiles(UsuarioActual, AlmacenActual);
                 }
 
             }
@@ -125,7 +128,9 @@ namespace Adquisiciones.View
             bsOrigen.DataSource = new List<Modulo>();
             bsDestino.DataSource = new List<UsuarioModulo>();
             UsuarioActual = new Usuario();
-
+            AlmacenActual = new Almacen();
+            lstAlmacen.SelectedItem = "";
+            searchLookUpUsuario.EditValue = null;
             txtRfc.Text = string.Empty;
             txtCurrentPass.Text = string.Empty;
             txtNewPass.Text = string.Empty;
@@ -136,9 +141,6 @@ namespace Adquisiciones.View
             listaError.Items.Clear();
 
             txtRfc.Focus();
-            //searchLookUpUsuarioView.va; == null;
-            bsOrigen.DataSource = UsuarioService.UsuarioDao.
-                ModulosSinPerfil(null, FrmModuloModulo.AlmacenSelec);
             bsUsuarios.DataSource = UsuarioService.UsuarioDao.CargarUsuarios();
 
         }
@@ -157,8 +159,12 @@ namespace Adquisiciones.View
 
         private void CmdGuardarUsuarioClick(object sender, EventArgs e)
         {
+
+            bool updatePassword = false;
+
             try
             {
+                AlmacenActual = new Almacen(lstAlmacen.SelectedItem.ToString());
                 UsuarioActual.Rfc = txtRfc.Text.Trim();
                 UsuarioActual.Nombre = txtNombre.Text.Trim();
                 UsuarioActual.Estatus = chkActivo.Enabled ? "A" : "B";
@@ -170,6 +176,7 @@ namespace Adquisiciones.View
                     if (txtCurrentPass.Text != string.Empty && txtNewPass.Text !=
                         string.Empty && txtConfirmPass.Text != string.Empty)
                     {
+                        updatePassword = true;
 
                         if (UsuarioActual.IdUsuario != 0 &&
                             UsuarioActual.Password != Util.GetSHA1(txtCurrentPass.Text))
@@ -206,7 +213,7 @@ namespace Adquisiciones.View
                     }
 
                     UsuarioActual.UsuarioModulo = bsDestino.DataSource as List<UsuarioModulo>;
-                    UsuarioService.GuardarUsuario(UsuarioActual);
+                    UsuarioService.GuardarUsuario(UsuarioActual, updatePassword);
 
                     XtraMessageBox.Show(@"Usuario Registrado o Actualizado",
                                         @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -227,7 +234,7 @@ namespace Adquisiciones.View
         private void Cerrar()
         {
             Hide();
-            new FrmAdquisiciones().ShowDialog();
+            new FrmModuloModulo().ShowDialog();
         }
 
         private void FrmPanelControlFormClosed(object sender, FormClosedEventArgs e)
@@ -263,6 +270,15 @@ namespace Adquisiciones.View
         public void TxtMayusculaKeyPress(object sender, KeyPressEventArgs e)
         {
             e.KeyChar = Char.ToUpper(e.KeyChar);
+        }
+
+        private void LstAlmacenSelectedIndexChanged(object sender, EventArgs e)
+        {
+            AlmacenActual = new Almacen(lstAlmacen.SelectedItem.ToString());
+            searchLookUpUsuario.EditValue = null;
+            bsOrigen.DataSource = UsuarioService.UsuarioDao.
+               ModulosSinPerfil(null, AlmacenActual);
+
         }
 
        

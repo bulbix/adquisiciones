@@ -56,6 +56,7 @@
             this.barButtonItem10 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem12 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem11 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem13 = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup5 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -78,7 +79,6 @@
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
-            this.barButtonItem13 = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemHyperLinkEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemHyperLinkEdit2)).BeginInit();
@@ -360,6 +360,17 @@
             this.barButtonItem11.Name = "barButtonItem11";
             this.barButtonItem11.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem11_ItemClick);
             // 
+            // barButtonItem13
+            // 
+            this.barButtonItem13.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.barButtonItem13.Appearance.ForeColor = System.Drawing.Color.Red;
+            this.barButtonItem13.Appearance.Options.UseFont = true;
+            this.barButtonItem13.Appearance.Options.UseForeColor = true;
+            this.barButtonItem13.Caption = "Ayuda";
+            this.barButtonItem13.Id = 41;
+            this.barButtonItem13.Name = "barButtonItem13";
+            this.barButtonItem13.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem13_ItemClick_1);
+            // 
             // ribbonPage1
             // 
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -519,17 +530,6 @@
             // defaultLookAndFeel1
             // 
             this.defaultLookAndFeel1.LookAndFeel.SkinName = "Black";
-            // 
-            // barButtonItem13
-            // 
-            this.barButtonItem13.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.barButtonItem13.Appearance.ForeColor = System.Drawing.Color.Red;
-            this.barButtonItem13.Appearance.Options.UseFont = true;
-            this.barButtonItem13.Appearance.Options.UseForeColor = true;
-            this.barButtonItem13.Caption = "Ayuda";
-            this.barButtonItem13.Id = 41;
-            this.barButtonItem13.Name = "barButtonItem13";
-            this.barButtonItem13.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem13_ItemClick_1);
             // 
             // FrmAdquisiciones
             // 

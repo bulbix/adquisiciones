@@ -11,6 +11,7 @@
     <property name="FechaBaja" column="fecha_baja" type="DateTime" />
     <property name="Estatus" column="estatus" type="string" />
     <property name="Password" column="password" type="string" />
+    <property name="PanelControl" column="panelcontrol" type="bool" />
     
     <bag name="UsuarioModulo" inverse="true" lazy="true" cascade="all-delete-orphan"> 
       <key column="id_usuario" />

@@ -44,43 +44,52 @@ namespace Adquisiciones.View
                 }
             }
         }
-
-        private void LanzarPantallaInicio()
+        private void MostrarMain()
         {
-            this.Hide();
+            //Quitar permisos que no son del almacen seleccionado
 
-            if (FrmModuloAcceso.UsuarioLog.IdUsuario == FrmModuloAcceso.SuperUsario)
-                new FrmPanelControl().ShowDialog();
-            else
-                new FrmAdquisiciones().ShowDialog();
+            for (int index = 0; index < FrmModuloAcceso.UsuarioLog.UsuarioModulo.Count; index++)
+            {
+                var modulo = FrmModuloAcceso.UsuarioLog.UsuarioModulo[index];
+                if (!modulo.Id.Modulo.Id.Almacen.Equals(AlmacenSelec))
+                {
+                    FrmModuloAcceso.UsuarioLog.UsuarioModulo.Remove(modulo);
+                }
+            }
             
+            Hide();
+            new FrmAdquisiciones().Show();
+           
         }
 
         private void BtnAdq5000Click(object sender, EventArgs e)
         {
             AlmacenSelec = AlmacenDao.Get(btnAdq5000.Tag.ToString());
-            LanzarPantallaInicio();
-
+            MostrarMain();
         }
 
         private void BtnAdq2000Click(object sender, EventArgs e)
         {
             AlmacenSelec = AlmacenDao.Get(btnAdq2000.Tag.ToString());
-            LanzarPantallaInicio();
+            MostrarMain();
         }
 
         private void BtnAdqconacyt2000Click(object sender, EventArgs e)
         {
             AlmacenSelec = AlmacenDao.Get(btnAdqconacyt2000.Tag.ToString());
-            LanzarPantallaInicio();
+            MostrarMain();
 
         }
 
         private void BtnAdqconacyt5000Click(object sender, EventArgs e)
         {
             AlmacenSelec = AlmacenDao.Get(btnAdqconacyt5000.Tag.ToString());
-            LanzarPantallaInicio();
+            MostrarMain();
+        }
 
+        private void FrmModuloModulo_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

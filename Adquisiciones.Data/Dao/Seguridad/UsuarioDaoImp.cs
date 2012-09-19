@@ -36,6 +36,15 @@ namespace Adquisiciones.Data.Dao.Seguridad
         }
 
          [Transaction(ReadOnly = true)]
+        public IList<UsuarioModulo> ModulosAllSinPerfil(Usuario usuario, Almacen almacen)
+        {
+            var query = CurrentSession.GetNamedQuery("Usuario.AllSinPerfiles");
+            query.SetParameter("usuario", usuario);
+            query.SetParameter("almacen", almacen);
+            return query.List<UsuarioModulo>();
+        }
+
+        [Transaction(ReadOnly = true)]
          public IList<Usuario> CargarUsuarios()
          {
              var criteria = CurrentSession.CreateCriteria(typeof(Usuario));

@@ -16,20 +16,26 @@ namespace Adquisiciones.Business.Seguridad
         [Transaction(ReadOnly = true)]
         public Usuario AccessAllow(string rfc, string password)
         {
-            var usr = UsuarioDao.AccessAllow(rfc, Util.GetSHA1(password));
+            var hash = Util.GetSHA1(password);
+            var usr = UsuarioDao.AccessAllow(rfc, hash );
             return usr;
         }
 
 
         [Transaction]
-        public void GuardarUsuario(Usuario usuario)
+        public void GuardarUsuario(Usuario usuario, bool updatePassword)
         {
-            usuario.Password = Util.GetSHA1(usuario.Password);
+            if(updatePassword)
+                usuario.Password = Util.GetSHA1(usuario.Password);
+
             usuario.FechaAlta = UsuarioDao.FechaServidor();
             usuario.FechaBaja = null;
 
+            Almacen almacen = null;
+
             foreach (var usuarioModulo in usuario.UsuarioModulo)
             {
+                almacen = usuarioModulo.Id.Modulo.Id.Almacen;
                 //Nuevo perfil
                 if(usuarioModulo.Id.Usuario ==null)
                 {
@@ -39,6 +45,18 @@ namespace Adquisiciones.Business.Seguridad
                     usuarioModulo.FechaBaja = null;
                 }
             }
+
+            //Agrega los otros perfiles no los borre
+            if(almacen!=null)
+            {
+                var otrosPerfiles = UsuarioDao.ModulosAllSinPerfil(usuario, almacen);
+                foreach (var otroPerfil in otrosPerfiles)
+                {
+                    if(!usuario.UsuarioModulo.Contains(otroPerfil))
+                    {
+                        usuario.UsuarioModulo.Add(otroPerfil);
+                    }
+                }}
 
             UsuarioDao.Merge(usuario);
 

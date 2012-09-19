@@ -82,10 +82,20 @@ namespace Adquisiciones.View
                     return;
                 }
 
-                this.Hide();
-                new FrmModuloModulo().ShowDialog();
+                LanzarPantallaInicio();
             }
             
+        }
+
+        private void LanzarPantallaInicio()
+        {
+            Hide();
+
+            if (UsuarioLog.PanelControl)
+                new FrmPanelControl().ShowDialog();
+            else
+                new FrmAdquisiciones().ShowDialog();
+
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
