@@ -20,17 +20,22 @@ namespace Adquisiciones.View
     public partial class FrmAdquisiciones : DevExpress.XtraBars.Ribbon.RibbonForm
     {
         /// <summary>
-        /// Cada uno con su copia de perfiles
+        /// Cada uno con su copia de perfiles y almacen
         /// </summary>
         public IList<UsuarioModulo> ModulosUsuario { get; set; }
 
         public Almacen AlmacenSelect { get; set; }
+
+        private static int NumInstancias;
 
         ///<summary>
         ///</summary>
         public FrmAdquisiciones(IList<UsuarioModulo> modulosUsuario, Almacen almacen)
         {
             InitializeComponent();
+
+            ++NumInstancias;
+
             this.ModulosUsuario = modulosUsuario;
             this.AlmacenSelect = almacen;
             ObtenerPerfil();
@@ -229,8 +234,12 @@ namespace Adquisiciones.View
 
         private void FrmAdquisiciones_FormClosed(object sender, FormClosedEventArgs e)
         {
-            //this.Close();
+            --NumInstancias;
+
+            if(NumInstancias ==  0)
+                Application.Exit();
         }
+
         private void barButtonItem11_ItemClick(object sender, ItemClickEventArgs e)
         {
             Process.Start("mailto:lprado@inr.gob.mx");

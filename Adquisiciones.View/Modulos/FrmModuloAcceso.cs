@@ -92,9 +92,9 @@ namespace Adquisiciones.View
             Hide();
 
             if (UsuarioLog.PanelControl)
-                new FrmPanelControl().ShowDialog();
+                new FrmPanelControl().Show();
             else
-                new FrmModuloModulo(false).ShowDialog();
+                new FrmModuloModulo(false).Show();
 
         }
 

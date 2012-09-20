@@ -232,18 +232,17 @@ namespace Adquisiciones.View
 
 
         }
-
         private void Cerrar()
         {
-            Hide();
-            new FrmModuloModulo(false).ShowDialog();
+            new FrmModuloModulo(false).Show();
+            this.Close();
         }
 
-        private void FrmPanelControlFormClosed(object sender, FormClosedEventArgs e)
-        {
-            Application.Restart();;
+        //private void FrmPanelControlFormClosed(object sender, FormClosedEventArgs e)
+        //{
+        //    Application.Restart();;
             
-        }
+        //}
 
         private void SimpleButton1Click(object sender, EventArgs e)
         {
@@ -281,7 +280,11 @@ namespace Adquisiciones.View
             searchLookUpUsuario.EditValue = null;
             bsOrigen.DataSource = UsuarioService.UsuarioDao.
                ModulosSinPerfil(null, AlmacenActual);
+            }
 
+        private void cmdSalir_Click(object sender, EventArgs e)
+        {
+            Application.Restart();
         }
 
        

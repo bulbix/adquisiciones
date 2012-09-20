@@ -66,6 +66,7 @@
             this.cmdEliminar = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
             this.lstAlmacen = new System.Windows.Forms.ComboBox();
+            this.cmdSalir = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.bsUsuarios)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsOrigen)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsDestino)).BeginInit();
@@ -410,11 +411,22 @@
             this.lstAlmacen.TabIndex = 28;
             this.lstAlmacen.SelectedIndexChanged += new System.EventHandler(this.LstAlmacenSelectedIndexChanged);
             // 
+            // cmdSalir
+            // 
+            this.cmdSalir.Location = new System.Drawing.Point(448, 4);
+            this.cmdSalir.Name = "cmdSalir";
+            this.cmdSalir.Size = new System.Drawing.Size(75, 23);
+            this.cmdSalir.TabIndex = 29;
+            this.cmdSalir.Text = "Salir";
+            this.cmdSalir.Click += new System.EventHandler(this.cmdSalir_Click);
+            // 
             // FrmPanelControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(635, 705);
+            this.ControlBox = false;
+            this.Controls.Add(this.cmdSalir);
             this.Controls.Add(this.lstAlmacen);
             this.Controls.Add(this.labelControl9);
             this.Controls.Add(this.cmdEliminar);
@@ -427,7 +439,6 @@
             this.Name = "FrmPanelControl";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Panel Control";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmPanelControlFormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.bsUsuarios)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsOrigen)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsDestino)).EndInit();
@@ -487,5 +498,6 @@
         private DevExpress.XtraEditors.LabelControl labelControl9;
         private System.Windows.Forms.ComboBox lstAlmacen;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
+        private DevExpress.XtraEditors.SimpleButton cmdSalir;
     }
 }

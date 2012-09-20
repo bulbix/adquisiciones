@@ -54,10 +54,11 @@ namespace Adquisiciones.View
         }
         private void MostrarMain()
         {
-            Hide();
             var formAdquisiciones = new FrmAdquisiciones(UsuarioService.
                 UsuarioDao.TraerModulos(FrmModuloAcceso.UsuarioLog, AlmacenSelec),AlmacenSelec);
             formAdquisiciones.Show();
+
+            this.Close();
            
         }
         private void BtnAdq5000Click(object sender, EventArgs e)
