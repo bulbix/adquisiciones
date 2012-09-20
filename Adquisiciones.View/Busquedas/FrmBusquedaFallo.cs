@@ -15,9 +15,13 @@ namespace Adquisiciones.View.Busquedas
     {
         public IFalloService FalloService { get; set; }
 
-        public FrmBusquedaFallo()
+        public FrmBusquedaFallo(FrmAdquisiciones padre)
         {
             InitializeComponent();
+
+            ModulosUsuario = padre.ModulosUsuario;
+            AlmacenActual = padre.AlmacenSelect;
+
             base.TypeEntity = typeof(Fallo);
             base.NombreService = "falloService";
             base.NombreReporte = "reporteTabla";

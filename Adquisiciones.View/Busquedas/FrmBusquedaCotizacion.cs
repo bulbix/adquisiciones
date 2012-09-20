@@ -16,9 +16,13 @@ namespace Adquisiciones.View.Busquedas
     {
         public ICotizacionService CotizacionService { get; set; }
 
-        public FrmBusquedaCotizacion()
+        public FrmBusquedaCotizacion(FrmAdquisiciones padre)
         {
             InitializeComponent();
+
+            ModulosUsuario = padre.ModulosUsuario;
+            AlmacenActual = padre.AlmacenSelect;
+
             base.TypeEntity = typeof(Cotizacion);
             base.NombreService = "cotizacionService";
             base.NombreReporte = "reporteCotizacion"; 

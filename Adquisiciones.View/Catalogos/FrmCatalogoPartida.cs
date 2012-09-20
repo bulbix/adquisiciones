@@ -25,9 +25,13 @@ namespace Adquisiciones.View.Catalogos
         /// </summary>
         public CatPartida PartidaActual = new CatPartida();
 
-        public FrmCatalogoPartida()
+        public FrmCatalogoPartida(FrmAdquisiciones padre)
         {
             InitializeComponent();
+
+            ModulosUsuario = padre.ModulosUsuario;
+            AlmacenActual = padre.AlmacenSelect;
+
             var ctx = ContextRegistry.GetContext();
             PartidaDao = ctx["partidaDao"] as IPartidaDao;
             InicializarCatalogos();
@@ -37,7 +41,7 @@ namespace Adquisiciones.View.Catalogos
         }
 
 
-        public FrmCatalogoPartida(CatPartida partida):this()
+        public FrmCatalogoPartida(CatPartida partida,FrmAdquisiciones padre):this(padre)
         {
             PartidaActual = partida;
             txtClave.Text = partida.Partida;

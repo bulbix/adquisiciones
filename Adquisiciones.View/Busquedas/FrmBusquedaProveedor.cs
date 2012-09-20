@@ -13,9 +13,14 @@ namespace Adquisiciones.View.Busquedas
 {
     public partial class FrmBusquedaProveedor : FrmBusqueda
     {
-        public FrmBusquedaProveedor()
+        public FrmBusquedaProveedor(FrmAdquisiciones padre)
         {
-            InitializeComponent();base.TypeEntity = typeof(Proveedor);
+            InitializeComponent();
+
+            ModulosUsuario = padre.ModulosUsuario;
+            AlmacenActual = padre.AlmacenSelect;
+
+            base.TypeEntity = typeof(Proveedor);
             base.NombreService = "proveedorDao";
             base.NombreReporte = "";
             base.TypeForma = typeof(FrmCatalogoProveedor);

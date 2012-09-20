@@ -25,9 +25,13 @@ namespace Adquisiciones.View.Catalogos
         /// </summary>
         public Fundamento FundamentoActual = new Fundamento();
 
-        public FrmCatalogoFundamento()
+        public FrmCatalogoFundamento(FrmAdquisiciones padre)
         {
             InitializeComponent();
+
+            ModulosUsuario = padre.ModulosUsuario;
+            AlmacenActual = padre.AlmacenSelect;
+
             var ctx = ContextRegistry.GetContext();
             FundamentoDao = ctx["fundamentoDao"] as IFundamentoDao;
             Nuevo();
@@ -35,7 +39,7 @@ namespace Adquisiciones.View.Catalogos
             base.ObtenerPerfil();
         }
 
-        public FrmCatalogoFundamento(Fundamento fundamento):this()
+        public FrmCatalogoFundamento(Fundamento fundamento,FrmAdquisiciones padre):this(padre)
         {
             FundamentoActual = fundamento;
             txtClave.Text = fundamento.CveFundamento.ToString();

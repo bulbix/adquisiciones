@@ -33,13 +33,14 @@
             this.btnAdq5000 = new DevExpress.XtraEditors.SimpleButton();
             this.btnAdqconacyt2000 = new DevExpress.XtraEditors.SimpleButton();
             this.btnAdq2000 = new DevExpress.XtraEditors.SimpleButton();
+            this.cmdCancelar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnAdqconacyt5000
             // 
             this.btnAdqconacyt5000.Enabled = false;
             this.btnAdqconacyt5000.Image = global::Adquisiciones.View.Properties.Resources.conacyt;
-            this.btnAdqconacyt5000.Location = new System.Drawing.Point(396, 84);
+            this.btnAdqconacyt5000.Location = new System.Drawing.Point(270, 84);
             this.btnAdqconacyt5000.Name = "btnAdqconacyt5000";
             this.btnAdqconacyt5000.Size = new System.Drawing.Size(250, 74);
             this.btnAdqconacyt5000.TabIndex = 17;
@@ -51,7 +52,7 @@
             // 
             this.btnAdq5000.Enabled = false;
             this.btnAdq5000.Image = global::Adquisiciones.View.Properties.Resources.conacyt;
-            this.btnAdq5000.Location = new System.Drawing.Point(396, 12);
+            this.btnAdq5000.Location = new System.Drawing.Point(270, 12);
             this.btnAdq5000.Name = "btnAdq5000";
             this.btnAdq5000.Size = new System.Drawing.Size(250, 69);
             this.btnAdq5000.TabIndex = 16;
@@ -63,7 +64,7 @@
             // 
             this.btnAdqconacyt2000.Enabled = false;
             this.btnAdqconacyt2000.Image = global::Adquisiciones.View.Properties.Resources.conacyt;
-            this.btnAdqconacyt2000.Location = new System.Drawing.Point(94, 87);
+            this.btnAdqconacyt2000.Location = new System.Drawing.Point(12, 87);
             this.btnAdqconacyt2000.Name = "btnAdqconacyt2000";
             this.btnAdqconacyt2000.Size = new System.Drawing.Size(252, 71);
             this.btnAdqconacyt2000.TabIndex = 15;
@@ -75,7 +76,7 @@
             // 
             this.btnAdq2000.Enabled = false;
             this.btnAdq2000.Image = global::Adquisiciones.View.Properties.Resources.conacyt;
-            this.btnAdq2000.Location = new System.Drawing.Point(94, 12);
+            this.btnAdq2000.Location = new System.Drawing.Point(12, 12);
             this.btnAdq2000.Name = "btnAdq2000";
             this.btnAdq2000.Size = new System.Drawing.Size(252, 69);
             this.btnAdq2000.TabIndex = 14;
@@ -83,11 +84,24 @@
             this.btnAdq2000.Text = "ADQUISICIONES 2000";
             this.btnAdq2000.Click += new System.EventHandler(this.BtnAdq2000Click);
             // 
+            // cmdCancelar
+            // 
+            this.cmdCancelar.Enabled = false;
+            this.cmdCancelar.Location = new System.Drawing.Point(567, 101);
+            this.cmdCancelar.Name = "cmdCancelar";
+            this.cmdCancelar.Size = new System.Drawing.Size(133, 57);
+            this.cmdCancelar.TabIndex = 19;
+            this.cmdCancelar.Text = "Cancelar";
+            this.cmdCancelar.UseVisualStyleBackColor = true;
+            this.cmdCancelar.Click += new System.EventHandler(this.CmdCancelarClick);
+            // 
             // FrmModuloModulo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(704, 196);
+            this.ClientSize = new System.Drawing.Size(712, 203);
+            this.ControlBox = false;
+            this.Controls.Add(this.cmdCancelar);
             this.Controls.Add(this.btnAdqconacyt5000);
             this.Controls.Add(this.btnAdq5000);
             this.Controls.Add(this.btnAdqconacyt2000);
@@ -99,7 +113,6 @@
             this.Name = "FrmModuloModulo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Seleccionar Almacen";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmModuloModulo_FormClosed);
             this.ResumeLayout(false);
 
         }
@@ -110,6 +123,7 @@
         private DevExpress.XtraEditors.SimpleButton btnAdqconacyt2000;
         private DevExpress.XtraEditors.SimpleButton btnAdq5000;
         private DevExpress.XtraEditors.SimpleButton btnAdqconacyt5000;
+        private System.Windows.Forms.Button cmdCancelar;
 
 
     }

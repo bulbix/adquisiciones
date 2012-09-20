@@ -27,6 +27,10 @@ namespace Adquisiciones.View.Modulos
         protected string NombreService { get; set; }
         protected object EntityActual { get; set; }
 
+
+        public Almacen AlmacenActual { get; set; }
+        public IList<UsuarioModulo> ModulosUsuario { get; set; }
+
         /// <summary>
         /// 
         /// </summary>
@@ -51,14 +55,17 @@ namespace Adquisiciones.View.Modulos
             }
         }
 
+        /// <summary>
+        /// Perfiles con su copia cada uno
+        /// </summary>
         protected void ObtenerPerfil()
         {
-            var modulosUsuario = FrmModuloAcceso.UsuarioLog.UsuarioModulo;
             var nombreModulo = TypeEntity.Name.ToLower();
-            foreach (var moduloUsuario in modulosUsuario)
+
+            foreach (var moduloUsuario in ModulosUsuario)
             {
                 if (moduloUsuario.Estatus != "A" 
-                    || !moduloUsuario.Id.Modulo.Id.Almacen.Equals(FrmModuloModulo.AlmacenSelec))
+                    || !moduloUsuario.Id.Modulo.Id.Almacen.Equals(AlmacenActual))
                     continue;
                 
                 var desModulo = moduloUsuario.Id.Modulo.DesModulo.ToLower().Trim();
@@ -119,9 +126,6 @@ namespace Adquisiciones.View.Modulos
         protected virtual void CmdConsultarClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             Consultar();
-            
-           
-
             HayErrores();
         }
 

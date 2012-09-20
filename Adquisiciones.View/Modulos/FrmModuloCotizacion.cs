@@ -30,9 +30,13 @@ namespace Adquisiciones.View.Modulos
         ///</summary>
         public Proveedor ProveedorActual;
 
-        public FrmModuloCotizacion()
+        public FrmModuloCotizacion(FrmAdquisiciones padre)
         {
             InitializeComponent();
+            
+            ModulosUsuario = padre.ModulosUsuario;
+            AlmacenActual = padre.AlmacenSelect;
+
             base.TypeEntity = typeof(Cotizacion);
             base.NombreReporte = "reporteCotizacion";
             base.NombreService = "cotizacionService";
@@ -42,8 +46,8 @@ namespace Adquisiciones.View.Modulos
             Nuevo();
             base.ObtenerPerfil();
         }
-        public FrmModuloCotizacion(Cotizacion cotizacion)
-            : this()
+        public FrmModuloCotizacion(Cotizacion cotizacion, FrmAdquisiciones padre)
+            : this(padre)
         {
             CotizacionActual = cotizacion;
             AnexoActual = cotizacion.Anexo;
@@ -55,12 +59,12 @@ namespace Adquisiciones.View.Modulos
         {
             CotizacionActual.FechaCotizacion = dtpFechacotizacion.DateTime;
             CotizacionActual.Usuario = FrmModuloAcceso.UsuarioLog;
-            CotizacionActual.Almacen = FrmModuloModulo.AlmacenSelec;
+            CotizacionActual.Almacen = AlmacenActual;
         }
 
         public override void InicializarCatalogos()
         {
-            var anexos = CotizacionService.AnexoDao.CargarAnexos(FrmModuloModulo.AlmacenSelec);
+            var anexos = CotizacionService.AnexoDao.CargarAnexos(AlmacenActual);
             bsAnexos.DataSource = anexos;
             var proveedores = CotizacionService.ProveedorDao.FindAll();
             bsProveedor.DataSource = proveedores;

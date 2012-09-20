@@ -16,9 +16,13 @@ namespace Adquisiciones.View.Busquedas
     {
         public IAnexoService AnexoService { get; set; }
 
-        public FrmBusquedaAnexo()
+        public FrmBusquedaAnexo(FrmAdquisiciones padre)
         {
             InitializeComponent();
+
+            ModulosUsuario = padre.ModulosUsuario;
+            AlmacenActual = padre.AlmacenSelect;
+
             base.TypeEntity = typeof(Anexo);
             base.NombreService = "anexoService";
             base.NombreReporte = "reporteAnexo";

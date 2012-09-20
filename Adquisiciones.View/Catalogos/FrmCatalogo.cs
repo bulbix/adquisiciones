@@ -7,6 +7,7 @@ using System.Text;
 using System.Windows.Forms;
 using Adquisiciones.Business;
 using Adquisiciones.Data;
+using Adquisiciones.Data.Entities;
 using DevExpress.XtraEditors;
 using log4net;
 
@@ -19,6 +20,9 @@ namespace Adquisiciones.View.Catalogos
             GetCurrentMethod().DeclaringType);
 
         protected Type TypeEntity { get; set; }
+
+        public Almacen AlmacenActual { get; set; }
+        public IList<UsuarioModulo> ModulosUsuario { get; set; }
         
 
 
@@ -46,10 +50,9 @@ namespace Adquisiciones.View.Catalogos
 
         protected void ObtenerPerfil()
         {
-            var modulosUsuario = FrmModuloAcceso.UsuarioLog.UsuarioModulo;
             const string nombreModulo = "catalogo";
 
-            foreach (var moduloUsuario in modulosUsuario)
+            foreach (var moduloUsuario in ModulosUsuario)
             {
                 if (moduloUsuario.Estatus != "A")
                     continue;

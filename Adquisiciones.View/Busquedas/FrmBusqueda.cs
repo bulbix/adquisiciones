@@ -19,16 +19,15 @@ namespace Adquisiciones.View.Busquedas
     {
 
         protected Type TypeEntity { get; set; }
-
         protected string NombreService { get; set; }
-
         protected string NombreReporte { get; set; }
-
         protected Type TypeForma { get; set; }
-
         protected IFormBusqueda Servicio { get; set; }
-
         protected GridView GvGeneral { get; set; }
+
+
+        public Almacen AlmacenActual { get; set; }
+        public IList<UsuarioModulo> ModulosUsuario { get; set; }
 
         public FrmBusqueda()
         {
@@ -38,16 +37,16 @@ namespace Adquisiciones.View.Busquedas
        
 
         protected void ObtenerPerfil(){
-            var modulosUsuario = FrmModuloAcceso.UsuarioLog.UsuarioModulo;
+           
             var nombreModulo = TypeEntity.Name.ToLower();
 
             if (TypeEntity.GetInterface("ICatalogo") != null)
                 nombreModulo = "catalogo";
 
-            foreach (var moduloUsuario in modulosUsuario)
+            foreach (var moduloUsuario in ModulosUsuario)
             {
                 if (moduloUsuario.Estatus != "A" 
-                    || !moduloUsuario.Id.Modulo.Id.Almacen.Equals(FrmModuloModulo.AlmacenSelec))
+                    || !moduloUsuario.Id.Modulo.Id.Almacen.Equals(AlmacenActual))
                     continue;
 
                 var desModulo = moduloUsuario.Id.Modulo.DesModulo.ToLower().Trim();
@@ -76,7 +75,7 @@ namespace Adquisiciones.View.Busquedas
         protected virtual void Buscar()
         {
             GetServicio();
-            var source = Servicio.ConsultarEntityAll(FrmModuloModulo.AlmacenSelec);
+            var source = Servicio.ConsultarEntityAll(AlmacenActual);
             bsSource.DataSource = source;
         }
 
@@ -99,7 +98,8 @@ namespace Adquisiciones.View.Busquedas
             {
                 var select = Convert.
                     ChangeType(GvGeneral.GetFocusedRow(), TypeEntity);
-                var forma = (Form)TypeForma.GetConstructor(new[] { TypeEntity }).Invoke(new[] { select });
+                var forma = (Form)TypeForma.GetConstructor(new[] { TypeEntity,typeof(FrmAdquisiciones) }).
+                    Invoke(new[] { select,this.MdiParent as FrmAdquisiciones });
 
                 forma.MdiParent = this.MdiParent;
                 forma.Show();

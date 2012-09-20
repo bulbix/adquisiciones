@@ -25,9 +25,14 @@ namespace Adquisiciones.View.Modulos
         ///</summary>
         public Anexo AnexoActual;
 
-        public FrmModuloAnexo()
+        public FrmModuloAnexo(FrmAdquisiciones padre)
         {
             InitializeComponent();
+
+            ModulosUsuario = padre.ModulosUsuario;
+            AlmacenActual = padre.AlmacenSelect;
+            
+
             base.TypeEntity = typeof(Anexo);
             base.NombreReporte = "reporteAnexo";
             base.NombreService = "anexoService";
@@ -46,8 +51,8 @@ namespace Adquisiciones.View.Modulos
             base.ObtenerPerfil();
         }
 
-        public FrmModuloAnexo(Anexo anexo)
-            : this()
+        public FrmModuloAnexo(Anexo anexo,FrmAdquisiciones padre)
+            : this(padre)
         {
             AnexoActual = anexo;
             Consultar();
@@ -76,7 +81,7 @@ namespace Adquisiciones.View.Modulos
             AnexoService.IvasCombo(cbxIva);
 
             repositoryItemSearchLookUpEdit2.DataSource = AnexoService.ArticuloDao.
-               ArticulosByAlmacen(FrmModuloModulo.AlmacenSelec);
+               ArticulosByAlmacen(AlmacenActual);
             repositoryItemSearchLookUpEdit2.DisplayMember = "CveArt";
             repositoryItemSearchLookUpEdit2.ValueMember = "CveArt";
         }
@@ -110,7 +115,7 @@ namespace Adquisiciones.View.Modulos
                     return;
                 }
 
-                AnexoActual.Almacen = FrmModuloModulo.AlmacenSelec;
+                AnexoActual.Almacen = AlmacenActual;
                 AnexoActual.Usuario = FrmModuloAcceso.UsuarioLog;
                 AnexoActual.FechaAnexo = dtpFechaanexo.DateTime;
                 AnexoService.GuardarAnexo(ref AnexoActual);
@@ -140,7 +145,7 @@ namespace Adquisiciones.View.Modulos
                    AnexoActual.NumeroAnexo = txtnumlicitacion.Text;
 
                 AnexoActual = AnexoService.ConsultarAnexo(AnexoActual.NumeroAnexo,
-                                                          FrmModuloModulo.AlmacenSelec);
+                                                          AlmacenActual);
                 if (AnexoActual != null)
                 {
                     bsAnexo.DataSource = AnexoActual;
@@ -219,7 +224,7 @@ namespace Adquisiciones.View.Modulos
                 {
                     var cveArt = (int) rowSelectValue;
 
-                    var almacen = FrmModuloModulo.AlmacenSelec;
+                    var almacen = AlmacenActual;
                     var articuloid = new ArticuloId(cveArt, almacen);
                     var articuloSelect = AnexoService.ArticuloDao.Get(articuloid);
                     gvAnexoDetalle.SetRowCellValue(e.RowHandle, "DescripcionArt", articuloSelect.DesArticulo);
@@ -248,7 +253,7 @@ namespace Adquisiciones.View.Modulos
             //if (AnexoActual.IdAnexo == 0){
                 //No existe el numero de folio para ese anio
             if((AnexoActual.NumeroAnexo != txtnumlicitacion.Text && AnexoActual.IdAnexo != 0)
-                || AnexoActual.IdAnexo == 0 ){if (AnexoService.AnexoDao.ExisteAnexo(txtnumlicitacion.Text, FrmModuloModulo.AlmacenSelec))
+                || AnexoActual.IdAnexo == 0 ){if (AnexoService.AnexoDao.ExisteAnexo(txtnumlicitacion.Text, AlmacenActual))
                 {
                     
                     //dxErrorProvider1.SetError(txtnumlicitacion,"El folio ya existe para este año NO SIGA CAPTURANDO!!");

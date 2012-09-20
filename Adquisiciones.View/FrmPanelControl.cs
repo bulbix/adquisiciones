@@ -236,7 +236,7 @@ namespace Adquisiciones.View
         private void Cerrar()
         {
             Hide();
-            new FrmModuloModulo().ShowDialog();
+            new FrmModuloModulo(false).ShowDialog();
         }
 
         private void FrmPanelControlFormClosed(object sender, FormClosedEventArgs e)

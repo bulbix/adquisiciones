@@ -24,16 +24,19 @@ namespace Adquisiciones.View.Catalogos
         ///</summary>
         public Proveedor ProveedorActual { get; private set; }
 
-        public FrmCatalogoProveedor()
+        public FrmCatalogoProveedor(FrmAdquisiciones padre)
         {
             InitializeComponent();
+
+            ModulosUsuario = padre.ModulosUsuario;
+            AlmacenActual = padre.AlmacenSelect;
             var ctx = ContextRegistry.GetContext();
             ProveedorDao = ctx["proveedorDao"] as IProveedorDao;
             BindearCampos();
             Nuevo();
             base.ObtenerPerfil();
         }
-        public FrmCatalogoProveedor(Proveedor proveedor):this()
+        public FrmCatalogoProveedor(Proveedor proveedor,FrmAdquisiciones padre):this(padre)
         {
             ProveedorActual = proveedor;
             txtClave.Value = proveedor.CveProveedor.Value;

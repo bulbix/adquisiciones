@@ -13,9 +13,13 @@ namespace Adquisiciones.View.Busquedas
 {
     public partial class FrmBusquedaFundamento : FrmBusqueda
     {
-        public FrmBusquedaFundamento()
+        public FrmBusquedaFundamento(FrmAdquisiciones padre)
         {
             InitializeComponent();
+
+
+            ModulosUsuario = padre.ModulosUsuario;
+            AlmacenActual = padre.AlmacenSelect;
 
             InitializeComponent(); base.TypeEntity = typeof(Fundamento);
             base.NombreService = "fundamentoDao";

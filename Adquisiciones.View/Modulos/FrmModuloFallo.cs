@@ -25,9 +25,14 @@ namespace Adquisiciones.View.Modulos
         ///</summary>
         public Anexo AnexoSelect;
 
-        public FrmModuloFallo()
+        public FrmModuloFallo(FrmAdquisiciones padre)
         {
             InitializeComponent();
+
+            ModulosUsuario = padre.ModulosUsuario;
+            AlmacenActual = padre.AlmacenSelect;
+            this.MdiParent = padre;
+
             base.TypeEntity = typeof(Fallo);
             base.NombreService = "falloService";
             base.NombreReporte = "reporteTabla";
@@ -36,7 +41,7 @@ namespace Adquisiciones.View.Modulos
             base.ObtenerPerfil();
 
             var anexos = FalloService.AnexoDao.
-               CargarAnexosWithCotizacion(FrmModuloModulo.AlmacenSelec);
+               CargarAnexosWithCotizacion(AlmacenActual);
             bsAnexos.DataSource = anexos;
 
             dtpFallo.DateTime = DateTime.Now;
@@ -124,7 +129,7 @@ namespace Adquisiciones.View.Modulos
 
         private void CallFalloBusqueda()
         {
-            var forma = new FrmBusquedaFallo();
+            var forma = new FrmBusquedaFallo(this.MdiParent as FrmAdquisiciones);
             forma.MdiParent = this.MdiParent;
             forma.Show();
             

@@ -11,23 +11,25 @@ using Spring.Context.Support;
 
 namespace Adquisiciones.View
 {
-    ///<summary>
-    ///</summary>
+    ///<summary></summary>
     public partial class FrmModuloModulo : XtraForm
     {        
         ///<summary>
         ///</summary>
-        public static  Almacen AlmacenSelec;
+        public  Almacen AlmacenSelec;
 
         public IAlmacenDao AlmacenDao { get; set; }
 
         public IUsuarioService UsuarioService { get; set; }
-
+        
         ///<summary>
         ///</summary>
-        public FrmModuloModulo()
+        public FrmModuloModulo(bool activarCancelar)
         {
             InitializeComponent();
+
+            if (activarCancelar)
+                cmdCancelar.Enabled = true;
 
             var ctx = ContextRegistry.GetContext();
             AlmacenDao = ctx["almacenDao"] as IAlmacenDao;
@@ -52,14 +54,12 @@ namespace Adquisiciones.View
         }
         private void MostrarMain()
         {
-            //Quitar permisos que no son del almacen seleccionado
-            FrmModuloAcceso.UsuarioLog.UsuarioModulo = UsuarioService.UsuarioDao.TraerModulos(
-                FrmModuloAcceso.UsuarioLog, AlmacenSelec);
             Hide();
-            new FrmAdquisiciones().Show();
+            var formAdquisiciones = new FrmAdquisiciones(UsuarioService.
+                UsuarioDao.TraerModulos(FrmModuloAcceso.UsuarioLog, AlmacenSelec),AlmacenSelec);
+            formAdquisiciones.Show();
            
         }
-
         private void BtnAdq5000Click(object sender, EventArgs e)
         {
             AlmacenSelec = AlmacenDao.Get(btnAdq5000.Tag.ToString());
@@ -85,9 +85,9 @@ namespace Adquisiciones.View
             MostrarMain();
         }
 
-        private void FrmModuloModulo_FormClosed(object sender, FormClosedEventArgs e)
+        private void CmdCancelarClick(object sender, EventArgs e)
         {
-            Application.Restart();
+            this.Close();
         }
     }
 }

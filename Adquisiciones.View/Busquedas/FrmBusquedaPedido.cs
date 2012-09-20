@@ -16,9 +16,13 @@ namespace Adquisiciones.View.Busquedas
     {
         public IPedidoService PedidoService { get; set; }
 
-        public FrmBusquedaPedido()
+        public FrmBusquedaPedido(FrmAdquisiciones padre)
         {
             InitializeComponent();
+
+            ModulosUsuario = padre.ModulosUsuario;
+            AlmacenActual = padre.AlmacenSelect;
+
             base.TypeEntity = typeof(Pedido);
             base.NombreService = "pedidoService";
             base.NombreReporte = "reportePedido";

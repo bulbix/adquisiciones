@@ -8,6 +8,7 @@ using System.IO;
 using System.Text;
 using System.Windows.Forms;
 using Adquisiciones.Business.Seguridad;
+using Adquisiciones.Data.Entities;
 using Adquisiciones.View.Busquedas;
 using Adquisiciones.View.Catalogos;
 using Adquisiciones.View.Modulos;
@@ -18,20 +19,21 @@ namespace Adquisiciones.View
 {
     public partial class FrmAdquisiciones : DevExpress.XtraBars.Ribbon.RibbonForm
     {
+        /// <summary>
+        /// Cada uno con su copia de perfiles
+        /// </summary>
+        public IList<UsuarioModulo> ModulosUsuario { get; set; }
 
-
-        public IUsuarioService UsuarioService { get; set; }
-
+        public Almacen AlmacenSelect { get; set; }
 
         ///<summary>
         ///</summary>
-        public FrmAdquisiciones()
+        public FrmAdquisiciones(IList<UsuarioModulo> modulosUsuario, Almacen almacen)
         {
             InitializeComponent();
+            this.ModulosUsuario = modulosUsuario;
+            this.AlmacenSelect = almacen;
             ObtenerPerfil();
-
-            var ctx = ContextRegistry.GetContext();
-            UsuarioService = ctx["usuarioService"] as IUsuarioService;
         }
 
 
@@ -40,9 +42,7 @@ namespace Adquisiciones.View
         /// </summary>
         protected void ObtenerPerfil()
         {
-            var modulosUsuario = FrmModuloAcceso.UsuarioLog.UsuarioModulo;
-           
-            foreach (var moduloUsuario in modulosUsuario)
+            foreach (var moduloUsuario in ModulosUsuario)
             {
                 if (moduloUsuario.Estatus != "A")
                     continue; 
@@ -80,7 +80,7 @@ namespace Adquisiciones.View
 
         private void BarButtonAnexoItemClick(object sender, ItemClickEventArgs e)
         {
-            var forma = new FrmModuloAnexo();
+            var forma = new FrmModuloAnexo(this);
             forma.MdiParent = this;
             forma.Show();
 
@@ -88,21 +88,21 @@ namespace Adquisiciones.View
 
         private void BarButtonCotizacionItemClick(object sender, ItemClickEventArgs e)
         {
-            var forma = new FrmModuloCotizacion();
+            var forma = new FrmModuloCotizacion(this);
             forma.MdiParent = this;
             forma.Show();
         }
 
         private void BarButtonFalloItemClick(object sender, ItemClickEventArgs e)
         {
-            var forma = new FrmModuloFallo();
+            var forma = new FrmModuloFallo(this);
             forma.MdiParent = this;
             forma.Show();
         }
 
         private void BarButtonItem1ItemClick(object sender, ItemClickEventArgs e)
         {
-            var forma = new FrmCatalogoProveedor();
+            var forma = new FrmCatalogoProveedor(this);
             forma.MdiParent = this;
             forma.Show();
         }
@@ -110,14 +110,12 @@ namespace Adquisiciones.View
         private void barButtonItem2_ItemClick(object sender, ItemClickEventArgs e)
         {
 
-            var forma = new FrmBusquedaAnexo();
-            forma.MdiParent = this;
-            forma.Show();
-        }
+            var forma = new FrmBusquedaAnexo(this) { MdiParent = this };
+            forma.Show();}
 
         private void BarButtonItem3ItemClick(object sender, ItemClickEventArgs e)
         {
-            var forma = new FrmBusquedaCotizacion();
+            var forma = new FrmBusquedaCotizacion(this);
             forma.MdiParent = this;
             forma.Show();
 
@@ -125,14 +123,14 @@ namespace Adquisiciones.View
 
         private void BarButtonItem4ItemClick(object sender, ItemClickEventArgs e)
         {
-            var forma = new FrmBusquedaProveedor();
+            var forma = new FrmBusquedaProveedor(this);
             forma.MdiParent = this;
             forma.Show();
         }
 
         private void barButtonItem6_ItemClick(object sender, ItemClickEventArgs e)
         {
-            var forma = new FrmBusquedaFallo();
+            var forma = new FrmBusquedaFallo(this);
             forma.MdiParent = this;
             forma.Show();
 
@@ -140,14 +138,14 @@ namespace Adquisiciones.View
 
         private void BarButtonPedidoItemClick(object sender, ItemClickEventArgs e)
         {
-            var forma = new FrmModuloLicitaPedido();
+            var forma = new FrmModuloLicitaPedido(this);
             forma.MdiParent = this;
             forma.Show();
         }
 
         private void BarButtonPedidoMayorItemClick(object sender, ItemClickEventArgs e)
         {
-            var forma = new FrmModuloPedido(1);
+            var forma = new FrmModuloPedido(1,this);
             forma.Text = @"Pedido Mayor";
             forma.MdiParent = this;
             forma.Show();
@@ -155,7 +153,7 @@ namespace Adquisiciones.View
 
         private void BarButtonPedidoMenorItemClick(object sender, ItemClickEventArgs e)
         {
-            var forma = new FrmModuloPedido(2);
+            var forma = new FrmModuloPedido(2,this);
             forma.Text = @"Pedido Menor";
             forma.MdiParent = this;
             forma.Show();
@@ -164,39 +162,40 @@ namespace Adquisiciones.View
 
         private void BarButtonPedidoDonacionItemClick(object sender, ItemClickEventArgs e)
         {
-            var forma = new FrmModuloPedido(3);
+            var forma = new FrmModuloPedido(3,this);
             forma.Text = @"Donaciones";
             forma.MdiParent = this;
             forma.Show();
         }
 
         private void BarButtonPedidoExtraItemClick(object sender, ItemClickEventArgs e)
-        {var forma = new FrmModuloPedido(4);forma.Text = @"Extramuros";
+        {
+            var forma = new FrmModuloPedido(4,this);
+            forma.Text = @"Extramuros";
             forma.MdiParent = this;
             forma.Show();
         }
+
         private void FrmAdquisicionesLoad(object sender, EventArgs e)
         {
             txtFechaStatus.Caption = @"Fecha Acceso " + DateTime.Now;
             txtUsuarioStatus.Caption = @"Bienvenid@ " + FrmModuloAcceso.UsuarioLog;
-            Text += "@ " + FrmModuloModulo.AlmacenSelec;
+            Text += "@ " + AlmacenSelect;
         }
 
         private void BtnNewAlmacenItemClick(object sender, ItemClickEventArgs e)
         {
-            FrmModuloAcceso.UsuarioLog.UsuarioModulo 
-               = UsuarioService.UsuarioDao.TraerAllModulos(FrmModuloAcceso.UsuarioLog);
-            new FrmModuloModulo().Show();
+            new FrmModuloModulo(true).ShowDialog();
         }
         private void BarButtonItem7ItemClick(object sender, ItemClickEventArgs e)
         {
-            var forma = new FrmBusquedaPedido();
+            var forma = new FrmBusquedaPedido(this);
             forma.MdiParent = this;forma.Show();
         }
 
         private void barButtonItem5_ItemClick(object sender, ItemClickEventArgs e)
         {
-            var forma = new FrmCatalogoPartida();
+            var forma = new FrmCatalogoPartida(this);
             forma.MdiParent = this;
             forma.Show();
 
@@ -204,21 +203,21 @@ namespace Adquisiciones.View
 
         private void barButtonItem8_ItemClick(object sender, ItemClickEventArgs e)
         {
-            var forma = new FrmCatalogoFundamento();
+            var forma = new FrmCatalogoFundamento(this);
             forma.MdiParent = this;
             forma.Show();
         }
 
         private void barButtonItem9_ItemClick(object sender, ItemClickEventArgs e)
         {
-            var forma = new FrmBusquedaFundamento();
+            var forma = new FrmBusquedaFundamento(this);
             forma.MdiParent = this;
             forma.Show();
         }
 
         private void barButtonItem10_ItemClick(object sender, ItemClickEventArgs e)
         {
-            var forma = new FrmBusquedaPartida();
+            var forma = new FrmBusquedaPartida(this);
             forma.MdiParent = this;
             forma.Show();
         }
@@ -230,7 +229,7 @@ namespace Adquisiciones.View
 
         private void FrmAdquisiciones_FormClosed(object sender, FormClosedEventArgs e)
         {
-            Application.Exit();
+            //this.Close();
         }
         private void barButtonItem11_ItemClick(object sender, ItemClickEventArgs e)
         {

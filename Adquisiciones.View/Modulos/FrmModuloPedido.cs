@@ -24,9 +24,13 @@ namespace Adquisiciones.View.Modulos
         /// </summary>
         public Pedido PedidoActual;
 
-        public FrmModuloPedido()
+        public FrmModuloPedido(FrmAdquisiciones padre)
         {
             InitializeComponent();
+
+            ModulosUsuario = padre.ModulosUsuario;
+            AlmacenActual = padre.AlmacenSelect;
+
             base.TypeEntity = typeof(Pedido);
             base.NombreReporte = "reportePedido";
             base.NombreService = "pedidoService";
@@ -35,7 +39,7 @@ namespace Adquisiciones.View.Modulos
             base.ObtenerPerfil();
         }
 
-        public FrmModuloPedido(int tipoPedido):this()
+        public FrmModuloPedido(int tipoPedido,FrmAdquisiciones padre):this(padre)
         {
             Nuevo();
             PedidoActual.CatTipopedido = new CatTipopedido(tipoPedido);
@@ -48,8 +52,8 @@ namespace Adquisiciones.View.Modulos
             InicializarCatalogos();
         }
 
-         public FrmModuloPedido(Pedido pedido)
-            : this(pedido.CatTipopedido.IdTipoped)
+         public FrmModuloPedido(Pedido pedido,FrmAdquisiciones padre)
+            : this(pedido.CatTipopedido.IdTipoped,padre)
          {
             PedidoActual = pedido;
             Consultar();
@@ -91,9 +95,9 @@ namespace Adquisiciones.View.Modulos
             PedidoService.AnexoService.InstitutosCombo(cbxInstituto);
             bsArea.DataSource = PedidoService.PedidoDao.CargarCatalogo<CatArea>("Estatus", 1);
             bsProveedor.DataSource = PedidoService.PedidoDao.CargarCatalogo<Proveedor>();
-            bsAnexo.DataSource = PedidoService.AnexoDao.CargarAnexos(FrmModuloModulo.AlmacenSelec);
+            bsAnexo.DataSource = PedidoService.AnexoDao.CargarAnexos(AlmacenActual);
             repositoryItemSearchLookUpEdit2.DataSource = PedidoService.AnexoService.
-                ArticuloDao.ArticulosByAlmacen(FrmModuloModulo.AlmacenSelec);
+                ArticuloDao.ArticulosByAlmacen(AlmacenActual);
             repositoryItemSearchLookUpEdit2.DisplayMember = "CveArt";
             repositoryItemSearchLookUpEdit2.ValueMember = "CveArt";
         }
@@ -105,7 +109,7 @@ namespace Adquisiciones.View.Modulos
             bsPedidoDetalle.DataSource = new List<PedidoDetalle>();
 
             //Cargamos el numero de pedido maximo
-            PedidoActual.NumeroPedido = PedidoService.PedidoDao.MaximoNumeroPedido(FrmModuloModulo.AlmacenSelec);
+            PedidoActual.NumeroPedido = PedidoService.PedidoDao.MaximoNumeroPedido(AlmacenActual);
             numPedido.Value = (decimal)PedidoActual.NumeroPedido;
             deFechaPedido.DateTime = PedidoService.PedidoDao.FechaServidor();
             PedidoActual.FechaPedido = deFechaPedido.DateTime;
@@ -125,7 +129,7 @@ namespace Adquisiciones.View.Modulos
             lblNumErrors.Caption = "";
 
             //los parametros basicos
-            PedidoActual.Almacen = FrmModuloModulo.AlmacenSelec;
+            PedidoActual.Almacen = AlmacenActual;
             PedidoActual.Usuario = FrmModuloAcceso.UsuarioLog;
 
             //Validaciones 
@@ -158,7 +162,7 @@ namespace Adquisiciones.View.Modulos
             try
             {
                 PedidoActual = PedidoService.ConsultarPedido(PedidoActual.NumeroPedido.Value,
-                                                          FrmModuloModulo.AlmacenSelec);
+                                                          AlmacenActual);
 
                 if (PedidoActual != null)
                 {
@@ -299,7 +303,7 @@ namespace Adquisiciones.View.Modulos
                 {
                     var cveArt = (int)rowSelectValue;
 
-                    var almacen = FrmModuloModulo.AlmacenSelec;
+                    var almacen = AlmacenActual;
                     var articuloid = new ArticuloId(cveArt, almacen);
                     var articuloSelect = PedidoService.AnexoService.ArticuloDao.Get(articuloid);
                     gvPedidoDetalle.SetRowCellValue(e.RowHandle, "DescripcionArt", articuloSelect.DesArticulo);

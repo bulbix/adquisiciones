@@ -32,9 +32,13 @@ namespace Adquisiciones.View.Modulos
         /// </summary>
         public Requisicion RequisicionActual;
 
-        public FrmModuloLicitaPedido()
+        public FrmModuloLicitaPedido(FrmAdquisiciones padre)
         {
             InitializeComponent();
+
+            ModulosUsuario = padre.ModulosUsuario;
+            AlmacenActual = padre.AlmacenSelect;
+            this.MdiParent = padre;
             base.TypeEntity = typeof(Pedido);
             var ctx = ContextRegistry.GetContext();
             PedidoService = ctx["pedidoService"] as IPedidoService;
@@ -46,7 +50,7 @@ namespace Adquisiciones.View.Modulos
 
         public override void InicializarCatalogos()
         {
-            bsRequisicion.DataSource = PedidoService.RequisicionDao.CargarRequisiciones(FrmModuloModulo.AlmacenSelec);
+            bsRequisicion.DataSource = PedidoService.RequisicionDao.CargarRequisiciones(AlmacenActual);
             bsFundamento.DataSource = PedidoService.RequisicionDao.CargarCatalogo<Fundamento>();
             PedidoService.CatalogoActividad(cbxActividad);
             PedidoService.AnexoService.IvasCombo(cbxIva);
@@ -86,7 +90,7 @@ namespace Adquisiciones.View.Modulos
 
             //los parametros basicos
             PedidoActual.Observaciones = txtObservaciones.Text;
-            PedidoActual.Almacen = FrmModuloModulo.AlmacenSelec;
+            PedidoActual.Almacen = AlmacenActual;
             PedidoActual.Usuario = FrmModuloAcceso.UsuarioLog;
 
             try
@@ -224,7 +228,7 @@ namespace Adquisiciones.View.Modulos
 
         private void CallPedidoBusqueda()
         {
-            var forma = new FrmBusquedaPedido();
+            var forma = new FrmBusquedaPedido(this.MdiParent as FrmAdquisiciones);
             forma.MdiParent = this.MdiParent;
             forma.Show();
 
