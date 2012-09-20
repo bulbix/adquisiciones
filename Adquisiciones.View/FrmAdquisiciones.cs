@@ -7,23 +7,37 @@ using System.Drawing;
 using System.IO;
 using System.Text;
 using System.Windows.Forms;
+using Adquisiciones.Business.Seguridad;
 using Adquisiciones.View.Busquedas;
 using Adquisiciones.View.Catalogos;
 using Adquisiciones.View.Modulos;
 using DevExpress.XtraBars;
+using Spring.Context.Support;
 
 namespace Adquisiciones.View
 {
     public partial class FrmAdquisiciones : DevExpress.XtraBars.Ribbon.RibbonForm
     {
+
+
+        public IUsuarioService UsuarioService { get; set; }
+
+
         ///<summary>
         ///</summary>
         public FrmAdquisiciones()
         {
             InitializeComponent();
             ObtenerPerfil();
+
+            var ctx = ContextRegistry.GetContext();
+            UsuarioService = ctx["usuarioService"] as IUsuarioService;
         }
 
+
+        /// <summary>
+        /// Despliega el perfil asociado en la pantalla principal
+        /// </summary>
         protected void ObtenerPerfil()
         {
             var modulosUsuario = FrmModuloAcceso.UsuarioLog.UsuarioModulo;
@@ -157,9 +171,7 @@ namespace Adquisiciones.View
         }
 
         private void BarButtonPedidoExtraItemClick(object sender, ItemClickEventArgs e)
-        {
-            var forma = new FrmModuloPedido(4);
-            forma.Text = @"Extramuros";
+        {var forma = new FrmModuloPedido(4);forma.Text = @"Extramuros";
             forma.MdiParent = this;
             forma.Show();
         }
@@ -167,20 +179,19 @@ namespace Adquisiciones.View
         {
             txtFechaStatus.Caption = @"Fecha Acceso " + DateTime.Now;
             txtUsuarioStatus.Caption = @"Bienvenid@ " + FrmModuloAcceso.UsuarioLog;
-            txtAlmacenStatus.Caption = @"Almacen Actual " + FrmModuloModulo.AlmacenSelec;
+            Text += "@ " + FrmModuloModulo.AlmacenSelec;
         }
-        private void BtnCambiarAlmaItemClick(object sender, ItemClickEventArgs e)
+
+        private void BtnNewAlmacenItemClick(object sender, ItemClickEventArgs e)
         {
-            new FrmModuloModulo().ShowDialog();
-            //this.Close();
-
+            FrmModuloAcceso.UsuarioLog.UsuarioModulo 
+               = UsuarioService.UsuarioDao.TraerAllModulos(FrmModuloAcceso.UsuarioLog);
+            new FrmModuloModulo().Show();
         }
-
         private void BarButtonItem7ItemClick(object sender, ItemClickEventArgs e)
         {
             var forma = new FrmBusquedaPedido();
             forma.MdiParent = this;forma.Show();
-
         }
 
         private void barButtonItem5_ItemClick(object sender, ItemClickEventArgs e)

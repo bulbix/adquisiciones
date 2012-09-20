@@ -49,8 +49,7 @@
             this.barButtonItem7 = new DevExpress.XtraBars.BarButtonItem();
             this.txtFechaStatus = new DevExpress.XtraBars.BarStaticItem();
             this.txtUsuarioStatus = new DevExpress.XtraBars.BarStaticItem();
-            this.txtAlmacenStatus = new DevExpress.XtraBars.BarStaticItem();
-            this.btnCambiarAlma = new DevExpress.XtraBars.BarButtonItem();
+            this.btnNewAlmacen = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem8 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem9 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem10 = new DevExpress.XtraBars.BarButtonItem();
@@ -117,8 +116,7 @@
             this.barButtonItem7,
             this.txtFechaStatus,
             this.txtUsuarioStatus,
-            this.txtAlmacenStatus,
-            this.btnCambiarAlma,
+            this.btnNewAlmacen,
             this.barButtonItem8,
             this.barButtonItem9,
             this.barButtonItem10,
@@ -298,21 +296,14 @@
             this.txtUsuarioStatus.Name = "txtUsuarioStatus";
             this.txtUsuarioStatus.TextAlignment = System.Drawing.StringAlignment.Near;
             // 
-            // txtAlmacenStatus
+            // btnNewAlmacen
             // 
-            this.txtAlmacenStatus.Caption = "barStaticItem1";
-            this.txtAlmacenStatus.Id = 21;
-            this.txtAlmacenStatus.Name = "txtAlmacenStatus";
-            this.txtAlmacenStatus.TextAlignment = System.Drawing.StringAlignment.Far;
-            // 
-            // btnCambiarAlma
-            // 
-            this.btnCambiarAlma.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
-            this.btnCambiarAlma.Caption = "Cambiar Almacen";
-            this.btnCambiarAlma.Glyph = global::Adquisiciones.View.Properties.Resources.almacen;
-            this.btnCambiarAlma.Id = 22;
-            this.btnCambiarAlma.Name = "btnCambiarAlma";
-            this.btnCambiarAlma.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BtnCambiarAlmaItemClick);
+            this.btnNewAlmacen.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
+            this.btnNewAlmacen.Caption = "Nuevo Almacen";
+            this.btnNewAlmacen.Glyph = global::Adquisiciones.View.Properties.Resources.almacen;
+            this.btnNewAlmacen.Id = 22;
+            this.btnNewAlmacen.Name = "btnNewAlmacen";
+            this.btnNewAlmacen.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BtnNewAlmacenItemClick);
             // 
             // barButtonItem8
             // 
@@ -477,8 +468,7 @@
             // 
             this.ribbonStatusBar.ItemLinks.Add(this.txtFechaStatus);
             this.ribbonStatusBar.ItemLinks.Add(this.txtUsuarioStatus);
-            this.ribbonStatusBar.ItemLinks.Add(this.txtAlmacenStatus);
-            this.ribbonStatusBar.ItemLinks.Add(this.btnCambiarAlma);
+            this.ribbonStatusBar.ItemLinks.Add(this.btnNewAlmacen);
             this.ribbonStatusBar.ItemLinks.Add(this.barButtonItem11);
             this.ribbonStatusBar.ItemLinks.Add(this.barButtonItem13);
             this.ribbonStatusBar.Location = new System.Drawing.Point(0, 437);
@@ -549,7 +539,7 @@
             this.Name = "FrmAdquisiciones";
             this.Ribbon = this.ribbon;
             this.StatusBar = this.ribbonStatusBar;
-            this.Text = "Adquisiciones V 1.0 @ Instituto Nacional Rehabilitación";
+            this.Text = "Adquisiciones V 1.0 ";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmAdquisiciones_FormClosed);
             this.Load += new System.EventHandler(this.FrmAdquisicionesLoad);
@@ -601,8 +591,7 @@
         private DevExpress.ExpressApp.Win.Templates.Controls.XafBarManager xafBarManager1;
         private DevExpress.XtraBars.BarStaticItem txtFechaStatus;
         private DevExpress.XtraBars.BarStaticItem txtUsuarioStatus;
-        private DevExpress.XtraBars.BarStaticItem txtAlmacenStatus;
-        private DevExpress.XtraBars.BarButtonItem btnCambiarAlma;
+        private DevExpress.XtraBars.BarButtonItem btnNewAlmacen;
         private DevExpress.XtraBars.BarButtonItem barButtonItem8;
         private DevExpress.LookAndFeel.DefaultLookAndFeel defaultLookAndFeel1;
         private DevExpress.XtraBars.BarButtonItem barButtonItem9;

@@ -276,6 +276,7 @@ namespace Adquisiciones.View
 
         private void LstAlmacenSelectedIndexChanged(object sender, EventArgs e)
         {
+            bsDestino.DataSource = new List<UsuarioModulo>();
             AlmacenActual = new Almacen(lstAlmacen.SelectedItem.ToString());
             searchLookUpUsuario.EditValue = null;
             bsOrigen.DataSource = UsuarioService.UsuarioDao.

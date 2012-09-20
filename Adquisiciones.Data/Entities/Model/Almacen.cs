@@ -60,9 +60,8 @@ namespace Adquisiciones.Data.Entities
 		/// </summary>
 		public override bool Equals( object obj )
 		{	
-			Almacen derecha = obj as Almacen;
-            if (derecha == null) return
-		    false;
+			var derecha = obj as Almacen;
+            if (derecha == null) return false;
 			return (this._idalmacen == derecha.IdAlmacen);
 		}
 		/// <summary>
@@ -71,7 +70,7 @@ namespace Adquisiciones.Data.Entities
 		public override int GetHashCode()
 		{
 			int hash = 57;
-			hash = 27 * hash * _idalmacen.GetHashCode();
+			//hash = 27 * hash * _idalmacen.GetHashCode();
 			return hash;
 		}
 		#endregion

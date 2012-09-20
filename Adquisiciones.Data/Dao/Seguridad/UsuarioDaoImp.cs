@@ -57,6 +57,24 @@ namespace Adquisiciones.Data.Dao.Seguridad
 
                
 
-             return criteria.List<Usuario>();}
+             return criteria.List<Usuario>();
+        }
+
+        [Transaction(ReadOnly = true)]
+        public IList<UsuarioModulo> TraerModulos(Usuario usuario, Almacen almacen)
+        {
+            var query = CurrentSession.GetNamedQuery("Usuario.TraerModulos");
+            query.SetParameter("usuario", usuario);
+            query.SetParameter("almacen", almacen);
+            return query.List<UsuarioModulo>();
+        }
+
+        [Transaction(ReadOnly = true)]
+        public IList<UsuarioModulo> TraerAllModulos(Usuario usuario)
+        {
+            var query = CurrentSession.GetNamedQuery("Usuario.TraerAllModulos");
+            query.SetParameter("usuario", usuario);
+            return query.List<UsuarioModulo>();
+        }
     }
 }

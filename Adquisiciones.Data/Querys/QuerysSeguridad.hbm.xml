@@ -14,6 +14,31 @@
     order by m.Id.IdModulo asc  ]]>
   </query>
 
+
+  <query name="Usuario.TraerModulos">
+    <![CDATA[
+    
+    select um 
+    from UsuarioModulo um     
+    join fetch um.Id.Modulo m 
+    join fetch m.Id.Almacen a 
+    where um.Id.Usuario = :usuario
+    and m.Id.Almacen = :almacen 
+    order by m.Id.IdModulo asc  ]]>
+  </query>
+
+
+  <query name="Usuario.TraerAllModulos">
+    <![CDATA[
+    
+    select um 
+    from UsuarioModulo um     
+    join fetch um.Id.Modulo m 
+    join fetch m.Id.Almacen a 
+    where um.Id.Usuario = :usuario    
+    order by m.Id.IdModulo asc  ]]>
+  </query>
+
   <query name="Usuario.SinPerfiles">
     <![CDATA[ 
     select m

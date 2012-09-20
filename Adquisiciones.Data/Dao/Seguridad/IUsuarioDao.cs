@@ -10,5 +10,7 @@ namespace Adquisiciones.Data.Dao.Seguridad
         IList<UsuarioModulo> ModulosConPerfil(Usuario usuario, Almacen almacen);
         IList<UsuarioModulo> ModulosAllSinPerfil(Usuario usuario, Almacen almacen);
         IList<Usuario> CargarUsuarios();
+        IList<UsuarioModulo> TraerModulos(Usuario usuario, Almacen almacen);
+        IList<UsuarioModulo> TraerAllModulos(Usuario usuario);
     }
 }

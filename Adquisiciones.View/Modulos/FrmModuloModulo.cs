@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using Adquisiciones.Business.Seguridad;
 using Adquisiciones.Data.Dao.Catalogos;
 using Adquisiciones.Data.Entities;
 using DevExpress.XtraEditors;
@@ -19,6 +20,9 @@ namespace Adquisiciones.View
         public static  Almacen AlmacenSelec;
 
         public IAlmacenDao AlmacenDao { get; set; }
+
+        public IUsuarioService UsuarioService { get; set; }
+
         ///<summary>
         ///</summary>
         public FrmModuloModulo()
@@ -27,6 +31,8 @@ namespace Adquisiciones.View
 
             var ctx = ContextRegistry.GetContext();
             AlmacenDao = ctx["almacenDao"] as IAlmacenDao;
+
+            UsuarioService = ctx["usuarioService"] as IUsuarioService;
 
             var usuariosModulo = FrmModuloAcceso.UsuarioLog.UsuarioModulo;
 
@@ -47,16 +53,8 @@ namespace Adquisiciones.View
         private void MostrarMain()
         {
             //Quitar permisos que no son del almacen seleccionado
-
-            for (int index = 0; index < FrmModuloAcceso.UsuarioLog.UsuarioModulo.Count; index++)
-            {
-                var modulo = FrmModuloAcceso.UsuarioLog.UsuarioModulo[index];
-                if (!modulo.Id.Modulo.Id.Almacen.Equals(AlmacenSelec))
-                {
-                    FrmModuloAcceso.UsuarioLog.UsuarioModulo.Remove(modulo);
-                }
-            }
-            
+            FrmModuloAcceso.UsuarioLog.UsuarioModulo = UsuarioService.UsuarioDao.TraerModulos(
+                FrmModuloAcceso.UsuarioLog, AlmacenSelec);
             Hide();
             new FrmAdquisiciones().Show();
            

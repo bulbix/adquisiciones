@@ -62,10 +62,10 @@
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.cmdEliminar = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
             this.lstAlmacen = new System.Windows.Forms.ComboBox();
-            this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.bsUsuarios)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsOrigen)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsDestino)).BeginInit();
@@ -368,6 +368,16 @@
             this.gridColumn3.VisibleIndex = 2;
             this.gridColumn3.Width = 56;
             // 
+            // gridColumn4
+            // 
+            this.gridColumn4.Caption = "Password";
+            this.gridColumn4.FieldName = "Password";
+            this.gridColumn4.Name = "gridColumn4";
+            this.gridColumn4.UnboundType = DevExpress.Data.UnboundColumnType.String;
+            this.gridColumn4.Visible = true;
+            this.gridColumn4.VisibleIndex = 3;
+            this.gridColumn4.Width = 299;
+            // 
             // cmdEliminar
             // 
             this.cmdEliminar.Location = new System.Drawing.Point(367, 4);
@@ -399,16 +409,6 @@
             this.lstAlmacen.Size = new System.Drawing.Size(165, 21);
             this.lstAlmacen.TabIndex = 28;
             this.lstAlmacen.SelectedIndexChanged += new System.EventHandler(this.LstAlmacenSelectedIndexChanged);
-            // 
-            // gridColumn4
-            // 
-            this.gridColumn4.Caption = "Password";
-            this.gridColumn4.FieldName = "Password";
-            this.gridColumn4.Name = "gridColumn4";
-            this.gridColumn4.UnboundType = DevExpress.Data.UnboundColumnType.String;
-            this.gridColumn4.Visible = true;
-            this.gridColumn4.VisibleIndex = 3;
-            this.gridColumn4.Width = 299;
             // 
             // FrmPanelControl
             // 
