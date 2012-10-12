@@ -4,7 +4,9 @@
   <query name="Anexo.CargaAnexo">
     <![CDATA[
       from Anexo a 
-      left join fetch a.AnexoDetalle 
+      left join fetch a.AnexoDetalle ad
+      left join fetch ad.Articulo art
+      left join fetch art.Id.Almacen 
       join fetch a.TipoLicitacion
       join fetch a.Iva
       where a.NumeroAnexo = :numero 
@@ -41,7 +43,7 @@
   <query name="Anexo.CargaDetalle">
     <![CDATA[
       from AnexoDetalle ad 
-      join fetch ad.Articulo
+      join fetch ad.Articulo       
       where ad.Anexo = :anexo
       order by ad.RenglonAnexo asc ]]>
   </query>  

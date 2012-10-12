@@ -25,6 +25,8 @@ namespace Adquisiciones.View.Modulos
         ///</summary>
         public Anexo AnexoActual;
 
+        public Almacen AlmacenArticulo;
+
         public FrmModuloAnexo(FrmAdquisiciones padre)
         {
             InitializeComponent();
@@ -32,7 +34,7 @@ namespace Adquisiciones.View.Modulos
             ModulosUsuario = padre.ModulosUsuario;
             AlmacenActual = padre.AlmacenSelect;
             
-
+            AlmacenesCombo(cbxAlmacen,AlmacenActual);
             base.TypeEntity = typeof(Anexo);
             base.NombreReporte = "reporteAnexo";
             base.NombreService = "anexoService";
@@ -42,8 +44,6 @@ namespace Adquisiciones.View.Modulos
             
             var ctx = ContextRegistry.GetContext();
             FalloService = ctx["falloService"] as IFalloService;
-
-
 
             Nuevo();
             BindearCampos();
@@ -56,7 +56,10 @@ namespace Adquisiciones.View.Modulos
         {
             AnexoActual = anexo;
             Consultar();
-            Text = @"Anexo::" + anexo.NumeroAnexo;
+
+            //Cargar los articulos del almacen con centinela seleccionado
+            var almacenSelect = AnexoActual.AnexoDetalle[0].Articulo.Id.Almacen;
+            CargarArticulos(almacenSelect);
         }
 
         
@@ -79,11 +82,6 @@ namespace Adquisiciones.View.Modulos
             AnexoService.InstitutosCombo(cbxInstituto);
             AnexoService.TiposLicitacionesCombo(cbxTipolicitacion);
             AnexoService.IvasCombo(cbxIva);
-
-            repositoryItemSearchLookUpEdit2.DataSource = AnexoService.ArticuloDao.
-               ArticulosByAlmacen(AlmacenActual);
-            repositoryItemSearchLookUpEdit2.DisplayMember = "CveArt";
-            repositoryItemSearchLookUpEdit2.ValueMember = "CveArt";
         }
 
         public override void Nuevo()
@@ -99,8 +97,10 @@ namespace Adquisiciones.View.Modulos
             cmdMaximos.Enabled = false;
 
             txtnumlicitacion.Focus();
-            listaError.Strings.Clear();
-            lblNumErrors.Caption = string.Empty;
+            LimpiarErrores();
+            cbxAlmacen.Enabled = true;
+            lblAlmacenDesc.Text = string.Empty;
+            cmdCargarArt.Enabled = true;
         }
 
         public override void Guardar()
@@ -137,8 +137,6 @@ namespace Adquisiciones.View.Modulos
 
         public override void Consultar()
         {
-          
-
            try
             {
                if(AnexoActual.NumeroAnexo == null)
@@ -150,10 +148,8 @@ namespace Adquisiciones.View.Modulos
                 {
                     bsAnexo.DataSource = AnexoActual;
                     bsAnexoDetalle.DataSource = AnexoActual.AnexoDetalle;
-                    //txtnumlicitacion.Enabled = false;
-                    //dtpFechaanexo.Enabled = false;
-                    listaError.Strings.Clear();
-                    lblNumErrors.Caption = string.Empty;
+
+                    LimpiarErrores();
 
                     base.EntityActual = AnexoActual;
                     base.Consultar();
@@ -184,6 +180,12 @@ namespace Adquisiciones.View.Modulos
 
                 Log.Error("Generado por:" + FrmModuloAcceso.UsuarioLog, ee);
             }
+
+            cbxAlmacen.Enabled = false;
+            cmdCargarArt.Enabled = false;
+
+           Text = @"Anexo::" + AnexoActual.NumeroAnexo;
+
         }
 
         private bool TieneRepetidoArticulo(int? articulo)
@@ -215,25 +217,23 @@ namespace Adquisiciones.View.Modulos
                     XtraMessageBox.Show(@"Articulo repetido clave " + rowSelectValue,
                                     @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     gvAnexoDetalle.SetRowCellValue(e.RowHandle, "DescripcionArt", "");
-                    gvAnexoDetalle.SetRowCellValue(e.RowHandle, "PresentacionArt", "");
-                    //gvAnexoDetalle.SetRowCellValue(e.RowHandle, "CveArt", "");
+                    gvAnexoDetalle.SetRowCellValue(e.RowHandle, "UnidadArt", "");
                     return;
                 }
 
                 try
                 {
                     var cveArt = (int) rowSelectValue;
-
-                    var almacen = AlmacenActual;
-                    var articuloid = new ArticuloId(cveArt, almacen);
+                    //var almacen = cbxAlmacen.SelectedValue as Almacen;
+                    var articuloid = new ArticuloId(cveArt, AlmacenArticulo);
                     var articuloSelect = AnexoService.ArticuloDao.Get(articuloid);
+                    gvAnexoDetalle.SetRowCellValue(e.RowHandle, "Articulo", articuloSelect);
                     gvAnexoDetalle.SetRowCellValue(e.RowHandle, "DescripcionArt", articuloSelect.DesArticulo);
-                    gvAnexoDetalle.SetRowCellValue(e.RowHandle, "PresentacionArt", articuloSelect.Presentacion);
-                }
-                catch (Exception ee)
+                    gvAnexoDetalle.SetRowCellValue(e.RowHandle, "UnidadArt", articuloSelect.CatUnidad.Unidad);
+                }catch (Exception ee)
                 {
                     gvAnexoDetalle.SetRowCellValue(e.RowHandle, "DescripcionArt", "");
-                    gvAnexoDetalle.SetRowCellValue(e.RowHandle, "PresentacionArt", "");
+                    gvAnexoDetalle.SetRowCellValue(e.RowHandle, "UnidadArt", "");
 
                 }
             }
@@ -244,21 +244,15 @@ namespace Adquisiciones.View.Modulos
             FalloService.ActualizarFallo(AnexoActual);
             XtraMessageBox.Show(@"Se actualizaron los maximos del fallo asociado",
                        @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-
         }
 
         private void txtnumlicitacion_Leave(object sender, EventArgs e)
         {
-            //if (AnexoActual.IdAnexo == 0){
-                //No existe el numero de folio para ese anio
+            
             if((AnexoActual.NumeroAnexo != txtnumlicitacion.Text && AnexoActual.IdAnexo != 0)
-                || AnexoActual.IdAnexo == 0 ){if (AnexoService.AnexoDao.ExisteAnexo(txtnumlicitacion.Text, AlmacenActual))
+                || AnexoActual.IdAnexo == 0 ){
+                if (AnexoService.AnexoDao.ExisteAnexo(txtnumlicitacion.Text, AlmacenActual))
                 {
-                    
-                    //dxErrorProvider1.SetError(txtnumlicitacion,"El folio ya existe para este año NO SIGA CAPTURANDO!!");
-                    //txtnumlicitacion.SelectAll();
-                    //txtnumlicitacion.ErrorText ="Huevos" ;
                     XtraMessageBox.Show(@"El folio ya existe para este año NO SIGA CAPTURANDO!!",
                                   @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     txtnumlicitacion.Select();
@@ -266,11 +260,36 @@ namespace Adquisiciones.View.Modulos
             }
         }
 
-        private void gcDatosGenerales_Paint(object sender, PaintEventArgs e)
+        /// <summary>
+        /// Carga claves con almacen donde se registran claves
+        /// </summary>
+        /// <param name="almacen"></param>
+        private void CargarArticulos(Almacen almacen)
         {
+            repositoryItemSearchLookUpEdit2.DataSource =
+                AnexoService.ArticuloDao.ArticulosByAlmacen(almacen);
+            repositoryItemSearchLookUpEdit2.DisplayMember = "CveArt";
+            repositoryItemSearchLookUpEdit2.ValueMember = "CveArt";
 
+            lblAlmacenDesc.Text = almacen.ToString();
+            cbxAlmacen.SelectedIndex = -1;
+
+            AlmacenArticulo = almacen;
+
+            XtraMessageBox.Show(@"Articulos cargados satisfactoriamente",
+            @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-       
+
+        private void CmdCargarArtClick(object sender, EventArgs e)
+        {
+            if (XtraMessageBox.Show(@"Esta seguro de cambiar el almacen? Se borrara el detralle", @"Adquisiciones",
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                bsAnexoDetalle.DataSource = new List<AnexoDetalle>();
+                CargarArticulos(cbxAlmacen.SelectedValue as Almacen);
+            }
+
+        }
     }
 }

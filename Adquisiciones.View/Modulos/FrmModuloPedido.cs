@@ -24,12 +24,15 @@ namespace Adquisiciones.View.Modulos
         /// </summary>
         public Pedido PedidoActual;
 
+        public Almacen AlmacenArticulo;
+
         public FrmModuloPedido(FrmAdquisiciones padre)
         {
             InitializeComponent();
 
             ModulosUsuario = padre.ModulosUsuario;
             AlmacenActual = padre.AlmacenSelect;
+            AlmacenesCombo(cbxAlmacen, AlmacenActual);
 
             base.TypeEntity = typeof(Pedido);
             base.NombreReporte = "reportePedido";
@@ -96,10 +99,7 @@ namespace Adquisiciones.View.Modulos
             bsArea.DataSource = PedidoService.PedidoDao.CargarCatalogo<CatArea>("Estatus", 1);
             bsProveedor.DataSource = PedidoService.PedidoDao.CargarCatalogo<Proveedor>();
             bsAnexo.DataSource = PedidoService.AnexoDao.CargarAnexos(AlmacenActual);
-            repositoryItemSearchLookUpEdit2.DataSource = PedidoService.AnexoService.
-                ArticuloDao.ArticulosByAlmacen(AlmacenActual);
-            repositoryItemSearchLookUpEdit2.DisplayMember = "CveArt";
-            repositoryItemSearchLookUpEdit2.ValueMember = "CveArt";
+
         }
 
         public override void Nuevo()
@@ -198,6 +198,9 @@ namespace Adquisiciones.View.Modulos
 
                 Log.Error("Generado por:" + FrmModuloAcceso.UsuarioLog, ee);
             }
+
+            cbxAlmacen.Enabled = false;
+            cmdCargarArt.Enabled = false;
         }
 
         private void SearchLookUpFundamentoEditValueChanged(object sender, EventArgs e)
@@ -296,23 +299,23 @@ namespace Adquisiciones.View.Modulos
                     XtraMessageBox.Show(@"Articulo repetido clave " + rowSelectValue,
                     @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     gvPedidoDetalle.SetRowCellValue(e.RowHandle, "DescripcionArt", "");
-                    //gvPedidoDetalle.SetRowCellValue(e.RowHandle, "PresentacionArt", "");
-                    //gvAnexoDetalle.SetRowCellValue(e.RowHandle, "CveArt", "");
+                    gvPedidoDetalle.SetRowCellValue(e.RowHandle, "UnidadArt", "");
                     return;
                 } try
                 {
                     var cveArt = (int)rowSelectValue;
 
-                    var almacen = AlmacenActual;
-                    var articuloid = new ArticuloId(cveArt, almacen);
+                    //var almacen = cbxAlmacen.SelectedValue as Almacen;
+                    var articuloid = new ArticuloId(cveArt, AlmacenArticulo);
                     var articuloSelect = PedidoService.AnexoService.ArticuloDao.Get(articuloid);
+                    gvPedidoDetalle.SetRowCellValue(e.RowHandle, "Articulo", articuloSelect);
                     gvPedidoDetalle.SetRowCellValue(e.RowHandle, "DescripcionArt", articuloSelect.DesArticulo);
-                    //gvPedidoDetalle.SetRowCellValue(e.RowHandle, "PresentacionArt", articuloSelect.Presentacion);
+                    gvPedidoDetalle.SetRowCellValue(e.RowHandle, "UnidadArt", articuloSelect.CatUnidad.Unidad);
                 }
                 catch (Exception ee)
                 {
                     gvPedidoDetalle.SetRowCellValue(e.RowHandle, "DescripcionArt", "");
-                    //gvPedidoDetalle.SetRowCellValue(e.RowHandle, "PresentacionArt", "");
+                    gvPedidoDetalle.SetRowCellValue(e.RowHandle, "UnidadArt", "");
 
                 }
             }
@@ -353,8 +356,6 @@ namespace Adquisiciones.View.Modulos
 
             return numOcurrencia > 1;
         }
-
-
         /// <summary>
         /// Display de la subventana PedidoEntregas
         /// </summary>
@@ -375,6 +376,36 @@ namespace Adquisiciones.View.Modulos
                 {
                     gvPedidoDetalle.DeleteRow(gvPedidoDetalle.FocusedRowHandle);
                 }
+            }
+        }
+
+        /// <summary>
+        /// Carga claves con almacen donde se registran claves
+        /// </summary>
+        /// <param name="almacen"></param>
+        private void CargarArticulos(Almacen almacen)
+        {
+            repositoryItemSearchLookUpEdit2.DataSource =
+                PedidoService.AnexoService.ArticuloDao.ArticulosByAlmacen(almacen);
+            repositoryItemSearchLookUpEdit2.DisplayMember = "CveArt";
+            repositoryItemSearchLookUpEdit2.ValueMember = "CveArt";
+
+            lblAlmacenDesc.Text = almacen.ToString();
+            cbxAlmacen.SelectedIndex = -1;
+
+            AlmacenArticulo = almacen;
+
+            XtraMessageBox.Show(@"Articulos cargados satisfactoriamente",
+            @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void CmdCargarArtClick(object sender, EventArgs e)
+        {
+            if (XtraMessageBox.Show(@"Esta seguro de cambiar el almacen? Se borrara el detralle", @"Adquisiciones",
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                bsPedidoDetalle.DataSource = new List<PedidoDetalle>();
+                CargarArticulos(cbxAlmacen.SelectedValue as Almacen);
             }
         }
     }

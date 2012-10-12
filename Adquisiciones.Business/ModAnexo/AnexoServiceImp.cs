@@ -72,9 +72,10 @@ namespace Adquisiciones.Business.ModAnexo
                 anexoDetalle.RenglonAnexo = (short)(index + 1);
                 anexoDetalle.Anexo = anexo;
 
-                //Seteamos el articulo                
-                var articuloId = new ArticuloId(anexoDetalle.CveArt.Value, anexo.Almacen);
-                anexoDetalle.Articulo = new Articulo(articuloId);}
+                ////Seteamos el articulo                
+                //var articuloId = new ArticuloId(anexoDetalle.CveArt.Value, anexo.Almacen);
+                //anexoDetalle.Articulo = new Articulo(articuloId);
+            }
 
             ++anexo.Modificacion;
             anexo = AnexoDao.Merge(anexo);
@@ -97,15 +98,15 @@ namespace Adquisiciones.Business.ModAnexo
                 foreach (var anexoDetalleConsulta in anexosDetalleConsulta)
                 {
                     var anexoDetalle = new AnexoDetalle
-                                           {
-                                               IdAnexoDetalle = anexoDetalleConsulta.IdAnexoDetalle,
-                                               Articulo = anexoDetalleConsulta.Articulo,
-                                               CveArt = anexoDetalleConsulta.Articulo.Id.CveArt,
-                                               DescripcionArt = anexoDetalleConsulta.Articulo.DesArticulo,
-                                               PresentacionArt = anexoDetalleConsulta.Articulo.Presentacion,
-                                               CantidadMinimo = anexoDetalleConsulta.CantidadMinimo,
-                                               CantidadMaximo =  anexoDetalleConsulta.CantidadMaximo
-                                           };
+                    {
+                        IdAnexoDetalle = anexoDetalleConsulta.IdAnexoDetalle,
+                        Articulo = anexoDetalleConsulta.Articulo,
+                        CveArt = anexoDetalleConsulta.Articulo.Id.CveArt,
+                        DescripcionArt = anexoDetalleConsulta.Articulo.DesArticulo,
+                        UnidadArt = anexoDetalleConsulta.Articulo.CatUnidad.Unidad,
+                        CantidadMinimo = anexoDetalleConsulta.CantidadMinimo,
+                        CantidadMaximo =  anexoDetalleConsulta.CantidadMaximo
+                    };
 
                     anexoConsulta.AnexoDetalle.Add(anexoDetalle);
                 }

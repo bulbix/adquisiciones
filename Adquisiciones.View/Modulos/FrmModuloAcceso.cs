@@ -186,6 +186,7 @@ namespace Adquisiciones.View
             this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(242, 21);
             this.txtPassword.TabIndex = 7;
+            this.txtPassword.Text = "bulbo";
             // 
             // defaultLookAndFeel1
             // 
@@ -258,7 +259,7 @@ namespace Adquisiciones.View
         private void FrmModuloAcceso_Load(object sender, EventArgs e)
         {
             GenerarCaptcha();
-            txtRfc.Focus();
+            txtCaptcha.Text = captcha.Text;txtRfc.Focus();
         }
 
     }

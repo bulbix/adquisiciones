@@ -173,6 +173,7 @@
   <ItemGroup>
     <EmbeddedResource Include="Querys\QuerysUtil.hbm.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Querys\QuerysAnexo.hbm.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

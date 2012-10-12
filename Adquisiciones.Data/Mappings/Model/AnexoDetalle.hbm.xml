@@ -11,7 +11,7 @@
     <many-to-one name="Anexo" class="Adquisiciones.Data.Entities.Anexo,Adquisiciones.Data" column="id_anexo" />
     <property name="RenglonAnexo" column="renglon_anexo" type="short" />    
     
-    <many-to-one name="Articulo" >      
+    <many-to-one name="Articulo"  >      
       <column name="cve_art"  />      
       <column name="id_almacen"  />
     </many-to-one>

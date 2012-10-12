@@ -79,11 +79,22 @@
             // 
             // splitContainerControl1
             // 
-            this.splitContainerControl1.Location = new System.Drawing.Point(0, 68);
             this.splitContainerControl1.Panel1.Controls.Add(this.gcDatosGenerales);
             this.splitContainerControl1.Panel2.Controls.Add(this.gcCotizacionDetalle);
-            this.splitContainerControl1.Size = new System.Drawing.Size(1130, 333);
+            this.splitContainerControl1.Size = new System.Drawing.Size(1130, 330);
             this.splitContainerControl1.SplitterPosition = 167;
+            // 
+            // lblAlmacen
+            // 
+            this.lblAlmacen.Visible = false;
+            // 
+            // cbxAlmacen
+            // 
+            this.cbxAlmacen.Visible = false;
+            // 
+            // lblAlmacenDesc
+            // 
+            this.lblAlmacenDesc.Visible = false;
             // 
             // gcDatosGenerales
             // 
@@ -305,7 +316,7 @@
             this.gcCotizacionDetalle.Location = new System.Drawing.Point(0, 0);
             this.gcCotizacionDetalle.MainView = this.gvCotizacionDetalle;
             this.gcCotizacionDetalle.Name = "gcCotizacionDetalle";
-            this.gcCotizacionDetalle.Size = new System.Drawing.Size(1130, 160);
+            this.gcCotizacionDetalle.Size = new System.Drawing.Size(1130, 158);
             this.gcCotizacionDetalle.TabIndex = 4;
             this.gcCotizacionDetalle.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvCotizacionDetalle});

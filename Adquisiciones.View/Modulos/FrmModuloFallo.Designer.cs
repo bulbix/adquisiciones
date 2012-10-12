@@ -55,6 +55,15 @@
             // 
             this.splitContainerControl1.Panel1.Controls.Add(this.groupControl1);
             this.splitContainerControl1.Panel2.Controls.Add(this.pgbFallo);
+            this.splitContainerControl1.Size = new System.Drawing.Size(770, 333);
+            // 
+            // lblAlmacen
+            // 
+            this.lblAlmacen.Visible = false;
+            // 
+            // cbxAlmacen
+            // 
+            this.cbxAlmacen.Visible = false;
             // 
             // groupControl1
             // 
@@ -65,7 +74,7 @@
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl1.Location = new System.Drawing.Point(0, 0);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(628, 92);
+            this.groupControl1.Size = new System.Drawing.Size(770, 92);
             this.groupControl1.TabIndex = 34;
             this.groupControl1.Text = "Datos Generales";
             // 
@@ -156,7 +165,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(628, 423);
+            this.ClientSize = new System.Drawing.Size(770, 423);
             this.Name = "FrmModuloFallo";
             this.Text = "Generar::Fallo";
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();

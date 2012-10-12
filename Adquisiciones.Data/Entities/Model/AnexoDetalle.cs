@@ -99,11 +99,14 @@ namespace Adquisiciones.Data.Entities
             get { return descripcionArt; }
             set { descripcionArt = value; }
         }
-        private string presentacionArt;
-        public string PresentacionArt
+
+
+
+        private string unidadArt;
+        public string UnidadArt
         {
-            get { return presentacionArt; }
-            set { presentacionArt = value; }
+            get { return unidadArt; }
+            set { unidadArt = value; }
         }
 
 	   

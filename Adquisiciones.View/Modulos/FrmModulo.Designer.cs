@@ -31,6 +31,9 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmModulo));
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
+            this.lblAlmacenDesc = new DevExpress.XtraEditors.LabelControl();
+            this.lblAlmacen = new System.Windows.Forms.Label();
+            this.cbxAlmacen = new System.Windows.Forms.ComboBox();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.bar2 = new DevExpress.XtraBars.Bar();
@@ -57,14 +60,46 @@
             // 
             this.splitContainerControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainerControl1.Horizontal = false;
-            this.splitContainerControl1.Location = new System.Drawing.Point(0, 92);
+            this.splitContainerControl1.Location = new System.Drawing.Point(0, 70);
             this.splitContainerControl1.Name = "splitContainerControl1";
+            this.splitContainerControl1.Panel1.Controls.Add(this.lblAlmacenDesc);
+            this.splitContainerControl1.Panel1.Controls.Add(this.lblAlmacen);
+            this.splitContainerControl1.Panel1.Controls.Add(this.cbxAlmacen);
             this.splitContainerControl1.Panel1.Text = "Panel1";
             this.splitContainerControl1.Panel2.Text = "panelDetalle";
-            this.splitContainerControl1.Size = new System.Drawing.Size(628, 309);
+            this.splitContainerControl1.Size = new System.Drawing.Size(728, 330);
             this.splitContainerControl1.SplitterPosition = 92;
             this.splitContainerControl1.TabIndex = 0;
             this.splitContainerControl1.Text = "splitContainerControl1";
+            // 
+            // lblAlmacenDesc
+            // 
+            this.lblAlmacenDesc.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Style3D;
+            this.lblAlmacenDesc.Location = new System.Drawing.Point(608, 16);
+            this.lblAlmacenDesc.Name = "lblAlmacenDesc";
+            this.lblAlmacenDesc.Size = new System.Drawing.Size(99, 17);
+            this.lblAlmacenDesc.TabIndex = 2;
+            this.lblAlmacenDesc.Text = "descripcion almacen";
+            this.lblAlmacenDesc.Visible = false;
+            // 
+            // lblAlmacen
+            // 
+            this.lblAlmacen.AutoSize = true;
+            this.lblAlmacen.Location = new System.Drawing.Point(371, 18);
+            this.lblAlmacen.Name = "lblAlmacen";
+            this.lblAlmacen.Size = new System.Drawing.Size(51, 13);
+            this.lblAlmacen.TabIndex = 1;
+            this.lblAlmacen.Text = "Almacen:";
+            this.lblAlmacen.Visible = false;
+            // 
+            // cbxAlmacen
+            // 
+            this.cbxAlmacen.FormattingEnabled = true;
+            this.cbxAlmacen.Location = new System.Drawing.Point(428, 15);
+            this.cbxAlmacen.Name = "cbxAlmacen";
+            this.cbxAlmacen.Size = new System.Drawing.Size(174, 21);
+            this.cbxAlmacen.TabIndex = 0;
+            this.cbxAlmacen.Visible = false;
             // 
             // barManager1
             // 
@@ -210,28 +245,28 @@
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Size = new System.Drawing.Size(628, 92);
+            this.barDockControlTop.Size = new System.Drawing.Size(728, 70);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 401);
-            this.barDockControlBottom.Size = new System.Drawing.Size(628, 22);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 400);
+            this.barDockControlBottom.Size = new System.Drawing.Size(728, 23);
             // 
             // barDockControlLeft
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 92);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 309);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 70);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 330);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(628, 92);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 309);
+            this.barDockControlRight.Location = new System.Drawing.Point(728, 70);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 330);
             // 
             // barButtonItem1
             // 
@@ -253,7 +288,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(628, 423);
+            this.ClientSize = new System.Drawing.Size(728, 423);
             this.Controls.Add(this.splitContainerControl1);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
@@ -288,5 +323,8 @@
         protected DevExpress.XtraBars.BarButtonItem cmdReporte;
         protected DevExpress.XtraBars.BarButtonItem barButtonItem1;
         protected DevExpress.XtraBars.BarButtonItem barButtonItem2;
+        protected System.Windows.Forms.Label lblAlmacen;
+        protected System.Windows.Forms.ComboBox cbxAlmacen;
+        protected DevExpress.XtraEditors.LabelControl lblAlmacenDesc;
     }
 }

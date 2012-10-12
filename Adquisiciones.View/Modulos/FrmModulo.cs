@@ -8,10 +8,12 @@ using System.Text;
 using System.Windows.Forms;
 using Adquisiciones.Business;
 using Adquisiciones.Data;
+using Adquisiciones.Data.Dao.Catalogos;
 using Adquisiciones.Data.Entities;
 using DevExpress.XtraEditors;
 using log4net;
 using Spring.Context.Support;
+using ComboBox = System.Windows.Forms.ComboBox;
 
 namespace Adquisiciones.View.Modulos
 {
@@ -30,6 +32,7 @@ namespace Adquisiciones.View.Modulos
 
         public Almacen AlmacenActual { get; set; }
         public IList<UsuarioModulo> ModulosUsuario { get; set; }
+
 
         /// <summary>
         /// 
@@ -53,6 +56,53 @@ namespace Adquisiciones.View.Modulos
                 else
                     HabilitarBuscadores((control as Control),habilitar);
             }
+        }
+
+        /// <summary>
+        /// Limpia combos
+        /// </summary>
+        protected void LimpiarErrores()
+        {
+            listaError.Strings.Clear();
+            lblNumErrors.Caption = string.Empty;
+        }
+
+        /// <summary>
+        /// Rellena un combo con los almacenes de acuerdo al almacen en curso
+        /// </summary>
+        /// <param name="combo">Combo con los almacenes </param>
+        /// <param name="almacenAdq">Almacen adquisiciones</param>
+        protected void AlmacenesCombo(ComboBox combo, Almacen almacenAdq)
+        {
+
+            var ctx = ContextRegistry.GetContext();
+            var almacenDao = ctx["almacenDao"] as IAlmacenDao;
+
+            var almacenes = new List<Almacen>();
+            switch(almacenAdq.IdAlmacen)
+            {
+                case "C2":
+                    almacenes.Add(almacenDao.Get("PC"));
+                    almacenes.Add(almacenDao.Get("GC"));
+                    almacenes.Add(almacenDao.Get("FC"));
+                    break;
+                case "C5":
+                    almacenes.Add(almacenDao.Get("AC"));
+                    break;
+                case "P2":
+                    almacenes.Add(almacenDao.Get("F"));
+                    almacenes.Add(almacenDao.Get("G"));
+                    almacenes.Add(almacenDao.Get("P"));
+                    break;
+                case "P5":
+                    almacenes.Add(almacenDao.Get("A"));
+                    break;
+            }
+
+            var dicc = almacenes.ToDictionary(almacen => almacen, 
+                almacen => almacen.ToString());
+
+            Util.Dicc2Combo(dicc, combo);
         }
 
         /// <summary>
@@ -203,6 +253,5 @@ namespace Adquisiciones.View.Modulos
                 XtraMessageBox.Show(@"No hay entity actual", @"Adquisiciones",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-    }
+        }}
 }

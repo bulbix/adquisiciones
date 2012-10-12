@@ -66,7 +66,6 @@ namespace Adquisiciones.Data.Entities
 			set {_articulo= value; }
 		}
 
-        [NotNullNotEmpty(Message = ("Marca Requerido"))]
 		public  virtual string Marca
 		{
 			get { return _marca; }
@@ -103,6 +102,8 @@ namespace Adquisiciones.Data.Entities
 	    public int? CveArt { get; set; }
 
 	    public string DescripcionArt { get; set; }
+
+        public string UnidadArt { get; set; }
 
         private decimal? importe;
 

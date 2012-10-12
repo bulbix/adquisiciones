@@ -178,8 +178,8 @@ namespace Adquisiciones.View
                 filaDetalle["Fecha"] = String.Format("{0:dd/MM/yyyy}",fallo.FechaFallo);
                 filaDetalle["ClaveArticulo"] = detalle.Articulo.Id.CveArt;
 
-                var articulo =
-                    FalloService.ArticuloDao.Get(new ArticuloId(detalle.Articulo.Id.CveArt, anexo.Almacen));
+                var articulo = detalle.Articulo;
+                //FalloService.ArticuloDao.Get(new ArticuloId(detalle.Articulo.Id.CveArt, anexo.Almacen));
 
                 filaDetalle["Renglon"] = detalle.RenglonAnexo;
                 filaDetalle["Descripcion"] = articulo.Id.CveArt + " / " + articulo.DesArticulo;

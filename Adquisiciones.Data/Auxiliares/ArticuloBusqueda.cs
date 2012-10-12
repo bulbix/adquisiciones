@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Adquisiciones.Data.Entities;
 
 namespace Adquisiciones.Data.Auxiliares
 {
@@ -12,15 +13,15 @@ namespace Adquisiciones.Data.Auxiliares
         {
             }
 
-        public ArticuloBusqueda(int cveArt, string descripcion, string presentacion)
+        public ArticuloBusqueda(int cveArt, string descripcion, string unidad)
         {
             _cveArt = cveArt;
             _descripcion = descripcion;
-            _presentacion = presentacion;
+            _unidad = unidad;
         }
 
         private string _descripcion;
-        private string _presentacion;
+        private string _unidad;
 
         public int CveArt
         {
@@ -34,10 +35,10 @@ namespace Adquisiciones.Data.Auxiliares
             set { _descripcion = value; }
         }
 
-        public string Presentacion
+        public string Unidad
         {
-            get { return _presentacion; }
-            set { _presentacion = value; }
+            get { return _unidad; }
+            set { _unidad = value; }
         }
     }
 }

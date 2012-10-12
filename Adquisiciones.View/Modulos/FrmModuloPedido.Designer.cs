@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+            this.cmdCargarArt = new DevExpress.XtraEditors.SimpleButton();
             this.label2 = new System.Windows.Forms.Label();
             this.txtTotal = new System.Windows.Forms.Label();
             this.lblFundamento = new DevExpress.XtraEditors.LabelControl();
@@ -90,6 +91,9 @@
             this.gridColumnArticulo = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemSearchLookUpEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit();
             this.gridView5 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumnDescripcion = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumnCantidad = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -97,6 +101,7 @@
             this.repositoryItemButtonEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.gridColumn12 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn13 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn14 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemPopupContainerEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemPopupContainerEdit();
             this.bsPedido = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
@@ -135,14 +140,30 @@
             // 
             // splitContainerControl1
             // 
-            this.splitContainerControl1.Location = new System.Drawing.Point(0, 68);
             this.splitContainerControl1.Panel1.Controls.Add(this.groupControl1);
             this.splitContainerControl1.Panel2.Controls.Add(this.gcPedidoDetalle);
-            this.splitContainerControl1.Size = new System.Drawing.Size(873, 478);
+            this.splitContainerControl1.Size = new System.Drawing.Size(873, 475);
             this.splitContainerControl1.SplitterPosition = 272;
+            // 
+            // lblAlmacen
+            // 
+            this.lblAlmacen.Location = new System.Drawing.Point(247, 4);
+            this.lblAlmacen.Visible = true;
+            // 
+            // cbxAlmacen
+            // 
+            this.cbxAlmacen.Location = new System.Drawing.Point(298, 1);
+            this.cbxAlmacen.Size = new System.Drawing.Size(162, 21);
+            this.cbxAlmacen.Visible = true;
+            // 
+            // lblAlmacenDesc
+            // 
+            this.lblAlmacenDesc.Location = new System.Drawing.Point(569, 1);
+            this.lblAlmacenDesc.Visible = true;
             // 
             // groupControl1
             // 
+            this.groupControl1.Controls.Add(this.cmdCargarArt);
             this.groupControl1.Controls.Add(this.label2);
             this.groupControl1.Controls.Add(this.txtTotal);
             this.groupControl1.Controls.Add(this.lblFundamento);
@@ -185,6 +206,15 @@
             this.groupControl1.Size = new System.Drawing.Size(873, 272);
             this.groupControl1.TabIndex = 2;
             this.groupControl1.Text = "Datos Generales del Pedido";
+            // 
+            // cmdCargarArt
+            // 
+            this.cmdCargarArt.Location = new System.Drawing.Point(462, 0);
+            this.cmdCargarArt.Name = "cmdCargarArt";
+            this.cmdCargarArt.Size = new System.Drawing.Size(102, 23);
+            this.cmdCargarArt.TabIndex = 126;
+            this.cmdCargarArt.Text = "Cargar Articulos";
+            this.cmdCargarArt.Click += new System.EventHandler(this.CmdCargarArtClick);
             // 
             // label2
             // 
@@ -666,7 +696,7 @@
             this.repositoryItemSearchLookUpEdit2,
             this.repositoryItemPopupContainerEdit1,
             this.repositoryItemButtonEdit1});
-            this.gcPedidoDetalle.Size = new System.Drawing.Size(873, 200);
+            this.gcPedidoDetalle.Size = new System.Drawing.Size(873, 198);
             this.gcPedidoDetalle.TabIndex = 16;
             this.gcPedidoDetalle.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvPedidoDetalle});
@@ -792,7 +822,8 @@
             this.gridColumnCantidad,
             this.gridColumn17,
             this.gridColumn12,
-            this.gridColumn13});
+            this.gridColumn13,
+            this.gridColumn14});
             this.gvPedidoDetalle.GridControl = this.gcPedidoDetalle;
             this.gvPedidoDetalle.Name = "gvPedidoDetalle";
             this.gvPedidoDetalle.NewItemRowText = "Clck aqui para agregar un nuevo registro";
@@ -822,7 +853,7 @@
             this.gridColumnArticulo.UnboundType = DevExpress.Data.UnboundColumnType.Integer;
             this.gridColumnArticulo.Visible = true;
             this.gridColumnArticulo.VisibleIndex = 0;
-            this.gridColumnArticulo.Width = 82;
+            this.gridColumnArticulo.Width = 64;
             // 
             // repositoryItemSearchLookUpEdit2
             // 
@@ -835,10 +866,44 @@
             // 
             // gridView5
             // 
+            this.gridView5.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn6,
+            this.gridColumn7,
+            this.gridColumn9});
             this.gridView5.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
             this.gridView5.Name = "gridView5";
             this.gridView5.OptionsSelection.EnableAppearanceFocusedCell = false;
             this.gridView5.OptionsView.ShowGroupPanel = false;
+            // 
+            // gridColumn6
+            // 
+            this.gridColumn6.Caption = "Clave";
+            this.gridColumn6.FieldName = "CveArt";
+            this.gridColumn6.Name = "gridColumn6";
+            this.gridColumn6.UnboundType = DevExpress.Data.UnboundColumnType.Integer;
+            this.gridColumn6.Visible = true;
+            this.gridColumn6.VisibleIndex = 0;
+            this.gridColumn6.Width = 71;
+            // 
+            // gridColumn7
+            // 
+            this.gridColumn7.Caption = "Descripcion";
+            this.gridColumn7.FieldName = "Descripcion";
+            this.gridColumn7.Name = "gridColumn7";
+            this.gridColumn7.UnboundType = DevExpress.Data.UnboundColumnType.String;
+            this.gridColumn7.Visible = true;
+            this.gridColumn7.VisibleIndex = 1;
+            this.gridColumn7.Width = 597;
+            // 
+            // gridColumn9
+            // 
+            this.gridColumn9.Caption = "Unidad";
+            this.gridColumn9.FieldName = "Unidad";
+            this.gridColumn9.Name = "gridColumn9";
+            this.gridColumn9.UnboundType = DevExpress.Data.UnboundColumnType.String;
+            this.gridColumn9.Visible = true;
+            this.gridColumn9.VisibleIndex = 2;
+            this.gridColumn9.Width = 184;
             // 
             // gridColumnDescripcion
             // 
@@ -850,17 +915,19 @@
             this.gridColumnDescripcion.UnboundType = DevExpress.Data.UnboundColumnType.String;
             this.gridColumnDescripcion.Visible = true;
             this.gridColumnDescripcion.VisibleIndex = 1;
-            this.gridColumnDescripcion.Width = 153;
+            this.gridColumnDescripcion.Width = 519;
             // 
             // gridColumn8
             // 
-            this.gridColumn8.Caption = "Marca";
-            this.gridColumn8.FieldName = "Marca";
+            this.gridColumn8.Caption = "Unidad";
+            this.gridColumn8.FieldName = "UnidadArt";
             this.gridColumn8.Name = "gridColumn8";
+            this.gridColumn8.OptionsColumn.AllowEdit = false;
+            this.gridColumn8.OptionsColumn.ReadOnly = true;
             this.gridColumn8.UnboundType = DevExpress.Data.UnboundColumnType.String;
             this.gridColumn8.Visible = true;
             this.gridColumn8.VisibleIndex = 2;
-            this.gridColumn8.Width = 197;
+            this.gridColumn8.Width = 120;
             // 
             // gridColumnCantidad
             // 
@@ -912,6 +979,12 @@
             this.gridColumn13.Visible = true;
             this.gridColumn13.VisibleIndex = 6;
             this.gridColumn13.Width = 86;
+            // 
+            // gridColumn14
+            // 
+            this.gridColumn14.Caption = "Articulo";
+            this.gridColumn14.FieldName = "Articulo";
+            this.gridColumn14.Name = "gridColumn14";
             // 
             // repositoryItemPopupContainerEdit1
             // 
@@ -1035,5 +1108,10 @@
         private System.Windows.Forms.BindingSource bsFundamento;
         private System.Windows.Forms.BindingSource bsPedidoDetalle;
         private System.Windows.Forms.BindingSource bsPedido;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn7;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn9;
+        private DevExpress.XtraEditors.SimpleButton cmdCargarArt;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn14;
     }
 }

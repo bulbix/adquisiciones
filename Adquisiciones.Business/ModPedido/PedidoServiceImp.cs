@@ -207,8 +207,8 @@ namespace Adquisiciones.Business.ModPedido
                     pedidoDetalle.RenglonPedido = (short)(index + 1);
 
                 //Seteamos el articulo                
-                var articuloId = new ArticuloId(pedidoDetalle.CveArt.Value, pedido.Almacen);
-                pedidoDetalle.Articulo = new Articulo(articuloId);
+                //var articuloId = new ArticuloId(pedidoDetalle.CveArt.Value, pedido.Almacen);
+                //pedidoDetalle.Articulo = new Articulo(articuloId);
 
                 //Calcula el importe total
                 importeTotal += (pedidoDetalle.PrecioUnitario*pedidoDetalle.Cantidad);
@@ -250,7 +250,7 @@ namespace Adquisiciones.Business.ModPedido
                     RenglonPedido = pedidoDetalleConsulta.RenglonPedido,
                     CveArt = pedidoDetalleConsulta.Articulo.Id.CveArt,
                     DescripcionArt = pedidoDetalleConsulta.Articulo.DesArticulo,
-                    Cantidad = pedidoDetalleConsulta.Cantidad,
+                    UnidadArt = pedidoDetalleConsulta.Articulo.CatUnidad.Unidad,Cantidad = pedidoDetalleConsulta.Cantidad,
                     Marca = pedidoDetalleConsulta.Marca,
                     PrecioUnitario = pedidoDetalleConsulta.PrecioUnitario
                 };
@@ -276,6 +276,7 @@ namespace Adquisiciones.Business.ModPedido
                 pedidoDetalle.RenglonPedido = anexoDetalle.RenglonAnexo;
                 pedidoDetalle.CveArt = anexoDetalle.Articulo.Id.CveArt;
                 pedidoDetalle.DescripcionArt = anexoDetalle.Articulo.DesArticulo;
+                pedidoDetalle.UnidadArt = anexoDetalle.Articulo.CatUnidad.Unidad;
                 pedidoDetalle.Cantidad = 0;//anexoDetalle.CantidadMinimo;
                 pedidosDetalle.Add(pedidoDetalle);
             }

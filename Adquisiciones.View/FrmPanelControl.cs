@@ -179,7 +179,6 @@ namespace Adquisiciones.View
                         string.Empty && txtConfirmPass.Text != string.Empty)
                     {
                         updatePassword = true;
-
                         if (UsuarioActual.IdUsuario != 0 &&
                             UsuarioActual.Password != Util.GetSHA1(txtCurrentPass.Text))
                         {
