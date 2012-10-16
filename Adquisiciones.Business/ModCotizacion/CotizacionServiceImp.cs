@@ -93,7 +93,7 @@ namespace Adquisiciones.Business.ModCotizacion
                 cotizacionDetalle.RenglonAnexo = anexoDetalle.RenglonAnexo;
                 cotizacionDetalle.CveArt = anexoDetalle.Articulo.Id.CveArt;
                 cotizacionDetalle.DescripcionArt = anexoDetalle.Articulo.DesArticulo;
-                cotizacionDetalle.PresentacionArt = anexoDetalle.Articulo.Presentacion;
+                cotizacionDetalle.UnidadArt = anexoDetalle.Articulo.Presentacion;
 
                 if (existeCotizacionDetalle == 0)
                     cotizacion.CotizacionDetalle.Add(cotizacionDetalle);

@@ -52,7 +52,8 @@ namespace Adquisiciones.View.Modulos
         protected void OnProcesoFallo(object sender, FalloProcesoEvento e)
         {
             pgbFallo.EditValue = e.Porcentaje;
-            pgbFallo.Text = e.Porcentaje.ToString();
+            pgbFallo.Update();
+            //pgbFallo.Text = e.Porcentaje.ToString();
         }
 
         public override void Guardar()

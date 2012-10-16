@@ -114,7 +114,13 @@ namespace Adquisiciones.Data.Entities
             set { _cantidad = value; }
         }
 
-      
+        private string unidadArt;
+        public string UnidadArt
+        {
+            get { return unidadArt; }
+            set { unidadArt = value; }
+        }
+        
 
         #endregion
 

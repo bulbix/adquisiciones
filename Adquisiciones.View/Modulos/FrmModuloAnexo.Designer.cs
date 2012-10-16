@@ -80,9 +80,10 @@
             // 
             // splitContainerControl1
             // 
+            this.splitContainerControl1.Location = new System.Drawing.Point(0, 68);
             this.splitContainerControl1.Panel1.Controls.Add(this.gcDatosGenerales);
             this.splitContainerControl1.Panel2.Controls.Add(this.gcAnexoDetalle);
-            this.splitContainerControl1.Size = new System.Drawing.Size(933, 461);
+            this.splitContainerControl1.Size = new System.Drawing.Size(933, 464);
             this.splitContainerControl1.SplitterPosition = 134;
             // 
             // lblAlmacen
@@ -150,10 +151,11 @@
             this.txtnumlicitacion.Name = "txtnumlicitacion";
             this.txtnumlicitacion.Size = new System.Drawing.Size(194, 20);
             this.txtnumlicitacion.TabIndex = 1;
-            this.txtnumlicitacion.Leave += new System.EventHandler(this.txtnumlicitacion_Leave);
+            this.txtnumlicitacion.Leave += new System.EventHandler(this.TxtnumlicitacionLeave);
             // 
             // cbxIva
             // 
+            this.cbxIva.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxIva.FormattingEnabled = true;
             this.cbxIva.Location = new System.Drawing.Point(489, 90);
             this.cbxIva.Name = "cbxIva";
@@ -162,6 +164,7 @@
             // 
             // cbxTipolicitacion
             // 
+            this.cbxTipolicitacion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxTipolicitacion.FormattingEnabled = true;
             this.cbxTipolicitacion.Location = new System.Drawing.Point(86, 90);
             this.cbxTipolicitacion.Name = "cbxTipolicitacion";
@@ -170,7 +173,7 @@
             // 
             // cbxInstituto
             // 
-            this.cbxInstituto.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cbxInstituto.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxInstituto.FormattingEnabled = true;
             this.cbxInstituto.Location = new System.Drawing.Point(485, 28);
             this.cbxInstituto.Name = "cbxInstituto";
@@ -275,7 +278,7 @@
             this.gcAnexoDetalle.Name = "gcAnexoDetalle";
             this.gcAnexoDetalle.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemSearchLookUpEdit2});
-            this.gcAnexoDetalle.Size = new System.Drawing.Size(933, 322);
+            this.gcAnexoDetalle.Size = new System.Drawing.Size(933, 324);
             this.gcAnexoDetalle.TabIndex = 8;
             this.gcAnexoDetalle.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvAnexoDetalle});
@@ -421,6 +424,7 @@
             this.gridColumnArticulo.ColumnEdit = this.repositoryItemSearchLookUpEdit2;
             this.gridColumnArticulo.FieldName = "CveArt";
             this.gridColumnArticulo.Name = "gridColumnArticulo";
+            this.gridColumnArticulo.SortMode = DevExpress.XtraGrid.ColumnSortMode.Value;
             this.gridColumnArticulo.UnboundType = DevExpress.Data.UnboundColumnType.Integer;
             this.gridColumnArticulo.Visible = true;
             this.gridColumnArticulo.VisibleIndex = 0;

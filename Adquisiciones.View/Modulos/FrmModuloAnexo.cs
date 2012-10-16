@@ -10,6 +10,7 @@ using Adquisiciones.Business.ModAnexo;
 using Adquisiciones.Business.ModFallo;
 using Adquisiciones.Data.Entities;
 using DevExpress.XtraEditors;
+using DevExpress.XtraGrid.Views.Base;
 using Spring.Context.Support;
 using System.Linq;
 
@@ -51,8 +52,7 @@ namespace Adquisiciones.View.Modulos
             base.ObtenerPerfil();
         }
 
-        public FrmModuloAnexo(Anexo anexo,FrmAdquisiciones padre)
-            : this(padre)
+        public FrmModuloAnexo(Anexo anexo,FrmAdquisiciones padre): this(padre)
         {
             AnexoActual = anexo;
             Consultar();
@@ -61,7 +61,6 @@ namespace Adquisiciones.View.Modulos
             var almacenSelect = AnexoActual.AnexoDetalle[0].Articulo.Id.Almacen;
             CargarArticulos(almacenSelect);
         }
-
         
         public override void BindearCampos()
         {
@@ -135,6 +134,16 @@ namespace Adquisiciones.View.Modulos
             }
         }
 
+        protected override void CmdConsultarClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Consultar();
+            HayErrores();
+
+            //Cargar los articulos del almacen con centinela seleccionado
+            var almacenSelect = AnexoActual.AnexoDetalle[0].Articulo.Id.Almacen;
+            CargarArticulos(almacenSelect);
+        }
+
         public override void Consultar()
         {
            try
@@ -202,40 +211,66 @@ namespace Adquisiciones.View.Modulos
             }
         }
 
-        private void DgvAnexoCellValueChanged(object sender,
-          DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
+        private void DgvAnexoCellValueChanged(object sender,CellValueChangedEventArgs e)
         {
             var rowSelectValue = e.Value;
 
             //Para realizar las validaciones
             AnexoActual.AnexoDetalle = bsAnexoDetalle.DataSource as List<AnexoDetalle>;
 
-            if (e.Column.AbsoluteIndex == 0) //posicionado en el articulo
+            switch(e.Column.AbsoluteIndex)
             {
-                if (TieneRepetidoArticulo((int?) (rowSelectValue)))
-                {
-                    XtraMessageBox.Show(@"Articulo repetido clave " + rowSelectValue,
-                                    @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    gvAnexoDetalle.SetRowCellValue(e.RowHandle, "DescripcionArt", "");
-                    gvAnexoDetalle.SetRowCellValue(e.RowHandle, "UnidadArt", "");
-                    return;
-                }
+                case 0: //Articulo
+                    if (TieneRepetidoArticulo((int?) (rowSelectValue)))
+                    {
+                        XtraMessageBox.Show(@"Articulo repetido clave " + rowSelectValue,
+                                        @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        gvAnexoDetalle.SetRowCellValue(e.RowHandle, "DescripcionArt", "");
+                        gvAnexoDetalle.SetRowCellValue(e.RowHandle, "UnidadArt", "");
+                        return;
+                    }
 
-                try
-                {
-                    var cveArt = (int) rowSelectValue;
-                    //var almacen = cbxAlmacen.SelectedValue as Almacen;
-                    var articuloid = new ArticuloId(cveArt, AlmacenArticulo);
-                    var articuloSelect = AnexoService.ArticuloDao.Get(articuloid);
-                    gvAnexoDetalle.SetRowCellValue(e.RowHandle, "Articulo", articuloSelect);
-                    gvAnexoDetalle.SetRowCellValue(e.RowHandle, "DescripcionArt", articuloSelect.DesArticulo);
-                    gvAnexoDetalle.SetRowCellValue(e.RowHandle, "UnidadArt", articuloSelect.CatUnidad.Unidad);
-                }catch (Exception ee)
-                {
-                    gvAnexoDetalle.SetRowCellValue(e.RowHandle, "DescripcionArt", "");
-                    gvAnexoDetalle.SetRowCellValue(e.RowHandle, "UnidadArt", "");
+                    try
+                    {
+                        var cveArt = (int) rowSelectValue;
+                        var articuloid = new ArticuloId(cveArt, AlmacenArticulo);
+                        var articuloSelect = AnexoService.ArticuloDao.Get(articuloid);
+                        gvAnexoDetalle.SetRowCellValue(e.RowHandle, "Articulo", articuloSelect);
+                        gvAnexoDetalle.SetRowCellValue(e.RowHandle, "DescripcionArt", articuloSelect.DesArticulo);
+                        gvAnexoDetalle.SetRowCellValue(e.RowHandle, "UnidadArt", articuloSelect.CatUnidad.Unidad);
+                    }catch (Exception ee)
+                    {
+                        gvAnexoDetalle.SetRowCellValue(e.RowHandle, "DescripcionArt", "");
+                        gvAnexoDetalle.SetRowCellValue(e.RowHandle, "UnidadArt", "");
 
-                }
+                    }
+                    break;
+                case 4: //Cantidad Maxima
+
+                    try
+                    {
+                        var cantidadMinimo = (decimal) gvAnexoDetalle.GetRowCellValue(e.RowHandle, "CantidadMinimo");
+
+                        if (cantidadMinimo > (decimal) rowSelectValue)
+                        {
+                            XtraMessageBox.Show(@"Cantidad Minimo > Cantidad Maximo",
+                                          @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                            gvAnexoDetalle.SetRowCellValue(e.RowHandle, "CantidadMinimo", 0);
+                            gvAnexoDetalle.SetRowCellValue(e.RowHandle, "CantidadMaximo", 0);
+
+                            return;
+                        }
+                    }
+                    catch(Exception ex)
+                    {
+                        gvAnexoDetalle.SetRowCellValue(e.RowHandle, "CantidadMinimo", 0);
+                        gvAnexoDetalle.SetRowCellValue(e.RowHandle, "CantidadMaximo", 0);
+                        
+                    }
+
+                    break;
+
             }
         }
 
@@ -246,7 +281,7 @@ namespace Adquisiciones.View.Modulos
                        @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-        private void txtnumlicitacion_Leave(object sender, EventArgs e)
+        private void TxtnumlicitacionLeave(object sender, EventArgs e)
         {
             
             if((AnexoActual.NumeroAnexo != txtnumlicitacion.Text && AnexoActual.IdAnexo != 0)

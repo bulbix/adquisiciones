@@ -79,22 +79,11 @@
             // 
             // splitContainerControl1
             // 
+            this.splitContainerControl1.Location = new System.Drawing.Point(0, 68);
             this.splitContainerControl1.Panel1.Controls.Add(this.gcDatosGenerales);
             this.splitContainerControl1.Panel2.Controls.Add(this.gcCotizacionDetalle);
-            this.splitContainerControl1.Size = new System.Drawing.Size(1130, 330);
+            this.splitContainerControl1.Size = new System.Drawing.Size(1130, 333);
             this.splitContainerControl1.SplitterPosition = 167;
-            // 
-            // lblAlmacen
-            // 
-            this.lblAlmacen.Visible = false;
-            // 
-            // cbxAlmacen
-            // 
-            this.cbxAlmacen.Visible = false;
-            // 
-            // lblAlmacenDesc
-            // 
-            this.lblAlmacenDesc.Visible = false;
             // 
             // gcDatosGenerales
             // 
@@ -316,7 +305,7 @@
             this.gcCotizacionDetalle.Location = new System.Drawing.Point(0, 0);
             this.gcCotizacionDetalle.MainView = this.gvCotizacionDetalle;
             this.gcCotizacionDetalle.Name = "gcCotizacionDetalle";
-            this.gcCotizacionDetalle.Size = new System.Drawing.Size(1130, 158);
+            this.gcCotizacionDetalle.Size = new System.Drawing.Size(1130, 160);
             this.gcCotizacionDetalle.TabIndex = 4;
             this.gcCotizacionDetalle.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvCotizacionDetalle});
@@ -459,6 +448,7 @@
             this.gridColumn7.Name = "gridColumn7";
             this.gridColumn7.OptionsColumn.AllowEdit = false;
             this.gridColumn7.OptionsColumn.ReadOnly = true;
+            this.gridColumn7.SortMode = DevExpress.XtraGrid.ColumnSortMode.Value;
             this.gridColumn7.UnboundType = DevExpress.Data.UnboundColumnType.Integer;
             this.gridColumn7.Visible = true;
             this.gridColumn7.VisibleIndex = 0;
@@ -474,12 +464,12 @@
             this.gridColumn8.UnboundType = DevExpress.Data.UnboundColumnType.String;
             this.gridColumn8.Visible = true;
             this.gridColumn8.VisibleIndex = 1;
-            this.gridColumn8.Width = 145;
+            this.gridColumn8.Width = 447;
             // 
             // gridColumn9
             // 
-            this.gridColumn9.Caption = "Presentacion";
-            this.gridColumn9.FieldName = "PresentacionArt";
+            this.gridColumn9.Caption = "Unidad";
+            this.gridColumn9.FieldName = "UnidadArt";
             this.gridColumn9.Name = "gridColumn9";
             this.gridColumn9.OptionsColumn.AllowEdit = false;
             this.gridColumn9.OptionsColumn.ReadOnly = true;

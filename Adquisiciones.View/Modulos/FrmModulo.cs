@@ -20,16 +20,12 @@ namespace Adquisiciones.View.Modulos
     public partial class FrmModulo : XtraForm,IForma
     {
         protected static readonly ILog Log =
-            LogManager.GetLogger(System.Reflection.MethodBase.
-            GetCurrentMethod().DeclaringType);
-
+            LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         protected Type TypeEntity { get; set; }
         protected IFormBusqueda Servicio { get; set; }
         protected string NombreReporte { get; set; }
         protected string NombreService { get; set; }
         protected object EntityActual { get; set; }
-
-
         public Almacen AlmacenActual { get; set; }
         public IList<UsuarioModulo> ModulosUsuario { get; set; }
 
@@ -154,7 +150,7 @@ namespace Adquisiciones.View.Modulos
         }
 
 
-        private void HayErrores()
+        protected void HayErrores()
         {
             if (listaError.Strings.Count > 0)
                 listaError.Appearance.ForeColor = Color.Red;

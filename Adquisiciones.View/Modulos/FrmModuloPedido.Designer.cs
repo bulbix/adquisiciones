@@ -342,6 +342,7 @@
             // 
             // cbxInstituto
             // 
+            this.cbxInstituto.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxInstituto.FormattingEnabled = true;
             this.cbxInstituto.Location = new System.Drawing.Point(748, 68);
             this.cbxInstituto.Name = "cbxInstituto";
@@ -350,6 +351,7 @@
             // 
             // cbxCargo
             // 
+            this.cbxCargo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxCargo.FormattingEnabled = true;
             this.cbxCargo.Location = new System.Drawing.Point(413, 68);
             this.cbxCargo.Name = "cbxCargo";
@@ -525,6 +527,7 @@
             // 
             // cbxIva
             // 
+            this.cbxIva.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxIva.FormattingEnabled = true;
             this.cbxIva.Location = new System.Drawing.Point(605, 68);
             this.cbxIva.Name = "cbxIva";
@@ -596,6 +599,7 @@
             // 
             // cbxActividad
             // 
+            this.cbxActividad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxActividad.FormattingEnabled = true;
             this.cbxActividad.Location = new System.Drawing.Point(244, 71);
             this.cbxActividad.Name = "cbxActividad";
@@ -850,6 +854,7 @@
             this.gridColumnArticulo.ColumnEdit = this.repositoryItemSearchLookUpEdit2;
             this.gridColumnArticulo.FieldName = "CveArt";
             this.gridColumnArticulo.Name = "gridColumnArticulo";
+            this.gridColumnArticulo.SortMode = DevExpress.XtraGrid.ColumnSortMode.Value;
             this.gridColumnArticulo.UnboundType = DevExpress.Data.UnboundColumnType.Integer;
             this.gridColumnArticulo.Visible = true;
             this.gridColumnArticulo.VisibleIndex = 0;
