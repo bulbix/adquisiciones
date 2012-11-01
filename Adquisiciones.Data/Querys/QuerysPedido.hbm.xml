@@ -41,7 +41,8 @@
   <query name="Pedido.CargaPedidoDetalle">
     <![CDATA[
       from PedidoDetalle pd 
-      join fetch pd.Articulo 
+      left join fetch pd.Articulo art 
+      left join fetch art.Id.Almacen 
       where pd.Pedido = :pedido
       order by pd.RenglonPedido asc ]]>
   </query>

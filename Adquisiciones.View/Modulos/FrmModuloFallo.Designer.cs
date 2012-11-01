@@ -57,14 +57,6 @@
             this.splitContainerControl1.Panel2.Controls.Add(this.pgbFallo);
             this.splitContainerControl1.Size = new System.Drawing.Size(770, 333);
             // 
-            // lblAlmacen
-            // 
-            this.lblAlmacen.Visible = false;
-            // 
-            // cbxAlmacen
-            // 
-            this.cbxAlmacen.Visible = false;
-            // 
             // groupControl1
             // 
             this.groupControl1.Controls.Add(this.searchLookUpAnexo);

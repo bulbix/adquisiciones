@@ -24,7 +24,9 @@ namespace Adquisiciones.Data.Dao.Catalogos
         public ArticuloPartida ArticuloPartida(Articulo articulo)
         {
             var query = CurrentSession.
-                CreateQuery(@"select ap from ArticuloPartida ap where ap.Id.Articulo = :articulo");
+                CreateQuery(@"  select ap from ArticuloPartida ap 
+                                left join fetch ap.Id.CatPartida 
+                                where ap.Id.Articulo = :articulo");
             query.SetParameter("articulo", articulo);
 
             return query.UniqueResult<ArticuloPartida>();

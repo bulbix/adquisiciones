@@ -119,7 +119,7 @@ namespace Adquisiciones.View.Reportes
                 var partida = articuloDao.ArticuloPartida(pedidoDetalle.Articulo);
 
                 result.AddCell(partida == null ? new Paragraph("", fuente) : 
-                    new Paragraph(partida.ToString(), fuente));
+                    new Paragraph(partida.Id.CatPartida.ToString(), fuente));
 
                 var articulo = pedidoDetalle.Articulo.Id.CveArt + " / " + pedidoDetalle.Articulo.DesArticulo;
                 result.AddCell(new Paragraph(articulo, fuente));

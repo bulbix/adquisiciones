@@ -43,9 +43,11 @@
   <query name="Anexo.CargaDetalle">
     <![CDATA[
       from AnexoDetalle ad 
-      join fetch ad.Articulo       
-      where ad.Anexo = :anexo
-      order by ad.RenglonAnexo asc ]]>
+      left join fetch ad.Articulo art 
+      left join fetch art.Id.Almacen  
+      where ad.Anexo = :anexo 
+      order by ad.RenglonAnexo asc 
+    ]]>
   </query>  
 
   <query name="Anexo.ExisteAnexo">

@@ -1,14 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 using Adquisiciones.Business;
 using Adquisiciones.Business.ModAnexo;
 using Adquisiciones.Business.ModFallo;
 using Adquisiciones.Data.Entities;
+using DevExpress.XtraBars;
 using DevExpress.XtraEditors;
 using DevExpress.XtraGrid.Views.Base;
 using Spring.Context.Support;
@@ -34,8 +31,8 @@ namespace Adquisiciones.View.Modulos
 
             ModulosUsuario = padre.ModulosUsuario;
             AlmacenActual = padre.AlmacenSelect;
-            
             AlmacenesCombo(cbxAlmacen,AlmacenActual);
+
             base.TypeEntity = typeof(Anexo);
             base.NombreReporte = "reporteAnexo";
             base.NombreService = "anexoService";
@@ -134,7 +131,7 @@ namespace Adquisiciones.View.Modulos
             }
         }
 
-        protected override void CmdConsultarClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        protected override void CmdConsultarClick(object sender,ItemClickEventArgs e)
         {
             Consultar();
             HayErrores();
@@ -314,7 +311,6 @@ namespace Adquisiciones.View.Modulos
             XtraMessageBox.Show(@"Articulos cargados satisfactoriamente",
             @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
-
 
         private void CmdCargarArtClick(object sender, EventArgs e)
         {

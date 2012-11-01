@@ -16,7 +16,7 @@
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Descripcion" msprop:Generator_ColumnVarNameInTable="columnDescripcion" msprop:Generator_ColumnPropNameInRow="Descripcion" msprop:Generator_ColumnPropNameInTable="DescripcionColumn" msprop:Generator_UserColumnName="Descripcion" type="xs:string" minOccurs="0" />
-              <xs:element name="Presentacion" msprop:Generator_ColumnVarNameInTable="columnPresentacion" msprop:Generator_ColumnPropNameInRow="Presentacion" msprop:Generator_ColumnPropNameInTable="PresentacionColumn" msprop:Generator_UserColumnName="Presentacion" type="xs:string" minOccurs="0" />
+              <xs:element name="Unidad" msprop:Generator_ColumnVarNameInTable="columnUnidad" msprop:Generator_ColumnPropNameInRow="Unidad" msprop:Generator_ColumnPropNameInTable="UnidadColumn" msprop:Generator_UserColumnName="Unidad" type="xs:string" minOccurs="0" />
               <xs:element name="CantidadMinimo" msprop:Generator_ColumnVarNameInTable="columnCantidadMinimo" msprop:Generator_ColumnPropNameInRow="CantidadMinimo" msprop:Generator_ColumnPropNameInTable="CantidadMinimoColumn" msprop:Generator_UserColumnName="CantidadMinimo" type="xs:double" minOccurs="0" />
               <xs:element name="id" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:string" minOccurs="0" />
               <xs:element name="articulo" msprop:Generator_ColumnVarNameInTable="columnarticulo" msprop:Generator_ColumnPropNameInRow="articulo" msprop:Generator_ColumnPropNameInTable="articuloColumn" msprop:Generator_UserColumnName="articulo" type="xs:string" minOccurs="0" />
@@ -44,7 +44,7 @@
   </xs:element>
   <xs:annotation>
     <xs:appinfo>
-      <msdata:Relationship name="Anexo_AnexoDetalle" msdata:parent="Anexo" msdata:child="AnexoDetalle" msdata:parentkey="id" msdata:childkey="id" msprop:Generator_UserChildTable="AnexoDetalle" msprop:Generator_ChildPropName="GetAnexoDetalleRows" msprop:Generator_UserParentTable="Anexo" msprop:Generator_UserRelationName="Anexo_AnexoDetalle" msprop:Generator_RelationVarName="relationAnexo_AnexoDetalle" msprop:Generator_ParentPropName="AnexoRow" />
+      <msdata:Relationship name="Anexo_AnexoDetalle" msdata:parent="Anexo" msdata:child="AnexoDetalle" msdata:parentkey="id" msdata:childkey="id" msprop:Generator_UserChildTable="AnexoDetalle" msprop:Generator_ChildPropName="GetAnexoDetalleRows" msprop:Generator_ParentPropName="AnexoRow" msprop:Generator_UserRelationName="Anexo_AnexoDetalle" msprop:Generator_RelationVarName="relationAnexo_AnexoDetalle" msprop:Generator_UserParentTable="Anexo" />
     </xs:appinfo>
   </xs:annotation>
 </xs:schema>

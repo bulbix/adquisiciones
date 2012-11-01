@@ -323,7 +323,7 @@ namespace Adquisiciones.View.DataSets {
             
             private global::System.Data.DataColumn columnDescripcion;
             
-            private global::System.Data.DataColumn columnPresentacion;
+            private global::System.Data.DataColumn columnUnidad;
             
             private global::System.Data.DataColumn columnCantidadMinimo;
             
@@ -376,9 +376,9 @@ namespace Adquisiciones.View.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn PresentacionColumn {
+            public global::System.Data.DataColumn UnidadColumn {
                 get {
-                    return this.columnPresentacion;
+                    return this.columnUnidad;
                 }
             }
             
@@ -451,11 +451,11 @@ namespace Adquisiciones.View.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public AnexoDetalleRow AddAnexoDetalleRow(string Descripcion, string Presentacion, double CantidadMinimo, AnexoRow parentAnexoRowByAnexo_AnexoDetalle, string articulo, double CantidadMaximo) {
+            public AnexoDetalleRow AddAnexoDetalleRow(string Descripcion, string Unidad, double CantidadMinimo, AnexoRow parentAnexoRowByAnexo_AnexoDetalle, string articulo, double CantidadMaximo) {
                 AnexoDetalleRow rowAnexoDetalleRow = ((AnexoDetalleRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Descripcion,
-                        Presentacion,
+                        Unidad,
                         CantidadMinimo,
                         null,
                         articulo,
@@ -486,7 +486,7 @@ namespace Adquisiciones.View.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             internal void InitVars() {
                 this.columnDescripcion = base.Columns["Descripcion"];
-                this.columnPresentacion = base.Columns["Presentacion"];
+                this.columnUnidad = base.Columns["Unidad"];
                 this.columnCantidadMinimo = base.Columns["CantidadMinimo"];
                 this.columnid = base.Columns["id"];
                 this.columnarticulo = base.Columns["articulo"];
@@ -498,8 +498,8 @@ namespace Adquisiciones.View.DataSets {
             private void InitClass() {
                 this.columnDescripcion = new global::System.Data.DataColumn("Descripcion", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDescripcion);
-                this.columnPresentacion = new global::System.Data.DataColumn("Presentacion", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnPresentacion);
+                this.columnUnidad = new global::System.Data.DataColumn("Unidad", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnUnidad);
                 this.columnCantidadMinimo = new global::System.Data.DataColumn("CantidadMinimo", typeof(double), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnCantidadMinimo);
                 this.columnid = new global::System.Data.DataColumn("id", typeof(string), null, global::System.Data.MappingType.Element);
@@ -980,17 +980,17 @@ namespace Adquisiciones.View.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Presentacion {
+            public string Unidad {
                 get {
                     try {
-                        return ((string)(this[this.tableAnexoDetalle.PresentacionColumn]));
+                        return ((string)(this[this.tableAnexoDetalle.UnidadColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Presentacion\' in table \'AnexoDetalle\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'Unidad\' in table \'AnexoDetalle\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableAnexoDetalle.PresentacionColumn] = value;
+                    this[this.tableAnexoDetalle.UnidadColumn] = value;
                 }
             }
             
@@ -1083,14 +1083,14 @@ namespace Adquisiciones.View.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsPresentacionNull() {
-                return this.IsNull(this.tableAnexoDetalle.PresentacionColumn);
+            public bool IsUnidadNull() {
+                return this.IsNull(this.tableAnexoDetalle.UnidadColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetPresentacionNull() {
-                this[this.tableAnexoDetalle.PresentacionColumn] = global::System.Convert.DBNull;
+            public void SetUnidadNull() {
+                this[this.tableAnexoDetalle.UnidadColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

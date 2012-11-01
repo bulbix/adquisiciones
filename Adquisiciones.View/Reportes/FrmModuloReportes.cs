@@ -106,7 +106,7 @@ namespace Adquisiciones.View
                 filaDetalle["Id"] = anexo.IdAnexo;
                 filaDetalle["Articulo"] = detalle.Articulo.Id.CveArt;
                 filaDetalle["Descripcion"] = detalle.Articulo.DesArticulo;
-                filaDetalle["Presentacion"] = detalle.Articulo.Presentacion;
+                filaDetalle["Unidad"] = detalle.Articulo.CatUnidad.Unidad;
                 filaDetalle["CantidadMinimo"] = detalle.CantidadMinimo;
                 filaDetalle["CantidadMaximo"] = detalle.CantidadMaximo;
                 anexoDs.Tables["AnexoDetalle"].Rows.Add(filaDetalle);
@@ -143,8 +143,9 @@ namespace Adquisiciones.View
                     filaDetalle["Id"] = cotizacion.IdCotizacion;
                     filaDetalle["Articulo"] = detalle.Articulo.Id.CveArt;
                     filaDetalle["Descripcion"] = detalle.Articulo.DesArticulo;
+                    filaDetalle["Unidad"] = detalle.Articulo.CatUnidad.Unidad;
                     filaDetalle["Marca"] = detalle.Marca;
-                    filaDetalle["Presentacion"] = detalle.Articulo.Presentacion;
+                    filaDetalle["Unidad"] = detalle.Articulo.CatUnidad.Unidad;
                     filaDetalle["Cantidad"] = detalle.Cantidad;
                     filaDetalle["Precio"] = detalle.Precio;
                     filaDetalle["Importe"] = detalle.Cantidad*detalle.Precio;

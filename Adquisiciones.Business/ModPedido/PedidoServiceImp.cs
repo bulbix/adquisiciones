@@ -41,9 +41,10 @@ namespace Adquisiciones.Business.ModPedido
             var listaPresupuesto = AnexoDao.
                 CargarCatalogo<CatPresupuesto>();
 
-            var dicc = listaPresupuesto.ToDictionary(presupuesto => presupuesto, presupuesto => presupuesto.DesPresupuesto);
+            var dicc = listaPresupuesto.
+               ToDictionary(presupuesto => presupuesto, presupuesto => presupuesto.DesPresupuesto);
 
-            Util.Dicc2Combo<CatPresupuesto, string>(dicc, combo);
+            Util.Dicc2Combo(dicc, combo);
 
         }
 
@@ -55,7 +56,7 @@ namespace Adquisiciones.Business.ModPedido
 
             var dicc = listaActividad.ToDictionary(actividad => actividad, actividad => actividad.DesActividad);
 
-            Util.Dicc2Combo<CatActividad, string>(dicc, combo);
+            Util.Dicc2Combo(dicc, combo);
         }
 
         /// <summary>
@@ -250,7 +251,8 @@ namespace Adquisiciones.Business.ModPedido
                     RenglonPedido = pedidoDetalleConsulta.RenglonPedido,
                     CveArt = pedidoDetalleConsulta.Articulo.Id.CveArt,
                     DescripcionArt = pedidoDetalleConsulta.Articulo.DesArticulo,
-                    UnidadArt = pedidoDetalleConsulta.Articulo.CatUnidad.Unidad,Cantidad = pedidoDetalleConsulta.Cantidad,
+                    UnidadArt = pedidoDetalleConsulta.Articulo.CatUnidad.Unidad,
+                    Cantidad = pedidoDetalleConsulta.Cantidad,
                     Marca = pedidoDetalleConsulta.Marca,
                     PrecioUnitario = pedidoDetalleConsulta.PrecioUnitario
                 };
@@ -273,6 +275,8 @@ namespace Adquisiciones.Business.ModPedido
             foreach(var anexoDetalle in anexosDetalle)
             {
                 var pedidoDetalle = new PedidoDetalle();
+
+                pedidoDetalle.Articulo = anexoDetalle.Articulo;
                 pedidoDetalle.RenglonPedido = anexoDetalle.RenglonAnexo;
                 pedidoDetalle.CveArt = anexoDetalle.Articulo.Id.CveArt;
                 pedidoDetalle.DescripcionArt = anexoDetalle.Articulo.DesArticulo;

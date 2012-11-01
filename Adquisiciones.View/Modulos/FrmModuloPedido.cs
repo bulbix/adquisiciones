@@ -1,17 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 using Adquisiciones.Business;
 using Adquisiciones.Business.ModPedido;
 using Adquisiciones.Data.Entities;
 using DevExpress.Utils;
 using DevExpress.XtraEditors;
+using DevExpress.XtraGrid.Views.Base;
 using DevExpress.XtraGrid.Views.Grid;
-using Spring.Context.Support;
 using System.Linq;
 
 namespace Adquisiciones.View.Modulos
@@ -53,10 +49,15 @@ namespace Adquisiciones.View.Modulos
 
             BindearCampos();
             InicializarCatalogos();
+
+
+
+
+
         }
 
-         public FrmModuloPedido(Pedido pedido,FrmAdquisiciones padre)
-            : this(pedido.CatTipopedido.IdTipoped,padre)
+         public FrmModuloPedido(Pedido pedido,FrmAdquisiciones padre):
+         this(pedido.CatTipopedido.IdTipoped,padre)
          {
             PedidoActual = pedido;
             Consultar();
@@ -68,6 +69,11 @@ namespace Adquisiciones.View.Modulos
                 cmdGuardar.Enabled = false;
                 cmdEliminar.Enabled = false;
             }
+
+            //Cargar los articulos del almacen con centinela seleccionado
+            var almacenSelect = PedidoActual.PedidoDetalle[0].Articulo.Id.Almacen;
+            CargarArticulos(almacenSelect);
+
          }
 
         public override void BindearCampos()
@@ -259,8 +265,14 @@ namespace Adquisiciones.View.Modulos
 
                 if (anexoSeleccionado != null)
                     lblLicitacion.Text = anexoSeleccionado.ToString();
+                
 
-                bsPedidoDetalle.DataSource = PedidoService.CargarPedidoDetalle(anexoSeleccionado);
+                var pedidosDetalle = PedidoService.CargarPedidoDetalle(anexoSeleccionado);
+
+                CargarArticulos(pedidosDetalle[0].Articulo.Id.Almacen);
+
+
+                bsPedidoDetalle.DataSource = pedidosDetalle;
                 gvPedidoDetalle.OptionsView.NewItemRowPosition = NewItemRowPosition.None;
                 gvPedidoDetalle.OptionsBehavior.AllowDeleteRows = DefaultBoolean.False;
 
@@ -279,13 +291,11 @@ namespace Adquisiciones.View.Modulos
 
                 gridColumnArticulo.OptionsColumn.AllowEdit = true;
                 //gridColumnCantidad.OptionsColumn.AllowEdit = true;
-
-
             }
 
         }
 
-        private void GvPedidoDetalleCellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
+        private void GvPedidoDetalleCellValueChanged(object sender, CellValueChangedEventArgs e)
         {
             var rowSelectValue = e.Value;
 
@@ -335,7 +345,6 @@ namespace Adquisiciones.View.Modulos
             SumTotal();
         }
 
-
         private void SumTotal()
         {
             if (bsPedidoDetalle.DataSource as IList<PedidoDetalle> != null)
@@ -356,6 +365,7 @@ namespace Adquisiciones.View.Modulos
 
             return numOcurrencia > 1;
         }
+
         /// <summary>
         /// Display de la subventana PedidoEntregas
         /// </summary>
@@ -405,6 +415,8 @@ namespace Adquisiciones.View.Modulos
                     MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 bsPedidoDetalle.DataSource = new List<PedidoDetalle>();
+                searchLookUpEditAnexo.ClearSelection();
+                lblLicitacion.Text = "";
                 CargarArticulos(cbxAlmacen.SelectedValue as Almacen);
             }
         }

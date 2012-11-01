@@ -84,6 +84,7 @@
             // 
             // splitContainerControl1
             // 
+            this.splitContainerControl1.Location = new System.Drawing.Point(0, 70);
             this.splitContainerControl1.Panel1.Controls.Add(this.cbxActividad);
             this.splitContainerControl1.Panel1.Controls.Add(this.cbxIva);
             this.splitContainerControl1.Panel1.Controls.Add(this.cbxCargo);
@@ -108,19 +109,12 @@
             this.splitContainerControl1.Panel1.Controls.Add(this.labelControl1);
             this.splitContainerControl1.Panel2.Controls.Add(this.txtObservaciones);
             this.splitContainerControl1.Panel2.Controls.Add(this.labelControl11);
-            this.splitContainerControl1.Size = new System.Drawing.Size(941, 492);
+            this.splitContainerControl1.Size = new System.Drawing.Size(941, 486);
             this.splitContainerControl1.SplitterPosition = 289;
-            // 
-            // lblAlmacen
-            // 
-            this.lblAlmacen.Visible = false;
-            // 
-            // cbxAlmacen
-            // 
-            this.cbxAlmacen.Visible = false;
             // 
             // cbxActividad
             // 
+            this.cbxActividad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxActividad.FormattingEnabled = true;
             this.cbxActividad.Location = new System.Drawing.Point(123, 205);
             this.cbxActividad.Name = "cbxActividad";
@@ -129,6 +123,7 @@
             // 
             // cbxIva
             // 
+            this.cbxIva.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxIva.FormattingEnabled = true;
             this.cbxIva.Location = new System.Drawing.Point(407, 205);
             this.cbxIva.Name = "cbxIva";
@@ -137,6 +132,7 @@
             // 
             // cbxCargo
             // 
+            this.cbxCargo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxCargo.FormattingEnabled = true;
             this.cbxCargo.Location = new System.Drawing.Point(123, 244);
             this.cbxCargo.Name = "cbxCargo";
