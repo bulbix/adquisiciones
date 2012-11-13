@@ -251,6 +251,21 @@ namespace Adquisiciones.View.Modulos
 
         }
 
+
+        private void LimpiarComboAnexo()
+        {
+            PedidoActual.Anexo = null;
+            lblLicitacion.Text = string.Empty;
+            gvPedidoDetalle.OptionsView.NewItemRowPosition = NewItemRowPosition.Top;
+            gvPedidoDetalle.OptionsBehavior.AllowDeleteRows = DefaultBoolean.True;
+            bsPedidoDetalle.DataSource = new List<PedidoDetalle>();
+            txtTotal.Text = @"$0.00";
+
+            gridColumnArticulo.OptionsColumn.AllowEdit = true;
+            //gridColumnCantidad.OptionsColumn.AllowEdit = true;
+            
+        }
+
         /// <summary>
         /// Trae la licitacion en curso y su detalle para cargar el pedido
         /// </summary>
@@ -260,7 +275,19 @@ namespace Adquisiciones.View.Modulos
         {
             if (searchLookUpAnexo.EditValue != null)
             {
+
                 var anexoSeleccionado = searchLookUpEditAnexo.GetFocusedRow() as Anexo;
+
+                if(PedidoService.PedidoDao.ExisteAnexoPedido(anexoSeleccionado))
+                {
+                   XtraMessageBox.Show(@"El anexo ya esta asociado a un pedido",
+                   @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    LimpiarComboAnexo();
+                    return;
+
+                }
+
+
                 PedidoActual.Anexo = anexoSeleccionado;
 
                 if (anexoSeleccionado != null)
@@ -282,15 +309,7 @@ namespace Adquisiciones.View.Modulos
             }
             else
             {
-                PedidoActual.Anexo = null;
-                lblLicitacion.Text = string.Empty;
-                gvPedidoDetalle.OptionsView.NewItemRowPosition = NewItemRowPosition.Top;
-                gvPedidoDetalle.OptionsBehavior.AllowDeleteRows = DefaultBoolean.True;
-                bsPedidoDetalle.DataSource = new List<PedidoDetalle>();
-                txtTotal.Text = @"$0.00";
-
-                gridColumnArticulo.OptionsColumn.AllowEdit = true;
-                //gridColumnCantidad.OptionsColumn.AllowEdit = true;
+                LimpiarComboAnexo();
             }
 
         }

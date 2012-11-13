@@ -47,6 +47,16 @@ namespace Adquisiciones.Data.Dao.ModPedido
         }
 
         [Transaction(ReadOnly = true)]
+        public bool ExisteAnexoPedido(Anexo anexo)
+        {
+            var query = CurrentSession.GetNamedQuery("Pedido.ExisteAnexoPedido");
+            query.SetParameter("anexo", anexo);
+            if (anexo.IdAnexo == 0) return false;
+            var pedidos = query.List<Pedido>();
+            return pedidos.Count != 0 ? true : false;
+        }
+
+        [Transaction(ReadOnly = true)]
         public Pedido ConsultaPedido(int numPedido, Almacen almacen)
         {
             var query = CurrentSession.GetNamedQuery("Pedido.CargaPedido");

@@ -10,6 +10,9 @@ namespace Adquisiciones.Data.Dao.ModPedido
     {
         int? MaximoNumeroPedido(Almacen almacen);
         bool ExisteRequisicionPedido(Requisicion requisicion);
+        bool ExisteAnexoPedido(Anexo anexo);
+
+
         Pedido ConsultaPedido(int numPedido, Almacen almacen);
         IList<PedidoDetalle> CargarPedidoDetalle(Pedido pedido);
         IList<PedidoEntrega> CargarPedidoEntrega(PedidoDetalle pedidoDetalle);
