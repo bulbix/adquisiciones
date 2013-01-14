@@ -97,7 +97,7 @@
             this.gridColumnDescripcion = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumnCantidad = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn17 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumnFecha = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemButtonEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.gridColumn12 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn13 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -140,9 +140,10 @@
             // 
             // splitContainerControl1
             // 
+            this.splitContainerControl1.Location = new System.Drawing.Point(0, 70);
             this.splitContainerControl1.Panel1.Controls.Add(this.groupControl1);
             this.splitContainerControl1.Panel2.Controls.Add(this.gcPedidoDetalle);
-            this.splitContainerControl1.Size = new System.Drawing.Size(873, 475);
+            this.splitContainerControl1.Size = new System.Drawing.Size(1113, 475);
             this.splitContainerControl1.SplitterPosition = 272;
             // 
             // lblAlmacen
@@ -203,7 +204,7 @@
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl1.Location = new System.Drawing.Point(0, 0);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(873, 272);
+            this.groupControl1.Size = new System.Drawing.Size(1113, 272);
             this.groupControl1.TabIndex = 2;
             this.groupControl1.Text = "Datos Generales del Pedido";
             // 
@@ -348,6 +349,7 @@
             this.cbxInstituto.Name = "cbxInstituto";
             this.cbxInstituto.Size = new System.Drawing.Size(98, 21);
             this.cbxInstituto.TabIndex = 10;
+            this.cbxInstituto.Visible = false;
             // 
             // cbxCargo
             // 
@@ -431,6 +433,7 @@
             this.lblInstituto.Size = new System.Drawing.Size(48, 13);
             this.lblInstituto.TabIndex = 52;
             this.lblInstituto.Text = "Instituto";
+            this.lblInstituto.Visible = false;
             // 
             // lblCargo
             // 
@@ -700,7 +703,7 @@
             this.repositoryItemSearchLookUpEdit2,
             this.repositoryItemPopupContainerEdit1,
             this.repositoryItemButtonEdit1});
-            this.gcPedidoDetalle.Size = new System.Drawing.Size(873, 198);
+            this.gcPedidoDetalle.Size = new System.Drawing.Size(1113, 198);
             this.gcPedidoDetalle.TabIndex = 16;
             this.gcPedidoDetalle.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvPedidoDetalle});
@@ -824,7 +827,7 @@
             this.gridColumnDescripcion,
             this.gridColumn8,
             this.gridColumnCantidad,
-            this.gridColumn17,
+            this.gridColumnFecha,
             this.gridColumn12,
             this.gridColumn13,
             this.gridColumn14});
@@ -943,13 +946,13 @@
             this.gridColumnCantidad.Visible = true;
             this.gridColumnCantidad.VisibleIndex = 3;
             // 
-            // gridColumn17
+            // gridColumnFecha
             // 
-            this.gridColumn17.Caption = "F Entrega";
-            this.gridColumn17.ColumnEdit = this.repositoryItemButtonEdit1;
-            this.gridColumn17.Name = "gridColumn17";
-            this.gridColumn17.Visible = true;
-            this.gridColumn17.VisibleIndex = 4;
+            this.gridColumnFecha.Caption = "F Entrega";
+            this.gridColumnFecha.ColumnEdit = this.repositoryItemButtonEdit1;
+            this.gridColumnFecha.Name = "gridColumnFecha";
+            this.gridColumnFecha.Visible = true;
+            this.gridColumnFecha.VisibleIndex = 4;
             // 
             // repositoryItemButtonEdit1
             // 
@@ -1002,7 +1005,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(873, 568);
+            this.ClientSize = new System.Drawing.Size(1113, 568);
             this.Name = "FrmModuloPedido";
             this.Text = "Captura::Pedido";
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();
@@ -1102,7 +1105,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumnDescripcion;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn8;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumnCantidad;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn17;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumnFecha;
         private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit repositoryItemButtonEdit1;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn12;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn13;

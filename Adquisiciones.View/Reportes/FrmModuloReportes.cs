@@ -224,10 +224,16 @@ namespace Adquisiciones.View
             pedido.PedidoDetalle = 
                 PedidoService.PedidoDao.CargarPedidoDetalle(pedido);
 
+            foreach (var pedidoDetalle in pedido.PedidoDetalle)
+            {
+                pedidoDetalle.PedidoEntrega = PedidoService.PedidoDao.CargarPedidoEntrega(pedidoDetalle);
+            }
+
             var reporte = new ReportePedido(pedido);
             reporte.GenerarReporteCompleto();
             crystalReportViewer.ReportSource = null;
-            crystalReportViewer.Refresh();Text = @"ReportePedido::" + pedido;}
+            crystalReportViewer.Refresh();Text = @"ReportePedido::" + pedido;
+        }
 
        
     }

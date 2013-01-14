@@ -87,7 +87,6 @@ namespace Adquisiciones.Data.Entities
 		}
 
         [Valid]
-        [NotEmpty(Message = "Se requiere al menos un pedido entrega")]
         public virtual IList<PedidoEntrega> PedidoEntrega
         {
             get { return _pedidoentrega; }

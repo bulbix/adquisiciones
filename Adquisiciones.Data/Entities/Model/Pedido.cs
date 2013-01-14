@@ -130,7 +130,7 @@ namespace Adquisiciones.Data.Entities
             set { _iva = value; }
         }
 
-        [NotNullNotEmpty(Message = ("Instituto Requerido"))]
+        //[NotNullNotEmpty(Message = ("Instituto Requerido"))]
         public virtual string Instituto
         {
             get { return _instituto; }
@@ -182,6 +182,7 @@ namespace Adquisiciones.Data.Entities
 			get { return _importetotal; }
 			set {_importetotal= value; }
 		}
+
 		public  virtual string Observaciones
 		{
 			get { return _observaciones; }

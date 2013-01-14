@@ -3,6 +3,7 @@ using System.Windows.Forms;
 using Adquisiciones.Business.ModPedido;
 using Adquisiciones.Data.Dao.ModPedido;
 using Adquisiciones.Data.Entities;
+using Adquisiciones.View.Reportes;
 using NUnit.Framework;
 
 namespace Adquisiciones.Test.Anexo
@@ -50,6 +51,50 @@ namespace Adquisiciones.Test.Anexo
             pedido.Iva = new Iva(new IvaId(1,16));
             //pedido.Anexo = new Anexo();
         }
+
+
+
+        public void GenerarReportePedido(int tipoPedido)
+        {
+            var pedido = PedidoService.ConsultarPedido(tipoPedido, new Almacen("P2"));
+            pedido.PedidoDetalle = PedidoService.PedidoDao.CargarPedidoDetalle(pedido);
+
+            foreach (var pedidoDetalle in pedido.PedidoDetalle)
+            {
+                pedidoDetalle.PedidoEntrega = PedidoService.PedidoDao.CargarPedidoEntrega(pedidoDetalle);
+            }
+
+            var reporte = new ReportePedido(pedido);
+            reporte.GenerarReporteCompleto();}
+
+
+
+        [Test]
+        public  void GenerarReportePedidoMayor()
+        {
+            GenerarReportePedido(1);
+        }
+
+        [Test]
+        public void GenerarReportePedidoMenor()
+        {
+            GenerarReportePedido(2);
+        
+        }
+
+        [Test]
+        public void GenerarReportePedidoDonacion()
+        {
+            GenerarReportePedido(3);
+        }
+
+        [Test]
+        public void GenerarReportePedidoExtraMuro()
+        {
+            GenerarReportePedido(4);
+        }
+
+
 
         
         [Test]

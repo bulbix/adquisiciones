@@ -40,7 +40,7 @@
 
   <query name="Pedido.CargaPedidoDetalle">
     <![CDATA[
-      from PedidoDetalle pd 
+      from PedidoDetalle pd       
       left join fetch pd.Articulo art 
       left join fetch art.Id.Almacen 
       where pd.Pedido = :pedido
@@ -57,6 +57,8 @@
   <query name="Pedido.CargaPedidos">
     <![CDATA[
       from Pedido p
+      join fetch p.Fundamento 
+      join fetch p.CatPresupuesto 
       join fetch p.CatTipopedido 
       join fetch p.Proveedor 
       left join fetch p.Anexo 

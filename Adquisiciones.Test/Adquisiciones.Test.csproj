@@ -46,6 +46,10 @@
       <HintPath>..\Librerias\IBM.Data.Informix.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="itextsharp, Version=5.2.1.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Librerias\itextsharp.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp">
       <Private>False</Private>
     </Reference>
@@ -97,6 +101,10 @@
     <ProjectReference Include="..\Adquisiciones.Data\Adquisiciones.Data.csproj">
       <Project>{B7B2B69E-049B-43DB-B323-A130D532581F}</Project>
       <Name>Adquisiciones.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Adquisiciones.View\Adquisiciones.View.csproj">
+      <Project>{3D68BAA4-3605-4148-B380-73EF9C76D41E}</Project>
+      <Name>Adquisiciones.View</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

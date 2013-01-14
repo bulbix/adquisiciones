@@ -45,14 +45,12 @@ namespace Adquisiciones.View.Modulos
 
             //Si es distinto a pedido mayor deshabilita
             if (tipoPedido > 1)
+            {
                 searchLookUpAnexo.Enabled = false;
-
+                gridColumnFecha.Visible = false;
+            }
             BindearCampos();
             InicializarCatalogos();
-
-
-
-
 
         }
 
