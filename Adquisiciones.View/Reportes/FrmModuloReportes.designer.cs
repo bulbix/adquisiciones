@@ -33,7 +33,8 @@
             this.ReporteCotizacion1 = new Adquisiciones.View.Reportes.ReporteCotizacion();
             this.ReporteAnexo1 = new Adquisiciones.View.Reportes.ReporteAnexo();
             this.ReporteFallo1 = new Adquisiciones.View.Reportes.ReporteFallo();
-            this.ReporteSubFallo1 = new Adquisiciones.View.Reportes.ReporteSubFallo();this.SuspendLayout();
+            this.ReporteSubFallo1 = new Adquisiciones.View.Reportes.ReporteSubFallo();
+            this.SuspendLayout();
             // 
             // btnAceptar
             // 

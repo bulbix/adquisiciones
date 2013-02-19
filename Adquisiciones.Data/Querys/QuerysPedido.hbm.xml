@@ -16,7 +16,8 @@
     <![CDATA[
     select max(p.NumeroPedido) from Pedido p 
     where year(p.FechaPedido) = :anioActual
-    and p.Almacen = :almacen
+    and p.Almacen = :almacen 
+    and p.CatTipopedido.IdTipoped = :tipoPedido     
      ]]>
   </query>
 
@@ -79,6 +80,16 @@
     <![CDATA[    
       from Pedido p
       where Anexo  = :anexo
+    ]]>
+  </query>
+
+  <query name="Pedido.ExisteNumeroPedido">
+    <![CDATA[    
+        select p from Pedido p 
+        where year(p.FechaPedido) = :anioActual 
+        and p.Almacen = :almacen 
+        and p.CatTipopedido.IdTipoped = :tipoPedido 
+        and p.NumeroPedido = :numPedido 
     ]]>
   </query>
 

@@ -11,7 +11,7 @@ namespace Adquisiciones.Data.Dao.ModPedido
     public class PedidoDaoImp : GenericDaoImp<Pedido, long>, IPedidoDao
     {
         [Transaction(ReadOnly = true)]
-        public int? MaximoNumeroPedido(Almacen almacen)
+        public int? SiguienteNumeroPedido(Almacen almacen, int tipo)
         {
             int? result = 1;
 
@@ -19,6 +19,7 @@ namespace Adquisiciones.Data.Dao.ModPedido
             var anio = FechaServidor().Year;
             query.SetParameter("anioActual", anio);
             query.SetParameter("almacen", almacen);
+            query.SetParameter("tipoPedido", tipo);
 
             if(query.UniqueResult() != null)
             {
@@ -29,7 +30,29 @@ namespace Adquisiciones.Data.Dao.ModPedido
 
         }
 
-       
+
+
+        [Transaction(ReadOnly = true)]
+        public bool ExisteNumeroPedido(Almacen almacen, int tipo, int numPedido)
+        {
+            var result = false;
+
+            var query = CurrentSession.GetNamedQuery("Pedido.ExisteNumeroPedido");
+            var anio = FechaServidor().Year;
+            query.SetParameter("anioActual", anio);
+            query.SetParameter("almacen", almacen);
+            query.SetParameter("tipoPedido", tipo);
+            query.SetParameter("numPedido", numPedido);
+
+            if (query.List().Count > 0)
+            {
+                result = true;
+            }
+
+            return result;
+
+        }
+
 
         /// <summary>
         /// Revisa que los pedidos automaticos no tenga una requisicion ya asiganada

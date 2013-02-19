@@ -87,8 +87,8 @@
             // 
             // gcPedidoEntrega
             // 
-            this.gcPedidoEntrega.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.gcPedidoEntrega.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
             this.gcPedidoEntrega.DataSource = this.bsPedidoEntrega;
             this.gcPedidoEntrega.Location = new System.Drawing.Point(111, 12);
             this.gcPedidoEntrega.MainView = this.gvPedidoEntrega;

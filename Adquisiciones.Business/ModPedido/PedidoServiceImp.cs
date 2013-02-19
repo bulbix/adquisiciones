@@ -91,7 +91,8 @@ namespace Adquisiciones.Business.ModPedido
         }
 
          [Transaction]
-        public void GenerarPedidoAutomatico(Pedido pedidoCentinela, Requisicion requisicion, DateTime fechaInicial, DateTime fechaFinal)
+        public void GenerarPedidoAutomatico(Pedido pedidoCentinela, 
+             Requisicion requisicion, DateTime fechaInicial, DateTime fechaFinal)
          {
 
              var fallos = FalloDao.FallosByAnexoEager(requisicion.Anexo);
@@ -112,7 +113,7 @@ namespace Adquisiciones.Business.ModPedido
                 pedido.Observaciones = pedidoCentinela.Observaciones;
                 pedido.Modificacion = 1;
                 pedido.Instituto = fallo.Anexo.Instituto;
-                pedido.NumeroPedido = PedidoDao.MaximoNumeroPedido(pedido.Almacen);
+                pedido.NumeroPedido = PedidoDao.SiguienteNumeroPedido(pedido.Almacen, 1);
                 pedido.CatTipopedido = new CatTipopedido(1);//Pedido Mayor
                 pedido.Proveedor = fallo.Cotizacion.Proveedor;
                 pedido.Anexo = fallo.Anexo;

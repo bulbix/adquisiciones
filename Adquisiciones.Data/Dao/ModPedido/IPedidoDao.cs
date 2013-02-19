@@ -8,7 +8,9 @@ namespace Adquisiciones.Data.Dao.ModPedido
 {
     public interface IPedidoDao : IGenericDao<Pedido, long >
     {
-        int? MaximoNumeroPedido(Almacen almacen);
+        int? SiguienteNumeroPedido(Almacen almacen, int tipo);
+        bool ExisteNumeroPedido(Almacen almacen, int tipo, int numPedido);
+
         bool ExisteRequisicionPedido(Requisicion requisicion);
         bool ExisteAnexoPedido(Anexo anexo);
 

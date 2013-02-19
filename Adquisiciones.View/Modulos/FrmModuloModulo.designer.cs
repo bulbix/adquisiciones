@@ -99,7 +99,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(712, 203);
+            this.ClientSize = new System.Drawing.Size(712, 207);
             this.ControlBox = false;
             this.Controls.Add(this.cmdCancelar);
             this.Controls.Add(this.btnAdqconacyt5000);
@@ -108,8 +108,8 @@
             this.Controls.Add(this.btnAdq2000);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(720, 234);
-            this.MinimumSize = new System.Drawing.Size(712, 223);
+            this.MaximumSize = new System.Drawing.Size(728, 245);
+            this.MinimumSize = new System.Drawing.Size(720, 234);
             this.Name = "FrmModuloModulo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Seleccionar Almacen";

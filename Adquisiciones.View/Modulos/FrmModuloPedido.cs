@@ -15,12 +15,9 @@ namespace Adquisiciones.View.Modulos
     public partial class FrmModuloPedido : FrmModulo
     {
         public IPedidoService PedidoService;
-
-        /// <summary>
-        /// </summary>
         public Pedido PedidoActual;
-
         public Almacen AlmacenArticulo;
+        private int tipoPedido = 0;
 
         public FrmModuloPedido(FrmAdquisiciones padre)
         {
@@ -40,6 +37,7 @@ namespace Adquisiciones.View.Modulos
 
         public FrmModuloPedido(int tipoPedido,FrmAdquisiciones padre):this(padre)
         {
+            this.tipoPedido = tipoPedido;
             Nuevo();
             PedidoActual.CatTipopedido = new CatTipopedido(tipoPedido);
 
@@ -47,8 +45,14 @@ namespace Adquisiciones.View.Modulos
             if (tipoPedido > 1)
             {
                 searchLookUpAnexo.Enabled = false;
+            }
+
+            if(tipoPedido > 2)
+            {
                 gridColumnFecha.Visible = false;
             }
+
+
             BindearCampos();
             InicializarCatalogos();
 
@@ -67,11 +71,6 @@ namespace Adquisiciones.View.Modulos
                 cmdGuardar.Enabled = false;
                 cmdEliminar.Enabled = false;
             }
-
-            //Cargar los articulos del almacen con centinela seleccionado
-            var almacenSelect = PedidoActual.PedidoDetalle[0].Articulo.Id.Almacen;
-            CargarArticulos(almacenSelect);
-
          }
 
         public override void BindearCampos()
@@ -79,11 +78,11 @@ namespace Adquisiciones.View.Modulos
             bsPedidoDetalle.DataSource = new List<PedidoDetalle>();
 
             ////Bindeamos el padre
-            deFechaPedido.DataBindings.Add(new Binding("DateTime", bsPedido, "FechaPedido", true));
-            numPedido.DataBindings.Add(new Binding("Value", bsPedido, "NumeroPedido", true));
+            //deFechaPedido.DataBindings.Add(new Binding("DateTime", bsPedido, "FechaPedido", true));
+            //numPedido.DataBindings.Add(new Binding("Value", bsPedido, "NumeroPedido", true));
             txtRequisicion.DataBindings.Add(new Binding("Text", bsPedido, "NumeroRequisicion", true));
             txtDescuento.DataBindings.Add(new Binding("Text", bsPedido, "ImporteDescuento", true));
-            txtReserva.DataBindings.Add(new Binding("Text", bsPedido, "IdReservaautoriza", false));
+            txtReserva.DataBindings.Add(new Binding("Text", bsPedido, "IdReservaautoriza", true));
             cbxActividad.DataBindings.Add(new Binding("SelectedValue", bsPedido, "CatActividad", true));
             cbxIva.DataBindings.Add(new Binding("SelectedValue", bsPedido, "Iva", true));
 
@@ -113,11 +112,10 @@ namespace Adquisiciones.View.Modulos
             bsPedidoDetalle.DataSource = new List<PedidoDetalle>();
 
             //Cargamos el numero de pedido maximo
-            PedidoActual.NumeroPedido = PedidoService.PedidoDao.MaximoNumeroPedido(AlmacenActual);
-            numPedido.Value = (decimal)PedidoActual.NumeroPedido;
-            deFechaPedido.DateTime = PedidoService.PedidoDao.FechaServidor();
-            PedidoActual.FechaPedido = deFechaPedido.DateTime;
-
+            PedidoActual.NumeroPedido = PedidoService.PedidoDao.SiguienteNumeroPedido(AlmacenActual, this.tipoPedido);
+            lblNumero.Text = PedidoActual.NumeroPedido.ToString();
+            PedidoActual.FechaPedido = PedidoService.PedidoDao.FechaServidor();
+            lblFecha.Text = String.Format("{0:dd/MM/yyyy}", PedidoActual.FechaPedido);
             cmdGuardar.Enabled = true;
             cmdEliminar.Enabled = true;
             lblNumErrors.Caption = string.Empty;
@@ -137,6 +135,18 @@ namespace Adquisiciones.View.Modulos
             PedidoActual.Usuario = FrmModuloAcceso.UsuarioLog;
 
             //Validaciones 
+
+            if(PedidoService.PedidoDao.ExisteNumeroPedido
+            (PedidoActual.Almacen,PedidoActual.CatTipopedido.IdTipoped,
+            PedidoActual.NumeroPedido.Value))
+            {
+                XtraMessageBox.Show(@"Numero Pedido ya existe",
+                @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+
+            }
+
+
             if (!Util.DatosValidos(PedidoActual, lblNumErrors, listaError))
             {
                 return;
@@ -204,7 +214,6 @@ namespace Adquisiciones.View.Modulos
             }
 
             cbxAlmacen.Enabled = false;
-            cmdCargarArt.Enabled = false;
         }
 
         private void SearchLookUpFundamentoEditValueChanged(object sender, EventArgs e)
@@ -249,7 +258,6 @@ namespace Adquisiciones.View.Modulos
 
         }
 
-
         private void LimpiarComboAnexo()
         {
             PedidoActual.Anexo = null;
@@ -257,7 +265,7 @@ namespace Adquisiciones.View.Modulos
             gvPedidoDetalle.OptionsView.NewItemRowPosition = NewItemRowPosition.Top;
             gvPedidoDetalle.OptionsBehavior.AllowDeleteRows = DefaultBoolean.True;
             bsPedidoDetalle.DataSource = new List<PedidoDetalle>();
-            txtTotal.Text = @"$0.00";
+            lblSubTotal.Text = @"$0.00";
 
             gridColumnArticulo.OptionsColumn.AllowEdit = true;
             //gridColumnCantidad.OptionsColumn.AllowEdit = true;
@@ -282,9 +290,7 @@ namespace Adquisiciones.View.Modulos
                    @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     LimpiarComboAnexo();
                     return;
-
                 }
-
 
                 PedidoActual.Anexo = anexoSeleccionado;
 
@@ -293,10 +299,6 @@ namespace Adquisiciones.View.Modulos
                 
 
                 var pedidosDetalle = PedidoService.CargarPedidoDetalle(anexoSeleccionado);
-
-                CargarArticulos(pedidosDetalle[0].Articulo.Id.Almacen);
-
-
                 bsPedidoDetalle.DataSource = pedidosDetalle;
                 gvPedidoDetalle.OptionsView.NewItemRowPosition = NewItemRowPosition.None;
                 gvPedidoDetalle.OptionsBehavior.AllowDeleteRows = DefaultBoolean.False;
@@ -328,16 +330,19 @@ namespace Adquisiciones.View.Modulos
                     gvPedidoDetalle.SetRowCellValue(e.RowHandle, "DescripcionArt", "");
                     gvPedidoDetalle.SetRowCellValue(e.RowHandle, "UnidadArt", "");
                     return;
-                } try
+                } 
+                
+                try
                 {
                     var cveArt = (int)rowSelectValue;
+                    var almacen = cbxAlmacen.SelectedValue as Almacen;
 
-                    //var almacen = cbxAlmacen.SelectedValue as Almacen;
-                    var articuloid = new ArticuloId(cveArt, AlmacenArticulo);
+                    var articuloid = new ArticuloId(cveArt, almacen);
                     var articuloSelect = PedidoService.AnexoService.ArticuloDao.Get(articuloid);
                     gvPedidoDetalle.SetRowCellValue(e.RowHandle, "Articulo", articuloSelect);
                     gvPedidoDetalle.SetRowCellValue(e.RowHandle, "DescripcionArt", articuloSelect.DesArticulo);
                     gvPedidoDetalle.SetRowCellValue(e.RowHandle, "UnidadArt", articuloSelect.CatUnidad.Unidad);
+                    
                 }
                 catch (Exception ee)
                 {
@@ -364,14 +369,51 @@ namespace Adquisiciones.View.Modulos
 
         private void SumTotal()
         {
-            if (bsPedidoDetalle.DataSource as IList<PedidoDetalle> != null)
+            try
             {
-                var total =
-               (from ad in bsPedidoDetalle.DataSource as IList<PedidoDetalle>
-                select ad.Importe)
-               .Sum();
-                decimal dectotal = Convert.ToDecimal(total);
-                txtTotal.Text = dectotal.ToString("$#,##0.00");
+                if (bsPedidoDetalle.DataSource as IList<PedidoDetalle> != null)
+                {
+                    var subTotal = (from ad in bsPedidoDetalle.DataSource as IList<PedidoDetalle>
+                                    select ad.Importe).Sum();
+                    var dectotal = Convert.ToDecimal(subTotal);
+                    lblSubTotal.Text = dectotal.ToString("$#,##0.00");
+
+                    decimal descuento = (decimal) 0.0;
+
+
+                    if (rbCantidad.Checked)
+                    {
+                        descuento = PedidoActual.ImporteDescuento.Value;
+                        lblDescuento.Text = descuento.ToString("$#,##0.00");
+
+                    }
+                    else if (rbPorcentaje.Checked)
+                    {
+                        descuento = PedidoActual.ImporteDescuento.Value/100;
+                        lblDescuento.Text = descuento.ToString("$#,##0.00");
+                    }
+
+                    decimal importeDesc = subTotal.Value - descuento;
+
+                    lblSubDesc.Text = importeDesc.ToString("$#,##0.00");
+
+                    decimal cantidadIva = importeDesc*PedidoActual.Iva.Id.Porcentaje/100;
+
+                    lblIva.Text = cantidadIva.ToString("$#,##0.00");
+
+                    var total = importeDesc - cantidadIva;
+                    lblTotal.Text = total.ToString("$#,##0.00");
+
+                }
+            }
+            catch(Exception e)
+            {
+                lblSubTotal.Text = "$0.00";
+                lblDescuento.Text = "$0.00";
+                lblSubDesc.Text = "$0.00";
+                lblIva.Text = "$0.00";
+                lblTotal.Text = "$0.00";
+
             }
         }
 
@@ -406,36 +448,23 @@ namespace Adquisiciones.View.Modulos
             }
         }
 
-        /// <summary>
-        /// Carga claves con almacen donde se registran claves
-        /// </summary>
-        /// <param name="almacen"></param>
-        private void CargarArticulos(Almacen almacen)
+        private void TxtDescuentoLeave(object sender, EventArgs e)
         {
-            repositoryItemSearchLookUpEdit2.DataSource =
-                PedidoService.AnexoService.ArticuloDao.ArticulosByAlmacen(almacen);
-            repositoryItemSearchLookUpEdit2.DisplayMember = "CveArt";
-            repositoryItemSearchLookUpEdit2.ValueMember = "CveArt";
-
-            lblAlmacenDesc.Text = almacen.ToString();
-            cbxAlmacen.SelectedIndex = -1;
-
-            AlmacenArticulo = almacen;
-
-            XtraMessageBox.Show(@"Articulos cargados satisfactoriamente",
-            @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            SumTotal();
         }
-
-        private void CmdCargarArtClick(object sender, EventArgs e)
+        private void CbxAlmacenSelectedValueChanged(object sender, EventArgs e)
         {
             if (XtraMessageBox.Show(@"Esta seguro de cambiar el almacen? Se borrara el detralle", @"Adquisiciones",
-                    MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                   MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                bsPedidoDetalle.DataSource = new List<PedidoDetalle>();
-                searchLookUpEditAnexo.ClearSelection();
-                lblLicitacion.Text = "";
-                CargarArticulos(cbxAlmacen.SelectedValue as Almacen);
+                bsPedidoDetalle.DataSource = new List<AnexoDetalle>();
             }
+
+        }
+
+        private void CbxIvaSelectedValueChanged(object sender, EventArgs e)
+        {
+            SumTotal();
         }
     }
 }

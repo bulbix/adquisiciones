@@ -95,7 +95,6 @@ namespace Adquisiciones.View.Modulos
             txtnumlicitacion.Focus();
             LimpiarErrores();
             cbxAlmacen.Enabled = true;
-            lblAlmacenDesc.Text = string.Empty;
             cmdCargarArt.Enabled = true;
         }
 
@@ -302,8 +301,6 @@ namespace Adquisiciones.View.Modulos
                 AnexoService.ArticuloDao.ArticulosByAlmacen(almacen);
             repositoryItemSearchLookUpEdit2.DisplayMember = "CveArt";
             repositoryItemSearchLookUpEdit2.ValueMember = "CveArt";
-
-            lblAlmacenDesc.Text = almacen.ToString();
             cbxAlmacen.SelectedIndex = -1;
 
             AlmacenArticulo = almacen;
@@ -320,6 +317,11 @@ namespace Adquisiciones.View.Modulos
                 bsAnexoDetalle.DataSource = new List<AnexoDetalle>();
                 CargarArticulos(cbxAlmacen.SelectedValue as Almacen);
             }
+
+        }
+
+        private void txtnumlicitacion_EditValueChanged(object sender, EventArgs e)
+        {
 
         }
     }

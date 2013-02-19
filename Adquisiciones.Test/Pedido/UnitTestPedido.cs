@@ -18,18 +18,24 @@ namespace Adquisiciones.Test.Anexo
         public IPedidoDetalleDao PedidoDetalleDao { private get; set; }
 
         [Test]
+        public void TestMaximoNumeroPedido()
+        {
+            var result = PedidoDao.SiguienteNumeroPedido(new Almacen("P2"), 4);
+            Assert.AreEqual(3,result);
+        }
+
+        [Test]
+        public void ExisteNumeroPedido()
+        {
+            var result = PedidoDao.ExisteNumeroPedido(new Almacen("P2"),1,2);
+            Assert.IsTrue(result);
+        }
+
+        [Test]
         public void TestConsultaRequisicion()
         {
             var almacen = new Almacen("C5");
-            Assert.AreEqual(2,RequisicionDao.CargarRequisiciones(almacen).Count);
-        }
-
-
-        [Test]
-        public void TestMaximoNumeroPedido()
-        {
-            var result = PedidoDao.MaximoNumeroPedido(new Almacen("C5"));
-            Assert.AreEqual(3,result);
+            Assert.AreEqual(2, RequisicionDao.CargarRequisiciones(almacen).Count);
         }
 
         [Test]
@@ -52,8 +58,6 @@ namespace Adquisiciones.Test.Anexo
             //pedido.Anexo = new Anexo();
         }
 
-
-
         public void GenerarReportePedido(int tipoPedido)
         {
             var pedido = PedidoService.ConsultarPedido(tipoPedido, new Almacen("P2"));
@@ -61,13 +65,13 @@ namespace Adquisiciones.Test.Anexo
 
             foreach (var pedidoDetalle in pedido.PedidoDetalle)
             {
-                pedidoDetalle.PedidoEntrega = PedidoService.PedidoDao.CargarPedidoEntrega(pedidoDetalle);
+                pedidoDetalle.PedidoEntrega = PedidoService.PedidoDao.
+                    CargarPedidoEntrega(pedidoDetalle);
             }
 
             var reporte = new ReportePedido(pedido);
-            reporte.GenerarReporteCompleto();}
-
-
+            reporte.GenerarReporteCompleto();
+        }
 
         [Test]
         public  void GenerarReportePedidoMayor()
@@ -93,9 +97,6 @@ namespace Adquisiciones.Test.Anexo
         {
             GenerarReportePedido(4);
         }
-
-
-
         
         [Test]
         public void TestCatalogoPresupuestal()
@@ -159,8 +160,6 @@ namespace Adquisiciones.Test.Anexo
             var pedido  = PedidoService.ConsultarPedido(1, new Almacen("C5"));
             Assert.NotNull(pedido);
         }
-
-
 
         [SetUp]
         public void SetUp()

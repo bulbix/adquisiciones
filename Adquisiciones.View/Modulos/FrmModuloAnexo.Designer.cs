@@ -80,10 +80,10 @@
             // 
             // splitContainerControl1
             // 
-            this.splitContainerControl1.Location = new System.Drawing.Point(0, 68);
+            this.splitContainerControl1.Location = new System.Drawing.Point(0, 70);
             this.splitContainerControl1.Panel1.Controls.Add(this.gcDatosGenerales);
             this.splitContainerControl1.Panel2.Controls.Add(this.gcAnexoDetalle);
-            this.splitContainerControl1.Size = new System.Drawing.Size(933, 464);
+            this.splitContainerControl1.Size = new System.Drawing.Size(933, 461);
             this.splitContainerControl1.SplitterPosition = 134;
             // 
             // lblAlmacen
@@ -96,10 +96,6 @@
             this.cbxAlmacen.Location = new System.Drawing.Point(639, 43);
             this.cbxAlmacen.Visible = true;
             // 
-            // lblAlmacenDesc
-            // 
-            this.lblAlmacenDesc.Location = new System.Drawing.Point(639, 64);
-            this.lblAlmacenDesc.Visible = true;
             // 
             // gcDatosGenerales
             // 
@@ -151,6 +147,7 @@
             this.txtnumlicitacion.Name = "txtnumlicitacion";
             this.txtnumlicitacion.Size = new System.Drawing.Size(194, 20);
             this.txtnumlicitacion.TabIndex = 1;
+            this.txtnumlicitacion.EditValueChanged += new System.EventHandler(this.txtnumlicitacion_EditValueChanged);
             this.txtnumlicitacion.Leave += new System.EventHandler(this.TxtnumlicitacionLeave);
             // 
             // cbxIva
@@ -278,7 +275,7 @@
             this.gcAnexoDetalle.Name = "gcAnexoDetalle";
             this.gcAnexoDetalle.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemSearchLookUpEdit2});
-            this.gcAnexoDetalle.Size = new System.Drawing.Size(933, 324);
+            this.gcAnexoDetalle.Size = new System.Drawing.Size(933, 322);
             this.gcAnexoDetalle.TabIndex = 8;
             this.gcAnexoDetalle.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvAnexoDetalle});
