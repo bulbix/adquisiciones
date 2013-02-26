@@ -10,15 +10,11 @@ namespace Adquisiciones.Data.Dao.ModPedido
     {
         int? SiguienteNumeroPedido(Almacen almacen, int tipo);
         bool ExisteNumeroPedido(Almacen almacen, int tipo, int numPedido);
-
         bool ExisteRequisicionPedido(Requisicion requisicion);
         bool ExisteAnexoPedido(Anexo anexo);
         bool ExisteEntradaPedido(Pedido pedido);
 
-
-
-
-        Pedido ConsultaPedido(int numPedido, Almacen almacen);
+        Pedido ConsultaPedido(int numPedido, Almacen almacen, int tipo);
         IList<PedidoDetalle> CargarPedidoDetalle(Pedido pedido);
         IList<PedidoEntrega> CargarPedidoEntrega(PedidoDetalle pedidoDetalle);
         IList<Pedido> CargarPedidos(int anio, Almacen almacen);

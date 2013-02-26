@@ -30,8 +30,6 @@ namespace Adquisiciones.Data.Dao.ModPedido
 
         }
 
-
-
         [Transaction(ReadOnly = true)]
         public bool ExisteNumeroPedido(Almacen almacen, int tipo, int numPedido)
         {
@@ -52,7 +50,6 @@ namespace Adquisiciones.Data.Dao.ModPedido
             return result;
 
         }
-
 
         /// <summary>
         /// Revisa que los pedidos automaticos no tenga una requisicion ya asiganada
@@ -90,13 +87,15 @@ namespace Adquisiciones.Data.Dao.ModPedido
         }
 
         [Transaction(ReadOnly = true)]
-        public Pedido ConsultaPedido(int numPedido, Almacen almacen)
+        public Pedido ConsultaPedido(int numPedido, Almacen almacen, int tipo)
         {
             var query = CurrentSession.GetNamedQuery("Pedido.CargaPedido");
             query.SetParameter("numero", numPedido);
             var fecha = FechaServidor().Year;
             query.SetParameter("anioActual", fecha);
             query.SetParameter("almacen", almacen);
+            query.SetParameter("tipoPedido", tipo);
+
             return query.UniqueResult<Pedido>();
         }
 

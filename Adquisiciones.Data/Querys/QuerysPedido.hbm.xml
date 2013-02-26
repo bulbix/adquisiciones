@@ -25,6 +25,7 @@
   <query name="Pedido.CargaPedido">
     <![CDATA[
       from Pedido p 
+      join fetch p.Usuario 
       join fetch p.CatActividad
       join fetch p.CatPresupuesto
       join fetch p.Iva
@@ -35,7 +36,8 @@
       join fetch p.Fundamento 
       join fetch p.CatArea      
       where p.NumeroPedido = :numero 
-      and year(p.FechaPedido) = :anioActual
+      and year(p.FechaPedido) = :anioActual 
+      and p.CatTipopedido.IdTipoped = :tipoPedido
       and p.Almacen = :almacen]]>
   </query>
 

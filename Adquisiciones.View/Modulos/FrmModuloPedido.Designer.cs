@@ -32,8 +32,6 @@
             DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.cbxInstituto = new System.Windows.Forms.ComboBox();
-            this.lblInstituto = new System.Windows.Forms.Label();
             this.cbxIva = new System.Windows.Forms.ComboBox();
             this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
             this.cbxCargo = new System.Windows.Forms.ComboBox();
@@ -188,9 +186,7 @@
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 81F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 110F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 87F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 143F));
-            this.tableLayoutPanel3.Controls.Add(this.cbxInstituto, 9, 1);
-            this.tableLayoutPanel3.Controls.Add(this.lblInstituto, 8, 1);
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 145F));
             this.tableLayoutPanel3.Controls.Add(this.cbxIva, 7, 1);
             this.tableLayoutPanel3.Controls.Add(this.labelControl10, 6, 1);
             this.tableLayoutPanel3.Controls.Add(this.cbxCargo, 5, 1);
@@ -217,39 +213,19 @@
             this.tableLayoutPanel3.Size = new System.Drawing.Size(917, 89);
             this.tableLayoutPanel3.TabIndex = 16;
             // 
-            // cbxInstituto
-            // 
-            this.cbxInstituto.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbxInstituto.FormattingEnabled = true;
-            this.cbxInstituto.Location = new System.Drawing.Point(776, 43);
-            this.cbxInstituto.Name = "cbxInstituto";
-            this.cbxInstituto.Size = new System.Drawing.Size(133, 21);
-            this.cbxInstituto.TabIndex = 133;
-            this.cbxInstituto.Visible = false;
-            // 
-            // lblInstituto
-            // 
-            this.lblInstituto.AutoSize = true;
-            this.lblInstituto.Location = new System.Drawing.Point(689, 40);
-            this.lblInstituto.Name = "lblInstituto";
-            this.lblInstituto.Size = new System.Drawing.Size(48, 13);
-            this.lblInstituto.TabIndex = 132;
-            this.lblInstituto.Text = "Instituto";
-            this.lblInstituto.Visible = false;
-            // 
             // cbxIva
             // 
             this.cbxIva.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxIva.FormattingEnabled = true;
-            this.cbxIva.Location = new System.Drawing.Point(579, 43);
+            this.cbxIva.Location = new System.Drawing.Point(577, 43);
             this.cbxIva.Name = "cbxIva";
             this.cbxIva.Size = new System.Drawing.Size(88, 21);
-            this.cbxIva.TabIndex = 8;
+            this.cbxIva.TabIndex = 6;
             this.cbxIva.SelectedValueChanged += new System.EventHandler(this.CbxIvaSelectedValueChanged);
             // 
             // labelControl10
             // 
-            this.labelControl10.Location = new System.Drawing.Point(498, 43);
+            this.labelControl10.Location = new System.Drawing.Point(496, 43);
             this.labelControl10.Name = "labelControl10";
             this.labelControl10.Size = new System.Drawing.Size(21, 13);
             this.labelControl10.TabIndex = 42;
@@ -259,15 +235,16 @@
             // 
             this.cbxCargo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxCargo.FormattingEnabled = true;
-            this.cbxCargo.Location = new System.Drawing.Point(372, 43);
+            this.cbxCargo.Location = new System.Drawing.Point(370, 43);
             this.cbxCargo.Name = "cbxCargo";
             this.cbxCargo.Size = new System.Drawing.Size(120, 21);
-            this.cbxCargo.TabIndex = 7;
+            this.cbxCargo.TabIndex = 5;
+            this.cbxCargo.TabStop = false;
             // 
             // lblCargo
             // 
             this.lblCargo.AutoSize = true;
-            this.lblCargo.Location = new System.Drawing.Point(309, 40);
+            this.lblCargo.Location = new System.Drawing.Point(307, 40);
             this.lblCargo.Name = "lblCargo";
             this.lblCargo.Size = new System.Drawing.Size(45, 13);
             this.lblCargo.TabIndex = 50;
@@ -277,14 +254,14 @@
             // 
             this.cbxActividad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxActividad.FormattingEnabled = true;
-            this.cbxActividad.Location = new System.Drawing.Point(201, 43);
+            this.cbxActividad.Location = new System.Drawing.Point(199, 43);
             this.cbxActividad.Name = "cbxActividad";
             this.cbxActividad.Size = new System.Drawing.Size(102, 21);
-            this.cbxActividad.TabIndex = 6;
+            this.cbxActividad.TabIndex = 4;
             // 
             // labelControl8
             // 
-            this.labelControl8.Location = new System.Drawing.Point(136, 43);
+            this.labelControl8.Location = new System.Drawing.Point(134, 43);
             this.labelControl8.Name = "labelControl8";
             this.labelControl8.Size = new System.Drawing.Size(44, 13);
             this.labelControl8.TabIndex = 38;
@@ -295,7 +272,7 @@
             this.txtReserva.Location = new System.Drawing.Point(56, 43);
             this.txtReserva.Name = "txtReserva";
             this.txtReserva.Size = new System.Drawing.Size(62, 20);
-            this.txtReserva.TabIndex = 5;
+            this.txtReserva.TabIndex = 3;
             // 
             // labelControl4
             // 
@@ -307,17 +284,17 @@
             // 
             // txtDescuento
             // 
-            this.txtDescuento.Location = new System.Drawing.Point(776, 3);
+            this.txtDescuento.Location = new System.Drawing.Point(774, 3);
             this.txtDescuento.Name = "txtDescuento";
             this.txtDescuento.Size = new System.Drawing.Size(84, 20);
-            this.txtDescuento.TabIndex = 131;
+            this.txtDescuento.TabIndex = 2;
             this.txtDescuento.Leave += new System.EventHandler(this.TxtDescuentoLeave);
             // 
             // rbCantidad
             // 
             this.rbCantidad.AutoSize = true;
             this.rbCantidad.Checked = true;
-            this.rbCantidad.Location = new System.Drawing.Point(689, 3);
+            this.rbCantidad.Location = new System.Drawing.Point(687, 3);
             this.rbCantidad.Name = "rbCantidad";
             this.rbCantidad.Size = new System.Drawing.Size(68, 17);
             this.rbCantidad.TabIndex = 130;
@@ -327,7 +304,7 @@
             // 
             // labelControl9
             // 
-            this.labelControl9.Location = new System.Drawing.Point(498, 3);
+            this.labelControl9.Location = new System.Drawing.Point(496, 3);
             this.labelControl9.Name = "labelControl9";
             this.labelControl9.Size = new System.Drawing.Size(51, 13);
             this.labelControl9.TabIndex = 56;
@@ -336,7 +313,7 @@
             // rbPorcentaje
             // 
             this.rbPorcentaje.AutoSize = true;
-            this.rbPorcentaje.Location = new System.Drawing.Point(579, 3);
+            this.rbPorcentaje.Location = new System.Drawing.Point(577, 3);
             this.rbPorcentaje.Name = "rbPorcentaje";
             this.rbPorcentaje.Size = new System.Drawing.Size(77, 17);
             this.rbPorcentaje.TabIndex = 129;
@@ -345,14 +322,14 @@
             // 
             // txtRequisicion
             // 
-            this.txtRequisicion.Location = new System.Drawing.Point(372, 3);
+            this.txtRequisicion.Location = new System.Drawing.Point(370, 3);
             this.txtRequisicion.Name = "txtRequisicion";
             this.txtRequisicion.Size = new System.Drawing.Size(93, 20);
-            this.txtRequisicion.TabIndex = 3;
+            this.txtRequisicion.TabIndex = 1;
             // 
             // labelControl3
             // 
-            this.labelControl3.Location = new System.Drawing.Point(309, 3);
+            this.labelControl3.Location = new System.Drawing.Point(307, 3);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(53, 13);
             this.labelControl3.TabIndex = 4;
@@ -362,7 +339,7 @@
             // 
             this.lblNumero.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNumero.Appearance.ForeColor = System.Drawing.Color.Blue;
-            this.lblNumero.Location = new System.Drawing.Point(201, 3);
+            this.lblNumero.Location = new System.Drawing.Point(199, 3);
             this.lblNumero.Name = "lblNumero";
             this.lblNumero.Size = new System.Drawing.Size(75, 16);
             this.lblNumero.TabIndex = 127;
@@ -370,7 +347,7 @@
             // 
             // labelControl2
             // 
-            this.labelControl2.Location = new System.Drawing.Point(136, 3);
+            this.labelControl2.Location = new System.Drawing.Point(134, 3);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(56, 13);
             this.labelControl2.TabIndex = 2;
@@ -557,7 +534,7 @@
             this.searchLookUpFundamento.Properties.ValueMember = "CveFundamento";
             this.searchLookUpFundamento.Properties.View = this.searchLookUpEditFundamento;
             this.searchLookUpFundamento.Size = new System.Drawing.Size(611, 20);
-            this.searchLookUpFundamento.TabIndex = 11;
+            this.searchLookUpFundamento.TabIndex = 8;
             this.searchLookUpFundamento.EditValueChanged += new System.EventHandler(this.SearchLookUpFundamentoEditValueChanged);
             // 
             // searchLookUpEditFundamento
@@ -620,7 +597,7 @@
             this.searchLookUpAnexo.Properties.ValueMember = "NumAnexo";
             this.searchLookUpAnexo.Properties.View = this.searchLookUpEditAnexo;
             this.searchLookUpAnexo.Size = new System.Drawing.Size(611, 20);
-            this.searchLookUpAnexo.TabIndex = 14;
+            this.searchLookUpAnexo.TabIndex = 11;
             this.searchLookUpAnexo.EditValueChanged += new System.EventHandler(this.SearchLookUpAnexoEditValueChanged);
             // 
             // searchLookUpEditAnexo
@@ -666,7 +643,7 @@
             this.searchLookUpArea.Properties.ValueMember = "CveArea";
             this.searchLookUpArea.Properties.View = this.searchLookUpEditArea;
             this.searchLookUpArea.Size = new System.Drawing.Size(611, 20);
-            this.searchLookUpArea.TabIndex = 12;
+            this.searchLookUpArea.TabIndex = 9;
             this.searchLookUpArea.EditValueChanged += new System.EventHandler(this.SearchLookUpAreaEditValueChanged);
             // 
             // searchLookUpEditArea
@@ -712,7 +689,7 @@
             this.searchLookUpProveedor.Properties.ValueMember = "CveProveedor";
             this.searchLookUpProveedor.Properties.View = this.searchLookUpEditProveedor;
             this.searchLookUpProveedor.Size = new System.Drawing.Size(611, 20);
-            this.searchLookUpProveedor.TabIndex = 13;
+            this.searchLookUpProveedor.TabIndex = 10;
             this.searchLookUpProveedor.EditValueChanged += new System.EventHandler(this.SearchLookUpProveedorEditValueChanged);
             // 
             // searchLookUpEditProveedor
@@ -766,7 +743,7 @@
             this.txtObservaciones.Location = new System.Drawing.Point(5, 129);
             this.txtObservaciones.Name = "txtObservaciones";
             this.txtObservaciones.Size = new System.Drawing.Size(218, 116);
-            this.txtObservaciones.TabIndex = 10;
+            this.txtObservaciones.TabIndex = 7;
             // 
             // lblObservacion
             // 
@@ -792,7 +769,7 @@
             this.repositoryItemPopupContainerEdit1,
             this.repositoryItemButtonEdit1});
             this.gcPedidoDetalle.Size = new System.Drawing.Size(1121, 231);
-            this.gcPedidoDetalle.TabIndex = 15;
+            this.gcPedidoDetalle.TabIndex = 12;
             this.gcPedidoDetalle.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvPedidoDetalle});
             this.gcPedidoDetalle.KeyDown += new System.Windows.Forms.KeyEventHandler(this.GcPedidoDetalleKeyDown);
@@ -1212,8 +1189,6 @@
         private DevExpress.XtraEditors.LabelControl lblDescuento;
         private System.Windows.Forms.RadioButton rbPorcentaje;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
-        private System.Windows.Forms.ComboBox cbxInstituto;
-        private System.Windows.Forms.Label lblInstituto;
         private DevExpress.XtraEditors.TextEdit txtDescuento;
         private System.Windows.Forms.RadioButton rbCantidad;
         private DevExpress.XtraEditors.TextEdit txtRequisicion;

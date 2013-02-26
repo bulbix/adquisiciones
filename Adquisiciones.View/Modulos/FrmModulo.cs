@@ -149,7 +149,6 @@ namespace Adquisiciones.View.Modulos
             }
         }
 
-
         protected void HayErrores()
         {
             if (listaError.Strings.Count > 0)
@@ -246,7 +245,7 @@ namespace Adquisiciones.View.Modulos
             }
             catch (Exception ee)
             {
-                XtraMessageBox.Show(@"No hay entity actual", @"Adquisiciones",
+                XtraMessageBox.Show(@"Ocurrio un error al generar el reporte", @"Adquisiciones",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }}

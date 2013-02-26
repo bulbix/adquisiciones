@@ -50,7 +50,7 @@ namespace Adquisiciones.View.Modulos
             if (tipoPedido > 1)
                 searchLookUpAnexo.Enabled = false;
 
-            if(tipoPedido > 2)
+            if(tipoPedido > 3)
                 gridColumnFecha.Visible = false;
 
             BindearCampos();
@@ -79,7 +79,7 @@ namespace Adquisiciones.View.Modulos
             cbxActividad.DataBindings.Add(new Binding("SelectedValue", bsPedido, "CatActividad", true));
             cbxIva.DataBindings.Add(new Binding("SelectedValue", bsPedido, "Iva", true));
             cbxCargo.DataBindings.Add(new Binding("SelectedValue", bsPedido, "CatPresupuesto", true));
-            cbxInstituto.DataBindings.Add(new Binding("SelectedValue", bsPedido, "Instituto", true));
+            //cbxInstituto.DataBindings.Add(new Binding("SelectedValue", bsPedido, "Instituto", true));
             txtObservaciones.DataBindings.Add(new Binding("Text", bsPedido, "Observaciones", false));
         }
 
@@ -89,7 +89,7 @@ namespace Adquisiciones.View.Modulos
             bsFundamento.DataSource = PedidoService.PedidoDao.CargarCatalogo<Fundamento>();
             PedidoService.AnexoService.IvasCombo(cbxIva);
             PedidoService.CatalogoPresupuestal(cbxCargo);
-            PedidoService.AnexoService.InstitutosCombo(cbxInstituto);
+            //PedidoService.AnexoService.InstitutosCombo(cbxInstituto);
             bsArea.DataSource = PedidoService.PedidoDao.CargarCatalogo<CatArea>("Estatus", 1);
             bsProveedor.DataSource = PedidoService.PedidoDao.CargarCatalogo<Proveedor>();
             bsAnexo.DataSource = PedidoService.AnexoDao.CargarAnexos(AlmacenActual);
@@ -155,7 +155,7 @@ namespace Adquisiciones.View.Modulos
             try
             {
                 PedidoActual = PedidoService.ConsultarPedido(PedidoActual.NumeroPedido.Value,
-                                                          AlmacenActual);
+                                                          AlmacenActual, this.tipoPedido);
                 if (PedidoActual != null)
                 {
                     lblNumero.Text = PedidoActual.NumeroPedido.ToString();

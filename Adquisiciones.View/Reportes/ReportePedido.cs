@@ -42,12 +42,14 @@ namespace Adquisiciones.View.Reportes
         string fileReverso = "";
         private string piePagina = "PAGO";
 
+        private decimal subtotal = (decimal)0.0;
+
         public ReportePedido(Pedido pedido)
         {
-            this.pedido = pedido;}
+            this.pedido = pedido;
+        }
 
-        public ReportePedido()
-        {}
+        public ReportePedido() {}
 
         private PdfPTable Encabezado()
         {
@@ -109,7 +111,6 @@ namespace Adquisiciones.View.Reportes
 
         }
 
-
         private PdfPTable CabeceraDetalle()
         {
             var result = new PdfPTable(new float[] { 3, 20, 5, 5, 6, 6 });
@@ -167,6 +168,9 @@ namespace Adquisiciones.View.Reportes
                 result.DefaultCell.HorizontalAlignment = Element.ALIGN_RIGHT;
                 result.AddCell(new Paragraph(pedidoDetalle.PrecioUnitario.Value.ToString("C"), fuente));
                 decimal total = pedidoDetalle.Cantidad.Value * pedidoDetalle.PrecioUnitario.Value;
+
+                subtotal += total;
+
                 result.AddCell(new Paragraph(total.ToString("C"), fuente));
                 result.DefaultCell.HorizontalAlignment = Element.ALIGN_CENTER;
             }
@@ -233,7 +237,7 @@ namespace Adquisiciones.View.Reportes
             etiqueta2.AddCell(new Paragraph("CONDICIONES DE ENTREGA:", fuente));
             etiqueta2.AddCell(new Paragraph("ALMACEN", fuente));
             etiqueta2.AddCell(new Paragraph("DE LUNES A VIERNES", fuente));
-            etiqueta2.AddCell(new Paragraph("DE 9:00 A 15:00 HRS.", fuente));
+            etiqueta2.AddCell(new Paragraph("DE 9:00 A 14:00 HRS.", fuente));
 
             var etiqueta3 = new PdfPTable(1);
             etiqueta3.DefaultCell.Border = 0;
@@ -268,7 +272,6 @@ namespace Adquisiciones.View.Reportes
 
         }
 
-
         public PdfPTable Subrayado(String txt, Font fuente)
         {
 
@@ -280,7 +283,6 @@ namespace Adquisiciones.View.Reportes
             tabla.AddCell(new Paragraph("" + txt, fuente));
             return tabla;
         }
-
 
         private PdfPTable Firmas(string piePagina)
         {
@@ -313,6 +315,14 @@ namespace Adquisiciones.View.Reportes
                     firma.DefaultCell.Border = 0;
 
                     firma.AddCell(new Paragraph(etiqueta, fuente));
+                    firma.AddCell("");
+                    firma.AddCell("");
+                    firma.AddCell("");
+                    firma.AddCell("");
+                    firma.AddCell("");
+                    firma.AddCell("");
+                    firma.AddCell("");
+                    firma.AddCell("");
                     firma.AddCell(Subrayado("          ", fuente));
                     firma.AddCell(new Paragraph(nombre, fuente));
 
@@ -330,6 +340,12 @@ namespace Adquisiciones.View.Reportes
                     firma.DefaultCell.Border = 0;
 
                     firma.AddCell(new Paragraph(etiqueta, fuente));
+                    firma.AddCell("");
+                    firma.AddCell("");
+                    firma.AddCell("");
+                    firma.AddCell("");
+                    firma.AddCell("");
+                    firma.AddCell("");
                     firma.AddCell("");
                     firma.AddCell("");
                     firma.AddCell(Subrayado("          ", fuente));
@@ -358,7 +374,6 @@ namespace Adquisiciones.View.Reportes
 
         }
 
-
         private void GenerarCeldas(int numCeldas, PdfPTable tabla)
         {
             tabla.DefaultCell.Border = 0;
@@ -370,7 +385,6 @@ namespace Adquisiciones.View.Reportes
             tabla.DefaultCell.Border = 1;
 
         }
-
 
         private PdfPTable Reverso()
         {
@@ -493,9 +507,7 @@ namespace Adquisiciones.View.Reportes
             {
                 
             }
-
         }
-
 
         public void GenerarAnverso()
         {
@@ -533,16 +545,16 @@ namespace Adquisiciones.View.Reportes
             totales.DefaultCell.HorizontalAlignment = Element.ALIGN_RIGHT;
             totales.AddCell("");
             totales.AddCell("");
-            totales.AddCell(new Paragraph("SUBTOTAL  " + pedido.ImporteTotal.Value.ToString("C"), fuente));
+            totales.AddCell(new Paragraph("SUBTOTAL  " + subtotal.ToString("C"), fuente));
             
             totales.DefaultCell.HorizontalAlignment = Element.ALIGN_LEFT;
             totales.DefaultCell.Colspan = 2;
             totales.AddCell(new Paragraph("FUNDAMENTO LEGAL: " + pedido.Fundamento.DesFundamento, fuente));
             totales.DefaultCell.HorizontalAlignment = Element.ALIGN_RIGHT;
             totales.DefaultCell.Colspan = 1;
-            totales.AddCell(new Paragraph("DESCUENTO  " + String.Format("{0:0.00}",pedido.ImporteDescuento.Value), fuente));
-            decimal importeDesc = pedido.ImporteTotal.Value - 
-                (pedido.ImporteTotal.Value * (pedido.ImporteDescuento.Value / 100));
+            totales.AddCell(new Paragraph("DESCUENTO  " + pedido.ImporteDescuento.Value.ToString("C") , fuente));
+            
+            decimal importeDesc = subtotal - pedido.ImporteDescuento.Value;
             
             totales.DefaultCell.HorizontalAlignment = Element.ALIGN_LEFT;
             totales.DefaultCell.Colspan = 2;
@@ -558,9 +570,11 @@ namespace Adquisiciones.View.Reportes
             totales.DefaultCell.HorizontalAlignment = Element.ALIGN_RIGHT;
             totales.DefaultCell.Colspan = 1;
 
+            decimal cantidadIva = importeDesc * (decimal)(pedido.Iva.Id.Porcentaje*1.0/100);
 
-            totales.AddCell(new Paragraph("I.V.A.  " + String.Format("{0:0.00}",pedido.Iva.Id.Porcentaje), fuente));
-            decimal total = importeDesc - (importeDesc * ((decimal)pedido.Iva.Id.Porcentaje / 100));
+            totales.AddCell(new Paragraph("I.V.A.  " + cantidadIva.ToString("C"), fuente));
+
+            decimal total = importeDesc - cantidadIva;
             totales.DefaultCell.HorizontalAlignment = Element.ALIGN_LEFT;
 
             totales.DefaultCell.Colspan = 2;
@@ -580,13 +594,9 @@ namespace Adquisiciones.View.Reportes
             totales.AddCell(new Paragraph(pedido.Observaciones, fuente));
 
             anverso.AddCell(totales);
-
             document.Add(anverso);
-
             document.Close();
         }
-
-       
 
         public void GenerarReverso()
         {
@@ -671,12 +681,9 @@ namespace Adquisiciones.View.Reportes
             File.Delete(fileReverso);
 
             return filePedido;
-
-
-
         }
 
-        private String MarcaAgua(String path)
+        /*private String MarcaAgua(String path)
         {
             PdfReader reader = new PdfReader(path);
             FileStream fs = null;
@@ -756,7 +763,7 @@ namespace Adquisiciones.View.Reportes
             over.ShowText(texto);
 
 
-        }
+        }*/
 
 
         public override void OnEndPage(PdfWriter writer, Document document)
@@ -771,7 +778,7 @@ namespace Adquisiciones.View.Reportes
             footerTbl.DefaultCell.HorizontalAlignment = Element.ALIGN_RIGHT;
             footerTbl.DefaultCell.Border = 0;
             footerTbl.AddCell(writer.PageNumber + "");
-            footerTbl.WriteSelectedRows(0, -1, -5, 80, writer.DirectContent);
+            footerTbl.WriteSelectedRows(0, -1, -5, 110, writer.DirectContent);
 
         }
     }
