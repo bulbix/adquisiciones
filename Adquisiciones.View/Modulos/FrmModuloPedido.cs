@@ -5,6 +5,7 @@ using Adquisiciones.Business;
 using Adquisiciones.Business.ModPedido;
 using Adquisiciones.Data.Entities;
 using DevExpress.Utils;
+using DevExpress.XtraBars;
 using DevExpress.XtraEditors;
 using DevExpress.XtraGrid.Views.Base;
 using DevExpress.XtraGrid.Views.Grid;
@@ -18,10 +19,14 @@ namespace Adquisiciones.View.Modulos
         public Pedido PedidoActual;
         public Almacen AlmacenArticulo;
         private int tipoPedido = 0;
+        private decimal importeTotal = (decimal)0.0;
 
         public FrmModuloPedido(FrmAdquisiciones padre)
         {
             InitializeComponent();
+
+            cmdEliminar.Visibility = BarItemVisibility.Never;
+            cmdConsultar.Visibility = BarItemVisibility.Never;
 
             ModulosUsuario = padre.ModulosUsuario;
             AlmacenActual = padre.AlmacenSelect;
@@ -39,54 +44,40 @@ namespace Adquisiciones.View.Modulos
         {
             this.tipoPedido = tipoPedido;
             Nuevo();
+            
             PedidoActual.CatTipopedido = new CatTipopedido(tipoPedido);
 
-            //Si es distinto a pedido mayor deshabilita
             if (tipoPedido > 1)
-            {
                 searchLookUpAnexo.Enabled = false;
-            }
 
             if(tipoPedido > 2)
-            {
                 gridColumnFecha.Visible = false;
-            }
-
 
             BindearCampos();
             InicializarCatalogos();
 
         }
 
-         public FrmModuloPedido(Pedido pedido,FrmAdquisiciones padre):
-         this(pedido.CatTipopedido.IdTipoped,padre)
+         public FrmModuloPedido(Pedido pedido,FrmAdquisiciones padre):this(pedido.CatTipopedido.IdTipoped,padre)
          {
             PedidoActual = pedido;
             Consultar();
             Text = @"Pedido::" + pedido;
 
-
             if (pedido.Requisicion != null)
-            {
                 cmdGuardar.Enabled = false;
-                cmdEliminar.Enabled = false;
-            }
+            
          }
 
         public override void BindearCampos()
         {
             bsPedidoDetalle.DataSource = new List<PedidoDetalle>();
-
-            ////Bindeamos el padre
-            //deFechaPedido.DataBindings.Add(new Binding("DateTime", bsPedido, "FechaPedido", true));
-            //numPedido.DataBindings.Add(new Binding("Value", bsPedido, "NumeroPedido", true));
+           
             txtRequisicion.DataBindings.Add(new Binding("Text", bsPedido, "NumeroRequisicion", true));
             txtDescuento.DataBindings.Add(new Binding("Text", bsPedido, "ImporteDescuento", true));
             txtReserva.DataBindings.Add(new Binding("Text", bsPedido, "IdReservaautoriza", true));
             cbxActividad.DataBindings.Add(new Binding("SelectedValue", bsPedido, "CatActividad", true));
             cbxIva.DataBindings.Add(new Binding("SelectedValue", bsPedido, "Iva", true));
-
-            //txtReferencia.DataBindings.Add(new Binding("Text", bsPedido, "ImporteDescuento"));
             cbxCargo.DataBindings.Add(new Binding("SelectedValue", bsPedido, "CatPresupuesto", true));
             cbxInstituto.DataBindings.Add(new Binding("SelectedValue", bsPedido, "Instituto", true));
             txtObservaciones.DataBindings.Add(new Binding("Text", bsPedido, "Observaciones", false));
@@ -102,61 +93,49 @@ namespace Adquisiciones.View.Modulos
             bsArea.DataSource = PedidoService.PedidoDao.CargarCatalogo<CatArea>("Estatus", 1);
             bsProveedor.DataSource = PedidoService.PedidoDao.CargarCatalogo<Proveedor>();
             bsAnexo.DataSource = PedidoService.AnexoDao.CargarAnexos(AlmacenActual);
-
         }
 
         public override void Nuevo()
         {
             PedidoActual = new Pedido();
+            PedidoActual.CatTipopedido = new CatTipopedido(this.tipoPedido);
+
             bsPedido.DataSource = PedidoActual;
             bsPedidoDetalle.DataSource = new List<PedidoDetalle>();
 
             //Cargamos el numero de pedido maximo
-            PedidoActual.NumeroPedido = PedidoService.PedidoDao.SiguienteNumeroPedido(AlmacenActual, this.tipoPedido);
+            PedidoActual.NumeroPedido = PedidoService.PedidoDao.
+                SiguienteNumeroPedido(AlmacenActual, this.tipoPedido);
             lblNumero.Text = PedidoActual.NumeroPedido.ToString();
             PedidoActual.FechaPedido = PedidoService.PedidoDao.FechaServidor();
             lblFecha.Text = String.Format("{0:dd/MM/yyyy}", PedidoActual.FechaPedido);
+            
             cmdGuardar.Enabled = true;
-            cmdEliminar.Enabled = true;
-            lblNumErrors.Caption = string.Empty;
-            lblArea.Text = "";
-            lblLicitacion.Text = "";
-            lblProveedor.Text = "";
-            lblFundamento.Text = "";
+            cbxAlmacen.Enabled = true;
+            searchLookUpFundamento.EditValue = null;
+            searchLookUpArea.EditValue = null;
+            searchLookUpProveedor.EditValue = null;
+            searchLookUpAnexo.EditValue = null;
+            LimpiarErrores();
         }
 
         public override void Guardar()
         {
-            listaError.Strings.Clear();
-            lblNumErrors.Caption = "";
+            SumTotal();
+            LimpiarErrores();
 
             //los parametros basicos
             PedidoActual.Almacen = AlmacenActual;
             PedidoActual.Usuario = FrmModuloAcceso.UsuarioLog;
 
-            //Validaciones 
-
-            if(PedidoService.PedidoDao.ExisteNumeroPedido
-            (PedidoActual.Almacen,PedidoActual.CatTipopedido.IdTipoped,
-            PedidoActual.NumeroPedido.Value))
-            {
-                XtraMessageBox.Show(@"Numero Pedido ya existe",
-                @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-
-            }
-
-
             if (!Util.DatosValidos(PedidoActual, lblNumErrors, listaError))
-            {
                 return;
-            }
 
             PedidoActual.PedidoDetalle = bsPedidoDetalle.DataSource as List<PedidoDetalle>;
 
             try
             {
-                PedidoService.GuardarPedido(ref PedidoActual);
+                PedidoService.GuardarPedido(ref PedidoActual, importeTotal);
                 base.EntityActual = PedidoActual;
 
                 XtraMessageBox.Show(@"Pedido Registrado o Actualizado Exitosamente",
@@ -177,22 +156,39 @@ namespace Adquisiciones.View.Modulos
             {
                 PedidoActual = PedidoService.ConsultarPedido(PedidoActual.NumeroPedido.Value,
                                                           AlmacenActual);
-
                 if (PedidoActual != null)
                 {
+                    lblNumero.Text = PedidoActual.NumeroPedido.ToString();
+                    lblFecha.Text = String.Format("{0:dd/MM/yyyy}", PedidoActual.FechaPedido);
+
                     bsPedido.DataSource = PedidoActual;
                     bsPedidoDetalle.DataSource = PedidoActual.PedidoDetalle;
 
-                    lblFundamento.Text = PedidoActual.Fundamento.ToString();
-                    lblArea.Text = PedidoActual.CatArea.ToString();
-                    lblProveedor.Text = PedidoActual.Proveedor.ToString();
+                    if (searchLookUpFundamento.Handle != IntPtr.Zero)
+                        searchLookUpFundamento.EditValue = PedidoActual.Fundamento.CveFundamento;
+
+                    if (searchLookUpArea.Handle != IntPtr.Zero)
+                        searchLookUpArea.EditValue = PedidoActual.CatArea.CveArea;
+
+                    if (searchLookUpProveedor.Handle != IntPtr.Zero)
+                        searchLookUpProveedor.EditValue = PedidoActual.Proveedor.CveProveedor;
 
                     if (PedidoActual.Anexo != null)
-                        lblLicitacion.Text = PedidoActual.Anexo.ToString();
+                    {
+                        if (searchLookUpProveedor.Handle != IntPtr.Zero)
+                        searchLookUpProveedor.EditValue = PedidoActual.Anexo.NumeroAnexo;
+                    }
 
-                    listaError.Strings.Clear();
-                    lblNumErrors.Caption = string.Empty;
+                    LimpiarErrores();
                     SumTotal();
+
+                    if(PedidoService.PedidoDao.ExisteEntradaPedido(PedidoActual))
+                    {
+                        XtraMessageBox.Show(@"Ya Existe entrada asociada al pedido",
+                        @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        cmdGuardar.Enabled = false;
+                    }
+
 
                     base.EntityActual = PedidoActual;
                     base.Consultar();
@@ -222,10 +218,8 @@ namespace Adquisiciones.View.Modulos
             {
                 var funSeleccionado = searchLookUpEditFundamento.GetFocusedRow() as Fundamento;
 
-                PedidoActual.Fundamento = funSeleccionado;
-
-                if (funSeleccionado != null)
-                    lblFundamento.Text = funSeleccionado.ToString();
+                if(funSeleccionado != null)
+                    PedidoActual.Fundamento = funSeleccionado;
             }
 
         }
@@ -235,12 +229,9 @@ namespace Adquisiciones.View.Modulos
             if (searchLookUpArea.EditValue != null)
             {
                 var areaSeleccionada = searchLookUpEditArea.GetFocusedRow() as CatArea;
-
-                PedidoActual.CatArea = areaSeleccionada;
-
-
-                if (areaSeleccionada != null)
-                    lblArea.Text = areaSeleccionada.ToString();
+                
+                if(areaSeleccionada != null)
+                    PedidoActual.CatArea = areaSeleccionada;
             }
         }
 
@@ -250,33 +241,12 @@ namespace Adquisiciones.View.Modulos
             {
                 var provSeleccionado = searchLookUpEditProveedor.GetFocusedRow() as Proveedor;
 
-                PedidoActual.Proveedor = provSeleccionado;
-
-                if (provSeleccionado != null)
-                    lblProveedor.Text = provSeleccionado.ToString();
+                if(provSeleccionado != null)
+                    PedidoActual.Proveedor = provSeleccionado;
             }
 
         }
 
-        private void LimpiarComboAnexo()
-        {
-            PedidoActual.Anexo = null;
-            lblLicitacion.Text = string.Empty;
-            gvPedidoDetalle.OptionsView.NewItemRowPosition = NewItemRowPosition.Top;
-            gvPedidoDetalle.OptionsBehavior.AllowDeleteRows = DefaultBoolean.True;
-            bsPedidoDetalle.DataSource = new List<PedidoDetalle>();
-            lblSubTotal.Text = @"$0.00";
-
-            gridColumnArticulo.OptionsColumn.AllowEdit = true;
-            //gridColumnCantidad.OptionsColumn.AllowEdit = true;
-            
-        }
-
-        /// <summary>
-        /// Trae la licitacion en curso y su detalle para cargar el pedido
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void SearchLookUpAnexoEditValueChanged(object sender, EventArgs e)
         {
             if (searchLookUpAnexo.EditValue != null)
@@ -284,28 +254,23 @@ namespace Adquisiciones.View.Modulos
 
                 var anexoSeleccionado = searchLookUpEditAnexo.GetFocusedRow() as Anexo;
 
-                if(PedidoService.PedidoDao.ExisteAnexoPedido(anexoSeleccionado))
-                {
-                   XtraMessageBox.Show(@"El anexo ya esta asociado a un pedido",
-                   @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    LimpiarComboAnexo();
-                    return;
-                }
-
-                PedidoActual.Anexo = anexoSeleccionado;
-
                 if (anexoSeleccionado != null)
-                    lblLicitacion.Text = anexoSeleccionado.ToString();
-                
+                {
 
-                var pedidosDetalle = PedidoService.CargarPedidoDetalle(anexoSeleccionado);
-                bsPedidoDetalle.DataSource = pedidosDetalle;
-                gvPedidoDetalle.OptionsView.NewItemRowPosition = NewItemRowPosition.None;
-                gvPedidoDetalle.OptionsBehavior.AllowDeleteRows = DefaultBoolean.False;
-
-                gridColumnArticulo.OptionsColumn.AllowEdit = false;
-                //gridColumnCantidad.OptionsColumn.AllowEdit = false;
-
+                    if (PedidoService.PedidoDao.ExisteAnexoPedido(anexoSeleccionado))
+                    {
+                        XtraMessageBox.Show(@"El anexo ya esta asociado a un pedido",
+                                            @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        LimpiarComboAnexo();
+                        return;
+                    }
+                    PedidoActual.Anexo = anexoSeleccionado;
+                    var pedidosDetalle = PedidoService.CargarPedidoDetalle(anexoSeleccionado);
+                    bsPedidoDetalle.DataSource = pedidosDetalle;
+                    gvPedidoDetalle.OptionsView.NewItemRowPosition = NewItemRowPosition.None;
+                    gvPedidoDetalle.OptionsBehavior.AllowDeleteRows = DefaultBoolean.False;
+                    gridColumnArticulo.OptionsColumn.AllowEdit = false;
+                }
             }
             else
             {
@@ -342,6 +307,8 @@ namespace Adquisiciones.View.Modulos
                     gvPedidoDetalle.SetRowCellValue(e.RowHandle, "Articulo", articuloSelect);
                     gvPedidoDetalle.SetRowCellValue(e.RowHandle, "DescripcionArt", articuloSelect.DesArticulo);
                     gvPedidoDetalle.SetRowCellValue(e.RowHandle, "UnidadArt", articuloSelect.CatUnidad.Unidad);
+                    gvPedidoDetalle.SetRowCellValue(e.RowHandle, "Cantidad", 0);
+                    gvPedidoDetalle.SetRowCellValue(e.RowHandle, "PrecioUnitario", 0.0);
                     
                 }
                 catch (Exception ee)
@@ -367,6 +334,16 @@ namespace Adquisiciones.View.Modulos
             SumTotal();
         }
 
+        private void LimpiarComboAnexo()
+        {
+            PedidoActual.Anexo = null;
+            gvPedidoDetalle.OptionsView.NewItemRowPosition = NewItemRowPosition.Top;
+            gvPedidoDetalle.OptionsBehavior.AllowDeleteRows = DefaultBoolean.True;
+            bsPedidoDetalle.DataSource = new List<PedidoDetalle>();
+            lblSubTotal.Text = @"$0.00";
+            gridColumnArticulo.OptionsColumn.AllowEdit = true;
+        }
+
         private void SumTotal()
         {
             try
@@ -383,13 +360,13 @@ namespace Adquisiciones.View.Modulos
 
                     if (rbCantidad.Checked)
                     {
-                        descuento = PedidoActual.ImporteDescuento.Value;
+                        descuento = decimal.Parse(txtDescuento.Text);
                         lblDescuento.Text = descuento.ToString("$#,##0.00");
 
                     }
                     else if (rbPorcentaje.Checked)
                     {
-                        descuento = PedidoActual.ImporteDescuento.Value/100;
+                        descuento = decimal.Parse(txtDescuento.Text)/100;
                         lblDescuento.Text = descuento.ToString("$#,##0.00");
                     }
 
@@ -397,12 +374,14 @@ namespace Adquisiciones.View.Modulos
 
                     lblSubDesc.Text = importeDesc.ToString("$#,##0.00");
 
-                    decimal cantidadIva = importeDesc*PedidoActual.Iva.Id.Porcentaje/100;
+                    var iva = (cbxIva.SelectedValue as Iva).Id.Porcentaje;
+
+                    decimal cantidadIva = importeDesc*iva/100;
 
                     lblIva.Text = cantidadIva.ToString("$#,##0.00");
 
-                    var total = importeDesc - cantidadIva;
-                    lblTotal.Text = total.ToString("$#,##0.00");
+                    this.importeTotal = importeDesc - cantidadIva;
+                    lblTotal.Text = importeTotal.ToString("$#,##0.00");
 
                 }
             }
@@ -424,12 +403,7 @@ namespace Adquisiciones.View.Modulos
 
             return numOcurrencia > 1;
         }
-
-        /// <summary>
-        /// Display de la subventana PedidoEntregas
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+       
         private void RepositoryItemButtonEdit1Click(object sender, EventArgs e)
         {
             var pedidoDetalleSelect = gvPedidoDetalle.GetFocusedRow() as PedidoDetalle;
@@ -441,7 +415,7 @@ namespace Adquisiciones.View.Modulos
         {
             if (e.KeyCode == Keys.Delete)
             {
-                if (PedidoActual.Anexo != null) // Solo si no tiene anexo
+                if (PedidoActual.Anexo == null) // Solo si no tiene anexo
                 {
                     gvPedidoDetalle.DeleteRow(gvPedidoDetalle.FocusedRowHandle);
                 }
@@ -452,12 +426,16 @@ namespace Adquisiciones.View.Modulos
         {
             SumTotal();
         }
+
         private void CbxAlmacenSelectedValueChanged(object sender, EventArgs e)
         {
-            if (XtraMessageBox.Show(@"Esta seguro de cambiar el almacen? Se borrara el detralle", @"Adquisiciones",
-                   MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (cbxAlmacen.SelectedText != "")
             {
-                bsPedidoDetalle.DataSource = new List<AnexoDetalle>();
+                if (XtraMessageBox.Show(@"Esta seguro de cambiar el almacen? Se borrara el detalle", @"Adquisiciones",
+                                        MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    bsPedidoDetalle.DataSource = new List<AnexoDetalle>();
+                }
             }
 
         }

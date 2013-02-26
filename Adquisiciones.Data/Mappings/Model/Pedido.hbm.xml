@@ -42,7 +42,7 @@
       <one-to-many class="Adquisiciones.Data.Entities.Entrada,Adquisiciones.Data" />
     </bag>
     
-    <bag name="PedidoDetalle" inverse="true" lazy="true"  fetch="join">
+    <bag name="PedidoDetalle" inverse="true" lazy="true" cascade="all-delete-orphan"  fetch="join">
       <key column="id_pedido" />
       <one-to-many class="Adquisiciones.Data.Entities.PedidoDetalle,Adquisiciones.Data" />
     </bag>

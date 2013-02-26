@@ -248,9 +248,9 @@ namespace Adquisiciones.View
        
         private void barButtonItem13_ItemClick_1(object sender, ItemClickEventArgs e)
         {
-            var forma = new FrmAyuda();
-            forma.MdiParent = this;
-            forma.Show();
+            //var forma = new FrmAyuda();
+            //forma.MdiParent = this;
+            //forma.Show();
 
         }
         

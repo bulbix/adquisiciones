@@ -53,6 +53,8 @@ namespace Adquisiciones.Test.Anexo
         public void GuardarPedido()
         {
             var pedido = new Pedido();
+            pedido.NumeroPedido = PedidoService.PedidoDao.SiguienteNumeroPedido(new Almacen("C5"), 1);
+            pedido.FechaPedido = PedidoService.PedidoDao.FechaServidor();
             pedido.Almacen = new Almacen("C5");
             pedido.Iva = new Iva(new IvaId(1,16));
             //pedido.Anexo = new Anexo();

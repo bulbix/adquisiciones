@@ -26,7 +26,7 @@ namespace Adquisiciones.Data.Entities
 		protected CatActividad _catactividad;
 		protected CatPresupuesto _catpresupuesto;
 		protected Usuario _usuario;
-		protected DateTime? _fechaalta;
+		protected DateTime? _fechamodificacion;
 		protected string _ipterminal;
 		protected int? _modificacion;
 		
@@ -34,20 +34,6 @@ namespace Adquisiciones.Data.Entities
 		#region Constructors
 			
 		public Entrada() {}
-					
-		public Entrada(int identrada, int? numeroentrada, DateTime? fechaentrada, string numerofactura, int? recibio, int? supervisor, string estadoentrada, DateTime? fechaalta, string ipterminal, int? modificacion) 
-		{
-			this._identrada= identrada;
-			this._numeroentrada= numeroentrada;
-			this._fechaentrada= fechaentrada;
-			this._numerofactura= numerofactura;
-			this._recibio= recibio;
-			this._supervisor= supervisor;
-			this._estadoentrada= estadoentrada;
-			this._fechaalta= fechaalta;
-			this._ipterminal= ipterminal;
-			this._modificacion= modificacion;
-		}
 
 		public Entrada(int identrada)
 		{
@@ -116,10 +102,10 @@ namespace Adquisiciones.Data.Entities
 			get { return _usuario; }
 			set {_usuario= value; }
 		}
-		public  virtual DateTime? FechaAlta
+		public  virtual DateTime? FechaModificacion
 		{
-			get { return _fechaalta; }
-			set {_fechaalta= value; }
+			get { return _fechamodificacion; }
+			set {_fechamodificacion= value; }
 		}
 		public  virtual string IpTerminal
 		{

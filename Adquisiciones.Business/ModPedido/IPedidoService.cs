@@ -89,7 +89,8 @@ namespace Adquisiciones.Business.ModPedido
         /// 
         /// </summary>
         /// <param name="pedido"></param>
-        void GuardarPedido(ref Pedido pedido);
+        /// <param name="importeTotal"></param>
+        void GuardarPedido(ref Pedido pedido, decimal importeTotal);
 
 
         /// <summary>

@@ -83,6 +83,20 @@ namespace Adquisiciones.View
                 gvPedidoEntrega.DeleteRow(gvPedidoEntrega.FocusedRowHandle);
             }
 
+        }private void spinEdit1_KeyDown(object sender, KeyEventArgs e)
+        {
+           if (e.KeyCode == Keys.Enter)
+            {
+                var pedidoEntrega = new PedidoEntrega();
+                pedidoEntrega.FechaInicial = deFechaInicial.DateTime;
+                pedidoEntrega.FechaFinal = deFechaFinal.DateTime;
+                pedidoEntrega.Cantidad = seCantidad.Value;
+
+
+                (bsPedidoEntrega.DataSource as List<PedidoEntrega>).Add(pedidoEntrega);
+                gvPedidoEntrega.RefreshData();
+            }
+
         }
     }
 }

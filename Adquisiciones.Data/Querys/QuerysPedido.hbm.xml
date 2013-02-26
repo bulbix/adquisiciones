@@ -83,6 +83,13 @@
     ]]>
   </query>
 
+  <query name="Pedido.ExisteEntradaPedido">
+    <![CDATA[    
+      from Entrada e
+      where Pedido  = :pedido
+    ]]>
+  </query>
+
   <query name="Pedido.ExisteNumeroPedido">
     <![CDATA[    
         select p from Pedido p 

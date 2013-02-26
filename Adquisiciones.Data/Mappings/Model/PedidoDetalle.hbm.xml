@@ -23,7 +23,7 @@
     <property name="Cantidad" column="cantidad" type="Decimal" />
     <property name="PrecioUnitario" column="precio_unitario" type="Decimal" /> 
 
-    <bag name="PedidoEntrega" inverse="true" lazy="true" >
+    <bag name="PedidoEntrega" inverse="true" lazy="true" cascade="all-delete-orphan">
       <key column="id_pedidodetalle" />
       <one-to-many class="Adquisiciones.Data.Entities.PedidoEntrega,Adquisiciones.Data" />
     </bag>

@@ -186,18 +186,23 @@ namespace Adquisiciones.Business.ModPedido
         /// 
         /// </summary>
         /// <param name="pedido"></param>
+        /// <param name="importeTotal1"></param>
         /// <param name="pedidoDetalles"></param>
         [Transaction]
-        public void GuardarPedido(ref Pedido pedido)
+        public void GuardarPedido(ref Pedido pedido, decimal importeTotal)
         {
             //Genere un id nuevo
-            pedido.FechaCaptura = PedidoDao.FechaServidor();
             pedido.FechaModificacion = PedidoDao.FechaServidor();
             pedido.IpTerminal = Util.IpTerminal();
             ++pedido.Modificacion;
-            pedido.EstadoPedido = "A";
 
-            decimal? importeTotal = 0;
+            if (pedido.IdPedido == 0)//Nuevo
+            {
+                pedido.FechaCaptura = PedidoDao.FechaServidor();
+                pedido.EstadoPedido = "A";
+                pedido.NumeroPedido = PedidoDao.SiguienteNumeroPedido(pedido.Almacen,
+                pedido.CatTipopedido.IdTipoped);
+            }
 
             //Le cargamos el Articulo y la llave compuesta)
             for (var index = 0; index < pedido.PedidoDetalle.Count; index++)
@@ -208,12 +213,6 @@ namespace Adquisiciones.Business.ModPedido
                 if (pedidoDetalle.RenglonPedido == 0)
                     pedidoDetalle.RenglonPedido = (short)(index + 1);
 
-                //Seteamos el articulo                
-                //var articuloId = new ArticuloId(pedidoDetalle.CveArt.Value, pedido.Almacen);
-                //pedidoDetalle.Articulo = new Articulo(articuloId);
-
-                //Calcula el importe total
-                importeTotal += (pedidoDetalle.PrecioUnitario*pedidoDetalle.Cantidad);
                 var entrega = 1;
 
                 foreach (var pedidoEntrega in pedidoDetalle.PedidoEntrega)
@@ -224,7 +223,6 @@ namespace Adquisiciones.Business.ModPedido
             }
 
             pedido.ImporteTotal = importeTotal;
-
 
             PedidoDao.Merge(pedido);
 

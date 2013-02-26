@@ -39,7 +39,6 @@
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemDateEdit4 = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.repositoryItemCalcEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemCalcEdit();
             this.repositoryItemSearchLookUpEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit();
             this.gridView5 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.repositoryItemPopupContainerEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemPopupContainerEdit();
@@ -47,7 +46,14 @@
             this.repositoryItemDateEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
             this.repositoryItemDateEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
             this.repositoryItemCalcEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCalcEdit();
+            this.repositoryItemCalcEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemCalcEdit();
             this.lblCantidad = new System.Windows.Forms.Label();
+            this.deFechaInicial = new DevExpress.XtraEditors.DateEdit();
+            this.deFechaFinal = new DevExpress.XtraEditors.DateEdit();
+            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
+            this.seCantidad = new DevExpress.XtraEditors.SpinEdit();
             ((System.ComponentModel.ISupportInitialize)(this.bsPedidoEntrega)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gcPedidoEntrega)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvPedidoEntrega)).BeginInit();
@@ -55,7 +61,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit3.VistaTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit4.VistaTimeProperties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCalcEdit2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSearchLookUpEdit2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemPopupContainerEdit1)).BeginInit();
@@ -65,11 +70,17 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit2.VistaTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCalcEdit1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCalcEdit2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.deFechaInicial.Properties.VistaTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.deFechaInicial.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.deFechaFinal.Properties.VistaTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.deFechaFinal.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.seCantidad.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // cmdAceptar
             // 
-            this.cmdAceptar.Location = new System.Drawing.Point(129, 339);
+            this.cmdAceptar.Location = new System.Drawing.Point(34, 427);
             this.cmdAceptar.Name = "cmdAceptar";
             this.cmdAceptar.Size = new System.Drawing.Size(118, 63);
             this.cmdAceptar.TabIndex = 1;
@@ -78,7 +89,7 @@
             // 
             // cmdCancelar
             // 
-            this.cmdCancelar.Location = new System.Drawing.Point(272, 339);
+            this.cmdCancelar.Location = new System.Drawing.Point(200, 427);
             this.cmdCancelar.Name = "cmdCancelar";
             this.cmdCancelar.Size = new System.Drawing.Size(118, 63);
             this.cmdCancelar.TabIndex = 2;
@@ -87,10 +98,10 @@
             // 
             // gcPedidoEntrega
             // 
-            this.gcPedidoEntrega.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)));
+            this.gcPedidoEntrega.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.gcPedidoEntrega.DataSource = this.bsPedidoEntrega;
-            this.gcPedidoEntrega.Location = new System.Drawing.Point(111, 12);
+            this.gcPedidoEntrega.Location = new System.Drawing.Point(34, 96);
             this.gcPedidoEntrega.MainView = this.gvPedidoEntrega;
             this.gcPedidoEntrega.Name = "gcPedidoEntrega";
             this.gcPedidoEntrega.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
@@ -103,7 +114,7 @@
             this.repositoryItemDateEdit3,
             this.repositoryItemDateEdit4,
             this.repositoryItemCalcEdit2});
-            this.gcPedidoEntrega.Size = new System.Drawing.Size(336, 275);
+            this.gcPedidoEntrega.Size = new System.Drawing.Size(330, 297);
             this.gcPedidoEntrega.TabIndex = 3;
             this.gcPedidoEntrega.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvPedidoEntrega});
@@ -228,13 +239,11 @@
             this.gvPedidoEntrega.GridControl = this.gcPedidoEntrega;
             this.gvPedidoEntrega.Name = "gvPedidoEntrega";
             this.gvPedidoEntrega.NewItemRowText = "Clck aqui para agregar un nuevo registro";
-            this.gvPedidoEntrega.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.True;
+            this.gvPedidoEntrega.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.False;
             this.gvPedidoEntrega.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.True;
             this.gvPedidoEntrega.OptionsView.ColumnAutoWidth = false;
             this.gvPedidoEntrega.OptionsView.EnableAppearanceEvenRow = true;
             this.gvPedidoEntrega.OptionsView.EnableAppearanceOddRow = true;
-            this.gvPedidoEntrega.OptionsView.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.Top;
-            this.gvPedidoEntrega.OptionsView.ShowAutoFilterRow = true;
             this.gvPedidoEntrega.OptionsView.ShowGroupPanel = false;
             // 
             // gridColumn1
@@ -245,7 +254,8 @@
             this.gridColumn1.Name = "gridColumn1";
             this.gridColumn1.UnboundType = DevExpress.Data.UnboundColumnType.DateTime;
             this.gridColumn1.Visible = true;
-            this.gridColumn1.VisibleIndex = 0;
+            this.gridColumn1.VisibleIndex = 1;
+            this.gridColumn1.Width = 81;
             // 
             // repositoryItemDateEdit3
             // 
@@ -264,7 +274,8 @@
             this.gridColumn2.Name = "gridColumn2";
             this.gridColumn2.UnboundType = DevExpress.Data.UnboundColumnType.DateTime;
             this.gridColumn2.Visible = true;
-            this.gridColumn2.VisibleIndex = 1;
+            this.gridColumn2.VisibleIndex = 2;
+            this.gridColumn2.Width = 93;
             // 
             // repositoryItemDateEdit4
             // 
@@ -278,19 +289,11 @@
             // gridColumn3
             // 
             this.gridColumn3.Caption = "Cantidad";
-            this.gridColumn3.ColumnEdit = this.repositoryItemCalcEdit2;
             this.gridColumn3.FieldName = "Cantidad";
             this.gridColumn3.Name = "gridColumn3";
             this.gridColumn3.UnboundType = DevExpress.Data.UnboundColumnType.Decimal;
             this.gridColumn3.Visible = true;
-            this.gridColumn3.VisibleIndex = 2;
-            // 
-            // repositoryItemCalcEdit2
-            // 
-            this.repositoryItemCalcEdit2.AutoHeight = false;
-            this.repositoryItemCalcEdit2.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemCalcEdit2.Name = "repositoryItemCalcEdit2";
+            this.gridColumn3.VisibleIndex = 0;
             // 
             // repositoryItemSearchLookUpEdit2
             // 
@@ -347,14 +350,84 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.repositoryItemCalcEdit1.Name = "repositoryItemCalcEdit1";
             // 
+            // repositoryItemCalcEdit2
+            // 
+            this.repositoryItemCalcEdit2.AutoHeight = false;
+            this.repositoryItemCalcEdit2.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemCalcEdit2.Name = "repositoryItemCalcEdit2";
+            // 
             // lblCantidad
             // 
             this.lblCantidad.AutoSize = true;
-            this.lblCantidad.Location = new System.Drawing.Point(129, 304);
+            this.lblCantidad.Location = new System.Drawing.Point(31, 411);
             this.lblCantidad.Name = "lblCantidad";
             this.lblCantidad.Size = new System.Drawing.Size(35, 13);
             this.lblCantidad.TabIndex = 4;
             this.lblCantidad.Text = "label1";
+            // 
+            // deFechaInicial
+            // 
+            this.deFechaInicial.EditValue = null;
+            this.deFechaInicial.Location = new System.Drawing.Point(141, 12);
+            this.deFechaInicial.Name = "deFechaInicial";
+            this.deFechaInicial.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.deFechaInicial.Properties.VistaTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton()});
+            this.deFechaInicial.Size = new System.Drawing.Size(100, 20);
+            this.deFechaInicial.TabIndex = 5;
+            // 
+            // deFechaFinal
+            // 
+            this.deFechaFinal.EditValue = null;
+            this.deFechaFinal.Location = new System.Drawing.Point(141, 37);
+            this.deFechaFinal.Name = "deFechaFinal";
+            this.deFechaFinal.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.deFechaFinal.Properties.VistaTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton()});
+            this.deFechaFinal.Size = new System.Drawing.Size(100, 20);
+            this.deFechaFinal.TabIndex = 6;
+            // 
+            // labelControl1
+            // 
+            this.labelControl1.Location = new System.Drawing.Point(61, 15);
+            this.labelControl1.Name = "labelControl1";
+            this.labelControl1.Size = new System.Drawing.Size(59, 13);
+            this.labelControl1.TabIndex = 7;
+            this.labelControl1.Text = "Fecha Inicial";
+            // 
+            // labelControl2
+            // 
+            this.labelControl2.Location = new System.Drawing.Point(61, 40);
+            this.labelControl2.Name = "labelControl2";
+            this.labelControl2.Size = new System.Drawing.Size(54, 13);
+            this.labelControl2.TabIndex = 8;
+            this.labelControl2.Text = "Fecha Final";
+            // 
+            // labelControl3
+            // 
+            this.labelControl3.Location = new System.Drawing.Point(61, 63);
+            this.labelControl3.Name = "labelControl3";
+            this.labelControl3.Size = new System.Drawing.Size(43, 13);
+            this.labelControl3.TabIndex = 9;
+            this.labelControl3.Text = "Cantidad";
+            // 
+            // seCantidad
+            // 
+            this.seCantidad.EditValue = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.seCantidad.Location = new System.Drawing.Point(141, 64);
+            this.seCantidad.Name = "seCantidad";
+            this.seCantidad.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton()});
+            this.seCantidad.Size = new System.Drawing.Size(100, 20);
+            this.seCantidad.TabIndex = 10;
+            this.seCantidad.KeyDown += new System.Windows.Forms.KeyEventHandler(this.spinEdit1_KeyDown);
             // 
             // FrmPedidoEntrega
             // 
@@ -362,7 +435,13 @@
             this.Appearance.Options.UseForeColor = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(552, 435);
+            this.ClientSize = new System.Drawing.Size(414, 652);
+            this.Controls.Add(this.seCantidad);
+            this.Controls.Add(this.labelControl3);
+            this.Controls.Add(this.labelControl2);
+            this.Controls.Add(this.labelControl1);
+            this.Controls.Add(this.deFechaFinal);
+            this.Controls.Add(this.deFechaInicial);
             this.Controls.Add(this.lblCantidad);
             this.Controls.Add(this.gcPedidoEntrega);
             this.Controls.Add(this.cmdCancelar);
@@ -377,7 +456,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit4.VistaTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCalcEdit2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSearchLookUpEdit2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemPopupContainerEdit1)).EndInit();
@@ -387,6 +465,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit2.VistaTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCalcEdit1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCalcEdit2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.deFechaInicial.Properties.VistaTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.deFechaInicial.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.deFechaFinal.Properties.VistaTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.deFechaFinal.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.seCantidad.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -413,5 +497,11 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
         private DevExpress.XtraEditors.Repository.RepositoryItemCalcEdit repositoryItemCalcEdit2;
         private System.Windows.Forms.Label lblCantidad;
+        private DevExpress.XtraEditors.DateEdit deFechaInicial;
+        private DevExpress.XtraEditors.DateEdit deFechaFinal;
+        private DevExpress.XtraEditors.LabelControl labelControl1;
+        private DevExpress.XtraEditors.LabelControl labelControl2;
+        private DevExpress.XtraEditors.LabelControl labelControl3;
+        private DevExpress.XtraEditors.SpinEdit seCantidad;
     }
 }

@@ -76,7 +76,7 @@ namespace Adquisiciones.View.Reportes
                 titulo.AddCell(new Paragraph("SUBDIRECCIÓN DE COMPRAS Y SUMINISTROS", fuenteTitulo));
                 encabezado.AddCell(titulo);
 
-                var logoSalud = Image.GetInstance(assembly.GetManifestResourceStream("Adquisiciones.View.Resources.logo_salud.jpg"));
+                var logoSalud = Image.GetInstance(assembly.GetManifestResourceStream("Adquisiciones.View.Resources.logoINR2013.png"));
                 encabezado.AddCell(logoSalud);
 
                 encabezado.DefaultCell.Colspan = 3;
@@ -198,20 +198,27 @@ namespace Adquisiciones.View.Reportes
             {
                 case 1: //MAYOR
                     contrato.AddCell(new Paragraph("CONTRATO/ PEDIDO DE ADQUISICION", fuente));
+                    contrato.AddCell(new Paragraph("NUMERO: INR/" + pedido.FechaPedido.Value.Year + "/" 
+                        + pedido.NumeroPedido, fuenteBold));
+
                     break;
                 case 2: //MENOR
                     contrato.AddCell(new Paragraph("CONTRATO/ PEDIDO DE ADQUISICION POR MONTO:", fuente));
                     contrato.AddCell(new Paragraph("ART. 42 LA LEY DE ADQUISICIONES, ARRENDAMIENTOS Y SERVICIOS DEL SECTOR PUBLICO.", fuente));
+                    contrato.AddCell(new Paragraph("NUMERO: " + pedido.NumeroPedido, fuenteBold));
                     break;
                 case 3: //DONACION
                     contrato.AddCell(new Paragraph("CONTRATO/ PEDIDO DE DONACION", fuente));
+                    contrato.AddCell(new Paragraph("NUMERO: " + pedido.NumeroPedido, fuenteBold));
                     break;
                 case 4: //EXTRAMUROS
                     contrato.AddCell(new Paragraph("CONTRATO/ PEDIDO DE EXTRAMUROS", fuente));
+                    contrato.AddCell(new Paragraph("NUMERO: " + pedido.NumeroPedido, fuenteBold));
                     break;
+
             }
             
-            contrato.AddCell(new Paragraph("NUMERO: " + pedido.NumeroPedido, fuenteBold));
+            //contrato.AddCell(new Paragraph("NUMERO: " + pedido.NumeroPedido, fuenteBold));
             contrato.AddCell(new Paragraph("FECHA: " + String.Format("{0:dd/MM/yyyy}", pedido.FechaPedido), fuenteBold));
 
             var requisicion = pedido.NumeroRequisicion ?? pedido.Requisicion.ToString();
@@ -280,7 +287,7 @@ namespace Adquisiciones.View.Reportes
             var nombresMayor = new string[][]
             {new [] {"SUBDIRECTOR DE COMPRAS Y SUMINISTROS","LIC. JOSE RAUL SANCHEZ ARREDONDO"},
              new [] {"SUBDIRECTOR DE RECURSOS FINANCIEROS","C.P. ANTONIO URIBE ANDRADE"},
-             new [] {"DIRECTOR DE ASDMINISTRACION","DRA. MARICELA VERDEJO SILVA"},
+             new [] {"DIRECTOR DE ADMINISTRACION","DRA. MARICELA VERDEJO SILVA"},
              new [] {"DIRECTOR GENERAL DEL INSTITUTO","DR. LUIS GUILLERMO IBARRA"}
             };
 

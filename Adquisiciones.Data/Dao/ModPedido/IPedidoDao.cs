@@ -13,6 +13,9 @@ namespace Adquisiciones.Data.Dao.ModPedido
 
         bool ExisteRequisicionPedido(Requisicion requisicion);
         bool ExisteAnexoPedido(Anexo anexo);
+        bool ExisteEntradaPedido(Pedido pedido);
+
+
 
 
         Pedido ConsultaPedido(int numPedido, Almacen almacen);

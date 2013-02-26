@@ -313,7 +313,7 @@
             // 
             // searchLookUpUsuario
             // 
-            this.searchLookUpUsuario.EditValue = "<Null>";
+            this.searchLookUpUsuario.EditValue = "[Seleccione Usuario]";
             this.searchLookUpUsuario.Location = new System.Drawing.Point(342, 31);
             this.searchLookUpUsuario.Name = "searchLookUpUsuario";
             this.searchLookUpUsuario.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -347,7 +347,7 @@
             this.gridColumn1.UnboundType = DevExpress.Data.UnboundColumnType.String;
             this.gridColumn1.Visible = true;
             this.gridColumn1.VisibleIndex = 0;
-            this.gridColumn1.Width = 102;
+            this.gridColumn1.Width = 245;
             // 
             // gridColumn2
             // 
@@ -357,7 +357,7 @@
             this.gridColumn2.UnboundType = DevExpress.Data.UnboundColumnType.String;
             this.gridColumn2.Visible = true;
             this.gridColumn2.VisibleIndex = 1;
-            this.gridColumn2.Width = 398;
+            this.gridColumn2.Width = 429;
             // 
             // gridColumn3
             // 
@@ -367,7 +367,7 @@
             this.gridColumn3.UnboundType = DevExpress.Data.UnboundColumnType.Boolean;
             this.gridColumn3.Visible = true;
             this.gridColumn3.VisibleIndex = 2;
-            this.gridColumn3.Width = 56;
+            this.gridColumn3.Width = 77;
             // 
             // gridColumn4
             // 
@@ -377,7 +377,7 @@
             this.gridColumn4.UnboundType = DevExpress.Data.UnboundColumnType.String;
             this.gridColumn4.Visible = true;
             this.gridColumn4.VisibleIndex = 3;
-            this.gridColumn4.Width = 299;
+            this.gridColumn4.Width = 279;
             // 
             // cmdEliminar
             // 

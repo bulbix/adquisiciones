@@ -79,6 +79,16 @@ namespace Adquisiciones.Data.Dao.ModPedido
             return pedidos.Count != 0 ? true : false;
         }
 
+         [Transaction(ReadOnly = true)]
+        public bool ExisteEntradaPedido(Pedido pedido)
+        {
+            var query = CurrentSession.GetNamedQuery("Pedido.ExisteEntradaPedido");
+            query.SetParameter("pedido", pedido);
+            if (pedido.IdPedido == 0) return false;
+            var entradas = query.List<Entrada>();
+            return entradas.Count != 0 ? true : false;
+        }
+
         [Transaction(ReadOnly = true)]
         public Pedido ConsultaPedido(int numPedido, Almacen almacen)
         {
