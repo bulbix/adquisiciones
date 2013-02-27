@@ -30,26 +30,22 @@
         {
             this.components = new System.ComponentModel.Container();
             this.gcDatosGenerales = new DevExpress.XtraEditors.GroupControl();
-            this.lblProveedor = new DevExpress.XtraEditors.LabelControl();
-            this.label3 = new System.Windows.Forms.Label();
-            this.lblInstituto = new DevExpress.XtraEditors.LabelControl();
-            this.lblDesLicitacion = new DevExpress.XtraEditors.LabelControl();
-            this.searchLookUpProv = new DevExpress.XtraEditors.SearchLookUpEdit();
-            this.bsProveedor = new System.Windows.Forms.BindingSource(this.components);
-            this.searchLookUpEditProv = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.lblFechac = new System.Windows.Forms.Label();
+            this.lblLicitacion = new System.Windows.Forms.Label();
             this.searchLookUpAnexo = new DevExpress.XtraEditors.SearchLookUpEdit();
             this.bsAnexos = new System.Windows.Forms.BindingSource(this.components);
             this.searchLookUpEditAnexo = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.label45 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.dtpFechacotizacion = new DevExpress.XtraEditors.DateEdit();
-            this.lblFecha = new System.Windows.Forms.Label();
-            this.lblLicitacion = new System.Windows.Forms.Label();
+            this.searchLookUpProv = new DevExpress.XtraEditors.SearchLookUpEdit();
+            this.bsProveedor = new System.Windows.Forms.BindingSource(this.components);
+            this.searchLookUpEditProv = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.lblFecha = new DevExpress.XtraEditors.LabelControl();
+            this.lblInstituto = new DevExpress.XtraEditors.LabelControl();
             this.gcCotizacionDetalle = new DevExpress.XtraGrid.GridControl();
             this.bsCotizacionDetalle = new System.Windows.Forms.BindingSource(this.components);
             this.gvCotizacionDetalle = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -60,18 +56,18 @@
             this.gridColumn11 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn12 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn13 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.cmdConsultar = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             this.splitContainerControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gcDatosGenerales)).BeginInit();
             this.gcDatosGenerales.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.searchLookUpProv.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bsProveedor)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEditProv)).BeginInit();
+            this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.searchLookUpAnexo.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsAnexos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEditAnexo)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtpFechacotizacion.Properties.VistaTimeProperties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtpFechacotizacion.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.searchLookUpProv.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsProveedor)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEditProv)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gcCotizacionDetalle)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsCotizacionDetalle)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvCotizacionDetalle)).BeginInit();
@@ -79,122 +75,69 @@
             // 
             // splitContainerControl1
             // 
-            this.splitContainerControl1.Location = new System.Drawing.Point(0, 68);
+            this.splitContainerControl1.Location = new System.Drawing.Point(0, 70);
             this.splitContainerControl1.Panel1.Controls.Add(this.gcDatosGenerales);
             this.splitContainerControl1.Panel2.Controls.Add(this.gcCotizacionDetalle);
-            this.splitContainerControl1.Size = new System.Drawing.Size(1130, 333);
-            this.splitContainerControl1.SplitterPosition = 167;
+            this.splitContainerControl1.Size = new System.Drawing.Size(1130, 327);
+            this.splitContainerControl1.SplitterPosition = 91;
             // 
             // gcDatosGenerales
             // 
-            this.gcDatosGenerales.Controls.Add(this.lblProveedor);
-            this.gcDatosGenerales.Controls.Add(this.label3);
+            this.gcDatosGenerales.Controls.Add(this.tableLayoutPanel1);
             this.gcDatosGenerales.Controls.Add(this.lblInstituto);
-            this.gcDatosGenerales.Controls.Add(this.lblDesLicitacion);
-            this.gcDatosGenerales.Controls.Add(this.searchLookUpProv);
-            this.gcDatosGenerales.Controls.Add(this.searchLookUpAnexo);
-            this.gcDatosGenerales.Controls.Add(this.label45);
-            this.gcDatosGenerales.Controls.Add(this.label2);
-            this.gcDatosGenerales.Controls.Add(this.label1);
-            this.gcDatosGenerales.Controls.Add(this.dtpFechacotizacion);
-            this.gcDatosGenerales.Controls.Add(this.lblFecha);
-            this.gcDatosGenerales.Controls.Add(this.lblLicitacion);
             this.gcDatosGenerales.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gcDatosGenerales.Location = new System.Drawing.Point(0, 0);
             this.gcDatosGenerales.Name = "gcDatosGenerales";
-            this.gcDatosGenerales.Size = new System.Drawing.Size(1130, 167);
+            this.gcDatosGenerales.Size = new System.Drawing.Size(1130, 91);
             this.gcDatosGenerales.TabIndex = 9;
             this.gcDatosGenerales.Text = "Datos Generales";
             // 
-            // lblProveedor
+            // tableLayoutPanel1
             // 
-            this.lblProveedor.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblProveedor.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.lblProveedor.Location = new System.Drawing.Point(121, 135);
-            this.lblProveedor.Name = "lblProveedor";
-            this.lblProveedor.Size = new System.Drawing.Size(148, 16);
-            this.lblProveedor.TabIndex = 29;
-            this.lblProveedor.Text = "                                     ";
+            this.tableLayoutPanel1.ColumnCount = 7;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 42.51208F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 57.48792F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 297F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 79F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 359F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 140F));
+            this.tableLayoutPanel1.Controls.Add(this.cmdConsultar, 6, 0);
+            this.tableLayoutPanel1.Controls.Add(this.lblFechac, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.lblLicitacion, 2, 0);
+            this.tableLayoutPanel1.Controls.Add(this.searchLookUpAnexo, 3, 0);
+            this.tableLayoutPanel1.Controls.Add(this.label45, 4, 0);
+            this.tableLayoutPanel1.Controls.Add(this.searchLookUpProv, 5, 0);
+            this.tableLayoutPanel1.Controls.Add(this.lblFecha, 1, 0);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(12, 42);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1077, 44);
+            this.tableLayoutPanel1.TabIndex = 30;
             // 
-            // label3
+            // lblFechac
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(5, 135);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(114, 13);
-            this.label3.TabIndex = 28;
-            this.label3.Text = "Descripcion Proveedor";
+            this.lblFechac.AutoSize = true;
+            this.lblFechac.Location = new System.Drawing.Point(3, 0);
+            this.lblFechac.Name = "lblFechac";
+            this.lblFechac.Size = new System.Drawing.Size(36, 13);
+            this.lblFechac.TabIndex = 17;
+            this.lblFechac.Text = "Fecha";
             // 
-            // lblInstituto
+            // lblLicitacion
             // 
-            this.lblInstituto.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblInstituto.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.lblInstituto.Location = new System.Drawing.Point(475, 70);
-            this.lblInstituto.Name = "lblInstituto";
-            this.lblInstituto.Size = new System.Drawing.Size(160, 16);
-            this.lblInstituto.TabIndex = 27;
-            this.lblInstituto.Text = "                                        ";
-            // 
-            // lblDesLicitacion
-            // 
-            this.lblDesLicitacion.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDesLicitacion.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.lblDesLicitacion.Location = new System.Drawing.Point(121, 70);
-            this.lblDesLicitacion.Name = "lblDesLicitacion";
-            this.lblDesLicitacion.Size = new System.Drawing.Size(148, 16);
-            this.lblDesLicitacion.TabIndex = 26;
-            this.lblDesLicitacion.Text = "                                     ";
-            // 
-            // searchLookUpProv
-            // 
-            this.searchLookUpProv.EditValue = "";
-            this.searchLookUpProv.Location = new System.Drawing.Point(121, 98);
-            this.searchLookUpProv.Name = "searchLookUpProv";
-            this.searchLookUpProv.Properties.Appearance.ForeColor = System.Drawing.Color.Navy;
-            this.searchLookUpProv.Properties.Appearance.Options.UseForeColor = true;
-            this.searchLookUpProv.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.searchLookUpProv.Properties.DataSource = this.bsProveedor;
-            this.searchLookUpProv.Properties.DisplayMember = "NombreFiscal";
-            this.searchLookUpProv.Properties.NullText = "";
-            this.searchLookUpProv.Properties.ValueMember = "CveProveedor";
-            this.searchLookUpProv.Properties.View = this.searchLookUpEditProv;
-            this.searchLookUpProv.Size = new System.Drawing.Size(368, 20);
-            this.searchLookUpProv.TabIndex = 3;
-            this.searchLookUpProv.EditValueChanged += new System.EventHandler(this.SearchLookUpProvEditValueChanged);
-            // 
-            // searchLookUpEditProv
-            // 
-            this.searchLookUpEditProv.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.gridColumn1,
-            this.gridColumn2});
-            this.searchLookUpEditProv.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
-            this.searchLookUpEditProv.Name = "searchLookUpEditProv";
-            this.searchLookUpEditProv.OptionsSelection.EnableAppearanceFocusedCell = false;
-            this.searchLookUpEditProv.OptionsView.ShowGroupPanel = false;
-            // 
-            // gridColumn1
-            // 
-            this.gridColumn1.Caption = "Clave";
-            this.gridColumn1.FieldName = "CveProveedor";
-            this.gridColumn1.Name = "gridColumn1";
-            this.gridColumn1.Visible = true;
-            this.gridColumn1.VisibleIndex = 0;
-            this.gridColumn1.Width = 91;
-            // 
-            // gridColumn2
-            // 
-            this.gridColumn2.Caption = "Nombre Fiscal";
-            this.gridColumn2.FieldName = "NombreFiscal";
-            this.gridColumn2.Name = "gridColumn2";
-            this.gridColumn2.Visible = true;
-            this.gridColumn2.VisibleIndex = 1;
-            this.gridColumn2.Width = 699;
+            this.lblLicitacion.AutoSize = true;
+            this.lblLicitacion.Location = new System.Drawing.Point(154, 0);
+            this.lblLicitacion.Name = "lblLicitacion";
+            this.lblLicitacion.Size = new System.Drawing.Size(38, 13);
+            this.lblLicitacion.TabIndex = 1;
+            this.lblLicitacion.Text = "Anexo";
             // 
             // searchLookUpAnexo
             // 
             this.searchLookUpAnexo.EditValue = "";
-            this.searchLookUpAnexo.Location = new System.Drawing.Point(121, 26);
+            this.searchLookUpAnexo.Location = new System.Drawing.Point(204, 3);
             this.searchLookUpAnexo.Name = "searchLookUpAnexo";
             this.searchLookUpAnexo.Properties.Appearance.ForeColor = System.Drawing.Color.Navy;
             this.searchLookUpAnexo.Properties.Appearance.Options.UseForeColor = true;
@@ -205,7 +148,7 @@
             this.searchLookUpAnexo.Properties.NullText = "";
             this.searchLookUpAnexo.Properties.ValueMember = "IdAnexo";
             this.searchLookUpAnexo.Properties.View = this.searchLookUpEditAnexo;
-            this.searchLookUpAnexo.Size = new System.Drawing.Size(196, 20);
+            this.searchLookUpAnexo.Size = new System.Drawing.Size(291, 20);
             this.searchLookUpAnexo.TabIndex = 1;
             this.searchLookUpAnexo.Tag = "";
             this.searchLookUpAnexo.EditValueChanged += new System.EventHandler(this.SearchLookUpAnexoEditValueChanged);
@@ -241,62 +184,76 @@
             // label45
             // 
             this.label45.AutoSize = true;
-            this.label45.Location = new System.Drawing.Point(5, 105);
+            this.label45.Location = new System.Drawing.Point(501, 0);
             this.label45.Name = "label45";
             this.label45.Size = new System.Drawing.Size(57, 13);
             this.label45.TabIndex = 23;
             this.label45.Text = "Proveedor";
             // 
-            // label2
+            // searchLookUpProv
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(421, 70);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(48, 13);
-            this.label2.TabIndex = 21;
-            this.label2.Text = "Instituto";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(5, 70);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(110, 13);
-            this.label1.TabIndex = 19;
-            this.label1.Text = "Descripción de Anexo";
-            // 
-            // dtpFechacotizacion
-            // 
-            this.dtpFechacotizacion.EditValue = null;
-            this.dtpFechacotizacion.Location = new System.Drawing.Point(501, 29);
-            this.dtpFechacotizacion.Name = "dtpFechacotizacion";
-            this.dtpFechacotizacion.Properties.Appearance.ForeColor = System.Drawing.Color.Navy;
-            this.dtpFechacotizacion.Properties.Appearance.Options.UseForeColor = true;
-            this.dtpFechacotizacion.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.searchLookUpProv.EditValue = "";
+            this.searchLookUpProv.Location = new System.Drawing.Point(580, 3);
+            this.searchLookUpProv.Name = "searchLookUpProv";
+            this.searchLookUpProv.Properties.Appearance.ForeColor = System.Drawing.Color.Navy;
+            this.searchLookUpProv.Properties.Appearance.Options.UseForeColor = true;
+            this.searchLookUpProv.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dtpFechacotizacion.Properties.LookAndFeel.SkinName = "Blue";
-            this.dtpFechacotizacion.Properties.VistaTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.dtpFechacotizacion.Size = new System.Drawing.Size(100, 20);
-            this.dtpFechacotizacion.TabIndex = 2;
+            this.searchLookUpProv.Properties.DataSource = this.bsProveedor;
+            this.searchLookUpProv.Properties.DisplayMember = "NombreFiscal";
+            this.searchLookUpProv.Properties.NullText = "";
+            this.searchLookUpProv.Properties.ValueMember = "CveProveedor";
+            this.searchLookUpProv.Properties.View = this.searchLookUpEditProv;
+            this.searchLookUpProv.Size = new System.Drawing.Size(342, 20);
+            this.searchLookUpProv.TabIndex = 3;
+            this.searchLookUpProv.EditValueChanged += new System.EventHandler(this.SearchLookUpProvEditValueChanged);
+            // 
+            // searchLookUpEditProv
+            // 
+            this.searchLookUpEditProv.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn1,
+            this.gridColumn2});
+            this.searchLookUpEditProv.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            this.searchLookUpEditProv.Name = "searchLookUpEditProv";
+            this.searchLookUpEditProv.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.searchLookUpEditProv.OptionsView.ShowGroupPanel = false;
+            // 
+            // gridColumn1
+            // 
+            this.gridColumn1.Caption = "Clave";
+            this.gridColumn1.FieldName = "CveProveedor";
+            this.gridColumn1.Name = "gridColumn1";
+            this.gridColumn1.Visible = true;
+            this.gridColumn1.VisibleIndex = 0;
+            this.gridColumn1.Width = 91;
+            // 
+            // gridColumn2
+            // 
+            this.gridColumn2.Caption = "Nombre Fiscal";
+            this.gridColumn2.FieldName = "NombreFiscal";
+            this.gridColumn2.Name = "gridColumn2";
+            this.gridColumn2.Visible = true;
+            this.gridColumn2.VisibleIndex = 1;
+            this.gridColumn2.Width = 699;
             // 
             // lblFecha
             // 
-            this.lblFecha.AutoSize = true;
-            this.lblFecha.Location = new System.Drawing.Point(401, 32);
+            this.lblFecha.Appearance.ForeColor = System.Drawing.Color.Blue;
+            this.lblFecha.Location = new System.Drawing.Point(67, 3);
             this.lblFecha.Name = "lblFecha";
-            this.lblFecha.Size = new System.Drawing.Size(88, 13);
-            this.lblFecha.TabIndex = 17;
-            this.lblFecha.Text = "Fecha Cotizacion";
+            this.lblFecha.Size = new System.Drawing.Size(63, 13);
+            this.lblFecha.TabIndex = 24;
+            this.lblFecha.Text = "labelControl1";
             // 
-            // lblLicitacion
+            // lblInstituto
             // 
-            this.lblLicitacion.AutoSize = true;
-            this.lblLicitacion.Location = new System.Drawing.Point(5, 34);
-            this.lblLicitacion.Name = "lblLicitacion";
-            this.lblLicitacion.Size = new System.Drawing.Size(38, 13);
-            this.lblLicitacion.TabIndex = 1;
-            this.lblLicitacion.Text = "Anexo";
+            this.lblInstituto.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblInstituto.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.lblInstituto.Location = new System.Drawing.Point(475, 70);
+            this.lblInstituto.Name = "lblInstituto";
+            this.lblInstituto.Size = new System.Drawing.Size(160, 16);
+            this.lblInstituto.TabIndex = 27;
+            this.lblInstituto.Text = "                                        ";
             // 
             // gcCotizacionDetalle
             // 
@@ -305,7 +262,7 @@
             this.gcCotizacionDetalle.Location = new System.Drawing.Point(0, 0);
             this.gcCotizacionDetalle.MainView = this.gvCotizacionDetalle;
             this.gcCotizacionDetalle.Name = "gcCotizacionDetalle";
-            this.gcCotizacionDetalle.Size = new System.Drawing.Size(1130, 160);
+            this.gcCotizacionDetalle.Size = new System.Drawing.Size(1130, 230);
             this.gcCotizacionDetalle.TabIndex = 4;
             this.gcCotizacionDetalle.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvCotizacionDetalle});
@@ -435,6 +392,7 @@
             this.gvCotizacionDetalle.Name = "gvCotizacionDetalle";
             this.gvCotizacionDetalle.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.False;
             this.gvCotizacionDetalle.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.True;
+            this.gvCotizacionDetalle.OptionsCustomization.AllowSort = false;
             this.gvCotizacionDetalle.OptionsView.ColumnAutoWidth = false;
             this.gvCotizacionDetalle.OptionsView.EnableAppearanceEvenRow = true;
             this.gvCotizacionDetalle.OptionsView.EnableAppearanceOddRow = true;
@@ -523,6 +481,15 @@
             this.gridColumn13.VisibleIndex = 6;
             this.gridColumn13.Width = 199;
             // 
+            // cmdConsultar
+            // 
+            this.cmdConsultar.Location = new System.Drawing.Point(939, 3);
+            this.cmdConsultar.Name = "cmdConsultar";
+            this.cmdConsultar.Size = new System.Drawing.Size(135, 38);
+            this.cmdConsultar.TabIndex = 31;
+            this.cmdConsultar.Text = "Consultar";
+            this.cmdConsultar.Click += new System.EventHandler(this.cmdConsultar_Click);
+            // 
             // FrmModuloCotizacion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -535,14 +502,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.gcDatosGenerales)).EndInit();
             this.gcDatosGenerales.ResumeLayout(false);
             this.gcDatosGenerales.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.searchLookUpProv.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bsProveedor)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEditProv)).EndInit();
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.searchLookUpAnexo.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsAnexos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEditAnexo)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtpFechacotizacion.Properties.VistaTimeProperties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtpFechacotizacion.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.searchLookUpProv.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsProveedor)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEditProv)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gcCotizacionDetalle)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsCotizacionDetalle)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvCotizacionDetalle)).EndInit();
@@ -553,10 +520,7 @@
         #endregion
 
         private DevExpress.XtraEditors.GroupControl gcDatosGenerales;
-        private DevExpress.XtraEditors.LabelControl lblProveedor;
-        private System.Windows.Forms.Label label3;
         private DevExpress.XtraEditors.LabelControl lblInstituto;
-        private DevExpress.XtraEditors.LabelControl lblDesLicitacion;
         private DevExpress.XtraEditors.SearchLookUpEdit searchLookUpProv;
         private DevExpress.XtraGrid.Views.Grid.GridView searchLookUpEditProv;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
@@ -566,10 +530,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
         private System.Windows.Forms.Label label45;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
-        private DevExpress.XtraEditors.DateEdit dtpFechacotizacion;
-        private System.Windows.Forms.Label lblFecha;
+        private System.Windows.Forms.Label lblFechac;
         private System.Windows.Forms.Label lblLicitacion;
         private DevExpress.XtraGrid.GridControl gcCotizacionDetalle;
         private DevExpress.XtraGrid.Views.Grid.GridView gvCotizacionDetalle;
@@ -583,5 +544,8 @@
         private System.Windows.Forms.BindingSource bsCotizacionDetalle;
         private System.Windows.Forms.BindingSource bsProveedor;
         private System.Windows.Forms.BindingSource bsAnexos;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private DevExpress.XtraEditors.LabelControl lblFecha;
+        private DevExpress.XtraEditors.SimpleButton cmdConsultar;
     }
 }

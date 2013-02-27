@@ -84,7 +84,7 @@ namespace Adquisiciones.Data.Entities
             }
         }
 
-        [NotNull(Message = ("Campo Requerido"))]
+       
         public virtual string Instituto
         {
             get { return _instituto; }

@@ -46,8 +46,8 @@ namespace Adquisiciones.View.Modulos
             Nuevo();
             base.ObtenerPerfil();
         }
-        public FrmModuloCotizacion(Cotizacion cotizacion, FrmAdquisiciones padre)
-            : this(padre)
+
+        public FrmModuloCotizacion(Cotizacion cotizacion, FrmAdquisiciones padre): this(padre)
         {
             CotizacionActual = cotizacion;
             AnexoActual = cotizacion.Anexo;
@@ -57,7 +57,6 @@ namespace Adquisiciones.View.Modulos
 
         public override void BindearCampos()
         {
-            CotizacionActual.FechaCotizacion = dtpFechacotizacion.DateTime;
             CotizacionActual.Usuario = FrmModuloAcceso.UsuarioLog;
             CotizacionActual.Almacen = AlmacenActual;
         }
@@ -77,15 +76,15 @@ namespace Adquisiciones.View.Modulos
             //No capturen nuevamente anexo y proveedor
             CotizacionActual.Anexo = AnexoActual;
             CotizacionActual.Proveedor = ProveedorActual;
-            dtpFechacotizacion.DateTime = DateTime.Now;
+            CotizacionActual.FechaCotizacion = CotizacionService.CotizacionDao.FechaServidor();
+            lblFecha.Text = String.Format("{0:dd/MM/yyyy}", CotizacionActual.FechaCotizacion);
+           
             BindearCampos();
 
             bsCotizacionDetalle.DataSource = new List<CotizacionDetalle>();
-            listaError.Strings.Clear();
-            lblNumErrors.Caption = string.Empty;
+            LimpiarErrores();
             gcDatosGenerales.Enabled = true;
             cmdGuardar.Enabled = true;
-            cmdEliminar.Enabled = true;
         }
 
         public override void Guardar()
@@ -129,19 +128,22 @@ namespace Adquisiciones.View.Modulos
             {
                 Nuevo();
 
-               
-
                 if (Util.DatosValidos(CotizacionActual, lblNumErrors, listaError))
                 {
                     CotizacionService.ConsultarCotizacion(ref CotizacionActual);
                     bsCotizacionDetalle.DataSource = CotizacionActual.CotizacionDetalle;
 
+                    if (searchLookUpAnexo.Handle != IntPtr.Zero)
+                        searchLookUpAnexo.EditValue = CotizacionActual.Anexo.IdAnexo;
+
                     AnexoActual = CotizacionActual.Anexo;
-                    lblInstituto.Text = MapeoInstituto(CotizacionActual.Anexo);
-                    lblDesLicitacion.Text = CotizacionActual.Anexo.ToString();
+
+                    if (searchLookUpProv.Handle != IntPtr.Zero)
+                        searchLookUpProv.EditValue = CotizacionActual.Proveedor.CveProveedor;
+
                     ProveedorActual = CotizacionActual.Proveedor;
-                    lblProveedor.Text = CotizacionActual.Proveedor.ToString();
-                    dtpFechacotizacion.DateTime = CotizacionActual.FechaCotizacion.Value;
+
+                    lblFecha.Text = String.Format("{0:dd/MM/yyyy}", CotizacionActual.FechaCotizacion);
 
                     base.EntityActual = CotizacionActual;
                     base.Consultar();
@@ -151,13 +153,10 @@ namespace Adquisiciones.View.Modulos
                         XtraMessageBox.Show(@"El anexo tiene fallo",
                         @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         cmdGuardar.Enabled = false;
-                        cmdEliminar.Enabled = false;
                     }
 
                     gcDatosGenerales.Enabled = false;
-                    this.Text = lblDesLicitacion.Text + "@" + lblProveedor.Text;
-
-
+                    this.Text = AnexoActual + "@" + ProveedorActual;
                 }
             }
             catch (Exception ee)
@@ -167,59 +166,42 @@ namespace Adquisiciones.View.Modulos
             }
         }
 
-        private static string MapeoInstituto(Anexo anexo)
-        {
-            switch (anexo.Instituto)
-            {
-                case "O":
-                    return "ORTOPEDIA";
-                case "R":
-                    return "REHABILITACION";
-                case "C":
-                    return "COMUNICACION";
-            }
-
-            return "";
-        }
-
         private void SearchLookUpAnexoEditValueChanged(object sender, EventArgs e)
         {
             if (searchLookUpAnexo.EditValue != null)
             {
-                //Pinta el instituto y la descripcion del anexo
-                var idAnexo = (long)searchLookUpAnexo.EditValue;
-                AnexoActual = CotizacionService.AnexoDao.Get(idAnexo);
-                CotizacionActual.Anexo = AnexoActual;
-                lblInstituto.Text = MapeoInstituto(CotizacionActual.Anexo);
-                lblDesLicitacion.Text = CotizacionActual.Anexo.ToString();
-                searchLookUpProv.Focus();
+                var anexoSeleccionado = searchLookUpEditAnexo.GetFocusedRow() as Anexo;
+
+                if (anexoSeleccionado != null)
+                {
+                    AnexoActual = anexoSeleccionado;
+                    CotizacionActual.Anexo = AnexoActual;
+                }
             }
             else
             {
                 AnexoActual = null;
                 CotizacionActual.Anexo = AnexoActual;
-                lblInstituto.Text = string.Empty;
-                lblDesLicitacion.Text = string.Empty;
-                searchLookUpProv.Focus();
             }
         }
 
         private void SearchLookUpProvEditValueChanged(object sender, EventArgs e)
         {
+
             if (searchLookUpProv.EditValue != null)
             {
-                var cveProv = (int)searchLookUpProv.EditValue;
-                ProveedorActual = CotizacionService.ProveedorDao.Get(cveProv);
-                CotizacionActual.Proveedor = ProveedorActual;
-                lblProveedor.Text = CotizacionActual.Proveedor.ToString();
-                gcCotizacionDetalle.Focus();
+                var provSeleccionado = searchLookUpEditProv.GetFocusedRow() as Proveedor;
+
+                if (provSeleccionado != null)
+                {
+                    ProveedorActual = provSeleccionado;
+                    CotizacionActual.Proveedor = ProveedorActual;
+                }  
             }
             else
             {
                 ProveedorActual = null;
                 CotizacionActual.Proveedor = null;
-                lblProveedor.Text = string.Empty;
-                gcCotizacionDetalle.Focus();
             }
         }
 
@@ -229,6 +211,11 @@ namespace Adquisiciones.View.Modulos
             {
                 gvCotizacionDetalle.DeleteRow(gvCotizacionDetalle.FocusedRowHandle);
             }
+        }
+
+        private void cmdConsultar_Click(object sender, EventArgs e)
+        {
+            Consultar();
         }
 
     }

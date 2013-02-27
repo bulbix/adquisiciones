@@ -25,9 +25,6 @@ namespace Adquisiciones.View.Modulos
         {
             InitializeComponent();
 
-            cmdEliminar.Visibility = BarItemVisibility.Never;
-            cmdConsultar.Visibility = BarItemVisibility.Never;
-
             ModulosUsuario = padre.ModulosUsuario;
             AlmacenActual = padre.AlmacenSelect;
             AlmacenesCombo(cbxAlmacen, AlmacenActual);
@@ -426,23 +423,18 @@ namespace Adquisiciones.View.Modulos
         {
             SumTotal();
         }
-
-        private void CbxAlmacenSelectedValueChanged(object sender, EventArgs e)
-        {
-            if (cbxAlmacen.SelectedText != "")
-            {
-                if (XtraMessageBox.Show(@"Esta seguro de cambiar el almacen? Se borrara el detalle", @"Adquisiciones",
-                                        MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                {
-                    bsPedidoDetalle.DataSource = new List<AnexoDetalle>();
-                }
-            }
-
-        }
-
         private void CbxIvaSelectedValueChanged(object sender, EventArgs e)
         {
             SumTotal();
+        }
+
+        private void CmdCargarAlmacenClick(object sender, EventArgs e)
+        {
+            if (XtraMessageBox.Show(@"Esta seguro de cambiar el almacen? Se borrara el detalle", @"Adquisiciones",
+                                        MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                bsPedidoDetalle.DataSource = new List<AnexoDetalle>();
+            }
         }
     }
 }

@@ -111,7 +111,11 @@ namespace Adquisiciones.Business.ModCotizacion
         [Transaction]
         public void GuardarCotizacion(ref Cotizacion cotizacion)
         {
-            cotizacion.FechaCaptura = CotizacionDao.FechaServidor();
+            if (cotizacion.IdCotizacion == 0)
+            {
+                cotizacion.FechaCaptura = CotizacionDao.FechaServidor();
+            }
+
             cotizacion.FechaModificacion = CotizacionDao.FechaServidor();
             cotizacion.IpTerminal = Util.IpTerminal();
             

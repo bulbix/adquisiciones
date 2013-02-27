@@ -18,12 +18,7 @@ namespace Adquisiciones.View.Modulos
        ///<summary></summary>
         public IAnexoService AnexoService { get; set; }
         public IFalloService FalloService { get; set; }
-
-        ///<summary>
-        ///</summary>
         public Anexo AnexoActual;
-
-        public Almacen AlmacenArticulo;
 
         public FrmModuloAnexo(FrmAdquisiciones padre)
         {
@@ -53,19 +48,13 @@ namespace Adquisiciones.View.Modulos
         {
             AnexoActual = anexo;
             Consultar();
-
-            //Cargar los articulos del almacen con centinela seleccionado
-            var almacenSelect = AnexoActual.AnexoDetalle[0].Articulo.Id.Almacen;
-            CargarArticulos(almacenSelect);
         }
         
         public override void BindearCampos()
         {
             bsAnexoDetalle.DataSource = new List<AnexoDetalle>();
             txtnumlicitacion.DataBindings.Add(new Binding("Text", bsAnexo, "NumeroAnexo",false));
-            dtpFechaanexo.DataBindings.Add(new Binding("DateTime", bsAnexo, "FechaAnexo", true));
             txtDesanexo.DataBindings.Add(new Binding("Text", bsAnexo, "DesAnexo",true));
-            cbxInstituto.DataBindings.Add(new Binding("SelectedValue", bsAnexo, "Instituto",true));
             cbxTipolicitacion.DataBindings.Add(new Binding("SelectedValue", bsAnexo, "TipoLicitacion", true));
             cbxIva.DataBindings.Add(new Binding("SelectedValue", bsAnexo, "Iva", true));
             txtTechopresupuestal.DataBindings.Add(new Binding("Text", bsAnexo, "TechoPresupuestal", true));
@@ -75,7 +64,6 @@ namespace Adquisiciones.View.Modulos
 
         public override void InicializarCatalogos()
         {
-            AnexoService.InstitutosCombo(cbxInstituto);
             AnexoService.TiposLicitacionesCombo(cbxTipolicitacion);
             AnexoService.IvasCombo(cbxIva);
         }
@@ -86,16 +74,16 @@ namespace Adquisiciones.View.Modulos
             bsAnexo.DataSource = AnexoActual;
             bsAnexoDetalle.DataSource = new List<AnexoDetalle>();
 
+            AnexoActual.FechaAnexo = AnexoService.AnexoDao.FechaServidor();
+            lblFecha.Text = String.Format("{0:dd/MM/yyyy}", AnexoActual.FechaAnexo);
+
             txtnumlicitacion.Enabled = true;
-            dtpFechaanexo.Enabled = true;
             cmdGuardar.Enabled = true;
-            cmdEliminar.Enabled = true;
             cmdMaximos.Enabled = false;
 
             txtnumlicitacion.Focus();
             LimpiarErrores();
             cbxAlmacen.Enabled = true;
-            cmdCargarArt.Enabled = true;
         }
 
         public override void Guardar()
@@ -106,13 +94,10 @@ namespace Adquisiciones.View.Modulos
             try
             {
                 if (!Util.DatosValidos(AnexoActual, lblNumErrors, listaError))
-                {
                     return;
-                }
 
                 AnexoActual.Almacen = AlmacenActual;
                 AnexoActual.Usuario = FrmModuloAcceso.UsuarioLog;
-                AnexoActual.FechaAnexo = dtpFechaanexo.DateTime;
                 AnexoService.GuardarAnexo(ref AnexoActual);
 
                 Consultar();
@@ -134,10 +119,6 @@ namespace Adquisiciones.View.Modulos
         {
             Consultar();
             HayErrores();
-
-            //Cargar los articulos del almacen con centinela seleccionado
-            var almacenSelect = AnexoActual.AnexoDetalle[0].Articulo.Id.Almacen;
-            CargarArticulos(almacenSelect);
         }
 
         public override void Consultar()
@@ -154,6 +135,8 @@ namespace Adquisiciones.View.Modulos
                     bsAnexo.DataSource = AnexoActual;
                     bsAnexoDetalle.DataSource = AnexoActual.AnexoDetalle;
 
+                    lblFecha.Text = String.Format("{0:dd/MM/yyyy}", AnexoActual.FechaAnexo);
+
                     LimpiarErrores();
 
                     base.EntityActual = AnexoActual;
@@ -164,7 +147,7 @@ namespace Adquisiciones.View.Modulos
                         XtraMessageBox.Show(@"El anexo tiene asociadas cotizaciones o pedidos",
                         @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         cmdGuardar.Enabled = false;
-                        cmdEliminar.Enabled = false;
+                        
                     }
 
                     if (FalloService.CotizacionDao.ExisteAnexoFallo(AnexoActual))
@@ -187,8 +170,6 @@ namespace Adquisiciones.View.Modulos
             }
 
             cbxAlmacen.Enabled = false;
-            cmdCargarArt.Enabled = false;
-
            Text = @"Anexo::" + AnexoActual.NumeroAnexo;
 
         }
@@ -229,11 +210,16 @@ namespace Adquisiciones.View.Modulos
                     try
                     {
                         var cveArt = (int) rowSelectValue;
-                        var articuloid = new ArticuloId(cveArt, AlmacenArticulo);
+                        var almacen = cbxAlmacen.SelectedValue as Almacen;
+                        var articuloid = new ArticuloId(cveArt, almacen);
+
                         var articuloSelect = AnexoService.ArticuloDao.Get(articuloid);
                         gvAnexoDetalle.SetRowCellValue(e.RowHandle, "Articulo", articuloSelect);
                         gvAnexoDetalle.SetRowCellValue(e.RowHandle, "DescripcionArt", articuloSelect.DesArticulo);
                         gvAnexoDetalle.SetRowCellValue(e.RowHandle, "UnidadArt", articuloSelect.CatUnidad.Unidad);
+                        gvAnexoDetalle.SetRowCellValue(e.RowHandle, "CantidadMinimo", 0);
+                        gvAnexoDetalle.SetRowCellValue(e.RowHandle, "CantidadMaximo", 0);
+
                     }catch (Exception ee)
                     {
                         gvAnexoDetalle.SetRowCellValue(e.RowHandle, "DescripcionArt", "");
@@ -291,37 +277,12 @@ namespace Adquisiciones.View.Modulos
             }
         }
 
-        /// <summary>
-        /// Carga claves con almacen donde se registran claves
-        /// </summary>
-        /// <param name="almacen"></param>
-        private void CargarArticulos(Almacen almacen)
-        {
-            repositoryItemSearchLookUpEdit2.DataSource =
-                AnexoService.ArticuloDao.ArticulosByAlmacen(almacen);
-            repositoryItemSearchLookUpEdit2.DisplayMember = "CveArt";
-            repositoryItemSearchLookUpEdit2.ValueMember = "CveArt";
-            cbxAlmacen.SelectedIndex = -1;
-
-            AlmacenArticulo = almacen;
-
-            XtraMessageBox.Show(@"Articulos cargados satisfactoriamente",
-            @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
-
-        private void CmdCargarArtClick(object sender, EventArgs e)
-        {
-            if (XtraMessageBox.Show(@"Esta seguro de cambiar el almacen? Se borrara el detralle", @"Adquisiciones",
-                    MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+        private void CmdCargarAlmacenClick(object sender, EventArgs e){
+            if (XtraMessageBox.Show(@"Esta seguro de cambiar el almacen? Se borrara el detalle", @"Adquisiciones",
+                                        MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 bsAnexoDetalle.DataSource = new List<AnexoDetalle>();
-                CargarArticulos(cbxAlmacen.SelectedValue as Almacen);
             }
-
-        }
-
-        private void txtnumlicitacion_EditValueChanged(object sender, EventArgs e)
-        {
 
         }
     }

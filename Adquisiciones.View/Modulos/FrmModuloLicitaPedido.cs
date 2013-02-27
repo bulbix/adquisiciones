@@ -18,7 +18,6 @@ namespace Adquisiciones.View.Modulos
     public partial class FrmModuloLicitaPedido : FrmModulo
     {
         ///<summary
-        /// Servicio de Negocio
         ///</summary>
         public IPedidoService PedidoService { get; set; }
 
@@ -59,20 +58,17 @@ namespace Adquisiciones.View.Modulos
 
         public override void BindearCampos()
         {
-            //deFechaPedido.DataBindings.Add(new Binding("DateTime", bsPedido, "FechaPedido", true));
-            //txtObservaciones.DataBindings.Add(new Binding("Text", bsPedido, "Observaciones", true));
             cbxIva.DataBindings.Add(new Binding("SelectedValue", bsPedido, "Iva", true));
             cbxActividad.DataBindings.Add(new Binding("SelectedValue", bsPedido, "CatActividad", true));
             cbxCargo.DataBindings.Add(new Binding("SelectedValue", bsPedido, "CatPresupuesto", true));
         }
 
         public override void Nuevo()
-        {PedidoActual = new Pedido();
+        {
+            PedidoActual = new Pedido();
             bsPedido.DataSource = PedidoActual;
             LimpiarRequisicion();
-            lblFundamento.Text = "";
-            listaError.Strings.Clear();
-            lblNumErrors.Caption = "";
+            LimpiarErrores();
         }
 
         public override void Guardar()
@@ -84,9 +80,7 @@ namespace Adquisiciones.View.Modulos
 
             //Validaciones 
             if (!DatosValidosPedido(PedidoActual, listaError))
-            {
                 return;
-            }
 
             //los parametros basicos
             PedidoActual.Observaciones = txtObservaciones.Text;
@@ -94,7 +88,8 @@ namespace Adquisiciones.View.Modulos
             PedidoActual.Usuario = FrmModuloAcceso.UsuarioLog;
 
             try
-            {PedidoService.GenerarPedidoAutomatico(PedidoActual, RequisicionActual,
+            {
+                PedidoService.GenerarPedidoAutomatico(PedidoActual, RequisicionActual,
                     deFechaInicial.DateTime, deFechaFinal.DateTime);
                 
                 XtraMessageBox.Show(@"Pedido Automatico realizado Exitosamente Requisicion #" + PedidoActual.Requisicion.NumeroRequisicion,
@@ -113,10 +108,10 @@ namespace Adquisiciones.View.Modulos
 
         private void LimpiarRequisicion()
         {
-            lblFechaRequisicion.Text = "";
             lblArea.Text = "";
             lblLicitacion.Text = "";
-            PedidoActual.Requisicion = null;}
+            PedidoActual.Requisicion = null;
+        }
 
         private void SearchLookUpRequisicionEditValueChanged(object sender, EventArgs e)
         {
@@ -144,7 +139,6 @@ namespace Adquisiciones.View.Modulos
 
                 if (reqSeleccionada != null)
                 {
-                    lblFechaRequisicion.Text = String.Format("{0:dd/MM/yyyy}", reqSeleccionada.FechaRequisicion);
                     lblArea.Text = reqSeleccionada.CatArea.ToString();
                     lblLicitacion.Text = reqSeleccionada.Anexo.ToString();
                 }
@@ -156,10 +150,8 @@ namespace Adquisiciones.View.Modulos
         {
             if (searchLookUpFundamento.EditValue != null)
             {
-                var fundamentoSelecciondao = searchLookUpEditFundamento.GetFocusedRow() as Fundamento;
-                PedidoActual.Fundamento = fundamentoSelecciondao;
-                if (fundamentoSelecciondao != null)
-                    lblFundamento.Text = fundamentoSelecciondao.ToString();
+                var fundamentoSeleccionado = searchLookUpEditFundamento.GetFocusedRow() as Fundamento;
+                PedidoActual.Fundamento = fundamentoSeleccionado;
             }
         }
 
@@ -225,28 +217,6 @@ namespace Adquisiciones.View.Modulos
 
             return result;
         }
-
-        private void CallPedidoBusqueda()
-        {
-            var forma = new FrmBusquedaPedido(this.MdiParent as FrmAdquisiciones);
-            forma.MdiParent = this.MdiParent;
-            forma.Show();
-
-        }
-
-        protected override void CmdConsultarClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            CallPedidoBusqueda();
-        }
-
-        protected override void CmdEliminarItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            CallPedidoBusqueda();
-        }
-
-        protected override void CmdReporteItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            CallPedidoBusqueda();
-        }
+      
     }
 }

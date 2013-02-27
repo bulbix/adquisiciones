@@ -43,7 +43,7 @@ namespace Adquisiciones.Business.ModAnexo
             Util.Dicc2Combo<Iva, short>(dicc, combo);
         }
 
-        public void InstitutosCombo(System.Windows.Forms.ComboBox combo)
+        public void InstitutosCombo(ComboBox combo)
         {
             var institutos = new Dictionary<string, string>
                                  {
@@ -60,9 +60,16 @@ namespace Adquisiciones.Business.ModAnexo
         [Transaction]
         public void GuardarAnexo(ref Anexo anexo)
         {
-            anexo.FechaCaptura = AnexoDao.FechaServidor();
+            
+            if(anexo.IdAnexo == 0)
+            {
+                anexo.FechaCaptura = AnexoDao.FechaServidor();
+            }
+            
+            
             anexo.FechaModificacion = AnexoDao.FechaServidor();
             anexo.IpTerminal = Util.IpTerminal();
+            ++anexo.Modificacion;
             
             //Le cargamos el Articulo y la llave compuesta
             for (var index = 0; index < anexo.AnexoDetalle.Count; index++)
@@ -71,13 +78,9 @@ namespace Adquisiciones.Business.ModAnexo
 
                 anexoDetalle.RenglonAnexo = (short)(index + 1);
                 anexoDetalle.Anexo = anexo;
-
-                ////Seteamos el articulo                
-                //var articuloId = new ArticuloId(anexoDetalle.CveArt.Value, anexo.Almacen);
-                //anexoDetalle.Articulo = new Articulo(articuloId);
             }
 
-            ++anexo.Modificacion;
+            
             anexo = AnexoDao.Merge(anexo);
 
           

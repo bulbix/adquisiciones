@@ -30,46 +30,46 @@
         {
             this.components = new System.ComponentModel.Container();
             this.gcDatosGenerales = new DevExpress.XtraEditors.GroupControl();
-            this.cmdCargarArt = new DevExpress.XtraEditors.SimpleButton();
-            this.cmdMaximos = new DevExpress.XtraEditors.SimpleButton();
-            this.txtnumlicitacion = new DevExpress.XtraEditors.TextEdit();
-            this.cbxIva = new System.Windows.Forms.ComboBox();
-            this.cbxTipolicitacion = new System.Windows.Forms.ComboBox();
-            this.cbxInstituto = new System.Windows.Forms.ComboBox();
-            this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
-            this.txtTechopresupuestal = new DevExpress.XtraEditors.CalcEdit();
-            this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
-            this.txtDesanexo = new DevExpress.XtraEditors.TextEdit();
-            this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
-            this.dtpFechaanexo = new DevExpress.XtraEditors.DateEdit();
-            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
+            this.cmdCargarAlmacen = new DevExpress.XtraEditors.SimpleButton();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
+            this.txtnumlicitacion = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
+            this.cbxIva = new System.Windows.Forms.ComboBox();
+            this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
+            this.cbxTipolicitacion = new System.Windows.Forms.ComboBox();
+            this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
+            this.txtDesanexo = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
+            this.txtTechopresupuestal = new DevExpress.XtraEditors.CalcEdit();
+            this.lblFecha = new DevExpress.XtraEditors.LabelControl();
+            this.cmdMaximos = new DevExpress.XtraEditors.SimpleButton();
             this.gcAnexoDetalle = new DevExpress.XtraGrid.GridControl();
             this.bsAnexoDetalle = new System.Windows.Forms.BindingSource(this.components);
             this.gvAnexoDetalle = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.gridColumnArticulo = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumnDescripcion = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemSearchLookUpEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumnDescripcion = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.bsAnexo = new System.Windows.Forms.BindingSource(this.components);
+            this.gridColumnArticulo = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             this.splitContainerControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gcDatosGenerales)).BeginInit();
             this.gcDatosGenerales.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtnumlicitacion.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtTechopresupuestal.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDesanexo.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtpFechaanexo.Properties.VistaTimeProperties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtpFechaanexo.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTechopresupuestal.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gcAnexoDetalle)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsAnexoDetalle)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvAnexoDetalle)).BeginInit();
@@ -82,8 +82,8 @@
             // 
             this.splitContainerControl1.Panel1.Controls.Add(this.gcDatosGenerales);
             this.splitContainerControl1.Panel2.Controls.Add(this.gcAnexoDetalle);
-            this.splitContainerControl1.Size = new System.Drawing.Size(941, 472);
-            this.splitContainerControl1.SplitterPosition = 134;
+            this.splitContainerControl1.Size = new System.Drawing.Size(1114, 603);
+            this.splitContainerControl1.SplitterPosition = 169;
             // 
             // lblAlmacen
             // 
@@ -97,172 +97,169 @@
             // 
             // gcDatosGenerales
             // 
-            this.gcDatosGenerales.Controls.Add(this.cmdCargarArt);
+            this.gcDatosGenerales.Controls.Add(this.cmdCargarAlmacen);
+            this.gcDatosGenerales.Controls.Add(this.tableLayoutPanel1);
             this.gcDatosGenerales.Controls.Add(this.cmdMaximos);
-            this.gcDatosGenerales.Controls.Add(this.txtnumlicitacion);
-            this.gcDatosGenerales.Controls.Add(this.cbxIva);
-            this.gcDatosGenerales.Controls.Add(this.cbxTipolicitacion);
-            this.gcDatosGenerales.Controls.Add(this.cbxInstituto);
-            this.gcDatosGenerales.Controls.Add(this.labelControl7);
-            this.gcDatosGenerales.Controls.Add(this.txtTechopresupuestal);
-            this.gcDatosGenerales.Controls.Add(this.labelControl6);
-            this.gcDatosGenerales.Controls.Add(this.labelControl5);
-            this.gcDatosGenerales.Controls.Add(this.txtDesanexo);
-            this.gcDatosGenerales.Controls.Add(this.labelControl4);
-            this.gcDatosGenerales.Controls.Add(this.labelControl3);
-            this.gcDatosGenerales.Controls.Add(this.dtpFechaanexo);
-            this.gcDatosGenerales.Controls.Add(this.labelControl2);
-            this.gcDatosGenerales.Controls.Add(this.labelControl1);
             this.gcDatosGenerales.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gcDatosGenerales.Location = new System.Drawing.Point(0, 0);
             this.gcDatosGenerales.Name = "gcDatosGenerales";
-            this.gcDatosGenerales.Size = new System.Drawing.Size(941, 134);
+            this.gcDatosGenerales.Size = new System.Drawing.Size(1114, 169);
             this.gcDatosGenerales.TabIndex = 2;
             this.gcDatosGenerales.Text = "Datos Generales";
             // 
-            // cmdCargarArt
+            // cmdCargarAlmacen
             // 
-            this.cmdCargarArt.Location = new System.Drawing.Point(819, 41);
-            this.cmdCargarArt.Name = "cmdCargarArt";
-            this.cmdCargarArt.Size = new System.Drawing.Size(102, 23);
-            this.cmdCargarArt.TabIndex = 14;
-            this.cmdCargarArt.Text = "Cargar Articulos";
-            this.cmdCargarArt.Click += new System.EventHandler(this.CmdCargarArtClick);
+            this.cmdCargarAlmacen.Location = new System.Drawing.Point(819, 41);
+            this.cmdCargarAlmacen.Name = "cmdCargarAlmacen";
+            this.cmdCargarAlmacen.Size = new System.Drawing.Size(89, 23);
+            this.cmdCargarAlmacen.TabIndex = 16;
+            this.cmdCargarAlmacen.Text = "Limpiar Almacen";
+            this.cmdCargarAlmacen.Click += new System.EventHandler(this.CmdCargarAlmacenClick);
             // 
-            // cmdMaximos
+            // tableLayoutPanel1
             // 
-            this.cmdMaximos.Enabled = false;
-            this.cmdMaximos.Location = new System.Drawing.Point(645, 90);
-            this.cmdMaximos.Name = "cmdMaximos";
-            this.cmdMaximos.Size = new System.Drawing.Size(144, 41);
-            this.cmdMaximos.TabIndex = 13;
-            this.cmdMaximos.Text = "Ampliar Maximos";
-            this.cmdMaximos.Click += new System.EventHandler(this.CmdMaximosClick);
+            this.tableLayoutPanel1.ColumnCount = 8;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15.07177F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 84.92823F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 76F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 134F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 112F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 147F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 57F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 171F));
+            this.tableLayoutPanel1.Controls.Add(this.labelControl1, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.txtnumlicitacion, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.labelControl2, 2, 0);
+            this.tableLayoutPanel1.Controls.Add(this.cbxIva, 7, 1);
+            this.tableLayoutPanel1.Controls.Add(this.labelControl7, 6, 1);
+            this.tableLayoutPanel1.Controls.Add(this.cbxTipolicitacion, 3, 1);
+            this.tableLayoutPanel1.Controls.Add(this.labelControl6, 4, 1);
+            this.tableLayoutPanel1.Controls.Add(this.labelControl4, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.txtDesanexo, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.labelControl5, 2, 1);
+            this.tableLayoutPanel1.Controls.Add(this.txtTechopresupuestal, 5, 1);
+            this.tableLayoutPanel1.Controls.Add(this.lblFecha, 3, 0);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 84);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30.88235F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 69.11765F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1106, 136);
+            this.tableLayoutPanel1.TabIndex = 15;
+            // 
+            // labelControl1
+            // 
+            this.labelControl1.Location = new System.Drawing.Point(3, 3);
+            this.labelControl1.Name = "labelControl1";
+            this.labelControl1.Size = new System.Drawing.Size(43, 13);
+            this.labelControl1.TabIndex = 1;
+            this.labelControl1.Text = "Licitacion";
             // 
             // txtnumlicitacion
             // 
-            this.txtnumlicitacion.Location = new System.Drawing.Point(83, 32);
+            this.txtnumlicitacion.Location = new System.Drawing.Point(64, 3);
             this.txtnumlicitacion.Name = "txtnumlicitacion";
             this.txtnumlicitacion.Size = new System.Drawing.Size(194, 20);
             this.txtnumlicitacion.TabIndex = 1;
-            this.txtnumlicitacion.EditValueChanged += new System.EventHandler(this.txtnumlicitacion_EditValueChanged);
             this.txtnumlicitacion.Leave += new System.EventHandler(this.TxtnumlicitacionLeave);
+            // 
+            // labelControl2
+            // 
+            this.labelControl2.Location = new System.Drawing.Point(411, 3);
+            this.labelControl2.Name = "labelControl2";
+            this.labelControl2.Size = new System.Drawing.Size(29, 13);
+            this.labelControl2.TabIndex = 2;
+            this.labelControl2.Text = "Fecha";
             // 
             // cbxIva
             // 
             this.cbxIva.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxIva.FormattingEnabled = true;
-            this.cbxIva.Location = new System.Drawing.Point(489, 90);
+            this.cbxIva.Location = new System.Drawing.Point(937, 44);
             this.cbxIva.Name = "cbxIva";
-            this.cbxIva.Size = new System.Drawing.Size(121, 21);
+            this.cbxIva.Size = new System.Drawing.Size(98, 21);
             this.cbxIva.TabIndex = 7;
-            // 
-            // cbxTipolicitacion
-            // 
-            this.cbxTipolicitacion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbxTipolicitacion.FormattingEnabled = true;
-            this.cbxTipolicitacion.Location = new System.Drawing.Point(86, 90);
-            this.cbxTipolicitacion.Name = "cbxTipolicitacion";
-            this.cbxTipolicitacion.Size = new System.Drawing.Size(121, 21);
-            this.cbxTipolicitacion.TabIndex = 5;
-            // 
-            // cbxInstituto
-            // 
-            this.cbxInstituto.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbxInstituto.FormattingEnabled = true;
-            this.cbxInstituto.Location = new System.Drawing.Point(485, 28);
-            this.cbxInstituto.Name = "cbxInstituto";
-            this.cbxInstituto.Size = new System.Drawing.Size(121, 21);
-            this.cbxInstituto.TabIndex = 3;
             // 
             // labelControl7
             // 
-            this.labelControl7.Location = new System.Drawing.Point(445, 93);
+            this.labelControl7.Location = new System.Drawing.Point(880, 44);
             this.labelControl7.Name = "labelControl7";
             this.labelControl7.Size = new System.Drawing.Size(31, 13);
             this.labelControl7.TabIndex = 12;
             this.labelControl7.Text = "% IVA";
             // 
+            // cbxTipolicitacion
+            // 
+            this.cbxTipolicitacion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxTipolicitacion.FormattingEnabled = true;
+            this.cbxTipolicitacion.Location = new System.Drawing.Point(487, 44);
+            this.cbxTipolicitacion.Name = "cbxTipolicitacion";
+            this.cbxTipolicitacion.Size = new System.Drawing.Size(121, 21);
+            this.cbxTipolicitacion.TabIndex = 5;
+            // 
+            // labelControl6
+            // 
+            this.labelControl6.Location = new System.Drawing.Point(621, 44);
+            this.labelControl6.Name = "labelControl6";
+            this.labelControl6.Size = new System.Drawing.Size(94, 13);
+            this.labelControl6.TabIndex = 10;
+            this.labelControl6.Text = "Techo Presupuestal";
+            // 
+            // labelControl4
+            // 
+            this.labelControl4.Location = new System.Drawing.Point(3, 44);
+            this.labelControl4.Name = "labelControl4";
+            this.labelControl4.Size = new System.Drawing.Size(54, 13);
+            this.labelControl4.TabIndex = 6;
+            this.labelControl4.Text = "Descripcion";
+            // 
+            // txtDesanexo
+            // 
+            this.txtDesanexo.Location = new System.Drawing.Point(64, 44);
+            this.txtDesanexo.Name = "txtDesanexo";
+            this.txtDesanexo.Properties.LookAndFeel.SkinName = "Blue";
+            this.txtDesanexo.Size = new System.Drawing.Size(341, 20);
+            this.txtDesanexo.TabIndex = 4;
+            // 
+            // labelControl5
+            // 
+            this.labelControl5.Location = new System.Drawing.Point(411, 44);
+            this.labelControl5.Name = "labelControl5";
+            this.labelControl5.Size = new System.Drawing.Size(66, 13);
+            this.labelControl5.TabIndex = 8;
+            this.labelControl5.Text = "Tipo Licitacion";
+            // 
             // txtTechopresupuestal
             // 
-            this.txtTechopresupuestal.Location = new System.Drawing.Point(327, 90);
+            this.txtTechopresupuestal.Location = new System.Drawing.Point(733, 44);
             this.txtTechopresupuestal.Name = "txtTechopresupuestal";
             this.txtTechopresupuestal.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.txtTechopresupuestal.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.txtTechopresupuestal.Properties.LookAndFeel.SkinName = "Blue";
             this.txtTechopresupuestal.Properties.Mask.EditMask = "c";
-            this.txtTechopresupuestal.Size = new System.Drawing.Size(100, 20);
+            this.txtTechopresupuestal.Size = new System.Drawing.Size(141, 20);
             this.txtTechopresupuestal.TabIndex = 6;
             // 
-            // labelControl6
+            // lblFecha
             // 
-            this.labelControl6.Location = new System.Drawing.Point(227, 93);
-            this.labelControl6.Name = "labelControl6";
-            this.labelControl6.Size = new System.Drawing.Size(94, 13);
-            this.labelControl6.TabIndex = 10;
-            this.labelControl6.Text = "Techo Presupuestal";
+            this.lblFecha.Appearance.ForeColor = System.Drawing.Color.Blue;
+            this.lblFecha.Location = new System.Drawing.Point(487, 3);
+            this.lblFecha.Name = "lblFecha";
+            this.lblFecha.Size = new System.Drawing.Size(63, 13);
+            this.lblFecha.TabIndex = 13;
+            this.lblFecha.Text = "labelControl3";
             // 
-            // labelControl5
+            // cmdMaximos
             // 
-            this.labelControl5.Location = new System.Drawing.Point(14, 93);
-            this.labelControl5.Name = "labelControl5";
-            this.labelControl5.Size = new System.Drawing.Size(66, 13);
-            this.labelControl5.TabIndex = 8;
-            this.labelControl5.Text = "Tipo Licitacion";
-            // 
-            // txtDesanexo
-            // 
-            this.txtDesanexo.Location = new System.Drawing.Point(83, 57);
-            this.txtDesanexo.Name = "txtDesanexo";
-            this.txtDesanexo.Properties.LookAndFeel.SkinName = "Blue";
-            this.txtDesanexo.Size = new System.Drawing.Size(344, 20);
-            this.txtDesanexo.TabIndex = 4;
-            // 
-            // labelControl4
-            // 
-            this.labelControl4.Location = new System.Drawing.Point(15, 57);
-            this.labelControl4.Name = "labelControl4";
-            this.labelControl4.Size = new System.Drawing.Size(54, 13);
-            this.labelControl4.TabIndex = 6;
-            this.labelControl4.Text = "Descripcion";
-            // 
-            // labelControl3
-            // 
-            this.labelControl3.Location = new System.Drawing.Point(433, 32);
-            this.labelControl3.Name = "labelControl3";
-            this.labelControl3.Size = new System.Drawing.Size(41, 13);
-            this.labelControl3.TabIndex = 4;
-            this.labelControl3.Text = "Instituto";
-            // 
-            // dtpFechaanexo
-            // 
-            this.dtpFechaanexo.EditValue = null;
-            this.dtpFechaanexo.Location = new System.Drawing.Point(321, 30);
-            this.dtpFechaanexo.Name = "dtpFechaanexo";
-            this.dtpFechaanexo.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dtpFechaanexo.Properties.LookAndFeel.SkinName = "Blue";
-            this.dtpFechaanexo.Properties.VistaTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.dtpFechaanexo.Size = new System.Drawing.Size(100, 20);
-            this.dtpFechaanexo.TabIndex = 2;
-            // 
-            // labelControl2
-            // 
-            this.labelControl2.Location = new System.Drawing.Point(283, 34);
-            this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(29, 13);
-            this.labelControl2.TabIndex = 2;
-            this.labelControl2.Text = "Fecha";
-            // 
-            // labelControl1
-            // 
-            this.labelControl1.Location = new System.Drawing.Point(14, 28);
-            this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(43, 13);
-            this.labelControl1.TabIndex = 1;
-            this.labelControl1.Text = "Licitacion";
+            this.cmdMaximos.Enabled = false;
+            this.cmdMaximos.Location = new System.Drawing.Point(467, 28);
+            this.cmdMaximos.Name = "cmdMaximos";
+            this.cmdMaximos.Size = new System.Drawing.Size(144, 41);
+            this.cmdMaximos.TabIndex = 13;
+            this.cmdMaximos.Text = "Ampliar Maximos";
+            this.cmdMaximos.Click += new System.EventHandler(this.CmdMaximosClick);
             // 
             // gcAnexoDetalle
             // 
@@ -273,7 +270,7 @@
             this.gcAnexoDetalle.Name = "gcAnexoDetalle";
             this.gcAnexoDetalle.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemSearchLookUpEdit2});
-            this.gcAnexoDetalle.Size = new System.Drawing.Size(941, 333);
+            this.gcAnexoDetalle.Size = new System.Drawing.Size(1114, 428);
             this.gcAnexoDetalle.TabIndex = 8;
             this.gcAnexoDetalle.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvAnexoDetalle});
@@ -392,38 +389,95 @@
             this.gvAnexoDetalle.Appearance.VertLine.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(127)))), ((int)(((byte)(196)))));
             this.gvAnexoDetalle.Appearance.VertLine.Options.UseBackColor = true;
             this.gvAnexoDetalle.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.gridColumnArticulo,
+            this.gridColumn9,
+            this.gridColumn2,
             this.gridColumnDescripcion,
             this.gridColumn4,
             this.gridColumn5,
             this.gridColumn1,
-            this.gridColumn2});
+            this.gridColumn8});
             this.gvAnexoDetalle.GridControl = this.gcAnexoDetalle;
             this.gvAnexoDetalle.Name = "gvAnexoDetalle";
             this.gvAnexoDetalle.NewItemRowText = "Clck aqui para agregar un nuevo registro";
             this.gvAnexoDetalle.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.True;
             this.gvAnexoDetalle.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.True;
+            this.gvAnexoDetalle.OptionsCustomization.AllowSort = false;
             this.gvAnexoDetalle.OptionsView.ColumnAutoWidth = false;
             this.gvAnexoDetalle.OptionsView.EnableAppearanceEvenRow = true;
             this.gvAnexoDetalle.OptionsView.EnableAppearanceOddRow = true;
             this.gvAnexoDetalle.OptionsView.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.Top;
             this.gvAnexoDetalle.OptionsView.ShowAutoFilterRow = true;
             this.gvAnexoDetalle.OptionsView.ShowGroupPanel = false;
-            this.gvAnexoDetalle.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
-            new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.gridColumn4, DevExpress.Data.ColumnSortOrder.Descending)});
             this.gvAnexoDetalle.CellValueChanged += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.DgvAnexoCellValueChanged);
             // 
-            // gridColumnArticulo
+            // gridColumn9
             // 
-            this.gridColumnArticulo.Caption = "Articulo";
-            this.gridColumnArticulo.ColumnEdit = this.repositoryItemSearchLookUpEdit2;
-            this.gridColumnArticulo.FieldName = "CveArt";
-            this.gridColumnArticulo.Name = "gridColumnArticulo";
-            this.gridColumnArticulo.SortMode = DevExpress.XtraGrid.ColumnSortMode.Value;
-            this.gridColumnArticulo.UnboundType = DevExpress.Data.UnboundColumnType.Integer;
-            this.gridColumnArticulo.Visible = true;
-            this.gridColumnArticulo.VisibleIndex = 0;
-            this.gridColumnArticulo.Width = 84;
+            this.gridColumn9.Caption = "Articulo";
+            this.gridColumn9.FieldName = "CveArt";
+            this.gridColumn9.Name = "gridColumn9";
+            this.gridColumn9.UnboundType = DevExpress.Data.UnboundColumnType.Integer;
+            this.gridColumn9.Visible = true;
+            this.gridColumn9.VisibleIndex = 0;
+            // 
+            // gridColumn2
+            // 
+            this.gridColumn2.Caption = "Articulo";
+            this.gridColumn2.FieldName = "Articulo";
+            this.gridColumn2.Name = "gridColumn2";
+            this.gridColumn2.UnboundType = DevExpress.Data.UnboundColumnType.Integer;
+            // 
+            // gridColumnDescripcion
+            // 
+            this.gridColumnDescripcion.Caption = "Descripcion";
+            this.gridColumnDescripcion.FieldName = "DescripcionArt";
+            this.gridColumnDescripcion.Name = "gridColumnDescripcion";
+            this.gridColumnDescripcion.OptionsColumn.AllowEdit = false;
+            this.gridColumnDescripcion.OptionsColumn.ReadOnly = true;
+            this.gridColumnDescripcion.UnboundType = DevExpress.Data.UnboundColumnType.String;
+            this.gridColumnDescripcion.Visible = true;
+            this.gridColumnDescripcion.VisibleIndex = 1;
+            this.gridColumnDescripcion.Width = 477;
+            // 
+            // gridColumn4
+            // 
+            this.gridColumn4.Caption = "Unidad";
+            this.gridColumn4.FieldName = "UnidadArt";
+            this.gridColumn4.Name = "gridColumn4";
+            this.gridColumn4.OptionsColumn.AllowEdit = false;
+            this.gridColumn4.OptionsColumn.ReadOnly = true;
+            this.gridColumn4.UnboundType = DevExpress.Data.UnboundColumnType.String;
+            this.gridColumn4.Visible = true;
+            this.gridColumn4.VisibleIndex = 2;
+            this.gridColumn4.Width = 197;
+            // 
+            // gridColumn5
+            // 
+            this.gridColumn5.Caption = "Cantidad Min";
+            this.gridColumn5.DisplayFormat.FormatString = "d0";
+            this.gridColumn5.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.gridColumn5.FieldName = "CantidadMinimo";
+            this.gridColumn5.Name = "gridColumn5";
+            this.gridColumn5.UnboundType = DevExpress.Data.UnboundColumnType.Decimal;
+            this.gridColumn5.Visible = true;
+            this.gridColumn5.VisibleIndex = 3;
+            this.gridColumn5.Width = 96;
+            // 
+            // gridColumn1
+            // 
+            this.gridColumn1.Caption = "Cantidad Max";
+            this.gridColumn1.FieldName = "CantidadMaximo";
+            this.gridColumn1.Name = "gridColumn1";
+            this.gridColumn1.UnboundType = DevExpress.Data.UnboundColumnType.Decimal;
+            this.gridColumn1.Visible = true;
+            this.gridColumn1.VisibleIndex = 4;
+            this.gridColumn1.Width = 83;
+            // 
+            // gridColumn8
+            // 
+            this.gridColumn8.Caption = "Renglon";
+            this.gridColumn8.FieldName = "RenglonAnexo";
+            this.gridColumn8.Name = "gridColumn8";
+            this.gridColumn8.UnboundType = DevExpress.Data.UnboundColumnType.Integer;
             // 
             // repositoryItemSearchLookUpEdit2
             // 
@@ -475,75 +529,33 @@
             this.gridColumn7.VisibleIndex = 2;
             this.gridColumn7.Width = 177;
             // 
-            // gridColumnDescripcion
+            // gridColumnArticulo
             // 
-            this.gridColumnDescripcion.Caption = "Descripcion";
-            this.gridColumnDescripcion.FieldName = "DescripcionArt";
-            this.gridColumnDescripcion.Name = "gridColumnDescripcion";
-            this.gridColumnDescripcion.OptionsColumn.AllowEdit = false;
-            this.gridColumnDescripcion.OptionsColumn.ReadOnly = true;
-            this.gridColumnDescripcion.UnboundType = DevExpress.Data.UnboundColumnType.String;
-            this.gridColumnDescripcion.Visible = true;
-            this.gridColumnDescripcion.VisibleIndex = 1;
-            this.gridColumnDescripcion.Width = 477;
-            // 
-            // gridColumn4
-            // 
-            this.gridColumn4.Caption = "Unidad";
-            this.gridColumn4.FieldName = "UnidadArt";
-            this.gridColumn4.Name = "gridColumn4";
-            this.gridColumn4.OptionsColumn.AllowEdit = false;
-            this.gridColumn4.OptionsColumn.ReadOnly = true;
-            this.gridColumn4.UnboundType = DevExpress.Data.UnboundColumnType.String;
-            this.gridColumn4.Visible = true;
-            this.gridColumn4.VisibleIndex = 2;
-            this.gridColumn4.Width = 197;
-            // 
-            // gridColumn5
-            // 
-            this.gridColumn5.Caption = "Cantidad Min";
-            this.gridColumn5.DisplayFormat.FormatString = "d0";
-            this.gridColumn5.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.gridColumn5.FieldName = "CantidadMinimo";
-            this.gridColumn5.Name = "gridColumn5";
-            this.gridColumn5.UnboundType = DevExpress.Data.UnboundColumnType.Decimal;
-            this.gridColumn5.Visible = true;
-            this.gridColumn5.VisibleIndex = 3;
-            this.gridColumn5.Width = 96;
-            // 
-            // gridColumn1
-            // 
-            this.gridColumn1.Caption = "Cantidad Max";
-            this.gridColumn1.FieldName = "CantidadMaximo";
-            this.gridColumn1.Name = "gridColumn1";
-            this.gridColumn1.UnboundType = DevExpress.Data.UnboundColumnType.Decimal;
-            this.gridColumn1.Visible = true;
-            this.gridColumn1.VisibleIndex = 4;
-            this.gridColumn1.Width = 83;
-            // 
-            // gridColumn2
-            // 
-            this.gridColumn2.Caption = "Articulo";
-            this.gridColumn2.FieldName = "Articulo";
-            this.gridColumn2.Name = "gridColumn2";
+            this.gridColumnArticulo.Caption = "Articulo";
+            this.gridColumnArticulo.FieldName = "CveArt";
+            this.gridColumnArticulo.Name = "gridColumnArticulo";
+            this.gridColumnArticulo.SortMode = DevExpress.XtraGrid.ColumnSortMode.Value;
+            this.gridColumnArticulo.UnboundType = DevExpress.Data.UnboundColumnType.Integer;
+            this.gridColumnArticulo.Visible = true;
+            this.gridColumnArticulo.VisibleIndex = 0;
+            this.gridColumnArticulo.Width = 84;
             // 
             // FrmModuloAnexo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(941, 565);
+            this.ClientSize = new System.Drawing.Size(1114, 693);
             this.Name = "FrmModuloAnexo";
             this.Text = "Captura::Anexo";
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();
             this.splitContainerControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gcDatosGenerales)).EndInit();
             this.gcDatosGenerales.ResumeLayout(false);
-            this.gcDatosGenerales.PerformLayout();
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtnumlicitacion.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtTechopresupuestal.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDesanexo.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtpFechaanexo.Properties.VistaTimeProperties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtpFechaanexo.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTechopresupuestal.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gcAnexoDetalle)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsAnexoDetalle)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvAnexoDetalle)).EndInit();
@@ -560,20 +572,16 @@
         private DevExpress.XtraEditors.TextEdit txtnumlicitacion;
         private System.Windows.Forms.ComboBox cbxIva;
         private System.Windows.Forms.ComboBox cbxTipolicitacion;
-        private System.Windows.Forms.ComboBox cbxInstituto;
         private DevExpress.XtraEditors.LabelControl labelControl7;
         private DevExpress.XtraEditors.CalcEdit txtTechopresupuestal;
         private DevExpress.XtraEditors.LabelControl labelControl6;
         private DevExpress.XtraEditors.LabelControl labelControl5;
         private DevExpress.XtraEditors.TextEdit txtDesanexo;
         private DevExpress.XtraEditors.LabelControl labelControl4;
-        private DevExpress.XtraEditors.LabelControl labelControl3;
-        private DevExpress.XtraEditors.DateEdit dtpFechaanexo;
         private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraGrid.GridControl gcAnexoDetalle;
         private DevExpress.XtraGrid.Views.Grid.GridView gvAnexoDetalle;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumnArticulo;
         private DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit repositoryItemSearchLookUpEdit2;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumnDescripcion;
@@ -584,9 +592,14 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
         private DevExpress.XtraEditors.SimpleButton cmdMaximos;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
-        private DevExpress.XtraEditors.SimpleButton cmdCargarArt;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn7;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private DevExpress.XtraEditors.LabelControl lblFecha;
+        private DevExpress.XtraEditors.SimpleButton cmdCargarAlmacen;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn8;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumnArticulo;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn9;
     }
 }

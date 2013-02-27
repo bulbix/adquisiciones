@@ -118,26 +118,14 @@ namespace Adquisiciones.View.Modulos
 
                 if (desModulo.Contains(nombreModulo))
                 {
-                    //Por la ordenacion garantizamos siempre vendra la consulta
-                    if (desModulo.Contains("consultar"))
-                    {
-                        cmdConsultar.Enabled = true;
-                        HabilitarBuscadores(this,false);
-                    }
-
+                   
                     if (desModulo.Contains("trabajar"))
                     {
                         cmdNuevo.Enabled = true;
                         cmdGuardar.Enabled = true;
                         listaError.Enabled = true;
                         lblNumErrors.Enabled = true;
-                        cmdConsultar.Enabled = true;
                         HabilitarBuscadores(this,true);
-                    }
-
-                    if (desModulo.Contains("eliminar"))
-                    {
-                        cmdEliminar.Enabled = true;
                     }
 
                     if (desModulo.Contains("reportear"))
@@ -196,7 +184,6 @@ namespace Adquisiciones.View.Modulos
             if (FrmModuloAcceso.UsuarioLog.IdUsuario != usuarioModifico.IdUsuario)
             {
                 cmdGuardar.Enabled = false;
-                cmdEliminar.Enabled = false;
                 splitContainerControl1.Panel1.Enabled = false;
             }
         }
@@ -248,5 +235,6 @@ namespace Adquisiciones.View.Modulos
                 XtraMessageBox.Show(@"Ocurrio un error al generar el reporte", @"Adquisiciones",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }}
+        }
+    }
 }
