@@ -8,5 +8,7 @@ namespace Adquisiciones.Data.Dao.Catalogos
 {
     public interface IAlmacenDao:IGenericDao<Almacen,string>
     {
+
+        IList<Almacen> getAlmacenes(Almacen almacenAdq);
     }
 }

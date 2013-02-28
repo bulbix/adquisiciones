@@ -33,7 +33,8 @@
       join fetch c.Anexo 
       join fetch c.Usuario 
       where year(c.FechaCotizacion) = :anioActual
-      and c.Almacen = :almacen
+      and c.Almacen = :almacen 
+      order by c.FechaCotizacion desc
       ]]>
   </query>
 

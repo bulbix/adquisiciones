@@ -10,11 +10,9 @@ using DevExpress.XtraEditors;
 
 namespace Adquisiciones.View
 {
-    public partial class FrmPedidoEntrega : DevExpress.XtraEditors.XtraForm
+    public partial class FrmPedidoEntrega : XtraForm
     {
         private PedidoDetalle _pedidoDetalle;
-
-
         ///<summary>
         ///</summary>
         ///<param name="pedidoDetalle"></param>
@@ -65,7 +63,8 @@ namespace Adquisiciones.View
                 }
 
 
-                suma += pedidoEntrega.Cantidad;}
+                suma += pedidoEntrega.Cantidad;
+            }
 
             if (cantidad != suma)
             {

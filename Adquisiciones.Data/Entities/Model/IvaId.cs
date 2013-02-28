@@ -60,8 +60,8 @@ namespace Adquisiciones.Data.Entities
 		public override int GetHashCode()
 		{
 			int hash = 57;
-			hash = 27 * hash * _idiva.GetHashCode();
-			hash = 27 * hash * _porcentaje.GetHashCode();
+            //hash = 27 * hash * _idiva.GetHashCode();
+            //hash = 27 * hash * _porcentaje.GetHashCode();
 			return hash;
 		}
 		#endregion

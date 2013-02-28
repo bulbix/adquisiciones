@@ -67,16 +67,18 @@ namespace Adquisiciones.View.Modulos
         {
             PedidoActual = new Pedido();
             bsPedido.DataSource = PedidoActual;
+
+            PedidoActual.FechaPedido = PedidoService.PedidoDao.FechaServidor();
+            lblFecha.Text = String.Format("{0:dd/MM/yyyy}", PedidoActual.FechaPedido);
+
             LimpiarRequisicion();
             LimpiarErrores();
         }
 
         public override void Guardar()
         {
-            listaError.Strings.Clear();
-            lblNumErrors.Caption = "";
-
-            PedidoActual.FechaPedido = deFechaPedido.DateTime;
+            LimpiarErrores();
+            //PedidoActual.FechaPedido = deFechaPedido.DateTime;
 
             //Validaciones 
             if (!DatosValidosPedido(PedidoActual, listaError))
@@ -132,7 +134,8 @@ namespace Adquisiciones.View.Modulos
                     XtraMessageBox.Show(@"El anexo de la requisicion no tiene fallo",
                     @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     LimpiarRequisicion();
-                    return;}
+                    return;
+                }
 
                 RequisicionActual = reqSeleccionada;
                 PedidoActual.Requisicion = RequisicionActual;
@@ -187,6 +190,12 @@ namespace Adquisiciones.View.Modulos
             {
                 result = false;
                 lista.Strings.Add("Fecha Final requerida");
+            }
+
+            if (deFechaInicial.DateTime.CompareTo(deFechaFinal.DateTime) > 0)
+            {
+                result = false;
+                lista.Strings.Add("Fecha inicial debe ser mayor fecha final");
             }
 
             if (pedido.Fundamento == null)

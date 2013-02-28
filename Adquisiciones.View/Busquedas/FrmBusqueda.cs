@@ -34,8 +34,6 @@ namespace Adquisiciones.View.Busquedas
             InitializeComponent();
         }
 
-       
-
         protected void ObtenerPerfil(){
            
             var nombreModulo = TypeEntity.Name.ToLower();
@@ -71,7 +69,6 @@ namespace Adquisiciones.View.Busquedas
             }
         }
 
-
         protected virtual void Buscar()
         {
             GetServicio();
@@ -84,7 +81,6 @@ namespace Adquisiciones.View.Busquedas
             var ctx = ContextRegistry.GetContext();
             Servicio = ctx[NombreService] as IFormBusqueda;
         }
-      
       
         private void CmdBuscarItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
@@ -106,7 +102,7 @@ namespace Adquisiciones.View.Busquedas
             }
             catch (Exception ee)
             {
-                XtraMessageBox.Show(@"No hay elemento seleccionado", @"Adquisiciones",
+                XtraMessageBox.Show(@"No hay registro seleccionado", @"Adquisiciones",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
@@ -131,7 +127,7 @@ namespace Adquisiciones.View.Busquedas
             }
             catch (Exception ee)
             {
-                XtraMessageBox.Show(@"No hay elemento seleccionado", @"Adquisiciones",
+                XtraMessageBox.Show(@"No hay registro seleccionado", @"Adquisiciones",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
@@ -147,7 +143,7 @@ namespace Adquisiciones.View.Busquedas
 
                 if (FrmModuloAcceso.UsuarioLog.IdUsuario != usuarioModifico.IdUsuario)
                 {
-                    XtraMessageBox.Show(@"No es dueno del registro", @"Adquisiciones",
+                    XtraMessageBox.Show(@"No es dueño del registro", @"Adquisiciones",
                                        MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }

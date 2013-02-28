@@ -21,15 +21,32 @@ namespace Adquisiciones.Data.Dao.Catalogos
         }
         
         [Transaction(ReadOnly = true)]
-        public ArticuloPartida ArticuloPartida(Articulo articulo)
+        public Articulo ArticuloPartida(int cveArt,Almacen almacen, CatPartida partida)
         {
             var query = CurrentSession.
-                CreateQuery(@"  select ap from ArticuloPartida ap 
-                                left join fetch ap.Id.CatPartida 
-                                where ap.Id.Articulo = :articulo");
-            query.SetParameter("articulo", articulo);
+                CreateQuery(@"  select a from Articulo a 
+                                join fetch a.ArticuloPartida ap 
+                                where ap.Id.CatPartida = :partida and 
+                                a.Id.Almacen = :almacen and 
+                                a.Id.CveArt = :clave");
+            
+            query.SetParameter("partida", partida);
+            query.SetParameter("almacen", almacen);
+            query.SetParameter("clave", cveArt);
+            return query.UniqueResult<Articulo>();
 
-            return query.UniqueResult<ArticuloPartida>();
+        }
+
+        [Transaction(ReadOnly = true)]
+        public CatPartida GetPartida(Articulo articulo)
+        {
+            var query = CurrentSession.
+                CreateQuery(@"  select ap.Id.CatPartida from ArticuloPartida  ap  
+                                join ap.Id.Articulo a 
+                                where a = :articulo");
+
+            query.SetParameter("articulo", articulo);
+            return query.UniqueResult<CatPartida>();
         }
     }
 }

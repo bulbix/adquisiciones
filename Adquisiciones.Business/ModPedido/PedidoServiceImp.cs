@@ -64,27 +64,22 @@ namespace Adquisiciones.Business.ModPedido
         /// </summary>
         /// <param name="requisicion"></param>
         /// <param name="falloDetalles"></param>
+        /// <param name="iva"></param>
         [Transaction(ReadOnly = true)]
-        private decimal? ImporteTotal(Requisicion requisicion, IList<FalloDetalle> falloDetalles)
+        private decimal? ImporteTotal(Requisicion requisicion, IList<FalloDetalle> falloDetalles, decimal iva)
         {
             decimal? importe = new decimal(0.0);
 
             foreach(var falloDetalle in falloDetalles)
             {
-                var requisicionDetalle = RequisicionDao.ObtenerRequisicionDetalleByArticulo(requisicion,
-                                                                                               falloDetalle.Articulo);
+                var requisicionDetalle = RequisicionDao.
+                    ObtenerRequisicionDetalleByArticulo(requisicion,falloDetalle.Articulo);
 
                 if(requisicionDetalle != null)
-                {
-                    //var error = string.Format("La requisicion no cuenta con la clave {0} y viene en el fallo",
-                    //                          falloDetalle.Articulo.Id.CveArt);
-                    //throw new PedidoException(error);
-
                     importe += requisicionDetalle.Cantidad * falloDetalle.PrecioFallo;
-                }
-
-                
             }
+
+            importe -= (importe * (iva/100));
 
             return importe;
 
@@ -121,7 +116,7 @@ namespace Adquisiciones.Business.ModPedido
                 pedido.ImporteDescuento = new decimal(0.0);
                 pedido.CatPresupuesto = pedido.CatPresupuesto;
                 pedido.EstadoPedido = "A";
-                pedido.ImporteTotal = ImporteTotal(requisicion, fallo.FalloDetalle);
+                pedido.ImporteTotal = ImporteTotal(requisicion, fallo.FalloDetalle, pedido.Iva.Id.Porcentaje);
                 pedido.Requisicion = requisicion;
                 
                 pedido = PedidoDao.Merge(pedido);

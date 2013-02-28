@@ -8,7 +8,8 @@ namespace Adquisiciones.Data.Dao.Catalogos
     {
 
         IList<ArticuloBusqueda> ArticulosByAlmacen(Almacen almacen);
-        ArticuloPartida ArticuloPartida(Articulo articulo);
+        Articulo ArticuloPartida(int cveArt, Almacen almacen, CatPartida partida);
+        CatPartida GetPartida(Articulo articulo);
 
     }
 }

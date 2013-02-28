@@ -34,7 +34,7 @@ namespace Adquisiciones.View.Reportes
         readonly Font fuenteTitulo2 = FontFactory.GetFont("ARIAL", 12, Font.NORMAL);
         readonly Font fuenteRojo = FontFactory.GetFont("ARIAL", 10, Font.NORMAL, BaseColor.RED);
 
-        ArticuloPartida partida = null;
+        CatPartida partida = null;
         Assembly assembly = Assembly.GetExecutingAssembly();
 
         Pedido pedido;
@@ -136,13 +136,13 @@ namespace Adquisiciones.View.Reportes
             result.DefaultCell.BorderWidthBottom = 0;
             result.DefaultCell.BorderWidthTop = 0;
 
-          
+            var ctx = ContextRegistry.GetContext();
+            var   articuloDao = ctx["articuloDao"] as IArticuloDao;
 
             foreach (var pedidoDetalle in pedido.PedidoDetalle)
             {
-                var ctx = ContextRegistry.GetContext();
-                var articuloDao = ctx["articuloDao"] as IArticuloDao;
-                partida = articuloDao.ArticuloPartida(pedidoDetalle.Articulo);
+
+                partida = articuloDao.GetPartida(pedidoDetalle.Articulo);
 
                 result.AddCell(new Paragraph(pedidoDetalle.Articulo.Id.CveArt + "", fuente));
 
@@ -558,7 +558,7 @@ namespace Adquisiciones.View.Reportes
             
             totales.DefaultCell.HorizontalAlignment = Element.ALIGN_LEFT;
             totales.DefaultCell.Colspan = 2;
-            totales.AddCell(new Paragraph("PARTIDA PRESUPUESTAL: " + partida.Id.CatPartida.Partida, fuente));
+            totales.AddCell(new Paragraph("PARTIDA PRESUPUESTAL: " + partida.Partida, fuente));
             totales.DefaultCell.HorizontalAlignment = Element.ALIGN_RIGHT;
             totales.DefaultCell.Colspan = 1;
             totales.AddCell(new Paragraph("SUBT-DESC.  " + importeDesc.ToString("C"), fuente));

@@ -40,11 +40,11 @@ namespace Adquisiciones.View.Modulos
             FalloService = base.Servicio as IFalloService;
             base.ObtenerPerfil();
 
-            var anexos = FalloService.AnexoDao.
-               CargarAnexosWithCotizacion(AlmacenActual);
+            var anexos = FalloService.AnexoDao.CargarAnexosWithCotizacion(AlmacenActual);
             bsAnexos.DataSource = anexos;
 
-            dtpFallo.DateTime = DateTime.Now;
+            Nuevo();
+            
             //Nos Suscribimos al Evento
             if (FalloService != null) FalloService.FalloProceso += OnProcesoFallo;
         }
@@ -53,7 +53,6 @@ namespace Adquisiciones.View.Modulos
         {
             pgbFallo.EditValue = e.Porcentaje;
             pgbFallo.Update();
-            //pgbFallo.Text = e.Porcentaje.ToString();
         }
 
         public override void Guardar()
@@ -63,30 +62,26 @@ namespace Adquisiciones.View.Modulos
 
                 var falloCentinela = new Fallo();
                 falloCentinela.Anexo = AnexoSelect;
-                falloCentinela.FechaFallo = dtpFallo.DateTime;
+                falloCentinela.FechaFallo = FalloService.AnexoDao.FechaServidor();
 
                 //Se usa un fallo centinela para las validaciones
                 if (!Util.DatosValidos(falloCentinela, lblNumErrors, listaError))
-                {
                     return;
-                }
 
                 if (FalloService.CotizacionDao.ExisteAnexoFallo(AnexoSelect))
                 {
                    XtraMessageBox.Show(@"El anexo ya tiene fallo eliminelo antes",
                                                  @"Adquisiciones", MessageBoxButtons.OK,
                                                  MessageBoxIcon.Information);
-
                   return;
                 }
 
-                var lista = FalloService.GuardarFallo(AnexoSelect, dtpFallo.DateTime);
+                var lista = FalloService.GuardarFallo(AnexoSelect, falloCentinela.FechaFallo.Value);
 
                 if (lista.Count > 0)
                 {
                     XtraMessageBox.Show(@"Fallo realizado Exitosamente Anexo " + AnexoSelect.NumeroAnexo,
                                     @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
                     base.EntityActual = lista[0];
                 }
                 else
@@ -107,50 +102,29 @@ namespace Adquisiciones.View.Modulos
         public override void Nuevo()
         {
             AnexoSelect = null;
-            dtpFallo.DateTime = DateTime.Now;
+            lblFecha.Text = String.Format("{0:dd/MM/yyyy}", FalloService.AnexoDao.FechaServidor());
             pgbFallo.EditValue = 0;
             pgbFallo.Text = string.Empty;
+            searchLookUpAnexo.EditValue = null;
         }
 
         private void SearchLookUpAnexoEditValueChanged(object sender, EventArgs e)
         {
             if (searchLookUpAnexo.EditValue != null)
             {
-                //Pinta el instituto y la descripcion del anexo
-                var idAnexo = (long)searchLookUpAnexo.EditValue;
-                AnexoSelect = FalloService.AnexoDao.Get(idAnexo);
-                this.Text = @"Fallo-Anexo::" + AnexoSelect;
+                var anexoSeleccionado = searchLookUpEditAnexo.GetFocusedRow() as Anexo;
+
+                if (anexoSeleccionado != null)
+                {
+                    AnexoSelect = anexoSeleccionado;
+                    this.Text = @"Fallo-Anexo::" + AnexoSelect;
+                }
             }
             else
             {
                 AnexoSelect = null;
-
             }
         }
 
-        private void CallFalloBusqueda()
-        {
-            var forma = new FrmBusquedaFallo(this.MdiParent as FrmAdquisiciones);
-            forma.MdiParent = this.MdiParent;
-            forma.Show();
-            
-        }
-
-         protected override void CmdConsultarClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-         {
-             CallFalloBusqueda();
-         }
-
-        protected override void Eliminar()
-        {
-            if(FalloService.FalloDao.ExisteFalloRequisicion((EntityActual as Fallo).Anexo))
-            {
-                XtraMessageBox.Show(@"El fallo ya tiene requisicion",
-                   @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-
-            base.Eliminar();
-        }
     }
 }

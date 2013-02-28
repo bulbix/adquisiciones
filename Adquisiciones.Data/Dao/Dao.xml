@@ -90,7 +90,9 @@ parent="parentSession"/>
   <object id="falloDetalleDao" type="Adquisiciones.Data.Dao.ModFallo.FalloDetalleDaoImp, Adquisiciones.Data"
   parent="parentSession"/>
   <object id="requisicionDao" type="Adquisiciones.Data.Dao.ModPedido.RequisicionDaoImp, Adquisiciones.Data"
-  parent="parentSession"/>
+  parent="parentSession">
+    <property name="AlmacenDao" ref="almacenDao"/>
+  </object>
   <object id="pedidoDao" type="Adquisiciones.Data.Dao.ModPedido.PedidoDaoImp, Adquisiciones.Data"
   parent="parentSession"/>
   <object id="pedidoDetalleDao" type="Adquisiciones.Data.Dao.ModPedido.PedidoDetalleDaoImp, Adquisiciones.Data"

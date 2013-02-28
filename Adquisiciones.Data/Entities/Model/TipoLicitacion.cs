@@ -83,7 +83,7 @@ namespace Adquisiciones.Data.Entities
 		public override int GetHashCode()
 		{
 			int hash = 57;
-			hash = 27 * hash * _idtipolicitacion.GetHashCode();
+			//hash = 27 * hash * _idtipolicitacion.GetHashCode();
 			return hash;
 		}
 		#endregion

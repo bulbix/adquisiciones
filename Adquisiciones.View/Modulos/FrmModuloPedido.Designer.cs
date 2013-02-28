@@ -31,7 +31,6 @@
             this.components = new System.ComponentModel.Container();
             DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
-            this.cmdCargarAlmacen = new DevExpress.XtraEditors.SimpleButton();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.cbxIva = new System.Windows.Forms.ComboBox();
             this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
@@ -63,6 +62,7 @@
             this.lblSubTotal = new DevExpress.XtraEditors.LabelControl();
             this.lblDescuento = new DevExpress.XtraEditors.LabelControl();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
             this.searchLookUpFundamento = new DevExpress.XtraEditors.SearchLookUpEdit();
             this.bsFundamento = new System.Windows.Forms.BindingSource(this.components);
             this.searchLookUpEditFundamento = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -87,12 +87,17 @@
             this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.labelControl12 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
+            this.searchLookUpPartida = new DevExpress.XtraEditors.SearchLookUpEdit();
+            this.bsPartida = new System.Windows.Forms.BindingSource(this.components);
+            this.searchLookUpEditPartida = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn17 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn18 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.txtObservaciones = new DevExpress.XtraEditors.MemoEdit();
             this.lblObservacion = new System.Windows.Forms.Label();
             this.gcPedidoDetalle = new DevExpress.XtraGrid.GridControl();
             this.bsPedidoDetalle = new System.Windows.Forms.BindingSource(this.components);
             this.gvPedidoDetalle = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn14 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumnArticulo = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumnDescripcion = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -101,7 +106,6 @@
             this.repositoryItemButtonEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.gridColumn12 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn13 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn14 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemSearchLookUpEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit();
             this.gridView5 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -131,6 +135,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.searchLookUpProveedor.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsProveedor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEditProveedor)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.searchLookUpPartida.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsPartida)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEditPartida)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtObservaciones.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gcPedidoDetalle)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsPedidoDetalle)).BeginInit();
@@ -144,10 +151,11 @@
             // 
             // splitContainerControl1
             // 
+            this.splitContainerControl1.Location = new System.Drawing.Point(0, 70);
             this.splitContainerControl1.Panel1.Controls.Add(this.groupControl1);
             this.splitContainerControl1.Panel2.Controls.Add(this.gcPedidoDetalle);
-            this.splitContainerControl1.Size = new System.Drawing.Size(1121, 489);
-            this.splitContainerControl1.SplitterPosition = 252;
+            this.splitContainerControl1.Size = new System.Drawing.Size(1121, 486);
+            this.splitContainerControl1.SplitterPosition = 254;
             // 
             // lblAlmacen
             // 
@@ -159,10 +167,10 @@
             this.cbxAlmacen.Location = new System.Drawing.Point(298, 1);
             this.cbxAlmacen.Size = new System.Drawing.Size(162, 21);
             this.cbxAlmacen.Visible = true;
+            this.cbxAlmacen.SelectedIndexChanged += new System.EventHandler(this.CbxAlmacenSelectedIndexChanged);
             // 
             // groupControl1
             // 
-            this.groupControl1.Controls.Add(this.cmdCargarAlmacen);
             this.groupControl1.Controls.Add(this.tableLayoutPanel3);
             this.groupControl1.Controls.Add(this.tableLayoutPanel2);
             this.groupControl1.Controls.Add(this.tableLayoutPanel1);
@@ -171,32 +179,23 @@
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl1.Location = new System.Drawing.Point(0, 0);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(1121, 252);
+            this.groupControl1.Size = new System.Drawing.Size(1121, 254);
             this.groupControl1.TabIndex = 2;
             this.groupControl1.Text = "Datos Generales del Pedido";
-            // 
-            // cmdCargarAlmacen
-            // 
-            this.cmdCargarAlmacen.Location = new System.Drawing.Point(466, -1);
-            this.cmdCargarAlmacen.Name = "cmdCargarAlmacen";
-            this.cmdCargarAlmacen.Size = new System.Drawing.Size(89, 23);
-            this.cmdCargarAlmacen.TabIndex = 131;
-            this.cmdCargarAlmacen.Text = "Limpiar Almacen";
-            this.cmdCargarAlmacen.Click += new System.EventHandler(this.CmdCargarAlmacenClick);
             // 
             // tableLayoutPanel3
             // 
             this.tableLayoutPanel3.ColumnCount = 10;
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40.20618F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 59.79382F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 65F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 108F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35.60606F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 64.39394F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 55F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 95F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 63F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 126F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 81F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 110F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 87F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 160F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 185F));
             this.tableLayoutPanel3.Controls.Add(this.cbxIva, 7, 1);
             this.tableLayoutPanel3.Controls.Add(this.labelControl10, 6, 1);
             this.tableLayoutPanel3.Controls.Add(this.cbxCargo, 5, 1);
@@ -220,14 +219,14 @@
             this.tableLayoutPanel3.RowCount = 2;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 44.94382F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 55.05618F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(917, 89);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(917, 73);
             this.tableLayoutPanel3.TabIndex = 16;
             // 
             // cbxIva
             // 
             this.cbxIva.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxIva.FormattingEnabled = true;
-            this.cbxIva.Location = new System.Drawing.Point(562, 43);
+            this.cbxIva.Location = new System.Drawing.Point(537, 35);
             this.cbxIva.Name = "cbxIva";
             this.cbxIva.Size = new System.Drawing.Size(88, 21);
             this.cbxIva.TabIndex = 6;
@@ -235,7 +234,7 @@
             // 
             // labelControl10
             // 
-            this.labelControl10.Location = new System.Drawing.Point(481, 43);
+            this.labelControl10.Location = new System.Drawing.Point(456, 35);
             this.labelControl10.Name = "labelControl10";
             this.labelControl10.Size = new System.Drawing.Size(21, 13);
             this.labelControl10.TabIndex = 42;
@@ -245,7 +244,7 @@
             // 
             this.cbxCargo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxCargo.FormattingEnabled = true;
-            this.cbxCargo.Location = new System.Drawing.Point(355, 43);
+            this.cbxCargo.Location = new System.Drawing.Point(330, 35);
             this.cbxCargo.Name = "cbxCargo";
             this.cbxCargo.Size = new System.Drawing.Size(120, 21);
             this.cbxCargo.TabIndex = 5;
@@ -254,7 +253,7 @@
             // lblCargo
             // 
             this.lblCargo.AutoSize = true;
-            this.lblCargo.Location = new System.Drawing.Point(292, 40);
+            this.lblCargo.Location = new System.Drawing.Point(267, 32);
             this.lblCargo.Name = "lblCargo";
             this.lblCargo.Size = new System.Drawing.Size(45, 13);
             this.lblCargo.TabIndex = 50;
@@ -264,14 +263,14 @@
             // 
             this.cbxActividad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxActividad.FormattingEnabled = true;
-            this.cbxActividad.Location = new System.Drawing.Point(184, 43);
+            this.cbxActividad.Location = new System.Drawing.Point(172, 35);
             this.cbxActividad.Name = "cbxActividad";
-            this.cbxActividad.Size = new System.Drawing.Size(102, 21);
+            this.cbxActividad.Size = new System.Drawing.Size(89, 21);
             this.cbxActividad.TabIndex = 4;
             // 
             // labelControl8
             // 
-            this.labelControl8.Location = new System.Drawing.Point(119, 43);
+            this.labelControl8.Location = new System.Drawing.Point(117, 35);
             this.labelControl8.Name = "labelControl8";
             this.labelControl8.Size = new System.Drawing.Size(44, 13);
             this.labelControl8.TabIndex = 38;
@@ -279,14 +278,14 @@
             // 
             // txtReserva
             // 
-            this.txtReserva.Location = new System.Drawing.Point(50, 43);
+            this.txtReserva.Location = new System.Drawing.Point(43, 35);
             this.txtReserva.Name = "txtReserva";
-            this.txtReserva.Size = new System.Drawing.Size(62, 20);
+            this.txtReserva.Size = new System.Drawing.Size(55, 20);
             this.txtReserva.TabIndex = 3;
             // 
             // labelControl4
             // 
-            this.labelControl4.Location = new System.Drawing.Point(3, 43);
+            this.labelControl4.Location = new System.Drawing.Point(3, 35);
             this.labelControl4.Name = "labelControl4";
             this.labelControl4.Size = new System.Drawing.Size(40, 13);
             this.labelControl4.TabIndex = 6;
@@ -294,7 +293,7 @@
             // 
             // txtDescuento
             // 
-            this.txtDescuento.Location = new System.Drawing.Point(759, 3);
+            this.txtDescuento.Location = new System.Drawing.Point(734, 3);
             this.txtDescuento.Name = "txtDescuento";
             this.txtDescuento.Size = new System.Drawing.Size(84, 20);
             this.txtDescuento.TabIndex = 2;
@@ -304,7 +303,7 @@
             // 
             this.rbCantidad.AutoSize = true;
             this.rbCantidad.Checked = true;
-            this.rbCantidad.Location = new System.Drawing.Point(672, 3);
+            this.rbCantidad.Location = new System.Drawing.Point(647, 3);
             this.rbCantidad.Name = "rbCantidad";
             this.rbCantidad.Size = new System.Drawing.Size(68, 17);
             this.rbCantidad.TabIndex = 130;
@@ -314,7 +313,7 @@
             // 
             // labelControl9
             // 
-            this.labelControl9.Location = new System.Drawing.Point(481, 3);
+            this.labelControl9.Location = new System.Drawing.Point(456, 3);
             this.labelControl9.Name = "labelControl9";
             this.labelControl9.Size = new System.Drawing.Size(51, 13);
             this.labelControl9.TabIndex = 56;
@@ -323,7 +322,7 @@
             // rbPorcentaje
             // 
             this.rbPorcentaje.AutoSize = true;
-            this.rbPorcentaje.Location = new System.Drawing.Point(562, 3);
+            this.rbPorcentaje.Location = new System.Drawing.Point(537, 3);
             this.rbPorcentaje.Name = "rbPorcentaje";
             this.rbPorcentaje.Size = new System.Drawing.Size(77, 17);
             this.rbPorcentaje.TabIndex = 129;
@@ -332,14 +331,14 @@
             // 
             // txtRequisicion
             // 
-            this.txtRequisicion.Location = new System.Drawing.Point(355, 3);
+            this.txtRequisicion.Location = new System.Drawing.Point(330, 3);
             this.txtRequisicion.Name = "txtRequisicion";
             this.txtRequisicion.Size = new System.Drawing.Size(93, 20);
             this.txtRequisicion.TabIndex = 1;
             // 
             // labelControl3
             // 
-            this.labelControl3.Location = new System.Drawing.Point(292, 3);
+            this.labelControl3.Location = new System.Drawing.Point(267, 3);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(53, 13);
             this.labelControl3.TabIndex = 4;
@@ -349,7 +348,7 @@
             // 
             this.lblNumero.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNumero.Appearance.ForeColor = System.Drawing.Color.Blue;
-            this.lblNumero.Location = new System.Drawing.Point(184, 3);
+            this.lblNumero.Location = new System.Drawing.Point(172, 3);
             this.lblNumero.Name = "lblNumero";
             this.lblNumero.Size = new System.Drawing.Size(75, 16);
             this.lblNumero.TabIndex = 127;
@@ -357,17 +356,17 @@
             // 
             // labelControl2
             // 
-            this.labelControl2.Location = new System.Drawing.Point(119, 3);
+            this.labelControl2.Location = new System.Drawing.Point(117, 3);
             this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(56, 13);
+            this.labelControl2.Size = new System.Drawing.Size(37, 13);
             this.labelControl2.TabIndex = 2;
-            this.labelControl2.Text = "Num Pedido";
+            this.labelControl2.Text = "Numero";
             // 
             // lblFecha
             // 
             this.lblFecha.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFecha.Appearance.ForeColor = System.Drawing.Color.Blue;
-            this.lblFecha.Location = new System.Drawing.Point(50, 3);
+            this.lblFecha.Location = new System.Drawing.Point(43, 3);
             this.lblFecha.Name = "lblFecha";
             this.lblFecha.Size = new System.Drawing.Size(75, 16);
             this.lblFecha.TabIndex = 126;
@@ -513,6 +512,7 @@
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 88.88889F));
+            this.tableLayoutPanel1.Controls.Add(this.labelControl7, 0, 4);
             this.tableLayoutPanel1.Controls.Add(this.searchLookUpFundamento, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.lblControl, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.labelControl5, 0, 1);
@@ -521,15 +521,25 @@
             this.tableLayoutPanel1.Controls.Add(this.searchLookUpProveedor, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.labelControl12, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.labelControl6, 0, 2);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(229, 116);
+            this.tableLayoutPanel1.Controls.Add(this.searchLookUpPartida, 1, 4);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(229, 100);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 4;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 47.61905F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 52.38095F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 36F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(693, 129);
+            this.tableLayoutPanel1.RowCount = 5;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(693, 153);
             this.tableLayoutPanel1.TabIndex = 129;
+            // 
+            // labelControl7
+            // 
+            this.labelControl7.Location = new System.Drawing.Point(3, 121);
+            this.labelControl7.Name = "labelControl7";
+            this.labelControl7.Size = new System.Drawing.Size(38, 13);
+            this.labelControl7.TabIndex = 61;
+            this.labelControl7.Text = "Partida:";
             // 
             // searchLookUpFundamento
             // 
@@ -597,14 +607,14 @@
             // searchLookUpAnexo
             // 
             this.searchLookUpAnexo.EditValue = "";
-            this.searchLookUpAnexo.Location = new System.Drawing.Point(79, 95);
+            this.searchLookUpAnexo.Location = new System.Drawing.Point(79, 91);
             this.searchLookUpAnexo.Name = "searchLookUpAnexo";
             this.searchLookUpAnexo.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.searchLookUpAnexo.Properties.DataSource = this.bsAnexo;
-            this.searchLookUpAnexo.Properties.DisplayMember = "DesAnexo";
+            this.searchLookUpAnexo.Properties.DisplayMember = "NumeroAnexo";
             this.searchLookUpAnexo.Properties.NullText = "";
-            this.searchLookUpAnexo.Properties.ValueMember = "NumAnexo";
+            this.searchLookUpAnexo.Properties.ValueMember = "NumeroAnexo";
             this.searchLookUpAnexo.Properties.View = this.searchLookUpEditAnexo;
             this.searchLookUpAnexo.Size = new System.Drawing.Size(611, 20);
             this.searchLookUpAnexo.TabIndex = 11;
@@ -689,7 +699,7 @@
             // searchLookUpProveedor
             // 
             this.searchLookUpProveedor.EditValue = "<Null>";
-            this.searchLookUpProveedor.Location = new System.Drawing.Point(79, 66);
+            this.searchLookUpProveedor.Location = new System.Drawing.Point(79, 63);
             this.searchLookUpProveedor.Name = "searchLookUpProveedor";
             this.searchLookUpProveedor.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -734,7 +744,7 @@
             // 
             // labelControl12
             // 
-            this.labelControl12.Location = new System.Drawing.Point(3, 95);
+            this.labelControl12.Location = new System.Drawing.Point(3, 91);
             this.labelControl12.Name = "labelControl12";
             this.labelControl12.Size = new System.Drawing.Size(35, 13);
             this.labelControl12.TabIndex = 60;
@@ -742,23 +752,66 @@
             // 
             // labelControl6
             // 
-            this.labelControl6.Location = new System.Drawing.Point(3, 66);
+            this.labelControl6.Location = new System.Drawing.Point(3, 63);
             this.labelControl6.Name = "labelControl6";
             this.labelControl6.Size = new System.Drawing.Size(54, 13);
             this.labelControl6.TabIndex = 46;
             this.labelControl6.Text = "Proveedor:";
             // 
+            // searchLookUpPartida
+            // 
+            this.searchLookUpPartida.EditValue = "";
+            this.searchLookUpPartida.Location = new System.Drawing.Point(79, 121);
+            this.searchLookUpPartida.Name = "searchLookUpPartida";
+            this.searchLookUpPartida.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.searchLookUpPartida.Properties.DataSource = this.bsPartida;
+            this.searchLookUpPartida.Properties.DisplayMember = "DesPartida";
+            this.searchLookUpPartida.Properties.ValueMember = "Partida";
+            this.searchLookUpPartida.Properties.View = this.searchLookUpEditPartida;
+            this.searchLookUpPartida.Size = new System.Drawing.Size(611, 20);
+            this.searchLookUpPartida.TabIndex = 62;
+            this.searchLookUpPartida.EditValueChanged += new System.EventHandler(this.SearchLookUpPartidaEditValueChanged);
+            // 
+            // searchLookUpEditPartida
+            // 
+            this.searchLookUpEditPartida.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn17,
+            this.gridColumn18});
+            this.searchLookUpEditPartida.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            this.searchLookUpEditPartida.Name = "searchLookUpEditPartida";
+            this.searchLookUpEditPartida.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.searchLookUpEditPartida.OptionsView.ShowGroupPanel = false;
+            // 
+            // gridColumn17
+            // 
+            this.gridColumn17.Caption = "Partida";
+            this.gridColumn17.FieldName = "Partida";
+            this.gridColumn17.Name = "gridColumn17";
+            this.gridColumn17.Visible = true;
+            this.gridColumn17.VisibleIndex = 0;
+            this.gridColumn17.Width = 107;
+            // 
+            // gridColumn18
+            // 
+            this.gridColumn18.Caption = "Descripcion";
+            this.gridColumn18.FieldName = "DesPartida";
+            this.gridColumn18.Name = "gridColumn18";
+            this.gridColumn18.Visible = true;
+            this.gridColumn18.VisibleIndex = 1;
+            this.gridColumn18.Width = 925;
+            // 
             // txtObservaciones
             // 
-            this.txtObservaciones.Location = new System.Drawing.Point(5, 129);
+            this.txtObservaciones.Location = new System.Drawing.Point(3, 116);
             this.txtObservaciones.Name = "txtObservaciones";
-            this.txtObservaciones.Size = new System.Drawing.Size(218, 116);
+            this.txtObservaciones.Size = new System.Drawing.Size(218, 140);
             this.txtObservaciones.TabIndex = 7;
             // 
             // lblObservacion
             // 
             this.lblObservacion.AutoSize = true;
-            this.lblObservacion.Location = new System.Drawing.Point(5, 113);
+            this.lblObservacion.Location = new System.Drawing.Point(5, 100);
             this.lblObservacion.Name = "lblObservacion";
             this.lblObservacion.Size = new System.Drawing.Size(67, 13);
             this.lblObservacion.TabIndex = 54;
@@ -778,7 +831,7 @@
             this.repositoryItemSearchLookUpEdit2,
             this.repositoryItemPopupContainerEdit1,
             this.repositoryItemButtonEdit1});
-            this.gcPedidoDetalle.Size = new System.Drawing.Size(1121, 231);
+            this.gcPedidoDetalle.Size = new System.Drawing.Size(1121, 227);
             this.gcPedidoDetalle.TabIndex = 12;
             this.gcPedidoDetalle.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvPedidoDetalle});
@@ -897,15 +950,14 @@
             this.gvPedidoDetalle.Appearance.VertLine.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(127)))), ((int)(((byte)(196)))));
             this.gvPedidoDetalle.Appearance.VertLine.Options.UseBackColor = true;
             this.gvPedidoDetalle.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.gridColumn5,
+            this.gridColumn14,
             this.gridColumnArticulo,
             this.gridColumnDescripcion,
             this.gridColumn8,
             this.gridColumnCantidad,
             this.gridColumnFecha,
             this.gridColumn12,
-            this.gridColumn13,
-            this.gridColumn14});
+            this.gridColumn13});
             this.gvPedidoDetalle.GridControl = this.gcPedidoDetalle;
             this.gvPedidoDetalle.Name = "gvPedidoDetalle";
             this.gvPedidoDetalle.NewItemRowText = "Clck aqui para agregar un nuevo registro";
@@ -920,14 +972,11 @@
             this.gvPedidoDetalle.OptionsView.ShowGroupPanel = false;
             this.gvPedidoDetalle.CellValueChanged += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.GvPedidoDetalleCellValueChanged);
             // 
-            // gridColumn5
+            // gridColumn14
             // 
-            this.gridColumn5.Caption = "Renglon";
-            this.gridColumn5.FieldName = "RenglonPedido";
-            this.gridColumn5.Name = "gridColumn5";
-            this.gridColumn5.UnboundType = DevExpress.Data.UnboundColumnType.Integer;
-            this.gridColumn5.Visible = true;
-            this.gridColumn5.VisibleIndex = 7;
+            this.gridColumn14.Caption = "Articulo";
+            this.gridColumn14.FieldName = "Articulo";
+            this.gridColumn14.Name = "gridColumn14";
             // 
             // gridColumnArticulo
             // 
@@ -1015,12 +1064,6 @@
             this.gridColumn13.VisibleIndex = 6;
             this.gridColumn13.Width = 86;
             // 
-            // gridColumn14
-            // 
-            this.gridColumn14.Caption = "Articulo";
-            this.gridColumn14.FieldName = "Articulo";
-            this.gridColumn14.Name = "gridColumn14";
-            // 
             // repositoryItemSearchLookUpEdit2
             // 
             this.repositoryItemSearchLookUpEdit2.AutoHeight = false;
@@ -1085,6 +1128,7 @@
             this.ClientSize = new System.Drawing.Size(1121, 579);
             this.Name = "FrmModuloPedido";
             this.Text = "Captura::Pedido";
+            this.Load += new System.EventHandler(this.FrmModuloPedido_Load);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();
             this.splitContainerControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
@@ -1111,6 +1155,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.searchLookUpProveedor.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsProveedor)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEditProveedor)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.searchLookUpPartida.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsPartida)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEditPartida)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtObservaciones.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gcPedidoDetalle)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsPedidoDetalle)).EndInit();
@@ -1127,16 +1174,11 @@
         #endregion
 
         private DevExpress.XtraEditors.GroupControl groupControl1;
-        private DevExpress.XtraEditors.SearchLookUpEdit searchLookUpAnexo;
-        private DevExpress.XtraGrid.Views.Grid.GridView searchLookUpEditAnexo;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn15;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn16;
         private DevExpress.XtraEditors.SearchLookUpEdit searchLookUpProveedor;
         private DevExpress.XtraGrid.Views.Grid.GridView searchLookUpEditProveedor;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
         private System.Windows.Forms.ComboBox cbxCargo;
-        private DevExpress.XtraEditors.LabelControl labelControl12;
         private DevExpress.XtraEditors.LabelControl labelControl9;
         private DevExpress.XtraEditors.MemoEdit txtObservaciones;
         private System.Windows.Forms.Label lblObservacion;
@@ -1163,7 +1205,6 @@
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraGrid.GridControl gcPedidoDetalle;
         private DevExpress.XtraGrid.Views.Grid.GridView gvPedidoDetalle;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumnArticulo;
         private DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit repositoryItemSearchLookUpEdit2;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView5;
@@ -1204,6 +1245,16 @@
         private DevExpress.XtraEditors.TextEdit txtDescuento;
         private System.Windows.Forms.RadioButton rbCantidad;
         private DevExpress.XtraEditors.TextEdit txtRequisicion;
-        private DevExpress.XtraEditors.SimpleButton cmdCargarAlmacen;
+        private DevExpress.XtraEditors.LabelControl labelControl7;
+        private DevExpress.XtraEditors.SearchLookUpEdit searchLookUpAnexo;
+        private DevExpress.XtraGrid.Views.Grid.GridView searchLookUpEditAnexo;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn15;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn16;
+        private DevExpress.XtraEditors.LabelControl labelControl12;
+        private DevExpress.XtraEditors.SearchLookUpEdit searchLookUpPartida;
+        private DevExpress.XtraGrid.Views.Grid.GridView searchLookUpEditPartida;
+        private System.Windows.Forms.BindingSource bsPartida;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn17;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn18;
     }
 }

@@ -6,7 +6,7 @@
       select r from Requisicion r 
       join fetch r.Anexo 
       join fetch r.CatArea 
-      where r.Almacen = :almacen 
+      where r.Almacen in (:almacenes) 
       and year(r.FechaRequisicion) = :anioActual
       and r.Estatus = 'A'
       ]]>
@@ -44,8 +44,8 @@
   <query name="Pedido.CargaPedidoDetalle">
     <![CDATA[
       from PedidoDetalle pd       
-      left join fetch pd.Articulo art 
-      left join fetch art.Id.Almacen 
+      left join fetch pd.Articulo art       
+      left join fetch art.Id.Almacen  
       where pd.Pedido = :pedido
       order by pd.RenglonPedido asc ]]>
   </query>
@@ -68,7 +68,8 @@
       left join fetch p.Requisicion 
       join fetch p.Usuario 
       where year(p.FechaPedido) = :anioActual 
-      and p.Almacen = :almacen]]>
+      and p.Almacen = :almacen 
+      order by p.FechaPedido desc]]>
   </query>
 
   <query name="Pedido.ExisteRequisicionPedido">

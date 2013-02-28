@@ -55,8 +55,8 @@ namespace Adquisiciones.View.Modulos
             bsAnexoDetalle.DataSource = new List<AnexoDetalle>();
             txtnumlicitacion.DataBindings.Add(new Binding("Text", bsAnexo, "NumeroAnexo",false));
             txtDesanexo.DataBindings.Add(new Binding("Text", bsAnexo, "DesAnexo",true));
-            cbxTipolicitacion.DataBindings.Add(new Binding("SelectedValue", bsAnexo, "TipoLicitacion", true));
-            cbxIva.DataBindings.Add(new Binding("SelectedValue", bsAnexo, "Iva", true));
+            //cbxTipolicitacion.DataBindings.Add(new Binding("SelectedValue", bsAnexo, "TipoLicitacion", true));
+            //cbxIva.DataBindings.Add(new Binding("SelectedValue", bsAnexo, "Iva", true));
             txtTechopresupuestal.DataBindings.Add(new Binding("Text", bsAnexo, "TechoPresupuestal", true));
             bsAnexo.DataSource = AnexoActual;
            
@@ -98,6 +98,11 @@ namespace Adquisiciones.View.Modulos
 
                 AnexoActual.Almacen = AlmacenActual;
                 AnexoActual.Usuario = FrmModuloAcceso.UsuarioLog;
+
+                //Combos
+                AnexoActual.TipoLicitacion = cbxTipolicitacion.SelectedValue as TipoLicitacion;
+                AnexoActual.Iva = cbxIva.SelectedValue as Iva;
+
                 AnexoService.GuardarAnexo(ref AnexoActual);
 
                 Consultar();
@@ -134,6 +139,10 @@ namespace Adquisiciones.View.Modulos
                 {
                     bsAnexo.DataSource = AnexoActual;
                     bsAnexoDetalle.DataSource = AnexoActual.AnexoDetalle;
+
+                    //Combos que no vincula
+                    cbxTipolicitacion.SelectedIndex = cbxTipolicitacion.FindStringExact(AnexoActual.TipoLicitacion.DesTipolicitacion);
+                    cbxIva.SelectedIndex = cbxIva.FindStringExact(AnexoActual.Iva.Id.Porcentaje.ToString());
 
                     lblFecha.Text = String.Format("{0:dd/MM/yyyy}", AnexoActual.FechaAnexo);
 

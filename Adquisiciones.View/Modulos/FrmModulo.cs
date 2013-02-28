@@ -74,26 +74,7 @@ namespace Adquisiciones.View.Modulos
             var ctx = ContextRegistry.GetContext();
             var almacenDao = ctx["almacenDao"] as IAlmacenDao;
 
-            var almacenes = new List<Almacen>();
-            switch(almacenAdq.IdAlmacen)
-            {
-                case "C2":
-                    almacenes.Add(almacenDao.Get("PC"));
-                    almacenes.Add(almacenDao.Get("GC"));
-                    almacenes.Add(almacenDao.Get("FC"));
-                    break;
-                case "C5":
-                    almacenes.Add(almacenDao.Get("AC"));
-                    break;
-                case "P2":
-                    almacenes.Add(almacenDao.Get("F"));
-                    almacenes.Add(almacenDao.Get("G"));
-                    almacenes.Add(almacenDao.Get("P"));
-                    break;
-                case "P5":
-                    almacenes.Add(almacenDao.Get("A"));
-                    break;
-            }
+            var almacenes = almacenDao.getAlmacenes(almacenAdq);
 
             var dicc = almacenes.ToDictionary(almacen => almacen, 
                 almacen => almacen.ToString());

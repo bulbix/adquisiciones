@@ -50,8 +50,9 @@ namespace Adquisiciones.View.Modulos
             if(tipoPedido > 3)
                 gridColumnFecha.Visible = false;
 
-            BindearCampos();
+           
             InicializarCatalogos();
+            BindearCampos();
 
         }
 
@@ -73,23 +74,23 @@ namespace Adquisiciones.View.Modulos
             txtRequisicion.DataBindings.Add(new Binding("Text", bsPedido, "NumeroRequisicion", true));
             txtDescuento.DataBindings.Add(new Binding("Text", bsPedido, "ImporteDescuento", true));
             txtReserva.DataBindings.Add(new Binding("Text", bsPedido, "IdReservaautoriza", true));
-            cbxActividad.DataBindings.Add(new Binding("SelectedValue", bsPedido, "CatActividad", true));
-            cbxIva.DataBindings.Add(new Binding("SelectedValue", bsPedido, "Iva", true));
-            cbxCargo.DataBindings.Add(new Binding("SelectedValue", bsPedido, "CatPresupuesto", true));
-            //cbxInstituto.DataBindings.Add(new Binding("SelectedValue", bsPedido, "Instituto", true));
+            //cbxActividad.DataBindings.Add(new Binding("SelectedValue", bsPedido, "CatActividad", false));
+            //cbxIva.DataBindings.Add(new Binding("SelectedValue", bsPedido, "Iva", false));
+            //cbxCargo.DataBindings.Add(new Binding("SelectedValue", bsPedido, "CatPresupuesto", false));
             txtObservaciones.DataBindings.Add(new Binding("Text", bsPedido, "Observaciones", false));
+
         }
 
         public override void InicializarCatalogos()
         {
             PedidoService.CatalogoActividad(cbxActividad);
-            bsFundamento.DataSource = PedidoService.PedidoDao.CargarCatalogo<Fundamento>();
             PedidoService.AnexoService.IvasCombo(cbxIva);
             PedidoService.CatalogoPresupuestal(cbxCargo);
-            //PedidoService.AnexoService.InstitutosCombo(cbxInstituto);
+            bsFundamento.DataSource = PedidoService.PedidoDao.CargarCatalogo<Fundamento>();
             bsArea.DataSource = PedidoService.PedidoDao.CargarCatalogo<CatArea>("Estatus", 1);
             bsProveedor.DataSource = PedidoService.PedidoDao.CargarCatalogo<Proveedor>();
             bsAnexo.DataSource = PedidoService.AnexoDao.CargarAnexos(AlmacenActual);
+            bsPartida.DataSource = PedidoService.PedidoDao.CargarCatalogo<CatPartida>();
         }
 
         public override void Nuevo()
@@ -113,7 +114,11 @@ namespace Adquisiciones.View.Modulos
             searchLookUpArea.EditValue = null;
             searchLookUpProveedor.EditValue = null;
             searchLookUpAnexo.EditValue = null;
+            searchLookUpAnexo.Enabled = true;
+            searchLookUpPartida.Enabled = true;
+            searchLookUpPartida.EditValue = null;
             LimpiarErrores();
+            LimpiarComboAnexo();
         }
 
         public override void Guardar()
@@ -124,6 +129,11 @@ namespace Adquisiciones.View.Modulos
             //los parametros basicos
             PedidoActual.Almacen = AlmacenActual;
             PedidoActual.Usuario = FrmModuloAcceso.UsuarioLog;
+           
+            //Cmbos
+            PedidoActual.CatActividad = cbxActividad.SelectedValue as CatActividad;
+            PedidoActual.CatPresupuesto = cbxCargo.SelectedValue as CatPresupuesto;
+            PedidoActual.Iva = cbxIva.SelectedValue as Iva;
 
             if (!Util.DatosValidos(PedidoActual, lblNumErrors, listaError))
                 return;
@@ -133,6 +143,9 @@ namespace Adquisiciones.View.Modulos
             try
             {
                 PedidoService.GuardarPedido(ref PedidoActual, importeTotal);
+
+                Consultar();
+
                 base.EntityActual = PedidoActual;
 
                 XtraMessageBox.Show(@"Pedido Registrado o Actualizado Exitosamente",
@@ -161,6 +174,11 @@ namespace Adquisiciones.View.Modulos
                     bsPedido.DataSource = PedidoActual;
                     bsPedidoDetalle.DataSource = PedidoActual.PedidoDetalle;
 
+                    //Combos que no vincula
+                    cbxActividad.SelectedIndex = cbxActividad.FindStringExact(PedidoActual.CatActividad.DesActividad);
+                    cbxCargo.SelectedIndex = cbxCargo.FindStringExact(PedidoActual.CatPresupuesto.DesPresupuesto);
+                    cbxIva.SelectedIndex = cbxIva.FindStringExact(PedidoActual.Iva.Id.Porcentaje.ToString());
+
                     if (searchLookUpFundamento.Handle != IntPtr.Zero)
                         searchLookUpFundamento.EditValue = PedidoActual.Fundamento.CveFundamento;
 
@@ -172,12 +190,23 @@ namespace Adquisiciones.View.Modulos
 
                     if (PedidoActual.Anexo != null)
                     {
-                        if (searchLookUpProveedor.Handle != IntPtr.Zero)
-                        searchLookUpProveedor.EditValue = PedidoActual.Anexo.NumeroAnexo;
+                        if (searchLookUpAnexo.Handle != IntPtr.Zero)
+                        searchLookUpAnexo.EditValue = PedidoActual.Anexo.NumeroAnexo;
+
+                        SeleccionoAnexo();
+                       
                     }
 
+                    var oneDetalle = PedidoActual.PedidoDetalle[0];
+
+                    //Centinela
+                    if (searchLookUpPartida.Handle != IntPtr.Zero)
+                        searchLookUpPartida.EditValue =
+                            PedidoService.AnexoService.ArticuloDao.GetPartida(oneDetalle.Articulo).Partida;
+
+
                     LimpiarErrores();
-                    SumTotal();
+                   
 
                     if(PedidoService.PedidoDao.ExisteEntradaPedido(PedidoActual))
                     {
@@ -186,9 +215,15 @@ namespace Adquisiciones.View.Modulos
                         cmdGuardar.Enabled = false;
                     }
 
+                    searchLookUpPartida.Enabled = false;
+                    searchLookUpAnexo.Enabled = false;
+                    cbxAlmacen.Enabled = false;
+
 
                     base.EntityActual = PedidoActual;
                     base.Consultar();
+
+                    
 
                 }
                 else
@@ -206,7 +241,7 @@ namespace Adquisiciones.View.Modulos
                 Log.Error("Generado por:" + FrmModuloAcceso.UsuarioLog, ee);
             }
 
-            cbxAlmacen.Enabled = false;
+            
         }
 
         private void SearchLookUpFundamentoEditValueChanged(object sender, EventArgs e)
@@ -248,12 +283,11 @@ namespace Adquisiciones.View.Modulos
         {
             if (searchLookUpAnexo.EditValue != null)
             {
-
                 var anexoSeleccionado = searchLookUpEditAnexo.GetFocusedRow() as Anexo;
 
-                if (anexoSeleccionado != null)
+                //Solo pedidos nuevos
+                if (anexoSeleccionado != null && PedidoActual.IdPedido == 0)
                 {
-
                     if (PedidoService.PedidoDao.ExisteAnexoPedido(anexoSeleccionado))
                     {
                         XtraMessageBox.Show(@"El anexo ya esta asociado a un pedido",
@@ -264,9 +298,7 @@ namespace Adquisiciones.View.Modulos
                     PedidoActual.Anexo = anexoSeleccionado;
                     var pedidosDetalle = PedidoService.CargarPedidoDetalle(anexoSeleccionado);
                     bsPedidoDetalle.DataSource = pedidosDetalle;
-                    gvPedidoDetalle.OptionsView.NewItemRowPosition = NewItemRowPosition.None;
-                    gvPedidoDetalle.OptionsBehavior.AllowDeleteRows = DefaultBoolean.False;
-                    gridColumnArticulo.OptionsColumn.AllowEdit = false;
+                    SeleccionoAnexo();
                 }
             }
             else
@@ -298,9 +330,29 @@ namespace Adquisiciones.View.Modulos
                 {
                     var cveArt = (int)rowSelectValue;
                     var almacen = cbxAlmacen.SelectedValue as Almacen;
+                    var partida = searchLookUpEditPartida.GetFocusedRow() as CatPartida;
 
-                    var articuloid = new ArticuloId(cveArt, almacen);
-                    var articuloSelect = PedidoService.AnexoService.ArticuloDao.Get(articuloid);
+                    if(partida == null)
+                    {
+                        XtraMessageBox.Show(@"No ha seleccionado partida",
+                        @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
+                    var articuloSelect = PedidoService.AnexoService.
+                        ArticuloDao.ArticuloPartida(cveArt, almacen, partida);
+
+                    if(articuloSelect == null)
+                    {
+                        XtraMessageBox.Show(@"No existe la clave", @"Adquisiciones",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                        gvPedidoDetalle.SetRowCellValue(e.RowHandle, "DescripcionArt", "");
+                        gvPedidoDetalle.SetRowCellValue(e.RowHandle, "UnidadArt", "");
+
+                        return;
+                    }
+
                     gvPedidoDetalle.SetRowCellValue(e.RowHandle, "Articulo", articuloSelect);
                     gvPedidoDetalle.SetRowCellValue(e.RowHandle, "DescripcionArt", articuloSelect.DesArticulo);
                     gvPedidoDetalle.SetRowCellValue(e.RowHandle, "UnidadArt", articuloSelect.CatUnidad.Unidad);
@@ -329,6 +381,13 @@ namespace Adquisiciones.View.Modulos
             }
 
             SumTotal();
+        }
+
+        private void SeleccionoAnexo()
+        {
+            gvPedidoDetalle.OptionsView.NewItemRowPosition = NewItemRowPosition.None;
+            gvPedidoDetalle.OptionsBehavior.AllowDeleteRows = DefaultBoolean.False;
+            gridColumnArticulo.OptionsColumn.AllowEdit = false;
         }
 
         private void LimpiarComboAnexo()
@@ -395,9 +454,7 @@ namespace Adquisiciones.View.Modulos
 
         private bool TieneRepetidoArticulo(int? articulo)
         {
-            var numOcurrencia = PedidoActual.PedidoDetalle.Count
-                (p => p.CveArt == articulo);
-
+            var numOcurrencia = PedidoActual.PedidoDetalle.Count(p => p.CveArt == articulo);
             return numOcurrencia > 1;
         }
        
@@ -423,18 +480,27 @@ namespace Adquisiciones.View.Modulos
         {
             SumTotal();
         }
+
         private void CbxIvaSelectedValueChanged(object sender, EventArgs e)
         {
             SumTotal();
         }
 
-        private void CmdCargarAlmacenClick(object sender, EventArgs e)
+        private void SearchLookUpPartidaEditValueChanged(object sender, EventArgs e)
         {
-            if (XtraMessageBox.Show(@"Esta seguro de cambiar el almacen? Se borrara el detalle", @"Adquisiciones",
-                                        MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-            {
-                bsPedidoDetalle.DataSource = new List<AnexoDetalle>();
-            }
+            if (PedidoActual.IdPedido == 0)//Nuevo
+                bsPedidoDetalle.DataSource = new List<PedidoDetalle>();
+        }
+
+        private void CbxAlmacenSelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(PedidoActual == null || PedidoActual.IdPedido == 0)//Nuevo
+                bsPedidoDetalle.DataSource = new List<PedidoDetalle>();
+        }
+
+        private void FrmModuloPedido_Load(object sender, EventArgs e)
+        {
+            SumTotal();
         }
     }
 }

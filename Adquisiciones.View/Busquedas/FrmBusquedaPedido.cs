@@ -44,11 +44,11 @@ namespace Adquisiciones.View.Busquedas
 
         protected override void Eliminar()
         {
-            if ((GvGeneral.GetFocusedRow() as Pedido).Requisicion!=null)
+            var pedido = GvGeneral.GetFocusedRow() as Pedido;
+
+            if (pedido.Requisicion!=null)
             {
-                XtraMessageBox.Show(@"El pedido es automatico",
-                   @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
+                PedidoService.RequisicionDao.ActualizarEstatusRequisicion(pedido.Requisicion,"A");
             }
 
             base.Eliminar();

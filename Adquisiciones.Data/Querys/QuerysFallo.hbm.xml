@@ -27,7 +27,8 @@
       join fetch f.Usuario 
       join fetch f.Anexo 
       where year(f.FechaFallo) = :anioActual
-      and f.Almacen = :almacen]]>
+      and f.Almacen = :almacen 
+      order by f.FechaFallo desc]]>
   </query>
   
 

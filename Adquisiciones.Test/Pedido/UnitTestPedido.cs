@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using Adquisiciones.Business.ModPedido;
+using Adquisiciones.Data.Dao.Catalogos;
 using Adquisiciones.Data.Dao.ModPedido;
 using Adquisiciones.Data.Entities;
 using Adquisiciones.View.Reportes;
@@ -16,6 +17,7 @@ namespace Adquisiciones.Test.Anexo
         public IPedidoService PedidoService { private get; set; }
         public IPedidoEntregaDao PedidoEntregaDao { private get; set; }
         public IPedidoDetalleDao PedidoDetalleDao { private get; set; }
+        public IArticuloDao ArticuloDao { private get; set; }
 
         [Test]
         public void TestMaximoNumeroPedido()
@@ -76,9 +78,28 @@ namespace Adquisiciones.Test.Anexo
         }
 
         [Test]
+        public void TestArticulo()
+        {
+            var articulo = 
+                ArticuloDao.ArticuloPartida(2148, new Almacen("F"), new CatPartida("25901"));
+
+            Assert.IsNotNull(articulo);
+
+        }
+
+        [Test]
+        public void TestPartida()
+        {
+            var articulo = new Articulo(new ArticuloId(2148, new Almacen("F")));
+
+            var partida = ArticuloDao.GetPartida( articulo);//, new CatPartida("25901"));
+            Assert.AreEqual("25901", partida.Partida);
+        }
+
+        [Test]
         public  void GenerarReportePedidoMayor()
         {
-            GenerarReportePedido(23, 1, "P2");
+            GenerarReportePedido(118, 1, "P2");
         }
 
         [Test]
