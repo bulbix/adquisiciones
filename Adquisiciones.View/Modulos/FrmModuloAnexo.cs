@@ -15,11 +15,14 @@ namespace Adquisiciones.View.Modulos
 {
     public partial class FrmModuloAnexo : FrmModulo
     {
-       ///<summary></summary>
+
+        #region Variables
         public IAnexoService AnexoService { get; set; }
         public IFalloService FalloService { get; set; }
         public Anexo AnexoActual;
+        #endregion
 
+        #region Constructores
         public FrmModuloAnexo(FrmAdquisiciones padre)
         {
             InitializeComponent();
@@ -49,7 +52,9 @@ namespace Adquisiciones.View.Modulos
             AnexoActual = anexo;
             Consultar();
         }
-        
+        #endregion
+
+        #region Metodos
         public override void BindearCampos()
         {
             bsAnexoDetalle.DataSource = new List<AnexoDetalle>();
@@ -93,15 +98,16 @@ namespace Adquisiciones.View.Modulos
 
             try
             {
-                if (!Util.DatosValidos(AnexoActual, lblNumErrors, listaError))
-                    return;
-
                 AnexoActual.Almacen = AlmacenActual;
                 AnexoActual.Usuario = FrmModuloAcceso.UsuarioLog;
 
                 //Combos
                 AnexoActual.TipoLicitacion = cbxTipolicitacion.SelectedValue as TipoLicitacion;
                 AnexoActual.Iva = cbxIva.SelectedValue as Iva;
+
+
+                if (!Util.DatosValidos(AnexoActual, lblNumErrors, listaError))
+                    return;
 
                 AnexoService.GuardarAnexo(ref AnexoActual);
 
@@ -120,12 +126,6 @@ namespace Adquisiciones.View.Modulos
             }
         }
 
-        protected override void CmdConsultarClick(object sender,ItemClickEventArgs e)
-        {
-            Consultar();
-            HayErrores();
-        }
-
         public override void Consultar()
         {
            try
@@ -141,8 +141,12 @@ namespace Adquisiciones.View.Modulos
                     bsAnexoDetalle.DataSource = AnexoActual.AnexoDetalle;
 
                     //Combos que no vincula
-                    cbxTipolicitacion.SelectedIndex = cbxTipolicitacion.FindStringExact(AnexoActual.TipoLicitacion.DesTipolicitacion);
-                    cbxIva.SelectedIndex = cbxIva.FindStringExact(AnexoActual.Iva.Id.Porcentaje.ToString());
+                    if(AnexoActual.TipoLicitacion != null)
+                        cbxTipolicitacion.SelectedIndex = cbxTipolicitacion.
+                            FindStringExact(AnexoActual.TipoLicitacion.DesTipolicitacion);
+
+                    if(AnexoActual.Iva != null)
+                        cbxIva.SelectedIndex = cbxIva.FindStringExact(AnexoActual.Iva.Id.Porcentaje.ToString());
 
                     lblFecha.Text = String.Format("{0:dd/MM/yyyy}", AnexoActual.FechaAnexo);
 
@@ -188,6 +192,14 @@ namespace Adquisiciones.View.Modulos
             var numOcurrencia = AnexoActual.AnexoDetalle.Count(p => p.CveArt == articulo);
             return numOcurrencia > 1;
         }
+        #endregion
+
+        #region Eventos
+        protected override void CmdConsultarClick(object sender, ItemClickEventArgs e)
+        {
+            Consultar();
+            HayErrores();
+        }
 
         private void GvAnexoDetalleKeyDown(object sender, KeyEventArgs e)
         {
@@ -223,6 +235,18 @@ namespace Adquisiciones.View.Modulos
                         var articuloid = new ArticuloId(cveArt, almacen);
 
                         var articuloSelect = AnexoService.ArticuloDao.Get(articuloid);
+
+                        if (articuloSelect == null)
+                        {
+                            XtraMessageBox.Show(@"No existe la clave", @"Adquisiciones",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                            gvAnexoDetalle.SetRowCellValue(e.RowHandle, "DescripcionArt", "");
+                            gvAnexoDetalle.SetRowCellValue(e.RowHandle, "UnidadArt", "");
+
+                            return;
+                        }
+
                         gvAnexoDetalle.SetRowCellValue(e.RowHandle, "Articulo", articuloSelect);
                         gvAnexoDetalle.SetRowCellValue(e.RowHandle, "DescripcionArt", articuloSelect.DesArticulo);
                         gvAnexoDetalle.SetRowCellValue(e.RowHandle, "UnidadArt", articuloSelect.CatUnidad.Unidad);
@@ -286,13 +310,12 @@ namespace Adquisiciones.View.Modulos
             }
         }
 
-        private void CmdCargarAlmacenClick(object sender, EventArgs e){
-            if (XtraMessageBox.Show(@"Esta seguro de cambiar el almacen? Se borrara el detalle", @"Adquisiciones",
-                                        MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-            {
+        private void CbxAlmacenSelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(AnexoActual == null || AnexoActual.IdAnexo == 0)
                 bsAnexoDetalle.DataSource = new List<AnexoDetalle>();
-            }
-
         }
+
+        #endregion
     }
 }

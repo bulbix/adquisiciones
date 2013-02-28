@@ -15,12 +15,15 @@ namespace Adquisiciones.View.Modulos
 {
     public partial class FrmModuloPedido : FrmModulo
     {
+        #region Variables
         public IPedidoService PedidoService;
         public Pedido PedidoActual;
         public Almacen AlmacenArticulo;
         private int tipoPedido = 0;
         private decimal importeTotal = (decimal)0.0;
+        #endregion
 
+        #region Constructores
         public FrmModuloPedido(FrmAdquisiciones padre)
         {
             InitializeComponent();
@@ -47,7 +50,7 @@ namespace Adquisiciones.View.Modulos
             if (tipoPedido > 1)
                 searchLookUpAnexo.Enabled = false;
 
-            if(tipoPedido > 3)
+            if(tipoPedido > 2)
                 gridColumnFecha.Visible = false;
 
            
@@ -66,8 +69,10 @@ namespace Adquisiciones.View.Modulos
                 cmdGuardar.Enabled = false;
             
          }
+        #endregion
 
-        public override void BindearCampos()
+        #region Metodos
+         public override void BindearCampos()
         {
             bsPedidoDetalle.DataSource = new List<PedidoDetalle>();
            
@@ -175,9 +180,14 @@ namespace Adquisiciones.View.Modulos
                     bsPedidoDetalle.DataSource = PedidoActual.PedidoDetalle;
 
                     //Combos que no vincula
-                    cbxActividad.SelectedIndex = cbxActividad.FindStringExact(PedidoActual.CatActividad.DesActividad);
-                    cbxCargo.SelectedIndex = cbxCargo.FindStringExact(PedidoActual.CatPresupuesto.DesPresupuesto);
-                    cbxIva.SelectedIndex = cbxIva.FindStringExact(PedidoActual.Iva.Id.Porcentaje.ToString());
+                    if(PedidoActual.CatActividad != null)
+                        cbxActividad.SelectedIndex = cbxActividad.FindStringExact(PedidoActual.CatActividad.DesActividad);
+                    
+                    if(PedidoActual.CatPresupuesto != null)
+                        cbxCargo.SelectedIndex = cbxCargo.FindStringExact(PedidoActual.CatPresupuesto.DesPresupuesto);
+
+                    if(PedidoActual.Iva != null)
+                        cbxIva.SelectedIndex = cbxIva.FindStringExact(PedidoActual.Iva.Id.Porcentaje.ToString());
 
                     if (searchLookUpFundamento.Handle != IntPtr.Zero)
                         searchLookUpFundamento.EditValue = PedidoActual.Fundamento.CveFundamento;
@@ -244,6 +254,84 @@ namespace Adquisiciones.View.Modulos
             
         }
 
+        private void SeleccionoAnexo()
+        {
+            gvPedidoDetalle.OptionsView.NewItemRowPosition = NewItemRowPosition.None;
+            gvPedidoDetalle.OptionsBehavior.AllowDeleteRows = DefaultBoolean.False;
+            gridColumnArticulo.OptionsColumn.AllowEdit = false;
+        }
+
+        private void LimpiarComboAnexo()
+        {
+            PedidoActual.Anexo = null;
+            gvPedidoDetalle.OptionsView.NewItemRowPosition = NewItemRowPosition.Top;
+            gvPedidoDetalle.OptionsBehavior.AllowDeleteRows = DefaultBoolean.True;
+            bsPedidoDetalle.DataSource = new List<PedidoDetalle>();
+            lblSubTotal.Text = @"$0.00";
+            gridColumnArticulo.OptionsColumn.AllowEdit = true;
+        }
+
+        private void SumTotal()
+        {
+            try
+            {
+                if (bsPedidoDetalle.DataSource as IList<PedidoDetalle> != null)
+                {
+                    var subTotal = (from ad in bsPedidoDetalle.DataSource as IList<PedidoDetalle>
+                                    select ad.Importe).Sum();
+                    var dectotal = Convert.ToDecimal(subTotal);
+                    lblSubTotal.Text = dectotal.ToString("$#,##0.00");
+
+                    decimal descuento = (decimal)0.0;
+
+
+                    if (rbCantidad.Checked)
+                    {
+                        descuento = decimal.Parse(txtDescuento.Text);
+                        lblDescuento.Text = descuento.ToString("$#,##0.00");
+
+                    }
+                    else if (rbPorcentaje.Checked)
+                    {
+                        descuento = decimal.Parse(txtDescuento.Text) / 100;
+                        lblDescuento.Text = descuento.ToString("$#,##0.00");
+                    }
+
+                    decimal importeDesc = subTotal.Value - descuento;
+
+                    lblSubDesc.Text = importeDesc.ToString("$#,##0.00");
+
+                    var iva = (cbxIva.SelectedValue as Iva).Id.Porcentaje;
+
+                    decimal cantidadIva = importeDesc * iva / 100;
+
+                    lblIva.Text = cantidadIva.ToString("$#,##0.00");
+
+                    this.importeTotal = importeDesc - cantidadIva;
+                    lblTotal.Text = importeTotal.ToString("$#,##0.00");
+
+                }
+            }
+            catch (Exception e)
+            {
+                lblSubTotal.Text = "$0.00";
+                lblDescuento.Text = "$0.00";
+                lblSubDesc.Text = "$0.00";
+                lblIva.Text = "$0.00";
+                lblTotal.Text = "$0.00";
+
+            }
+        }
+
+        private bool TieneRepetidoArticulo(int? articulo)
+        {
+            var numOcurrencia = PedidoActual.PedidoDetalle.Count(p => p.CveArt == articulo);
+            return numOcurrencia > 1;
+        }
+
+        #endregion
+
+        #region Eventos
         private void SearchLookUpFundamentoEditValueChanged(object sender, EventArgs e)
         {
             if (searchLookUpFundamento.EditValue != null)
@@ -383,81 +471,6 @@ namespace Adquisiciones.View.Modulos
             SumTotal();
         }
 
-        private void SeleccionoAnexo()
-        {
-            gvPedidoDetalle.OptionsView.NewItemRowPosition = NewItemRowPosition.None;
-            gvPedidoDetalle.OptionsBehavior.AllowDeleteRows = DefaultBoolean.False;
-            gridColumnArticulo.OptionsColumn.AllowEdit = false;
-        }
-
-        private void LimpiarComboAnexo()
-        {
-            PedidoActual.Anexo = null;
-            gvPedidoDetalle.OptionsView.NewItemRowPosition = NewItemRowPosition.Top;
-            gvPedidoDetalle.OptionsBehavior.AllowDeleteRows = DefaultBoolean.True;
-            bsPedidoDetalle.DataSource = new List<PedidoDetalle>();
-            lblSubTotal.Text = @"$0.00";
-            gridColumnArticulo.OptionsColumn.AllowEdit = true;
-        }
-
-        private void SumTotal()
-        {
-            try
-            {
-                if (bsPedidoDetalle.DataSource as IList<PedidoDetalle> != null)
-                {
-                    var subTotal = (from ad in bsPedidoDetalle.DataSource as IList<PedidoDetalle>
-                                    select ad.Importe).Sum();
-                    var dectotal = Convert.ToDecimal(subTotal);
-                    lblSubTotal.Text = dectotal.ToString("$#,##0.00");
-
-                    decimal descuento = (decimal) 0.0;
-
-
-                    if (rbCantidad.Checked)
-                    {
-                        descuento = decimal.Parse(txtDescuento.Text);
-                        lblDescuento.Text = descuento.ToString("$#,##0.00");
-
-                    }
-                    else if (rbPorcentaje.Checked)
-                    {
-                        descuento = decimal.Parse(txtDescuento.Text)/100;
-                        lblDescuento.Text = descuento.ToString("$#,##0.00");
-                    }
-
-                    decimal importeDesc = subTotal.Value - descuento;
-
-                    lblSubDesc.Text = importeDesc.ToString("$#,##0.00");
-
-                    var iva = (cbxIva.SelectedValue as Iva).Id.Porcentaje;
-
-                    decimal cantidadIva = importeDesc*iva/100;
-
-                    lblIva.Text = cantidadIva.ToString("$#,##0.00");
-
-                    this.importeTotal = importeDesc - cantidadIva;
-                    lblTotal.Text = importeTotal.ToString("$#,##0.00");
-
-                }
-            }
-            catch(Exception e)
-            {
-                lblSubTotal.Text = "$0.00";
-                lblDescuento.Text = "$0.00";
-                lblSubDesc.Text = "$0.00";
-                lblIva.Text = "$0.00";
-                lblTotal.Text = "$0.00";
-
-            }
-        }
-
-        private bool TieneRepetidoArticulo(int? articulo)
-        {
-            var numOcurrencia = PedidoActual.PedidoDetalle.Count(p => p.CveArt == articulo);
-            return numOcurrencia > 1;
-        }
-       
         private void RepositoryItemButtonEdit1Click(object sender, EventArgs e)
         {
             var pedidoDetalleSelect = gvPedidoDetalle.GetFocusedRow() as PedidoDetalle;
@@ -498,9 +511,11 @@ namespace Adquisiciones.View.Modulos
                 bsPedidoDetalle.DataSource = new List<PedidoDetalle>();
         }
 
-        private void FrmModuloPedido_Load(object sender, EventArgs e)
+        private void FrmModuloPedidoLoad(object sender, EventArgs e)
         {
             SumTotal();
         }
+
+        #endregion
     }
 }

@@ -10,20 +10,18 @@ using Adquisiciones.Data.Dao.Catalogos;
 using Adquisiciones.Data.Entities;
 using DevExpress.XtraEditors;
 using Spring.Context.Support;
+using System.Linq;
 
 namespace Adquisiciones.View.Catalogos
 {
     public partial class FrmCatalogoProveedor : FrmCatalogo
     {
-
-        ///<summary>
-        ///</summary>
+        #region Variables
         public IProveedorDao ProveedorDao { private get; set; }
-
-        ///<summary>
-        ///</summary>
         public Proveedor ProveedorActual { get; private set; }
+        #endregion
 
+        #region Constructores
         public FrmCatalogoProveedor(FrmAdquisiciones padre)
         {
             InitializeComponent();
@@ -33,17 +31,27 @@ namespace Adquisiciones.View.Catalogos
             var ctx = ContextRegistry.GetContext();
             ProveedorDao = ctx["proveedorDao"] as IProveedorDao;
             BindearCampos();
+            InicializarCatalogos();
             Nuevo();
             base.ObtenerPerfil();
         }
+
         public FrmCatalogoProveedor(Proveedor proveedor,FrmAdquisiciones padre):this(padre)
         {
             ProveedorActual = proveedor;
             txtClave.Value = proveedor.CveProveedor.Value;
             Consultar();
         }
+        #endregion
 
-
+        #region Metodos
+        public override void InicializarCatalogos()
+        {
+            var listEmpresas = ProveedorDao.CargarCatalogo<CatEmpresa>();
+            var dicc = listEmpresas.ToDictionary(empresa => empresa, empresa => empresa.DesEmpresa);
+            Util.Dicc2Combo(dicc,cbxEmpresa);
+        }
+        
         public override void BindearCampos()
         {
             //txtClave.DataBindings.Add(new Binding("Value", bsSource, "CveProveedor",false));
@@ -51,7 +59,7 @@ namespace Adquisiciones.View.Catalogos
             txtMaterno.DataBindings.Add(new Binding("Text", bsSource, "Materno", true));
             txtNombre.DataBindings.Add(new Binding("Text", bsSource, "Nombre", true));
             txtNombreFiscal.DataBindings.Add(new Binding("Text", bsSource, "NombreFiscal", true));
-            txtNombreComercial.DataBindings.Add(new Binding("Text", bsSource, "NombreComercial", true));
+            //txtNombreComercial.DataBindings.Add(new Binding("Text", bsSource, "NombreComercial", true));
             txtCalle.DataBindings.Add(new Binding("Text", bsSource, "Calle", true));
             txtColonia.DataBindings.Add(new Binding("Text", bsSource, "Colonia", true));
             txtDelegacion.DataBindings.Add(new Binding("Text", bsSource, "Delegacion", true));
@@ -72,7 +80,6 @@ namespace Adquisiciones.View.Catalogos
 
             bsSource.DataSource = ProveedorActual;
         }
-
         
         public override void Nuevo()
         {   
@@ -89,12 +96,15 @@ namespace Adquisiciones.View.Catalogos
 
         public override void Guardar(){
             try{
+                
                 var cveProv = Int32.Parse(txtClave.Value.ToString());
                 ProveedorActual.CveProveedor = cveProv;
+                ProveedorActual.CatEmpresa = cbxEmpresa.SelectedValue as CatEmpresa;
 
                 if (Util.DatosValidos(ProveedorActual, lblNumErrors, listaError))
                 {
-                    ProveedorDao.Update(ProveedorActual);XtraMessageBox.Show(@"Proveedor Registrado o Actualizado Exitosamente",
+                    ProveedorDao.Update(ProveedorActual);
+                    XtraMessageBox.Show(@"Proveedor Registrado o Actualizado Exitosamente",
                         @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     LimpiarValidacion();
                 }
@@ -119,6 +129,10 @@ namespace Adquisiciones.View.Catalogos
                     cmdGuardar.Enabled = true;
                     txtClave.Enabled = false;
                     bsSource.DataSource = ProveedorActual;
+
+                    if(ProveedorActual.CatEmpresa!= null)
+                        cbxEmpresa.SelectedIndex = cbxEmpresa.FindStringExact(ProveedorActual.CatEmpresa.DesEmpresa);
+
                     Text = @"Proveedor::" + ProveedorActual;
 
                 }
@@ -135,13 +149,14 @@ namespace Adquisiciones.View.Catalogos
                 Log.Error("Generado por:" + FrmModuloAcceso.UsuarioLog, ee);
             }
         }
+        #endregion
 
-
+        #region Eventos
         public void TxtMayusculaKeyPress(object sender, KeyPressEventArgs e)
         {
             e.KeyChar = Char.ToUpper(e.KeyChar);
         }
-    
-    
+        #endregion
+
     }
 }

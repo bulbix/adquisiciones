@@ -17,11 +17,13 @@ namespace Adquisiciones.View
 {
     public partial class FrmPanelControl : XtraForm
     {
-
+        #region Variables
         public IUsuarioService UsuarioService { private get; set; }
         private Usuario UsuarioActual;
         private Almacen AlmacenActual;
+        #endregion
 
+        #region Constructores
         public FrmPanelControl()
         {
             InitializeComponent();
@@ -30,9 +32,9 @@ namespace Adquisiciones.View
             Nuevo();
 
         }
+        #endregion
 
-        
-        
+        #region Metodos
         private void CargarPerfiles(Usuario usuario, Almacen almacen)
         {
             bsOrigen.DataSource = UsuarioService.UsuarioDao.
@@ -42,16 +44,41 @@ namespace Adquisiciones.View
                 ModulosConPerfil(usuario,almacen);
         }
 
+        private void Cerrar()
+        {
+            new FrmModuloModulo(false).Show();
+            this.Close();
+        }
 
+        private void Nuevo()
+        {
+            bsOrigen.DataSource = new List<Modulo>();
+            bsDestino.DataSource = new List<UsuarioModulo>();
+            UsuarioActual = new Usuario();
+            AlmacenActual = new Almacen();
+            lstAlmacen.SelectedItem = "";
+            searchLookUpUsuario.EditValue = null;
+            txtRfc.Text = string.Empty;
+            txtCurrentPass.Text = string.Empty;
+            txtNewPass.Text = string.Empty;
+            txtConfirmPass.Text = string.Empty;
+            txtNombre.Text = string.Empty;
+            chkActivo.Enabled = true;
+            lblNumErrors.Text = string.Empty;
+            listaError.Items.Clear();
+
+            txtRfc.Focus();
+            bsUsuarios.DataSource = UsuarioService.UsuarioDao.CargarUsuarios();
+
+        }
+        #endregion
+
+        #region Eventos
         private void CmdOmitirClick(object sender, EventArgs e)
         {
             Cerrar();
         }
-
-        /// <summary> 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+       
         private void CmdDerechaClick(object sender, EventArgs e)
         {
             foreach(var item in lstOrigen.SelectedItems)
@@ -88,14 +115,7 @@ namespace Adquisiciones.View
             }
             
         }
-        
 
-        /// <summary>
-        /// Carga los datos y los perfiles asociados con
-        /// el almacen seleccionado
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void LstUsuarioEditValueChanged(object sender, EventArgs e)
         {
             if (searchLookUpUsuario.EditValue != null)
@@ -122,34 +142,7 @@ namespace Adquisiciones.View
 
             }
         }
-
-        private void Nuevo()
-        {
-            bsOrigen.DataSource = new List<Modulo>();
-            bsDestino.DataSource = new List<UsuarioModulo>();
-            UsuarioActual = new Usuario();
-            AlmacenActual = new Almacen();
-            lstAlmacen.SelectedItem = "";
-            searchLookUpUsuario.EditValue = null;
-            txtRfc.Text = string.Empty;
-            txtCurrentPass.Text = string.Empty;
-            txtNewPass.Text = string.Empty;
-            txtConfirmPass.Text = string.Empty;
-            txtNombre.Text = string.Empty;
-            chkActivo.Enabled = true;
-            lblNumErrors.Text = string.Empty;
-            listaError.Items.Clear();
-
-            txtRfc.Focus();
-            bsUsuarios.DataSource = UsuarioService.UsuarioDao.CargarUsuarios();
-
-        }
-
-        /// <summary>
-        /// Blanquea campos
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+      
         private void CmdNuevoClick(object sender, EventArgs e)
         {
             Nuevo();
@@ -231,17 +224,6 @@ namespace Adquisiciones.View
 
 
         }
-        private void Cerrar()
-        {
-            new FrmModuloModulo(false).Show();
-            this.Close();
-        }
-
-        //private void FrmPanelControlFormClosed(object sender, FormClosedEventArgs e)
-        //{
-        //    Application.Restart();;
-            
-        //}
 
         private void SimpleButton1Click(object sender, EventArgs e)
         {
@@ -286,8 +268,7 @@ namespace Adquisiciones.View
             Application.Restart();
         }
 
-       
+        #endregion
 
-        
     }
 }

@@ -15,21 +15,15 @@ namespace Adquisiciones.View.Modulos
 {
     public partial class FrmModuloCotizacion : FrmModulo
     {
-        ///<summary>
-        ///</summary>
+
+        #region Variables
         public ICotizacionService CotizacionService { get; set; }
-        ///<summary>
-        ///</summary>
         public Cotizacion CotizacionActual;
-
-        ///<summary>
-        ///</summary>
         public Anexo AnexoActual;
-
-        ///<summary>
-        ///</summary>
         public Proveedor ProveedorActual;
+        #endregion
 
+        #region Contructores
         public FrmModuloCotizacion(FrmAdquisiciones padre)
         {
             InitializeComponent();
@@ -54,7 +48,9 @@ namespace Adquisiciones.View.Modulos
             ProveedorActual = cotizacion.Proveedor;
             Consultar();
         }
+        #endregion
 
+        #region Metodos
         public override void BindearCampos()
         {
             CotizacionActual.Usuario = FrmModuloAcceso.UsuarioLog;
@@ -165,7 +161,9 @@ namespace Adquisiciones.View.Modulos
                 Log.Error("Generado por:" + FrmModuloAcceso.UsuarioLog, ee);
             }
         }
+        #endregion
 
+        #region Eventos
         private void SearchLookUpAnexoEditValueChanged(object sender, EventArgs e)
         {
             if (searchLookUpAnexo.EditValue != null)
@@ -217,6 +215,7 @@ namespace Adquisiciones.View.Modulos
         {
             Consultar();
         }
+        #endregion
 
     }
 }

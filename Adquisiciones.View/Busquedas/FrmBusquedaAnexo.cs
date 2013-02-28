@@ -14,8 +14,11 @@ namespace Adquisiciones.View.Busquedas
 {
     public partial class FrmBusquedaAnexo : FrmBusqueda
     {
+        #region Variables
         public IAnexoService AnexoService { get; set; }
+        #endregion
 
+        #region Constructores
         public FrmBusquedaAnexo(FrmAdquisiciones padre)
         {
             InitializeComponent();
@@ -32,7 +35,9 @@ namespace Adquisiciones.View.Busquedas
             AnexoService = base.Servicio as IAnexoService;
             base.ObtenerPerfil();
         }
+        #endregion
 
+        #region Metodos
         private void TieneCotizacionClick(object sender, EventArgs e)
         {
             var anexoSelect = gvAnexo.GetFocusedRow() as Anexo;
@@ -40,5 +45,6 @@ namespace Adquisiciones.View.Busquedas
             gvAnexo.RefreshData();
 
         }
+        #endregion
     }
 }

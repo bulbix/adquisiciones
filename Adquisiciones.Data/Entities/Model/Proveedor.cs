@@ -111,8 +111,8 @@ namespace Adquisiciones.Data.Entities
 
         }
 
-        [StringOptional]
-        [NotNullNotEmpty(Message = ("Campo Requerido"))]
+        //[StringOptional]
+        //[NotNullNotEmpty(Message = ("Campo Requerido"))]
         public virtual string NombreComercial
         {
             get { return _nombrecomercial!=null?_nombrecomercial.Trim():""; }
@@ -128,7 +128,7 @@ namespace Adquisiciones.Data.Entities
         }
 
         [StringOptional]
-        //[NotNullNotEmpty(Message = ("Campo Requerido"))]
+        [NotNullNotEmpty(Message = ("Campo Requerido"))]
         public virtual string Paterno
         {
             get { return _paterno!= null?_paterno.Trim():""; }
@@ -143,7 +143,7 @@ namespace Adquisiciones.Data.Entities
         }
 
         [StringOptional]
-        //[NotNullNotEmpty(Message = ("Campo Requerido"))]
+        [NotNullNotEmpty(Message = ("Campo Requerido"))]
         public virtual string Materno
         {
             get { return _materno!=null?_materno.Trim():""; }
@@ -159,7 +159,7 @@ namespace Adquisiciones.Data.Entities
         }
 
         [StringOptional]
-        //[NotNullNotEmpty(Message = ("Campo Requerido"))]
+        [NotNullNotEmpty(Message = ("Campo Requerido"))]
         public virtual string Nombre
         {
             get { return _nombre!=null?_nombre.Trim():""; }
@@ -293,6 +293,7 @@ namespace Adquisiciones.Data.Entities
                 }
             }
         }
+
         public virtual string Tel2
         {
             get { return _tel2!=null?_tel2.Trim():""; }
@@ -305,6 +306,7 @@ namespace Adquisiciones.Data.Entities
                 }
             }
         }
+
         public virtual string Tel3
         {
             get { return _tel3!=null?_tel3.Trim():""; }
@@ -317,6 +319,7 @@ namespace Adquisiciones.Data.Entities
                 }
             }
         }
+
         public virtual string Fax
         {
             get { return _fax!=null?_fax.Trim():""; }
@@ -404,6 +407,7 @@ namespace Adquisiciones.Data.Entities
                 }
             }
         }
+
         public virtual string Observacion
         {
             get { return _observacion!=null?_observacion.Trim():""; }
@@ -416,11 +420,13 @@ namespace Adquisiciones.Data.Entities
                 }
             }
         }
+
         public virtual string IpTerminal
         {
             get { return _ipterminal.Trim(); }
             set { _ipterminal = value; }
         }
+
         public virtual DateTime? FechaAlta
         {
             get { return _fechaalta; }set { _fechaalta = value; }
@@ -436,31 +442,42 @@ namespace Adquisiciones.Data.Entities
         {
             get { return _estatus; }set { _estatus = value; }
         }
+
+        public virtual CatEmpresa CatEmpresa
+        {
+            get;set;
+        }
+
         public virtual IList<Cotizacion> Cotizacion
         {
             get { return _cotizacion; }
             set { _cotizacion = value; }
         }
+
         public virtual IList<CotizacionHist> CotizacionHist
         {
             get { return _cotizacionhist; }
             set { _cotizacionhist = value; }
         }
+
         public virtual IList<Fallo> Fallo
         {
             get { return _fallo; }
             set { _fallo = value; }
         }
+
         public virtual IList<FalloHist> FalloHist
         {
             get { return _fallohist; }
             set { _fallohist = value; }
         }
+
         public virtual IList<Pedido> Pedido
         {
             get { return _pedido; }
             set { _pedido = value; }
         }
+
         public virtual IList<PedidoHist> PedidoHist
         {
             get { return _pedidohist; }

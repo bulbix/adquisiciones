@@ -12,10 +12,11 @@ namespace Adquisiciones.View
 {
     public partial class FrmPedidoEntrega : XtraForm
     {
+        #region Variables
         private PedidoDetalle _pedidoDetalle;
-        ///<summary>
-        ///</summary>
-        ///<param name="pedidoDetalle"></param>
+        #endregion
+
+        #region Constructores
         public FrmPedidoEntrega(PedidoDetalle pedidoDetalle)
         {
             InitializeComponent();
@@ -27,17 +28,14 @@ namespace Adquisiciones.View
                 lblCantidad.Text = @"La cantidad total:" + pedidoDetalle.Cantidad;
             }
         }
+        #endregion
 
+        #region Eventos
         private void CmdCancelarClick(object sender, EventArgs e)
         {
             this.Close();
         }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+      
         private void CmdAceptarClick(object sender, EventArgs e)
         {
             var cantidad = _pedidoDetalle.Cantidad;
@@ -82,7 +80,9 @@ namespace Adquisiciones.View
                 gvPedidoEntrega.DeleteRow(gvPedidoEntrega.FocusedRowHandle);
             }
 
-        }private void spinEdit1_KeyDown(object sender, KeyEventArgs e)
+        }
+        
+        private void SpinEdit1KeyDown(object sender, KeyEventArgs e)
         {
            if (e.KeyCode == Keys.Enter)
             {
@@ -97,5 +97,6 @@ namespace Adquisiciones.View
             }
 
         }
+        #endregion
     }
 }

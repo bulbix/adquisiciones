@@ -27,11 +27,6 @@ namespace Adquisiciones.View.Busquedas
             base.GvGeneral = gvProveedor;
             base.ObtenerPerfil();
         }
-
-        protected override void CmdReporteItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            XtraMessageBox.Show("No hay reporte asociado");
-        }
        
     }
 }

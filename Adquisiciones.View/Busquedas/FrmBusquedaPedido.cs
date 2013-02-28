@@ -14,8 +14,11 @@ namespace Adquisiciones.View.Busquedas
 {
     public partial class FrmBusquedaPedido : FrmBusqueda
     {
+        #region Variables
         public IPedidoService PedidoService { get; set; }
+        #endregion
 
+        #region Constructores
         public FrmBusquedaPedido(FrmAdquisiciones padre)
         {
             InitializeComponent();
@@ -32,7 +35,9 @@ namespace Adquisiciones.View.Busquedas
             PedidoService = base.Servicio as IPedidoService;
             base.ObtenerPerfil();
         }
+        #endregion
 
+        #region Metodos
         protected override void Buscar()
         {
             base.Buscar();
@@ -53,5 +58,6 @@ namespace Adquisiciones.View.Busquedas
 
             base.Eliminar();
         }
+        #endregion
     }
 }

@@ -32,7 +32,9 @@
     <property name="IpTerminal" column="ip_terminal" type="string" />
     <property name="FechaAlta" column="fecha_alta" type="DateTime" />
     <property name="Estatus" column="estatus" type="string" />
-    
+
+    <many-to-one name="CatEmpresa" column="id_empresa" lazy="false"  />
+
     <many-to-one name="Usuario" column="id_usuario"  />
     <bag name="Cotizacion" inverse="true" lazy="true" cascade="none">
       <key column="cve_proveedor" />

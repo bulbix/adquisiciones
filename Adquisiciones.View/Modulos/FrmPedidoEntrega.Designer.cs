@@ -427,7 +427,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton()});
             this.seCantidad.Size = new System.Drawing.Size(100, 20);
             this.seCantidad.TabIndex = 10;
-            this.seCantidad.KeyDown += new System.Windows.Forms.KeyEventHandler(this.spinEdit1_KeyDown);
+            this.seCantidad.KeyDown += new System.Windows.Forms.KeyEventHandler(this.SpinEdit1KeyDown);
             // 
             // FrmPedidoEntrega
             // 

@@ -18,22 +18,25 @@ namespace Adquisiciones.View.Busquedas
     public partial class FrmBusqueda : XtraForm
     {
 
+        #region Variables
         protected Type TypeEntity { get; set; }
         protected string NombreService { get; set; }
         protected string NombreReporte { get; set; }
         protected Type TypeForma { get; set; }
         protected IFormBusqueda Servicio { get; set; }
         protected GridView GvGeneral { get; set; }
-
-
         public Almacen AlmacenActual { get; set; }
         public IList<UsuarioModulo> ModulosUsuario { get; set; }
+        #endregion
 
+        #region Constructores
         public FrmBusqueda()
         {
             InitializeComponent();
         }
+        #endregion
 
+        #region Metodos
         protected void ObtenerPerfil(){
            
             var nombreModulo = TypeEntity.Name.ToLower();
@@ -76,12 +79,47 @@ namespace Adquisiciones.View.Busquedas
             bsSource.DataSource = source;
         }
 
+        protected virtual void Eliminar()
+        {
+            try
+            {
+                var usuarioModifico = (Usuario)TypeEntity.
+                GetProperty("Usuario").GetValue(GvGeneral.GetFocusedRow(), null);
+
+
+                if (FrmModuloAcceso.UsuarioLog.IdUsuario != usuarioModifico.IdUsuario)
+                {
+                    XtraMessageBox.Show(@"No es dueño del registro", @"Adquisiciones",
+                                       MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+                if (XtraMessageBox.Show(@"Esta seguro de eliminar el elemento seleccionado?", @"Adquisiciones",
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+
+                    GetServicio();
+                    Servicio.EliminarEntity(GvGeneral.GetFocusedRow(), TypeEntity.Name);
+                    XtraMessageBox.Show(@"Elemento seleccionado borrado", @"Adquisiciones",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Buscar();
+                }
+            }
+            catch (Exception ee)
+            {
+                XtraMessageBox.Show(@"Elemento seleccionado asociado otro modulo", @"Adquisiciones",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
+
         protected void GetServicio()
         {
             var ctx = ContextRegistry.GetContext();
             Servicio = ctx[NombreService] as IFormBusqueda;
         }
-      
+        #endregion
+
+        #region Eventos
         private void CmdBuscarItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             Buscar();
@@ -133,46 +171,11 @@ namespace Adquisiciones.View.Busquedas
 
         }
 
-        protected virtual void Eliminar()
-        {
-            try
-            {
-                var usuarioModifico = (Usuario)TypeEntity.
-                GetProperty("Usuario").GetValue(GvGeneral.GetFocusedRow(), null);
-
-
-                if (FrmModuloAcceso.UsuarioLog.IdUsuario != usuarioModifico.IdUsuario)
-                {
-                    XtraMessageBox.Show(@"No es dueño del registro", @"Adquisiciones",
-                                       MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return;
-                }
-                if (XtraMessageBox.Show(@"Esta seguro de eliminar el elemento seleccionado?", @"Adquisiciones",
-                    MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                {
-
-                    GetServicio();
-                    Servicio.EliminarEntity(GvGeneral.GetFocusedRow(), TypeEntity.Name);
-                    XtraMessageBox.Show(@"Elemento seleccionado borrado", @"Adquisiciones",
-                                    MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    Buscar();
-                }
-            }
-            catch (Exception ee)
-            {
-                XtraMessageBox.Show(@"Elemento seleccionado asociado otro modulo", @"Adquisiciones",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            
-        }
-
         private void CmdEliminarItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
            Eliminar();
         }
+        #endregion
 
-       
-
-       
     }
 }

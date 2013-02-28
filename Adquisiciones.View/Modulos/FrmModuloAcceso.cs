@@ -20,88 +20,10 @@ namespace Adquisiciones.View
     ///</summary>
     public partial class FrmModuloAcceso : XtraForm
     {
-        ///<summary>
-        ///</summary>
+
         public static Usuario UsuarioLog;
-
-        /// <summary>
-        /// </summary>
         public IUsuarioService UsuarioService { private get; set; }
-
         private CaptchaImage captcha;
-
-        public const int SuperUsario = 4192;
-
-        /// <summary>
-        ///  </summary>
-        public FrmModuloAcceso()
-        {
-            InitializeComponent();
-            var ctx = ContextRegistry.GetContext();
-            UsuarioService = ctx["usuarioService"] as IUsuarioService;
-            
-        }
-
-        private void GenerarCaptcha()
-        {
-            captcha = new CaptchaImage(CaptchaImage.GenerateRandomCode(),
-                picCaptcha.Width,picCaptcha.Height);
-            picCaptcha.Image = captcha.Image;
-        }
-
-        private void BtnAceptarClick(object sender, EventArgs e)
-        {
-            UsuarioLog = UsuarioService.AccessAllow(txtRfc.Text, txtPassword.Text);
-
-            if(txtCaptcha.Text.Trim() != captcha.Text)
-            {
-                XtraMessageBox.Show(@"Codigo de seguridad incorrecto",
-                 @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                GenerarCaptcha();
-                txtCaptcha.Text = "";
-                txtCaptcha.Focus();
-                return;
-            }
-            
-            if (UsuarioLog == null)
-            {
-                //Credenciales No Validas
-                XtraMessageBox.Show(@"Verifique credenciales",
-                                    @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                GenerarCaptcha();
-                txtCaptcha.Text = "";
-                txtPassword.Text = "";
-                txtRfc.Focus();
-            }
-            else //Redireccionamos
-            {
-                if(UsuarioLog.Estatus != "A")
-                {
-                    XtraMessageBox.Show(@"Usuario dado de baja, pregunte a su administrador",
-                                    @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-
-                LanzarPantallaInicio();
-            }
-            
-        }
-
-        private void LanzarPantallaInicio()
-        {
-            Hide();
-
-            if (UsuarioLog.PanelControl)
-                new FrmPanelControl().Show();
-            else
-                new FrmModuloModulo(false).Show();
-
-        }
-
-        private void btnCancelar_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
 
         private void InitializeComponent()
         {
@@ -246,6 +168,79 @@ namespace Adquisiciones.View
 
         }
 
+        public FrmModuloAcceso()
+        {
+            InitializeComponent();
+            var ctx = ContextRegistry.GetContext();
+            UsuarioService = ctx["usuarioService"] as IUsuarioService;
+            
+        }
+
+        #region Metodos
+        private void GenerarCaptcha()
+        {
+            captcha = new CaptchaImage(CaptchaImage.GenerateRandomCode(),
+                picCaptcha.Width, picCaptcha.Height);
+            picCaptcha.Image = captcha.Image;
+        }
+
+        private void LanzarPantallaInicio()
+        {
+            Hide();
+
+            if (UsuarioLog.PanelControl)
+                new FrmPanelControl().Show();
+            else
+                new FrmModuloModulo(false).Show();
+
+        }
+
+        #endregion
+
+        #region Eventos
+        private void BtnAceptarClick(object sender, EventArgs e)
+        {
+            UsuarioLog = UsuarioService.AccessAllow(txtRfc.Text, txtPassword.Text);
+
+            if(txtCaptcha.Text.Trim() != captcha.Text)
+            {
+                XtraMessageBox.Show(@"Codigo de seguridad incorrecto",
+                 @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                GenerarCaptcha();
+                txtCaptcha.Text = "";
+                txtCaptcha.Focus();
+                return;
+            }
+            
+            if (UsuarioLog == null)
+            {
+                //Credenciales No Validas
+                XtraMessageBox.Show(@"Verifique credenciales",
+                                    @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                GenerarCaptcha();
+                txtCaptcha.Text = "";
+                txtPassword.Text = "";
+                txtRfc.Focus();
+            }
+            else //Redireccionamos
+            {
+                if(UsuarioLog.Estatus != "A")
+                {
+                    XtraMessageBox.Show(@"Usuario dado de baja, pregunte a su administrador",
+                                    @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                LanzarPantallaInicio();
+            }
+            
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
         private void FrmModuloAcceso_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
@@ -261,6 +256,7 @@ namespace Adquisiciones.View
             GenerarCaptcha();
             txtCaptcha.Text = captcha.Text;txtRfc.Focus();
         }
+#endregion
 
     }
 }

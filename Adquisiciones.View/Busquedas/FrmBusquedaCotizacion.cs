@@ -14,8 +14,11 @@ namespace Adquisiciones.View.Busquedas
 {
     public partial class FrmBusquedaCotizacion : FrmBusqueda
     {
+        #region Variables
         public ICotizacionService CotizacionService { get; set; }
+        #endregion
 
+        #region Constructores
         public FrmBusquedaCotizacion(FrmAdquisiciones padre)
         {
             InitializeComponent();
@@ -32,12 +35,15 @@ namespace Adquisiciones.View.Busquedas
             CotizacionService = base.Servicio as ICotizacionService;
             base.ObtenerPerfil();
         }
+        #endregion
 
+        #region Eventos
         private void TieneFalloClick(object sender, EventArgs e)
         {
             var cotizaSelect = gvCotizacion.GetFocusedRow() as Cotizacion;
             cotizaSelect.TieneFallo = CotizacionService.CotizacionDao.ExisteAnexoFallo(cotizaSelect.Anexo);
             gvCotizacion.RefreshData();
         }
+        #endregion
     }
 }

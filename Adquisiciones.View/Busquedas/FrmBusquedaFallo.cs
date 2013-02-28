@@ -13,8 +13,11 @@ namespace Adquisiciones.View.Busquedas
 {
     public partial class FrmBusquedaFallo : FrmBusqueda
     {
+        #region Variables
         public IFalloService FalloService { get; set; }
+        #endregion
 
+        #region Constructores
         public FrmBusquedaFallo(FrmAdquisiciones padre)
         {
             InitializeComponent();
@@ -30,14 +33,9 @@ namespace Adquisiciones.View.Busquedas
             FalloService = base.Servicio as IFalloService;
             base.ObtenerPerfil();
         }
+        #endregion
 
-
-
-        protected override void CmdConsultarItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            XtraMessageBox.Show("Genere el reporte");
-        }
-
+        #region Metodos
         protected override void Eliminar()
         {
             if (FalloService.FalloDao.ExisteFalloRequisicion
@@ -50,6 +48,13 @@ namespace Adquisiciones.View.Busquedas
 
             base.Eliminar();
         }
-    
+        #endregion
+
+        #region Eventos
+        protected override void CmdConsultarItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            XtraMessageBox.Show("Genere el reporte");
+        }
+        #endregion
     }
 }

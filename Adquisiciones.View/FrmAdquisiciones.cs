@@ -23,13 +23,10 @@ namespace Adquisiciones.View
         /// Cada uno con su copia de perfiles y almacen
         /// </summary>
         public IList<UsuarioModulo> ModulosUsuario { get; set; }
-
         public Almacen AlmacenSelect { get; set; }
-
         private static int NumInstancias;
 
-        ///<summary>
-        ///</summary>
+
         public FrmAdquisiciones(IList<UsuarioModulo> modulosUsuario, Almacen almacen)
         {
             InitializeComponent();
@@ -40,11 +37,7 @@ namespace Adquisiciones.View
             this.AlmacenSelect = almacen;
             ObtenerPerfil();
         }
-
-
-        /// <summary>
-        /// Despliega el perfil asociado en la pantalla principal
-        /// </summary>
+       
         protected void ObtenerPerfil()
         {
             foreach (var moduloUsuario in ModulosUsuario)
@@ -192,6 +185,7 @@ namespace Adquisiciones.View
         {
             new FrmModuloModulo(true).ShowDialog();
         }
+
         private void BarButtonItem7ItemClick(object sender, ItemClickEventArgs e)
         {
             var forma = new FrmBusquedaPedido(this);
@@ -244,7 +238,6 @@ namespace Adquisiciones.View
         {
             Process.Start("mailto:lprado@inr.gob.mx");
         }
-
        
         private void barButtonItem13_ItemClick_1(object sender, ItemClickEventArgs e)
         {

@@ -17,20 +17,13 @@ namespace Adquisiciones.View.Modulos
 {
     public partial class FrmModuloLicitaPedido : FrmModulo
     {
-        ///<summary
-        ///</summary>
+        #region Variables
         public IPedidoService PedidoService { get; set; }
-
-        /// <summary>
-        /// 
-        /// </summary>
         public Pedido PedidoActual;
-
-        /// <summary>
-        /// 
-        /// </summary>
         public Requisicion RequisicionActual;
+        #endregion
 
+        #region Constructores
         public FrmModuloLicitaPedido(FrmAdquisiciones padre)
         {
             InitializeComponent();
@@ -46,7 +39,9 @@ namespace Adquisiciones.View.Modulos
             BindearCampos();
             base.ObtenerPerfil();
         }
+        #endregion
 
+        #region Metodos
         public override void InicializarCatalogos()
         {
             bsRequisicion.DataSource = PedidoService.RequisicionDao.CargarRequisiciones(AlmacenActual);
@@ -108,62 +103,6 @@ namespace Adquisiciones.View.Modulos
 
         }
 
-        private void LimpiarRequisicion()
-        {
-            lblArea.Text = "";
-            lblLicitacion.Text = "";
-            PedidoActual.Requisicion = null;
-        }
-
-        private void SearchLookUpRequisicionEditValueChanged(object sender, EventArgs e)
-        {
-            if (searchLookUpRequisicion.EditValue != null)
-            {
-                var reqSeleccionada = searchLookUpEditRequisicion.GetFocusedRow() as Requisicion;
-
-                if (PedidoService.PedidoDao.ExisteRequisicionPedido(reqSeleccionada))
-                {
-                    XtraMessageBox.Show(@"La requisicion ya tiene pedido automatico",
-                    @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    LimpiarRequisicion();
-                    return;
-                }
-
-                if (!PedidoService.TieneFalloRequisicion(reqSeleccionada))
-                {
-                    XtraMessageBox.Show(@"El anexo de la requisicion no tiene fallo",
-                    @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    LimpiarRequisicion();
-                    return;
-                }
-
-                RequisicionActual = reqSeleccionada;
-                PedidoActual.Requisicion = RequisicionActual;
-
-                if (reqSeleccionada != null)
-                {
-                    lblArea.Text = reqSeleccionada.CatArea.ToString();
-                    lblLicitacion.Text = reqSeleccionada.Anexo.ToString();
-                }
-            }
-
-        }
-
-        private void SearchLookUpFundamentoEditValueChanged(object sender, EventArgs e)
-        {
-            if (searchLookUpFundamento.EditValue != null)
-            {
-                var fundamentoSeleccionado = searchLookUpEditFundamento.GetFocusedRow() as Fundamento;
-                PedidoActual.Fundamento = fundamentoSeleccionado;
-            }
-        }
-
-        /// <summary>
-        /// Esta validacion solo sera
-        /// </summary>
-        /// <param name="pedido"></param>
-        /// <param name="lista"></param>
-        /// <returns></returns>
         public bool DatosValidosPedido(Pedido pedido, BarListItem lista)
         {
             bool result = true;
@@ -226,6 +165,59 @@ namespace Adquisiciones.View.Modulos
 
             return result;
         }
-      
+
+        private void LimpiarRequisicion()
+        {
+            lblArea.Text = "";
+            lblLicitacion.Text = "";
+            PedidoActual.Requisicion = null;
+        }
+        #endregion
+
+        #region Eventos
+        private void SearchLookUpRequisicionEditValueChanged(object sender, EventArgs e)
+        {
+            if (searchLookUpRequisicion.EditValue != null)
+            {
+                var reqSeleccionada = searchLookUpEditRequisicion.GetFocusedRow() as Requisicion;
+
+                if (PedidoService.PedidoDao.ExisteRequisicionPedido(reqSeleccionada))
+                {
+                    XtraMessageBox.Show(@"La requisicion ya tiene pedido automatico",
+                    @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    LimpiarRequisicion();
+                    return;
+                }
+
+                if (!PedidoService.TieneFalloRequisicion(reqSeleccionada))
+                {
+                    XtraMessageBox.Show(@"El anexo de la requisicion no tiene fallo",
+                    @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    LimpiarRequisicion();
+                    return;
+                }
+
+                RequisicionActual = reqSeleccionada;
+                PedidoActual.Requisicion = RequisicionActual;
+
+                if (reqSeleccionada != null)
+                {
+                    lblArea.Text = reqSeleccionada.CatArea.ToString();
+                    lblLicitacion.Text = reqSeleccionada.Anexo.ToString();
+                }
+            }
+
+        }
+
+        private void SearchLookUpFundamentoEditValueChanged(object sender, EventArgs e)
+        {
+            if (searchLookUpFundamento.EditValue != null)
+            {
+                var fundamentoSeleccionado = searchLookUpEditFundamento.GetFocusedRow() as Fundamento;
+                PedidoActual.Fundamento = fundamentoSeleccionado;
+            }
+        }
+        #endregion
+
     }
 }

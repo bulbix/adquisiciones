@@ -127,6 +127,7 @@
     <Compile Include="Entities\Model\CatActividad.cs" />
     <Compile Include="Entities\Model\CatArea.cs" />
     <Compile Include="Entities\Model\CatEjercicio.cs" />
+    <Compile Include="Entities\Model\CatEmpresa.cs" />
     <Compile Include="Entities\Model\CatPartida.cs" />
     <Compile Include="Entities\Model\CatPresupuesto.cs" />
     <Compile Include="Entities\Model\CatRecurso.cs" />
@@ -338,6 +339,11 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Mappings\Audit\AnexoHist.hbm.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Mappings\Model\CatEmpresa.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

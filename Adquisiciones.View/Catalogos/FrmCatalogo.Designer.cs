@@ -37,8 +37,6 @@
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.cmdNuevo = new DevExpress.XtraBars.BarButtonItem();
             this.cmdGuardar = new DevExpress.XtraBars.BarButtonItem();
-            this.cmdConsultar = new DevExpress.XtraBars.BarButtonItem();
-            this.cmdEliminar = new DevExpress.XtraBars.BarButtonItem();
             this.cmdReporte = new DevExpress.XtraBars.BarButtonItem();
             this.listaError = new DevExpress.XtraBars.BarListItem();
             this.lblNumErrors = new DevExpress.XtraBars.BarStaticItem();
@@ -80,10 +78,8 @@
             this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.cmdNuevo,
             this.cmdGuardar,
-            this.cmdConsultar,
             this.listaError,
             this.lblNumErrors,
-            this.cmdEliminar,
             this.cmdReporte});
             this.barManager1.MainMenu = this.bar2;
             this.barManager1.MaxItemId = 8;
@@ -106,8 +102,6 @@
             this.bar2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.cmdNuevo, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.cmdGuardar, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.cmdConsultar, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.cmdEliminar, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.cmdReporte, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(this.listaError),
             new DevExpress.XtraBars.LinkPersistInfo(this.lblNumErrors)});
@@ -136,28 +130,6 @@
             this.cmdGuardar.Id = 1;
             this.cmdGuardar.Name = "cmdGuardar";
             this.cmdGuardar.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.cmdGuardar_ItemClick);
-            // 
-            // cmdConsultar
-            // 
-            this.cmdConsultar.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmdConsultar.Appearance.Options.UseFont = true;
-            this.cmdConsultar.Caption = "Consultar";
-            this.cmdConsultar.Enabled = false;
-            this.cmdConsultar.Glyph = ((System.Drawing.Image)(resources.GetObject("cmdConsultar.Glyph")));
-            this.cmdConsultar.Id = 2;
-            this.cmdConsultar.Name = "cmdConsultar";
-            this.cmdConsultar.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.cmdConsultar_ItemClick);
-            // 
-            // cmdEliminar
-            // 
-            this.cmdEliminar.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmdEliminar.Appearance.Options.UseFont = true;
-            this.cmdEliminar.Caption = "Eliminar";
-            this.cmdEliminar.Enabled = false;
-            this.cmdEliminar.Glyph = ((System.Drawing.Image)(resources.GetObject("cmdEliminar.Glyph")));
-            this.cmdEliminar.Id = 6;
-            this.cmdEliminar.Name = "cmdEliminar";
-            this.cmdEliminar.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.CmdEliminarItemClick);
             // 
             // cmdReporte
             // 
@@ -259,8 +231,6 @@
         protected DevExpress.XtraBars.Bar bar2;
         protected DevExpress.XtraBars.BarButtonItem cmdNuevo;
         protected DevExpress.XtraBars.BarButtonItem cmdGuardar;
-        protected DevExpress.XtraBars.BarButtonItem cmdConsultar;
-        private DevExpress.XtraBars.BarButtonItem cmdEliminar;
         private DevExpress.XtraBars.BarButtonItem cmdReporte;
         protected DevExpress.XtraBars.BarListItem listaError;
         protected DevExpress.XtraBars.BarStaticItem lblNumErrors;

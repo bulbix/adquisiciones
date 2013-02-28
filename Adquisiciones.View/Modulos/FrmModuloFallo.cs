@@ -17,14 +17,12 @@ namespace Adquisiciones.View.Modulos
     public partial class FrmModuloFallo : FrmModulo
     {
 
-        ///<summary>
-        ///</summary>
+        #region Variables
         public IFalloService FalloService { get; set; }
-
-        ///<summary>
-        ///</summary>
         public Anexo AnexoSelect;
+        #endregion
 
+        #region Constructores
         public FrmModuloFallo(FrmAdquisiciones padre)
         {
             InitializeComponent();
@@ -48,13 +46,9 @@ namespace Adquisiciones.View.Modulos
             //Nos Suscribimos al Evento
             if (FalloService != null) FalloService.FalloProceso += OnProcesoFallo;
         }
+        #endregion
 
-        protected void OnProcesoFallo(object sender, FalloProcesoEvento e)
-        {
-            pgbFallo.EditValue = e.Porcentaje;
-            pgbFallo.Update();
-        }
-
+        #region Metodos
         public override void Guardar()
         {
             try
@@ -98,7 +92,7 @@ namespace Adquisiciones.View.Modulos
                 Log.Error("Generado por:" + FrmModuloAcceso.UsuarioLog, ee);
             }
         }
-
+        
         public override void Nuevo()
         {
             AnexoSelect = null;
@@ -108,6 +102,14 @@ namespace Adquisiciones.View.Modulos
             searchLookUpAnexo.EditValue = null;
         }
 
+        protected void OnProcesoFallo(object sender, FalloProcesoEvento e)
+        {
+            pgbFallo.EditValue = e.Porcentaje;
+            pgbFallo.Update();
+        }
+        #endregion
+
+        #region Eventos
         private void SearchLookUpAnexoEditValueChanged(object sender, EventArgs e)
         {
             if (searchLookUpAnexo.EditValue != null)
@@ -125,6 +127,7 @@ namespace Adquisiciones.View.Modulos
                 AnexoSelect = null;
             }
         }
+        #endregion
 
     }
 }

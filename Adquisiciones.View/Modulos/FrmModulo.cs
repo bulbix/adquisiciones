@@ -19,8 +19,7 @@ namespace Adquisiciones.View.Modulos
 {
     public partial class FrmModulo : XtraForm,IForma
     {
-        protected static readonly ILog Log =
-            LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        protected static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         protected Type TypeEntity { get; set; }
         protected IFormBusqueda Servicio { get; set; }
         protected string NombreReporte { get; set; }
@@ -28,21 +27,12 @@ namespace Adquisiciones.View.Modulos
         protected object EntityActual { get; set; }
         public Almacen AlmacenActual { get; set; }
         public IList<UsuarioModulo> ModulosUsuario { get; set; }
-
-
-        /// <summary>
-        /// 
-        /// </summary>
+       
         public FrmModulo()
         {
             InitializeComponent();
         }
 
-        /// <summary>
-        /// Habilita o Deshabilita hasta encontrar un control SearchLookUpEdit
-        /// </summary>
-        /// <param name="controls"></param>
-        /// <param name="habilitar"></param>
         private static void HabilitarBuscadores(Control controls, bool habilitar)
         {
             foreach (var control  in controls.Controls)
@@ -54,20 +44,12 @@ namespace Adquisiciones.View.Modulos
             }
         }
 
-        /// <summary>
-        /// Limpia combos
-        /// </summary>
         protected void LimpiarErrores()
         {
             listaError.Strings.Clear();
             lblNumErrors.Caption = string.Empty;
         }
 
-        /// <summary>
-        /// Rellena un combo con los almacenes de acuerdo al almacen en curso
-        /// </summary>
-        /// <param name="combo">Combo con los almacenes </param>
-        /// <param name="almacenAdq">Almacen adquisiciones</param>
         protected void AlmacenesCombo(ComboBox combo, Almacen almacenAdq)
         {
 
@@ -82,9 +64,6 @@ namespace Adquisiciones.View.Modulos
             Util.Dicc2Combo(dicc, combo);
         }
 
-        /// <summary>
-        /// Perfiles con su copia cada uno
-        /// </summary>
         protected void ObtenerPerfil()
         {
             var nombreModulo = TypeEntity.Name.ToLower();

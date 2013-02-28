@@ -13,17 +13,14 @@ namespace Adquisiciones.View
 {
     ///<summary></summary>
     public partial class FrmModuloModulo : XtraForm
-    {        
-        ///<summary>
-        ///</summary>
+    {
+        #region Variables
         public  Almacen AlmacenSelec;
-
         public IAlmacenDao AlmacenDao { get; set; }
-
         public IUsuarioService UsuarioService { get; set; }
-        
-        ///<summary>
-        ///</summary>
+        #endregion
+
+        #region Constructores
         public FrmModuloModulo(bool activarCancelar)
         {
             InitializeComponent();
@@ -52,6 +49,9 @@ namespace Adquisiciones.View
                 }
             }
         }
+        #endregion
+
+        #region Metodos
         private void MostrarMain()
         {
             var formAdquisiciones = new FrmAdquisiciones(UsuarioService.
@@ -61,6 +61,9 @@ namespace Adquisiciones.View
             this.Close();
            
         }
+        #endregion
+
+        #region Eventos
         private void BtnAdq5000Click(object sender, EventArgs e)
         {
             AlmacenSelec = AlmacenDao.Get(btnAdq5000.Tag.ToString());
@@ -90,5 +93,6 @@ namespace Adquisiciones.View
         {
             this.Close();
         }
+        #endregion
     }
 }

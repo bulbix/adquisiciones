@@ -62,24 +62,12 @@ namespace Adquisiciones.View.Catalogos
 
                 if (desModulo.Contains(nombreModulo))
                 {
-                    //Por la ordenacion garantizamos siempre vendra la consulta
-                    if (desModulo.Contains("consultar"))
-                    {
-                        cmdConsultar.Enabled = true;
-                    }
-
                     if (desModulo.Contains("trabajar"))
                     {
                         cmdNuevo.Enabled = true;
                         cmdGuardar.Enabled = true;
                         listaError.Enabled = true;
                         lblNumErrors.Enabled = true;
-                        cmdConsultar.Enabled = true;
-                    }
-
-                    if (desModulo.Contains("eliminar"))
-                    {
-                        cmdEliminar.Enabled = true;
                     }
 
                     if (desModulo.Contains("reportear"))
@@ -90,8 +78,6 @@ namespace Adquisiciones.View.Catalogos
                 }
             }
         }
-
-       
 
         public virtual void BindearCampos()
         {
@@ -126,18 +112,6 @@ namespace Adquisiciones.View.Catalogos
         private void cmdGuardar_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             Guardar();
-        }
-
-        private void cmdConsultar_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            Consultar();
-        }
-
-        private void CmdEliminarItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-
-            XtraMessageBox.Show("Borrelo desde la busqueda!!");
-
         }
 
         private void cmdReporte_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
