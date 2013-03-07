@@ -79,10 +79,10 @@
             // 
             // splitContainerControl1
             // 
-            this.splitContainerControl1.Location = new System.Drawing.Point(0, 70);
+            this.splitContainerControl1.Location = new System.Drawing.Point(0, 68);
             this.splitContainerControl1.Panel1.Controls.Add(this.gcDatosGenerales);
             this.splitContainerControl1.Panel2.Controls.Add(this.gcAnexoDetalle);
-            this.splitContainerControl1.Size = new System.Drawing.Size(1114, 600);
+            this.splitContainerControl1.Size = new System.Drawing.Size(1114, 603);
             this.splitContainerControl1.SplitterPosition = 169;
             // 
             // lblAlmacen
@@ -110,26 +110,26 @@
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 8;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15.07177F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 84.92823F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 76F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 134F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 112F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 147F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 57F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 172F));
-            this.tableLayoutPanel1.Controls.Add(this.labelControl1, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.txtnumlicitacion, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.labelControl2, 2, 0);
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 36.81319F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 63.18681F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 56F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 234F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 105F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 377F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 51F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 88F));
             this.tableLayoutPanel1.Controls.Add(this.cbxIva, 7, 1);
             this.tableLayoutPanel1.Controls.Add(this.labelControl7, 6, 1);
-            this.tableLayoutPanel1.Controls.Add(this.cbxTipolicitacion, 3, 1);
             this.tableLayoutPanel1.Controls.Add(this.labelControl6, 4, 1);
-            this.tableLayoutPanel1.Controls.Add(this.labelControl4, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.txtDesanexo, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.labelControl5, 2, 1);
             this.tableLayoutPanel1.Controls.Add(this.txtTechopresupuestal, 5, 1);
-            this.tableLayoutPanel1.Controls.Add(this.lblFecha, 3, 0);
+            this.tableLayoutPanel1.Controls.Add(this.labelControl2, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.lblFecha, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.labelControl1, 2, 0);
+            this.tableLayoutPanel1.Controls.Add(this.txtnumlicitacion, 3, 0);
+            this.tableLayoutPanel1.Controls.Add(this.labelControl4, 4, 0);
+            this.tableLayoutPanel1.Controls.Add(this.txtDesanexo, 5, 0);
+            this.tableLayoutPanel1.Controls.Add(this.labelControl5, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.cbxTipolicitacion, 1, 1);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 84);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
@@ -141,7 +141,7 @@
             // 
             // labelControl1
             // 
-            this.labelControl1.Location = new System.Drawing.Point(3, 3);
+            this.labelControl1.Location = new System.Drawing.Point(197, 3);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(43, 13);
             this.labelControl1.TabIndex = 1;
@@ -149,15 +149,15 @@
             // 
             // txtnumlicitacion
             // 
-            this.txtnumlicitacion.Location = new System.Drawing.Point(64, 3);
+            this.txtnumlicitacion.Location = new System.Drawing.Point(253, 3);
             this.txtnumlicitacion.Name = "txtnumlicitacion";
-            this.txtnumlicitacion.Size = new System.Drawing.Size(194, 20);
+            this.txtnumlicitacion.Size = new System.Drawing.Size(228, 20);
             this.txtnumlicitacion.TabIndex = 1;
             this.txtnumlicitacion.Leave += new System.EventHandler(this.TxtnumlicitacionLeave);
             // 
             // labelControl2
             // 
-            this.labelControl2.Location = new System.Drawing.Point(410, 3);
+            this.labelControl2.Location = new System.Drawing.Point(3, 3);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(29, 13);
             this.labelControl2.TabIndex = 2;
@@ -167,14 +167,14 @@
             // 
             this.cbxIva.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxIva.FormattingEnabled = true;
-            this.cbxIva.Location = new System.Drawing.Point(936, 44);
+            this.cbxIva.Location = new System.Drawing.Point(1020, 44);
             this.cbxIva.Name = "cbxIva";
-            this.cbxIva.Size = new System.Drawing.Size(98, 21);
+            this.cbxIva.Size = new System.Drawing.Size(83, 21);
             this.cbxIva.TabIndex = 7;
             // 
             // labelControl7
             // 
-            this.labelControl7.Location = new System.Drawing.Point(879, 44);
+            this.labelControl7.Location = new System.Drawing.Point(969, 44);
             this.labelControl7.Name = "labelControl7";
             this.labelControl7.Size = new System.Drawing.Size(31, 13);
             this.labelControl7.TabIndex = 12;
@@ -184,14 +184,14 @@
             // 
             this.cbxTipolicitacion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxTipolicitacion.FormattingEnabled = true;
-            this.cbxTipolicitacion.Location = new System.Drawing.Point(486, 44);
+            this.cbxTipolicitacion.Location = new System.Drawing.Point(74, 44);
             this.cbxTipolicitacion.Name = "cbxTipolicitacion";
-            this.cbxTipolicitacion.Size = new System.Drawing.Size(121, 21);
+            this.cbxTipolicitacion.Size = new System.Drawing.Size(117, 21);
             this.cbxTipolicitacion.TabIndex = 5;
             // 
             // labelControl6
             // 
-            this.labelControl6.Location = new System.Drawing.Point(620, 44);
+            this.labelControl6.Location = new System.Drawing.Point(487, 44);
             this.labelControl6.Name = "labelControl6";
             this.labelControl6.Size = new System.Drawing.Size(94, 13);
             this.labelControl6.TabIndex = 10;
@@ -199,7 +199,7 @@
             // 
             // labelControl4
             // 
-            this.labelControl4.Location = new System.Drawing.Point(3, 44);
+            this.labelControl4.Location = new System.Drawing.Point(487, 3);
             this.labelControl4.Name = "labelControl4";
             this.labelControl4.Size = new System.Drawing.Size(54, 13);
             this.labelControl4.TabIndex = 6;
@@ -207,15 +207,15 @@
             // 
             // txtDesanexo
             // 
-            this.txtDesanexo.Location = new System.Drawing.Point(64, 44);
+            this.txtDesanexo.Location = new System.Drawing.Point(592, 3);
             this.txtDesanexo.Name = "txtDesanexo";
             this.txtDesanexo.Properties.LookAndFeel.SkinName = "Blue";
-            this.txtDesanexo.Size = new System.Drawing.Size(340, 20);
+            this.txtDesanexo.Size = new System.Drawing.Size(371, 20);
             this.txtDesanexo.TabIndex = 4;
             // 
             // labelControl5
             // 
-            this.labelControl5.Location = new System.Drawing.Point(410, 44);
+            this.labelControl5.Location = new System.Drawing.Point(3, 44);
             this.labelControl5.Name = "labelControl5";
             this.labelControl5.Size = new System.Drawing.Size(66, 13);
             this.labelControl5.TabIndex = 8;
@@ -223,7 +223,7 @@
             // 
             // txtTechopresupuestal
             // 
-            this.txtTechopresupuestal.Location = new System.Drawing.Point(732, 44);
+            this.txtTechopresupuestal.Location = new System.Drawing.Point(592, 44);
             this.txtTechopresupuestal.Name = "txtTechopresupuestal";
             this.txtTechopresupuestal.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -236,7 +236,7 @@
             // lblFecha
             // 
             this.lblFecha.Appearance.ForeColor = System.Drawing.Color.Blue;
-            this.lblFecha.Location = new System.Drawing.Point(486, 3);
+            this.lblFecha.Location = new System.Drawing.Point(74, 3);
             this.lblFecha.Name = "lblFecha";
             this.lblFecha.Size = new System.Drawing.Size(63, 13);
             this.lblFecha.TabIndex = 13;
@@ -261,7 +261,7 @@
             this.gcAnexoDetalle.Name = "gcAnexoDetalle";
             this.gcAnexoDetalle.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemSearchLookUpEdit2});
-            this.gcAnexoDetalle.Size = new System.Drawing.Size(1114, 426);
+            this.gcAnexoDetalle.Size = new System.Drawing.Size(1114, 428);
             this.gcAnexoDetalle.TabIndex = 8;
             this.gcAnexoDetalle.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvAnexoDetalle});

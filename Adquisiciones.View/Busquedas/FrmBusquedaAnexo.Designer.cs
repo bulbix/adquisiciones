@@ -54,7 +54,7 @@
             this.gcAnexo.Name = "gcAnexo";
             this.gcAnexo.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemButtonEdit1});
-            this.gcAnexo.Size = new System.Drawing.Size(708, 302);
+            this.gcAnexo.Size = new System.Drawing.Size(884, 503);
             this.gcAnexo.TabIndex = 4;
             this.gcAnexo.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvAnexo});
@@ -84,8 +84,8 @@
             this.gridColumn2.OptionsColumn.AllowEdit = false;
             this.gridColumn2.UnboundType = DevExpress.Data.UnboundColumnType.String;
             this.gridColumn2.Visible = true;
-            this.gridColumn2.VisibleIndex = 0;
-            this.gridColumn2.Width = 107;
+            this.gridColumn2.VisibleIndex = 1;
+            this.gridColumn2.Width = 131;
             // 
             // gridColumn1
             // 
@@ -95,8 +95,8 @@
             this.gridColumn1.OptionsColumn.AllowEdit = false;
             this.gridColumn1.UnboundType = DevExpress.Data.UnboundColumnType.DateTime;
             this.gridColumn1.Visible = true;
-            this.gridColumn1.VisibleIndex = 1;
-            this.gridColumn1.Width = 132;
+            this.gridColumn1.VisibleIndex = 0;
+            this.gridColumn1.Width = 63;
             // 
             // gridColumn3
             // 
@@ -107,7 +107,7 @@
             this.gridColumn3.UnboundType = DevExpress.Data.UnboundColumnType.String;
             this.gridColumn3.Visible = true;
             this.gridColumn3.VisibleIndex = 2;
-            this.gridColumn3.Width = 164;
+            this.gridColumn3.Width = 213;
             // 
             // gridColumn4
             // 
@@ -120,7 +120,7 @@
             this.gridColumn4.UnboundType = DevExpress.Data.UnboundColumnType.Decimal;
             this.gridColumn4.Visible = true;
             this.gridColumn4.VisibleIndex = 3;
-            this.gridColumn4.Width = 113;
+            this.gridColumn4.Width = 78;
             // 
             // gridColumn7
             // 
@@ -129,7 +129,7 @@
             this.gridColumn7.Name = "gridColumn7";
             this.gridColumn7.Visible = true;
             this.gridColumn7.VisibleIndex = 4;
-            this.gridColumn7.Width = 71;
+            this.gridColumn7.Width = 45;
             // 
             // repositoryItemButtonEdit1
             // 
@@ -148,7 +148,7 @@
             this.gridColumnCotizacion.UnboundType = DevExpress.Data.UnboundColumnType.Boolean;
             this.gridColumnCotizacion.Visible = true;
             this.gridColumnCotizacion.VisibleIndex = 5;
-            this.gridColumnCotizacion.Width = 109;
+            this.gridColumnCotizacion.Width = 79;
             // 
             // gridColumn5
             // 
@@ -160,7 +160,7 @@
             this.gridColumn5.UnboundType = DevExpress.Data.UnboundColumnType.String;
             this.gridColumn5.Visible = true;
             this.gridColumn5.VisibleIndex = 6;
-            this.gridColumn5.Width = 224;
+            this.gridColumn5.Width = 155;
             // 
             // gridColumn6
             // 
@@ -174,13 +174,13 @@
             this.gridColumn6.UnboundType = DevExpress.Data.UnboundColumnType.DateTime;
             this.gridColumn6.Visible = true;
             this.gridColumn6.VisibleIndex = 7;
-            this.gridColumn6.Width = 109;
+            this.gridColumn6.Width = 99;
             // 
             // FrmBusquedaAnexo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(708, 397);
+            this.ClientSize = new System.Drawing.Size(884, 598);
             this.Controls.Add(this.gcAnexo);
             this.Name = "FrmBusquedaAnexo";
             this.Text = "Busqueda::Anexo";

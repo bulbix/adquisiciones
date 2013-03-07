@@ -48,10 +48,10 @@
             // 
             this.gcPedido.DataSource = this.bsSource;
             this.gcPedido.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gcPedido.Location = new System.Drawing.Point(0, 67);
+            this.gcPedido.Location = new System.Drawing.Point(0, 69);
             this.gcPedido.MainView = this.gvPedido;
             this.gcPedido.Name = "gcPedido";
-            this.gcPedido.Size = new System.Drawing.Size(708, 307);
+            this.gcPedido.Size = new System.Drawing.Size(708, 302);
             this.gcPedido.TabIndex = 4;
             this.gcPedido.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvPedido});
@@ -74,8 +74,6 @@
             this.gvPedido.OptionsView.EnableAppearanceEvenRow = true;
             this.gvPedido.OptionsView.ShowAutoFilterRow = true;
             this.gvPedido.OptionsView.ShowGroupedColumns = true;
-            this.gvPedido.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
-            new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.gridColumn6, DevExpress.Data.ColumnSortOrder.Ascending)});
             // 
             // gridColumn7
             // 
@@ -84,8 +82,8 @@
             this.gridColumn7.Name = "gridColumn7";
             this.gridColumn7.UnboundType = DevExpress.Data.UnboundColumnType.String;
             this.gridColumn7.Visible = true;
-            this.gridColumn7.VisibleIndex = 2;
-            this.gridColumn7.Width = 61;
+            this.gridColumn7.VisibleIndex = 1;
+            this.gridColumn7.Width = 51;
             // 
             // gridColumn6
             // 
@@ -96,7 +94,7 @@
             this.gridColumn6.UnboundType = DevExpress.Data.UnboundColumnType.String;
             this.gridColumn6.Visible = true;
             this.gridColumn6.VisibleIndex = 6;
-            this.gridColumn6.Width = 216;
+            this.gridColumn6.Width = 137;
             // 
             // gridColumn5
             // 
@@ -107,7 +105,7 @@
             this.gridColumn5.UnboundType = DevExpress.Data.UnboundColumnType.String;
             this.gridColumn5.Visible = true;
             this.gridColumn5.VisibleIndex = 4;
-            this.gridColumn5.Width = 209;
+            this.gridColumn5.Width = 132;
             // 
             // gridColumn4
             // 
@@ -118,7 +116,7 @@
             this.gridColumn4.UnboundType = DevExpress.Data.UnboundColumnType.String;
             this.gridColumn4.Visible = true;
             this.gridColumn4.VisibleIndex = 3;
-            this.gridColumn4.Width = 125;
+            this.gridColumn4.Width = 79;
             // 
             // gridColumn1
             // 
@@ -128,7 +126,7 @@
             this.gridColumn1.UnboundType = DevExpress.Data.UnboundColumnType.DateTime;
             this.gridColumn1.Visible = true;
             this.gridColumn1.VisibleIndex = 0;
-            this.gridColumn1.Width = 87;
+            this.gridColumn1.Width = 58;
             // 
             // gridColumn3
             // 
@@ -137,8 +135,8 @@
             this.gridColumn3.Name = "gridColumn3";
             this.gridColumn3.UnboundType = DevExpress.Data.UnboundColumnType.Integer;
             this.gridColumn3.Visible = true;
-            this.gridColumn3.VisibleIndex = 1;
-            this.gridColumn3.Width = 74;
+            this.gridColumn3.VisibleIndex = 2;
+            this.gridColumn3.Width = 54;
             // 
             // gridColumn2
             // 
@@ -149,7 +147,7 @@
             this.gridColumn2.UnboundType = DevExpress.Data.UnboundColumnType.Boolean;
             this.gridColumn2.Visible = true;
             this.gridColumn2.VisibleIndex = 5;
-            this.gridColumn2.Width = 57;
+            this.gridColumn2.Width = 35;
             // 
             // gridColumn8
             // 
@@ -162,7 +160,7 @@
             this.gridColumn8.UnboundType = DevExpress.Data.UnboundColumnType.String;
             this.gridColumn8.Visible = true;
             this.gridColumn8.VisibleIndex = 7;
-            this.gridColumn8.Width = 92;
+            this.gridColumn8.Width = 58;
             // 
             // gridColumn9
             // 
@@ -174,7 +172,7 @@
             this.gridColumn9.UnboundType = DevExpress.Data.UnboundColumnType.DateTime;
             this.gridColumn9.Visible = true;
             this.gridColumn9.VisibleIndex = 8;
-            this.gridColumn9.Width = 109;
+            this.gridColumn9.Width = 83;
             // 
             // FrmBusquedaPedido
             // 

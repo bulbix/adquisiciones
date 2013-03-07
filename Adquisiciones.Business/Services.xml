@@ -3,9 +3,9 @@
          xmlns:tx="http://www.springframework.net/tx"
          xmlns:aop="http://www.springframework.net/aop">        
    
-  <object id="auditInterceptor"
+  <!--<object id="auditInterceptor"
           type="Adquisiciones.Business.Audit.AuditInterceptor, Adquisiciones.Business">
-  </object>
+  </object>-->
 
   <object id="usuarioService" type="Adquisiciones.Business.Seguridad.UsuarioServiceImp, Adquisiciones.Business">
     <property name="UsuarioDao" ref="usuarioDao"/>

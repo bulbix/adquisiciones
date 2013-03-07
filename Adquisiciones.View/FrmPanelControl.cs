@@ -63,7 +63,7 @@ namespace Adquisiciones.View
             txtNewPass.Text = string.Empty;
             txtConfirmPass.Text = string.Empty;
             txtNombre.Text = string.Empty;
-            chkActivo.Enabled = true;
+            chkActivo.Checked = true;
             lblNumErrors.Text = string.Empty;
             listaError.Items.Clear();
 
@@ -132,7 +132,7 @@ namespace Adquisiciones.View
 
                     txtRfc.Text = UsuarioActual.Rfc;
                     txtNombre.Text = UsuarioActual.Nombre;
-                    chkActivo.Enabled = UsuarioActual.Estatus == "A" ? true : false;
+                    chkActivo.Checked = UsuarioActual.Estatus == "A" ? true : false;
 
                     bsOrigen.DataSource = UsuarioService.UsuarioDao.
                     ModulosSinPerfil(UsuarioActual, AlmacenActual);
@@ -160,11 +160,20 @@ namespace Adquisiciones.View
                 AlmacenActual = new Almacen(lstAlmacen.SelectedItem.ToString());
                 UsuarioActual.Rfc = txtRfc.Text.Trim();
                 UsuarioActual.Nombre = txtNombre.Text.Trim();
-                UsuarioActual.Estatus = chkActivo.Enabled ? "A" : "B";
+                UsuarioActual.Estatus = chkActivo.Checked ? "A" : "B";
                 UsuarioActual.UsuarioModulo = bsDestino.DataSource as List<UsuarioModulo>;
 
                 if (UsuarioActual.IdUsuario == 0)
                     UsuarioActual.Password = txtNewPass.Text;
+
+                if(UsuarioActual.IdUsuario != 0 && txtCurrentPass.Text == string.Empty 
+                    && (txtNewPass.Text != string.Empty || txtCurrentPass.Text != string.Empty))
+                {
+                    XtraMessageBox.Show(@"El password actual es requerido",
+                    @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
 
                 if (Util.DatosValidos(UsuarioActual, lblNumErrors, listaError))
                 {
@@ -172,6 +181,7 @@ namespace Adquisiciones.View
                         string.Empty && txtConfirmPass.Text != string.Empty)
                     {
                         updatePassword = true;
+
                         if (UsuarioActual.IdUsuario != 0 &&
                             UsuarioActual.Password != Util.GetSHA1(txtCurrentPass.Text))
                         {
@@ -191,7 +201,8 @@ namespace Adquisiciones.View
                             txtNewPass.Text = string.Empty;
                             txtConfirmPass.Text = string.Empty;
                             txtNewPass.Focus();
-                            return;}
+                            return;
+                        }
 
                         if (txtNewPass.Text != txtConfirmPass.Text)
                         {
@@ -210,10 +221,10 @@ namespace Adquisiciones.View
                     UsuarioService.GuardarUsuario(UsuarioActual, updatePassword);
 
                     XtraMessageBox.Show(@"Usuario Registrado o Actualizado",
-                                        @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     Nuevo();
-                    
+
                 }
             }
             catch(Exception ex)
@@ -253,15 +264,14 @@ namespace Adquisiciones.View
         {
             e.KeyChar = Char.ToUpper(e.KeyChar);
         }
-
         private void LstAlmacenSelectedIndexChanged(object sender, EventArgs e)
         {
             bsDestino.DataSource = new List<UsuarioModulo>();
             AlmacenActual = new Almacen(lstAlmacen.SelectedItem.ToString());
             searchLookUpUsuario.EditValue = null;
-            bsOrigen.DataSource = UsuarioService.UsuarioDao.
-               ModulosSinPerfil(null, AlmacenActual);
-            }
+
+            bsOrigen.DataSource = UsuarioService.UsuarioDao.TraerModulosByAlmacen(AlmacenActual);
+        }
 
         private void cmdSalir_Click(object sender, EventArgs e)
         {

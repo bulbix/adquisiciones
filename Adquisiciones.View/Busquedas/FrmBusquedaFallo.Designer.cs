@@ -43,10 +43,10 @@
             // 
             this.gcAnexo.DataSource = this.bsSource;
             this.gcAnexo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gcAnexo.Location = new System.Drawing.Point(0, 67);
+            this.gcAnexo.Location = new System.Drawing.Point(0, 69);
             this.gcAnexo.MainView = this.gvAnexo;
             this.gcAnexo.Name = "gcAnexo";
-            this.gcAnexo.Size = new System.Drawing.Size(708, 307);
+            this.gcAnexo.Size = new System.Drawing.Size(708, 302);
             this.gcAnexo.TabIndex = 4;
             this.gcAnexo.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvAnexo});
@@ -63,8 +63,6 @@
             this.gvAnexo.OptionsBehavior.Editable = false;
             this.gvAnexo.OptionsView.EnableAppearanceEvenRow = true;
             this.gvAnexo.OptionsView.ShowAutoFilterRow = true;
-            this.gvAnexo.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
-            new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.gridColumn1, DevExpress.Data.ColumnSortOrder.Ascending)});
             // 
             // gridColumn2
             // 

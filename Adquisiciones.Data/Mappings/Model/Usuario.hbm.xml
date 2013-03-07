@@ -3,7 +3,7 @@
   <!--Build: with lujan99@usa.net Nhibernate template-->
   <class name="Adquisiciones.Data.Entities.Usuario,Adquisiciones.Data" table="usuario" lazy="true">
     <id name="IdUsuario" column="id_usuario" type="int">
-      <generator class="increment" />
+      <generator class="assigned" />
     </id>
     <property name="Rfc" column="rfc" type="string" />
     <property name="Nombre" column="nombre" type="string" />

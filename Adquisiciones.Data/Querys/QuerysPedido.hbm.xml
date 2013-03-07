@@ -69,7 +69,7 @@
       join fetch p.Usuario 
       where year(p.FechaPedido) = :anioActual 
       and p.Almacen = :almacen 
-      order by p.FechaPedido desc]]>
+      order by p.FechaPedido desc, p.CatTipopedido asc, p.NumeroPedido desc]]>
   </query>
 
   <query name="Pedido.ExisteRequisicionPedido">

@@ -1,9 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
 
-  <query name="Usuario.VerificaUsuario">
-    <![CDATA[
-    
+  <query name="Usuario.ConsultarUsuario">
+    <![CDATA[    
     select u 
     from Usuario u 
     join fetch u.UsuarioModulo um 
@@ -14,29 +13,15 @@
     order by m.Id.IdModulo asc  ]]>
   </query>
 
-
-  <query name="Usuario.TraerModulos">
-    <![CDATA[
-    
+  <query name="Usuario.ConPerfiles">
+    <![CDATA[    
     select um 
-    from UsuarioModulo um     
-    join fetch um.Id.Modulo m 
-    join fetch m.Id.Almacen a 
-    where um.Id.Usuario = :usuario
-    and m.Id.Almacen = :almacen 
-    order by m.Id.IdModulo asc  ]]>
-  </query>
-
-
-  <query name="Usuario.TraerAllModulos">
-    <![CDATA[
-    
-    select um 
-    from UsuarioModulo um     
-    join fetch um.Id.Modulo m 
-    join fetch m.Id.Almacen a 
-    where um.Id.Usuario = :usuario    
-    order by m.Id.IdModulo asc  ]]>
+    from UsuarioModulo um 
+    join fetch um.Id.Modulo     
+    join fetch um.Id.Usuario      
+    where um.Id.Usuario = :usuario 
+    and um.Id.Modulo.Id.Almacen = :almacen
+    order by um.Id.Modulo.DesModulo]]>
   </query>
 
   <query name="Usuario.SinPerfiles">
@@ -53,17 +38,6 @@
    ]]>
   </query>
 
-  <query name="Usuario.ConPerfiles">
-    <![CDATA[    
-    select um 
-    from UsuarioModulo um 
-    join fetch um.Id.Modulo     
-    join fetch um.Id.Usuario      
-    where um.Id.Usuario = :usuario 
-    and um.Id.Modulo.Id.Almacen = :almacen
-    order by um.Id.Modulo.DesModulo]]>
-  </query>
-
   <query name="Usuario.AllSinPerfiles">
     <![CDATA[    
     select um 
@@ -74,6 +48,30 @@
     and um.Id.Modulo.Id.Almacen <> :almacen
     order by um.Id.Modulo.DesModulo]]>
   </query>
+  
+  <query name="Usuario.TraerModulos">
+    <![CDATA[
+    
+    select um 
+    from UsuarioModulo um     
+    join fetch um.Id.Modulo m 
+    join fetch m.Id.Almacen a 
+    where um.Id.Usuario = :usuario
+    and m.Id.Almacen = :almacen 
+    order by m.Id.IdModulo asc  ]]>
+  </query>
+  
+  <query name="Modulo.TraerTodos">
+    <![CDATA[
+    
+    select m 
+    from Modulo m    
+    where m.Id.Almacen = :almacen    
+    order by m.Id.IdModulo asc  ]]>
+  </query>
+  
+
+  
 
 
 </hibernate-mapping>
