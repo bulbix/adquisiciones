@@ -423,7 +423,7 @@ namespace Adquisiciones.Data.Entities
 
         public virtual string IpTerminal
         {
-            get { return _ipterminal.Trim(); }
+            get { return _ipterminal; }
             set { _ipterminal = value; }
         }
 

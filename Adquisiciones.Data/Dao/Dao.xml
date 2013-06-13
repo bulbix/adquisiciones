@@ -34,8 +34,8 @@
         User Id=postgres; Password=garbage"/>
         <entry key="hbm2ddl.auto" value="create"/>-->
         
-        <entry key="show_sql" value="true" />
-        <entry key="format_sql" value="true" />
+        <!--<entry key="show_sql" value="true" />
+        <entry key="format_sql" value="true" />-->
 
       </dictionary>
     </property>
@@ -50,7 +50,7 @@
         type="Spring.Data.NHibernate.HibernateTransactionManager, Spring.Data.NHibernate30">
     <property name="DbProvider"> <null/> </property>
     <property name="SessionFactory" ref="NHibernateSessionFactory"/>
-    <!--<property name="entityInterceptor" ref="auditInterceptor"/>-->
+    <property name="entityInterceptor" ref="auditInterceptor"/>
   </object>
 
   <!-- Exception translation object post processor -->

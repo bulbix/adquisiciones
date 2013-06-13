@@ -60,13 +60,13 @@
   <query name="Pedido.CargaPedidos">
     <![CDATA[
       from Pedido p
-      join fetch p.Fundamento 
-      join fetch p.CatPresupuesto 
-      join fetch p.CatTipopedido 
-      join fetch p.Proveedor 
+      left join fetch p.Fundamento 
+      left join fetch p.CatPresupuesto 
+      left join fetch p.CatTipopedido 
+      left join fetch p.Proveedor 
       left join fetch p.Anexo 
       left join fetch p.Requisicion 
-      join fetch p.Usuario 
+      left join fetch p.Usuario 
       where year(p.FechaPedido) = :anioActual 
       and p.Almacen = :almacen 
       order by p.FechaPedido desc, p.CatTipopedido asc, p.NumeroPedido desc]]>

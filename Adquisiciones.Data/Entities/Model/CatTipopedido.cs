@@ -11,7 +11,7 @@ namespace Adquisiciones.Data.Entities
 	/// CatTipopedido object for NHibernate mapped table 'cat_tipopedido'.
 	/// </summary>
 	[Serializable]
-	public class CatTipopedido
+    public class CatTipopedido : IComparable
 	{
 		#region Member Variables
 		protected int _idtipoped;
@@ -107,6 +107,11 @@ namespace Adquisiciones.Data.Entities
 			//hash = 27 * hash * _idtipoped.GetHashCode();
 			return hash;
 		}
+
+	    public int CompareTo(object obj)
+	    {
+            return IdTipoped.CompareTo((obj as CatTipopedido).IdTipoped);
+	    }
 
 	    public override string ToString()
 	    {

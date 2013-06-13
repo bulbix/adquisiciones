@@ -124,6 +124,8 @@ namespace Adquisiciones.View.Modulos
             searchLookUpPartida.EditValue = null;
             LimpiarErrores();
             LimpiarComboAnexo();
+            splitContainerControl1.Panel1.Enabled = true;
+            txtRequisicion.Focus();
         }
 
         public override void Guardar()
@@ -307,7 +309,7 @@ namespace Adquisiciones.View.Modulos
 
                     lblIva.Text = cantidadIva.ToString("$#,##0.00");
 
-                    this.importeTotal = importeDesc - cantidadIva;
+                    this.importeTotal = importeDesc + cantidadIva;
                     lblTotal.Text = importeTotal.ToString("$#,##0.00");
 
                 }

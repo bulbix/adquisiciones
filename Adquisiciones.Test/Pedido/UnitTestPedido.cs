@@ -99,7 +99,7 @@ namespace Adquisiciones.Test.Anexo
         [Test]
         public  void GenerarReportePedidoMayor()
         {
-            GenerarReportePedido(118, 1, "P2");
+            GenerarReportePedido(530, 1, "P2");
         }
 
         [Test]

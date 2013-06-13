@@ -69,7 +69,7 @@ namespace Adquisiciones.View
             // 
             this.cmdCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.cmdCancelar.Image = global::Adquisiciones.View.Properties.Resources.cancelar;
-            this.cmdCancelar.Location = new System.Drawing.Point(418, 252);
+            this.cmdCancelar.Location = new System.Drawing.Point(406, 251);
             this.cmdCancelar.Name = "cmdCancelar";
             this.cmdCancelar.Size = new System.Drawing.Size(122, 63);
             this.cmdCancelar.TabIndex = 2;

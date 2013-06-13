@@ -137,12 +137,16 @@ namespace Adquisiciones.View.Reportes
             result.DefaultCell.BorderWidthTop = 0;
 
             var ctx = ContextRegistry.GetContext();
-            var   articuloDao = ctx["articuloDao"] as IArticuloDao;
+            var articuloDao = ctx["articuloDao"] as IArticuloDao;
+
+            var index = 0;
 
             foreach (var pedidoDetalle in pedido.PedidoDetalle)
             {
-
-                partida = articuloDao.GetPartida(pedidoDetalle.Articulo);
+                ++index;
+                if (index == 1){//Consulta una sola vez
+                    partida = articuloDao.GetPartida(pedidoDetalle.Articulo);
+                }
 
                 result.AddCell(new Paragraph(pedidoDetalle.Articulo.Id.CveArt + "", fuente));
 
@@ -314,9 +318,7 @@ namespace Adquisiciones.View.Reportes
                     firma.DefaultCell.HorizontalAlignment = Element.ALIGN_CENTER;
                     firma.DefaultCell.Border = 0;
 
-                    firma.AddCell(new Paragraph(etiqueta, fuente));
-                    firma.AddCell("");
-                    firma.AddCell("");
+                    
                     firma.AddCell("");
                     firma.AddCell("");
                     firma.AddCell("");
@@ -325,6 +327,7 @@ namespace Adquisiciones.View.Reportes
                     firma.AddCell("");
                     firma.AddCell(Subrayado("          ", fuente));
                     firma.AddCell(new Paragraph(nombre, fuente));
+                    firma.AddCell(new Paragraph(etiqueta, fuenteBold));
 
                     result.AddCell(firma);
                 }
@@ -338,18 +341,18 @@ namespace Adquisiciones.View.Reportes
                     var firma = new PdfPTable(1);
                     firma.DefaultCell.HorizontalAlignment = Element.ALIGN_CENTER;
                     firma.DefaultCell.Border = 0;
-
-                    firma.AddCell(new Paragraph(etiqueta, fuente));
+                    
                     firma.AddCell("");
                     firma.AddCell("");
                     firma.AddCell("");
                     firma.AddCell("");
                     firma.AddCell("");
                     firma.AddCell("");
-                    firma.AddCell("");
-                    firma.AddCell("");
+                    //firma.AddCell("");
+                    //firma.AddCell("");
                     firma.AddCell(Subrayado("          ", fuente));
                     firma.AddCell(new Paragraph(nombre, fuente));
+                     firma.AddCell(new Paragraph(etiqueta, fuenteBold));
                     result.AddCell(firma);
                 }
 
@@ -489,29 +492,22 @@ namespace Adquisiciones.View.Reportes
             try
             {
                 var fs1 = Image.
-                    GetInstance(assembly.GetManifestResourceStream("Adquisiciones.View.Resources.marcaagua.jpg"));
-                //FileStream fs1 = new FileStream("WM.JPG", FileMode.Open);
+                GetInstance(assembly.GetManifestResourceStream("Adquisiciones.View.Resources.marcaagua.jpg"));
+                var jpg = Image.GetInstance(fs1);
 
-                var jpg = iTextSharp.text.
-                    Image.GetInstance(fs1); //System.Drawing.Image.FromStream(fs1), ImageFormat.Jpeg);
-                
                 //Scale image
                 jpg.ScalePercent(50f);
-
                 //Set position
                 jpg.SetAbsolutePosition(0f, 70f);
-
                 document.Add(jpg);
             }
-            catch(Exception e)
-            {
-                
-            }
+            catch (Exception e)
+            {}
         }
 
         public void GenerarAnverso()
         {
-            var document = new Document(PageSize.LETTER.Rotate(), 10, 10, 10, 80);
+            var document = new Document(PageSize.LETTER.Rotate(), 10, 10, 10, 120);
 
             fileAnverso = System.IO.Path.GetTempFileName();
 
@@ -521,7 +517,7 @@ namespace Adquisiciones.View.Reportes
 
             document.Open();
 
-            WaterMark(document);
+            //WaterMark(document);
 
             var anverso = new PdfPTable(1);
             anverso.WidthPercentage = 100;
@@ -566,7 +562,8 @@ namespace Adquisiciones.View.Reportes
 
             totales.DefaultCell.HorizontalAlignment = Element.ALIGN_LEFT;
             totales.DefaultCell.Colspan = 2;
-            totales.AddCell(new Paragraph("ACTIVIDAD INST.: " + pedido.CatActividad.IdActividad, fuente));
+            //totales.AddCell(new Paragraph("ACTIVIDAD INST.: " + pedido.CatActividad.IdActividad, fuente));
+            totales.AddCell("");
             totales.DefaultCell.HorizontalAlignment = Element.ALIGN_RIGHT;
             totales.DefaultCell.Colspan = 1;
 
@@ -574,7 +571,7 @@ namespace Adquisiciones.View.Reportes
 
             totales.AddCell(new Paragraph("I.V.A.  " + cantidadIva.ToString("C"), fuente));
 
-            decimal total = importeDesc - cantidadIva;
+            decimal total = importeDesc + cantidadIva;
             totales.DefaultCell.HorizontalAlignment = Element.ALIGN_LEFT;
 
             totales.DefaultCell.Colspan = 2;
@@ -780,6 +777,14 @@ namespace Adquisiciones.View.Reportes
             footerTbl.AddCell(writer.PageNumber + "");
             footerTbl.WriteSelectedRows(0, -1, -5, 110, writer.DirectContent);
 
+       }
+
+
+        public override void OnStartPage(PdfWriter writer, Document document)
+        {
+            WaterMark(document);
         }
+
+
     }
 }
