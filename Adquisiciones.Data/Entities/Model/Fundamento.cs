@@ -14,7 +14,7 @@ namespace Adquisiciones.Data.Entities
 	/// Fundamento object for NHibernate mapped table 'fundamento'.
 	/// </summary>
 	[Serializable]
-    public class Fundamento : INotifyPropertyChanged,ICatalogo
+    public class Fundamento : INotifyPropertyChanged,ICatalogo,IComparable
 	{
 		#region Member Variables
 		protected short _cvefundamento;
@@ -175,6 +175,11 @@ namespace Adquisiciones.Data.Entities
 	    {
 	        return CveFundamento + " - " + DesFundamento;
 	    }
+
+        public int CompareTo(object obj)
+        {
+            return CveFundamento.CompareTo((obj as Fundamento).CveFundamento);
+        }
 
 	    #region Equals And HashCode Overrides
 		/// <summary>

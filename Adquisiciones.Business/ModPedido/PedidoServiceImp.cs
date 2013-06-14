@@ -10,6 +10,8 @@ using Adquisiciones.Data.Dao.ModFallo;
 using Adquisiciones.Data.Dao.ModPedido;
 using Adquisiciones.Data.Entities;
 using Spring.Transaction.Interceptor;
+using System.Linq;
+
 
 namespace Adquisiciones.Business.ModPedido
 {
@@ -66,7 +68,7 @@ namespace Adquisiciones.Business.ModPedido
         /// <param name="falloDetalles"></param>
         /// <param name="iva"></param>
         [Transaction(ReadOnly = true)]
-        private decimal? ImporteTotal(Requisicion requisicion, IList<FalloDetalle> falloDetalles, decimal iva)
+        private decimal? ImporteTotal(Requisicion requisicion, IList<FalloDetalle> falloDetalles)
         {
             decimal? importe = new decimal(0.0);
 
@@ -79,7 +81,7 @@ namespace Adquisiciones.Business.ModPedido
                     importe += requisicionDetalle.Cantidad * falloDetalle.PrecioFallo;
             }
 
-            importe -= (importe * (iva/100));
+            //importe -= (importe * (iva/100));
 
             return importe;
 
@@ -115,8 +117,8 @@ namespace Adquisiciones.Business.ModPedido
                 pedido.CatArea = requisicion.CatArea;
                 pedido.ImporteDescuento = new decimal(0.0);
                 pedido.CatPresupuesto = pedido.CatPresupuesto;
-                pedido.EstadoPedido = "A";
-                pedido.ImporteTotal = ImporteTotal(requisicion, fallo.FalloDetalle, pedido.Iva.Id.Porcentaje);
+                pedido.EstadoPedido = "P";
+                pedido.ImporteTotal = ImporteTotal(requisicion, fallo.FalloDetalle);
                 pedido.Requisicion = requisicion;
                 
                 pedido = PedidoDao.Merge(pedido);
@@ -184,7 +186,7 @@ namespace Adquisiciones.Business.ModPedido
         /// <param name="importeTotal1"></param>
         /// <param name="pedidoDetalles"></param>
         [Transaction]
-        public void GuardarPedido(ref Pedido pedido, decimal importeTotal)
+        public void GuardarPedido(ref Pedido pedido)
         {
             //Genere un id nuevo
             pedido.FechaModificacion = PedidoDao.FechaServidor();
@@ -217,7 +219,7 @@ namespace Adquisiciones.Business.ModPedido
                 }
             }
 
-            pedido.ImporteTotal = importeTotal;
+            pedido.ImporteTotal = pedido.PedidoDetalle.Sum(detalle => detalle.Importe);
 
             PedidoDao.Merge(pedido);
 

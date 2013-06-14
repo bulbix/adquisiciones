@@ -43,6 +43,16 @@ namespace Adquisiciones.View.Busquedas
             base.Buscar();
             foreach (Pedido pedido in base.bsSource)
             {
+                if (!pedido.EstadoPedido.Trim().Equals("C") && !pedido.EstadoPedido.Trim().Equals("P"))
+                {
+                    pedido.EstadoPedido = "A";
+
+                }
+
+                pedido.ImporteTotal = pedido.ImporteTotal - pedido.ImporteDescuento;
+                decimal cantidadIva = pedido.ImporteTotal.Value * pedido.Iva.Id.Porcentaje / 100;
+                pedido.ImporteTotal += cantidadIva; 
+                
                 pedido.Automatico = pedido.Requisicion == null ? false : true;
             }
         }

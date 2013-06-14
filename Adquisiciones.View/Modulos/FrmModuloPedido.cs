@@ -151,7 +151,7 @@ namespace Adquisiciones.View.Modulos
             try
             {
                 gcPedidoDetalle.Focus();//Para rebindeeen los campos
-                PedidoService.GuardarPedido(ref PedidoActual, importeTotal);
+                PedidoService.GuardarPedido(ref PedidoActual);
 
                 Consultar();
 

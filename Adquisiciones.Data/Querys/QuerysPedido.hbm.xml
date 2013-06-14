@@ -60,8 +60,10 @@
   <query name="Pedido.CargaPedidos">
     <![CDATA[
       from Pedido p
-      left join fetch p.Fundamento 
+      left join fetch p.Fundamento
+      left join fetch p.CatArea
       left join fetch p.CatPresupuesto 
+      left join fetch p.CatActividad       
       left join fetch p.CatTipopedido 
       left join fetch p.Proveedor 
       left join fetch p.Anexo 

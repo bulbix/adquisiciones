@@ -11,7 +11,7 @@ namespace Adquisiciones.Data.Entities
 	/// CatArea object for NHibernate mapped table 'cat_area'.
 	/// </summary>
 	[Serializable]
-	public class CatArea
+    public class CatArea : IComparable
 	{
 		#region Member Variables
 		protected short _cvearea;
@@ -117,9 +117,15 @@ namespace Adquisiciones.Data.Entities
 		public override int GetHashCode()
 		{
 			int hash = 57;
-			hash = 27 * hash * _cvearea.GetHashCode();
+			//hash = 27 * hash * _cvearea.GetHashCode();
 			return hash;
 		}
+
+        public int CompareTo(object obj)
+        {
+            return CveArea.CompareTo((obj as CatArea).CveArea);
+        }
+
 		#endregion
 		
 	}

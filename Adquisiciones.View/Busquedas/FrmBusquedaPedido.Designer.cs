@@ -39,6 +39,13 @@
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn10 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn11 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn12 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn13 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn14 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn15 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn16 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.bsSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gcPedido)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvPedido)).BeginInit();
@@ -67,7 +74,14 @@
             this.gridColumn3,
             this.gridColumn2,
             this.gridColumn8,
-            this.gridColumn9});
+            this.gridColumn9,
+            this.gridColumn10,
+            this.gridColumn11,
+            this.gridColumn12,
+            this.gridColumn13,
+            this.gridColumn14,
+            this.gridColumn15,
+            this.gridColumn16});
             this.gvPedido.GridControl = this.gcPedido;
             this.gvPedido.Name = "gvPedido";
             this.gvPedido.OptionsBehavior.Editable = false;
@@ -83,7 +97,7 @@
             this.gridColumn7.UnboundType = DevExpress.Data.UnboundColumnType.String;
             this.gridColumn7.Visible = true;
             this.gridColumn7.VisibleIndex = 1;
-            this.gridColumn7.Width = 51;
+            this.gridColumn7.Width = 53;
             // 
             // gridColumn6
             // 
@@ -93,8 +107,8 @@
             this.gridColumn6.SortMode = DevExpress.XtraGrid.ColumnSortMode.Value;
             this.gridColumn6.UnboundType = DevExpress.Data.UnboundColumnType.String;
             this.gridColumn6.Visible = true;
-            this.gridColumn6.VisibleIndex = 6;
-            this.gridColumn6.Width = 65;
+            this.gridColumn6.VisibleIndex = 12;
+            this.gridColumn6.Width = 71;
             // 
             // gridColumn5
             // 
@@ -105,7 +119,7 @@
             this.gridColumn5.UnboundType = DevExpress.Data.UnboundColumnType.String;
             this.gridColumn5.Visible = true;
             this.gridColumn5.VisibleIndex = 4;
-            this.gridColumn5.Width = 133;
+            this.gridColumn5.Width = 79;
             // 
             // gridColumn4
             // 
@@ -116,7 +130,7 @@
             this.gridColumn4.UnboundType = DevExpress.Data.UnboundColumnType.String;
             this.gridColumn4.Visible = true;
             this.gridColumn4.VisibleIndex = 3;
-            this.gridColumn4.Width = 79;
+            this.gridColumn4.Width = 66;
             // 
             // gridColumn1
             // 
@@ -126,7 +140,7 @@
             this.gridColumn1.UnboundType = DevExpress.Data.UnboundColumnType.DateTime;
             this.gridColumn1.Visible = true;
             this.gridColumn1.VisibleIndex = 0;
-            this.gridColumn1.Width = 58;
+            this.gridColumn1.Width = 61;
             // 
             // gridColumn3
             // 
@@ -136,7 +150,7 @@
             this.gridColumn3.UnboundType = DevExpress.Data.UnboundColumnType.Integer;
             this.gridColumn3.Visible = true;
             this.gridColumn3.VisibleIndex = 2;
-            this.gridColumn3.Width = 45;
+            this.gridColumn3.Width = 47;
             // 
             // gridColumn2
             // 
@@ -146,8 +160,8 @@
             this.gridColumn2.OptionsColumn.AllowEdit = false;
             this.gridColumn2.UnboundType = DevExpress.Data.UnboundColumnType.Boolean;
             this.gridColumn2.Visible = true;
-            this.gridColumn2.VisibleIndex = 5;
-            this.gridColumn2.Width = 34;
+            this.gridColumn2.VisibleIndex = 11;
+            this.gridColumn2.Width = 40;
             // 
             // gridColumn8
             // 
@@ -159,8 +173,8 @@
             this.gridColumn8.SortMode = DevExpress.XtraGrid.ColumnSortMode.Value;
             this.gridColumn8.UnboundType = DevExpress.Data.UnboundColumnType.String;
             this.gridColumn8.Visible = true;
-            this.gridColumn8.VisibleIndex = 7;
-            this.gridColumn8.Width = 82;
+            this.gridColumn8.VisibleIndex = 14;
+            this.gridColumn8.Width = 101;
             // 
             // gridColumn9
             // 
@@ -171,8 +185,71 @@
             this.gridColumn9.Name = "gridColumn9";
             this.gridColumn9.UnboundType = DevExpress.Data.UnboundColumnType.DateTime;
             this.gridColumn9.Visible = true;
-            this.gridColumn9.VisibleIndex = 8;
-            this.gridColumn9.Width = 143;
+            this.gridColumn9.VisibleIndex = 15;
+            this.gridColumn9.Width = 196;
+            // 
+            // gridColumn10
+            // 
+            this.gridColumn10.Caption = "Fundamento";
+            this.gridColumn10.FieldName = "Fundamento";
+            this.gridColumn10.Name = "gridColumn10";
+            this.gridColumn10.UnboundType = DevExpress.Data.UnboundColumnType.String;
+            this.gridColumn10.Visible = true;
+            this.gridColumn10.VisibleIndex = 5;
+            this.gridColumn10.Width = 82;
+            // 
+            // gridColumn11
+            // 
+            this.gridColumn11.Caption = "Area";
+            this.gridColumn11.FieldName = "CatArea";
+            this.gridColumn11.Name = "gridColumn11";
+            this.gridColumn11.UnboundType = DevExpress.Data.UnboundColumnType.String;
+            this.gridColumn11.Visible = true;
+            this.gridColumn11.VisibleIndex = 6;
+            this.gridColumn11.Width = 91;
+            // 
+            // gridColumn12
+            // 
+            this.gridColumn12.Caption = "Num Req";
+            this.gridColumn12.FieldName = "NumeroRequisicion";
+            this.gridColumn12.Name = "gridColumn12";
+            this.gridColumn12.UnboundType = DevExpress.Data.UnboundColumnType.String;
+            this.gridColumn12.Visible = true;
+            this.gridColumn12.VisibleIndex = 7;
+            // 
+            // gridColumn13
+            // 
+            this.gridColumn13.Caption = "Importe";
+            this.gridColumn13.DisplayFormat.FormatString = "C2";
+            this.gridColumn13.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.gridColumn13.FieldName = "ImporteTotal";
+            this.gridColumn13.Name = "gridColumn13";
+            this.gridColumn13.Visible = true;
+            this.gridColumn13.VisibleIndex = 13;
+            // 
+            // gridColumn14
+            // 
+            this.gridColumn14.Caption = "Actividad";
+            this.gridColumn14.FieldName = "CatActividad";
+            this.gridColumn14.Name = "gridColumn14";
+            this.gridColumn14.Visible = true;
+            this.gridColumn14.VisibleIndex = 8;
+            // 
+            // gridColumn15
+            // 
+            this.gridColumn15.Caption = "Presupuesto";
+            this.gridColumn15.FieldName = "CatPresupuesto";
+            this.gridColumn15.Name = "gridColumn15";
+            this.gridColumn15.Visible = true;
+            this.gridColumn15.VisibleIndex = 9;
+            // 
+            // gridColumn16
+            // 
+            this.gridColumn16.Caption = "Estado";
+            this.gridColumn16.FieldName = "EstadoPedido";
+            this.gridColumn16.Name = "gridColumn16";
+            this.gridColumn16.Visible = true;
+            this.gridColumn16.VisibleIndex = 10;
             // 
             // FrmBusquedaPedido
             // 
@@ -203,5 +280,12 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn8;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn9;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn10;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn11;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn12;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn13;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn14;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn15;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn16;
     }
 }
