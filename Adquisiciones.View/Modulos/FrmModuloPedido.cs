@@ -63,7 +63,7 @@ namespace Adquisiciones.View.Modulos
          {
             PedidoActual = pedido;
             Consultar();
-            Text = @"Pedido::" + pedido;
+            Text = @"Pedido::" + PedidoActual;
 
             if (pedido.Requisicion != null)
                 cmdGuardar.Enabled = false;
@@ -112,7 +112,9 @@ namespace Adquisiciones.View.Modulos
             lblNumero.Text = PedidoActual.NumeroPedido.ToString();
             PedidoActual.FechaPedido = PedidoService.PedidoDao.FechaServidor();
             lblFecha.Text = String.Format("{0:dd/MM/yyyy}", PedidoActual.FechaPedido);
-            
+
+            Text = @"Pedido::" + PedidoActual;
+
             cmdGuardar.Enabled = true;
             cbxAlmacen.Enabled = true;
             searchLookUpFundamento.EditValue = null;
@@ -125,7 +127,6 @@ namespace Adquisiciones.View.Modulos
             LimpiarErrores();
             LimpiarComboAnexo();
             splitContainerControl1.Panel1.Enabled = true;
-            txtRequisicion.Focus();
         }
 
         public override void Guardar()
@@ -149,6 +150,7 @@ namespace Adquisiciones.View.Modulos
 
             try
             {
+                gcPedidoDetalle.Focus();//Para rebindeeen los campos
                 PedidoService.GuardarPedido(ref PedidoActual, importeTotal);
 
                 Consultar();
@@ -210,11 +212,11 @@ namespace Adquisiciones.View.Modulos
                     }
 
                     var oneDetalle = PedidoActual.PedidoDetalle[0];
+                    PedidoActual.Partida = PedidoService.AnexoService.ArticuloDao.GetPartida(oneDetalle.Articulo);
 
                     //Centinela
                     if (searchLookUpPartida.Handle != IntPtr.Zero)
-                        searchLookUpPartida.EditValue =
-                            PedidoService.AnexoService.ArticuloDao.GetPartida(oneDetalle.Articulo).Partida;
+                        searchLookUpPartida.EditValue = PedidoActual.Partida.Partida;
 
 
                     LimpiarErrores();
@@ -295,7 +297,7 @@ namespace Adquisiciones.View.Modulos
                     }
                     else if (rbPorcentaje.Checked)
                     {
-                        descuento = decimal.Parse(txtDescuento.Text) / 100;
+                        descuento = (decimal.Parse(txtDescuento.Text) / 100) * subTotal.Value;
                         lblDescuento.Text = descuento.ToString("$#,##0.00");
                     }
 
@@ -420,9 +422,9 @@ namespace Adquisiciones.View.Modulos
                 {
                     var cveArt = (int)rowSelectValue;
                     var almacen = cbxAlmacen.SelectedValue as Almacen;
-                    var partida = searchLookUpEditPartida.GetFocusedRow() as CatPartida;
+                    //var partida = searchLookUpEditPartida.GetFocusedRow() as CatPartida;
 
-                    if(partida == null)
+                    if(PedidoActual.Partida == null)
                     {
                         XtraMessageBox.Show(@"No ha seleccionado partida",
                         @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -430,7 +432,7 @@ namespace Adquisiciones.View.Modulos
                     }
 
                     var articuloSelect = PedidoService.AnexoService.
-                        ArticuloDao.ArticuloPartida(cveArt, almacen, partida);
+                        ArticuloDao.ArticuloPartida(cveArt, almacen, PedidoActual.Partida);
 
                     if(articuloSelect == null)
                     {
@@ -470,6 +472,21 @@ namespace Adquisiciones.View.Modulos
                 gvPedidoDetalle.SetRowCellValue(e.RowHandle, "Importe", importe);
             }
 
+            //posicionado en cantidad
+            if(e.Column.AbsoluteIndex == 4)
+            {
+                var cantidad = decimal.Parse(rowSelectValue.ToString());
+                var articulo = gvPedidoDetalle.GetRowCellValue(e.RowHandle, "Articulo");
+                decimal? sumaPedidoEntrega = PedidoActual.PedidoDetalle.
+                First(detalle=>detalle.Articulo == articulo).
+                PedidoEntrega.Sum(entrega => entrega.Cantidad);
+                if (sumaPedidoEntrega > cantidad)
+                {
+                    XtraMessageBox.Show(@"La suma de los renglones del pedido entrega debe coincidir con " + cantidad,
+                             @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+
             SumTotal();
         }
 
@@ -505,6 +522,14 @@ namespace Adquisiciones.View.Modulos
         {
             if (PedidoActual.IdPedido == 0)//Nuevo
                 bsPedidoDetalle.DataSource = new List<PedidoDetalle>();
+
+            if (searchLookUpPartida.EditValue != null)
+            {
+                var parSeleccionado = searchLookUpEditPartida.GetFocusedRow() as CatPartida;
+
+                if (parSeleccionado != null)
+                    PedidoActual.Partida = parSeleccionado;
+            }
         }
 
         private void CbxAlmacenSelectedIndexChanged(object sender, EventArgs e)
@@ -519,5 +544,10 @@ namespace Adquisiciones.View.Modulos
         }
 
         #endregion
+
+        private void cmdRefrescarTotal_Click(object sender, EventArgs e)
+        {
+            SumTotal();
+        }
     }
 }

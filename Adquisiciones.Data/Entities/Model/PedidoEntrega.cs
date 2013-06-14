@@ -14,7 +14,7 @@ namespace Adquisiciones.Data.Entities
 	/// PedidoEntrega object for NHibernate mapped table 'pedido_entrega'.
 	/// </summary>
 	[Serializable]
-	public class PedidoEntrega
+	public class PedidoEntrega:IDetalle
 	{
 		#region Member Variables
         protected long _idpedidoentrega;

@@ -7,6 +7,7 @@ using System.Text;
 using System.Windows.Forms;
 using Adquisiciones.Data.Entities;
 using DevExpress.XtraEditors;
+using System.Linq;
 
 namespace Adquisiciones.View
 {
@@ -14,6 +15,8 @@ namespace Adquisiciones.View
     {
         #region Variables
         private PedidoDetalle _pedidoDetalle;
+        private bool correcto = true;
+        
         #endregion
 
         #region Constructores
@@ -38,39 +41,7 @@ namespace Adquisiciones.View
       
         private void CmdAceptarClick(object sender, EventArgs e)
         {
-            var cantidad = _pedidoDetalle.Cantidad;
-            decimal? suma = 0;
-
-            foreach (var pedidoEntrega in _pedidoDetalle.PedidoEntrega)
-            {
-                if (pedidoEntrega.FechaInicial == null || pedidoEntrega.FechaFinal == null)
-                {
-                    XtraMessageBox.Show(@"Fecha inicial y fecha final requeridos",
-                                       @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-
-                var fechaInicial = pedidoEntrega.FechaInicial.Value;
-                var fechaFinal = pedidoEntrega.FechaFinal.Value;
-
-                if (fechaInicial.CompareTo(fechaFinal) > 0)
-                {
-                    XtraMessageBox.Show(@"Fecha inicial debe ser mayor fecha final",
-                                    @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-
-
-                suma += pedidoEntrega.Cantidad;
-            }
-
-            if (cantidad != suma)
-            {
-                XtraMessageBox.Show(@"La suma de los renglones debe coincidir con " + cantidad,
-                                    @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else
-                this.Close();
+            this.Close();
         }
 
         private void GcPedidoEntregaKeyDown(object sender, KeyEventArgs e)
@@ -79,7 +50,40 @@ namespace Adquisiciones.View
             {
                 gvPedidoEntrega.DeleteRow(gvPedidoEntrega.FocusedRowHandle);
             }
+        }
 
+        private bool validarPedidoEntrega(PedidoEntrega pedidoEntrega)
+        {
+          
+            if (pedidoEntrega.FechaInicial == null || pedidoEntrega.FechaFinal == null)
+            {
+                XtraMessageBox.Show(@"Fecha inicial y fecha final requeridos",
+                                    @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            var fechaInicial = pedidoEntrega.FechaInicial.Value;
+            var fechaFinal = pedidoEntrega.FechaFinal.Value;
+
+            if (fechaInicial.CompareTo(fechaFinal) > 0)
+            {
+                XtraMessageBox.Show(@"Fecha inicial debe ser menor o igual fecha final",
+                                @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            decimal? suma = _pedidoDetalle.PedidoEntrega.Sum(entrega => entrega.Cantidad);
+
+            suma += pedidoEntrega.Cantidad;
+                
+            if (suma > _pedidoDetalle.Cantidad )
+            {
+                XtraMessageBox.Show(@"La suma de los renglones debe coincidir con " + _pedidoDetalle.Cantidad,
+                              @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            return true;
         }
         
         private void SpinEdit1KeyDown(object sender, KeyEventArgs e)
@@ -92,8 +96,11 @@ namespace Adquisiciones.View
                 pedidoEntrega.Cantidad = seCantidad.Value;
 
 
-                (bsPedidoEntrega.DataSource as List<PedidoEntrega>).Add(pedidoEntrega);
-                gvPedidoEntrega.RefreshData();
+                if (validarPedidoEntrega(pedidoEntrega))
+                {
+                    (bsPedidoEntrega.DataSource as List<PedidoEntrega>).Add(pedidoEntrega);
+                    gvPedidoEntrega.RefreshData();
+                }
             }
 
         }

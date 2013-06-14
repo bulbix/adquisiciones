@@ -101,6 +101,7 @@ namespace Adquisiciones.View.Modulos
                 }
 
                 BindearCampos();
+                gcCotizacionDetalle.Focus();//Para rebindeeen los campos
                 CotizacionService.GuardarCotizacion(ref CotizacionActual);
                 CotizacionService.ConsultarCotizacion(ref CotizacionActual);
                 bsCotizacionDetalle.DataSource = CotizacionActual.CotizacionDetalle;

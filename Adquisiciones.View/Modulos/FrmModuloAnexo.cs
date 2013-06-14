@@ -109,6 +109,7 @@ namespace Adquisiciones.View.Modulos
                 if (!Util.DatosValidos(AnexoActual, lblNumErrors, listaError))
                     return;
 
+                gcAnexoDetalle.Focus();//Para rebindeeen los campos
                 AnexoService.GuardarAnexo(ref AnexoActual);
 
                 Consultar();

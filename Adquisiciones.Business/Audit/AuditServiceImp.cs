@@ -83,7 +83,8 @@ namespace Adquisiciones.Business.Audit
                         IdsDetalleHistorico[tablaHist] = historico;
                     }
 
-                }}
+                }
+            }
             catch(Exception e)
             {
                 

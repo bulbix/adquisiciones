@@ -237,6 +237,9 @@ namespace Adquisiciones.Data.Entities
 		}
 		#endregion
 
+        //Propiedad Auxiliar
+        public CatPartida Partida { get; set; }
+
 
 	    public override string ToString()
 	    {
