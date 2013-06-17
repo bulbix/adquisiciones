@@ -74,7 +74,9 @@ namespace Adquisiciones.View.Modulos
             CotizacionActual.Proveedor = ProveedorActual;
             CotizacionActual.FechaCotizacion = CotizacionService.CotizacionDao.FechaServidor();
             lblFecha.Text = String.Format("{0:dd/MM/yyyy}", CotizacionActual.FechaCotizacion);
-           
+
+            Text = "Cotizacion::" + CotizacionActual;
+
             BindearCampos();
 
             bsCotizacionDetalle.DataSource = new List<CotizacionDetalle>();
@@ -87,6 +89,7 @@ namespace Adquisiciones.View.Modulos
         {
             try
             {
+                gcCotizacionDetalle.Focus();//Para rebindeeen los campos
                 if (!Util.DatosValidos(CotizacionActual, lblNumErrors, listaError))
                 {
                     return;
@@ -101,7 +104,6 @@ namespace Adquisiciones.View.Modulos
                 }
 
                 BindearCampos();
-                gcCotizacionDetalle.Focus();//Para rebindeeen los campos
                 CotizacionService.GuardarCotizacion(ref CotizacionActual);
                 CotizacionService.ConsultarCotizacion(ref CotizacionActual);
                 bsCotizacionDetalle.DataSource = CotizacionActual.CotizacionDetalle;

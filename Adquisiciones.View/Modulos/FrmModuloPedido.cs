@@ -131,6 +131,7 @@ namespace Adquisiciones.View.Modulos
 
         public override void Guardar()
         {
+            gcPedidoDetalle.Focus();//Para rebindeeen los campos
             SumTotal();
             LimpiarErrores();
 
@@ -150,7 +151,6 @@ namespace Adquisiciones.View.Modulos
 
             try
             {
-                gcPedidoDetalle.Focus();//Para rebindeeen los campos
                 PedidoService.GuardarPedido(ref PedidoActual);
 
                 Consultar();

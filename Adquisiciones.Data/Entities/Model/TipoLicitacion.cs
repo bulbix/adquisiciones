@@ -10,7 +10,7 @@ namespace Adquisiciones.Data.Entities
 	/// TipoLicitacion object for NHibernate mapped table 'tipo_licitacion'.
 	/// </summary>
 	[Serializable]
-	public class TipoLicitacion
+    public class TipoLicitacion : IComparable
 	{
 		#region Member Variables
 		protected int _idtipolicitacion;
@@ -92,6 +92,11 @@ namespace Adquisiciones.Data.Entities
         {
            
             return DesTipolicitacion;
+        }
+
+        public int CompareTo(object obj)
+        {
+            return IdTipolicitacion.CompareTo((obj as TipoLicitacion).IdTipolicitacion);
         }
 		
 	}

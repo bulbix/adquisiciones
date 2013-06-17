@@ -12,7 +12,7 @@ namespace Adquisiciones.Data.Entities
 	/// Iva object for NHibernate mapped table 'iva'.
 	/// </summary>
 	[Serializable]
-	public class Iva
+    public class Iva : IComparable
 	{
 		#region Member Variables
 		protected IvaId _id;
@@ -106,6 +106,19 @@ namespace Adquisiciones.Data.Entities
 			//hash = 27 * hash * _id.GetHashCode();
 			return hash;
 		}
+
+
+        public override string ToString()
+        {
+
+            return Id.Porcentaje.ToString();
+        }
+
+        public int CompareTo(object obj)
+        {
+            return Id.IdIva.CompareTo((obj as Iva).Id.IdIva);
+        }
+
 		#endregion
 		
 	}

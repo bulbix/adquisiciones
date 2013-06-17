@@ -17,7 +17,9 @@
   <query name="Anexo.CargaAnexos">
     <![CDATA[
       from Anexo a
-      join fetch a.Usuario 
+      left join fetch a.Usuario 
+      left join fetch a.TipoLicitacion 
+      left join fetch a.Iva 
       where year(a.FechaAnexo) = :anioActual
       and a.Almacen = :almacen 
       order by a.FechaAnexo desc]]>

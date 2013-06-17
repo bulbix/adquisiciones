@@ -39,6 +39,8 @@
             this.gridColumnCotizacion = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.bsSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gcAnexo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvAnexo)).BeginInit();
@@ -49,12 +51,12 @@
             // 
             this.gcAnexo.DataSource = this.bsSource;
             this.gcAnexo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gcAnexo.Location = new System.Drawing.Point(0, 69);
+            this.gcAnexo.Location = new System.Drawing.Point(0, 67);
             this.gcAnexo.MainView = this.gvAnexo;
             this.gcAnexo.Name = "gcAnexo";
             this.gcAnexo.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemButtonEdit1});
-            this.gcAnexo.Size = new System.Drawing.Size(884, 503);
+            this.gcAnexo.Size = new System.Drawing.Size(884, 508);
             this.gcAnexo.TabIndex = 4;
             this.gcAnexo.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvAnexo});
@@ -69,7 +71,9 @@
             this.gridColumn7,
             this.gridColumnCotizacion,
             this.gridColumn5,
-            this.gridColumn6});
+            this.gridColumn6,
+            this.gridColumn8,
+            this.gridColumn9});
             this.gvAnexo.GridControl = this.gcAnexo;
             this.gvAnexo.Name = "gvAnexo";
             this.gvAnexo.OptionsView.EnableAppearanceEvenRow = true;
@@ -85,7 +89,7 @@
             this.gridColumn2.UnboundType = DevExpress.Data.UnboundColumnType.String;
             this.gridColumn2.Visible = true;
             this.gridColumn2.VisibleIndex = 1;
-            this.gridColumn2.Width = 131;
+            this.gridColumn2.Width = 114;
             // 
             // gridColumn1
             // 
@@ -96,7 +100,7 @@
             this.gridColumn1.UnboundType = DevExpress.Data.UnboundColumnType.DateTime;
             this.gridColumn1.Visible = true;
             this.gridColumn1.VisibleIndex = 0;
-            this.gridColumn1.Width = 63;
+            this.gridColumn1.Width = 55;
             // 
             // gridColumn3
             // 
@@ -107,7 +111,7 @@
             this.gridColumn3.UnboundType = DevExpress.Data.UnboundColumnType.String;
             this.gridColumn3.Visible = true;
             this.gridColumn3.VisibleIndex = 2;
-            this.gridColumn3.Width = 213;
+            this.gridColumn3.Width = 186;
             // 
             // gridColumn4
             // 
@@ -120,7 +124,7 @@
             this.gridColumn4.UnboundType = DevExpress.Data.UnboundColumnType.Decimal;
             this.gridColumn4.Visible = true;
             this.gridColumn4.VisibleIndex = 3;
-            this.gridColumn4.Width = 78;
+            this.gridColumn4.Width = 68;
             // 
             // gridColumn7
             // 
@@ -128,8 +132,8 @@
             this.gridColumn7.ColumnEdit = this.repositoryItemButtonEdit1;
             this.gridColumn7.Name = "gridColumn7";
             this.gridColumn7.Visible = true;
-            this.gridColumn7.VisibleIndex = 4;
-            this.gridColumn7.Width = 45;
+            this.gridColumn7.VisibleIndex = 6;
+            this.gridColumn7.Width = 37;
             // 
             // repositoryItemButtonEdit1
             // 
@@ -147,8 +151,8 @@
             this.gridColumnCotizacion.OptionsColumn.AllowEdit = false;
             this.gridColumnCotizacion.UnboundType = DevExpress.Data.UnboundColumnType.Boolean;
             this.gridColumnCotizacion.Visible = true;
-            this.gridColumnCotizacion.VisibleIndex = 5;
-            this.gridColumnCotizacion.Width = 79;
+            this.gridColumnCotizacion.VisibleIndex = 7;
+            this.gridColumnCotizacion.Width = 66;
             // 
             // gridColumn5
             // 
@@ -159,8 +163,8 @@
             this.gridColumn5.SortMode = DevExpress.XtraGrid.ColumnSortMode.Value;
             this.gridColumn5.UnboundType = DevExpress.Data.UnboundColumnType.String;
             this.gridColumn5.Visible = true;
-            this.gridColumn5.VisibleIndex = 6;
-            this.gridColumn5.Width = 155;
+            this.gridColumn5.VisibleIndex = 8;
+            this.gridColumn5.Width = 129;
             // 
             // gridColumn6
             // 
@@ -173,8 +177,28 @@
             this.gridColumn6.OptionsColumn.ReadOnly = true;
             this.gridColumn6.UnboundType = DevExpress.Data.UnboundColumnType.DateTime;
             this.gridColumn6.Visible = true;
-            this.gridColumn6.VisibleIndex = 7;
-            this.gridColumn6.Width = 99;
+            this.gridColumn6.VisibleIndex = 9;
+            this.gridColumn6.Width = 89;
+            // 
+            // gridColumn8
+            // 
+            this.gridColumn8.Caption = "Iva";
+            this.gridColumn8.FieldName = "Iva";
+            this.gridColumn8.Name = "gridColumn8";
+            this.gridColumn8.UnboundType = DevExpress.Data.UnboundColumnType.String;
+            this.gridColumn8.Visible = true;
+            this.gridColumn8.VisibleIndex = 5;
+            this.gridColumn8.Width = 62;
+            // 
+            // gridColumn9
+            // 
+            this.gridColumn9.Caption = "Licitacion";
+            this.gridColumn9.FieldName = "TipoLicitacion";
+            this.gridColumn9.Name = "gridColumn9";
+            this.gridColumn9.UnboundType = DevExpress.Data.UnboundColumnType.String;
+            this.gridColumn9.Visible = true;
+            this.gridColumn9.VisibleIndex = 4;
+            this.gridColumn9.Width = 81;
             // 
             // FrmBusquedaAnexo
             // 
@@ -206,5 +230,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumnCotizacion;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn8;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn9;
     }
 }

@@ -82,6 +82,8 @@ namespace Adquisiciones.View.Modulos
             AnexoActual.FechaAnexo = AnexoService.AnexoDao.FechaServidor();
             lblFecha.Text = String.Format("{0:dd/MM/yyyy}", AnexoActual.FechaAnexo);
 
+            Text = @"Anexo::" + AnexoActual;
+
             txtnumlicitacion.Enabled = true;
             cmdGuardar.Enabled = true;
             cmdMaximos.Enabled = false;
@@ -90,9 +92,9 @@ namespace Adquisiciones.View.Modulos
             LimpiarErrores();
             cbxAlmacen.Enabled = true;
         }
-
         public override void Guardar()
         {
+            gcAnexoDetalle.Focus();//Para rebindeeen los campos
             AnexoActual = bsAnexo.DataSource as Anexo;
             AnexoActual.AnexoDetalle = bsAnexoDetalle.DataSource as List<AnexoDetalle>;
 
@@ -109,7 +111,7 @@ namespace Adquisiciones.View.Modulos
                 if (!Util.DatosValidos(AnexoActual, lblNumErrors, listaError))
                     return;
 
-                gcAnexoDetalle.Focus();//Para rebindeeen los campos
+              
                 AnexoService.GuardarAnexo(ref AnexoActual);
 
                 Consultar();
