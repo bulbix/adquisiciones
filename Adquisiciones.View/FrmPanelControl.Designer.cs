@@ -321,6 +321,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.searchLookUpUsuario.Properties.DataSource = this.bsUsuarios;
             this.searchLookUpUsuario.Properties.DisplayMember = "Rfc";
+            this.searchLookUpUsuario.Properties.NullText = "";
             this.searchLookUpUsuario.Properties.ValueMember = "IdUsuario";
             this.searchLookUpUsuario.Properties.View = this.searchLookUpUsuarioView;
             this.searchLookUpUsuario.Size = new System.Drawing.Size(281, 20);

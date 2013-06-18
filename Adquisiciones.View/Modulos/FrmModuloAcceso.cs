@@ -61,7 +61,7 @@ namespace Adquisiciones.View
             this.cmdAceptar.Location = new System.Drawing.Point(278, 253);
             this.cmdAceptar.Name = "cmdAceptar";
             this.cmdAceptar.Size = new System.Drawing.Size(122, 63);
-            this.cmdAceptar.TabIndex = 1;
+            this.cmdAceptar.TabIndex = 3;
             this.cmdAceptar.Text = "Iniciar Sesion";
             this.cmdAceptar.Click += new System.EventHandler(this.BtnAceptarClick);
             // 
@@ -72,17 +72,17 @@ namespace Adquisiciones.View
             this.cmdCancelar.Location = new System.Drawing.Point(406, 251);
             this.cmdCancelar.Name = "cmdCancelar";
             this.cmdCancelar.Size = new System.Drawing.Size(122, 63);
-            this.cmdCancelar.TabIndex = 2;
+            this.cmdCancelar.TabIndex = 4;
             this.cmdCancelar.Text = "Salir";
             this.cmdCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // txtRfc
             // 
-            this.txtRfc.EditValue = "SAIH940101";
+            this.txtRfc.EditValue = "";
             this.txtRfc.Location = new System.Drawing.Point(278, 63);
             this.txtRfc.Name = "txtRfc";
             this.txtRfc.Size = new System.Drawing.Size(242, 20);
-            this.txtRfc.TabIndex = 3;
+            this.txtRfc.TabIndex = 0;
             this.txtRfc.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtMayusculaKeyPress);
             // 
             // labelControl1
@@ -107,8 +107,7 @@ namespace Adquisiciones.View
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(242, 21);
-            this.txtPassword.TabIndex = 7;
-            this.txtPassword.Text = "bulbo";
+            this.txtPassword.TabIndex = 1;
             // 
             // defaultLookAndFeel1
             // 
@@ -127,7 +126,7 @@ namespace Adquisiciones.View
             this.txtCaptcha.Location = new System.Drawing.Point(278, 225);
             this.txtCaptcha.Name = "txtCaptcha";
             this.txtCaptcha.Size = new System.Drawing.Size(242, 20);
-            this.txtCaptcha.TabIndex = 9;
+            this.txtCaptcha.TabIndex = 2;
             // 
             // labelControl3
             // 
@@ -173,7 +172,8 @@ namespace Adquisiciones.View
             InitializeComponent();
             var ctx = ContextRegistry.GetContext();
             UsuarioService = ctx["usuarioService"] as IUsuarioService;
-            
+           
+
         }
 
         #region Metodos
@@ -242,8 +242,7 @@ namespace Adquisiciones.View
         }
 
         private void FrmModuloAcceso_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            Application.Exit();
+        {Application.Exit();
         }
 
         public void TxtMayusculaKeyPress(object sender, KeyPressEventArgs e)
@@ -254,7 +253,7 @@ namespace Adquisiciones.View
         private void FrmModuloAcceso_Load(object sender, EventArgs e)
         {
             GenerarCaptcha();
-            txtCaptcha.Text = captcha.Text;txtRfc.Focus();
+            //txtCaptcha.Text = captcha.Text;
         }
 #endregion
 

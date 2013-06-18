@@ -41,7 +41,7 @@ namespace Adquisiciones.Test.Seguridad
         [Test]
         public void TestGetPassword()
         {
-            var pass = Util.GetSHA1("tibro");
+            var pass = Util.GetSHA1("ergar");
             Console.WriteLine(pass);
 
         }
