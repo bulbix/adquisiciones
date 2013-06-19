@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using Adquisiciones.Business;
 using Adquisiciones.Data;
@@ -765,28 +766,102 @@ namespace Adquisiciones.View.Reportes
         }
 
 
-        public override void OnEndPage(PdfWriter writer, Document document)
+        public int getNumberOfPdfPages(string fileName)
         {
-            var footerTbl = new PdfPTable(1);
-            footerTbl.TotalWidth = 790;
-            //footerTbl.HorizontalAlignment = Element.ALIGN_CENTER;
-            var cell = new PdfPCell(this.Firmas(this.piePagina));
-            cell.Border = 0;
-            cell.PaddingLeft = 10;
-            footerTbl.AddCell(cell);
-            footerTbl.DefaultCell.HorizontalAlignment = Element.ALIGN_RIGHT;
-            footerTbl.DefaultCell.Border = 0;
-            footerTbl.AddCell(writer.PageNumber + "");
-            footerTbl.WriteSelectedRows(0, -1, -5, 110, writer.DirectContent);
+            using (StreamReader sr = new StreamReader(File.OpenRead(fileName)))
+            {
+                Regex regex = new Regex(@"/Type\s*/Page[^s]");
+                MatchCollection matches = regex.Matches(sr.ReadToEnd());
 
-       }
-
+                return matches.Count;
+            }
+        }
+        
+      
 
         public override void OnStartPage(PdfWriter writer, Document document)
         {
             WaterMark(document);
+        }
+
+        // This is the contentbyte object of the writer
+        PdfContentByte cb;
+
+        // we will put the final number of pages in a template
+        PdfTemplate template;
+
+        // this is the BaseFont we are going to use for the header / footer
+        BaseFont bf = null;
+
+        // This keeps track of the creation time
+        DateTime PrintTime = DateTime.Now;
+
+        // we override the onOpenDocument method
+        public override void OnOpenDocument(PdfWriter writer, Document document)
+        {
+            try
+            {
+                PrintTime = DateTime.Now;
+                bf = BaseFont.CreateFont(BaseFont.HELVETICA, BaseFont.CP1252, BaseFont.NOT_EMBEDDED);
+                cb = writer.DirectContent;
+                template = cb.CreateTemplate(50, 50);
+            }
+            catch (DocumentException de)
+            {
+            }
+            catch (System.IO.IOException ioe)
+            {
+            }
+        }
+
+        public override void OnCloseDocument(PdfWriter writer, Document document)
+        {
+            base.OnCloseDocument(writer, document);
+
+            template.BeginText();
+            template.SetFontAndSize(bf, 8);
+            template.SetTextMatrix(0, 0);
+            template.ShowText("" + (writer.PageNumber - 1));
+            template.EndText();
+        }
+
+        public override void OnEndPage(PdfWriter writer, Document document)
+        {
+            base.OnEndPage(writer, document);
+
+            int pageN = writer.PageNumber;
+            String text = "Pagina " + pageN + " de ";
+            float len = bf.GetWidthPoint(text, 8);
+
+            Rectangle pageSize = document.PageSize;
+
+            cb.SetRGBColorFill(100, 100, 100);
+
+            cb.BeginText();
+            cb.SetFontAndSize(bf, 8);
+            cb.SetTextMatrix(pageSize.GetLeft(40), pageSize.GetBottom(30));
+            cb.ShowText(text);
+            cb.EndText();
+
+            cb.AddTemplate(template, pageSize.GetLeft(40) + len, pageSize.GetBottom(30));
+
+            cb.BeginText();
+            cb.SetFontAndSize(bf, 8);
+            cb.ShowTextAligned(PdfContentByte.ALIGN_RIGHT,
+                "Creado " + PrintTime.ToString(),
+                pageSize.GetRight(40),
+                pageSize.GetBottom(30), 0);
+            cb.EndText();
 
 
+            //Firmas
+            var footerTbl = new PdfPTable(1);
+            footerTbl.TotalWidth = 790;
+            var cell = new PdfPCell(this.Firmas(this.piePagina));
+            cell.Border = 0;
+            cell.PaddingLeft = 10;
+            footerTbl.AddCell(cell);
+            footerTbl.WriteSelectedRows(0, -1, -5, 120, writer.DirectContent);
         }
 
 

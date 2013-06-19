@@ -105,7 +105,7 @@ namespace Adquisiciones.Test.Anexo
         [Test]
         public void GenerarReportePedidoMenor()
         {
-            GenerarReportePedido(2, 0, "P2");
+            GenerarReportePedido(317, 2, "P2");
         
         }
 
