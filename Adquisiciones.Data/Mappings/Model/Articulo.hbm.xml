@@ -8,7 +8,7 @@
       <key-many-to-one name="Almacen" class="Adquisiciones.Data.Entities.Almacen,Adquisiciones.Data" column="id_almacen" />
     </composite-id>
     <property name="DesArticulo" column="des_articulo" type="string" />    
-    <many-to-one name="CatUnidad" column="unidad" fetch="join" lazy="false" />
+    <property name="Unidad" column="unidad" type="string" />
     <property name="Presentacion" column="presentacion" type="string" />
     <property name="PresentacionCant" column="presentacion_cant" type="short" />
     <property name="PresentacionUnid" column="presentacion_unid" type="string" />    

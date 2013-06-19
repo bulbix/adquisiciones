@@ -134,5 +134,12 @@ namespace Adquisiciones.Data.Dao.ModPedido
         {
             return CargarPedidos(FechaServidor().Year, almacen);
         }
+
+        [Transaction]
+        public void CancelarPedido(Pedido pedido)
+        {
+            pedido.EstadoPedido = "C";
+            CurrentSession.Update(pedido);
+        }
     }
 }

@@ -150,5 +150,9 @@ namespace Adquisiciones.Business.ModCotizacion
         {
             CotizacionDao.Delete(entity as Cotizacion);
         }
+
+         public void CancelarEntity(object entity)
+         {
+         }
     }
 }

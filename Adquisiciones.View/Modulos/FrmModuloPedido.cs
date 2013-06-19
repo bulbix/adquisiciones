@@ -447,7 +447,7 @@ namespace Adquisiciones.View.Modulos
 
                     gvPedidoDetalle.SetRowCellValue(e.RowHandle, "Articulo", articuloSelect);
                     gvPedidoDetalle.SetRowCellValue(e.RowHandle, "DescripcionArt", articuloSelect.DesArticulo);
-                    gvPedidoDetalle.SetRowCellValue(e.RowHandle, "UnidadArt", articuloSelect.CatUnidad.Unidad);
+                    gvPedidoDetalle.SetRowCellValue(e.RowHandle, "UnidadArt", articuloSelect.Unidad);
                     gvPedidoDetalle.SetRowCellValue(e.RowHandle, "Cantidad", 0);
                     gvPedidoDetalle.SetRowCellValue(e.RowHandle, "PrecioUnitario", 0.0);
                     

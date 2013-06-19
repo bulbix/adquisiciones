@@ -252,7 +252,7 @@ namespace Adquisiciones.View.Modulos
 
                         gvAnexoDetalle.SetRowCellValue(e.RowHandle, "Articulo", articuloSelect);
                         gvAnexoDetalle.SetRowCellValue(e.RowHandle, "DescripcionArt", articuloSelect.DesArticulo);
-                        gvAnexoDetalle.SetRowCellValue(e.RowHandle, "UnidadArt", articuloSelect.CatUnidad.Unidad);
+                        gvAnexoDetalle.SetRowCellValue(e.RowHandle, "UnidadArt", articuloSelect.Unidad);
                         gvAnexoDetalle.SetRowCellValue(e.RowHandle, "CantidadMinimo", 0);
                         gvAnexoDetalle.SetRowCellValue(e.RowHandle, "CantidadMaximo", 0);
 

@@ -247,7 +247,7 @@ namespace Adquisiciones.Business.ModPedido
                     RenglonPedido = pedidoDetalleConsulta.RenglonPedido,
                     CveArt = pedidoDetalleConsulta.Articulo.Id.CveArt,
                     DescripcionArt = pedidoDetalleConsulta.Articulo.DesArticulo,
-                    UnidadArt = pedidoDetalleConsulta.Articulo.CatUnidad.Unidad,
+                    UnidadArt = pedidoDetalleConsulta.Articulo.Unidad,
                     Cantidad = pedidoDetalleConsulta.Cantidad,
                     Marca = pedidoDetalleConsulta.Marca,
                     PrecioUnitario = pedidoDetalleConsulta.PrecioUnitario
@@ -276,7 +276,7 @@ namespace Adquisiciones.Business.ModPedido
                 pedidoDetalle.RenglonPedido = anexoDetalle.RenglonAnexo;
                 pedidoDetalle.CveArt = anexoDetalle.Articulo.Id.CveArt;
                 pedidoDetalle.DescripcionArt = anexoDetalle.Articulo.DesArticulo;
-                pedidoDetalle.UnidadArt = anexoDetalle.Articulo.CatUnidad.Unidad;
+                pedidoDetalle.UnidadArt = anexoDetalle.Articulo.Unidad;
                 pedidoDetalle.Cantidad = 0;//anexoDetalle.CantidadMinimo;
                 pedidosDetalle.Add(pedidoDetalle);
             }
@@ -285,7 +285,13 @@ namespace Adquisiciones.Business.ModPedido
             return pedidosDetalle;
         }
 
-         [Transaction(ReadOnly = true)]
+         [Transaction]
+        public void CancelarEntity(object entity)
+         {
+             PedidoDao.CancelarPedido(entity as Pedido);
+         }
+
+        [Transaction(ReadOnly = true)]
         public object ConsultarEntityAll(Almacen almacen)
          {
              return PedidoDao.CargarPedidos(almacen);

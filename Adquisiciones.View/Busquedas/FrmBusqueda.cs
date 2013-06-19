@@ -177,5 +177,33 @@ namespace Adquisiciones.View.Busquedas
         }
         #endregion
 
+        private void CmdCancelarItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var usuarioModifico = (Usuario)TypeEntity.
+                GetProperty("Usuario").GetValue(GvGeneral.GetFocusedRow(), null);
+
+
+            if (FrmModuloAcceso.UsuarioLog.IdUsuario != usuarioModifico.IdUsuario)
+            {
+                XtraMessageBox.Show(@"No es dueño del registro", @"Adquisiciones",
+                                   MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            if (XtraMessageBox.Show(@"Esta seguro de cancelar el elemento seleccionado?", @"Adquisiciones",
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+
+                GetServicio();
+                Servicio.CancelarEntity(GvGeneral.GetFocusedRow());
+                XtraMessageBox.Show(@"Elemento seleccionado cancelado", @"Adquisiciones",
+                                MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Buscar();
+            }
+
+
+
+        }
+
     }
 }

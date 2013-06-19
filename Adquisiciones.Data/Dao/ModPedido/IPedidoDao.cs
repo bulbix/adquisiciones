@@ -20,5 +20,7 @@ namespace Adquisiciones.Data.Dao.ModPedido
         IList<Pedido> CargarPedidos(int anio, Almacen almacen);
         IList<Pedido> CargarPedidos(Almacen almacen);
 
+        void CancelarPedido(Pedido pedido);
+
     }
 }

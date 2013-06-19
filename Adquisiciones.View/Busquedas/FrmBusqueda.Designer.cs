@@ -44,6 +44,7 @@
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.bsSource = new System.Windows.Forms.BindingSource(this.components);
+            this.cmdCancelar = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsSource)).BeginInit();
             this.SuspendLayout();
@@ -67,9 +68,10 @@
             this.cmdConsultar,
             this.cmdImprimir,
             this.cmdReporte,
-            this.cmdEliminar});
+            this.cmdEliminar,
+            this.cmdCancelar});
             this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 5;
+            this.barManager1.MaxItemId = 6;
             this.barManager1.StatusBar = this.bar3;
             // 
             // bar1
@@ -91,7 +93,8 @@
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.cmdConsultar, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.cmdImprimir, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.cmdReporte, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.cmdEliminar, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.cmdEliminar, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(this.cmdCancelar)});
             this.bar2.OptionsBar.MultiLine = true;
             this.bar2.OptionsBar.UseWholeRow = true;
             this.bar2.Text = "Main menu";
@@ -168,7 +171,7 @@
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Size = new System.Drawing.Size(708, 67);
+            this.barDockControlTop.Size = new System.Drawing.Size(708, 91);
             // 
             // barDockControlBottom
             // 
@@ -181,15 +184,24 @@
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 67);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 308);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 91);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 284);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(708, 67);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 308);
+            this.barDockControlRight.Location = new System.Drawing.Point(708, 91);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 284);
+            // 
+            // cmdCancelar
+            // 
+            this.cmdCancelar.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmdCancelar.Appearance.Options.UseFont = true;
+            this.cmdCancelar.Caption = "Cancelar";
+            this.cmdCancelar.Id = 5;
+            this.cmdCancelar.Name = "cmdCancelar";
+            this.cmdCancelar.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.CmdCancelarItemClick);
             // 
             // FrmBusqueda
             // 
@@ -224,5 +236,6 @@
         private DevExpress.XtraBars.BarDockControl barDockControlLeft;
         private DevExpress.XtraBars.BarDockControl barDockControlRight;
         protected System.Windows.Forms.BindingSource bsSource;
+        private DevExpress.XtraBars.BarButtonItem cmdCancelar;
     }
 }

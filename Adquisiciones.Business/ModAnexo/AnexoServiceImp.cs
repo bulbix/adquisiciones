@@ -106,7 +106,7 @@ namespace Adquisiciones.Business.ModAnexo
                         Articulo = anexoDetalleConsulta.Articulo,
                         CveArt = anexoDetalleConsulta.Articulo.Id.CveArt,
                         DescripcionArt = anexoDetalleConsulta.Articulo.DesArticulo,
-                        UnidadArt = anexoDetalleConsulta.Articulo.CatUnidad.Unidad,
+                        UnidadArt = anexoDetalleConsulta.Articulo.Unidad,
                         CantidadMinimo = anexoDetalleConsulta.CantidadMinimo,
                         CantidadMaximo =  anexoDetalleConsulta.CantidadMaximo
                     };
@@ -131,6 +131,10 @@ namespace Adquisiciones.Business.ModAnexo
         public void EliminarEntity(object entity, string nombreEntity)
         {
             AnexoDao.Delete(entity as Anexo);
+        }
+
+        public void CancelarEntity(object entity)
+        {
         }
     }
 }

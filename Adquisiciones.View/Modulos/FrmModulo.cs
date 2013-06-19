@@ -146,6 +146,17 @@ namespace Adquisiciones.View.Modulos
                 cmdGuardar.Enabled = false;
                 splitContainerControl1.Panel1.Enabled = false;
             }
+
+            if(EntityActual is Pedido)
+            {
+                if((EntityActual as Pedido).EstadoPedido == "C")
+                {
+                    cmdGuardar.Enabled = false;
+                    splitContainerControl1.Panel1.Enabled = false;
+                }
+            }
+
+
         }
 
         protected void GetServicio()

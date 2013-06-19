@@ -27,5 +27,9 @@ namespace Adquisiciones.Data.Dao.Catalogos
         {
             Delete(entity as Fundamento);
         }
+
+        public void CancelarEntity(object entity)
+        {
+        }
     }
 }

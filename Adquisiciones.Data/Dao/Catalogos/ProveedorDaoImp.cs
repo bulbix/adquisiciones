@@ -27,5 +27,9 @@ namespace Adquisiciones.Data.Dao.Catalogos
         {
            Delete(entity as Proveedor);
         }
+
+        public void CancelarEntity(object entity)
+        {
+        }
     }
 }

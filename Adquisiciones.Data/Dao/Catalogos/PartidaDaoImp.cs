@@ -20,5 +20,9 @@ namespace Adquisiciones.Data.Dao.Catalogos
         {
             Delete(entity as CatPartida);
         }
+
+        public void CancelarEntity(object entity)
+        {
+        }
     }
 }

@@ -178,5 +178,9 @@ namespace Adquisiciones.Business.ModFallo
         {
             FalloDao.BorrarFallos((entity as Fallo).Anexo);
         }
+
+         public void CancelarEntity(object entity)
+         {
+         }
     }
 }

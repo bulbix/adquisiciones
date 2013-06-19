@@ -16,7 +16,7 @@ namespace Adquisiciones.Data.Entities
 		#region Member Variables
 		protected ArticuloId _id;
 		protected string _desarticulo;
-        protected CatUnidad _catunidad;        
+        protected string _unidad;        
 		protected string _presentacion;
 		protected short? _presentacioncant;
 		protected string _presentacionunid;
@@ -88,10 +88,10 @@ namespace Adquisiciones.Data.Entities
 			get { return _desarticulo; }
 			set {_desarticulo= value; }
 		}
-		public  virtual CatUnidad CatUnidad
+		public  virtual string Unidad
 		{
-			get { return _catunidad; }
-			set {_catunidad= value; }
+			get { return _unidad; }
+			set {_unidad= value; }
 		}
 		public  virtual string Presentacion
 		{

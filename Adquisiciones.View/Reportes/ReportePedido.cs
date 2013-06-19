@@ -168,7 +168,7 @@ namespace Adquisiciones.View.Reportes
                 result.AddCell(new Paragraph(articulo, fuente));
                 result.DefaultCell.HorizontalAlignment = Element.ALIGN_CENTER;
                 result.AddCell(new Paragraph(pedidoDetalle.Cantidad.Value.ToString("N"), fuente));
-                result.AddCell(new Paragraph(pedidoDetalle.Articulo.CatUnidad.Unidad, fuente));
+                result.AddCell(new Paragraph(pedidoDetalle.Articulo.Unidad, fuente));
                 result.DefaultCell.HorizontalAlignment = Element.ALIGN_RIGHT;
                 result.AddCell(new Paragraph(pedidoDetalle.PrecioUnitario.Value.ToString("C"), fuente));
                 decimal total = pedidoDetalle.Cantidad.Value * pedidoDetalle.PrecioUnitario.Value;
@@ -647,6 +647,12 @@ namespace Adquisiciones.View.Reportes
             var fileAnversoMarca = fileAnverso;
             var fileReversoMarca = fileReverso;
 
+            if(pedido.EstadoPedido == "C")
+            {
+                fileAnversoMarca = MarcaCancelado(fileAnverso);
+            }
+
+
             var anversoReader = new PdfReader(fileAnversoMarca);
             var reversoReader = new PdfReader(fileReversoMarca);
 
@@ -657,10 +663,6 @@ namespace Adquisiciones.View.Reportes
             var copy = new PdfCopy(document, new FileStream(filePedido, FileMode.Create));
 
             document.Open();
-
-            /*var marcaAgua = Image.GetInstance(assembly.GetManifestResourceStream
-                ("Adquisiciones.View.Resources.marcaagua.jpg"));
-            document.Add(marcaAgua);*/
 
             for (var page = 1; page <= anversoReader.NumberOfPages; page++)
             {
@@ -680,7 +682,7 @@ namespace Adquisiciones.View.Reportes
             return filePedido;
         }
 
-        /*private String MarcaAgua(String path)
+        private String MarcaCancelado(String path)
         {
             PdfReader reader = new PdfReader(path);
             FileStream fs = null;
@@ -704,7 +706,7 @@ namespace Adquisiciones.View.Reportes
                 Rectangle tamPagina = reader.GetPageSizeWithRotation(nPag);
                 PdfContentByte over = stamp.GetOverContent(nPag);
                 over.BeginText();
-                WriteTextToDocument(bf, tamPagina, over, gs, "www.inr.gob.mx");
+                WriteTextToDocument(bf, tamPagina, over, gs, "CANCELADO");
                 over.EndText();
 
             }
@@ -760,7 +762,7 @@ namespace Adquisiciones.View.Reportes
             over.ShowText(texto);
 
 
-        }*/
+        }
 
 
         public override void OnEndPage(PdfWriter writer, Document document)
@@ -783,6 +785,8 @@ namespace Adquisiciones.View.Reportes
         public override void OnStartPage(PdfWriter writer, Document document)
         {
             WaterMark(document);
+
+
         }
 
 
