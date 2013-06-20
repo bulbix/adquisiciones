@@ -65,7 +65,6 @@ namespace Adquisiciones.View.Busquedas
 
                     if (desModulo.Contains("reportear"))
                     {
-                        cmdImprimir.Enabled = true;
                         cmdReporte.Enabled = true;
                     }
                 }
@@ -145,12 +144,7 @@ namespace Adquisiciones.View.Busquedas
             }
 
         }
-
-        private void CmdImprimirItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            GvGeneral.ShowPrintPreview();
-        }
-
+        
         protected virtual void CmdReporteItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
 
@@ -195,15 +189,26 @@ namespace Adquisiciones.View.Busquedas
             {
 
                 GetServicio();
-                Servicio.CancelarEntity(GvGeneral.GetFocusedRow());
-                XtraMessageBox.Show(@"Elemento seleccionado cancelado", @"Adquisiciones",
+                bool result = Servicio.CancelarEntity(GvGeneral.GetFocusedRow());
+
+                if(result)
+                {
+                    XtraMessageBox.Show(@"Elemento seleccionado cancelado", @"Adquisiciones",
                                 MessageBoxButtons.OK, MessageBoxIcon.Information);
-                Buscar();
+                    Buscar();
+                }
+                else
+                {
+                    
+                    XtraMessageBox.Show(@"Ya Existe entrada asociada al pedido",
+                    @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                }
+
+                
             }
-
-
-
         }
+      
 
     }
 }

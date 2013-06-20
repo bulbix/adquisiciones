@@ -16,14 +16,14 @@ namespace Adquisiciones.View.Reportes.Pedidos {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class ReportePedidoDetallado : ReportClass {
+    public class ReportePedidoEntrada : ReportClass {
         
-        public ReportePedidoDetallado() {
+        public ReportePedidoEntrada() {
         }
         
         public override string ResourceName {
             get {
-                return "ReportePedidoDetallado.rpt";
+                return "ReportePedidoEntrada.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace Adquisiciones.View.Reportes.Pedidos {
         
         public override string FullResourceName {
             get {
-                return "Adquisiciones.View.Reportes.Pedidos.ReportePedidoDetallado.rpt";
+                return "Adquisiciones.View.Reportes.Pedidos.ReportePedidoEntrada.rpt";
             }
             set {
                 // Do nothing
@@ -114,9 +114,9 @@ namespace Adquisiciones.View.Reportes.Pedidos {
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedReportePedidoDetallado : Component, ICachedReport {
+    public class CachedReportePedidoEntrada : Component, ICachedReport {
         
-        public CachedReportePedidoDetallado() {
+        public CachedReportePedidoEntrada() {
         }
         
         [Browsable(false)]
@@ -153,7 +153,7 @@ namespace Adquisiciones.View.Reportes.Pedidos {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            ReportePedidoDetallado rpt = new ReportePedidoDetallado();
+            ReportePedidoEntrada rpt = new ReportePedidoEntrada();
             rpt.Site = this.Site;
             return rpt;
         }

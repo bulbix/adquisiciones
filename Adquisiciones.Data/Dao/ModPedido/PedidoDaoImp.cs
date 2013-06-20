@@ -135,6 +135,24 @@ namespace Adquisiciones.Data.Dao.ModPedido
             return CargarPedidos(FechaServidor().Year, almacen);
         }
 
+         [Transaction(ReadOnly = true)]
+        public IList<Entrada> CargarEntradas(Pedido pedido)
+        {
+            var criteria = CurrentSession.CreateCriteria(typeof(Entrada));
+            criteria.Add(Restrictions.Eq("Pedido", pedido));
+            return criteria.List<Entrada>();
+        }
+
+         [Transaction(ReadOnly = true)]
+        public decimal ImporteEntrada(Entrada entrada)
+        {
+            var criteria = CurrentSession.CreateCriteria(typeof(Entrada));
+            criteria.Add(Restrictions.Eq("Entrada", entrada));
+            criteria.SetProjection(Projections.Sum("PrecioEntrada"));
+            //return criteria.List<Entrada>();
+             return (decimal)0.0;
+        }
+
         [Transaction]
         public void CancelarPedido(Pedido pedido)
         {

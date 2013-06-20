@@ -50,10 +50,13 @@ namespace Adquisiciones.View.Modulos
             if (tipoPedido > 1)
                 searchLookUpAnexo.Enabled = false;
 
-            if(tipoPedido > 2)
+            if (tipoPedido > 2)
+            {
+                panelFechaEntrega.Visible = false;
                 gridColumnFecha.Visible = false;
+            }
 
-           
+
             InicializarCatalogos();
             BindearCampos();
 
@@ -112,6 +115,8 @@ namespace Adquisiciones.View.Modulos
             lblNumero.Text = PedidoActual.NumeroPedido.ToString();
             PedidoActual.FechaPedido = PedidoService.PedidoDao.FechaServidor();
             lblFecha.Text = String.Format("{0:dd/MM/yyyy}", PedidoActual.FechaPedido);
+            txtDescuento.Text = "0.00";
+           
 
             Text = @"Pedido::" + PedidoActual;
 
@@ -476,15 +481,36 @@ namespace Adquisiciones.View.Modulos
             if(e.Column.AbsoluteIndex == 4)
             {
                 var cantidad = decimal.Parse(rowSelectValue.ToString());
-                var articulo = gvPedidoDetalle.GetRowCellValue(e.RowHandle, "Articulo");
-                decimal? sumaPedidoEntrega = PedidoActual.PedidoDetalle.
-                First(detalle=>detalle.Articulo == articulo).
-                PedidoEntrega.Sum(entrega => entrega.Cantidad);
-                if (sumaPedidoEntrega > cantidad)
+
+                if(cantidad != (decimal)0.0)
                 {
-                    XtraMessageBox.Show(@"La suma de los renglones del pedido entrega debe coincidir con " + cantidad,
-                             @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    if (deFechaInicial.DateTime.CompareTo(deFechaFinal.DateTime) > 0)
+                    {
+                        XtraMessageBox.Show(@"Fecha inicial debe ser menor o igual fecha final",
+                                        @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
+                    //Agregar un pedido entrega default
+                    var pedidoDetalleSelect = gvPedidoDetalle.GetFocusedRow() as PedidoDetalle;
+                    pedidoDetalleSelect.PedidoEntrega.Clear();
+
+                    if (deFechaInicial.EditValue != null && deFechaFinal.EditValue != null)
+                    {
+                        var pedidoEntrega = new PedidoEntrega(deFechaInicial.DateTime,
+                                                    deFechaFinal.DateTime, cantidad);
+                        pedidoDetalleSelect.PedidoEntrega.Add(pedidoEntrega);
+                    }
                 }
+                //var articulo = gvPedidoDetalle.GetRowCellValue(e.RowHandle, "Articulo");
+                //decimal? sumaPedidoEntrega = PedidoActual.PedidoDetalle.
+                //First(detalle=>detalle.Articulo == articulo).
+                //PedidoEntrega.Sum(entrega => entrega.Cantidad);
+                //if (sumaPedidoEntrega > cantidad)
+                //{
+                //    XtraMessageBox.Show(@"La suma de los renglones del pedido entrega debe coincidir con " + cantidad,
+                //             @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //}
             }
 
             SumTotal();
@@ -545,9 +571,37 @@ namespace Adquisiciones.View.Modulos
 
         #endregion
 
-        private void cmdRefrescarTotal_Click(object sender, EventArgs e)
+        private void CmdRefrescarTotalClick(object sender, EventArgs e)
         {
             SumTotal();
+        }
+
+        private void CmdUpdateFechaEntregaClick(object sender, EventArgs e)
+        {
+
+            if (deFechaInicial.DateTime.CompareTo(deFechaFinal.DateTime) > 0)
+            {
+                XtraMessageBox.Show(@"Fecha inicial debe ser menor o igual fecha final",
+                                @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            foreach(var pedidoDetalle in PedidoActual.PedidoDetalle)
+            {
+                pedidoDetalle.PedidoEntrega.Clear();
+
+                if(deFechaInicial.EditValue != null && deFechaFinal.EditValue != null)
+                {
+                    var pedidoEntrega = new PedidoEntrega(deFechaInicial.DateTime,
+                                                deFechaFinal.DateTime, pedidoDetalle.Cantidad);
+                    pedidoDetalle.PedidoEntrega.Add(pedidoEntrega);
+                }
+            }
+
+            XtraMessageBox.Show(@"Fechas de Entrega Actualizadas todas las claves",
+                   @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+
         }
     }
 }

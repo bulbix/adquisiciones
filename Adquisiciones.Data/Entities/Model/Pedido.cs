@@ -29,7 +29,7 @@ namespace Adquisiciones.Data.Entities
 		protected Fundamento _fundamento;
 		protected int? _idreservaautoriza;
 		protected CatArea _catarea;
-		protected decimal? _importedescuento;
+		protected decimal? _importedescuento = (decimal)0.00;
 		protected Iva _iva;
 		protected CatActividad _catactividad;
 		protected CatPresupuesto _catpresupuesto;

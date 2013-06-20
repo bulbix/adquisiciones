@@ -46,19 +46,29 @@
             this.gridColumn14 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn15 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn16 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.barSubItem1 = new DevExpress.XtraBars.BarSubItem();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.reportesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.detalladoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.concentradoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pedidoVsEntradaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.entradaVsPedidoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ordenadoPedidoToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.ordenadoProveedorToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.bsSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gcPedido)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvPedido)).BeginInit();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // gcPedido
             // 
             this.gcPedido.DataSource = this.bsSource;
             this.gcPedido.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gcPedido.Location = new System.Drawing.Point(0, 67);
+            this.gcPedido.Location = new System.Drawing.Point(0, 91);
             this.gcPedido.MainView = this.gvPedido;
             this.gcPedido.Name = "gcPedido";
-            this.gcPedido.Size = new System.Drawing.Size(708, 307);
+            this.gcPedido.Size = new System.Drawing.Size(708, 481);
             this.gcPedido.TabIndex = 4;
             this.gcPedido.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvPedido});
@@ -108,7 +118,7 @@
             this.gridColumn6.UnboundType = DevExpress.Data.UnboundColumnType.String;
             this.gridColumn6.Visible = true;
             this.gridColumn6.VisibleIndex = 12;
-            this.gridColumn6.Width = 71;
+            this.gridColumn6.Width = 65;
             // 
             // gridColumn5
             // 
@@ -119,7 +129,7 @@
             this.gridColumn5.UnboundType = DevExpress.Data.UnboundColumnType.String;
             this.gridColumn5.Visible = true;
             this.gridColumn5.VisibleIndex = 4;
-            this.gridColumn5.Width = 79;
+            this.gridColumn5.Width = 68;
             // 
             // gridColumn4
             // 
@@ -130,7 +140,7 @@
             this.gridColumn4.UnboundType = DevExpress.Data.UnboundColumnType.String;
             this.gridColumn4.Visible = true;
             this.gridColumn4.VisibleIndex = 3;
-            this.gridColumn4.Width = 66;
+            this.gridColumn4.Width = 47;
             // 
             // gridColumn1
             // 
@@ -140,7 +150,7 @@
             this.gridColumn1.UnboundType = DevExpress.Data.UnboundColumnType.DateTime;
             this.gridColumn1.Visible = true;
             this.gridColumn1.VisibleIndex = 0;
-            this.gridColumn1.Width = 61;
+            this.gridColumn1.Width = 66;
             // 
             // gridColumn3
             // 
@@ -150,7 +160,7 @@
             this.gridColumn3.UnboundType = DevExpress.Data.UnboundColumnType.Integer;
             this.gridColumn3.Visible = true;
             this.gridColumn3.VisibleIndex = 2;
-            this.gridColumn3.Width = 47;
+            this.gridColumn3.Width = 57;
             // 
             // gridColumn2
             // 
@@ -161,7 +171,7 @@
             this.gridColumn2.UnboundType = DevExpress.Data.UnboundColumnType.Boolean;
             this.gridColumn2.Visible = true;
             this.gridColumn2.VisibleIndex = 11;
-            this.gridColumn2.Width = 40;
+            this.gridColumn2.Width = 43;
             // 
             // gridColumn8
             // 
@@ -174,7 +184,7 @@
             this.gridColumn8.UnboundType = DevExpress.Data.UnboundColumnType.String;
             this.gridColumn8.Visible = true;
             this.gridColumn8.VisibleIndex = 14;
-            this.gridColumn8.Width = 101;
+            this.gridColumn8.Width = 53;
             // 
             // gridColumn9
             // 
@@ -186,7 +196,7 @@
             this.gridColumn9.UnboundType = DevExpress.Data.UnboundColumnType.DateTime;
             this.gridColumn9.Visible = true;
             this.gridColumn9.VisibleIndex = 15;
-            this.gridColumn9.Width = 196;
+            this.gridColumn9.Width = 84;
             // 
             // gridColumn10
             // 
@@ -196,7 +206,7 @@
             this.gridColumn10.UnboundType = DevExpress.Data.UnboundColumnType.String;
             this.gridColumn10.Visible = true;
             this.gridColumn10.VisibleIndex = 5;
-            this.gridColumn10.Width = 82;
+            this.gridColumn10.Width = 64;
             // 
             // gridColumn11
             // 
@@ -206,7 +216,7 @@
             this.gridColumn11.UnboundType = DevExpress.Data.UnboundColumnType.String;
             this.gridColumn11.Visible = true;
             this.gridColumn11.VisibleIndex = 6;
-            this.gridColumn11.Width = 91;
+            this.gridColumn11.Width = 44;
             // 
             // gridColumn12
             // 
@@ -216,6 +226,7 @@
             this.gridColumn12.UnboundType = DevExpress.Data.UnboundColumnType.String;
             this.gridColumn12.Visible = true;
             this.gridColumn12.VisibleIndex = 7;
+            this.gridColumn12.Width = 49;
             // 
             // gridColumn13
             // 
@@ -226,6 +237,7 @@
             this.gridColumn13.Name = "gridColumn13";
             this.gridColumn13.Visible = true;
             this.gridColumn13.VisibleIndex = 13;
+            this.gridColumn13.Width = 50;
             // 
             // gridColumn14
             // 
@@ -234,6 +246,7 @@
             this.gridColumn14.Name = "gridColumn14";
             this.gridColumn14.Visible = true;
             this.gridColumn14.VisibleIndex = 8;
+            this.gridColumn14.Width = 49;
             // 
             // gridColumn15
             // 
@@ -242,6 +255,7 @@
             this.gridColumn15.Name = "gridColumn15";
             this.gridColumn15.Visible = true;
             this.gridColumn15.VisibleIndex = 9;
+            this.gridColumn15.Width = 55;
             // 
             // gridColumn16
             // 
@@ -250,20 +264,97 @@
             this.gridColumn16.Name = "gridColumn16";
             this.gridColumn16.Visible = true;
             this.gridColumn16.VisibleIndex = 10;
+            this.gridColumn16.Width = 37;
+            // 
+            // barSubItem1
+            // 
+            this.barSubItem1.Caption = "Prueba";
+            this.barSubItem1.Id = 8;
+            this.barSubItem1.Name = "barSubItem1";
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.reportesToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 67);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(708, 24);
+            this.menuStrip1.TabIndex = 7;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // reportesToolStripMenuItem
+            // 
+            this.reportesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.detalladoToolStripMenuItem,
+            this.concentradoToolStripMenuItem,
+            this.pedidoVsEntradaToolStripMenuItem,
+            this.entradaVsPedidoToolStripMenuItem});
+            this.reportesToolStripMenuItem.Name = "reportesToolStripMenuItem";
+            this.reportesToolStripMenuItem.Size = new System.Drawing.Size(63, 20);
+            this.reportesToolStripMenuItem.Text = "Reportes";
+            // 
+            // detalladoToolStripMenuItem
+            // 
+            this.detalladoToolStripMenuItem.Name = "detalladoToolStripMenuItem";
+            this.detalladoToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
+            this.detalladoToolStripMenuItem.Text = "Detallado";
+            this.detalladoToolStripMenuItem.Click += new System.EventHandler(this.detalladoToolStripMenuItem_Click);
+            // 
+            // concentradoToolStripMenuItem
+            // 
+            this.concentradoToolStripMenuItem.Name = "concentradoToolStripMenuItem";
+            this.concentradoToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
+            this.concentradoToolStripMenuItem.Text = "Concentrado";
+            this.concentradoToolStripMenuItem.Click += new System.EventHandler(this.concentradoToolStripMenuItem_Click);
+            // 
+            // pedidoVsEntradaToolStripMenuItem
+            // 
+            this.pedidoVsEntradaToolStripMenuItem.Name = "pedidoVsEntradaToolStripMenuItem";
+            this.pedidoVsEntradaToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
+            this.pedidoVsEntradaToolStripMenuItem.Text = "Pedido vs Entrada";
+            this.pedidoVsEntradaToolStripMenuItem.Click += new System.EventHandler(this.pedidoVsEntradaToolStripMenuItem_Click);
+            // 
+            // entradaVsPedidoToolStripMenuItem
+            // 
+            this.entradaVsPedidoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ordenadoPedidoToolStripMenuItem1,
+            this.ordenadoProveedorToolStripMenuItem1});
+            this.entradaVsPedidoToolStripMenuItem.Enabled = false;
+            this.entradaVsPedidoToolStripMenuItem.Name = "entradaVsPedidoToolStripMenuItem";
+            this.entradaVsPedidoToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
+            this.entradaVsPedidoToolStripMenuItem.Text = "Entrada vs Pedido";
+            // 
+            // ordenadoPedidoToolStripMenuItem1
+            // 
+            this.ordenadoPedidoToolStripMenuItem1.Name = "ordenadoPedidoToolStripMenuItem1";
+            this.ordenadoPedidoToolStripMenuItem1.Size = new System.Drawing.Size(175, 22);
+            this.ordenadoPedidoToolStripMenuItem1.Text = "Ordenado Pedido";
+            // 
+            // ordenadoProveedorToolStripMenuItem1
+            // 
+            this.ordenadoProveedorToolStripMenuItem1.Name = "ordenadoProveedorToolStripMenuItem1";
+            this.ordenadoProveedorToolStripMenuItem1.Size = new System.Drawing.Size(175, 22);
+            this.ordenadoProveedorToolStripMenuItem1.Text = "Ordenado Proveedor";
             // 
             // FrmBusquedaPedido
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(708, 397);
+            this.ClientSize = new System.Drawing.Size(708, 594);
             this.Controls.Add(this.gcPedido);
+            this.Controls.Add(this.menuStrip1);
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "FrmBusquedaPedido";
             this.Text = "Busqueda::Pedido";
+            this.Controls.SetChildIndex(this.menuStrip1, 0);
             this.Controls.SetChildIndex(this.gcPedido, 0);
             ((System.ComponentModel.ISupportInitialize)(this.bsSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gcPedido)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvPedido)).EndInit();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -287,5 +378,14 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn14;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn15;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn16;
+        private DevExpress.XtraBars.BarSubItem barSubItem1;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem reportesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem detalladoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem concentradoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem pedidoVsEntradaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem entradaVsPedidoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ordenadoPedidoToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem ordenadoProveedorToolStripMenuItem1;
     }
 }

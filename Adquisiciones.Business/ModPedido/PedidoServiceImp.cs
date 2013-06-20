@@ -286,9 +286,15 @@ namespace Adquisiciones.Business.ModPedido
         }
 
          [Transaction]
-        public void CancelarEntity(object entity)
+        public bool CancelarEntity(object entity)
          {
+             if (PedidoDao.ExisteEntradaPedido(entity as Pedido))
+             {
+                 return false;
+             }
+
              PedidoDao.CancelarPedido(entity as Pedido);
+             return true;
          }
 
         [Transaction(ReadOnly = true)]

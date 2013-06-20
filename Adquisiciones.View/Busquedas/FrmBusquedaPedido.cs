@@ -8,7 +8,9 @@ using System.Windows.Forms;
 using Adquisiciones.Business.ModPedido;
 using Adquisiciones.Data.Entities;
 using Adquisiciones.View.Modulos;
+using DevExpress.XtraBars;
 using DevExpress.XtraEditors;
+using DevExpress.XtraGrid.Views.Base;
 
 namespace Adquisiciones.View.Busquedas
 {
@@ -69,5 +71,42 @@ namespace Adquisiciones.View.Busquedas
             base.Eliminar();
         }
         #endregion
+
+        private void concentradoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var pedidos = GetPedidosFiltrado();
+            var forma = new FrmModuloReportes("reportePedidoConcentrado", pedidos);
+            forma.MdiParent = this.MdiParent;
+            forma.Show();
+
+        }
+
+        private void detalladoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var pedidos = GetPedidosFiltrado();
+            var forma = new FrmModuloReportes("reportePedidoDetallado", pedidos);
+            forma.MdiParent = this.MdiParent;
+            forma.Show();
+
+        }
+
+        private void pedidoVsEntradaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var pedidos = GetPedidosFiltrado();
+            var forma = new FrmModuloReportes("reportePedidoEntrada", pedidos);
+            forma.MdiParent = this.MdiParent;
+            forma.Show();
+        }
+
+        public List<Pedido> GetPedidosFiltrado()
+        {
+            var pedidos = new List<Pedido>();
+            for (int i = 0; i < gvPedido.DataRowCount; i++)
+                pedidos.Add(gvPedido.GetRow(i) as Pedido);
+
+            return pedidos;
+        }
+
+       
     }
 }

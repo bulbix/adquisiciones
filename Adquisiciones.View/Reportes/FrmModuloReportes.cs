@@ -14,6 +14,7 @@ using Adquisiciones.Business.ModPedido;
 using Adquisiciones.Data.Entities;
 using Adquisiciones.View.DataSets;
 using Adquisiciones.View.Reportes;
+using Adquisiciones.View.Reportes.Clases;
 using DevExpress.XtraEditors;
 using Spring.Context.Support;
 using Spring.Objects.Factory;
@@ -70,6 +71,18 @@ namespace Adquisiciones.View
                     break;
                 case "reportePedido":
                     ReportePedido(Entity as Pedido);
+                    break;
+                case "reportePedidoConcentrado":
+                    ReportePedidoConcentrado(Entity as List<Pedido>);
+                    break;
+                case "reportePedidoDetallado":
+                    ReportePedidoDetallado(Entity as List<Pedido>);
+                    break;
+                case "reportePedidoEntrada":
+                    ReportePedidoEntrada(Entity as List<Pedido>);
+                    break;
+                case "reporteEntradaPedido":
+                    ReporteEntradaPedido(DateTime.Now, DateTime.Now);
                     break;
             }
         }
@@ -235,6 +248,152 @@ namespace Adquisiciones.View
             crystalReportViewer.Refresh();Text = @"ReportePedido::" + pedido;
         }
 
+        private void ReportePedidoConcentrado(List<Pedido> pedidos)
+        {
+            var listaPedidoConcentrado = new List<PedidoConcentrado>();
+
+            foreach (var pedido in pedidos) {
+                decimal iva = pedido.ImporteTotal.Value
+                    *(pedido.Iva.Id.Porcentaje/(decimal)100.0);
+                decimal total = pedido.ImporteTotal.Value 
+                    - pedido.ImporteDescuento.Value + iva; 
+
+                var pedidoConcentrado = new PedidoConcentrado {
+                NumeroPedido = pedido.NumeroPedido.Value,
+                FechaPedido = String.Format("{0:dd/MM/yyyy}", pedido.FechaPedido),
+                NumeroRequisicion = pedido.NumeroRequisicion,
+                Proveedor = pedido.Proveedor.NombreFiscal,
+                Elaboro = pedido.Usuario.Nombre,
+                Importe = pedido.ImporteTotal.Value.ToString("C"),
+                Descuento = pedido.ImporteDescuento.Value.ToString("C"),
+                Iva = iva.ToString("C"),
+                Total = total.ToString("C")
+                };
+
+                listaPedidoConcentrado.Add(pedidoConcentrado);
+            }
+
+            ReportePedidoConcentrado1.SetDataSource(listaPedidoConcentrado);
+            crystalReportViewer.ReportSource = ReportePedidoConcentrado1;
+            crystalReportViewer.Refresh();
+
+            Text = @"ReportePedidoConcentrado";
+
+        }
+
+        private void ReportePedidoDetallado(List<Pedido> pedidos)
+        {
+            var listaPedidoDetallado = new List<PedidoDetallado>();
+
+            foreach (var pedido in pedidos) {
+                pedido.PedidoDetalle = PedidoService.PedidoDao.CargarPedidoDetalle(pedido);
+
+                var index = 0;
+                foreach (var pedidoDetalle in pedido.PedidoDetalle)
+                {
+                    var importe = pedidoDetalle.Cantidad.Value*pedidoDetalle.PrecioUnitario.Value;
+                    var partida = new CatPartida();
+
+                    if (index == 0)
+                    {
+                        var oneDetalle = pedido.PedidoDetalle[0];
+                        partida = PedidoService.AnexoService.ArticuloDao.GetPartida(oneDetalle.Articulo);
+                    }
+
+                    var pedidoDetallado= new PedidoDetallado
+                    {
+                        NumeroPedido = pedido.NumeroPedido.Value,
+                        FechaPedido = String.Format("{0:dd/MM/yyyy}", pedido.FechaPedido),
+                        NumeroRequisicion = pedido.NumeroRequisicion,
+                        Proveedor = pedido.Proveedor.NombreFiscal,
+                        DescripcionArticulo = pedidoDetalle.Articulo.DesArticulo ,
+                        UnidadArticulo  = pedidoDetalle.Articulo.Unidad,
+                        PartidaArticulo = partida.ToString(),
+                        Cantidad = pedidoDetalle.Cantidad.Value,
+                        PrecioUnitario = pedidoDetalle.PrecioUnitario.Value.ToString("C"),
+                        Importe = importe.ToString("C")
+                    };
+
+                    listaPedidoDetallado.Add(pedidoDetallado);
+                    index++;
+                }
+            }
+
+            ReportePedidoDetallado1.SetDataSource(listaPedidoDetallado);
+            crystalReportViewer.ReportSource = ReportePedidoDetallado1;
+            crystalReportViewer.Refresh();
+
+            Text = @"ReportePedidoDetallado";
+            
+        }
+
+
+        private void ReportePedidoEntrada(List<Pedido> pedidos)
+        {
+             var listaPedidoEntrada = new List<PedidoEntrada>();
+
+             foreach (var pedido in pedidos)
+             {
+                var entradas = PedidoService.PedidoDao.CargarEntradas(pedido);
+
+                decimal iva = pedido.ImporteTotal.Value
+                *(pedido.Iva.Id.Porcentaje/(decimal)100.0);
+                decimal total = pedido.ImporteTotal.Value 
+                - pedido.ImporteDescuento.Value + iva;
+
+                if (entradas.Count > 0)
+                {
+
+                    foreach (var entrada in entradas)
+                    {
+                        var pedidoEntrada = new PedidoEntrada
+                        {
+                            NumeroPedido = pedido.NumeroPedido.Value,
+                            FechaPedido = String.Format("{0:dd/MM/yyyy}", pedido.FechaPedido),
+                            Proveedor = pedido.Proveedor.NombreFiscal,
+                            Total = total.ToString("C"),
+                            NumeroEntrada = entrada.NumeroEntrada.Value,
+                            Factura = entrada.NumeroFactura,
+                            FechaEntrada = String.Format("{0:dd/MM/yyyy}", entrada.FechaEntrada),
+                            ImporteEntrada =
+                                PedidoService.PedidoDao.ImporteEntrada(entrada).ToString("C")
+                        };
+
+                        listaPedidoEntrada.Add(pedidoEntrada);
+                    }
+                }
+                else
+                {
+                    var pedidoEntrada = new PedidoEntrada
+                    {
+                        NumeroPedido = pedido.NumeroPedido.Value,
+                        FechaPedido = String.Format("{0:dd/MM/yyyy}", pedido.FechaPedido),
+                        Proveedor = pedido.Proveedor.NombreFiscal,
+                        Total = total.ToString("C"),
+                        NumeroEntrada = -1,
+                        Factura = "",
+                        FechaEntrada = "",
+                        ImporteEntrada =  "$0.00"
+                    };
+
+                    listaPedidoEntrada.Add(pedidoEntrada);
+                    
+                }
+
+             }
+
+             ReportePedidoEntrada1.SetDataSource(listaPedidoEntrada);
+             crystalReportViewer.ReportSource = ReportePedidoEntrada1;
+             crystalReportViewer.Refresh();
+
+             Text = @"ReportePedidoEntrada";
+
+        }
        
+
+        private void ReporteEntradaPedido(DateTime fechaInicial, DateTime fechaFinal)
+        {
+            
+        }
     }
 }

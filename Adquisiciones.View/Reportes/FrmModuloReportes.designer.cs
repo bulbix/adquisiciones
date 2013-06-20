@@ -34,6 +34,9 @@
             this.ReporteAnexo1 = new Adquisiciones.View.Reportes.ReporteAnexo();
             this.ReporteFallo1 = new Adquisiciones.View.Reportes.ReporteFallo();
             this.ReporteSubFallo1 = new Adquisiciones.View.Reportes.ReporteSubFallo();
+            this.ReportePedidoDetallado1 = new Adquisiciones.View.Reportes.Pedidos.ReportePedidoDetallado();
+            this.ReportePedidoConcentrado1 = new Adquisiciones.View.Reportes.Pedidos.ReportePedidoConcentrado();
+            this.ReportePedidoEntrada1 = new Adquisiciones.View.Reportes.Pedidos.ReportePedidoEntrada();
             this.SuspendLayout();
             // 
             // btnAceptar
@@ -87,5 +90,9 @@
         private Reportes.ReporteCotizacion ReporteCotizacion1;
         private Reportes.ReporteAnexo ReporteAnexo1;
         private Reportes.ReporteFallo ReporteFallo1;
-        private Reportes.ReporteSubFallo ReporteSubFallo1;}
+        private Reportes.ReporteSubFallo ReporteSubFallo1;
+        private Reportes.Pedidos.ReportePedidoDetallado ReportePedidoDetallado1;
+        private Reportes.Pedidos.ReportePedidoConcentrado ReportePedidoConcentrado1;
+        private Reportes.Pedidos.ReportePedidoEntrada ReportePedidoEntrada1;
+    }
 }

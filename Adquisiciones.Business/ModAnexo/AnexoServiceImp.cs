@@ -133,8 +133,9 @@ namespace Adquisiciones.Business.ModAnexo
             AnexoDao.Delete(entity as Anexo);
         }
 
-        public void CancelarEntity(object entity)
+        public bool CancelarEntity(object entity)
         {
+            return true;
         }
     }
 }
