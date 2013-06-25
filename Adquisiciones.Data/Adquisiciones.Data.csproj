@@ -138,6 +138,7 @@
     <Compile Include="Entities\Audit\CotizacionDetalleHist.cs" />
     <Compile Include="Entities\Audit\CotizacionHist.cs" />
     <Compile Include="Entities\Model\Entrada.cs" />
+    <Compile Include="Entities\Model\EntradaDetalle.cs" />
     <Compile Include="Entities\Model\Fallo.cs" />
     <Compile Include="Entities\Model\FalloDetalle.cs" />
     <Compile Include="Entities\Audit\FalloDetalleHist.cs" />
@@ -256,9 +257,6 @@
     <EmbeddedResource Include="Mappings\Audit\CotizacionHist.hbm.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
-    <EmbeddedResource Include="Mappings\Model\Entrada.hbm.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
     <EmbeddedResource Include="Mappings\Model\Fallo.hbm.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
@@ -342,6 +340,14 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Mappings\Model\CatEmpresa.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Mappings\Model\Entrada.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\Model\EntradaDetalle.hbm.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
   </ItemGroup>

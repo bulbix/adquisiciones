@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Adquisiciones.Data.Entities;
+using NHibernate;
 using NHibernate.Criterion;
 using Spring.Transaction.Interceptor;
 
@@ -140,17 +141,38 @@ namespace Adquisiciones.Data.Dao.ModPedido
         {
             var criteria = CurrentSession.CreateCriteria(typeof(Entrada));
             criteria.Add(Restrictions.Eq("Pedido", pedido));
+            criteria.SetFetchMode("EntradaDetalle", FetchMode.Lazy);
             return criteria.List<Entrada>();
         }
 
          [Transaction(ReadOnly = true)]
+        public CatPartida CargarCatalogoPartida(Pedido pedido)
+         {
+             const string queryNativo = @"SELECT FIRST 1 cve_art,id_almacen FROM pedido_detalle WHERE id_pedido = :idpedido";
+             var query = CurrentSession.CreateSQLQuery(queryNativo);
+             query.SetParameter("idpedido", pedido.IdPedido);
+
+             var claveAlmacen = (Object[]) query.UniqueResult();
+
+             var articulo = new Articulo(new ArticuloId((int)claveAlmacen[0],
+                 new Almacen(claveAlmacen[1].ToString())));
+
+             var strQuery = "select ap from ArticuloPartida ap join fetch ap.Id.CatPartida where ap.Id.Articulo = :articulo";
+
+             var criteria = CurrentSession.CreateQuery(strQuery);
+             criteria.SetParameter("articulo", articulo);
+             var articuloPartida  = criteria.UniqueResult<ArticuloPartida>();
+             return articuloPartida.Id.CatPartida;
+        }
+
+        [Transaction(ReadOnly = true)]
         public decimal ImporteEntrada(Entrada entrada)
         {
-            var criteria = CurrentSession.CreateCriteria(typeof(Entrada));
+            var criteria = CurrentSession.CreateCriteria(typeof(EntradaDetalle));
             criteria.Add(Restrictions.Eq("Entrada", entrada));
             criteria.SetProjection(Projections.Sum("PrecioEntrada"));
-            //return criteria.List<Entrada>();
-             return (decimal)0.0;
+            var suma = (decimal)criteria.UniqueResult();
+            return suma;
         }
 
         [Transaction]
@@ -158,6 +180,40 @@ namespace Adquisiciones.Data.Dao.ModPedido
         {
             pedido.EstadoPedido = "C";
             CurrentSession.Update(pedido);
+        }
+
+        [Transaction(ReadOnly = true)]
+        public IList<Entrada> CargarEntradas(DateTime fechaInicial, DateTime fechaFinal)
+        {
+            var criteria = CurrentSession.CreateCriteria(typeof(Entrada));
+            criteria.Add(Restrictions.Between("FechaEntrada", fechaInicial,fechaFinal));
+            return criteria.List<Entrada>();
+
+        }
+
+         [Transaction(ReadOnly = true)]
+        public IList<Pedido> CargarPedidos(Entrada entrada, CatTipopedido tipopedido, Ordenado ordenado)
+        {
+            var criteria = CurrentSession.CreateCriteria(typeof(Pedido));
+            criteria.CreateAlias("Entrada", "Ent");
+            criteria.Add(Restrictions.Eq("Ent.IdEntrada", entrada.IdEntrada));
+
+            criteria.SetFetchMode("PedidoDetalle", FetchMode.Lazy);
+
+            criteria.Add(Restrictions.Eq("CatTipopedido", tipopedido));
+
+            switch (ordenado){
+                case Ordenado.Proveedor:
+                    criteria.AddOrder(Order.Asc("Proveedor"));
+                    break;
+                case Ordenado.Pedido:
+                    criteria.AddOrder(Order.Asc("IdPedido"));
+                    break;
+            }
+
+            var pedidos =  criteria.List<Pedido>();
+
+            return pedidos;
         }
     }
 }

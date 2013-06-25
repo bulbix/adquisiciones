@@ -118,5 +118,14 @@ namespace Adquisiciones.View.Catalogos
         {
             XtraMessageBox.Show("No hay reporte asociado en los catalogos");
         }
+
+        private void FrmCatalogo_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (XtraMessageBox.Show(@"Esta seguro de cerrar la pestaña?", @"Adquisiciones",
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.No)
+            {
+                e.Cancel = true;
+            }
+        }
     }
 }

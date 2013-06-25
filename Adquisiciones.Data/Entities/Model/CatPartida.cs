@@ -14,7 +14,7 @@ namespace Adquisiciones.Data.Entities
 	/// CatPartida object for NHibernate mapped table 'cat_partida'.
 	/// </summary>
 	[Serializable]
-    public class CatPartida : INotifyPropertyChanged,ICatalogo
+    public class CatPartida : INotifyPropertyChanged, ICatalogo, IComparable
 	{
 		#region Member Variables
 		protected string _partida;
@@ -174,7 +174,13 @@ namespace Adquisiciones.Data.Entities
 
 	    public override string ToString()
 	    {
-	        return _partida + "/" + _despartida;}
+	        return _partida + "/" + _despartida;
+        }
+
+        public int CompareTo(object obj)
+        {
+            return Partida.CompareTo((obj as CatPartida).Partida);
+        }
 
 	    #endregion
 		

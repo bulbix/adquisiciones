@@ -183,6 +183,7 @@ namespace Adquisiciones.Data.Entities
 			set {_importetotal= value; }
 		}
 
+
 		public  virtual string Observaciones
 		{
 			get { return _observaciones; }
@@ -247,6 +248,61 @@ namespace Adquisiciones.Data.Entities
 	    }
 
 	    public virtual bool Automatico { get; set;}
+
+
+        public decimal SubTotalDesc
+        {
+            get
+            {
+                try
+                {
+                    decimal result = ImporteTotal.Value - ImporteDescuento.Value;
+                    return result;
+                }
+                catch (Exception e)
+                {
+                    return (decimal)0.0;
+                }
+            }
+        }
+
+        public decimal IvaCantidad
+        {
+
+            get
+            {
+                try
+                {
+                    decimal result = SubTotalDesc * (Iva.Id.Porcentaje / (decimal)100.0);
+                    return result;
+                }
+                catch (Exception e)
+                {
+                    return (decimal)0.0;
+                }
+
+            }
+        }
+
+        public decimal Total
+        {
+            get
+            {
+                try
+                {
+                    decimal result = SubTotalDesc + IvaCantidad;
+                    return result;
+                }
+                catch (Exception e)
+                {
+                    return (decimal)0.0;
+                }
+
+            }
+
+        }
+
+
 
 	    #region Equals And HashCode Overrides
 		/// <summary>

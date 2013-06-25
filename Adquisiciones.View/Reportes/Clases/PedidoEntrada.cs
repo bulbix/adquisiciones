@@ -10,6 +10,6 @@ namespace Adquisiciones.View.Reportes.Clases
         public int NumeroEntrada { get; set; }
         public string Factura { get; set; }
         public string FechaEntrada { get; set; }
-        public string ImporteEntrada { get; set; }
+        public decimal ImporteEntrada { get; set; }
     }
 }

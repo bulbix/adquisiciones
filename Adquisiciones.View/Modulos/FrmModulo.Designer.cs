@@ -57,13 +57,13 @@
             // 
             this.splitContainerControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainerControl1.Horizontal = false;
-            this.splitContainerControl1.Location = new System.Drawing.Point(0, 68);
+            this.splitContainerControl1.Location = new System.Drawing.Point(0, 70);
             this.splitContainerControl1.Name = "splitContainerControl1";
             this.splitContainerControl1.Panel1.Controls.Add(this.lblAlmacen);
             this.splitContainerControl1.Panel1.Controls.Add(this.cbxAlmacen);
             this.splitContainerControl1.Panel1.Text = "Panel1";
             this.splitContainerControl1.Panel2.Text = "panelDetalle";
-            this.splitContainerControl1.Size = new System.Drawing.Size(728, 333);
+            this.splitContainerControl1.Size = new System.Drawing.Size(728, 330);
             this.splitContainerControl1.SplitterPosition = 92;
             this.splitContainerControl1.TabIndex = 0;
             this.splitContainerControl1.Text = "splitContainerControl1";
@@ -207,28 +207,28 @@
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Size = new System.Drawing.Size(728, 68);
+            this.barDockControlTop.Size = new System.Drawing.Size(728, 70);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 401);
-            this.barDockControlBottom.Size = new System.Drawing.Size(728, 22);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 400);
+            this.barDockControlBottom.Size = new System.Drawing.Size(728, 23);
             // 
             // barDockControlLeft
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 68);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 333);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 70);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 330);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(728, 68);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 333);
+            this.barDockControlRight.Location = new System.Drawing.Point(728, 70);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 330);
             // 
             // barButtonItem1
             // 
@@ -258,6 +258,7 @@
             this.Controls.Add(this.barDockControlTop);
             this.Name = "FrmModulo";
             this.Text = "FrmModulo2";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmModuloFormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();
             this.splitContainerControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();

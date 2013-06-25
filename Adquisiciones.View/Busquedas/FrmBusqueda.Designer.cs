@@ -166,28 +166,28 @@
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Size = new System.Drawing.Size(708, 67);
+            this.barDockControlTop.Size = new System.Drawing.Size(708, 69);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 375);
-            this.barDockControlBottom.Size = new System.Drawing.Size(708, 22);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 374);
+            this.barDockControlBottom.Size = new System.Drawing.Size(708, 23);
             // 
             // barDockControlLeft
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 67);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 308);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 69);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 305);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(708, 67);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 308);
+            this.barDockControlRight.Location = new System.Drawing.Point(708, 69);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 305);
             // 
             // FrmBusqueda
             // 
@@ -200,6 +200,7 @@
             this.Controls.Add(this.barDockControlTop);
             this.Name = "FrmBusqueda";
             this.Text = "FrmBusqueda2";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmBusqueda_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsSource)).EndInit();
             this.ResumeLayout(false);

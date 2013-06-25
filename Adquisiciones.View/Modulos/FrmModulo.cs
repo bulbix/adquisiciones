@@ -207,5 +207,16 @@ namespace Adquisiciones.View.Modulos
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void FrmModuloFormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (XtraMessageBox.Show(@"Esta seguro de cerrar la pestaña?", @"Adquisiciones",
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.No)
+            {
+                e.Cancel = true;
+            }
+        }
+
+
     }
 }

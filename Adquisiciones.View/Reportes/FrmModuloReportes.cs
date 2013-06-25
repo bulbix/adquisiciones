@@ -11,6 +11,7 @@ using Adquisiciones.Business.ModAnexo;
 using Adquisiciones.Business.ModCotizacion;
 using Adquisiciones.Business.ModFallo;
 using Adquisiciones.Business.ModPedido;
+using Adquisiciones.Data.Dao.ModPedido;
 using Adquisiciones.Data.Entities;
 using Adquisiciones.View.DataSets;
 using Adquisiciones.View.Reportes;
@@ -47,6 +48,16 @@ namespace Adquisiciones.View
             IniciarServicios();
             GenerarReporte();
         }
+        
+        public FrmModuloReportes()
+        {
+            InitializeComponent();
+            IniciarServicios();
+        }
+
+
+
+        
         private void IniciarServicios()
         {
             var ctx = ContextRegistry.GetContext();
@@ -82,7 +93,6 @@ namespace Adquisiciones.View
                     ReportePedidoEntrada(Entity as List<Pedido>);
                     break;
                 case "reporteEntradaPedido":
-                    ReporteEntradaPedido(DateTime.Now, DateTime.Now);
                     break;
             }
         }
@@ -96,8 +106,7 @@ namespace Adquisiciones.View
         /// <summary>
         /// 
         /// </summary>
-        private void ReporteAnexo(Anexo anexo)
-        {
+        private void ReporteAnexo(Anexo anexo){
            
             var anexoDs = new AnexoDS();
 
@@ -253,21 +262,20 @@ namespace Adquisiciones.View
             var listaPedidoConcentrado = new List<PedidoConcentrado>();
 
             foreach (var pedido in pedidos) {
-                decimal iva = pedido.ImporteTotal.Value
-                    *(pedido.Iva.Id.Porcentaje/(decimal)100.0);
-                decimal total = pedido.ImporteTotal.Value 
-                    - pedido.ImporteDescuento.Value + iva; 
+                
+                //decimal iva = pedido.ImporteTotal.Value *(pedido.Iva.Id.Porcentaje/(decimal)100.0);
+                //decimal total = pedido.ImporteTotal.Value- pedido.ImporteDescuento.Value + iva; 
 
                 var pedidoConcentrado = new PedidoConcentrado {
-                NumeroPedido = pedido.NumeroPedido.Value,
-                FechaPedido = String.Format("{0:dd/MM/yyyy}", pedido.FechaPedido),
-                NumeroRequisicion = pedido.NumeroRequisicion,
-                Proveedor = pedido.Proveedor.NombreFiscal,
-                Elaboro = pedido.Usuario.Nombre,
-                Importe = pedido.ImporteTotal.Value.ToString("C"),
-                Descuento = pedido.ImporteDescuento.Value.ToString("C"),
-                Iva = iva.ToString("C"),
-                Total = total.ToString("C")
+                    NumeroPedido = pedido.NumeroPedido.Value,
+                    FechaPedido = String.Format("{0:dd/MM/yyyy}", pedido.FechaPedido),
+                    NumeroRequisicion = pedido.NumeroRequisicion,
+                    Proveedor = pedido.Proveedor.NombreFiscal,
+                    Elaboro = pedido.Usuario.Nombre,
+                    Importe = pedido.ImporteTotal.Value,
+                    Descuento = pedido.ImporteDescuento.Value,
+                    Iva = pedido.IvaCantidad,
+                    Total = pedido.Total
                 };
 
                 listaPedidoConcentrado.Add(pedidoConcentrado);
@@ -306,12 +314,14 @@ namespace Adquisiciones.View
                         FechaPedido = String.Format("{0:dd/MM/yyyy}", pedido.FechaPedido),
                         NumeroRequisicion = pedido.NumeroRequisicion,
                         Proveedor = pedido.Proveedor.NombreFiscal,
-                        DescripcionArticulo = pedidoDetalle.Articulo.DesArticulo ,
+                        DescripcionArticulo = pedidoDetalle.Articulo.DesArticulo,
                         UnidadArticulo  = pedidoDetalle.Articulo.Unidad,
                         PartidaArticulo = partida.ToString(),
                         Cantidad = pedidoDetalle.Cantidad.Value,
-                        PrecioUnitario = pedidoDetalle.PrecioUnitario.Value.ToString("C"),
-                        Importe = importe.ToString("C")
+                        PrecioUnitario = pedidoDetalle.PrecioUnitario.Value,
+                        Importe = importe,
+                        Descuento = pedido.ImporteDescuento.Value ,
+                        Iva = (decimal)(pedido.Iva.Id.Porcentaje/100.0)
                     };
 
                     listaPedidoDetallado.Add(pedidoDetallado);
@@ -336,10 +346,7 @@ namespace Adquisiciones.View
              {
                 var entradas = PedidoService.PedidoDao.CargarEntradas(pedido);
 
-                decimal iva = pedido.ImporteTotal.Value
-                *(pedido.Iva.Id.Porcentaje/(decimal)100.0);
-                decimal total = pedido.ImporteTotal.Value 
-                - pedido.ImporteDescuento.Value + iva;
+                decimal total = pedido.Total;
 
                 if (entradas.Count > 0)
                 {
@@ -351,12 +358,12 @@ namespace Adquisiciones.View
                             NumeroPedido = pedido.NumeroPedido.Value,
                             FechaPedido = String.Format("{0:dd/MM/yyyy}", pedido.FechaPedido),
                             Proveedor = pedido.Proveedor.NombreFiscal,
-                            Total = total.ToString("C"),
+                            Total = total,
                             NumeroEntrada = entrada.NumeroEntrada.Value,
                             Factura = entrada.NumeroFactura,
                             FechaEntrada = String.Format("{0:dd/MM/yyyy}", entrada.FechaEntrada),
                             ImporteEntrada =
-                                PedidoService.PedidoDao.ImporteEntrada(entrada).ToString("C")
+                                PedidoService.PedidoDao.ImporteEntrada(entrada)
                         };
 
                         listaPedidoEntrada.Add(pedidoEntrada);
@@ -369,11 +376,11 @@ namespace Adquisiciones.View
                         NumeroPedido = pedido.NumeroPedido.Value,
                         FechaPedido = String.Format("{0:dd/MM/yyyy}", pedido.FechaPedido),
                         Proveedor = pedido.Proveedor.NombreFiscal,
-                        Total = total.ToString("C"),
-                        NumeroEntrada = -1,
+                        Total = total,
+                        NumeroEntrada = 0,
                         Factura = "",
                         FechaEntrada = "",
-                        ImporteEntrada =  "$0.00"
+                        ImporteEntrada =  (decimal)0.00
                     };
 
                     listaPedidoEntrada.Add(pedidoEntrada);
@@ -391,9 +398,66 @@ namespace Adquisiciones.View
         }
        
 
-        private void ReporteEntradaPedido(DateTime fechaInicial, DateTime fechaFinal)
+        public void ReporteEntradaPedido(DateTime fechaInicial, DateTime fechaFinal,CatTipopedido tipopedido, Ordenado ordenado)
         {
-            
+            var listaPedidoEntrada = new List<PedidoEntrada>();
+
+            var entradas = PedidoService.PedidoDao.CargarEntradas(fechaInicial, fechaFinal);
+
+            foreach(var entrada in entradas)
+            {
+                var pedidos = PedidoService.PedidoDao.CargarPedidos(entrada,tipopedido,ordenado);
+
+                if (pedidos.Count > 0)
+                {
+                    foreach (var pedido in pedidos)
+                    {
+                        decimal total = pedido.Total;
+
+                        var pedidoEntrada = new PedidoEntrada
+                        {
+                            NumeroPedido = pedido.NumeroPedido.Value,
+                            FechaPedido = String.Format("{0:dd/MM/yyyy}", pedido.FechaPedido),
+                            Proveedor = pedido.Proveedor.NombreFiscal,
+                            Total = total,
+                            NumeroEntrada = entrada.NumeroEntrada.Value,
+                            Factura = entrada.NumeroFactura,
+                            FechaEntrada = String.Format("{0:dd/MM/yyyy}", entrada.FechaEntrada),
+                            ImporteEntrada =PedidoService.PedidoDao.ImporteEntrada(entrada)
+                        };
+
+                        listaPedidoEntrada.Add(pedidoEntrada);
+
+                    }
+                    
+                }
+                else
+                {
+                    var pedidoEntrada = new PedidoEntrada
+                    {
+                        NumeroPedido = 0,
+                        FechaPedido = "",
+                        Proveedor = "",
+                        Total = (decimal)0.0,
+                        NumeroEntrada = entrada.NumeroEntrada.Value,
+                        Factura = entrada.NumeroFactura,
+                        FechaEntrada = String.Format("{0:dd/MM/yyyy}", entrada.FechaEntrada),
+                        ImporteEntrada = (decimal)0.00
+                    };
+
+                    listaPedidoEntrada.Add(pedidoEntrada);
+                    
+                }
+
+            }
+
+            ReportePedidoEntrada1.SetDataSource(listaPedidoEntrada);
+            crystalReportViewer.ReportSource = ReportePedidoEntrada1;
+            crystalReportViewer.Refresh();
+
+            Text = @"ReporteEntradaPedido";
+
+
         }
     }
 }

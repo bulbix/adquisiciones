@@ -53,7 +53,7 @@
             this.gcCotizacion.Name = "gcCotizacion";
             this.gcCotizacion.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemButtonEdit1});
-            this.gcCotizacion.Size = new System.Drawing.Size(708, 307);
+            this.gcCotizacion.Size = new System.Drawing.Size(708, 308);
             this.gcCotizacion.TabIndex = 4;
             this.gcCotizacion.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvCotizacion});
@@ -71,6 +71,7 @@
             this.gvCotizacion.CustomizationFormBounds = new System.Drawing.Rectangle(725, 381, 208, 175);
             this.gvCotizacion.GridControl = this.gcCotizacion;
             this.gvCotizacion.Name = "gvCotizacion";
+            this.gvCotizacion.OptionsFind.AlwaysVisible = true;
             this.gvCotizacion.OptionsView.EnableAppearanceEvenRow = true;
             this.gvCotizacion.OptionsView.ShowAutoFilterRow = true;
             // 

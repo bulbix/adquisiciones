@@ -41,10 +41,10 @@
             // 
             this.gcProveedor.DataSource = this.bsSource;
             this.gcProveedor.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gcProveedor.Location = new System.Drawing.Point(0, 57);
+            this.gcProveedor.Location = new System.Drawing.Point(0, 67);
             this.gcProveedor.MainView = this.gvProveedor;
             this.gcProveedor.Name = "gcProveedor";
-            this.gcProveedor.Size = new System.Drawing.Size(708, 312);
+            this.gcProveedor.Size = new System.Drawing.Size(708, 308);
             this.gcProveedor.TabIndex = 4;
             this.gcProveedor.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvProveedor});
@@ -57,6 +57,7 @@
             this.gvProveedor.GridControl = this.gcProveedor;
             this.gvProveedor.Name = "gvProveedor";
             this.gvProveedor.OptionsBehavior.Editable = false;
+            this.gvProveedor.OptionsFind.AlwaysVisible = true;
             this.gvProveedor.OptionsView.EnableAppearanceEvenRow = true;
             this.gvProveedor.OptionsView.ShowAutoFilterRow = true;
             this.gvProveedor.OptionsView.ShowGroupPanel = false;

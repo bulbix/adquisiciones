@@ -20,7 +20,6 @@ namespace Adquisiciones.View.Reportes {
         
         public ReporteAnexo() {
         }
-        
         public override string ResourceName {
             get {
                 return "ReporteAnexo.rpt";

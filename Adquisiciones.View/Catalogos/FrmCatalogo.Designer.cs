@@ -216,6 +216,7 @@
             this.Controls.Add(this.barDockControl2);
             this.Name = "FrmCatalogo";
             this.Text = "FrmCatalogo";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmCatalogo_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsSource)).EndInit();
             this.ResumeLayout(false);

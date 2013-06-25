@@ -208,6 +208,15 @@ namespace Adquisiciones.View.Busquedas
                 
             }
         }
+
+        private void FrmBusqueda_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (XtraMessageBox.Show(@"Esta seguro de cerrar la pestaña?", @"Adquisiciones",
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.No)
+            {
+                e.Cancel = true;
+            }
+        }
       
 
     }

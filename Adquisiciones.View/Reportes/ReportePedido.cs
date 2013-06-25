@@ -142,6 +142,8 @@ namespace Adquisiciones.View.Reportes
 
             var index = 0;
 
+            subtotal = (decimal)0.0;
+
             foreach (var pedidoDetalle in pedido.PedidoDetalle)
             {
                 ++index;

@@ -44,7 +44,7 @@
             this.gcFundamento.Location = new System.Drawing.Point(0, 67);
             this.gcFundamento.MainView = this.gvFundamento;
             this.gcFundamento.Name = "gcFundamento";
-            this.gcFundamento.Size = new System.Drawing.Size(784, 450);
+            this.gcFundamento.Size = new System.Drawing.Size(784, 451);
             this.gcFundamento.TabIndex = 5;
             this.gcFundamento.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvFundamento});
@@ -57,6 +57,7 @@
             this.gvFundamento.GridControl = this.gcFundamento;
             this.gvFundamento.Name = "gvFundamento";
             this.gvFundamento.OptionsBehavior.Editable = false;
+            this.gvFundamento.OptionsFind.AlwaysVisible = true;
             this.gvFundamento.OptionsView.EnableAppearanceEvenRow = true;
             this.gvFundamento.OptionsView.ShowAutoFilterRow = true;
             this.gvFundamento.OptionsView.ShowGroupPanel = false;

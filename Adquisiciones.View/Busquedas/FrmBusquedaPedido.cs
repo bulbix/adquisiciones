@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using Adquisiciones.Business.ModPedido;
 using Adquisiciones.Data.Entities;
 using Adquisiciones.View.Modulos;
+using Adquisiciones.View.Reportes;
 using DevExpress.XtraBars;
 using DevExpress.XtraEditors;
 using DevExpress.XtraGrid.Views.Base;
@@ -48,13 +49,10 @@ namespace Adquisiciones.View.Busquedas
                 if (!pedido.EstadoPedido.Trim().Equals("C") && !pedido.EstadoPedido.Trim().Equals("P"))
                 {
                     pedido.EstadoPedido = "A";
-
                 }
 
-                pedido.ImporteTotal = pedido.ImporteTotal - pedido.ImporteDescuento;
-                decimal cantidadIva = pedido.ImporteTotal.Value * pedido.Iva.Id.Porcentaje / 100;
-                pedido.ImporteTotal += cantidadIva; 
-                
+                //pedido.Partida = PedidoService.PedidoDao.CargarCatalogoPartida(pedido);
+
                 pedido.Automatico = pedido.Requisicion == null ? false : true;
             }
         }
@@ -62,6 +60,13 @@ namespace Adquisiciones.View.Busquedas
         protected override void Eliminar()
         {
             var pedido = GvGeneral.GetFocusedRow() as Pedido;
+
+            if (PedidoService.PedidoDao.ExisteEntradaPedido(pedido))
+            {
+                XtraMessageBox.Show(@"Ya Existe entrada asociada al pedido",
+                       @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
 
             if (pedido.Requisicion!=null)
             {
@@ -105,6 +110,13 @@ namespace Adquisiciones.View.Busquedas
                 pedidos.Add(gvPedido.GetRow(i) as Pedido);
 
             return pedidos;
+        }
+
+        private void entradaVsPedidoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var forma = new FrmReporteEntradaPedido();
+            forma.MdiParent = this.MdiParent;
+            forma.Show();
         }
 
        

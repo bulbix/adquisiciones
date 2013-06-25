@@ -165,10 +165,9 @@
             // 
             // splitContainerControl1
             // 
-            this.splitContainerControl1.Location = new System.Drawing.Point(0, 70);
             this.splitContainerControl1.Panel1.Controls.Add(this.groupControl1);
             this.splitContainerControl1.Panel2.Controls.Add(this.gcPedidoDetalle);
-            this.splitContainerControl1.Size = new System.Drawing.Size(1121, 483);
+            this.splitContainerControl1.Size = new System.Drawing.Size(1121, 486);
             this.splitContainerControl1.SplitterPosition = 283;
             this.splitContainerControl1.TabIndex = 1000;
             // 
@@ -285,7 +284,7 @@
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 67F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 104F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 83F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 203F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 212F));
             this.tableLayoutPanel3.Controls.Add(this.cbxIva, 7, 1);
             this.tableLayoutPanel3.Controls.Add(this.labelControl10, 6, 1);
             this.tableLayoutPanel3.Controls.Add(this.cbxCargo, 5, 1);
@@ -317,7 +316,7 @@
             // 
             this.cbxIva.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxIva.FormattingEnabled = true;
-            this.cbxIva.Location = new System.Drawing.Point(529, 35);
+            this.cbxIva.Location = new System.Drawing.Point(520, 35);
             this.cbxIva.Name = "cbxIva";
             this.cbxIva.Size = new System.Drawing.Size(88, 21);
             this.cbxIva.TabIndex = 5;
@@ -325,7 +324,7 @@
             // 
             // labelControl10
             // 
-            this.labelControl10.Location = new System.Drawing.Point(462, 35);
+            this.labelControl10.Location = new System.Drawing.Point(453, 35);
             this.labelControl10.Name = "labelControl10";
             this.labelControl10.Size = new System.Drawing.Size(21, 13);
             this.labelControl10.TabIndex = 511;
@@ -335,7 +334,7 @@
             // 
             this.cbxCargo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxCargo.FormattingEnabled = true;
-            this.cbxCargo.Location = new System.Drawing.Point(339, 35);
+            this.cbxCargo.Location = new System.Drawing.Point(330, 35);
             this.cbxCargo.Name = "cbxCargo";
             this.cbxCargo.Size = new System.Drawing.Size(110, 21);
             this.cbxCargo.TabIndex = 4;
@@ -343,7 +342,7 @@
             // lblCargo
             // 
             this.lblCargo.AutoSize = true;
-            this.lblCargo.Location = new System.Drawing.Point(277, 32);
+            this.lblCargo.Location = new System.Drawing.Point(268, 32);
             this.lblCargo.Name = "lblCargo";
             this.lblCargo.Size = new System.Drawing.Size(45, 13);
             this.lblCargo.TabIndex = 510;
@@ -353,14 +352,14 @@
             // 
             this.cbxActividad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxActividad.FormattingEnabled = true;
-            this.cbxActividad.Location = new System.Drawing.Point(168, 35);
+            this.cbxActividad.Location = new System.Drawing.Point(159, 35);
             this.cbxActividad.Name = "cbxActividad";
             this.cbxActividad.Size = new System.Drawing.Size(103, 21);
             this.cbxActividad.TabIndex = 3;
             // 
             // labelControl8
             // 
-            this.labelControl8.Location = new System.Drawing.Point(113, 35);
+            this.labelControl8.Location = new System.Drawing.Point(104, 35);
             this.labelControl8.Name = "labelControl8";
             this.labelControl8.Size = new System.Drawing.Size(44, 13);
             this.labelControl8.TabIndex = 509;
@@ -368,7 +367,7 @@
             // 
             // txtReserva
             // 
-            this.txtReserva.Location = new System.Drawing.Point(42, 35);
+            this.txtReserva.Location = new System.Drawing.Point(39, 35);
             this.txtReserva.Name = "txtReserva";
             this.txtReserva.Size = new System.Drawing.Size(51, 20);
             this.txtReserva.TabIndex = 2;
@@ -385,16 +384,17 @@
             // 
             this.rbCantidad.AutoSize = true;
             this.rbCantidad.Checked = true;
-            this.rbCantidad.Location = new System.Drawing.Point(633, 3);
+            this.rbCantidad.Location = new System.Drawing.Point(624, 3);
             this.rbCantidad.Name = "rbCantidad";
             this.rbCantidad.Size = new System.Drawing.Size(68, 17);
             this.rbCantidad.TabIndex = 507;
+            this.rbCantidad.TabStop = true;
             this.rbCantidad.Text = "Cantidad";
             this.rbCantidad.UseVisualStyleBackColor = true;
             // 
             // labelControl9
             // 
-            this.labelControl9.Location = new System.Drawing.Point(462, 3);
+            this.labelControl9.Location = new System.Drawing.Point(453, 3);
             this.labelControl9.Name = "labelControl9";
             this.labelControl9.Size = new System.Drawing.Size(51, 13);
             this.labelControl9.TabIndex = 505;
@@ -403,7 +403,7 @@
             // rbPorcentaje
             // 
             this.rbPorcentaje.AutoSize = true;
-            this.rbPorcentaje.Location = new System.Drawing.Point(529, 3);
+            this.rbPorcentaje.Location = new System.Drawing.Point(520, 3);
             this.rbPorcentaje.Name = "rbPorcentaje";
             this.rbPorcentaje.Size = new System.Drawing.Size(77, 17);
             this.rbPorcentaje.TabIndex = 506;
@@ -412,14 +412,14 @@
             // 
             // txtRequisicion
             // 
-            this.txtRequisicion.Location = new System.Drawing.Point(339, 3);
+            this.txtRequisicion.Location = new System.Drawing.Point(330, 3);
             this.txtRequisicion.Name = "txtRequisicion";
             this.txtRequisicion.Size = new System.Drawing.Size(93, 20);
             this.txtRequisicion.TabIndex = 0;
             // 
             // labelControl3
             // 
-            this.labelControl3.Location = new System.Drawing.Point(277, 3);
+            this.labelControl3.Location = new System.Drawing.Point(268, 3);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(53, 13);
             this.labelControl3.TabIndex = 504;
@@ -429,7 +429,7 @@
             // 
             this.lblNumero.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNumero.Appearance.ForeColor = System.Drawing.Color.Blue;
-            this.lblNumero.Location = new System.Drawing.Point(168, 3);
+            this.lblNumero.Location = new System.Drawing.Point(159, 3);
             this.lblNumero.Name = "lblNumero";
             this.lblNumero.Size = new System.Drawing.Size(75, 16);
             this.lblNumero.TabIndex = 503;
@@ -437,7 +437,7 @@
             // 
             // labelControl2
             // 
-            this.labelControl2.Location = new System.Drawing.Point(113, 3);
+            this.labelControl2.Location = new System.Drawing.Point(104, 3);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(37, 13);
             this.labelControl2.TabIndex = 502;
@@ -447,7 +447,7 @@
             // 
             this.lblFecha.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFecha.Appearance.ForeColor = System.Drawing.Color.Blue;
-            this.lblFecha.Location = new System.Drawing.Point(42, 3);
+            this.lblFecha.Location = new System.Drawing.Point(39, 3);
             this.lblFecha.Name = "lblFecha";
             this.lblFecha.Size = new System.Drawing.Size(75, 16);
             this.lblFecha.TabIndex = 501;
@@ -464,7 +464,7 @@
             // txtDescuento
             // 
             this.txtDescuento.EditValue = "";
-            this.txtDescuento.Location = new System.Drawing.Point(716, 3);
+            this.txtDescuento.Location = new System.Drawing.Point(707, 3);
             this.txtDescuento.Name = "txtDescuento";
             this.txtDescuento.Size = new System.Drawing.Size(84, 20);
             this.txtDescuento.TabIndex = 1;
@@ -472,7 +472,7 @@
             // 
             // cmdRefrescarTotal
             // 
-            this.cmdRefrescarTotal.Location = new System.Drawing.Point(716, 35);
+            this.cmdRefrescarTotal.Location = new System.Drawing.Point(707, 35);
             this.cmdRefrescarTotal.Name = "cmdRefrescarTotal";
             this.cmdRefrescarTotal.Size = new System.Drawing.Size(132, 23);
             this.cmdRefrescarTotal.TabIndex = 512;
@@ -934,7 +934,7 @@
             this.repositoryItemSearchLookUpEdit2,
             this.repositoryItemPopupContainerEdit1,
             this.repositoryItemButtonEdit1});
-            this.gcPedidoDetalle.Size = new System.Drawing.Size(1121, 194);
+            this.gcPedidoDetalle.Size = new System.Drawing.Size(1121, 198);
             this.gcPedidoDetalle.TabIndex = 13;
             this.gcPedidoDetalle.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvPedidoDetalle});

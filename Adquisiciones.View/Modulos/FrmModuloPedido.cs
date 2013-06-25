@@ -48,10 +48,8 @@ namespace Adquisiciones.View.Modulos
             PedidoActual.CatTipopedido = new CatTipopedido(tipoPedido);
 
             if (tipoPedido > 1)
-                searchLookUpAnexo.Enabled = false;
-
-            if (tipoPedido > 2)
             {
+                searchLookUpAnexo.Enabled = false;
                 panelFechaEntrega.Visible = false;
                 gridColumnFecha.Visible = false;
             }

@@ -6,6 +6,8 @@ using Adquisiciones.Data.Entities;
 
 namespace Adquisiciones.Data.Dao.ModPedido
 {
+    public enum Ordenado  {Proveedor, Pedido}
+
     public interface IPedidoDao : IGenericDao<Pedido, long >
     {
         int? SiguienteNumeroPedido(Almacen almacen, int tipo);
@@ -19,12 +21,13 @@ namespace Adquisiciones.Data.Dao.ModPedido
         IList<PedidoEntrega> CargarPedidoEntrega(PedidoDetalle pedidoDetalle);
         IList<Pedido> CargarPedidos(int anio, Almacen almacen);
         IList<Pedido> CargarPedidos(Almacen almacen);
-
         IList<Entrada> CargarEntradas(Pedido pedido);
-
+        CatPartida CargarCatalogoPartida(Pedido pedido);
         decimal ImporteEntrada(Entrada entrada);
-
         void CancelarPedido(Pedido pedido);
+
+        IList<Entrada> CargarEntradas(DateTime fechaInicial, DateTime fechaFinal);
+        IList<Pedido> CargarPedidos(Entrada entrada,CatTipopedido tipopedido, Ordenado ordenado);
 
     }
 }

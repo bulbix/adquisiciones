@@ -14,10 +14,10 @@ namespace Adquisiciones.View.Reportes.Clases
         public string NumeroRequisicion { get; set; }
         public string Proveedor { get; set; }
         public string Elaboro { get; set; }
-        public string Importe { get; set; }
-        public string Descuento { get; set; }
-        public string Iva { get; set; }
-        public string Total { get; set; }
+        public decimal Importe { get; set; }
+        public decimal Descuento { get; set; }
+        public decimal Iva { get; set; }
+        public decimal Total { get; set; }
 
     }
 }

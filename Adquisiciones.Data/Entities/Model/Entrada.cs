@@ -4,23 +4,26 @@ using MyGeneration/Template/NHibernate (c) by lujan99@usa.net
 using System;
 using System.Collections;
 using System.Collections.Generic;
-
+using System.ComponentModel;
+using NHibernate.Validator.Constraints;
 namespace Adquisiciones.Data.Entities
 {
 	/// <summary>
 	/// Entrada object for NHibernate mapped table 'entrada'.
 	/// </summary>
-	[Serializable]
-	public class Entrada
+	//
+    //[Serializable]
+    //[Auditable]
+    public class Entrada : INotifyPropertyChanged
 	{
 		#region Member Variables
-		protected int _identrada;
+		protected long _identrada;
 		protected int? _numeroentrada;
 		protected DateTime? _fechaentrada;
 		protected string _numerofactura;
 		protected Pedido _pedido;
-		protected int? _recibio;
-		protected int? _supervisor;
+        protected Usuario _recibio;
+        protected Usuario _supervisor;
 		protected string _estadoentrada;
 		protected Almacen _almacen;
 		protected CatActividad _catactividad;
@@ -29,24 +32,40 @@ namespace Adquisiciones.Data.Entities
 		protected DateTime? _fechamodificacion;
 		protected string _ipterminal;
 		protected int? _modificacion;
-		
+        protected IList<EntradaDetalle> _entradadetalle = new List<EntradaDetalle>();
 		#endregion
 		#region Constructors
 			
 		public Entrada() {}
 
-		public Entrada(int identrada)
+        public Entrada(long identrada, int? numeroentrada, DateTime? fechaentrada, string numerofactura, Usuario recibio, Usuario supervisor, string estadoentrada, DateTime? fechamodificacion, string ipterminal, int? modificacion) 
+		{
+			this._identrada= identrada;
+			this._numeroentrada= numeroentrada;
+			this._fechaentrada= fechaentrada;
+			this._numerofactura= numerofactura;
+			this._recibio= recibio;
+			this._supervisor= supervisor;
+			this._estadoentrada= estadoentrada;
+			this._fechamodificacion= fechamodificacion;
+			this._ipterminal= ipterminal;
+			this._modificacion= modificacion;
+		}
+
+		public Entrada(long identrada)
 		{
 			this._identrada= identrada;
 		}
 		
 		#endregion
 		#region Public Properties
-		public  virtual int IdEntrada
+        
+		public  virtual long IdEntrada
 		{
 			get { return _identrada; }
 			set {_identrada= value; }
 		}
+        [NotNull(Message = "Folio - Campo Requerido")]
 		public  virtual int? NumeroEntrada
 		{
 			get { return _numeroentrada; }
@@ -57,6 +76,7 @@ namespace Adquisiciones.Data.Entities
 			get { return _fechaentrada; }
 			set {_fechaentrada= value; }
 		}
+        [NotNullNotEmpty(Message = "Numero Factura - Campo Requerido")]
 		public  virtual string NumeroFactura
 		{
 			get { return _numerofactura; }
@@ -67,15 +87,32 @@ namespace Adquisiciones.Data.Entities
 			get { return _pedido; }
 			set {_pedido= value; }
 		}
-		public  virtual int? Recibio
+        [NotNull(Message = "Usuario Recibio - Campo Requerido")]
+		public virtual Usuario Recibio
 		{
 			get { return _recibio; }
-			set {_recibio= value; }
+            set
+            {
+                if (_recibio != value)
+                {
+                    _recibio = value;
+                    OnPropertyChanged("Recibio");
+                }
+            }
 		}
-		public  virtual int? Supervisor
+        [NotNull(Message = "Usuario Superviso - Campo Requerido")]
+        public virtual Usuario Supervisor
 		{
 			get { return _supervisor; }
-			set {_supervisor= value; }
+			//set {_supervisor= value; }
+            set
+            {
+                if (_supervisor != value)
+                {
+                    _supervisor = value;
+                    OnPropertyChanged("Supervisor");
+                }
+            }
 		}
 		public  virtual string EstadoEntrada
 		{
@@ -87,15 +124,31 @@ namespace Adquisiciones.Data.Entities
 			get { return _almacen; }
 			set {_almacen= value; }
 		}
+        [NotNull(Message = "Actividad - Campo Requerido")]
 		public  virtual CatActividad CatActividad
 		{
 			get { return _catactividad; }
-			set {_catactividad= value; }
+            set
+            {
+                if (_catactividad != value)
+                {
+                    _catactividad = value;
+                    OnPropertyChanged("CatActividad");
+                }
+            }
 		}
+        [NotNull(Message = "Presupuesto - Campo Requerido")]
 		public  virtual CatPresupuesto CatPresupuesto
 		{
-			get { return _catpresupuesto; }
-			set {_catpresupuesto= value; }
+            get { return _catpresupuesto; }
+            set
+            {
+                if (_catpresupuesto != value)
+                {
+                    _catpresupuesto = value;
+                    OnPropertyChanged("CatPresupuesto");
+                }
+            }
 		}
 		public  virtual Usuario Usuario
 		{
@@ -105,7 +158,7 @@ namespace Adquisiciones.Data.Entities
 		public  virtual DateTime? FechaModificacion
 		{
 			get { return _fechamodificacion; }
-			set {_fechamodificacion= value; }
+            set { _fechamodificacion = value; }
 		}
 		public  virtual string IpTerminal
 		{
@@ -117,7 +170,13 @@ namespace Adquisiciones.Data.Entities
 			get { return _modificacion; }
 			set {_modificacion= value; }
 		}
-	
+        [NotEmpty(Message = "Ningun Articulo Ingresado")]
+        [Valid]
+		public  virtual IList<EntradaDetalle> EntradaDetalle
+		{
+			get { return _entradadetalle; }
+			set {_entradadetalle= value; }
+		}
 		#endregion
 		
 		#region Equals And HashCode Overrides
@@ -141,7 +200,17 @@ namespace Adquisiciones.Data.Entities
 			hash = 27 * hash * _identrada.GetHashCode();
 			return hash;
 		}
-		#endregion
+        #endregion
+        public event PropertyChangedEventHandler PropertyChanged;
+        #region business logic
+
+        private void OnPropertyChanged(string propertyName)
+        {
+            if (PropertyChanged != null)
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+        }
+        #endregion
+		
 		
 	}
 }
