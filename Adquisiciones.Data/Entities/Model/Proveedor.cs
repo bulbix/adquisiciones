@@ -518,6 +518,11 @@ namespace Adquisiciones.Data.Entities
             return CveProveedor + " - " + NombreFiscal;
         }
 
+        public string ProveedorString()
+        {
+            return ToString();
+        }
+
         #region business logic
 
         private void OnPropertyChanged(string propertyName)

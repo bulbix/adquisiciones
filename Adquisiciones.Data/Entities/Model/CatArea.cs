@@ -99,6 +99,11 @@ namespace Adquisiciones.Data.Entities
 	        return CveArea + " - " + DesArea;
 	    }
 
+        public string CatAreaString()
+        {
+            return ToString();
+        }
+
 	    #region Equals And HashCode Overrides
 		/// <summary>
 		/// local implementation of Equals based on unique value members

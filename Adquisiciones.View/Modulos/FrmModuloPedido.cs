@@ -20,6 +20,7 @@ namespace Adquisiciones.View.Modulos
         public Pedido PedidoActual;
         private int tipoPedido = 0;
         
+        
         #endregion
 
         #region Constructores
@@ -210,11 +211,11 @@ namespace Adquisiciones.View.Modulos
                         searchLookUpAnexo.EditValue = PedidoActual.Anexo.NumeroAnexo;
 
                         SeleccionoAnexo();
-                       
                     }
 
                     var oneDetalle = PedidoActual.PedidoDetalle[0];
                     PedidoActual.Partida = PedidoService.AnexoService.ArticuloDao.GetPartida(oneDetalle.Articulo);
+                    cbxAlmacen.SelectedIndex = cbxAlmacen.FindStringExact(oneDetalle.Articulo.Id.Almacen.ToString());
 
                     //Centinela
                     if (searchLookUpPartida.Handle != IntPtr.Zero)

@@ -174,7 +174,12 @@ namespace Adquisiciones.Data.Entities
 
 	    public override string ToString()
 	    {
-	        return _partida + "/" + _despartida;
+	        return _partida + " - " + _despartida;
+        }
+
+        public string CatPartidaString()
+        {
+            return ToString();
         }
 
         public int CompareTo(object obj)

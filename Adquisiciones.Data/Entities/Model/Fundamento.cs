@@ -176,6 +176,11 @@ namespace Adquisiciones.Data.Entities
 	        return CveFundamento + " - " + DesFundamento;
 	    }
 
+        public string FundamentoString()
+        {
+            return ToString();
+        }
+
         public int CompareTo(object obj)
         {
             return CveFundamento.CompareTo((obj as Fundamento).CveFundamento);

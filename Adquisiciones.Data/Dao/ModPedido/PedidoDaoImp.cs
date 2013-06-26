@@ -146,24 +146,38 @@ namespace Adquisiciones.Data.Dao.ModPedido
         }
 
          [Transaction(ReadOnly = true)]
-        public CatPartida CargarCatalogoPartida(Pedido pedido)
+        public String[] CargarPartidaAlmacen(Pedido pedido)
          {
+             var result = new String[] {"", ""};
+
              const string queryNativo = @"SELECT FIRST 1 cve_art,id_almacen FROM pedido_detalle WHERE id_pedido = :idpedido";
              var query = CurrentSession.CreateSQLQuery(queryNativo);
              query.SetParameter("idpedido", pedido.IdPedido);
+             var claveAlmacen =query.UniqueResult<Object[]>();
 
-             var claveAlmacen = (Object[]) query.UniqueResult();
+             //result[0] = claveAlmacen[1].ToString();
+             switch(claveAlmacen[1].ToString().Trim())
+             {
+                 case "F":
+                     result[0] = "FARMACIA";
+                     break;
+                 case "G":
+                     result[0] = "GENERAL";
+                     break;case "P":
+                     result[0] = "PROTESIS";
+                     break;
+             } 
 
-             var articulo = new Articulo(new ArticuloId((int)claveAlmacen[0],
-                 new Almacen(claveAlmacen[1].ToString())));
+             const string strQuery = "SELECT partida FROM articulo_partida WHERE cve_art = :articulo and id_almacen = :almacen";
+             var criteria = CurrentSession.CreateSQLQuery(strQuery);
+             criteria.SetParameter("articulo", (int)claveAlmacen[0]);
+             criteria.SetParameter("almacen", claveAlmacen[1].ToString());
+             var partida  = criteria.UniqueResult<string>();
 
-             var strQuery = "select ap from ArticuloPartida ap join fetch ap.Id.CatPartida where ap.Id.Articulo = :articulo";
+             result[1] = partida;
 
-             var criteria = CurrentSession.CreateQuery(strQuery);
-             criteria.SetParameter("articulo", articulo);
-             var articuloPartida  = criteria.UniqueResult<ArticuloPartida>();
-             return articuloPartida.Id.CatPartida;
-        }
+             return result;
+         }
 
         [Transaction(ReadOnly = true)]
         public decimal ImporteEntrada(Entrada entrada)
