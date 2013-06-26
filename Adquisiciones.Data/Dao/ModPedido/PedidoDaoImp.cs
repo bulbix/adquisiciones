@@ -163,7 +163,8 @@ namespace Adquisiciones.Data.Dao.ModPedido
                      break;
                  case "G":
                      result[0] = "GENERAL";
-                     break;case "P":
+                     break;
+                 case "P":
                      result[0] = "PROTESIS";
                      break;
              } 
