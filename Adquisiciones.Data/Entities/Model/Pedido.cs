@@ -42,7 +42,7 @@ namespace Adquisiciones.Data.Entities
         protected DateTime? _fechacaptura;
 		protected string _ipterminal;
 		protected int _modificacion;
-		protected IList<Entrada> _entrada;
+		protected IList<Entrada> _entradas;
 		protected IList<PedidoDetalle> _pedidodetalle = new List<PedidoDetalle>();
 	    protected string numerorequisicion;
 	    protected string _instituto;
@@ -223,10 +223,10 @@ namespace Adquisiciones.Data.Entities
 			get { return _modificacion; }
 			set {_modificacion= value; }
 		}
-		public  virtual IList<Entrada> Entrada
+		public  virtual IList<Entrada> Entradas
 		{
-			get { return _entrada; }
-			set {_entrada= value; }
+			get { return _entradas; }
+			set {_entradas= value; }
 		}
 
         [NotEmpty(Message = "Se requiere al menos pedido detalle")]

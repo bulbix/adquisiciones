@@ -18,9 +18,8 @@ namespace Adquisiciones.View.Modulos
         #region Variables
         public IPedidoService PedidoService;
         public Pedido PedidoActual;
-        public Almacen AlmacenArticulo;
         private int tipoPedido = 0;
-        private decimal importeTotal = (decimal)0.0;
+        
         #endregion
 
         #region Constructores
@@ -314,7 +313,7 @@ namespace Adquisiciones.View.Modulos
 
                     lblIva.Text = cantidadIva.ToString("$#,##0.00");
 
-                    this.importeTotal = importeDesc + cantidadIva;
+                    var importeTotal = importeDesc + cantidadIva;
                     lblTotal.Text = importeTotal.ToString("$#,##0.00");
 
                 }

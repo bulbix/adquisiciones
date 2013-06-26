@@ -221,11 +221,7 @@ namespace Adquisiciones.View
             forma.Show();
         }
 
-        private void barButtonItem12_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            Application.Restart();
-        }
-
+       
         private void FrmAdquisiciones_FormClosed(object sender, FormClosedEventArgs e)
         {
             --NumInstancias;

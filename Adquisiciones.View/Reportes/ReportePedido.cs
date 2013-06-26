@@ -43,7 +43,7 @@ namespace Adquisiciones.View.Reportes
         string fileReverso = "";
         private string piePagina = "PAGO";
 
-        private decimal subtotal = (decimal)0.0;
+        //private decimal subtotal = (decimal)0.0;
 
         public ReportePedido(Pedido pedido)
         {
@@ -142,7 +142,7 @@ namespace Adquisiciones.View.Reportes
 
             var index = 0;
 
-            subtotal = (decimal)0.0;
+            //subtotal = (decimal)0.0;
 
             foreach (var pedidoDetalle in pedido.PedidoDetalle)
             {
@@ -174,9 +174,9 @@ namespace Adquisiciones.View.Reportes
                 result.AddCell(new Paragraph(pedidoDetalle.Articulo.Unidad, fuente));
                 result.DefaultCell.HorizontalAlignment = Element.ALIGN_RIGHT;
                 result.AddCell(new Paragraph(pedidoDetalle.PrecioUnitario.Value.ToString("C"), fuente));
-                decimal total = pedidoDetalle.Cantidad.Value * pedidoDetalle.PrecioUnitario.Value;
+                decimal total = pedidoDetalle.Importe.Value;
 
-                subtotal += total;
+                //subtotal += total;
 
                 result.AddCell(new Paragraph(total.ToString("C"), fuente));
                 result.DefaultCell.HorizontalAlignment = Element.ALIGN_CENTER;
@@ -544,7 +544,7 @@ namespace Adquisiciones.View.Reportes
             totales.DefaultCell.HorizontalAlignment = Element.ALIGN_RIGHT;
             totales.AddCell("");
             totales.AddCell("");
-            totales.AddCell(new Paragraph("SUBTOTAL  " + subtotal.ToString("C"), fuente));
+            totales.AddCell(new Paragraph("SUBTOTAL  " + pedido.ImporteTotal.Value.ToString("C"), fuente));
             
             totales.DefaultCell.HorizontalAlignment = Element.ALIGN_LEFT;
             totales.DefaultCell.Colspan = 2;
@@ -553,14 +553,14 @@ namespace Adquisiciones.View.Reportes
             totales.DefaultCell.Colspan = 1;
             totales.AddCell(new Paragraph("DESCUENTO  " + pedido.ImporteDescuento.Value.ToString("C") , fuente));
             
-            decimal importeDesc = subtotal - pedido.ImporteDescuento.Value;
+            decimal subTotalDesc = pedido.SubTotalDesc;
             
             totales.DefaultCell.HorizontalAlignment = Element.ALIGN_LEFT;
             totales.DefaultCell.Colspan = 2;
             totales.AddCell(new Paragraph("PARTIDA PRESUPUESTAL: " + partida.Partida, fuente));
             totales.DefaultCell.HorizontalAlignment = Element.ALIGN_RIGHT;
             totales.DefaultCell.Colspan = 1;
-            totales.AddCell(new Paragraph("SUBT-DESC.  " + importeDesc.ToString("C"), fuente));
+            totales.AddCell(new Paragraph("SUBT-DESC.  " + subTotalDesc.ToString("C"), fuente));
             
 
             totales.DefaultCell.HorizontalAlignment = Element.ALIGN_LEFT;
@@ -570,11 +570,11 @@ namespace Adquisiciones.View.Reportes
             totales.DefaultCell.HorizontalAlignment = Element.ALIGN_RIGHT;
             totales.DefaultCell.Colspan = 1;
 
-            decimal cantidadIva = importeDesc * (decimal)(pedido.Iva.Id.Porcentaje*1.0/100);
+            decimal cantidadIva = pedido.IvaCantidad;
 
             totales.AddCell(new Paragraph("I.V.A.  " + cantidadIva.ToString("C"), fuente));
 
-            decimal total = importeDesc + cantidadIva;
+            decimal total = pedido.Total;
             totales.DefaultCell.HorizontalAlignment = Element.ALIGN_LEFT;
 
             totales.DefaultCell.Colspan = 2;

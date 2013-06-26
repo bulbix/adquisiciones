@@ -168,10 +168,13 @@ namespace Adquisiciones.Data.Dao.ModPedido
         [Transaction(ReadOnly = true)]
         public decimal ImporteEntrada(Entrada entrada)
         {
-            var criteria = CurrentSession.CreateCriteria(typeof(EntradaDetalle));
-            criteria.Add(Restrictions.Eq("Entrada", entrada));
-            criteria.SetProjection(Projections.Sum("PrecioEntrada"));
-            var suma = (decimal)criteria.UniqueResult();
+            var strQuery = @"select sum(ed.PrecioEntrada * ed.Cantidad) 
+            from EntradaDetalle ed where ed.Entrada = :entrada ";
+
+            var query = CurrentSession.CreateQuery(strQuery);
+            query.SetParameter("entrada", entrada);
+
+            var suma = (decimal)query.UniqueResult();
             return suma;
         }
 
@@ -187,33 +190,32 @@ namespace Adquisiciones.Data.Dao.ModPedido
         {
             var criteria = CurrentSession.CreateCriteria(typeof(Entrada));
             criteria.Add(Restrictions.Between("FechaEntrada", fechaInicial,fechaFinal));
+            criteria.SetFetchMode("EntradaDetalle", FetchMode.Lazy);
             return criteria.List<Entrada>();
 
         }
 
          [Transaction(ReadOnly = true)]
         public IList<Pedido> CargarPedidos(Entrada entrada, CatTipopedido tipopedido, Ordenado ordenado)
-        {
-            var criteria = CurrentSession.CreateCriteria(typeof(Pedido));
-            criteria.CreateAlias("Entrada", "Ent");
-            criteria.Add(Restrictions.Eq("Ent.IdEntrada", entrada.IdEntrada));
-
-            criteria.SetFetchMode("PedidoDetalle", FetchMode.Lazy);
-
-            criteria.Add(Restrictions.Eq("CatTipopedido", tipopedido));
+         {
+             var strquery =
+             @"select p from Pedido p join p.Entradas e join fetch p.Proveedor 
+            where e.IdEntrada = :idEntrada and p.CatTipopedido = :tipoPedido ";
 
             switch (ordenado){
                 case Ordenado.Proveedor:
-                    criteria.AddOrder(Order.Asc("Proveedor"));
+                    strquery += " order by p.Proveedor";
                     break;
                 case Ordenado.Pedido:
-                    criteria.AddOrder(Order.Asc("IdPedido"));
+                    strquery += " order by p.IdPedido";
                     break;
             }
 
-            var pedidos =  criteria.List<Pedido>();
-
-            return pedidos;
+             var query = CurrentSession.CreateQuery(strquery);
+             query.SetParameter("idEntrada", entrada.IdEntrada);
+             query.SetParameter("tipoPedido", tipopedido);
+             var pedidos = query.List<Pedido>();
+             return pedidos;
         }
     }
 }

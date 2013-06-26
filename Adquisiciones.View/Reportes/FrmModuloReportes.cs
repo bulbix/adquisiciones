@@ -431,23 +431,23 @@ namespace Adquisiciones.View
                     }
                     
                 }
-                else
-                {
-                    var pedidoEntrada = new PedidoEntrada
-                    {
-                        NumeroPedido = 0,
-                        FechaPedido = "",
-                        Proveedor = "",
-                        Total = (decimal)0.0,
-                        NumeroEntrada = entrada.NumeroEntrada.Value,
-                        Factura = entrada.NumeroFactura,
-                        FechaEntrada = String.Format("{0:dd/MM/yyyy}", entrada.FechaEntrada),
-                        ImporteEntrada = (decimal)0.00
-                    };
+                //else
+                //{
+                //    var pedidoEntrada = new PedidoEntrada
+                //    {
+                //        NumeroPedido = 0,
+                //        FechaPedido = "",
+                //        Proveedor = "",
+                //        Total = (decimal)0.0,
+                //        NumeroEntrada = entrada.NumeroEntrada.Value,
+                //        Factura = entrada.NumeroFactura,
+                //        FechaEntrada = String.Format("{0:dd/MM/yyyy}", entrada.FechaEntrada),
+                //        ImporteEntrada = (decimal)0.00
+                //    };
 
-                    listaPedidoEntrada.Add(pedidoEntrada);
+                //    listaPedidoEntrada.Add(pedidoEntrada);
                     
-                }
+                //}
 
             }
 

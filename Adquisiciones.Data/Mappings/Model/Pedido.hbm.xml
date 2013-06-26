@@ -37,7 +37,7 @@
     <property name="Instituto" column="instituto" type="string" />
     <property name="FechaCaptura" column="fecha_captura" update="false" type="DateTime" />
     
-    <bag name="Entrada" inverse="true" lazy="true" cascade="none">
+    <bag name="Entradas" inverse="true" lazy="true" cascade="none">
       <key column="id_pedido" />
       <one-to-many class="Adquisiciones.Data.Entities.Entrada,Adquisiciones.Data" />
     </bag>

@@ -53,7 +53,6 @@
             this.barButtonItem8 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem9 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem10 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem12 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem11 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem13 = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
@@ -61,7 +60,6 @@
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPagePedido = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageCatalogo = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPage2 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup7 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -120,7 +118,6 @@
             this.barButtonItem8,
             this.barButtonItem9,
             this.barButtonItem10,
-            this.barButtonItem12,
             this.barButtonItem11,
             this.barButtonItem13});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
@@ -331,15 +328,6 @@
             this.barButtonItem10.Name = "barButtonItem10";
             this.barButtonItem10.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem10_ItemClick);
             // 
-            // barButtonItem12
-            // 
-            this.barButtonItem12.Caption = "Cerrar Sesion";
-            this.barButtonItem12.Id = 33;
-            this.barButtonItem12.LargeGlyph = global::Adquisiciones.View.Properties.Resources.cancelar;
-            this.barButtonItem12.LargeWidth = 75;
-            this.barButtonItem12.Name = "barButtonItem12";
-            this.barButtonItem12.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem12_ItemClick);
-            // 
             // barButtonItem11
             // 
             this.barButtonItem11.Appearance.BackColor = System.Drawing.Color.White;
@@ -368,8 +356,7 @@
             this.ribbonPageGroup5,
             this.ribbonPageGroup1,
             this.ribbonPagePedido,
-            this.ribbonPageCatalogo,
-            this.ribbonPageGroup3});
+            this.ribbonPageCatalogo});
             this.ribbonPage1.Name = "ribbonPage1";
             this.ribbonPage1.Text = "Adquisiciones";
             // 
@@ -405,12 +392,6 @@
             this.ribbonPageCatalogo.Name = "ribbonPageCatalogo";
             this.ribbonPageCatalogo.Text = "Catalogos";
             this.ribbonPageCatalogo.Visible = false;
-            // 
-            // ribbonPageGroup3
-            // 
-            this.ribbonPageGroup3.ItemLinks.Add(this.barButtonItem12);
-            this.ribbonPageGroup3.Name = "ribbonPageGroup3";
-            this.ribbonPageGroup3.Text = "Salir";
             // 
             // ribbonPage2
             // 
@@ -596,8 +577,6 @@
         private DevExpress.LookAndFeel.DefaultLookAndFeel defaultLookAndFeel1;
         private DevExpress.XtraBars.BarButtonItem barButtonItem9;
         private DevExpress.XtraBars.BarButtonItem barButtonItem10;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem12;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup3;
         private DevExpress.XtraEditors.Repository.RepositoryItemHyperLinkEdit repositoryItemHyperLinkEdit1;
         private DevExpress.XtraEditors.Repository.RepositoryItemHyperLinkEdit repositoryItemHyperLinkEdit2;
         private DevExpress.XtraEditors.Repository.RepositoryItemHyperLinkEdit repositoryItemHyperLinkEdit3;
