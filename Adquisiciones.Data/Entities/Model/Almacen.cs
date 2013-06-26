@@ -81,7 +81,7 @@ namespace Adquisiciones.Data.Entities
 
 	    public override string ToString()
         {
-            return string.Format("{0}-{1}", IdAlmacen, DesAlmacen);
+            return string.Format("{0}-{1}", IdAlmacen.Trim(), DesAlmacen);
         }
 		
 	}

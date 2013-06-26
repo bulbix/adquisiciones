@@ -241,14 +241,13 @@ namespace Adquisiciones.Data.Entities
         //Propiedad Auxiliar
         public CatPartida Partida { get; set; }
 
+        public string AlmacenDestino { get; set; }
+        public string PartidaString { get; set; }
 
 	    public override string ToString()
 	    {
             return NumeroPedido + " - " + CatTipopedido;
 	    }
-
-	    public virtual bool Automatico { get; set;}
-
 
         public decimal SubTotalDesc
         {

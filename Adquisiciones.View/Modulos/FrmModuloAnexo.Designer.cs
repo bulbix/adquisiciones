@@ -81,7 +81,7 @@
             // 
             this.splitContainerControl1.Panel1.Controls.Add(this.gcDatosGenerales);
             this.splitContainerControl1.Panel2.Controls.Add(this.gcAnexoDetalle);
-            this.splitContainerControl1.Size = new System.Drawing.Size(1114, 603);
+            this.splitContainerControl1.Size = new System.Drawing.Size(1114, 600);
             this.splitContainerControl1.SplitterPosition = 169;
             // 
             // lblAlmacen
@@ -116,7 +116,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 105F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 377F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 51F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 95F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 97F));
             this.tableLayoutPanel1.Controls.Add(this.cbxIva, 7, 1);
             this.tableLayoutPanel1.Controls.Add(this.labelControl7, 6, 1);
             this.tableLayoutPanel1.Controls.Add(this.labelControl6, 4, 1);
@@ -142,14 +142,14 @@
             // 
             this.cbxIva.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxIva.FormattingEnabled = true;
-            this.cbxIva.Location = new System.Drawing.Point(1013, 44);
+            this.cbxIva.Location = new System.Drawing.Point(1011, 44);
             this.cbxIva.Name = "cbxIva";
             this.cbxIva.Size = new System.Drawing.Size(83, 21);
             this.cbxIva.TabIndex = 7;
             // 
             // labelControl7
             // 
-            this.labelControl7.Location = new System.Drawing.Point(962, 44);
+            this.labelControl7.Location = new System.Drawing.Point(960, 44);
             this.labelControl7.Name = "labelControl7";
             this.labelControl7.Size = new System.Drawing.Size(31, 13);
             this.labelControl7.TabIndex = 12;
@@ -157,7 +157,7 @@
             // 
             // labelControl6
             // 
-            this.labelControl6.Location = new System.Drawing.Point(480, 44);
+            this.labelControl6.Location = new System.Drawing.Point(478, 44);
             this.labelControl6.Name = "labelControl6";
             this.labelControl6.Size = new System.Drawing.Size(94, 13);
             this.labelControl6.TabIndex = 10;
@@ -165,7 +165,7 @@
             // 
             // txtTechopresupuestal
             // 
-            this.txtTechopresupuestal.Location = new System.Drawing.Point(585, 44);
+            this.txtTechopresupuestal.Location = new System.Drawing.Point(583, 44);
             this.txtTechopresupuestal.Name = "txtTechopresupuestal";
             this.txtTechopresupuestal.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -186,7 +186,7 @@
             // lblFecha
             // 
             this.lblFecha.Appearance.ForeColor = System.Drawing.Color.Blue;
-            this.lblFecha.Location = new System.Drawing.Point(72, 3);
+            this.lblFecha.Location = new System.Drawing.Point(71, 3);
             this.lblFecha.Name = "lblFecha";
             this.lblFecha.Size = new System.Drawing.Size(63, 13);
             this.lblFecha.TabIndex = 13;
@@ -194,7 +194,7 @@
             // 
             // labelControl1
             // 
-            this.labelControl1.Location = new System.Drawing.Point(190, 3);
+            this.labelControl1.Location = new System.Drawing.Point(188, 3);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(43, 13);
             this.labelControl1.TabIndex = 1;
@@ -202,7 +202,7 @@
             // 
             // txtnumlicitacion
             // 
-            this.txtnumlicitacion.Location = new System.Drawing.Point(246, 3);
+            this.txtnumlicitacion.Location = new System.Drawing.Point(244, 3);
             this.txtnumlicitacion.Name = "txtnumlicitacion";
             this.txtnumlicitacion.Size = new System.Drawing.Size(228, 20);
             this.txtnumlicitacion.TabIndex = 1;
@@ -210,7 +210,7 @@
             // 
             // labelControl4
             // 
-            this.labelControl4.Location = new System.Drawing.Point(480, 3);
+            this.labelControl4.Location = new System.Drawing.Point(478, 3);
             this.labelControl4.Name = "labelControl4";
             this.labelControl4.Size = new System.Drawing.Size(54, 13);
             this.labelControl4.TabIndex = 6;
@@ -218,7 +218,7 @@
             // 
             // txtDesanexo
             // 
-            this.txtDesanexo.Location = new System.Drawing.Point(585, 3);
+            this.txtDesanexo.Location = new System.Drawing.Point(583, 3);
             this.txtDesanexo.Name = "txtDesanexo";
             this.txtDesanexo.Properties.LookAndFeel.SkinName = "Blue";
             this.txtDesanexo.Size = new System.Drawing.Size(371, 20);
@@ -236,9 +236,9 @@
             // 
             this.cbxTipolicitacion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxTipolicitacion.FormattingEnabled = true;
-            this.cbxTipolicitacion.Location = new System.Drawing.Point(72, 44);
+            this.cbxTipolicitacion.Location = new System.Drawing.Point(71, 44);
             this.cbxTipolicitacion.Name = "cbxTipolicitacion";
-            this.cbxTipolicitacion.Size = new System.Drawing.Size(112, 21);
+            this.cbxTipolicitacion.Size = new System.Drawing.Size(111, 21);
             this.cbxTipolicitacion.TabIndex = 5;
             // 
             // cmdMaximos
@@ -260,7 +260,7 @@
             this.gcAnexoDetalle.Name = "gcAnexoDetalle";
             this.gcAnexoDetalle.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemSearchLookUpEdit2});
-            this.gcAnexoDetalle.Size = new System.Drawing.Size(1114, 428);
+            this.gcAnexoDetalle.Size = new System.Drawing.Size(1114, 426);
             this.gcAnexoDetalle.TabIndex = 8;
             this.gcAnexoDetalle.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvAnexoDetalle});
