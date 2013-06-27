@@ -42,6 +42,7 @@
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             this.cmdBusqueda = new DevExpress.XtraEditors.SimpleButton();
+            this.label1 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.deFinal.Properties.VistaTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.deFinal.Properties)).BeginInit();
@@ -200,11 +201,23 @@
             this.cmdBusqueda.Text = "Generar Busqueda";
             this.cmdBusqueda.Click += new System.EventHandler(this.CmdBusquedaClick);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Red;
+            this.label1.Location = new System.Drawing.Point(226, 110);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(188, 16);
+            this.label1.TabIndex = 19;
+            this.label1.Text = "Sin ningun parametro trae todo";
+            // 
             // FrmFiltroBusquedaPedido
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(412, 268);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.cmdBusqueda);
             this.Controls.Add(this.labelControl4);
             this.Controls.Add(this.labelControl3);
@@ -247,5 +260,6 @@
         private System.Windows.Forms.CheckBox cbMayor;
         private DevExpress.XtraEditors.SimpleButton cmdBusqueda;
         private System.Windows.Forms.CheckBox cbExtramuro;
+        private System.Windows.Forms.Label label1;
     }
 }
