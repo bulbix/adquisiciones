@@ -43,22 +43,13 @@ namespace Adquisiciones.View.Busquedas
         #region Metodos
         protected override void Buscar()
         {
-            base.Buscar();
-            foreach (Pedido pedido in base.bsSource)
-            {
-                if (!pedido.EstadoPedido.Trim().Equals("C") && !pedido.EstadoPedido.Trim().Equals("P")){
-                    pedido.EstadoPedido = "A";
-                }
 
-                try{
-                    var partidaAlmacen = PedidoService.PedidoDao.CargarPartidaAlmacen(pedido);
-                    pedido.AlmacenDestino = partidaAlmacen[0];
-                    pedido.PartidaString = partidaAlmacen[1];
-                }
-                catch(Exception ex)
-                {
-                }
-            }
+            var forma = new FrmFiltroBusquedaPedido(PedidoService,bsSource,AlmacenActual);
+            forma.ShowDialog();
+
+
+            //base.Buscar();
+            
         }
 
         protected override void Eliminar()

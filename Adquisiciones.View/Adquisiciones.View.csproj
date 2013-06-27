@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -30,7 +30,7 @@
     <PublisherName>INR</PublisherName>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publicacion.htm</WebPage>
-    <ApplicationRevision>58</ApplicationRevision>
+    <ApplicationRevision>62</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -198,6 +198,12 @@
     </Compile>
     <Compile Include="Busquedas\FrmBusquedaProveedor.Designer.cs">
       <DependentUpon>FrmBusquedaProveedor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Busquedas\FrmFiltroBusquedaPedido.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Busquedas\FrmFiltroBusquedaPedido.Designer.cs">
+      <DependentUpon>FrmFiltroBusquedaPedido.cs</DependentUpon>
     </Compile>
     <Compile Include="CaptchaImage.cs" />
     <Compile Include="Catalogos\FrmCatalogo.cs">
@@ -409,6 +415,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Busquedas\FrmBusquedaProveedor.resx">
       <DependentUpon>FrmBusquedaProveedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Busquedas\FrmFiltroBusquedaPedido.resx">
+      <DependentUpon>FrmFiltroBusquedaPedido.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Catalogos\FrmCatalogo.resx">
       <DependentUpon>FrmCatalogo.cs</DependentUpon>

@@ -300,8 +300,11 @@ namespace Adquisiciones.Business.ModPedido
         [Transaction(ReadOnly = true)]
         public object ConsultarEntityAll(Almacen almacen)
          {
-             return PedidoDao.CargarPedidos(almacen);
+             //return PedidoDao.CargarPedidos(almacen);
+            return null;
          }
+
+        
 
          [Transaction]
         public void EliminarEntity(object entity, string nombreEntity)
