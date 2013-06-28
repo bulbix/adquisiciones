@@ -207,8 +207,8 @@ namespace Adquisiciones.Business.ModPedido
                 var pedidoDetalle = pedido.PedidoDetalle[index];
                 pedidoDetalle.Pedido = pedido;
 
-                if (pedidoDetalle.RenglonPedido == 0)
-                    pedidoDetalle.RenglonPedido = (short)(index + 1);
+                //if (pedidoDetalle.RenglonPedido == 0)
+                pedidoDetalle.RenglonPedido = (short)(index + 1);
 
                 var entrega = 1;
 

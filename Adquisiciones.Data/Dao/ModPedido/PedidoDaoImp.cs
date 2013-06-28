@@ -146,13 +146,13 @@ namespace Adquisiciones.Data.Dao.ModPedido
             string rangoFecha = "", rangoNumero = "", rangoTipo = "";
 
             if (fechaInicial != null && fechaFinal != null)
-                rangoFecha = "and p.FechaPedido between :fInicial and :fFinal";
+                rangoFecha = " and p.FechaPedido between :fInicial and :fFinal ";
 
             if(numeroInicial!= 0 && numeroFinal != 0)
-                rangoNumero = string.Format("and p.NumeroPedido between {0} and {1}", numeroInicial, numeroFinal);
+                rangoNumero = string.Format(" and p.NumeroPedido between {0} and {1} ", numeroInicial, numeroFinal);
 
             if(tipos.Length > 0)
-                rangoTipo = string.Format("and p.CatTipopedido.IdTipoped in ({0})", String.Join(",", tipos));
+                rangoTipo = string.Format(" and p.CatTipopedido.IdTipoped in ({0}) ", String.Join(",", tipos));
 
             strquery = string.Format(strquery, rangoFecha, rangoNumero, rangoTipo);
 

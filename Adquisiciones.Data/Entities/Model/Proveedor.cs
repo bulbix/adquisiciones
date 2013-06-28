@@ -518,9 +518,9 @@ namespace Adquisiciones.Data.Entities
             return CveProveedor + " - " + NombreFiscal;
         }
 
-        public string ProveedorString()
+        public string ProveedorString
         {
-            return ToString();
+            get { return ToString(); }
         }
 
         #region business logic

@@ -177,9 +177,9 @@ namespace Adquisiciones.Data.Entities
 	        return _partida + " - " + _despartida;
         }
 
-        public string CatPartidaString()
+        public string CatPartidaString
         {
-            return ToString();
+            get { return ToString(); }
         }
 
         public int CompareTo(object obj)
