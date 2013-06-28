@@ -100,7 +100,8 @@ namespace Adquisiciones.View.Busquedas
                     Servicio.EliminarEntity(GvGeneral.GetFocusedRow(), TypeEntity.Name);
                     XtraMessageBox.Show(@"Elemento seleccionado borrado", @"Adquisiciones",
                                     MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    Buscar();
+                    
+                    GvGeneral.DeleteRow(GvGeneral.FocusedRowHandle);
                 }
             }
             catch (Exception ee)

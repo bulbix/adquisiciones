@@ -70,5 +70,13 @@ namespace Adquisiciones.View.Busquedas
             
             bsSource.DataSource = source;
         }
+
+        private void FrmFiltroBusquedaPedido_Load(object sender, EventArgs e)
+        {
+            var fechatemp = DateTime.Today;
+            var fecha1 = new DateTime(fechatemp.Year, fechatemp.Month, 1);
+            deInicial.DateTime = fecha1;
+            deFinal.DateTime = DateTime.Now;
+        }
     }
 }
