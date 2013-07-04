@@ -112,6 +112,26 @@ namespace Adquisiciones.View.Busquedas
 
         }
 
+
+        protected virtual void Reporte()
+        {
+            try
+            {
+                var select = Convert.
+                    ChangeType(GvGeneral.GetFocusedRow(), TypeEntity);
+
+                var forma = new FrmModuloReportes(NombreReporte, select);
+                forma.MdiParent = this.MdiParent;
+                forma.Show();
+            }
+            catch (Exception ee)
+            {
+                XtraMessageBox.Show(@"No hay registro seleccionado", @"Adquisiciones",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
+        }
+
         protected void GetServicio()
         {
             var ctx = ContextRegistry.GetContext();
@@ -148,22 +168,7 @@ namespace Adquisiciones.View.Busquedas
         
         protected virtual void CmdReporteItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-
-            try
-            {
-                var select = Convert.
-                    ChangeType(GvGeneral.GetFocusedRow(), TypeEntity);
-
-                var forma = new FrmModuloReportes(NombreReporte, select);
-                forma.MdiParent = this.MdiParent;
-                forma.Show();
-            }
-            catch (Exception ee)
-            {
-                XtraMessageBox.Show(@"No hay registro seleccionado", @"Adquisiciones",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
+            Reporte();
         }
 
         private void CmdEliminarItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

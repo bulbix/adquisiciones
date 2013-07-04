@@ -69,12 +69,6 @@ namespace Adquisiciones.View.Catalogos
                         listaError.Enabled = true;
                         lblNumErrors.Enabled = true;
                     }
-
-                    if (desModulo.Contains("reportear"))
-                    {
-                        cmdReporte.Enabled = true;
-                    }
-
                 }
             }
         }

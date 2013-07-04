@@ -23,7 +23,7 @@ namespace Adquisiciones.Data.Entities
         public virtual event PropertyChangedEventHandler PropertyChanged;
 
         #region Member Variables
-        protected int? _cveproveedor;
+        protected int _cveproveedor;
         protected string _nombrefiscal;
         protected string _nombrecomercial;
         protected string _paterno;
@@ -47,7 +47,7 @@ namespace Adquisiciones.Data.Entities
         protected string _giro;
         protected string _observacion;
         protected string _ipterminal;
-        protected DateTime? _fechaalta;
+        protected DateTime _fechaalta;
         protected Usuario _usuario;
         protected IList<Cotizacion> _cotizacion;
         protected IList<CotizacionHist> _cotizacionhist;
@@ -63,7 +63,7 @@ namespace Adquisiciones.Data.Entities
 
         public Proveedor() { }
 
-        public Proveedor(Usuario usuario, string ipterminal, DateTime? fechaalta)
+        public Proveedor(Usuario usuario, string ipterminal, DateTime fechaalta)
         {
             this._usuario = usuario;
             this._ipterminal = ipterminal;
@@ -79,7 +79,7 @@ namespace Adquisiciones.Data.Entities
         #region Public Properties
 
         [NotNull(Message = ("Campo Requerido"))]
-        public virtual int? CveProveedor
+        public virtual int CveProveedor
         {
             get
             { return _cveproveedor; }
@@ -95,7 +95,7 @@ namespace Adquisiciones.Data.Entities
         }
 
         [StringOptional]
-        [NotNullNotEmpty(Message = ("Campo Requerido"))]
+        //[NotNullNotEmpty(Message = ("Campo Requerido"))]
         public virtual string NombreFiscal
         {
             get { return _nombrefiscal!=null?_nombrefiscal.Trim():""; }
@@ -128,7 +128,7 @@ namespace Adquisiciones.Data.Entities
         }
 
         [StringOptional]
-        [NotNullNotEmpty(Message = ("Campo Requerido"))]
+        //[NotNullNotEmpty(Message = ("Campo Requerido"))]
         public virtual string Paterno
         {
             get { return _paterno!= null?_paterno.Trim():""; }
@@ -143,7 +143,7 @@ namespace Adquisiciones.Data.Entities
         }
 
         [StringOptional]
-        [NotNullNotEmpty(Message = ("Campo Requerido"))]
+        //[NotNullNotEmpty(Message = ("Campo Requerido"))]
         public virtual string Materno
         {
             get { return _materno!=null?_materno.Trim():""; }
@@ -159,7 +159,7 @@ namespace Adquisiciones.Data.Entities
         }
 
         [StringOptional]
-        [NotNullNotEmpty(Message = ("Campo Requerido"))]
+        //[NotNullNotEmpty(Message = ("Campo Requerido"))]
         public virtual string Nombre
         {
             get { return _nombre!=null?_nombre.Trim():""; }
@@ -349,7 +349,7 @@ namespace Adquisiciones.Data.Entities
         }
 
         [StringOptional]
-        [NotNullNotEmpty(Message = ("Campo Requerido"))]
+        //[NotNullNotEmpty(Message = ("Campo Requerido"))]
         public virtual string Rpaterno
         {
             get { return _rpaterno!=null?_rpaterno.Trim():""; }
@@ -364,7 +364,7 @@ namespace Adquisiciones.Data.Entities
         }
 
         [StringOptional]
-        [NotNullNotEmpty(Message = ("Campo Requerido"))]
+        //[NotNullNotEmpty(Message = ("Campo Requerido"))]
         public virtual string Rmaterno
         {
             get { return _rmaterno!=null?_rmaterno.Trim():""; }
@@ -379,7 +379,7 @@ namespace Adquisiciones.Data.Entities
         }
 
         [StringOptional]
-        [NotNullNotEmpty(Message = ("Campo Requerido"))]
+        //[NotNullNotEmpty(Message = ("Campo Requerido"))]
         public virtual string Rnombre
         {
             get { return _rnombre!=null?_rnombre.Trim():""; }
@@ -427,7 +427,7 @@ namespace Adquisiciones.Data.Entities
             set { _ipterminal = value; }
         }
 
-        public virtual DateTime? FechaAlta
+        public virtual DateTime FechaAlta
         {
             get { return _fechaalta; }set { _fechaalta = value; }
         }
@@ -446,6 +446,21 @@ namespace Adquisiciones.Data.Entities
         public virtual CatEmpresa CatEmpresa
         {
             get;set;
+        }
+
+        public string TipoEmpresa
+        {
+            get
+            {
+                try{
+                    return CatEmpresa.DesEmpresa;
+                }
+                catch(Exception e)
+                {
+                    return "";
+                }
+            }
+            set { }
         }
 
         public virtual IList<Cotizacion> Cotizacion
@@ -510,7 +525,7 @@ namespace Adquisiciones.Data.Entities
 
         public int CompareTo(object other)
         {
-            return CveProveedor.Value.CompareTo((other as Proveedor).CveProveedor.Value);
+            return CveProveedor.CompareTo((other as Proveedor).CveProveedor);
         }
 
         public override string ToString()
@@ -518,9 +533,21 @@ namespace Adquisiciones.Data.Entities
             return CveProveedor + " - " + NombreFiscal;
         }
 
+        
+
         public string ProveedorString
         {
             get { return ToString(); }
+        }
+
+        public string NombreCompleto
+        {
+            get { return String.Format("{0} {1} {2}", Paterno, Materno, Nombre); }
+        }
+
+        public string NombreRepresentanteCompleto
+        {
+            get { return String.Format("{0} {1} {2}", Rpaterno, Rmaterno, Rnombre); }
         }
 
         #region business logic

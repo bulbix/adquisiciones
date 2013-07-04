@@ -92,7 +92,8 @@ namespace Adquisiciones.View
                 case "reportePedidoEntrada":
                     ReportePedidoEntrada(Entity as List<Pedido>);
                     break;
-                case "reporteEntradaPedido":
+                case "reporteProveedor":
+                    ReporteProveedor(Entity as List<Proveedor>);
                     break;
             }
         }
@@ -314,9 +315,9 @@ namespace Adquisiciones.View
                         FechaPedido = String.Format("{0:dd/MM/yyyy}", pedido.FechaPedido),
                         NumeroRequisicion = pedido.NumeroRequisicion,
                         Proveedor = pedido.Proveedor.NombreFiscal,
-                        DescripcionArticulo = pedidoDetalle.Articulo.DesArticulo,
+                        DescripcionArticulo = pedidoDetalle.Articulo.ToString(),
                         UnidadArticulo  = pedidoDetalle.Articulo.Unidad,
-                        PartidaArticulo = partida.ToString(),
+                        PartidaArticulo = partida.Partida,
                         Cantidad = pedidoDetalle.Cantidad.Value,
                         PrecioUnitario = pedidoDetalle.PrecioUnitario.Value,
                         Importe = importe,
@@ -431,24 +432,6 @@ namespace Adquisiciones.View
                     }
                     
                 }
-                //else
-                //{
-                //    var pedidoEntrada = new PedidoEntrada
-                //    {
-                //        NumeroPedido = 0,
-                //        FechaPedido = "",
-                //        Proveedor = "",
-                //        Total = (decimal)0.0,
-                //        NumeroEntrada = entrada.NumeroEntrada.Value,
-                //        Factura = entrada.NumeroFactura,
-                //        FechaEntrada = String.Format("{0:dd/MM/yyyy}", entrada.FechaEntrada),
-                //        ImporteEntrada = (decimal)0.00
-                //    };
-
-                //    listaPedidoEntrada.Add(pedidoEntrada);
-                    
-                //}
-
             }
 
             ReportePedidoEntrada1.SetDataSource(listaPedidoEntrada);
@@ -459,5 +442,18 @@ namespace Adquisiciones.View
 
 
         }
+    
+    
+        public void ReporteProveedor(List<Proveedor> provs)
+        {
+            ReporteProveedor1.SetDataSource(provs);
+            crystalReportViewer.ReportSource = ReporteProveedor1;
+            crystalReportViewer.Refresh();
+
+            Text = @"ReporteProveedor";
+            
+        }
+    
+    
     }
 }

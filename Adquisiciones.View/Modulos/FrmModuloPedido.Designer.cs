@@ -29,7 +29,7 @@ namespace Adquisiciones.View.Modulos
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
+            DevExpress.XtraGrid.GridLevelNode gridLevelNode2 = new DevExpress.XtraGrid.GridLevelNode();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.panelFechaEntrega = new DevExpress.XtraEditors.PanelControl();
             this.cmdUpdateFechaEntrega = new DevExpress.XtraEditors.SimpleButton();
@@ -165,23 +165,23 @@ namespace Adquisiciones.View.Modulos
             // 
             // splitContainerControl1
             // 
+            this.splitContainerControl1.Location = new System.Drawing.Point(0, 68);
             this.splitContainerControl1.Panel1.Controls.Add(this.groupControl1);
             this.splitContainerControl1.Panel2.Controls.Add(this.gcPedidoDetalle);
-            this.splitContainerControl1.Size = new System.Drawing.Size(1121, 486);
+            this.splitContainerControl1.Size = new System.Drawing.Size(1121, 488);
             this.splitContainerControl1.SplitterPosition = 283;
             this.splitContainerControl1.TabIndex = 1000;
             // 
             // lblAlmacen
             // 
             this.lblAlmacen.Location = new System.Drawing.Point(247, 4);
-            this.lblAlmacen.TabIndex = 1000;
             this.lblAlmacen.Visible = true;
             // 
             // cbxAlmacen
             // 
             this.cbxAlmacen.Location = new System.Drawing.Point(298, 1);
             this.cbxAlmacen.Size = new System.Drawing.Size(162, 21);
-            this.cbxAlmacen.TabIndex = 1015;
+            this.cbxAlmacen.TabIndex = 2;
             this.cbxAlmacen.TabStop = false;
             this.cbxAlmacen.Visible = true;
             this.cbxAlmacen.SelectedIndexChanged += new System.EventHandler(this.CbxAlmacenSelectedIndexChanged);
@@ -198,7 +198,7 @@ namespace Adquisiciones.View.Modulos
             this.groupControl1.Location = new System.Drawing.Point(0, 0);
             this.groupControl1.Name = "groupControl1";
             this.groupControl1.Size = new System.Drawing.Size(1121, 283);
-            this.groupControl1.TabIndex = 1000;
+            this.groupControl1.TabIndex = 0;
             this.groupControl1.Text = "Datos Generales del Pedido";
             // 
             // panelFechaEntrega
@@ -212,14 +212,14 @@ namespace Adquisiciones.View.Modulos
             this.panelFechaEntrega.Location = new System.Drawing.Point(229, 256);
             this.panelFechaEntrega.Name = "panelFechaEntrega";
             this.panelFechaEntrega.Size = new System.Drawing.Size(633, 27);
-            this.panelFechaEntrega.TabIndex = 1007;
+            this.panelFechaEntrega.TabIndex = 3;
             // 
             // cmdUpdateFechaEntrega
             // 
             this.cmdUpdateFechaEntrega.Location = new System.Drawing.Point(457, 5);
             this.cmdUpdateFechaEntrega.Name = "cmdUpdateFechaEntrega";
             this.cmdUpdateFechaEntrega.Size = new System.Drawing.Size(163, 23);
-            this.cmdUpdateFechaEntrega.TabIndex = 1012;
+            this.cmdUpdateFechaEntrega.TabIndex = 0;
             this.cmdUpdateFechaEntrega.TabStop = false;
             this.cmdUpdateFechaEntrega.Text = "Actualizar Fechas de Entrega";
             this.cmdUpdateFechaEntrega.Click += new System.EventHandler(this.CmdUpdateFechaEntregaClick);
@@ -229,7 +229,7 @@ namespace Adquisiciones.View.Modulos
             this.labelControl14.Location = new System.Drawing.Point(0, 9);
             this.labelControl14.Name = "labelControl14";
             this.labelControl14.Size = new System.Drawing.Size(70, 13);
-            this.labelControl14.TabIndex = 1011;
+            this.labelControl14.TabIndex = 0;
             this.labelControl14.Text = "Fecha Entrega";
             // 
             // labelControl11
@@ -237,7 +237,7 @@ namespace Adquisiciones.View.Modulos
             this.labelControl11.Location = new System.Drawing.Point(292, 9);
             this.labelControl11.Name = "labelControl11";
             this.labelControl11.Size = new System.Drawing.Size(54, 13);
-            this.labelControl11.TabIndex = 1010;
+            this.labelControl11.TabIndex = 3;
             this.labelControl11.Text = "Fecha Final";
             // 
             // labelControl13
@@ -245,7 +245,7 @@ namespace Adquisiciones.View.Modulos
             this.labelControl13.Location = new System.Drawing.Point(108, 9);
             this.labelControl13.Name = "labelControl13";
             this.labelControl13.Size = new System.Drawing.Size(59, 13);
-            this.labelControl13.TabIndex = 1009;
+            this.labelControl13.TabIndex = 1;
             this.labelControl13.Text = "Fecha Inicial";
             // 
             // deFechaFinal
@@ -258,7 +258,7 @@ namespace Adquisiciones.View.Modulos
             this.deFechaFinal.Properties.VistaTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
             this.deFechaFinal.Size = new System.Drawing.Size(100, 20);
-            this.deFechaFinal.TabIndex = 12;
+            this.deFechaFinal.TabIndex = 4;
             // 
             // deFechaInicial
             // 
@@ -270,21 +270,21 @@ namespace Adquisiciones.View.Modulos
             this.deFechaInicial.Properties.VistaTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
             this.deFechaInicial.Size = new System.Drawing.Size(100, 20);
-            this.deFechaInicial.TabIndex = 11;
+            this.deFechaInicial.TabIndex = 2;
             // 
             // tableLayoutPanel3
             // 
             this.tableLayoutPanel3.ColumnCount = 10;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 36.13445F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 63.86555F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 48F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 109F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 57F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 113F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 64F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 108F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 68F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 103F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 67F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 104F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 83F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 233F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 102F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 82F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 159F));
             this.tableLayoutPanel3.Controls.Add(this.cbxIva, 7, 1);
             this.tableLayoutPanel3.Controls.Add(this.labelControl10, 6, 1);
             this.tableLayoutPanel3.Controls.Add(this.cbxCargo, 5, 1);
@@ -310,147 +310,146 @@ namespace Adquisiciones.View.Modulos
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 44.94382F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 55.05618F));
             this.tableLayoutPanel3.Size = new System.Drawing.Size(917, 73);
-            this.tableLayoutPanel3.TabIndex = 1000;
+            this.tableLayoutPanel3.TabIndex = 0;
             // 
             // cbxIva
             // 
             this.cbxIva.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxIva.FormattingEnabled = true;
-            this.cbxIva.Location = new System.Drawing.Point(499, 35);
+            this.cbxIva.Location = new System.Drawing.Point(576, 35);
             this.cbxIva.Name = "cbxIva";
             this.cbxIva.Size = new System.Drawing.Size(88, 21);
-            this.cbxIva.TabIndex = 5;
+            this.cbxIva.TabIndex = 17;
             this.cbxIva.SelectedValueChanged += new System.EventHandler(this.CbxIvaSelectedValueChanged);
             // 
             // labelControl10
             // 
-            this.labelControl10.Location = new System.Drawing.Point(432, 35);
+            this.labelControl10.Location = new System.Drawing.Point(509, 35);
             this.labelControl10.Name = "labelControl10";
             this.labelControl10.Size = new System.Drawing.Size(21, 13);
-            this.labelControl10.TabIndex = 511;
+            this.labelControl10.TabIndex = 16;
             this.labelControl10.Text = "IVA:";
             // 
             // cbxCargo
             // 
             this.cbxCargo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxCargo.FormattingEnabled = true;
-            this.cbxCargo.Location = new System.Drawing.Point(319, 35);
+            this.cbxCargo.Location = new System.Drawing.Point(406, 35);
             this.cbxCargo.Name = "cbxCargo";
-            this.cbxCargo.Size = new System.Drawing.Size(107, 21);
-            this.cbxCargo.TabIndex = 4;
+            this.cbxCargo.Size = new System.Drawing.Size(97, 21);
+            this.cbxCargo.TabIndex = 15;
             // 
             // lblCargo
             // 
             this.lblCargo.AutoSize = true;
-            this.lblCargo.Location = new System.Drawing.Point(262, 32);
+            this.lblCargo.Location = new System.Drawing.Point(338, 32);
             this.lblCargo.Name = "lblCargo";
             this.lblCargo.Size = new System.Drawing.Size(45, 13);
-            this.lblCargo.TabIndex = 510;
+            this.lblCargo.TabIndex = 14;
             this.lblCargo.Text = "Cargo a";
             // 
             // cbxActividad
             // 
             this.cbxActividad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxActividad.FormattingEnabled = true;
-            this.cbxActividad.Location = new System.Drawing.Point(153, 35);
+            this.cbxActividad.Location = new System.Drawing.Point(230, 35);
             this.cbxActividad.Name = "cbxActividad";
-            this.cbxActividad.Size = new System.Drawing.Size(103, 21);
-            this.cbxActividad.TabIndex = 3;
+            this.cbxActividad.Size = new System.Drawing.Size(102, 21);
+            this.cbxActividad.TabIndex = 13;
             // 
             // labelControl8
             // 
-            this.labelControl8.Location = new System.Drawing.Point(105, 35);
+            this.labelControl8.Location = new System.Drawing.Point(166, 35);
             this.labelControl8.Name = "labelControl8";
             this.labelControl8.Size = new System.Drawing.Size(44, 13);
-            this.labelControl8.TabIndex = 509;
+            this.labelControl8.TabIndex = 12;
             this.labelControl8.Text = "Actividad";
             // 
             // txtReserva
             // 
-            this.txtReserva.Location = new System.Drawing.Point(40, 35);
+            this.txtReserva.Location = new System.Drawing.Point(62, 35);
             this.txtReserva.Name = "txtReserva";
             this.txtReserva.Size = new System.Drawing.Size(51, 20);
-            this.txtReserva.TabIndex = 2;
+            this.txtReserva.TabIndex = 11;
             // 
             // labelControl4
             // 
             this.labelControl4.Location = new System.Drawing.Point(3, 35);
             this.labelControl4.Name = "labelControl4";
             this.labelControl4.Size = new System.Drawing.Size(40, 13);
-            this.labelControl4.TabIndex = 508;
+            this.labelControl4.TabIndex = 10;
             this.labelControl4.Text = "Reserva";
             // 
             // rbCantidad
             // 
             this.rbCantidad.AutoSize = true;
             this.rbCantidad.Checked = true;
-            this.rbCantidad.Location = new System.Drawing.Point(603, 3);
+            this.rbCantidad.Location = new System.Drawing.Point(678, 3);
             this.rbCantidad.Name = "rbCantidad";
             this.rbCantidad.Size = new System.Drawing.Size(68, 17);
-            this.rbCantidad.TabIndex = 507;
-            this.rbCantidad.TabStop = true;
+            this.rbCantidad.TabIndex = 1500;
             this.rbCantidad.Text = "Cantidad";
             this.rbCantidad.UseVisualStyleBackColor = true;
             // 
             // labelControl9
             // 
-            this.labelControl9.Location = new System.Drawing.Point(432, 3);
+            this.labelControl9.Location = new System.Drawing.Point(509, 3);
             this.labelControl9.Name = "labelControl9";
             this.labelControl9.Size = new System.Drawing.Size(51, 13);
-            this.labelControl9.TabIndex = 505;
+            this.labelControl9.TabIndex = 6;
             this.labelControl9.Text = "Descuento";
             // 
             // rbPorcentaje
             // 
             this.rbPorcentaje.AutoSize = true;
-            this.rbPorcentaje.Location = new System.Drawing.Point(499, 3);
+            this.rbPorcentaje.Location = new System.Drawing.Point(576, 3);
             this.rbPorcentaje.Name = "rbPorcentaje";
             this.rbPorcentaje.Size = new System.Drawing.Size(77, 17);
-            this.rbPorcentaje.TabIndex = 506;
+            this.rbPorcentaje.TabIndex = 7;
             this.rbPorcentaje.Text = "Porcentaje";
             this.rbPorcentaje.UseVisualStyleBackColor = true;
             // 
             // txtRequisicion
             // 
-            this.txtRequisicion.Location = new System.Drawing.Point(319, 3);
+            this.txtRequisicion.Location = new System.Drawing.Point(406, 3);
             this.txtRequisicion.Name = "txtRequisicion";
             this.txtRequisicion.Size = new System.Drawing.Size(93, 20);
-            this.txtRequisicion.TabIndex = 0;
+            this.txtRequisicion.TabIndex = 5;
             // 
             // labelControl3
             // 
-            this.labelControl3.Location = new System.Drawing.Point(262, 3);
+            this.labelControl3.Location = new System.Drawing.Point(338, 3);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(53, 13);
-            this.labelControl3.TabIndex = 504;
+            this.labelControl3.TabIndex = 4;
             this.labelControl3.Text = "Requisicion";
             // 
             // lblNumero
             // 
             this.lblNumero.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNumero.Appearance.ForeColor = System.Drawing.Color.Blue;
-            this.lblNumero.Location = new System.Drawing.Point(153, 3);
+            this.lblNumero.Location = new System.Drawing.Point(230, 3);
             this.lblNumero.Name = "lblNumero";
             this.lblNumero.Size = new System.Drawing.Size(75, 16);
-            this.lblNumero.TabIndex = 503;
+            this.lblNumero.TabIndex = 3;
             this.lblNumero.Text = "labelControl7";
             // 
             // labelControl2
             // 
-            this.labelControl2.Location = new System.Drawing.Point(105, 3);
+            this.labelControl2.Location = new System.Drawing.Point(166, 3);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(37, 13);
-            this.labelControl2.TabIndex = 502;
+            this.labelControl2.TabIndex = 2;
             this.labelControl2.Text = "Numero";
             // 
             // lblFecha
             // 
             this.lblFecha.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFecha.Appearance.ForeColor = System.Drawing.Color.Blue;
-            this.lblFecha.Location = new System.Drawing.Point(40, 3);
+            this.lblFecha.Location = new System.Drawing.Point(62, 3);
             this.lblFecha.Name = "lblFecha";
             this.lblFecha.Size = new System.Drawing.Size(75, 16);
-            this.lblFecha.TabIndex = 501;
+            this.lblFecha.TabIndex = 1;
             this.lblFecha.Text = "labelControl7";
             // 
             // labelControl1
@@ -458,24 +457,24 @@ namespace Adquisiciones.View.Modulos
             this.labelControl1.Location = new System.Drawing.Point(3, 3);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(29, 13);
-            this.labelControl1.TabIndex = 500;
+            this.labelControl1.TabIndex = 0;
             this.labelControl1.Text = "Fecha";
             // 
             // txtDescuento
             // 
             this.txtDescuento.EditValue = "";
-            this.txtDescuento.Location = new System.Drawing.Point(686, 3);
+            this.txtDescuento.Location = new System.Drawing.Point(760, 3);
             this.txtDescuento.Name = "txtDescuento";
             this.txtDescuento.Size = new System.Drawing.Size(84, 20);
-            this.txtDescuento.TabIndex = 1;
+            this.txtDescuento.TabIndex = 9;
             this.txtDescuento.Leave += new System.EventHandler(this.TxtDescuentoLeave);
             // 
             // cmdRefrescarTotal
             // 
-            this.cmdRefrescarTotal.Location = new System.Drawing.Point(686, 35);
+            this.cmdRefrescarTotal.Location = new System.Drawing.Point(760, 35);
             this.cmdRefrescarTotal.Name = "cmdRefrescarTotal";
             this.cmdRefrescarTotal.Size = new System.Drawing.Size(132, 23);
-            this.cmdRefrescarTotal.TabIndex = 512;
+            this.cmdRefrescarTotal.TabIndex = 18;
             this.cmdRefrescarTotal.TabStop = false;
             this.cmdRefrescarTotal.Text = "Refrescar Total";
             this.cmdRefrescarTotal.UseVisualStyleBackColor = true;
@@ -506,7 +505,7 @@ namespace Adquisiciones.View.Modulos
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 63F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(193, 224);
-            this.tableLayoutPanel2.TabIndex = 1000;
+            this.tableLayoutPanel2.TabIndex = 2;
             // 
             // lblTotal
             // 
@@ -515,7 +514,7 @@ namespace Adquisiciones.View.Modulos
             this.lblTotal.Location = new System.Drawing.Point(110, 163);
             this.lblTotal.Name = "lblTotal";
             this.lblTotal.Size = new System.Drawing.Size(32, 16);
-            this.lblTotal.TabIndex = 522;
+            this.lblTotal.TabIndex = 9;
             this.lblTotal.Text = "$0.00";
             // 
             // lblIva
@@ -525,7 +524,7 @@ namespace Adquisiciones.View.Modulos
             this.lblIva.Location = new System.Drawing.Point(110, 124);
             this.lblIva.Name = "lblIva";
             this.lblIva.Size = new System.Drawing.Size(32, 16);
-            this.lblIva.TabIndex = 520;
+            this.lblIva.TabIndex = 7;
             this.lblIva.Text = "$0.00";
             // 
             // lblSubDesc
@@ -535,7 +534,7 @@ namespace Adquisiciones.View.Modulos
             this.lblSubDesc.Location = new System.Drawing.Point(110, 83);
             this.lblSubDesc.Name = "lblSubDesc";
             this.lblSubDesc.Size = new System.Drawing.Size(32, 16);
-            this.lblSubDesc.TabIndex = 518;
+            this.lblSubDesc.TabIndex = 5;
             this.lblSubDesc.Text = "$0.00";
             // 
             // label3
@@ -545,7 +544,7 @@ namespace Adquisiciones.View.Modulos
             this.label3.Location = new System.Drawing.Point(3, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(89, 19);
-            this.label3.TabIndex = 513;
+            this.label3.TabIndex = 0;
             this.label3.Text = "SUBTOTAL";
             // 
             // label1
@@ -555,7 +554,7 @@ namespace Adquisiciones.View.Modulos
             this.label1.Location = new System.Drawing.Point(3, 36);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(101, 19);
-            this.label1.TabIndex = 515;
+            this.label1.TabIndex = 2;
             this.label1.Text = "DESCUENTO";
             // 
             // label4
@@ -565,7 +564,7 @@ namespace Adquisiciones.View.Modulos
             this.label4.Location = new System.Drawing.Point(3, 121);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(51, 19);
-            this.label4.TabIndex = 519;
+            this.label4.TabIndex = 6;
             this.label4.Text = "I.V.A.";
             // 
             // label5
@@ -575,7 +574,7 @@ namespace Adquisiciones.View.Modulos
             this.label5.Location = new System.Drawing.Point(3, 160);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(60, 19);
-            this.label5.TabIndex = 521;
+            this.label5.TabIndex = 8;
             this.label5.Text = "TOTAL";
             // 
             // label2
@@ -585,7 +584,7 @@ namespace Adquisiciones.View.Modulos
             this.label2.Location = new System.Drawing.Point(3, 80);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(92, 19);
-            this.label2.TabIndex = 517;
+            this.label2.TabIndex = 4;
             this.label2.Text = "SUBT DESC";
             // 
             // lblSubTotal
@@ -595,7 +594,7 @@ namespace Adquisiciones.View.Modulos
             this.lblSubTotal.Location = new System.Drawing.Point(110, 3);
             this.lblSubTotal.Name = "lblSubTotal";
             this.lblSubTotal.Size = new System.Drawing.Size(32, 16);
-            this.lblSubTotal.TabIndex = 514;
+            this.lblSubTotal.TabIndex = 1;
             this.lblSubTotal.Text = "$0.00";
             // 
             // lblDescuento
@@ -605,7 +604,7 @@ namespace Adquisiciones.View.Modulos
             this.lblDescuento.Location = new System.Drawing.Point(110, 39);
             this.lblDescuento.Name = "lblDescuento";
             this.lblDescuento.Size = new System.Drawing.Size(32, 16);
-            this.lblDescuento.TabIndex = 516;
+            this.lblDescuento.TabIndex = 3;
             this.lblDescuento.Text = "$0.00";
             // 
             // tableLayoutPanel1
@@ -632,14 +631,14 @@ namespace Adquisiciones.View.Modulos
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(693, 153);
-            this.tableLayoutPanel1.TabIndex = 1001;
+            this.tableLayoutPanel1.TabIndex = 2;
             // 
             // labelControl7
             // 
             this.labelControl7.Location = new System.Drawing.Point(3, 121);
             this.labelControl7.Name = "labelControl7";
             this.labelControl7.Size = new System.Drawing.Size(38, 13);
-            this.labelControl7.TabIndex = 1000;
+            this.labelControl7.TabIndex = 8;
             this.labelControl7.Text = "Partida:";
             // 
             // searchLookUpFundamento
@@ -655,7 +654,7 @@ namespace Adquisiciones.View.Modulos
             this.searchLookUpFundamento.Properties.ValueMember = "CveFundamento";
             this.searchLookUpFundamento.Properties.View = this.searchLookUpEditFundamento;
             this.searchLookUpFundamento.Size = new System.Drawing.Size(611, 20);
-            this.searchLookUpFundamento.TabIndex = 6;
+            this.searchLookUpFundamento.TabIndex = 1;
             this.searchLookUpFundamento.EditValueChanged += new System.EventHandler(this.SearchLookUpFundamentoEditValueChanged);
             // 
             // searchLookUpEditFundamento
@@ -694,7 +693,7 @@ namespace Adquisiciones.View.Modulos
             this.lblControl.Location = new System.Drawing.Point(3, 0);
             this.lblControl.Name = "lblControl";
             this.lblControl.Size = new System.Drawing.Size(67, 13);
-            this.lblControl.TabIndex = 1000;
+            this.lblControl.TabIndex = 0;
             this.lblControl.Text = "Fundamento";
             // 
             // labelControl5
@@ -702,7 +701,7 @@ namespace Adquisiciones.View.Modulos
             this.labelControl5.Location = new System.Drawing.Point(3, 33);
             this.labelControl5.Name = "labelControl5";
             this.labelControl5.Size = new System.Drawing.Size(27, 13);
-            this.labelControl5.TabIndex = 1000;
+            this.labelControl5.TabIndex = 2;
             this.labelControl5.Text = "Area:";
             // 
             // searchLookUpAnexo
@@ -718,7 +717,7 @@ namespace Adquisiciones.View.Modulos
             this.searchLookUpAnexo.Properties.ValueMember = "NumeroAnexo";
             this.searchLookUpAnexo.Properties.View = this.searchLookUpEditAnexo;
             this.searchLookUpAnexo.Size = new System.Drawing.Size(611, 20);
-            this.searchLookUpAnexo.TabIndex = 9;
+            this.searchLookUpAnexo.TabIndex = 7;
             this.searchLookUpAnexo.EditValueChanged += new System.EventHandler(this.SearchLookUpAnexoEditValueChanged);
             // 
             // searchLookUpEditAnexo
@@ -764,7 +763,7 @@ namespace Adquisiciones.View.Modulos
             this.searchLookUpArea.Properties.ValueMember = "CveArea";
             this.searchLookUpArea.Properties.View = this.searchLookUpEditArea;
             this.searchLookUpArea.Size = new System.Drawing.Size(611, 20);
-            this.searchLookUpArea.TabIndex = 7;
+            this.searchLookUpArea.TabIndex = 3;
             this.searchLookUpArea.EditValueChanged += new System.EventHandler(this.SearchLookUpAreaEditValueChanged);
             // 
             // searchLookUpEditArea
@@ -810,7 +809,7 @@ namespace Adquisiciones.View.Modulos
             this.searchLookUpProveedor.Properties.ValueMember = "CveProveedor";
             this.searchLookUpProveedor.Properties.View = this.searchLookUpEditProveedor;
             this.searchLookUpProveedor.Size = new System.Drawing.Size(611, 20);
-            this.searchLookUpProveedor.TabIndex = 8;
+            this.searchLookUpProveedor.TabIndex = 5;
             this.searchLookUpProveedor.EditValueChanged += new System.EventHandler(this.SearchLookUpProveedorEditValueChanged);
             // 
             // searchLookUpEditProveedor
@@ -848,7 +847,7 @@ namespace Adquisiciones.View.Modulos
             this.labelControl12.Location = new System.Drawing.Point(3, 91);
             this.labelControl12.Name = "labelControl12";
             this.labelControl12.Size = new System.Drawing.Size(35, 13);
-            this.labelControl12.TabIndex = 1000;
+            this.labelControl12.TabIndex = 6;
             this.labelControl12.Text = "Anexo:";
             // 
             // labelControl6
@@ -856,7 +855,7 @@ namespace Adquisiciones.View.Modulos
             this.labelControl6.Location = new System.Drawing.Point(3, 63);
             this.labelControl6.Name = "labelControl6";
             this.labelControl6.Size = new System.Drawing.Size(54, 13);
-            this.labelControl6.TabIndex = 1000;
+            this.labelControl6.TabIndex = 4;
             this.labelControl6.Text = "Proveedor:";
             // 
             // searchLookUpPartida
@@ -872,7 +871,7 @@ namespace Adquisiciones.View.Modulos
             this.searchLookUpPartida.Properties.ValueMember = "Partida";
             this.searchLookUpPartida.Properties.View = this.searchLookUpEditPartida;
             this.searchLookUpPartida.Size = new System.Drawing.Size(611, 20);
-            this.searchLookUpPartida.TabIndex = 10;
+            this.searchLookUpPartida.TabIndex = 9;
             this.searchLookUpPartida.EditValueChanged += new System.EventHandler(this.SearchLookUpPartidaEditValueChanged);
             // 
             // searchLookUpEditPartida
@@ -909,7 +908,7 @@ namespace Adquisiciones.View.Modulos
             this.lblObservacion.Location = new System.Drawing.Point(5, 100);
             this.lblObservacion.Name = "lblObservacion";
             this.lblObservacion.Size = new System.Drawing.Size(67, 13);
-            this.lblObservacion.TabIndex = 1000;
+            this.lblObservacion.TabIndex = 0;
             this.lblObservacion.Text = "Observación";
             // 
             // txtObservaciones
@@ -917,16 +916,15 @@ namespace Adquisiciones.View.Modulos
             this.txtObservaciones.Location = new System.Drawing.Point(3, 116);
             this.txtObservaciones.Name = "txtObservaciones";
             this.txtObservaciones.Size = new System.Drawing.Size(218, 140);
-            this.txtObservaciones.TabIndex = 1456;
-            this.txtObservaciones.TabStop = false;
+            this.txtObservaciones.TabIndex = 1;
             // 
             // gcPedidoDetalle
             // 
             this.gcPedidoDetalle.DataSource = this.bsPedidoDetalle;
             this.gcPedidoDetalle.Dock = System.Windows.Forms.DockStyle.Fill;
-            gridLevelNode1.RelationName = "Level1";
+            gridLevelNode2.RelationName = "Level1";
             this.gcPedidoDetalle.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
-            gridLevelNode1});
+            gridLevelNode2});
             this.gcPedidoDetalle.Location = new System.Drawing.Point(0, 0);
             this.gcPedidoDetalle.MainView = this.gvPedidoDetalle;
             this.gcPedidoDetalle.Name = "gcPedidoDetalle";
@@ -934,12 +932,10 @@ namespace Adquisiciones.View.Modulos
             this.repositoryItemSearchLookUpEdit2,
             this.repositoryItemPopupContainerEdit1,
             this.repositoryItemButtonEdit1});
-            this.gcPedidoDetalle.Size = new System.Drawing.Size(1121, 198);
-            this.gcPedidoDetalle.TabIndex = 13;
+            this.gcPedidoDetalle.Size = new System.Drawing.Size(1121, 200);
+            this.gcPedidoDetalle.TabIndex = 0;
             this.gcPedidoDetalle.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvPedidoDetalle});
-            this.gcPedidoDetalle.DragDrop += new System.Windows.Forms.DragEventHandler(this.gcPedidoDetalle_DragDrop);
-            this.gcPedidoDetalle.DragOver += new System.Windows.Forms.DragEventHandler(this.gcPedidoDetalle_DragOver);
             this.gcPedidoDetalle.KeyDown += new System.Windows.Forms.KeyEventHandler(this.GcPedidoDetalleKeyDown);
             // 
             // gvPedidoDetalle
@@ -1076,8 +1072,6 @@ namespace Adquisiciones.View.Modulos
             this.gvPedidoDetalle.OptionsView.ShowAutoFilterRow = true;
             this.gvPedidoDetalle.OptionsView.ShowGroupPanel = false;
             this.gvPedidoDetalle.CellValueChanged += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.GvPedidoDetalleCellValueChanged);
-            this.gvPedidoDetalle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.gvPedidoDetalle_MouseDown);
-            this.gvPedidoDetalle.MouseMove += new System.Windows.Forms.MouseEventHandler(this.gvPedidoDetalle_MouseMove);
             // 
             // gridColumn14
             // 

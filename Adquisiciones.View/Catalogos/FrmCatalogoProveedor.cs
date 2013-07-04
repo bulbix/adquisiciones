@@ -39,7 +39,7 @@ namespace Adquisiciones.View.Catalogos
         public FrmCatalogoProveedor(Proveedor proveedor,FrmAdquisiciones padre):this(padre)
         {
             ProveedorActual = proveedor;
-            txtClave.Value = proveedor.CveProveedor.Value;
+            txtClave.Value = proveedor.CveProveedor;
             Consultar();
         }
         #endregion
@@ -50,6 +50,9 @@ namespace Adquisiciones.View.Catalogos
             var listEmpresas = ProveedorDao.CargarCatalogo<CatEmpresa>();
             var dicc = listEmpresas.ToDictionary(empresa => empresa, empresa => empresa.DesEmpresa);
             Util.Dicc2Combo(dicc,cbxEmpresa);
+
+            cbxEmpresa.SelectedIndex = cbxEmpresa.FindStringExact("");
+            
         }
         
         public override void BindearCampos()
@@ -59,7 +62,7 @@ namespace Adquisiciones.View.Catalogos
             txtMaterno.DataBindings.Add(new Binding("Text", bsSource, "Materno", true));
             txtNombre.DataBindings.Add(new Binding("Text", bsSource, "Nombre", true));
             txtNombreFiscal.DataBindings.Add(new Binding("Text", bsSource, "NombreFiscal", true));
-            //txtNombreComercial.DataBindings.Add(new Binding("Text", bsSource, "NombreComercial", true));
+            txtNombreComercial.DataBindings.Add(new Binding("Text", bsSource, "NombreComercial", true));
             txtCalle.DataBindings.Add(new Binding("Text", bsSource, "Calle", true));
             txtColonia.DataBindings.Add(new Binding("Text", bsSource, "Colonia", true));
             txtDelegacion.DataBindings.Add(new Binding("Text", bsSource, "Delegacion", true));
@@ -92,21 +95,56 @@ namespace Adquisiciones.View.Catalogos
             txtClave.Enabled = true;
             txtClave.Focus();
             LimpiarValidacion();
+            ProveedorActual.Pais = "MEXICO";
+        }
+
+        private bool validarPersona()
+        {
+            bool result = true;
+            if(txtPaterno.Text.Length == 0 && txtMaterno.Text.Length == 0 
+                && txtNombre.Text.Length == 0)//Persona Fisica
+            {
+                //Persona Moral
+                if(txtNombreFiscal.Text.Length == 0 && txtNombreComercial.Text.Length == 0)
+                {
+                    XtraMessageBox.Show(@"No ha capturado ninguna Persona Fisica o Moral",
+                       @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    result = false;
+                }
+            }
+
+            if (txtNombreFiscal.Text.Length != 0 && txtNombreComercial.Text.Length != 0)
+            {
+                if (txtRnombre.Text.Length == 0 && txtRmaterno.Text.Length == 0
+                    && txtRpaterno.Text.Length == 0)
+                {
+                    XtraMessageBox.Show(@"Si capturo Persona Moral, debe capturar al representate legal",
+                                        @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    result = false;
+                }
+            }
+
+            return result;
         }
 
         public override void Guardar(){
-            try{
-                
+            try
+            {
+                txtCentinela.Focus();
                 var cveProv = Int32.Parse(txtClave.Value.ToString());
                 ProveedorActual.CveProveedor = cveProv;
                 ProveedorActual.CatEmpresa = cbxEmpresa.SelectedValue as CatEmpresa;
+                ProveedorActual.Estatus = "A";
 
                 if (Util.DatosValidos(ProveedorActual, lblNumErrors, listaError))
                 {
-                    ProveedorDao.Update(ProveedorActual);
-                    XtraMessageBox.Show(@"Proveedor Registrado o Actualizado Exitosamente",
-                        @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    LimpiarValidacion();
+                    if (validarPersona())
+                    {
+                        ProveedorDao.Update(ProveedorActual);
+                        XtraMessageBox.Show(@"Proveedor Registrado o Actualizado Exitosamente",
+                                            @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        LimpiarValidacion();
+                    }
                 }
             }
             catch (Exception ee)
@@ -158,5 +196,15 @@ namespace Adquisiciones.View.Catalogos
         }
         #endregion
 
+        private void txtRpaterno_EditValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtNombreFiscal_Leave(object sender, EventArgs e)
+        {
+            txtNombreComercial.Text = txtNombreFiscal.Text;
+            txtNombreComercial.ResetBindings();
+        }
     }
 }

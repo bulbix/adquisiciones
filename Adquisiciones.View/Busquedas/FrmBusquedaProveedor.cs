@@ -27,6 +27,25 @@ namespace Adquisiciones.View.Busquedas
             base.GvGeneral = gvProveedor;
             base.ObtenerPerfil();
         }
+
+
+
+        protected override void Reporte()
+        {
+            var provs = GetFiltrado();
+            var forma = new FrmModuloReportes("reporteProveedor", provs);
+            forma.MdiParent = this.MdiParent;
+            forma.Show();
+        }
+
+        public List<Proveedor> GetFiltrado()
+        {
+            var provs = new List<Proveedor>();
+            for (int i = 0; i < gvProveedor.DataRowCount; i++)
+                provs.Add(gvProveedor.GetRow(i) as Proveedor);
+
+            return provs;
+        }
        
     }
 }

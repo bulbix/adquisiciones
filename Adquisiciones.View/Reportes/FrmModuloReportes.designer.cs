@@ -37,6 +37,7 @@
             this.ReportePedidoDetallado1 = new Adquisiciones.View.Reportes.Pedidos.ReportePedidoDetallado();
             this.ReportePedidoConcentrado1 = new Adquisiciones.View.Reportes.Pedidos.ReportePedidoConcentrado();
             this.ReportePedidoEntrada1 = new Adquisiciones.View.Reportes.Pedidos.ReportePedidoEntrada();
+            this.ReporteProveedor1 = new Adquisiciones.View.Reportes.Catalogos.ReporteProveedor();
             this.SuspendLayout();
             // 
             // btnAceptar
@@ -94,5 +95,6 @@
         private Reportes.Pedidos.ReportePedidoDetallado ReportePedidoDetallado1;
         private Reportes.Pedidos.ReportePedidoConcentrado ReportePedidoConcentrado1;
         private Reportes.Pedidos.ReportePedidoEntrada ReportePedidoEntrada1;
+        private Reportes.Catalogos.ReporteProveedor ReporteProveedor1;
     }
 }
