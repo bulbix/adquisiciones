@@ -253,8 +253,14 @@ namespace Adquisiciones.Data.Dao.ModPedido
         public IList<Pedido> CargarPedidos(Entrada entrada, CatTipopedido tipopedido, Ordenado ordenado)
          {
              var strquery =
-             @"select p from Pedido p join p.Entradas e join fetch p.Proveedor 
-            where e.IdEntrada = :idEntrada and p.CatTipopedido = :tipoPedido ";
+             @" select p from Pedido p 
+                join p.Entradas e 
+                join fetch p.Proveedor 
+                join fetch p.Usuario 
+                join fetch p.CatArea 
+                join fetch p.Fundamento 
+                where e.IdEntrada = :idEntrada 
+                and p.CatTipopedido = :tipoPedido ";
 
             switch (ordenado){
                 case Ordenado.Proveedor:

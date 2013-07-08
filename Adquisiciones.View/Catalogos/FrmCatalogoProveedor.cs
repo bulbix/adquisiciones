@@ -166,6 +166,7 @@ namespace Adquisiciones.View.Catalogos
                 {
                     cmdGuardar.Enabled = true;
                     txtClave.Enabled = false;
+                    txtRfc.Enabled = false;
                     bsSource.DataSource = ProveedorActual;
 
                     if(ProveedorActual.CatEmpresa!= null)

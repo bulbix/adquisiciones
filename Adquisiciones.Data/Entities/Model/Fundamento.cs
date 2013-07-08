@@ -18,12 +18,12 @@ namespace Adquisiciones.Data.Entities
 	{
 		#region Member Variables
 		protected short _cvefundamento;
-		protected short? _artifundamento;
+		protected short _artifundamento;
 		protected string _incisofundamento;
 		protected string _fraccfundamento;
 		protected string _desfundamento;
-		protected DateTime? _fechaalta;
-		protected DateTime? _fechabaja;
+		protected DateTime _fechaalta;
+		protected DateTime _fechabaja;
 		protected string _estatus;
 		protected string _ipterminal;
 		protected Usuario _usuario;
@@ -46,7 +46,9 @@ namespace Adquisiciones.Data.Entities
 			
 		public Fundamento() {}
 					
-		public Fundamento(short cvefundamento, short? artifundamento, string incisofundamento, string fraccfundamento, string desfundamento, DateTime? fechaalta, DateTime? fechabaja, string estatus, string ipterminal) 
+		public Fundamento(short cvefundamento, short artifundamento,
+            string incisofundamento, string fraccfundamento, string desfundamento,
+            DateTime fechaalta, DateTime fechabaja, string estatus, string ipterminal) 
 		{
 			this._cvefundamento= cvefundamento;
 			this._artifundamento= artifundamento;
@@ -79,7 +81,7 @@ namespace Adquisiciones.Data.Entities
 		}
 
         [NotNull(Message = ("Campo Requerido"))]
-		public  virtual short? ArtiFundamento
+		public  virtual short ArtiFundamento
 		{
 			get { return _artifundamento; }
 			set
@@ -134,12 +136,12 @@ namespace Adquisiciones.Data.Entities
 			}
 		}
 
-		public  virtual DateTime? FechaAlta
+		public  virtual DateTime FechaAlta
 		{
 			get { return _fechaalta; }
 			set {_fechaalta= value; }
 		}
-		public  virtual DateTime? FechaBaja
+		public  virtual DateTime FechaBaja
 		{
 			get { return _fechabaja; }
 			set {_fechabaja= value; }

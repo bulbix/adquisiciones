@@ -38,6 +38,8 @@
             this.ReportePedidoConcentrado1 = new Adquisiciones.View.Reportes.Pedidos.ReportePedidoConcentrado();
             this.ReportePedidoEntrada1 = new Adquisiciones.View.Reportes.Pedidos.ReportePedidoEntrada();
             this.ReporteProveedor1 = new Adquisiciones.View.Reportes.Catalogos.ReporteProveedor();
+            this.ReporteFundamento1 = new Adquisiciones.View.Reportes.Catalogos.ReporteFundamento();
+            this.ReportePedidoCompleto1 = new Adquisiciones.View.Reportes.Pedidos.ReportePedidoCompleto();
             this.SuspendLayout();
             // 
             // btnAceptar
@@ -79,7 +81,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Reporte";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Load += new System.EventHandler(this.FrmReportesLoad);
             this.ResumeLayout(false);
 
         }
@@ -96,5 +97,7 @@
         private Reportes.Pedidos.ReportePedidoConcentrado ReportePedidoConcentrado1;
         private Reportes.Pedidos.ReportePedidoEntrada ReportePedidoEntrada1;
         private Reportes.Catalogos.ReporteProveedor ReporteProveedor1;
+        private Reportes.Catalogos.ReporteFundamento ReporteFundamento1;
+        private Reportes.Pedidos.ReportePedidoCompleto ReportePedidoCompleto1;
     }
 }

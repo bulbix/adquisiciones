@@ -1,5 +1,6 @@
 ﻿using System;
 using Adquisiciones.Data.Entities;
+using NHibernate.Criterion;
 using Spring.Transaction.Interceptor;
 
 namespace Adquisiciones.Data.Dao.Catalogos
@@ -19,7 +20,11 @@ namespace Adquisiciones.Data.Dao.Catalogos
         [Transaction(ReadOnly = true)]
         public object ConsultarEntityAll(Almacen almacen)
         {
-            return this.CargarCatalogo<Proveedor>();
+            //return this.CargarCatalogo<Proveedor>();
+            var criteria = CurrentSession.CreateCriteria(typeof(Proveedor));
+            criteria.AddOrder(Order.Desc("CveProveedor"));
+            return criteria.List<Proveedor>();
+
         }
 
         [Transaction]

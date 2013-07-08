@@ -55,6 +55,9 @@
             this.concentradoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pedidoVsEntradaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.entradaVsPedidoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pedidoVsEntradaCompletoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.entradaVsPedidoCompletoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pedidoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.bsSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gcPedido)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvPedido)).BeginInit();
@@ -312,7 +315,10 @@
             this.detalladoToolStripMenuItem,
             this.concentradoToolStripMenuItem,
             this.pedidoVsEntradaToolStripMenuItem,
-            this.entradaVsPedidoToolStripMenuItem});
+            this.entradaVsPedidoToolStripMenuItem,
+            this.pedidoVsEntradaCompletoToolStripMenuItem,
+            this.entradaVsPedidoCompletoToolStripMenuItem,
+            this.pedidoToolStripMenuItem});
             this.reportesToolStripMenuItem.Name = "reportesToolStripMenuItem";
             this.reportesToolStripMenuItem.Size = new System.Drawing.Size(63, 20);
             this.reportesToolStripMenuItem.Text = "Reportes";
@@ -320,30 +326,50 @@
             // detalladoToolStripMenuItem
             // 
             this.detalladoToolStripMenuItem.Name = "detalladoToolStripMenuItem";
-            this.detalladoToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
+            this.detalladoToolStripMenuItem.Size = new System.Drawing.Size(209, 22);
             this.detalladoToolStripMenuItem.Text = "Detallado";
             this.detalladoToolStripMenuItem.Click += new System.EventHandler(this.detalladoToolStripMenuItem_Click);
             // 
             // concentradoToolStripMenuItem
             // 
             this.concentradoToolStripMenuItem.Name = "concentradoToolStripMenuItem";
-            this.concentradoToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
+            this.concentradoToolStripMenuItem.Size = new System.Drawing.Size(209, 22);
             this.concentradoToolStripMenuItem.Text = "Concentrado";
             this.concentradoToolStripMenuItem.Click += new System.EventHandler(this.concentradoToolStripMenuItem_Click);
             // 
             // pedidoVsEntradaToolStripMenuItem
             // 
             this.pedidoVsEntradaToolStripMenuItem.Name = "pedidoVsEntradaToolStripMenuItem";
-            this.pedidoVsEntradaToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
+            this.pedidoVsEntradaToolStripMenuItem.Size = new System.Drawing.Size(209, 22);
             this.pedidoVsEntradaToolStripMenuItem.Text = "Pedido vs Entrada";
             this.pedidoVsEntradaToolStripMenuItem.Click += new System.EventHandler(this.pedidoVsEntradaToolStripMenuItem_Click);
             // 
             // entradaVsPedidoToolStripMenuItem
             // 
             this.entradaVsPedidoToolStripMenuItem.Name = "entradaVsPedidoToolStripMenuItem";
-            this.entradaVsPedidoToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
+            this.entradaVsPedidoToolStripMenuItem.Size = new System.Drawing.Size(209, 22);
             this.entradaVsPedidoToolStripMenuItem.Text = "Entrada vs Pedido";
             this.entradaVsPedidoToolStripMenuItem.Click += new System.EventHandler(this.entradaVsPedidoToolStripMenuItem_Click);
+            // 
+            // pedidoVsEntradaCompletoToolStripMenuItem
+            // 
+            this.pedidoVsEntradaCompletoToolStripMenuItem.Name = "pedidoVsEntradaCompletoToolStripMenuItem";
+            this.pedidoVsEntradaCompletoToolStripMenuItem.Size = new System.Drawing.Size(209, 22);
+            this.pedidoVsEntradaCompletoToolStripMenuItem.Text = "Pedido vs Entrada Completo";
+            this.pedidoVsEntradaCompletoToolStripMenuItem.Click += new System.EventHandler(this.pedidoVsEntradaCompletoToolStripMenuItem_Click);
+            // 
+            // entradaVsPedidoCompletoToolStripMenuItem
+            // 
+            this.entradaVsPedidoCompletoToolStripMenuItem.Name = "entradaVsPedidoCompletoToolStripMenuItem";
+            this.entradaVsPedidoCompletoToolStripMenuItem.Size = new System.Drawing.Size(209, 22);
+            this.entradaVsPedidoCompletoToolStripMenuItem.Text = "Entrada vs Pedido Completo";
+            this.entradaVsPedidoCompletoToolStripMenuItem.Click += new System.EventHandler(this.entradaVsPedidoCompletoToolStripMenuItem_Click);
+            // 
+            // pedidoToolStripMenuItem
+            // 
+            this.pedidoToolStripMenuItem.Name = "pedidoToolStripMenuItem";
+            this.pedidoToolStripMenuItem.Size = new System.Drawing.Size(209, 22);
+            this.pedidoToolStripMenuItem.Text = "Pedido";
             // 
             // FrmBusquedaPedido
             // 
@@ -396,5 +422,8 @@
         private System.Windows.Forms.ToolStripMenuItem entradaVsPedidoToolStripMenuItem;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn17;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn18;
+        private System.Windows.Forms.ToolStripMenuItem pedidoVsEntradaCompletoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem entradaVsPedidoCompletoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem pedidoToolStripMenuItem;
     }
 }

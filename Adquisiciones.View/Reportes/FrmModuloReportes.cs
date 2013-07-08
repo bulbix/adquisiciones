@@ -36,7 +36,6 @@ namespace Adquisiciones.View
         public IFalloService FalloService { get; set; }
         public IPedidoService PedidoService { get; set; }
 
-
         ///<summary></summary>
         ///<param name="nombreReporte"></param>
         ///<param name="entity"></param>
@@ -54,9 +53,6 @@ namespace Adquisiciones.View
             InitializeComponent();
             IniciarServicios();
         }
-
-
-
         
         private void IniciarServicios()
         {
@@ -95,18 +91,15 @@ namespace Adquisiciones.View
                 case "reporteProveedor":
                     ReporteProveedor(Entity as List<Proveedor>);
                     break;
+                case "reporteFundamento":
+                    ReporteFundamento(Entity as List<Fundamento>);
+                    break;
+                case "reportePedidoEntradaCompleto":
+                    ReportePedidoEntradaCompleto(Entity as List<Pedido>);
+                    break;
             }
         }
-
-
-        private void FrmReportesLoad(object sender, EventArgs e)
-        {
-            
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
+       
         private void ReporteAnexo(Anexo anexo){
            
             var anexoDs = new AnexoDS();
@@ -337,8 +330,7 @@ namespace Adquisiciones.View
             Text = @"ReportePedidoDetallado";
             
         }
-
-
+        
         private void ReportePedidoEntrada(List<Pedido> pedidos)
         {
              var listaPedidoEntrada = new List<PedidoEntrada>();
@@ -398,7 +390,6 @@ namespace Adquisiciones.View
 
         }
        
-
         public void ReporteEntradaPedido(DateTime fechaInicial, DateTime fechaFinal,CatTipopedido tipopedido, Ordenado ordenado)
         {
             var listaPedidoEntrada = new List<PedidoEntrada>();
@@ -443,7 +434,6 @@ namespace Adquisiciones.View
 
         }
     
-    
         public void ReporteProveedor(List<Proveedor> provs)
         {
             ReporteProveedor1.SetDataSource(provs);
@@ -453,7 +443,128 @@ namespace Adquisiciones.View
             Text = @"ReporteProveedor";
             
         }
+
+        public void ReporteFundamento(List<Fundamento> funds)
+        {
+            ReporteFundamento1.SetDataSource(funds);
+            crystalReportViewer.ReportSource = ReporteFundamento1;
+            crystalReportViewer.Refresh();
+
+            Text = @"ReporteFundamento";
+
+        }
     
+        private void ReportePedidoEntradaCompleto(List<Pedido> pedidos)
+        {
+            var listaPedidoCompleto = new List<PedidoCompleto>();
+
+            foreach (var pedido in pedidos)
+            {
+                var entradas = PedidoService.PedidoDao.CargarEntradas(pedido);
+
+                if (entradas.Count > 0){
+                    foreach (var entrada in entradas)
+                    {
+                        var pedidoCompleto = new PedidoCompleto
+                        {
+                            Estado = pedido.EstadoPedido,
+                            Pedido = pedido.NumeroPedido.Value,
+                            FechaPedido = pedido.FechaPedido.Value,
+                            Factura = entrada.NumeroFactura,
+                            Entrada = entrada.NumeroEntrada.Value,
+                            Almacen = pedido.AlmacenDestino,
+                            FechaEntrada = entrada.FechaEntrada.Value,
+                            TotalFactura = PedidoService.PedidoDao.ImporteEntrada(entrada),
+                            Proveedor = pedido.Proveedor.NombreFiscal,
+                            RFCProveedor = pedido.Proveedor.Rfc,
+                            AreaSolicitada = pedido.CatArea.DesArea,
+                            Partida = pedido.PartidaString,
+                            DescripcionGasto = "",
+                            ImporteSinIVA = pedido.ImporteTotal.Value,
+                            Req = pedido.NumeroRequisicion,
+                            Elaboro = pedido.Usuario.Nombre,
+                            Licitacion = "",
+                            FundamentoLegal = pedido.Fundamento.DesFundamento,
+                            ImportePedido = pedido.Total
+                        };
+
+                        listaPedidoCompleto.Add(pedidoCompleto);
+                    }
+                }
+
+            }
+
+            ReportePedidoCompleto1.SetDataSource(listaPedidoCompleto);
+            crystalReportViewer.ReportSource = ReportePedidoCompleto1;
+            crystalReportViewer.Refresh();
+
+            Text = @"ReportePedidoEntradaCompleto";
+            
+        }
+
+        public void ReporteEntradaPedidoCompleto(DateTime fechaInicial, DateTime fechaFinal,CatTipopedido tipopedido, Ordenado ordenado)
+        {
+            var listaPedidoCompleto = new List<PedidoCompleto>();
+
+            var entradas = PedidoService.PedidoDao.CargarEntradas(fechaInicial, fechaFinal);
+
+            foreach (var entrada in entradas)
+            {
+                var pedidos = PedidoService.PedidoDao.CargarPedidos(entrada, tipopedido, ordenado);
+
+                if (pedidos.Count > 0)
+                {
+                    foreach (var pedido in pedidos)
+                    {
+                        if (!pedido.EstadoPedido.Trim().Equals("C") 
+                            && !pedido.EstadoPedido.Trim().Equals("P"))
+                        {
+                            pedido.EstadoPedido = "A";
+                        }
+
+                        try{
+                            var partidaAlmacen = PedidoService.PedidoDao.CargarPartidaAlmacen(pedido);
+                            pedido.AlmacenDestino = partidaAlmacen[0];
+                            pedido.PartidaString = partidaAlmacen[1];
+                        }
+                        catch (Exception ex)
+                        {}
+
+                        var pedidoCompleto = new PedidoCompleto
+                        {
+                            Estado = pedido.EstadoPedido,
+                            Pedido = pedido.NumeroPedido.Value,
+                            FechaPedido = pedido.FechaPedido.Value,
+                            Factura = entrada.NumeroFactura,
+                            Entrada = entrada.NumeroEntrada.Value,
+                            Almacen = pedido.AlmacenDestino,
+                            FechaEntrada = entrada.FechaEntrada.Value,
+                            TotalFactura = PedidoService.PedidoDao.ImporteEntrada(entrada),
+                            Proveedor = pedido.Proveedor.NombreFiscal,
+                            RFCProveedor = pedido.Proveedor.Rfc,
+                            AreaSolicitada = pedido.CatArea.DesArea,
+                            Partida = pedido.PartidaString,
+                            DescripcionGasto = "",
+                            ImporteSinIVA = pedido.ImporteTotal.Value,
+                            Req = pedido.NumeroRequisicion,
+                            Elaboro = pedido.Usuario.Nombre,
+                            Licitacion = "",
+                            FundamentoLegal = pedido.Fundamento.DesFundamento,
+                            ImportePedido = pedido.Total
+                        };
+
+                        listaPedidoCompleto.Add(pedidoCompleto);
+                    }
+                }
+            }
+
+            ReportePedidoCompleto1.SetDataSource(listaPedidoCompleto);
+            crystalReportViewer.ReportSource = ReportePedidoCompleto1;
+            crystalReportViewer.Refresh();
+
+            Text = @"ReporteEntradaPedidoCompleto";
+            
+        }
     
     }
 }
