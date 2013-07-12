@@ -26,7 +26,7 @@ namespace Adquisiciones.Business.ModAnexo
         {
 
             var listLicita = AnexoDao.
-                CargarCatalogo<TipoLicitacion>();
+                CargarCatalogo<TipoLicitacion>("IdTipolicitacion");
 
             var dicc = listLicita.ToDictionary(licita => licita, licita => licita.DesTipolicitacion);
 
@@ -36,7 +36,7 @@ namespace Adquisiciones.Business.ModAnexo
         [Transaction(ReadOnly = true)]
         public void IvasCombo(ComboBox combo)
         {
-            var listIvas = AnexoDao.CargarCatalogo<Iva>();
+            var listIvas = AnexoDao.CargarCatalogo<Iva>("FechaAlta");
 
             var dicc = listIvas.ToDictionary(iva => iva, iva => iva.Id.Porcentaje);
 

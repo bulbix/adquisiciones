@@ -20,7 +20,7 @@ namespace Adquisiciones.Data.Dao.Catalogos
         [Transaction(ReadOnly = true)]
         public object ConsultarEntityAll(Almacen almacen)
         {
-            return CargarCatalogo<Fundamento>();
+            return CargarCatalogo<Fundamento>("CveFundamento");
         }
         [Transaction]
         public void EliminarEntity(object entity, string nombreEntity)

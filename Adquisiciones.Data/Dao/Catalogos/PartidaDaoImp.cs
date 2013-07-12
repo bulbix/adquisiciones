@@ -12,7 +12,7 @@ namespace Adquisiciones.Data.Dao.Catalogos
         [Transaction(ReadOnly = true)]
         public object ConsultarEntityAll(Almacen almacen)
         {
-            return CargarCatalogo<CatPartida>();
+            return CargarCatalogo<CatPartida>("Partida");
         }
 
         [Transaction]

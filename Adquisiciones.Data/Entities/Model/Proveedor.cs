@@ -49,14 +49,16 @@ namespace Adquisiciones.Data.Entities
         protected string _ipterminal;
         protected DateTime _fechaalta;
         protected Usuario _usuario;
+        protected string _estatus;
+        protected DateTime _fechamodificacion;
+        protected int _modificacion;
+
         protected IList<Cotizacion> _cotizacion;
         protected IList<CotizacionHist> _cotizacionhist;
         protected IList<Fallo> _fallo;
         protected IList<FalloHist> _fallohist;
         protected IList<Pedido> _pedido;
         protected IList<PedidoHist> _pedidohist;
-
-        protected string _estatus;
 
         #endregion
         #region Constructors
@@ -68,6 +70,9 @@ namespace Adquisiciones.Data.Entities
             this._usuario = usuario;
             this._ipterminal = ipterminal;
             this._fechaalta = fechaalta;
+            this._fechamodificacion = fechaalta;
+            this._modificacion = 0;
+            this._estatus = "A";
         }
 
         public Proveedor(int cveproveedor)
@@ -530,8 +535,27 @@ namespace Adquisiciones.Data.Entities
 
         public override string ToString()
         {
-            return CveProveedor + " - " + NombreFiscal;
+            if (NombreFiscal.Trim().Length != 0)
+                return CveProveedor + " - " + NombreFiscal;
+            
+            if (Paterno.Trim().Length != 0)
+                return CveProveedor + " - " + NombreCompleto;
+            
+             return CveProveedor.ToString();
         }
+
+        public virtual int Modificacion
+        {
+            get { return _modificacion; }
+            set { _modificacion = value; }
+        }
+
+        public virtual DateTime FechaModificacion
+        {
+            get { return _fechamodificacion; }
+            set { _fechamodificacion = value; }
+        }
+
 
         
 

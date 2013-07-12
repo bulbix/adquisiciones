@@ -1,5 +1,6 @@
 ﻿using System;
 using Adquisiciones.Data.Entities;
+using NHibernate;
 using NHibernate.Criterion;
 using Spring.Transaction.Interceptor;
 
@@ -22,6 +23,7 @@ namespace Adquisiciones.Data.Dao.Catalogos
         {
             //return this.CargarCatalogo<Proveedor>();
             var criteria = CurrentSession.CreateCriteria(typeof(Proveedor));
+            criteria.SetFetchMode("Usuario", FetchMode.Eager);
             criteria.AddOrder(Order.Desc("CveProveedor"));
             return criteria.List<Proveedor>();
 

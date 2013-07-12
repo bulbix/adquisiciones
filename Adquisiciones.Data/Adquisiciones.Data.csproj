@@ -112,6 +112,7 @@
     <Compile Include="Dao\Seguridad\IUsuarioDao.cs" />
     <Compile Include="Dao\Seguridad\UsuarioDaoImp.cs" />
     <Compile Include="Entities\Audit\FalloHist.cs" />
+    <Compile Include="Entities\Audit\ProveedorHist.cs" />
     <Compile Include="Entities\Model\Almacen.cs" />
     <Compile Include="Entities\Model\Anexo.cs" />
     <Compile Include="Entities\Model\AnexoDetalle.cs" />
@@ -350,6 +351,9 @@
     <EmbeddedResource Include="Mappings\Model\EntradaDetalle.hbm.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Mappings\Audit\ProveedorHist.hbm.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

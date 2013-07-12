@@ -14,7 +14,7 @@ namespace Adquisiciones.Data.Dao
         void Delete(TE entity);
         TE Get(TId id);
         IList<TE> FindAll();
-        IList<T> CargarCatalogo<T>(params object[] parametros);
+        IList<T> CargarCatalogo<T>(string claveOrder, params object[] parametros);
         DateTime FechaServidor();
     }
 }

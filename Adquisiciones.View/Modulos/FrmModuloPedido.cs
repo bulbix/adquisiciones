@@ -80,14 +80,13 @@ namespace Adquisiciones.View.Modulos
          public override void BindearCampos()
         {
             bsPedidoDetalle.DataSource = new List<PedidoDetalle>();
-           
             txtRequisicion.DataBindings.Add(new Binding("Text", bsPedido, "NumeroRequisicion", true));
             txtDescuento.DataBindings.Add(new Binding("Text", bsPedido, "ImporteDescuento", true));
             txtReserva.DataBindings.Add(new Binding("Text", bsPedido, "IdReservaautoriza", true));
-            //cbxActividad.DataBindings.Add(new Binding("SelectedValue", bsPedido, "CatActividad", false));
-            //cbxIva.DataBindings.Add(new Binding("SelectedValue", bsPedido, "Iva", false));
-            //cbxCargo.DataBindings.Add(new Binding("SelectedValue", bsPedido, "CatPresupuesto", false));
             txtObservaciones.DataBindings.Add(new Binding("Text", bsPedido, "Observaciones", false));
+            
+            deFecha.DataBindings.Add(new Binding("DateTime", bsPedido, "FechaPedido", true));
+            txtNumero.DataBindings.Add(new Binding("Value", bsPedido, "NumeroPedido", true));
 
         }
 
@@ -96,11 +95,11 @@ namespace Adquisiciones.View.Modulos
             PedidoService.CatalogoActividad(cbxActividad);
             PedidoService.AnexoService.IvasCombo(cbxIva);
             PedidoService.CatalogoPresupuestal(cbxCargo);
-            bsFundamento.DataSource = PedidoService.PedidoDao.CargarCatalogo<Fundamento>();
-            bsArea.DataSource = PedidoService.PedidoDao.CargarCatalogo<CatArea>("Estatus", 1);
-            bsProveedor.DataSource = PedidoService.PedidoDao.CargarCatalogo<Proveedor>();
+            bsFundamento.DataSource = PedidoService.PedidoDao.CargarCatalogo<Fundamento>("CveFundamento");
+            bsArea.DataSource = PedidoService.PedidoDao.CargarCatalogo<CatArea>("CveArea","Estatus", 1);
+            bsProveedor.DataSource = PedidoService.PedidoDao.CargarCatalogo<Proveedor>("CveProveedor");
             bsAnexo.DataSource = PedidoService.AnexoDao.CargarAnexos(AlmacenActual);
-            bsPartida.DataSource = PedidoService.PedidoDao.CargarCatalogo<CatPartida>();
+            bsPartida.DataSource = PedidoService.PedidoDao.CargarCatalogo<CatPartida>("Partida");
         }
 
         public override void Nuevo()
@@ -111,15 +110,20 @@ namespace Adquisiciones.View.Modulos
             bsPedido.DataSource = PedidoActual;
             bsPedidoDetalle.DataSource = new List<PedidoDetalle>();
 
-            //Cargamos el numero de pedido maximo
-            PedidoActual.NumeroPedido = PedidoService.PedidoDao.
-                SiguienteNumeroPedido(AlmacenActual, this.tipoPedido);
+            /****Esto es un cambio para la ultima version
+            PedidoActual.NumeroPedido = PedidoService.PedidoDao.SiguienteNumeroPedido(AlmacenActual, this.tipoPedido);
             lblNumero.Text = PedidoActual.NumeroPedido.ToString();
             PedidoActual.FechaPedido = PedidoService.PedidoDao.FechaServidor();
             lblFecha.Text = String.Format("{0:dd/MM/yyyy}", PedidoActual.FechaPedido);
-            txtDescuento.Text = "0.00";
-           
+            ******/
+            PedidoActual.FechaPedido = PedidoService.PedidoDao.FechaServidor();
+            PedidoActual.NumeroPedido = PedidoService.PedidoDao.SiguienteNumeroPedido(AlmacenActual, this.tipoPedido).Value;
 
+            deFecha.DateTime = PedidoActual.FechaPedido.Value;
+            txtNumero.Value = PedidoActual.NumeroPedido.Value;
+
+
+            txtDescuento.Text = "0.00";
             Text = @"Pedido::" + PedidoActual;
 
             cmdGuardar.Enabled = true;
@@ -134,18 +138,19 @@ namespace Adquisiciones.View.Modulos
             LimpiarErrores();
             LimpiarComboAnexo();
             splitContainerControl1.Panel1.Enabled = true;
+            txtRequisicion.Focus();
         }
 
         public override void Guardar()
         {
-            gcPedidoDetalle.Focus();//Para rebindeeen los campos
+            gcPedidoDetalle.Focus(); //Para rebindeeen los campos
             SumTotal();
             LimpiarErrores();
 
             //los parametros basicos
             PedidoActual.Almacen = AlmacenActual;
             PedidoActual.Usuario = FrmModuloAcceso.UsuarioLog;
-           
+
             //Cmbos
             PedidoActual.CatActividad = cbxActividad.SelectedValue as CatActividad;
             PedidoActual.CatPresupuesto = cbxCargo.SelectedValue as CatPresupuesto;
@@ -153,6 +158,15 @@ namespace Adquisiciones.View.Modulos
 
             if (!Util.DatosValidos(PedidoActual, lblNumErrors, listaError))
                 return;
+
+            //Nuevo
+            if (PedidoActual.IdPedido == 0 && PedidoService.PedidoDao.ExisteNumeroPedido(AlmacenActual, tipoPedido,
+                PedidoActual.NumeroPedido.Value)){
+
+                    XtraMessageBox.Show(@"El Folio ya existe",
+                        @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+            }
 
             PedidoActual.PedidoDetalle = bsPedidoDetalle.DataSource as List<PedidoDetalle>;
 
@@ -184,8 +198,8 @@ namespace Adquisiciones.View.Modulos
                                                           AlmacenActual, this.tipoPedido);
                 if (PedidoActual != null)
                 {
-                    lblNumero.Text = PedidoActual.NumeroPedido.ToString();
-                    lblFecha.Text = String.Format("{0:dd/MM/yyyy}", PedidoActual.FechaPedido);
+                    //lblNumero.Text = PedidoActual.NumeroPedido.ToString();
+                    //lblFecha.Text = String.Format("{0:dd/MM/yyyy}", PedidoActual.FechaPedido);
 
                     bsPedido.DataSource = PedidoActual;
                     bsPedidoDetalle.DataSource = PedidoActual.PedidoDetalle;

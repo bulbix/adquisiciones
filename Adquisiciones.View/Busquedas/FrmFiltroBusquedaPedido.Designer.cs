@@ -114,6 +114,8 @@
             // cbMayor
             // 
             this.cbMayor.AutoSize = true;
+            this.cbMayor.Checked = true;
+            this.cbMayor.CheckState = System.Windows.Forms.CheckState.Checked;
             this.cbMayor.Location = new System.Drawing.Point(15, 21);
             this.cbMayor.Name = "cbMayor";
             this.cbMayor.Size = new System.Drawing.Size(56, 17);

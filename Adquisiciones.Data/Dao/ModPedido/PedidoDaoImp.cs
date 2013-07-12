@@ -186,6 +186,13 @@ namespace Adquisiciones.Data.Dao.ModPedido
             return criteria.List<Entrada>();
         }
 
+
+
+
+        
+
+
+
          [Transaction(ReadOnly = true)]
         public String[] CargarPartidaAlmacen(Pedido pedido)
          {

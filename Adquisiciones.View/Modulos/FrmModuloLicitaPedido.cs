@@ -45,7 +45,7 @@ namespace Adquisiciones.View.Modulos
         public override void InicializarCatalogos()
         {
             bsRequisicion.DataSource = PedidoService.RequisicionDao.CargarRequisiciones(AlmacenActual);
-            bsFundamento.DataSource = PedidoService.RequisicionDao.CargarCatalogo<Fundamento>();
+            bsFundamento.DataSource = PedidoService.RequisicionDao.CargarCatalogo<Fundamento>("CveFundamento");
             PedidoService.CatalogoActividad(cbxActividad);
             PedidoService.AnexoService.IvasCombo(cbxIva);
             PedidoService.CatalogoPresupuestal(cbxCargo);

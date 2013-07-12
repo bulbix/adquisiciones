@@ -31,15 +31,14 @@ namespace Adquisiciones.Business.Audit
         /// <param name="tipo"></param>
         /// <returns></returns>
         [Transaction]
-        public void ConstruirHistorico<T>(T entity, object id, string[] propertyNames, 
-            object[] previousState,
+        public void ConstruirHistorico<T>(T entity, object id, string[] propertyNames, object[] previousState,
             IType[] types, string tipo)
         {
             try
             {
                 var nombreTabla = entity.GetType().Name; //AnexoDetalle
 
-                if (nombreTabla.IndexOf("Hist") < 0 && !(entity is ICatalogo))
+                if (nombreTabla.IndexOf("Hist") < 0 /*&& !(entity is ICatalogo)*/)
                 {
 
                     var tableHist = "Adquisiciones.Data.Entities." + nombreTabla + "Hist";

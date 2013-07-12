@@ -31,6 +31,7 @@ namespace Adquisiciones.View.Catalogos
 
             ModulosUsuario = padre.ModulosUsuario;
             AlmacenActual = padre.AlmacenSelect;
+            TypeEntity = typeof (CatPartida);
 
             var ctx = ContextRegistry.GetContext();
             PartidaDao = ctx["partidaDao"] as IPartidaDao;
@@ -44,6 +45,8 @@ namespace Adquisiciones.View.Catalogos
         public FrmCatalogoPartida(CatPartida partida,FrmAdquisiciones padre):this(padre)
         {
             PartidaActual = partida;
+            EntityActual = PartidaActual;
+
             txtClave.Text = partida.Partida;
             Consultar();
         }

@@ -20,7 +20,7 @@ namespace Adquisiciones.View.Catalogos
             GetCurrentMethod().DeclaringType);
 
         protected Type TypeEntity { get; set; }
-
+        protected object EntityActual { get; set; }
         public Almacen AlmacenActual { get; set; }
         public IList<UsuarioModulo> ModulosUsuario { get; set; }
         
@@ -95,7 +95,14 @@ namespace Adquisiciones.View.Catalogos
 
         public virtual void Consultar()
         {
-            throw new NotImplementedException();
+
+            var usuarioModifico = (Usuario)TypeEntity.GetProperty("Usuario").GetValue(EntityActual, null);
+
+            if (FrmModuloAcceso.UsuarioLog.IdUsuario != usuarioModifico.IdUsuario)
+            {
+                cmdGuardar.Enabled = false;
+            }
+           
         }
 
         private void CmdNuevoItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

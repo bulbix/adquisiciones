@@ -173,7 +173,7 @@ namespace Adquisiciones.View.Reportes
                 result.AddCell(new Paragraph(pedidoDetalle.Cantidad.Value.ToString("N"), fuente));
                 result.AddCell(new Paragraph(pedidoDetalle.Articulo.Unidad, fuente));
                 result.DefaultCell.HorizontalAlignment = Element.ALIGN_RIGHT;
-                result.AddCell(new Paragraph(pedidoDetalle.PrecioUnitario.Value.ToString("C"), fuente));
+                result.AddCell(new Paragraph(pedidoDetalle.PrecioUnitario.Value.ToString("C4"), fuente));
                 decimal total = pedidoDetalle.Importe.Value;
 
                 //subtotal += total;

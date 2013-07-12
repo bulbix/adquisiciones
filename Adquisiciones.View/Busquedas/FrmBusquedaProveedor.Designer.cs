@@ -36,8 +36,9 @@
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.bsSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gcProveedor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvProveedor)).BeginInit();
@@ -64,8 +65,9 @@
             this.gridColumn3,
             this.gridColumn4,
             this.gridColumn6,
+            this.gridColumn8,
             this.gridColumn7,
-            this.gridColumn8});
+            this.gridColumn9});
             this.gvProveedor.GridControl = this.gcProveedor;
             this.gvProveedor.Name = "gvProveedor";
             this.gvProveedor.OptionsBehavior.Editable = false;
@@ -134,16 +136,6 @@
             this.gridColumn6.VisibleIndex = 6;
             this.gridColumn6.Width = 68;
             // 
-            // gridColumn7
-            // 
-            this.gridColumn7.Caption = "Observaciones";
-            this.gridColumn7.FieldName = "Observacion";
-            this.gridColumn7.Name = "gridColumn7";
-            this.gridColumn7.UnboundType = DevExpress.Data.UnboundColumnType.String;
-            this.gridColumn7.Visible = true;
-            this.gridColumn7.VisibleIndex = 7;
-            this.gridColumn7.Width = 56;
-            // 
             // gridColumn8
             // 
             this.gridColumn8.Caption = "Representante";
@@ -153,6 +145,26 @@
             this.gridColumn8.Visible = true;
             this.gridColumn8.VisibleIndex = 2;
             this.gridColumn8.Width = 202;
+            // 
+            // gridColumn7
+            // 
+            this.gridColumn7.Caption = "Modifico";
+            this.gridColumn7.FieldName = "Usuario";
+            this.gridColumn7.Name = "gridColumn7";
+            this.gridColumn7.UnboundType = DevExpress.Data.UnboundColumnType.String;
+            this.gridColumn7.Visible = true;
+            this.gridColumn7.VisibleIndex = 7;
+            // 
+            // gridColumn9
+            // 
+            this.gridColumn9.Caption = "Fecha Mod";
+            this.gridColumn9.DisplayFormat.FormatString = "dd/MM/yyyy HH:mm";
+            this.gridColumn9.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.gridColumn9.FieldName = "FechaModificacion";
+            this.gridColumn9.Name = "gridColumn9";
+            this.gridColumn9.UnboundType = DevExpress.Data.UnboundColumnType.DateTime;
+            this.gridColumn9.Visible = true;
+            this.gridColumn9.VisibleIndex = 8;
             // 
             // FrmBusquedaProveedor
             // 
@@ -180,7 +192,8 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn7;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn8;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn7;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn9;
     }
 }

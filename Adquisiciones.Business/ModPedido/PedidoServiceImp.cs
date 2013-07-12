@@ -41,7 +41,7 @@ namespace Adquisiciones.Business.ModPedido
         public void CatalogoPresupuestal(ComboBox combo)
         {
             var listaPresupuesto = AnexoDao.
-                CargarCatalogo<CatPresupuesto>();
+                CargarCatalogo<CatPresupuesto>("IdPresupuesto");
 
             var dicc = listaPresupuesto.
                ToDictionary(presupuesto => presupuesto, presupuesto => presupuesto.DesPresupuesto);
@@ -54,7 +54,7 @@ namespace Adquisiciones.Business.ModPedido
         public void CatalogoActividad(ComboBox combo)
         {
             var listaActividad = AnexoDao.
-               CargarCatalogo<CatActividad>();
+               CargarCatalogo<CatActividad>("IdActividad");
 
             var dicc = listaActividad.ToDictionary(actividad => actividad, actividad => actividad.DesActividad);
 
@@ -197,8 +197,8 @@ namespace Adquisiciones.Business.ModPedido
             {
                 pedido.FechaCaptura = PedidoDao.FechaServidor();
                 pedido.EstadoPedido = "A";
-                pedido.NumeroPedido = PedidoDao.SiguienteNumeroPedido(pedido.Almacen,
-                pedido.CatTipopedido.IdTipoped);
+                /*pedido.NumeroPedido = PedidoDao.SiguienteNumeroPedido(pedido.Almacen,
+                pedido.CatTipopedido.IdTipoped);*/
             }
 
             //Le cargamos el Articulo y la llave compuesta)

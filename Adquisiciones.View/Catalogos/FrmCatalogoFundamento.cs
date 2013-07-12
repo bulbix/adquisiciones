@@ -31,6 +31,7 @@ namespace Adquisiciones.View.Catalogos
 
             ModulosUsuario = padre.ModulosUsuario;
             AlmacenActual = padre.AlmacenSelect;
+            TypeEntity = typeof (Fundamento);
 
             var ctx = ContextRegistry.GetContext();
             FundamentoDao = ctx["fundamentoDao"] as IFundamentoDao;
@@ -42,6 +43,7 @@ namespace Adquisiciones.View.Catalogos
         public FrmCatalogoFundamento(Fundamento fundamento,FrmAdquisiciones padre):this(padre)
         {
             FundamentoActual = fundamento;
+            EntityActual = FundamentoActual;
             txtClave.Text = fundamento.CveFundamento.ToString();
             Consultar();
         }
@@ -71,6 +73,7 @@ namespace Adquisiciones.View.Catalogos
             txtDescripcion.Text = String.Empty;
             txtClave.Text = FundamentoDao.SiguienteCveFundamento().ToString();
             txtClave.Focus();
+            Text = "Nuevo Proveedor";
         }
 
         public override void Guardar()

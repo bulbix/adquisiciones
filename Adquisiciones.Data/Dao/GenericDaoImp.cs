@@ -82,12 +82,11 @@ namespace Adquisiciones.Data.Dao
 
 
         [Transaction(ReadOnly = true)]
-        public IList<T> CargarCatalogo<T>(params object[] parametros)
+        public IList<T> CargarCatalogo<T>(string claveOrder, params object[] parametros)
         {
 
             object campo = "Estatus";
             object valor = "A";
-
             if(parametros.Count() == 2)
             {
                 campo = parametros[0];
@@ -96,6 +95,7 @@ namespace Adquisiciones.Data.Dao
 
             var criteria = CurrentSession.CreateCriteria(typeof(T));
             criteria.Add(Restrictions.Eq(campo.ToString(), valor));
+            criteria.AddOrder(Order.Desc(claveOrder));
             return criteria.List<T>();
         }
     }

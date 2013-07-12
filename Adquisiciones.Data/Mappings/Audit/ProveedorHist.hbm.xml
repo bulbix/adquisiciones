@@ -3,10 +3,12 @@
                    assembly="Adquisiciones.Data"
                    namespace="Adquisiciones.Data.Entities">
   <!--Build: with lujan99@usa.net Nhibernate template-->
-  <class name="Proveedor" table="proveedor" lazy="true" dynamic-update="true">
-    <id name="CveProveedor" column="cve_proveedor" type="int">
-      <generator class="assigned" />
+  <class name="ProveedorHist" table="proveedor_hist" lazy="true" dynamic-update="true">
+    <id name="Id" column="id_provhist" type="long">
+      <generator class="increment" />
     </id>
+    <property name="IdExterno" column="cve_proveedor" type="long" />
+    
     <property name="NombreFiscal" column="nombre_fiscal" type="string" />
     <property name="NombreComercial" column="nombre_comercial" type="string" />
     <property name="Paterno" column="paterno" type="string" />
@@ -34,25 +36,11 @@
     <property name="Estatus" column="estatus" type="string" />
 
     <many-to-one name="CatEmpresa" column="id_empresa" lazy="false"  />
-    <property name="FechaModificacion" column="fecha_modificacion" type="DateTime" />
-    <property name="Modificacion" column="modificacion" type="int" />
-
     <many-to-one name="Usuario" column="id_usuario"  />
-    <bag name="Cotizacion" inverse="true" lazy="true" cascade="none">
-      <key column="cve_proveedor" />
-      <one-to-many class="Adquisiciones.Data.Entities.Cotizacion,Adquisiciones.Data" />
-    </bag>    
-    <bag name="Fallo" inverse="true" lazy="true" cascade="none">
-      <key column="cve_proveedor" />
-      <one-to-many class="Adquisiciones.Data.Entities.Fallo,Adquisiciones.Data" />
-    </bag>   
-    <bag name="Pedido" inverse="true" lazy="true" cascade="none">
-      <key column="cve_proveedor" />
-      <one-to-many class="Adquisiciones.Data.Entities.Pedido,Adquisiciones.Data" />
-    </bag>
-
-   
-
+    
+    <property name="FechaModificacion" column="fecha_modificacion" type="DateTime" />
+    <property name="Modificacion" column="modificacion" type="int" />    
+    <property name="Tipo" column="tipo" type="string" />
   </class>
- 
+
 </hibernate-mapping>
