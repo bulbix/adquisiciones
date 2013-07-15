@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.gcDatosGenerales = new DevExpress.XtraEditors.GroupControl();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.cmdConsultar = new DevExpress.XtraEditors.SimpleButton();
             this.lblFechac = new System.Windows.Forms.Label();
             this.lblLicitacion = new System.Windows.Forms.Label();
             this.searchLookUpAnexo = new DevExpress.XtraEditors.SearchLookUpEdit();
@@ -44,6 +45,7 @@
             this.searchLookUpEditProv = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.lblFecha = new DevExpress.XtraEditors.LabelControl();
             this.lblInstituto = new DevExpress.XtraEditors.LabelControl();
             this.gcCotizacionDetalle = new DevExpress.XtraGrid.GridControl();
@@ -56,7 +58,6 @@
             this.gridColumn11 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn12 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn13 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.cmdConsultar = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             this.splitContainerControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gcDatosGenerales)).BeginInit();
@@ -75,10 +76,9 @@
             // 
             // splitContainerControl1
             // 
-            this.splitContainerControl1.Location = new System.Drawing.Point(0, 70);
             this.splitContainerControl1.Panel1.Controls.Add(this.gcDatosGenerales);
             this.splitContainerControl1.Panel2.Controls.Add(this.gcCotizacionDetalle);
-            this.splitContainerControl1.Size = new System.Drawing.Size(1130, 327);
+            this.splitContainerControl1.Size = new System.Drawing.Size(1130, 328);
             this.splitContainerControl1.SplitterPosition = 91;
             // 
             // gcDatosGenerales
@@ -101,7 +101,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 297F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 79F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 359F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 140F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 142F));
             this.tableLayoutPanel1.Controls.Add(this.cmdConsultar, 6, 0);
             this.tableLayoutPanel1.Controls.Add(this.lblFechac, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.lblLicitacion, 2, 0);
@@ -116,6 +116,15 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1077, 44);
             this.tableLayoutPanel1.TabIndex = 30;
             // 
+            // cmdConsultar
+            // 
+            this.cmdConsultar.Location = new System.Drawing.Point(937, 3);
+            this.cmdConsultar.Name = "cmdConsultar";
+            this.cmdConsultar.Size = new System.Drawing.Size(135, 38);
+            this.cmdConsultar.TabIndex = 31;
+            this.cmdConsultar.Text = "Consultar";
+            this.cmdConsultar.Click += new System.EventHandler(this.cmdConsultar_Click);
+            // 
             // lblFechac
             // 
             this.lblFechac.AutoSize = true;
@@ -128,7 +137,7 @@
             // lblLicitacion
             // 
             this.lblLicitacion.AutoSize = true;
-            this.lblLicitacion.Location = new System.Drawing.Point(154, 0);
+            this.lblLicitacion.Location = new System.Drawing.Point(152, 0);
             this.lblLicitacion.Name = "lblLicitacion";
             this.lblLicitacion.Size = new System.Drawing.Size(38, 13);
             this.lblLicitacion.TabIndex = 1;
@@ -137,7 +146,7 @@
             // searchLookUpAnexo
             // 
             this.searchLookUpAnexo.EditValue = "";
-            this.searchLookUpAnexo.Location = new System.Drawing.Point(204, 3);
+            this.searchLookUpAnexo.Location = new System.Drawing.Point(202, 3);
             this.searchLookUpAnexo.Name = "searchLookUpAnexo";
             this.searchLookUpAnexo.Properties.Appearance.ForeColor = System.Drawing.Color.Navy;
             this.searchLookUpAnexo.Properties.Appearance.Options.UseForeColor = true;
@@ -184,7 +193,7 @@
             // label45
             // 
             this.label45.AutoSize = true;
-            this.label45.Location = new System.Drawing.Point(501, 0);
+            this.label45.Location = new System.Drawing.Point(499, 0);
             this.label45.Name = "label45";
             this.label45.Size = new System.Drawing.Size(57, 13);
             this.label45.TabIndex = 23;
@@ -193,7 +202,7 @@
             // searchLookUpProv
             // 
             this.searchLookUpProv.EditValue = "";
-            this.searchLookUpProv.Location = new System.Drawing.Point(580, 3);
+            this.searchLookUpProv.Location = new System.Drawing.Point(578, 3);
             this.searchLookUpProv.Name = "searchLookUpProv";
             this.searchLookUpProv.Properties.Appearance.ForeColor = System.Drawing.Color.Navy;
             this.searchLookUpProv.Properties.Appearance.Options.UseForeColor = true;
@@ -212,7 +221,8 @@
             // 
             this.searchLookUpEditProv.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.gridColumn1,
-            this.gridColumn2});
+            this.gridColumn2,
+            this.gridColumn3});
             this.searchLookUpEditProv.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
             this.searchLookUpEditProv.Name = "searchLookUpEditProv";
             this.searchLookUpEditProv.OptionsSelection.EnableAppearanceFocusedCell = false;
@@ -225,21 +235,31 @@
             this.gridColumn1.Name = "gridColumn1";
             this.gridColumn1.Visible = true;
             this.gridColumn1.VisibleIndex = 0;
-            this.gridColumn1.Width = 91;
+            this.gridColumn1.Width = 89;
             // 
             // gridColumn2
             // 
-            this.gridColumn2.Caption = "Nombre Fiscal";
+            this.gridColumn2.Caption = "Persona Moral";
             this.gridColumn2.FieldName = "NombreFiscal";
             this.gridColumn2.Name = "gridColumn2";
             this.gridColumn2.Visible = true;
             this.gridColumn2.VisibleIndex = 1;
-            this.gridColumn2.Width = 699;
+            this.gridColumn2.Width = 389;
+            // 
+            // gridColumn3
+            // 
+            this.gridColumn3.Caption = "Persona Fisica";
+            this.gridColumn3.FieldName = "NombreCompleto";
+            this.gridColumn3.Name = "gridColumn3";
+            this.gridColumn3.UnboundType = DevExpress.Data.UnboundColumnType.String;
+            this.gridColumn3.Visible = true;
+            this.gridColumn3.VisibleIndex = 2;
+            this.gridColumn3.Width = 554;
             // 
             // lblFecha
             // 
             this.lblFecha.Appearance.ForeColor = System.Drawing.Color.Blue;
-            this.lblFecha.Location = new System.Drawing.Point(67, 3);
+            this.lblFecha.Location = new System.Drawing.Point(66, 3);
             this.lblFecha.Name = "lblFecha";
             this.lblFecha.Size = new System.Drawing.Size(63, 13);
             this.lblFecha.TabIndex = 24;
@@ -262,7 +282,7 @@
             this.gcCotizacionDetalle.Location = new System.Drawing.Point(0, 0);
             this.gcCotizacionDetalle.MainView = this.gvCotizacionDetalle;
             this.gcCotizacionDetalle.Name = "gcCotizacionDetalle";
-            this.gcCotizacionDetalle.Size = new System.Drawing.Size(1130, 230);
+            this.gcCotizacionDetalle.Size = new System.Drawing.Size(1130, 232);
             this.gcCotizacionDetalle.TabIndex = 4;
             this.gcCotizacionDetalle.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvCotizacionDetalle});
@@ -481,15 +501,6 @@
             this.gridColumn13.VisibleIndex = 6;
             this.gridColumn13.Width = 199;
             // 
-            // cmdConsultar
-            // 
-            this.cmdConsultar.Location = new System.Drawing.Point(939, 3);
-            this.cmdConsultar.Name = "cmdConsultar";
-            this.cmdConsultar.Size = new System.Drawing.Size(135, 38);
-            this.cmdConsultar.TabIndex = 31;
-            this.cmdConsultar.Text = "Consultar";
-            this.cmdConsultar.Click += new System.EventHandler(this.cmdConsultar_Click);
-            // 
             // FrmModuloCotizacion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -547,5 +558,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private DevExpress.XtraEditors.LabelControl lblFecha;
         private DevExpress.XtraEditors.SimpleButton cmdConsultar;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
     }
 }

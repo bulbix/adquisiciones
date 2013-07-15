@@ -61,7 +61,7 @@ namespace Adquisiciones.View.Modulos
         {
             var anexos = CotizacionService.AnexoDao.CargarAnexos(AlmacenActual);
             bsAnexos.DataSource = anexos;
-            var proveedores = CotizacionService.ProveedorDao.FindAll();
+            var proveedores = CotizacionService.ProveedorDao.CargarCatalogo<Proveedor>("CveProveedor");
             bsProveedor.DataSource = proveedores;
         }
 
