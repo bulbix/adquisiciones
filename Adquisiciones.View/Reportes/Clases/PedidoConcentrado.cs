@@ -18,6 +18,7 @@ namespace Adquisiciones.View.Reportes.Clases
         public decimal Descuento { get; set; }
         public decimal Iva { get; set; }
         public decimal Total { get; set; }
-
+        public string PartidaArticulo { get; set; }
+        public string TipoPedido { get; set; }
     }
 }

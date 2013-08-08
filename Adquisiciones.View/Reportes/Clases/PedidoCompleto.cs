@@ -26,5 +26,6 @@ namespace Adquisiciones.View.Reportes.Clases
         public string Licitacion { get; set; }
         public string FundamentoLegal { get; set; }
         public decimal ImportePedido { get; set; }
+        public string TipoPedido { get; set; }
     }
 }

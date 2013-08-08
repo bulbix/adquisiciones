@@ -264,12 +264,14 @@ namespace Adquisiciones.View
                     NumeroPedido = pedido.NumeroPedido.Value,
                     FechaPedido = String.Format("{0:dd/MM/yyyy}", pedido.FechaPedido),
                     NumeroRequisicion = pedido.NumeroRequisicion,
+                    PartidaArticulo = pedido.PartidaString,
                     Proveedor = pedido.Proveedor.NombreFiscal,
                     Elaboro = pedido.Usuario.Nombre,
                     Importe = pedido.ImporteTotal.Value,
                     Descuento = pedido.ImporteDescuento.Value,
                     Iva = pedido.IvaCantidad,
-                    Total = pedido.Total
+                    Total = pedido.Total,
+                    TipoPedido = pedido.CatTipopedido.DesTipoped
                 };
 
                 listaPedidoConcentrado.Add(pedidoConcentrado);
@@ -294,13 +296,6 @@ namespace Adquisiciones.View
                 foreach (var pedidoDetalle in pedido.PedidoDetalle)
                 {
                     var importe = pedidoDetalle.Cantidad.Value*pedidoDetalle.PrecioUnitario.Value;
-                    var partida = new CatPartida();
-
-                    if (index == 0)
-                    {
-                        var oneDetalle = pedido.PedidoDetalle[0];
-                        partida = PedidoService.AnexoService.ArticuloDao.GetPartida(oneDetalle.Articulo);
-                    }
 
                     var pedidoDetallado= new PedidoDetallado
                     {
@@ -310,12 +305,13 @@ namespace Adquisiciones.View
                         Proveedor = pedido.Proveedor.NombreFiscal,
                         DescripcionArticulo = pedidoDetalle.Articulo.ToString(),
                         UnidadArticulo  = pedidoDetalle.Articulo.Unidad,
-                        PartidaArticulo = partida.Partida,
+                        PartidaArticulo = pedido.PartidaString,
                         Cantidad = pedidoDetalle.Cantidad.Value,
                         PrecioUnitario = pedidoDetalle.PrecioUnitario.Value,
                         Importe = importe,
                         Descuento = pedido.ImporteDescuento.Value ,
-                        Iva = (decimal)(pedido.Iva.Id.Porcentaje/100.0)
+                        Iva = (decimal)(pedido.Iva.Id.Porcentaje/100.0),
+                        TipoPedido = pedido.CatTipopedido.DesTipoped
                     };
 
                     listaPedidoDetallado.Add(pedidoDetallado);
@@ -355,8 +351,8 @@ namespace Adquisiciones.View
                             NumeroEntrada = entrada.NumeroEntrada.Value,
                             Factura = entrada.NumeroFactura,
                             FechaEntrada = String.Format("{0:dd/MM/yyyy}", entrada.FechaEntrada),
-                            ImporteEntrada =
-                                PedidoService.PedidoDao.ImporteEntrada(entrada)
+                            ImporteEntrada =PedidoService.PedidoDao.ImporteEntrada(entrada),
+                            TipoPedido = pedido.CatTipopedido.DesTipoped
                         };
 
                         listaPedidoEntrada.Add(pedidoEntrada);
@@ -373,7 +369,8 @@ namespace Adquisiciones.View
                         NumeroEntrada = 0,
                         Factura = "",
                         FechaEntrada = "",
-                        ImporteEntrada =  (decimal)0.00
+                        ImporteEntrada =  (decimal)0.00,
+                        TipoPedido = pedido.CatTipopedido.DesTipoped
                     };
 
                     listaPedidoEntrada.Add(pedidoEntrada);
@@ -415,7 +412,8 @@ namespace Adquisiciones.View
                             NumeroEntrada = entrada.NumeroEntrada.Value,
                             Factura = entrada.NumeroFactura,
                             FechaEntrada = String.Format("{0:dd/MM/yyyy}", entrada.FechaEntrada),
-                            ImporteEntrada =PedidoService.PedidoDao.ImporteEntrada(entrada)
+                            ImporteEntrada =PedidoService.PedidoDao.ImporteEntrada(entrada),
+                            TipoPedido = pedido.CatTipopedido.DesTipoped
                         };
 
                         listaPedidoEntrada.Add(pedidoEntrada);
@@ -485,7 +483,8 @@ namespace Adquisiciones.View
                             Elaboro = pedido.Usuario.Nombre,
                             Licitacion = "",
                             FundamentoLegal = pedido.Fundamento.DesFundamento,
-                            ImportePedido = pedido.Total
+                            ImportePedido = pedido.Total,
+                            TipoPedido = pedido.CatTipopedido.DesTipoped
                         };
 
                         listaPedidoCompleto.Add(pedidoCompleto);
@@ -550,7 +549,8 @@ namespace Adquisiciones.View
                             Elaboro = pedido.Usuario.Nombre,
                             Licitacion = "",
                             FundamentoLegal = pedido.Fundamento.DesFundamento,
-                            ImportePedido = pedido.Total
+                            ImportePedido = pedido.Total,
+                            TipoPedido = pedido.CatTipopedido.DesTipoped
                         };
 
                         listaPedidoCompleto.Add(pedidoCompleto);
