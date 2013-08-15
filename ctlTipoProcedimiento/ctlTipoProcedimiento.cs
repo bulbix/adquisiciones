@@ -23,7 +23,7 @@ namespace ctlTipoProcedimiento
     {
         private IPedidoService service;
 
-        private TipoProcedimiento _tipoProcedimiento;
+        private TipoProcedimiento _tipoProcedimiento = new TipoProcedimiento();
 
         public ctlTipoProcedimiento()
         {
@@ -318,7 +318,7 @@ namespace ctlTipoProcedimiento
             }
             else
             {
-                _tipoProcedimiento = null;
+                _tipoProcedimiento = new TipoProcedimiento();
                 XtraMessageBox.Show(@"Faltan completar campos",
                 @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }

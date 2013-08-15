@@ -159,15 +159,15 @@ namespace Adquisiciones.View.Modulos
             if (!Util.DatosValidos(PedidoActual, lblNumErrors, listaError))
                 return;
 
-            if (tipoPedido == 1 && plProcedimiento.Tipoprocedimiento == null)
+            if (tipoPedido == 1 &&  plProcedimiento.Tipoprocedimiento.Catalogo == null)
             {
                 XtraMessageBox.Show(@"Procedimiento es requerido",
                     @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-
-            if (plProcedimiento.Tipoprocedimiento != null && plProcedimiento.Tipoprocedimiento.Catalogo == null)
+            if (plProcedimiento.Tipoprocedimiento != null && 
+                plProcedimiento.Tipoprocedimiento.Catalogo == null)
                 PedidoActual.TipoProcedimiento = null;
             else
                 PedidoActual.TipoProcedimiento = plProcedimiento.Tipoprocedimiento;
