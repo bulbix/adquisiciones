@@ -28,8 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.bsPedidoEntrega = new System.Windows.Forms.BindingSource(this.components);
+            this.bsPedidoEntrega = new System.Windows.Forms.BindingSource();
             this.cmdAceptar = new DevExpress.XtraEditors.SimpleButton();
             this.cmdCancelar = new DevExpress.XtraEditors.SimpleButton();
             this.gcPedidoEntrega = new DevExpress.XtraGrid.GridControl();

@@ -29,5 +29,11 @@ namespace Adquisiciones.Data.Dao.ModPedido
         IList<Entrada> CargarEntradas(DateTime fechaInicial, DateTime fechaFinal);
         IList<Pedido> CargarPedidos(Entrada entrada,CatTipopedido tipopedido, Ordenado ordenado);
 
+
+        IList<string> CatalogoTipoProcedimiento(string bloque, string condicionColumn = null,
+            string condicionValor = null);
+
+        CatTipoprocedimiento CatTipoprocedimientoByBloques(string[] bloquesNombre, object[] bloquesValor);
+
     }
 }

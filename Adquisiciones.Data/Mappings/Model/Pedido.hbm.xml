@@ -48,6 +48,8 @@
     </bag>
 
     <property name="NumeroRequisicion" column="numero_requisicion" type="string" />
+
+    <many-to-one name="TipoProcedimiento" column="id_tipoprocedimiento" fetch="join" cascade="all" />
     
   </class>
 </hibernate-mapping>

@@ -144,7 +144,7 @@ namespace Adquisiciones.View.Modulos
             if (FrmModuloAcceso.UsuarioLog.IdUsuario != usuarioModifico.IdUsuario)
             {
                 cmdGuardar.Enabled = false;
-                splitContainerControl1.Panel1.Enabled = false;
+                //splitContainerControl1.Panel1.Enabled = false;
             }
 
             if(EntityActual is Pedido)
@@ -152,7 +152,7 @@ namespace Adquisiciones.View.Modulos
                 if((EntityActual as Pedido).EstadoPedido == "C")
                 {
                     cmdGuardar.Enabled = false;
-                    splitContainerControl1.Panel1.Enabled = false;
+                    //splitContainerControl1.Panel1.Enabled = false;
                 }
             }
 

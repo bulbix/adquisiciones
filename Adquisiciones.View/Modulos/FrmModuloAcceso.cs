@@ -27,7 +27,6 @@ namespace Adquisiciones.View
 
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.cmdAceptar = new DevExpress.XtraEditors.SimpleButton();
             this.cmdCancelar = new DevExpress.XtraEditors.SimpleButton();
@@ -35,7 +34,7 @@ namespace Adquisiciones.View
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.txtPassword = new System.Windows.Forms.TextBox();
-            this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
+            this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel();
             this.picCaptcha = new DevExpress.XtraEditors.PictureEdit();
             this.txtCaptcha = new DevExpress.XtraEditors.TextEdit();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
@@ -78,7 +77,7 @@ namespace Adquisiciones.View
             // 
             // txtRfc
             // 
-            this.txtRfc.EditValue = "";
+            this.txtRfc.EditValue = "SAIH940101";
             this.txtRfc.Location = new System.Drawing.Point(278, 63);
             this.txtRfc.Name = "txtRfc";
             this.txtRfc.Size = new System.Drawing.Size(242, 20);
@@ -108,6 +107,7 @@ namespace Adquisiciones.View
             this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(242, 21);
             this.txtPassword.TabIndex = 1;
+            this.txtPassword.Text = "garbage";
             // 
             // defaultLookAndFeel1
             // 
@@ -253,7 +253,7 @@ namespace Adquisiciones.View
         private void FrmModuloAcceso_Load(object sender, EventArgs e)
         {
             GenerarCaptcha();
-            //txtCaptcha.Text = captcha.Text;
+            txtCaptcha.Text = captcha.Text;
         }
 #endregion
 

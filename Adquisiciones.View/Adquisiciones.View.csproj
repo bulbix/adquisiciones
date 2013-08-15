@@ -606,6 +606,10 @@
       <Project>{B7B2B69E-049B-43DB-B323-A130D532581F}</Project>
       <Name>Adquisiciones.Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ctlTipoProcedimiento\Adquisiciones.Controls.csproj">
+      <Project>{4cefd90c-2e75-417b-a07b-e62ecb397daa}</Project>
+      <Name>Adquisiciones.Controls</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\accept.png" />

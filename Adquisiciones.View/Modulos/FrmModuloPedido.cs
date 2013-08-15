@@ -56,6 +56,7 @@ namespace Adquisiciones.View.Modulos
                 searchLookUpAnexo.Enabled = false;
                 panelFechaEntrega.Visible = false;
                 gridColumnFecha.Visible = false;
+                cmdMostrarProc.Visible = false;
             }
 
 
@@ -122,7 +123,6 @@ namespace Adquisiciones.View.Modulos
             deFecha.DateTime = PedidoActual.FechaPedido.Value;
             txtNumero.Value = PedidoActual.NumeroPedido.Value;
 
-
             txtDescuento.Text = "0.00";
             Text = @"Pedido::" + PedidoActual;
 
@@ -158,6 +158,20 @@ namespace Adquisiciones.View.Modulos
 
             if (!Util.DatosValidos(PedidoActual, lblNumErrors, listaError))
                 return;
+
+            if (tipoPedido == 1 && plProcedimiento.Tipoprocedimiento == null)
+            {
+                XtraMessageBox.Show(@"Procedimiento es requerido",
+                    @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+
+            if (plProcedimiento.Tipoprocedimiento != null && plProcedimiento.Tipoprocedimiento.Catalogo == null)
+                PedidoActual.TipoProcedimiento = null;
+            else
+                PedidoActual.TipoProcedimiento = plProcedimiento.Tipoprocedimiento;
+            
 
             //Nuevo
             if (PedidoActual.IdPedido == 0 && PedidoService.PedidoDao.ExisteNumeroPedido(AlmacenActual, tipoPedido,
@@ -214,8 +228,13 @@ namespace Adquisiciones.View.Modulos
                     if(PedidoActual.Iva != null)
                         cbxIva.SelectedIndex = cbxIva.FindStringExact(PedidoActual.Iva.Id.Porcentaje.ToString());
 
-                    if (searchLookUpFundamento.Handle != IntPtr.Zero)
-                        searchLookUpFundamento.EditValue = PedidoActual.Fundamento.CveFundamento;
+                    if (PedidoActual.Fundamento != null)
+                    {
+                        if (searchLookUpFundamento.Handle != IntPtr.Zero)
+                            searchLookUpFundamento.EditValue = PedidoActual.Fundamento.CveFundamento;
+                    }
+
+                    plProcedimiento.Tipoprocedimiento = PedidoActual.TipoProcedimiento;
 
                     if (searchLookUpArea.Handle != IntPtr.Zero)
                         searchLookUpArea.EditValue = PedidoActual.CatArea.CveArea;
@@ -258,7 +277,7 @@ namespace Adquisiciones.View.Modulos
                     base.EntityActual = PedidoActual;
                     base.Consultar();
 
-                    
+                    cmdMostrarProc.Enabled = true;
 
                 }
                 else
@@ -618,6 +637,11 @@ namespace Adquisiciones.View.Modulos
                    @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
 
+        }
+
+        private void cmdMostrarProc_Click(object sender, EventArgs e)
+        {
+            plProcedimiento.Visible = true;
         }
        
     }

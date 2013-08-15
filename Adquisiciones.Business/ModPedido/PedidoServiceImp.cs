@@ -40,25 +40,31 @@ namespace Adquisiciones.Business.ModPedido
         [Transaction(ReadOnly = true)]
         public void CatalogoPresupuestal(ComboBox combo)
         {
-            var listaPresupuesto = AnexoDao.
-                CargarCatalogo<CatPresupuesto>("IdPresupuesto");
-
-            var dicc = listaPresupuesto.
-               ToDictionary(presupuesto => presupuesto, presupuesto => presupuesto.DesPresupuesto);
-
+            var listaPresupuesto = AnexoDao.CargarCatalogo<CatPresupuesto>("IdPresupuesto");
+            var dicc = listaPresupuesto.ToDictionary(presupuesto => presupuesto, presupuesto => presupuesto.DesPresupuesto);
             Util.Dicc2Combo(dicc, combo);
-
         }
 
          [Transaction(ReadOnly = true)]
         public void CatalogoActividad(ComboBox combo)
         {
-            var listaActividad = AnexoDao.
-               CargarCatalogo<CatActividad>("IdActividad");
-
+            var listaActividad = AnexoDao.CargarCatalogo<CatActividad>("IdActividad");
             var dicc = listaActividad.ToDictionary(actividad => actividad, actividad => actividad.DesActividad);
-
             Util.Dicc2Combo(dicc, combo);
+        }
+
+        public void CatalogoTipoProcedimiento(ComboBox combo, string bloque, string condicionColumn = null,
+            string condicionValor = null)
+        {
+            try
+            {
+                var lista = PedidoDao.CatalogoTipoProcedimiento(bloque, condicionColumn, condicionValor);
+                var dicc = lista.ToDictionary(proc => proc, proc => proc);
+                Util.Dicc2Combo(dicc, combo);
+            }
+            catch (Exception e)
+            {
+            }
         }
 
         /// <summary>
