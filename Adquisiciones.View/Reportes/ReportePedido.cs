@@ -548,7 +548,15 @@ namespace Adquisiciones.View.Reportes
             
             totales.DefaultCell.HorizontalAlignment = Element.ALIGN_LEFT;
             totales.DefaultCell.Colspan = 2;
-            totales.AddCell(new Paragraph("FUNDAMENTO LEGAL: " + pedido.Fundamento.DesFundamento, fuente));
+            
+            if(pedido.Fundamento != null)
+                totales.AddCell(new Paragraph("FUNDAMENTO LEGAL: " + pedido.Fundamento.DesFundamento, fuente));
+            else if(pedido.TipoProcedimiento != null)
+                totales.AddCell(new Paragraph("PROCEDIMIENTO: " + pedido.TipoProcedimiento, fuente));
+            else
+                totales.AddCell("");
+
+            
             totales.DefaultCell.HorizontalAlignment = Element.ALIGN_RIGHT;
             totales.DefaultCell.Colspan = 1;
             totales.AddCell(new Paragraph("DESCUENTO  " + pedido.ImporteDescuento.Value.ToString("C") , fuente));

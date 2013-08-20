@@ -128,6 +128,8 @@ namespace Adquisiciones.View.Modulos
 
             cmdGuardar.Enabled = true;
             cbxAlmacen.Enabled = true;
+
+            searchLookUpFundamento.Visible = false;
             searchLookUpFundamento.EditValue = null;
             searchLookUpArea.EditValue = null;
             searchLookUpProveedor.EditValue = null;
@@ -230,6 +232,7 @@ namespace Adquisiciones.View.Modulos
 
                     if (PedidoActual.Fundamento != null)
                     {
+                        searchLookUpFundamento.Visible = true;
                         if (searchLookUpFundamento.Handle != IntPtr.Zero)
                             searchLookUpFundamento.EditValue = PedidoActual.Fundamento.CveFundamento;
                     }

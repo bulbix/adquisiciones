@@ -38,12 +38,12 @@
             this.cb7 = new System.Windows.Forms.ComboBox();
             this.cb9 = new System.Windows.Forms.ComboBox();
             this.cb8 = new System.Windows.Forms.ComboBox();
-            this.txt2 = new System.Windows.Forms.MaskedTextBox();
-            this.txt3 = new System.Windows.Forms.MaskedTextBox();
-            this.txt4 = new System.Windows.Forms.MaskedTextBox();
-            this.txt5 = new System.Windows.Forms.MaskedTextBox();
             this.cmdCerrar = new DevExpress.XtraEditors.SimpleButton();
             this.cmdAceptar = new DevExpress.XtraEditors.SimpleButton();
+            this.txt2 = new System.Windows.Forms.ComboBox();
+            this.txt3 = new System.Windows.Forms.ComboBox();
+            this.txt4 = new System.Windows.Forms.ComboBox();
+            this.txt5 = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // cb1
@@ -145,41 +145,6 @@
             this.cb8.TabIndex = 9;
             this.cb8.SelectedIndexChanged += new System.EventHandler(this.cb8_SelectedIndexChanged);
             // 
-            // txt2
-            // 
-            this.txt2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt2.Location = new System.Drawing.Point(770, 14);
-            this.txt2.Name = "txt2";
-            this.txt2.Size = new System.Drawing.Size(54, 20);
-            this.txt2.TabIndex = 10;
-            this.txt2.Visible = false;
-            // 
-            // txt3
-            // 
-            this.txt3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt3.Location = new System.Drawing.Point(185, 39);
-            this.txt3.Name = "txt3";
-            this.txt3.Size = new System.Drawing.Size(54, 20);
-            this.txt3.TabIndex = 11;
-            this.txt3.Visible = false;
-            // 
-            // txt4
-            // 
-            this.txt4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt4.Location = new System.Drawing.Point(428, 39);
-            this.txt4.Name = "txt4";
-            this.txt4.Size = new System.Drawing.Size(54, 20);
-            this.txt4.TabIndex = 12;
-            this.txt4.Visible = false;
-            // 
-            // txt5
-            // 
-            this.txt5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt5.Location = new System.Drawing.Point(367, 67);
-            this.txt5.Name = "txt5";
-            this.txt5.Size = new System.Drawing.Size(54, 20);
-            this.txt5.TabIndex = 13;
-            // 
             // cmdCerrar
             // 
             this.cmdCerrar.Location = new System.Drawing.Point(734, 91);
@@ -198,18 +163,58 @@
             this.cmdAceptar.Text = "Aceptar";
             this.cmdAceptar.Click += new System.EventHandler(this.cmdAceptar_Click);
             // 
+            // txt2
+            // 
+            this.txt2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.txt2.FormattingEnabled = true;
+            this.txt2.Location = new System.Drawing.Point(769, 12);
+            this.txt2.Name = "txt2";
+            this.txt2.Size = new System.Drawing.Size(55, 21);
+            this.txt2.TabIndex = 16;
+            this.txt2.Visible = false;
+            // 
+            // txt3
+            // 
+            this.txt3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.txt3.FormattingEnabled = true;
+            this.txt3.Location = new System.Drawing.Point(185, 40);
+            this.txt3.Name = "txt3";
+            this.txt3.Size = new System.Drawing.Size(55, 21);
+            this.txt3.TabIndex = 17;
+            this.txt3.Visible = false;
+            // 
+            // txt4
+            // 
+            this.txt4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.txt4.FormattingEnabled = true;
+            this.txt4.Location = new System.Drawing.Point(428, 40);
+            this.txt4.Name = "txt4";
+            this.txt4.Size = new System.Drawing.Size(55, 21);
+            this.txt4.TabIndex = 18;
+            this.txt4.Visible = false;
+            // 
+            // txt5
+            // 
+            this.txt5.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.txt5.FormattingEnabled = true;
+            this.txt5.Location = new System.Drawing.Point(367, 66);
+            this.txt5.Name = "txt5";
+            this.txt5.Size = new System.Drawing.Size(55, 21);
+            this.txt5.TabIndex = 19;
+            this.txt5.Visible = false;
+            // 
             // ctlTipoProcedimiento
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Azure;
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Controls.Add(this.cmdAceptar);
-            this.Controls.Add(this.cmdCerrar);
             this.Controls.Add(this.txt5);
             this.Controls.Add(this.txt4);
             this.Controls.Add(this.txt3);
             this.Controls.Add(this.txt2);
+            this.Controls.Add(this.cmdAceptar);
+            this.Controls.Add(this.cmdCerrar);
             this.Controls.Add(this.cb8);
             this.Controls.Add(this.cb9);
             this.Controls.Add(this.cb7);
@@ -239,11 +244,11 @@
         private System.Windows.Forms.ComboBox cb7;
         private System.Windows.Forms.ComboBox cb9;
         private System.Windows.Forms.ComboBox cb8;
-        private System.Windows.Forms.MaskedTextBox txt2;
-        private System.Windows.Forms.MaskedTextBox txt3;
-        private System.Windows.Forms.MaskedTextBox txt4;
-        private System.Windows.Forms.MaskedTextBox txt5;
         private DevExpress.XtraEditors.SimpleButton cmdCerrar;
         private DevExpress.XtraEditors.SimpleButton cmdAceptar;
+        private System.Windows.Forms.ComboBox txt2;
+        private System.Windows.Forms.ComboBox txt3;
+        private System.Windows.Forms.ComboBox txt4;
+        private System.Windows.Forms.ComboBox txt5;
     }
 }

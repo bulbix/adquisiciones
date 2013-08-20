@@ -59,6 +59,12 @@ namespace Adquisiciones.Business.ModPedido
             try
             {
                 var lista = PedidoDao.CatalogoTipoProcedimiento(bloque, condicionColumn, condicionValor);
+
+                if (lista.Count <= 1)
+                    combo.Enabled = false;
+                else
+                    combo.Enabled = true;
+
                 var dicc = lista.ToDictionary(proc => proc, proc => proc);
                 Util.Dicc2Combo(dicc, combo);
             }

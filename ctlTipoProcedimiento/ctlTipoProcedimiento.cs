@@ -21,6 +21,20 @@ namespace ctlTipoProcedimiento
 {
     public partial class ctlTipoProcedimiento: UserControl
     {
+        public string[] Fracciones =
+        {
+            "I","II","III","IV","V","VI","VII","VIII","IX","X","XI","XII","XIII",
+            "XIV","XV","XVI","XVII","XVIII","XIX","XX"
+        };
+
+        public string[] Numeros =
+        {
+            "1ra", "2da", "3ra", "4ta", "5ta", "6ta", "7ma", "8va", "9na", "10ma",
+            "11ra", "12da", "13ra", "14ta", "15ta", "16ta", "17ma", "18va", "19na", "20ma"
+        };
+
+
+
         private IPedidoService service;
 
         private TipoProcedimiento _tipoProcedimiento = new TipoProcedimiento();
@@ -69,6 +83,7 @@ namespace ctlTipoProcedimiento
                if (control is ComboBox)
                {
                    var combo = control as ComboBox;
+
                    for (var index = numeroCombo + 1; index <= 9; index++)
                    {
                        if (combo.Name == "cb" + index)
@@ -76,20 +91,16 @@ namespace ctlTipoProcedimiento
                            combo.Visible = visible;
                        }
                    }
-               }
-               else if (control is MaskedTextBox)
-               {
-                   var caja = control as MaskedTextBox;
 
                    for (var index = numeroTexto; index <= 5; index++)
                    {
-                       if (caja.Name == "txt" + index)
+                       if (combo.Name == "txt" + index)
                        {
-                           caja.Visible = false;
+                           combo.Visible = false;
                        }
                    }
                }
-                    
+
             }
             
         }
@@ -119,9 +130,10 @@ namespace ctlTipoProcedimiento
             {
                 DisplayControles(0, 1, true);
 
-                if (!cb2.SelectedValue.ToString().StartsWith("Art."))
+                if (!cb2.SelectedValue.ToString().StartsWith("Art.")){
                     txt1.Visible = true;
-                
+                }
+
                 service.CatalogoTipoProcedimiento(cb3, "Bloque3", "Bloque2", cb2.SelectedValue.ToString());
             }
 
@@ -140,8 +152,11 @@ namespace ctlTipoProcedimiento
                 {
                     DisplayControles(0, 2, true);
 
-                    if (cb3.SelectedValue.ToString().Equals("Fracc."))
+                    if (cb3.SelectedValue.ToString().Equals("Fracc.")){
                         txt2.Visible = true;
+                        txt2.Items.Clear();
+                        txt2.Items.AddRange(Fracciones);
+                    }
 
                     service.CatalogoTipoProcedimiento(cb4, "Bloque4", "Bloque3", cb3.SelectedValue.ToString());
                 }
@@ -158,8 +173,11 @@ namespace ctlTipoProcedimiento
             {
                 DisplayControles(0, 3, true);
 
-                if (cb4.SelectedValue.ToString().Equals("Numero"))
+                if (cb4.SelectedValue.ToString().Equals("Numero")){
                     txt3.Visible = true;
+                    txt3.Items.Clear();
+                    txt3.Items.AddRange(Numeros);
+                }
 
                 service.CatalogoTipoProcedimiento(cb5, "Bloque5", "Bloque4", cb4.SelectedValue.ToString());
                 
@@ -181,8 +199,14 @@ namespace ctlTipoProcedimiento
                 {
                     DisplayControles(0, 4, true);
 
-                    if (cb5.SelectedValue.ToString().Equals("Numero") || cb5.SelectedValue.ToString().Equals("Fracc."))
+                    if (cb5.SelectedValue.ToString().Equals("Numero") || cb5.SelectedValue.ToString().Equals("Fracc.")){
                         txt4.Visible = true;
+                        txt4.Items.Clear();
+                        if (cb5.SelectedValue.ToString().Equals("Numero"))
+                            txt4.Items.AddRange(Numeros);
+                        else
+                            txt4.Items.AddRange(Fracciones);
+                    }
 
                     service.CatalogoTipoProcedimiento(cb6, "Bloque6", "Bloque5", cb5.SelectedValue.ToString());
                 }
@@ -229,6 +253,8 @@ namespace ctlTipoProcedimiento
             {
                 DisplayControles(0, 5, true);
                 txt5.Visible = true;
+                txt5.Items.Clear();
+                txt5.Items.AddRange(Numeros);
                 service.CatalogoTipoProcedimiento(cb9, "Bloque9", "Bloque8", cb8.SelectedValue.ToString());
             }
         }
@@ -283,7 +309,6 @@ namespace ctlTipoProcedimiento
                 case 4:
                     if (txt4.Text.Length == 0 || txt5.Text.Length == 0)
                         error = true;
-
                     fraccion = txt4.Text;
                     numero = txt5.Text;
                     break;
@@ -381,6 +406,5 @@ namespace ctlTipoProcedimiento
             }
 
         }
-
     }
 }
