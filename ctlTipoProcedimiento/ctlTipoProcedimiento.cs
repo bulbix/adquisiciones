@@ -94,6 +94,9 @@ namespace ctlTipoProcedimiento
 
                    for (var index = numeroTexto; index <= 5; index++)
                    {
+                       if (numeroTexto == 1)//Num de Licitacion
+                           txt1.Visible = false;
+
                        if (combo.Name == "txt" + index)
                        {
                            combo.Visible = false;
