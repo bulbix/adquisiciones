@@ -113,7 +113,7 @@ namespace ctlTipoProcedimiento
             ClearCombos(1);
             if (cb1.SelectedValue != null)
             {
-                if (cb1.SelectedValue.ToString().Equals("Donacion") || cb1.SelectedValue.ToString().Equals("Ajuste"))
+                if (cb1.SelectedValue.ToString().Equals("Ajuste"))
                 {
                     DisplayControles(1,1,false);
                 }
@@ -147,7 +147,7 @@ namespace ctlTipoProcedimiento
             ClearCombos(3);
             if (cb3.SelectedValue != null)
             {
-                if (cb3.SelectedValue.ToString().Equals("Renglon Desierto") || cb3.SelectedValue.ToString().Equals("por monto de la actuacion"))
+                if (cb3.SelectedValue.ToString().Equals("Ninguno") || cb3.SelectedValue.ToString().Equals("Renglon Desierto") || cb3.SelectedValue.ToString().Equals("por monto de la actuacion"))
                 {
                     DisplayControles(3,2,false);
                 }
@@ -297,7 +297,7 @@ namespace ctlTipoProcedimiento
 
             bool error = false;
 
-            if (catalogo.Id >= 1 && catalogo.Id <= 6)
+            if ((catalogo.Id >= 1 && catalogo.Id <= 6) || (catalogo.Id >= 11 && catalogo.Id <= 12))
             {
                 string pattern = "\\d{3}-\\d{4}";
                 if (!Regex.IsMatch(txt1.Text, pattern))
