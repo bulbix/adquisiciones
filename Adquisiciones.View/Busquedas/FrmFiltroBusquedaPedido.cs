@@ -69,6 +69,12 @@ namespace Adquisiciones.View.Busquedas
             
             
             bsSource.DataSource = source;
+
+            XtraMessageBox.Show(@"Busqueda Finalizada",
+                             @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            this.Close();
+
         }
 
         private void FrmFiltroBusquedaPedido_Load(object sender, EventArgs e)

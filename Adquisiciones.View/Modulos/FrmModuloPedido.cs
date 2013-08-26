@@ -536,7 +536,7 @@ namespace Adquisiciones.View.Modulos
         {
             var pedidoDetalleSelect = gvPedidoDetalle.GetFocusedRow() as PedidoDetalle;
             var forma = new FrmPedidoEntrega(pedidoDetalleSelect);
-            forma.Show();
+            forma.ShowDialog();
         }
 
         private void GcPedidoDetalleKeyDown(object sender, KeyEventArgs e)
