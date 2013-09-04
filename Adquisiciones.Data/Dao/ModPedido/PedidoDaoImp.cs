@@ -288,8 +288,7 @@ namespace Adquisiciones.Data.Dao.ModPedido
         }
 
         [Transaction(ReadOnly = true)]
-        public IList<string> CatalogoTipoProcedimiento(string bloque, string condicionColumn = null,
-            string condicionValor = null)
+        public IList<string> CatalogoTipoProcedimiento(string bloque, CatTipopedido tipoPedido, string condicionColumn = null, string condicionValor = null)
         {
             var criteria = CurrentSession.CreateCriteria(typeof(CatTipoprocedimiento));
             criteria.SetProjection(Projections.Distinct(Projections.Property(bloque)));
@@ -299,7 +298,15 @@ namespace Adquisiciones.Data.Dao.ModPedido
                  criteria.Add(Restrictions.Eq(condicionColumn, condicionValor));
              }
 
-             //criteria.AddOrder(Order.Asc("Id"));
+            if (tipoPedido.IdTipoped == 1){ //Pedido Mayor
+                criteria.Add(Restrictions.Eq("Mayor", true));
+            }
+            else if (tipoPedido.IdTipoped == 2){ //Pedido Menor
+                criteria.Add(Restrictions.Eq("Menor", true));
+            }
+
+
+            //criteria.AddOrder(Order.Asc("Id"));
 
              return criteria.List<string>();
         }

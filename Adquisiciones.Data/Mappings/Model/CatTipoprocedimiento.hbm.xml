@@ -15,6 +15,9 @@
     <property name="Bloque7" column="bloque7" type="string" />
     <property name="Bloque8" column="bloque8" type="string" />
     <property name="Bloque9" column="bloque9" type="string" />
+
+    <property name="Menor" column="menor" type="bool" />
+    <property name="Mayor" column="mayor" type="bool" />
     
   
   </class>

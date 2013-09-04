@@ -19,6 +19,8 @@ namespace Adquisiciones.Data.Entities
         public string Bloque8 { get; set; }
         public string Bloque9 { get; set; }
 
+        public bool Menor { get; set;}
+        public bool Mayor { get; set; }
 
     }
 }

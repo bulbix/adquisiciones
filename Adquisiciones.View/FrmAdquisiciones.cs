@@ -242,6 +242,15 @@ namespace Adquisiciones.View
             //forma.Show();
 
         }
+
+        private void barButtonPedidoAjuste_ItemClick(object sender, ItemClickEventArgs e)
+        {
+
+            var forma = new FrmModuloPedido(5, this);
+            forma.Text = @"Ajuste";
+            forma.MdiParent = this;
+            forma.Show();
+        }
         
 
        

@@ -43,10 +43,7 @@ namespace Adquisiciones.Data.Entities
                     result = string.Format("{0} {1} {2}",
                     Catalogo.Bloque1, Catalogo.Bloque2, Catalogo.Bloque3);
                     break;
-                case 9: case 10:
-                    result = Catalogo.Bloque1;
-                    break;
-                case 11:case 12:
+                case 11: case 12: case 13:
                     result = string.Format("{0} {1}{2}",
                     Catalogo.Bloque1, Catalogo.Bloque2, NumLicitacion);
                     break;

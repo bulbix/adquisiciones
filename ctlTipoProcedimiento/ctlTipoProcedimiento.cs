@@ -39,6 +39,9 @@ namespace ctlTipoProcedimiento
 
         private TipoProcedimiento _tipoProcedimiento = new TipoProcedimiento();
 
+        private CatTipopedido _tipoPedido  = new CatTipopedido();
+
+
         public ctlTipoProcedimiento()
         {
             InitializeComponent();
@@ -46,10 +49,6 @@ namespace ctlTipoProcedimiento
             {
                 var ctx = ContextRegistry.GetContext();
                 service = ctx["pedidoService"] as IPedidoService;
-                service.CatalogoTipoProcedimiento(cb1, "Bloque1");
-                service.CatalogoTipoProcedimiento(cb2, "Bloque2", "Bloque1", cb1.SelectedValue.ToString());
-
-                cb1.SelectedIndex = cb1.FindStringExact("Licitación Publica Nacional");
             }
             catch (Exception e)
             {
@@ -113,15 +112,10 @@ namespace ctlTipoProcedimiento
             ClearCombos(1);
             if (cb1.SelectedValue != null)
             {
-                if (cb1.SelectedValue.ToString().Equals("Ajuste"))
-                {
-                    DisplayControles(1,1,false);
-                }
-                else
-                {
-                    DisplayControles(0,1,true);
-                    service.CatalogoTipoProcedimiento(cb2, "Bloque2", "Bloque1", cb1.SelectedValue.ToString());
-                }
+                DisplayControles(0,1,true);
+                service.
+                CatalogoTipoProcedimiento(cb2, "Bloque2", TipoPedido, condicionColumn: "Bloque1", condicionValor: cb1.SelectedValue.ToString());
+                
             }
            
         }
@@ -137,7 +131,7 @@ namespace ctlTipoProcedimiento
                     txt1.Visible = true;
                 }
 
-                service.CatalogoTipoProcedimiento(cb3, "Bloque3", "Bloque2", cb2.SelectedValue.ToString());
+                service.CatalogoTipoProcedimiento(cb3, "Bloque3", TipoPedido, condicionColumn: "Bloque2", condicionValor: cb2.SelectedValue.ToString());
             }
 
         }
@@ -161,7 +155,7 @@ namespace ctlTipoProcedimiento
                         txt2.Items.AddRange(Fracciones);
                     }
 
-                    service.CatalogoTipoProcedimiento(cb4, "Bloque4", "Bloque3", cb3.SelectedValue.ToString());
+                    service.CatalogoTipoProcedimiento(cb4, "Bloque4", TipoPedido, condicionColumn: "Bloque3", condicionValor: cb3.SelectedValue.ToString());
                 }
 
             }
@@ -182,7 +176,7 @@ namespace ctlTipoProcedimiento
                     txt3.Items.AddRange(Numeros);
                 }
 
-                service.CatalogoTipoProcedimiento(cb5, "Bloque5", "Bloque4", cb4.SelectedValue.ToString());
+                service.CatalogoTipoProcedimiento(cb5, "Bloque5", TipoPedido, condicionColumn: "Bloque4", condicionValor: cb4.SelectedValue.ToString());
                 
             }
             
@@ -211,7 +205,7 @@ namespace ctlTipoProcedimiento
                             txt4.Items.AddRange(Fracciones);
                     }
 
-                    service.CatalogoTipoProcedimiento(cb6, "Bloque6", "Bloque5", cb5.SelectedValue.ToString());
+                    service.CatalogoTipoProcedimiento(cb6, "Bloque6", TipoPedido, condicionColumn: "Bloque5", condicionValor: cb5.SelectedValue.ToString());
                 }
 
 
@@ -231,7 +225,7 @@ namespace ctlTipoProcedimiento
                 else
                 {
                     DisplayControles(0, 5, true);
-                    service.CatalogoTipoProcedimiento(cb7, "Bloque7", "Bloque6", cb6.SelectedValue.ToString());
+                    service.CatalogoTipoProcedimiento(cb7, "Bloque7", TipoPedido, condicionColumn: "Bloque6", condicionValor: cb6.SelectedValue.ToString());
                 }
 
             }
@@ -245,7 +239,7 @@ namespace ctlTipoProcedimiento
             if (cb7.SelectedValue != null)
             {
                 DisplayControles(0, 5, true);
-                service.CatalogoTipoProcedimiento(cb8, "Bloque8", "Bloque7", cb7.SelectedValue.ToString());
+                service.CatalogoTipoProcedimiento(cb8, "Bloque8", TipoPedido, condicionColumn: "Bloque7", condicionValor: cb7.SelectedValue.ToString());
             }
         }
 
@@ -258,7 +252,7 @@ namespace ctlTipoProcedimiento
                 txt5.Visible = true;
                 txt5.Items.Clear();
                 txt5.Items.AddRange(Numeros);
-                service.CatalogoTipoProcedimiento(cb9, "Bloque9", "Bloque8", cb8.SelectedValue.ToString());
+                service.CatalogoTipoProcedimiento(cb9, "Bloque9", TipoPedido, condicionColumn: "Bloque8", condicionValor: cb8.SelectedValue.ToString());
             }
         }
 
@@ -276,6 +270,33 @@ namespace ctlTipoProcedimiento
             {
                 _tipoProcedimiento = value;
                 CargarSeleccion(_tipoProcedimiento);
+            }
+        }
+
+        public CatTipopedido TipoPedido
+        {
+            get
+            {
+                return _tipoPedido;
+            }
+            set
+            {
+                try
+                {
+                    _tipoPedido = value;
+
+                    if (_tipoPedido != null)
+                    {
+                        service.CatalogoTipoProcedimiento(cb1, "Bloque1", _tipoPedido);
+                        service.CatalogoTipoProcedimiento(cb2, "Bloque2", _tipoPedido,
+                            "Bloque1", cb1.SelectedValue.ToString());
+                        cb1.SelectedIndex = cb1.FindStringExact("Licitación Publica Nacional");
+                    }
+                }
+                catch (Exception ex)
+                {
+
+                }
             }
         }
 
@@ -297,7 +318,7 @@ namespace ctlTipoProcedimiento
 
             bool error = false;
 
-            if ((catalogo.Id >= 1 && catalogo.Id <= 6) || (catalogo.Id >= 11 && catalogo.Id <= 12))
+            if ((catalogo.Id >= 1 && catalogo.Id <= 6) || (catalogo.Id >= 11 && catalogo.Id <= 13))
             {
                 string pattern = "\\d{3}-\\d{4}";
                 if (!Regex.IsMatch(txt1.Text, pattern))
@@ -362,15 +383,15 @@ namespace ctlTipoProcedimiento
 
             try
             {
-                service.CatalogoTipoProcedimiento(cb1, "Bloque1");
-                service.CatalogoTipoProcedimiento(cb2, "Bloque2", "Bloque1", catalogo.Bloque1);
-                service.CatalogoTipoProcedimiento(cb3, "Bloque3", "Bloque2", catalogo.Bloque2);
-                service.CatalogoTipoProcedimiento(cb4, "Bloque4", "Bloque3", catalogo.Bloque3);
-                service.CatalogoTipoProcedimiento(cb5, "Bloque5", "Bloque4", catalogo.Bloque4);
-                service.CatalogoTipoProcedimiento(cb6, "Bloque6", "Bloque5", catalogo.Bloque5);
-                service.CatalogoTipoProcedimiento(cb7, "Bloque7", "Bloque6", catalogo.Bloque6);
-                service.CatalogoTipoProcedimiento(cb8, "Bloque8", "Bloque7", catalogo.Bloque7);
-                service.CatalogoTipoProcedimiento(cb9, "Bloque9", "Bloque8", catalogo.Bloque8);
+                service.CatalogoTipoProcedimiento(cb1, "Bloque1", TipoPedido);
+                service.CatalogoTipoProcedimiento(cb2, "Bloque2", TipoPedido, condicionColumn: "Bloque1", condicionValor: catalogo.Bloque1);
+                service.CatalogoTipoProcedimiento(cb3, "Bloque3", TipoPedido, condicionColumn: "Bloque2", condicionValor: catalogo.Bloque2);
+                service.CatalogoTipoProcedimiento(cb4, "Bloque4", TipoPedido, condicionColumn: "Bloque3", condicionValor: catalogo.Bloque3);
+                service.CatalogoTipoProcedimiento(cb5, "Bloque5", TipoPedido, condicionColumn: "Bloque4", condicionValor: catalogo.Bloque4);
+                service.CatalogoTipoProcedimiento(cb6, "Bloque6", TipoPedido, condicionColumn: "Bloque5", condicionValor: catalogo.Bloque5);
+                service.CatalogoTipoProcedimiento(cb7, "Bloque7", TipoPedido, condicionColumn: "Bloque6", condicionValor: catalogo.Bloque6);
+                service.CatalogoTipoProcedimiento(cb8, "Bloque8", TipoPedido, condicionColumn: "Bloque7", condicionValor: catalogo.Bloque7);
+                service.CatalogoTipoProcedimiento(cb9, "Bloque9", TipoPedido, condicionColumn: "Bloque8", condicionValor: catalogo.Bloque8);
 
                 cb1.SelectedIndex = cb1.FindStringExact(catalogo.Bloque1);
                 cb2.SelectedIndex = cb2.FindStringExact(catalogo.Bloque2);
@@ -407,6 +428,12 @@ namespace ctlTipoProcedimiento
                     txt2.Visible = true;
                     break;
             }
+
+        }
+
+        private void ctlTipoProcedimiento_Load(object sender, EventArgs e)
+        {
+           
 
         }
     }

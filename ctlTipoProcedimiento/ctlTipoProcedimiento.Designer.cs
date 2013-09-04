@@ -227,6 +227,7 @@
             this.Controls.Add(this.cb1);
             this.Name = "ctlTipoProcedimiento";
             this.Size = new System.Drawing.Size(833, 117);
+            this.Load += new System.EventHandler(this.ctlTipoProcedimiento_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

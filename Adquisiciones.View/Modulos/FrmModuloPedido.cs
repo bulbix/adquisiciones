@@ -50,12 +50,17 @@ namespace Adquisiciones.View.Modulos
             Nuevo();
             
             PedidoActual.CatTipopedido = new CatTipopedido(tipoPedido);
+            plProcedimiento.TipoPedido = PedidoActual.CatTipopedido;
 
             if (tipoPedido > 1)
             {
                 searchLookUpAnexo.Enabled = false;
                 panelFechaEntrega.Visible = false;
                 gridColumnFecha.Visible = false;
+            }
+
+            if (tipoPedido > 2)
+            {
                 cmdMostrarProc.Visible = false;
             }
 
@@ -68,7 +73,9 @@ namespace Adquisiciones.View.Modulos
          public FrmModuloPedido(Pedido pedido,FrmAdquisiciones padre):this(pedido.CatTipopedido.IdTipoped,padre)
          {
             PedidoActual = pedido;
+            plProcedimiento.TipoPedido = PedidoActual.CatTipopedido;
             Consultar();
+
             Text = @"Pedido::" + PedidoActual;
 
             if (pedido.Requisicion != null)
@@ -161,7 +168,7 @@ namespace Adquisiciones.View.Modulos
             if (!Util.DatosValidos(PedidoActual, lblNumErrors, listaError))
                 return;
 
-            if (tipoPedido == 1 &&  plProcedimiento.Tipoprocedimiento.Catalogo == null)
+            if ((tipoPedido == 1 || tipoPedido == 2 ) &&  plProcedimiento.Tipoprocedimiento.Catalogo == null)
             {
                 XtraMessageBox.Show(@"Procedimiento es requerido",
                     @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Error);

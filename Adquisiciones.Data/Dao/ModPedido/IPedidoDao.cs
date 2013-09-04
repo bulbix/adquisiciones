@@ -30,8 +30,7 @@ namespace Adquisiciones.Data.Dao.ModPedido
         IList<Pedido> CargarPedidos(Entrada entrada,CatTipopedido tipopedido, Ordenado ordenado);
 
 
-        IList<string> CatalogoTipoProcedimiento(string bloque, string condicionColumn = null,
-            string condicionValor = null);
+        IList<string> CatalogoTipoProcedimiento(string bloque, CatTipopedido tipoPedido, string condicionColumn = null, string condicionValor = null);
 
         CatTipoprocedimiento CatTipoprocedimientoByBloques(string[] bloquesNombre, object[] bloquesValor);
 

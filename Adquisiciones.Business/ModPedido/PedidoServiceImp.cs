@@ -53,12 +53,11 @@ namespace Adquisiciones.Business.ModPedido
             Util.Dicc2Combo(dicc, combo);
         }
 
-        public void CatalogoTipoProcedimiento(ComboBox combo, string bloque, string condicionColumn = null,
-            string condicionValor = null)
+        public void CatalogoTipoProcedimiento(ComboBox combo, string bloque, CatTipopedido tipoPedido, string condicionColumn = null, string condicionValor = null)
         {
             try
             {
-                var lista = PedidoDao.CatalogoTipoProcedimiento(bloque, condicionColumn, condicionValor);
+                var lista = PedidoDao.CatalogoTipoProcedimiento(bloque, tipoPedido, condicionColumn, condicionValor);
 
                 if (lista.Count <= 1)
                     combo.Enabled = false;
