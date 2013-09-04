@@ -265,7 +265,8 @@ namespace Adquisiciones.Data.Dao.ModPedido
                 join fetch p.Proveedor 
                 join fetch p.Usuario 
                 join fetch p.CatArea 
-                join fetch p.Fundamento 
+                join fetch p.Fundamento
+                join fetch p.CatTipopedido  
                 where e.IdEntrada = :idEntrada 
                 and p.CatTipopedido = :tipoPedido ";
 
