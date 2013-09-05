@@ -239,6 +239,7 @@ namespace Adquisiciones.View.Modulos
 
                     if (PedidoActual.Fundamento != null)
                     {
+                        cmdMostrarProc.Visible = false;
                         searchLookUpFundamento.Visible = true;
                         if (searchLookUpFundamento.Handle != IntPtr.Zero)
                             searchLookUpFundamento.EditValue = PedidoActual.Fundamento.CveFundamento;
