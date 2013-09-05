@@ -44,6 +44,9 @@ namespace Adquisiciones.View.Busquedas
             if(cbExtramuro.Checked)
                 tiposList.Add(4);
 
+            if (cbAjuste.Checked)
+                tiposList.Add(5);
+
             var tipos = tiposList.ToArray();
 
             var source = service.PedidoDao.CargarPedidos(almacen,
@@ -83,6 +86,11 @@ namespace Adquisiciones.View.Busquedas
             var fecha1 = new DateTime(fechatemp.Year, fechatemp.Month, 1);
             deInicial.DateTime = fecha1;
             deFinal.DateTime = DateTime.Now;
+        }
+
+        private void cbExtramuro_CheckedChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

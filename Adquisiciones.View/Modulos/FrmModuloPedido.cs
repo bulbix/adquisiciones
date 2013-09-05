@@ -50,12 +50,18 @@ namespace Adquisiciones.View.Modulos
             Nuevo();
             
             PedidoActual.CatTipopedido = new CatTipopedido(tipoPedido);
+            plProcedimiento.TipoPedido = PedidoActual.CatTipopedido;
 
             if (tipoPedido > 1)
             {
                 searchLookUpAnexo.Enabled = false;
                 panelFechaEntrega.Visible = false;
                 gridColumnFecha.Visible = false;
+            }
+
+            if (tipoPedido > 2)
+            {
+                cmdMostrarProc.Visible = false;
             }
 
 
@@ -67,7 +73,9 @@ namespace Adquisiciones.View.Modulos
          public FrmModuloPedido(Pedido pedido,FrmAdquisiciones padre):this(pedido.CatTipopedido.IdTipoped,padre)
          {
             PedidoActual = pedido;
+            plProcedimiento.TipoPedido = PedidoActual.CatTipopedido;
             Consultar();
+
             Text = @"Pedido::" + PedidoActual;
 
             if (pedido.Requisicion != null)
@@ -122,12 +130,13 @@ namespace Adquisiciones.View.Modulos
             deFecha.DateTime = PedidoActual.FechaPedido.Value;
             txtNumero.Value = PedidoActual.NumeroPedido.Value;
 
-
             txtDescuento.Text = "0.00";
             Text = @"Pedido::" + PedidoActual;
 
             cmdGuardar.Enabled = true;
             cbxAlmacen.Enabled = true;
+
+            searchLookUpFundamento.Visible = false;
             searchLookUpFundamento.EditValue = null;
             searchLookUpArea.EditValue = null;
             searchLookUpProveedor.EditValue = null;
@@ -158,6 +167,20 @@ namespace Adquisiciones.View.Modulos
 
             if (!Util.DatosValidos(PedidoActual, lblNumErrors, listaError))
                 return;
+
+            if ((tipoPedido == 1 || tipoPedido == 2 ) &&  plProcedimiento.Tipoprocedimiento.Catalogo == null)
+            {
+                XtraMessageBox.Show(@"Procedimiento es requerido",
+                    @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (plProcedimiento.Tipoprocedimiento != null && 
+                plProcedimiento.Tipoprocedimiento.Catalogo == null)
+                PedidoActual.TipoProcedimiento = null;
+            else
+                PedidoActual.TipoProcedimiento = plProcedimiento.Tipoprocedimiento;
+            
 
             //Nuevo
             if (PedidoActual.IdPedido == 0 && PedidoService.PedidoDao.ExisteNumeroPedido(AlmacenActual, tipoPedido,
@@ -214,8 +237,15 @@ namespace Adquisiciones.View.Modulos
                     if(PedidoActual.Iva != null)
                         cbxIva.SelectedIndex = cbxIva.FindStringExact(PedidoActual.Iva.Id.Porcentaje.ToString());
 
-                    if (searchLookUpFundamento.Handle != IntPtr.Zero)
-                        searchLookUpFundamento.EditValue = PedidoActual.Fundamento.CveFundamento;
+                    if (PedidoActual.Fundamento != null)
+                    {
+                        cmdMostrarProc.Visible = false;
+                        searchLookUpFundamento.Visible = true;
+                        if (searchLookUpFundamento.Handle != IntPtr.Zero)
+                            searchLookUpFundamento.EditValue = PedidoActual.Fundamento.CveFundamento;
+                    }
+
+                    plProcedimiento.Tipoprocedimiento = PedidoActual.TipoProcedimiento;
 
                     if (searchLookUpArea.Handle != IntPtr.Zero)
                         searchLookUpArea.EditValue = PedidoActual.CatArea.CveArea;
@@ -258,7 +288,7 @@ namespace Adquisiciones.View.Modulos
                     base.EntityActual = PedidoActual;
                     base.Consultar();
 
-                    
+                    cmdMostrarProc.Enabled = true;
 
                 }
                 else
@@ -618,6 +648,11 @@ namespace Adquisiciones.View.Modulos
                    @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
 
+        }
+
+        private void cmdMostrarProc_Click(object sender, EventArgs e)
+        {
+            plProcedimiento.Visible = true;
         }
        
     }

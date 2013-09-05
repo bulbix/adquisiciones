@@ -5,6 +5,7 @@ using System.Text;
 using Adquisiciones.Data.Entities;
 using NHibernate;
 using NHibernate.Criterion;
+using NHibernate.Mapping;
 using Spring.Transaction.Interceptor;
 
 namespace Adquisiciones.Data.Dao.ModPedido
@@ -128,6 +129,7 @@ namespace Adquisiciones.Data.Dao.ModPedido
             var strquery =
                 @"from Pedido p
                           left join fetch p.Fundamento
+                          left join fetch p.TipoProcedimiento
                           left join fetch p.CatArea
                           left join fetch p.CatPresupuesto 
                           left join fetch p.CatActividad       
@@ -284,6 +286,54 @@ namespace Adquisiciones.Data.Dao.ModPedido
              query.SetParameter("tipoPedido", tipopedido);
              var pedidos = query.List<Pedido>();
              return pedidos;
+        }
+
+        [Transaction(ReadOnly = true)]
+        public IList<string> CatalogoTipoProcedimiento(string bloque, CatTipopedido tipoPedido, string condicionColumn = null, string condicionValor = null)
+        {
+            var criteria = CurrentSession.CreateCriteria(typeof(CatTipoprocedimiento));
+            criteria.SetProjection(Projections.Distinct(Projections.Property(bloque)));
+
+             if (condicionColumn != null && condicionValor != null )
+             {
+                 criteria.Add(Restrictions.Eq(condicionColumn, condicionValor));
+             }
+
+            if (tipoPedido.IdTipoped == 1){ //Pedido Mayor
+                criteria.Add(Restrictions.Eq("Mayor", true));
+            }
+            else if (tipoPedido.IdTipoped == 2){ //Pedido Menor
+                criteria.Add(Restrictions.Eq("Menor", true));
+            }
+
+
+            //criteria.AddOrder(Order.Asc("Id"));
+
+             return criteria.List<string>();
+        }
+
+        [Transaction(ReadOnly = true)]
+        public CatTipoprocedimiento CatTipoprocedimientoByBloques(string[] bloquesNombre, object[] bloquesValor)
+        {
+            CatTipoprocedimiento result = null;
+
+            var criteria = CurrentSession.CreateCriteria(typeof(CatTipoprocedimiento));
+
+            for (var index =0; index < bloquesNombre.Length; index++)
+            {
+                if (bloquesValor[index] != null)
+                    criteria.Add(Restrictions.Eq(bloquesNombre[index], bloquesValor[index]));
+                else
+                    criteria.Add(Restrictions.IsNull(bloquesNombre[index]));
+            }
+
+            if(criteria.UniqueResult() != null)
+            {
+                result = criteria.UniqueResult<CatTipoprocedimiento>();
+            }
+
+            return result;
+            
         }
     }
 }

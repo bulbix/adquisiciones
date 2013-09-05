@@ -156,7 +156,7 @@ namespace Adquisiciones.Data.Entities
 			set {_anexo= value; }
 		}
 
-        [NotNull(Message = ("Fundamento Requerido"))]
+        //[NotNull(Message = ("Fundamento Requerido"))]
 		public  virtual Fundamento Fundamento
 		{
 			get { return _fundamento; }
@@ -169,6 +169,11 @@ namespace Adquisiciones.Data.Entities
 			get { return _catarea; } 
 			set {_catarea= value; }
 		}
+
+        public virtual TipoProcedimiento TipoProcedimiento
+        {
+            get;set;
+        }
       
 
 		public  virtual string EstadoPedido

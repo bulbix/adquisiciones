@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+  <!--Build: with lujan99@usa.net Nhibernate template-->
+  <class name="Adquisiciones.Data.Entities.TipoProcedimiento,Adquisiciones.Data" table="tipo_procedimiento" lazy="true">
+    <id name="Id" column="id" type="int">
+      <generator class="increment" />
+    </id>
+    
+    <many-to-one name="Catalogo" 
+    class="Adquisiciones.Data.Entities.CatTipoprocedimiento,Adquisiciones.Data" 
+    column="id_catalogo" lazy="proxy" />
+    
+    <property name="NumLicitacion" column="num_licitacion" type="string" />
+    <property name="Fraccion" column="fraccion" type="string" />
+    <property name="NumOrdinal" column="num_ordinal" type="string" />
+    
+  
+  </class>
+</hibernate-mapping>

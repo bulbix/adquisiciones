@@ -133,6 +133,7 @@
     <Compile Include="Entities\Model\CatPresupuesto.cs" />
     <Compile Include="Entities\Model\CatRecurso.cs" />
     <Compile Include="Entities\Model\CatTipopedido.cs" />
+    <Compile Include="Entities\Model\CatTipoprocedimiento.cs" />
     <Compile Include="Entities\Model\CatUnidad.cs" />
     <Compile Include="Entities\Model\Cotizacion.cs" />
     <Compile Include="Entities\Model\CotizacionDetalle.cs" />
@@ -161,6 +162,7 @@
     <Compile Include="Entities\Model\ReservaAutorizada.cs" />
     <Compile Include="Entities\Model\ReservaSolicitud.cs" />
     <Compile Include="Entities\Model\TipoLicitacion.cs" />
+    <Compile Include="Entities\Model\TipoProcedimiento.cs" />
     <Compile Include="Entities\Model\Usuario.cs" />
     <Compile Include="Entities\Model\UsuarioModulo.cs" />
     <Compile Include="Entities\Model\UsuarioModuloId.cs" />
@@ -354,6 +356,16 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Mappings\Audit\ProveedorHist.hbm.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Mappings\Model\CatTipoprocedimiento.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Mappings\Model\TipoProcedimiento.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

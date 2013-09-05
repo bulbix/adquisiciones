@@ -1,6 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Adquisiciones.Data", "Adquisiciones.Data\Adquisiciones.Data.csproj", "{B7B2B69E-049B-43DB-B323-A130D532581F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Adquisiciones.Test", "Adquisiciones.Test\Adquisiciones.Test.csproj", "{A6E93D6C-EAE8-43BF-8999-60176570FA7C}"
@@ -15,6 +15,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Adquisiciones.View", "Adquisiciones.View\Adquisiciones.View.csproj", "{3D68BAA4-3605-4148-B380-73EF9C76D41E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Adquisiciones.Business", "Adquisiciones.Business\Adquisiciones.Business.csproj", "{F647632A-13DC-4B88-BF03-C21550F74685}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Adquisiciones.Controls", "ctlTipoProcedimiento\Adquisiciones.Controls.csproj", "{4CEFD90C-2E75-417B-A07B-E62ECB397DAA}"
 EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
@@ -69,6 +71,16 @@ Global
 		{F647632A-13DC-4B88-BF03-C21550F74685}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{F647632A-13DC-4B88-BF03-C21550F74685}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{F647632A-13DC-4B88-BF03-C21550F74685}.Release|x86.ActiveCfg = Release|Any CPU
+		{4CEFD90C-2E75-417B-A07B-E62ECB397DAA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4CEFD90C-2E75-417B-A07B-E62ECB397DAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4CEFD90C-2E75-417B-A07B-E62ECB397DAA}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{4CEFD90C-2E75-417B-A07B-E62ECB397DAA}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{4CEFD90C-2E75-417B-A07B-E62ECB397DAA}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{4CEFD90C-2E75-417B-A07B-E62ECB397DAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4CEFD90C-2E75-417B-A07B-E62ECB397DAA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4CEFD90C-2E75-417B-A07B-E62ECB397DAA}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{4CEFD90C-2E75-417B-A07B-E62ECB397DAA}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{4CEFD90C-2E75-417B-A07B-E62ECB397DAA}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

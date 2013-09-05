@@ -42,6 +42,7 @@
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             this.cmdBusqueda = new DevExpress.XtraEditors.SimpleButton();
+            this.cbAjuste = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.deFinal.Properties.VistaTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.deFinal.Properties)).BeginInit();
@@ -69,6 +70,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.cbAjuste);
             this.groupBox1.Controls.Add(this.cbExtramuro);
             this.groupBox1.Controls.Add(this.cbDonacion);
             this.groupBox1.Controls.Add(this.cbMenor);
@@ -90,6 +92,7 @@
             this.cbExtramuro.TabIndex = 3;
             this.cbExtramuro.Text = "Extramuro";
             this.cbExtramuro.UseVisualStyleBackColor = true;
+            this.cbExtramuro.CheckedChanged += new System.EventHandler(this.cbExtramuro_CheckedChanged);
             // 
             // cbDonacion
             // 
@@ -202,6 +205,16 @@
             this.cmdBusqueda.Text = "Generar Busqueda";
             this.cmdBusqueda.Click += new System.EventHandler(this.CmdBusquedaClick);
             // 
+            // cbAjuste
+            // 
+            this.cbAjuste.AutoSize = true;
+            this.cbAjuste.Location = new System.Drawing.Point(15, 113);
+            this.cbAjuste.Name = "cbAjuste";
+            this.cbAjuste.Size = new System.Drawing.Size(57, 17);
+            this.cbAjuste.TabIndex = 4;
+            this.cbAjuste.Text = "Ajuste";
+            this.cbAjuste.UseVisualStyleBackColor = true;
+            // 
             // FrmFiltroBusquedaPedido
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -250,5 +263,6 @@
         private System.Windows.Forms.CheckBox cbMayor;
         private DevExpress.XtraEditors.SimpleButton cmdBusqueda;
         private System.Windows.Forms.CheckBox cbExtramuro;
+        private System.Windows.Forms.CheckBox cbAjuste;
     }
 }

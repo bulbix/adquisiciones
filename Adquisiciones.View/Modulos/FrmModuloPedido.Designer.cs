@@ -29,8 +29,10 @@ namespace Adquisiciones.View.Modulos
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            Adquisiciones.Data.Entities.TipoProcedimiento tipoProcedimiento1 = new Adquisiciones.Data.Entities.TipoProcedimiento();
             DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+            this.plProcedimiento = new ctlTipoProcedimiento.ctlTipoProcedimiento();
             this.panelFechaEntrega = new DevExpress.XtraEditors.PanelControl();
             this.cmdUpdateFechaEntrega = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl14 = new DevExpress.XtraEditors.LabelControl();
@@ -71,11 +73,6 @@ namespace Adquisiciones.View.Modulos
             this.lblDescuento = new DevExpress.XtraEditors.LabelControl();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
-            this.searchLookUpFundamento = new DevExpress.XtraEditors.SearchLookUpEdit();
-            this.bsFundamento = new System.Windows.Forms.BindingSource(this.components);
-            this.searchLookUpEditFundamento = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.gridColumn10 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn11 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.lblControl = new System.Windows.Forms.Label();
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
             this.searchLookUpAnexo = new DevExpress.XtraEditors.SearchLookUpEdit();
@@ -101,6 +98,13 @@ namespace Adquisiciones.View.Modulos
             this.searchLookUpEditPartida = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn17 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn18 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+            this.searchLookUpFundamento = new DevExpress.XtraEditors.SearchLookUpEdit();
+            this.bsFundamento = new System.Windows.Forms.BindingSource(this.components);
+            this.searchLookUpEditFundamento = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn10 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn11 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.cmdMostrarProc = new DevExpress.XtraEditors.SimpleButton();
             this.lblObservacion = new System.Windows.Forms.Label();
             this.txtObservaciones = new DevExpress.XtraEditors.MemoEdit();
             this.gcPedidoDetalle = new DevExpress.XtraGrid.GridControl();
@@ -141,9 +145,6 @@ namespace Adquisiciones.View.Modulos
             ((System.ComponentModel.ISupportInitialize)(this.txtNumero.Properties)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.searchLookUpFundamento.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bsFundamento)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEditFundamento)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.searchLookUpAnexo.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsAnexo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEditAnexo)).BeginInit();
@@ -156,6 +157,10 @@ namespace Adquisiciones.View.Modulos
             ((System.ComponentModel.ISupportInitialize)(this.searchLookUpPartida.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsPartida)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEditPartida)).BeginInit();
+            this.tableLayoutPanel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.searchLookUpFundamento.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsFundamento)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEditFundamento)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtObservaciones.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gcPedidoDetalle)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsPedidoDetalle)).BeginInit();
@@ -171,7 +176,7 @@ namespace Adquisiciones.View.Modulos
             // 
             this.splitContainerControl1.Panel1.Controls.Add(this.groupControl1);
             this.splitContainerControl1.Panel2.Controls.Add(this.gcPedidoDetalle);
-            this.splitContainerControl1.Size = new System.Drawing.Size(1121, 484);
+            this.splitContainerControl1.Size = new System.Drawing.Size(1121, 486);
             this.splitContainerControl1.SplitterPosition = 283;
             this.splitContainerControl1.TabIndex = 1000;
             // 
@@ -191,6 +196,7 @@ namespace Adquisiciones.View.Modulos
             // 
             // groupControl1
             // 
+            this.groupControl1.Controls.Add(this.plProcedimiento);
             this.groupControl1.Controls.Add(this.panelFechaEntrega);
             this.groupControl1.Controls.Add(this.tableLayoutPanel3);
             this.groupControl1.Controls.Add(this.tableLayoutPanel2);
@@ -203,6 +209,23 @@ namespace Adquisiciones.View.Modulos
             this.groupControl1.Size = new System.Drawing.Size(1121, 283);
             this.groupControl1.TabIndex = 0;
             this.groupControl1.Text = "Datos Generales del Pedido";
+            // 
+            // plProcedimiento
+            // 
+            this.plProcedimiento.BackColor = System.Drawing.Color.Azure;
+            this.plProcedimiento.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.plProcedimiento.Location = new System.Drawing.Point(72, 130);
+            this.plProcedimiento.Name = "plProcedimiento";
+            this.plProcedimiento.Size = new System.Drawing.Size(848, 129);
+            this.plProcedimiento.TabIndex = 4;
+            this.plProcedimiento.TipoPedido = null;
+            tipoProcedimiento1.Catalogo = null;
+            tipoProcedimiento1.Fraccion = null;
+            tipoProcedimiento1.Id = 0;
+            tipoProcedimiento1.NumLicitacion = null;
+            tipoProcedimiento1.NumOrdinal = null;
+            this.plProcedimiento.Tipoprocedimiento = tipoProcedimiento1;
+            this.plProcedimiento.Visible = false;
             // 
             // panelFechaEntrega
             // 
@@ -287,7 +310,7 @@ namespace Adquisiciones.View.Modulos
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 67F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 102F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 82F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 167F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 193F));
             this.tableLayoutPanel3.Controls.Add(this.cbxIva, 7, 1);
             this.tableLayoutPanel3.Controls.Add(this.labelControl10, 6, 1);
             this.tableLayoutPanel3.Controls.Add(this.cbxCargo, 5, 1);
@@ -319,7 +342,7 @@ namespace Adquisiciones.View.Modulos
             // 
             this.cbxIva.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxIva.FormattingEnabled = true;
-            this.cbxIva.Location = new System.Drawing.Point(568, 35);
+            this.cbxIva.Location = new System.Drawing.Point(542, 35);
             this.cbxIva.Name = "cbxIva";
             this.cbxIva.Size = new System.Drawing.Size(88, 21);
             this.cbxIva.TabIndex = 5;
@@ -327,7 +350,7 @@ namespace Adquisiciones.View.Modulos
             // 
             // labelControl10
             // 
-            this.labelControl10.Location = new System.Drawing.Point(501, 35);
+            this.labelControl10.Location = new System.Drawing.Point(475, 35);
             this.labelControl10.Name = "labelControl10";
             this.labelControl10.Size = new System.Drawing.Size(21, 13);
             this.labelControl10.TabIndex = 16;
@@ -337,7 +360,7 @@ namespace Adquisiciones.View.Modulos
             // 
             this.cbxCargo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxCargo.FormattingEnabled = true;
-            this.cbxCargo.Location = new System.Drawing.Point(398, 35);
+            this.cbxCargo.Location = new System.Drawing.Point(372, 35);
             this.cbxCargo.Name = "cbxCargo";
             this.cbxCargo.Size = new System.Drawing.Size(97, 21);
             this.cbxCargo.TabIndex = 4;
@@ -345,7 +368,7 @@ namespace Adquisiciones.View.Modulos
             // lblCargo
             // 
             this.lblCargo.AutoSize = true;
-            this.lblCargo.Location = new System.Drawing.Point(330, 32);
+            this.lblCargo.Location = new System.Drawing.Point(304, 32);
             this.lblCargo.Name = "lblCargo";
             this.lblCargo.Size = new System.Drawing.Size(45, 13);
             this.lblCargo.TabIndex = 14;
@@ -355,14 +378,14 @@ namespace Adquisiciones.View.Modulos
             // 
             this.cbxActividad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxActividad.FormattingEnabled = true;
-            this.cbxActividad.Location = new System.Drawing.Point(222, 35);
+            this.cbxActividad.Location = new System.Drawing.Point(196, 35);
             this.cbxActividad.Name = "cbxActividad";
             this.cbxActividad.Size = new System.Drawing.Size(102, 21);
             this.cbxActividad.TabIndex = 3;
             // 
             // labelControl8
             // 
-            this.labelControl8.Location = new System.Drawing.Point(158, 35);
+            this.labelControl8.Location = new System.Drawing.Point(132, 35);
             this.labelControl8.Name = "labelControl8";
             this.labelControl8.Size = new System.Drawing.Size(44, 13);
             this.labelControl8.TabIndex = 12;
@@ -370,7 +393,7 @@ namespace Adquisiciones.View.Modulos
             // 
             // txtReserva
             // 
-            this.txtReserva.Location = new System.Drawing.Point(59, 35);
+            this.txtReserva.Location = new System.Drawing.Point(49, 35);
             this.txtReserva.Name = "txtReserva";
             this.txtReserva.Size = new System.Drawing.Size(51, 20);
             this.txtReserva.TabIndex = 2;
@@ -387,7 +410,7 @@ namespace Adquisiciones.View.Modulos
             // 
             this.rbCantidad.AutoSize = true;
             this.rbCantidad.Checked = true;
-            this.rbCantidad.Location = new System.Drawing.Point(670, 3);
+            this.rbCantidad.Location = new System.Drawing.Point(644, 3);
             this.rbCantidad.Name = "rbCantidad";
             this.rbCantidad.Size = new System.Drawing.Size(68, 17);
             this.rbCantidad.TabIndex = 1500;
@@ -397,7 +420,7 @@ namespace Adquisiciones.View.Modulos
             // 
             // labelControl9
             // 
-            this.labelControl9.Location = new System.Drawing.Point(501, 3);
+            this.labelControl9.Location = new System.Drawing.Point(475, 3);
             this.labelControl9.Name = "labelControl9";
             this.labelControl9.Size = new System.Drawing.Size(51, 13);
             this.labelControl9.TabIndex = 6;
@@ -406,7 +429,7 @@ namespace Adquisiciones.View.Modulos
             // rbPorcentaje
             // 
             this.rbPorcentaje.AutoSize = true;
-            this.rbPorcentaje.Location = new System.Drawing.Point(568, 3);
+            this.rbPorcentaje.Location = new System.Drawing.Point(542, 3);
             this.rbPorcentaje.Name = "rbPorcentaje";
             this.rbPorcentaje.Size = new System.Drawing.Size(77, 17);
             this.rbPorcentaje.TabIndex = 7;
@@ -415,14 +438,14 @@ namespace Adquisiciones.View.Modulos
             // 
             // txtRequisicion
             // 
-            this.txtRequisicion.Location = new System.Drawing.Point(398, 3);
+            this.txtRequisicion.Location = new System.Drawing.Point(372, 3);
             this.txtRequisicion.Name = "txtRequisicion";
             this.txtRequisicion.Size = new System.Drawing.Size(93, 20);
             this.txtRequisicion.TabIndex = 0;
             // 
             // labelControl3
             // 
-            this.labelControl3.Location = new System.Drawing.Point(330, 3);
+            this.labelControl3.Location = new System.Drawing.Point(304, 3);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(53, 13);
             this.labelControl3.TabIndex = 4;
@@ -430,7 +453,7 @@ namespace Adquisiciones.View.Modulos
             // 
             // labelControl2
             // 
-            this.labelControl2.Location = new System.Drawing.Point(158, 3);
+            this.labelControl2.Location = new System.Drawing.Point(132, 3);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(37, 13);
             this.labelControl2.TabIndex = 2;
@@ -447,7 +470,7 @@ namespace Adquisiciones.View.Modulos
             // txtDescuento
             // 
             this.txtDescuento.EditValue = "";
-            this.txtDescuento.Location = new System.Drawing.Point(752, 3);
+            this.txtDescuento.Location = new System.Drawing.Point(726, 3);
             this.txtDescuento.Name = "txtDescuento";
             this.txtDescuento.Size = new System.Drawing.Size(84, 20);
             this.txtDescuento.TabIndex = 1;
@@ -455,7 +478,7 @@ namespace Adquisiciones.View.Modulos
             // 
             // cmdRefrescarTotal
             // 
-            this.cmdRefrescarTotal.Location = new System.Drawing.Point(752, 35);
+            this.cmdRefrescarTotal.Location = new System.Drawing.Point(726, 35);
             this.cmdRefrescarTotal.Name = "cmdRefrescarTotal";
             this.cmdRefrescarTotal.Size = new System.Drawing.Size(132, 23);
             this.cmdRefrescarTotal.TabIndex = 18;
@@ -467,13 +490,13 @@ namespace Adquisiciones.View.Modulos
             // deFecha
             // 
             this.deFecha.EditValue = null;
-            this.deFecha.Location = new System.Drawing.Point(59, 3);
+            this.deFecha.Location = new System.Drawing.Point(49, 3);
             this.deFecha.Name = "deFecha";
             this.deFecha.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.deFecha.Properties.VistaTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.deFecha.Size = new System.Drawing.Size(93, 20);
+            this.deFecha.Size = new System.Drawing.Size(77, 20);
             this.deFecha.TabIndex = 1501;
             // 
             // txtNumero
@@ -483,7 +506,7 @@ namespace Adquisiciones.View.Modulos
             0,
             0,
             0});
-            this.txtNumero.Location = new System.Drawing.Point(222, 3);
+            this.txtNumero.Location = new System.Drawing.Point(196, 3);
             this.txtNumero.Name = "txtNumero";
             this.txtNumero.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
@@ -621,10 +644,9 @@ namespace Adquisiciones.View.Modulos
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 88.88889F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 21.50072F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 78.49928F));
             this.tableLayoutPanel1.Controls.Add(this.labelControl7, 0, 4);
-            this.tableLayoutPanel1.Controls.Add(this.searchLookUpFundamento, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.lblControl, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.labelControl5, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.searchLookUpAnexo, 1, 3);
@@ -633,6 +655,7 @@ namespace Adquisiciones.View.Modulos
             this.tableLayoutPanel1.Controls.Add(this.labelControl12, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.labelControl6, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.searchLookUpPartida, 1, 4);
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel4, 1, 0);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(229, 100);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 5;
@@ -652,60 +675,14 @@ namespace Adquisiciones.View.Modulos
             this.labelControl7.TabIndex = 8;
             this.labelControl7.Text = "Partida:";
             // 
-            // searchLookUpFundamento
-            // 
-            this.searchLookUpFundamento.EditValue = ((short)(0));
-            this.searchLookUpFundamento.Location = new System.Drawing.Point(79, 3);
-            this.searchLookUpFundamento.Name = "searchLookUpFundamento";
-            this.searchLookUpFundamento.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.searchLookUpFundamento.Properties.DataSource = this.bsFundamento;
-            this.searchLookUpFundamento.Properties.DisplayMember = "FundamentoString";
-            this.searchLookUpFundamento.Properties.NullText = "";
-            this.searchLookUpFundamento.Properties.ValueMember = "CveFundamento";
-            this.searchLookUpFundamento.Properties.View = this.searchLookUpEditFundamento;
-            this.searchLookUpFundamento.Size = new System.Drawing.Size(611, 20);
-            this.searchLookUpFundamento.TabIndex = 0;
-            this.searchLookUpFundamento.EditValueChanged += new System.EventHandler(this.SearchLookUpFundamentoEditValueChanged);
-            // 
-            // searchLookUpEditFundamento
-            // 
-            this.searchLookUpEditFundamento.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.gridColumn10,
-            this.gridColumn11});
-            this.searchLookUpEditFundamento.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
-            this.searchLookUpEditFundamento.Name = "searchLookUpEditFundamento";
-            this.searchLookUpEditFundamento.OptionsSelection.EnableAppearanceFocusedCell = false;
-            this.searchLookUpEditFundamento.OptionsView.ShowGroupPanel = false;
-            // 
-            // gridColumn10
-            // 
-            this.gridColumn10.Caption = "Clave";
-            this.gridColumn10.FieldName = "CveFundamento";
-            this.gridColumn10.Name = "gridColumn10";
-            this.gridColumn10.UnboundType = DevExpress.Data.UnboundColumnType.Integer;
-            this.gridColumn10.Visible = true;
-            this.gridColumn10.VisibleIndex = 0;
-            this.gridColumn10.Width = 87;
-            // 
-            // gridColumn11
-            // 
-            this.gridColumn11.Caption = "Descripcion";
-            this.gridColumn11.FieldName = "DesFundamento";
-            this.gridColumn11.Name = "gridColumn11";
-            this.gridColumn11.UnboundType = DevExpress.Data.UnboundColumnType.String;
-            this.gridColumn11.Visible = true;
-            this.gridColumn11.VisibleIndex = 1;
-            this.gridColumn11.Width = 874;
-            // 
             // lblControl
             // 
             this.lblControl.AutoSize = true;
             this.lblControl.Location = new System.Drawing.Point(3, 0);
             this.lblControl.Name = "lblControl";
-            this.lblControl.Size = new System.Drawing.Size(67, 13);
+            this.lblControl.Size = new System.Drawing.Size(142, 13);
             this.lblControl.TabIndex = 0;
-            this.lblControl.Text = "Fundamento";
+            this.lblControl.Text = "Fundamento/Procedimiento:";
             // 
             // labelControl5
             // 
@@ -718,7 +695,7 @@ namespace Adquisiciones.View.Modulos
             // searchLookUpAnexo
             // 
             this.searchLookUpAnexo.EditValue = "";
-            this.searchLookUpAnexo.Location = new System.Drawing.Point(79, 91);
+            this.searchLookUpAnexo.Location = new System.Drawing.Point(151, 91);
             this.searchLookUpAnexo.Name = "searchLookUpAnexo";
             this.searchLookUpAnexo.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -727,7 +704,7 @@ namespace Adquisiciones.View.Modulos
             this.searchLookUpAnexo.Properties.NullText = "";
             this.searchLookUpAnexo.Properties.ValueMember = "NumeroAnexo";
             this.searchLookUpAnexo.Properties.View = this.searchLookUpEditAnexo;
-            this.searchLookUpAnexo.Size = new System.Drawing.Size(611, 20);
+            this.searchLookUpAnexo.Size = new System.Drawing.Size(539, 20);
             this.searchLookUpAnexo.TabIndex = 3;
             this.searchLookUpAnexo.EditValueChanged += new System.EventHandler(this.SearchLookUpAnexoEditValueChanged);
             // 
@@ -764,7 +741,7 @@ namespace Adquisiciones.View.Modulos
             // searchLookUpArea
             // 
             this.searchLookUpArea.EditValue = "<Null>";
-            this.searchLookUpArea.Location = new System.Drawing.Point(79, 33);
+            this.searchLookUpArea.Location = new System.Drawing.Point(151, 33);
             this.searchLookUpArea.Name = "searchLookUpArea";
             this.searchLookUpArea.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -773,7 +750,7 @@ namespace Adquisiciones.View.Modulos
             this.searchLookUpArea.Properties.NullText = "";
             this.searchLookUpArea.Properties.ValueMember = "CveArea";
             this.searchLookUpArea.Properties.View = this.searchLookUpEditArea;
-            this.searchLookUpArea.Size = new System.Drawing.Size(611, 20);
+            this.searchLookUpArea.Size = new System.Drawing.Size(539, 20);
             this.searchLookUpArea.TabIndex = 1;
             this.searchLookUpArea.EditValueChanged += new System.EventHandler(this.SearchLookUpAreaEditValueChanged);
             // 
@@ -810,7 +787,7 @@ namespace Adquisiciones.View.Modulos
             // searchLookUpProveedor
             // 
             this.searchLookUpProveedor.EditValue = "<Null>";
-            this.searchLookUpProveedor.Location = new System.Drawing.Point(79, 63);
+            this.searchLookUpProveedor.Location = new System.Drawing.Point(151, 63);
             this.searchLookUpProveedor.Name = "searchLookUpProveedor";
             this.searchLookUpProveedor.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -819,7 +796,7 @@ namespace Adquisiciones.View.Modulos
             this.searchLookUpProveedor.Properties.NullText = "";
             this.searchLookUpProveedor.Properties.ValueMember = "CveProveedor";
             this.searchLookUpProveedor.Properties.View = this.searchLookUpEditProveedor;
-            this.searchLookUpProveedor.Size = new System.Drawing.Size(611, 20);
+            this.searchLookUpProveedor.Size = new System.Drawing.Size(539, 20);
             this.searchLookUpProveedor.TabIndex = 2;
             this.searchLookUpProveedor.EditValueChanged += new System.EventHandler(this.SearchLookUpProveedorEditValueChanged);
             // 
@@ -883,7 +860,7 @@ namespace Adquisiciones.View.Modulos
             // searchLookUpPartida
             // 
             this.searchLookUpPartida.EditValue = "";
-            this.searchLookUpPartida.Location = new System.Drawing.Point(79, 121);
+            this.searchLookUpPartida.Location = new System.Drawing.Point(151, 121);
             this.searchLookUpPartida.Name = "searchLookUpPartida";
             this.searchLookUpPartida.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -892,7 +869,7 @@ namespace Adquisiciones.View.Modulos
             this.searchLookUpPartida.Properties.NullText = "";
             this.searchLookUpPartida.Properties.ValueMember = "Partida";
             this.searchLookUpPartida.Properties.View = this.searchLookUpEditPartida;
-            this.searchLookUpPartida.Size = new System.Drawing.Size(611, 20);
+            this.searchLookUpPartida.Size = new System.Drawing.Size(539, 20);
             this.searchLookUpPartida.TabIndex = 4;
             this.searchLookUpPartida.EditValueChanged += new System.EventHandler(this.SearchLookUpPartidaEditValueChanged);
             // 
@@ -924,6 +901,78 @@ namespace Adquisiciones.View.Modulos
             this.gridColumn18.VisibleIndex = 1;
             this.gridColumn18.Width = 925;
             // 
+            // tableLayoutPanel4
+            // 
+            this.tableLayoutPanel4.ColumnCount = 2;
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20.40816F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 79.59184F));
+            this.tableLayoutPanel4.Controls.Add(this.searchLookUpFundamento, 1, 0);
+            this.tableLayoutPanel4.Controls.Add(this.cmdMostrarProc, 0, 0);
+            this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(151, 3);
+            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
+            this.tableLayoutPanel4.RowCount = 1;
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(539, 24);
+            this.tableLayoutPanel4.TabIndex = 9;
+            // 
+            // searchLookUpFundamento
+            // 
+            this.searchLookUpFundamento.EditValue = ((short)(0));
+            this.searchLookUpFundamento.Enabled = false;
+            this.searchLookUpFundamento.Location = new System.Drawing.Point(112, 3);
+            this.searchLookUpFundamento.Name = "searchLookUpFundamento";
+            this.searchLookUpFundamento.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.searchLookUpFundamento.Properties.DataSource = this.bsFundamento;
+            this.searchLookUpFundamento.Properties.DisplayMember = "FundamentoString";
+            this.searchLookUpFundamento.Properties.NullText = "";
+            this.searchLookUpFundamento.Properties.ValueMember = "CveFundamento";
+            this.searchLookUpFundamento.Properties.View = this.searchLookUpEditFundamento;
+            this.searchLookUpFundamento.Size = new System.Drawing.Size(424, 20);
+            this.searchLookUpFundamento.TabIndex = 12;
+            this.searchLookUpFundamento.Visible = false;
+            this.searchLookUpFundamento.EditValueChanged += new System.EventHandler(this.SearchLookUpFundamentoEditValueChanged);
+            // 
+            // searchLookUpEditFundamento
+            // 
+            this.searchLookUpEditFundamento.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn10,
+            this.gridColumn11});
+            this.searchLookUpEditFundamento.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            this.searchLookUpEditFundamento.Name = "searchLookUpEditFundamento";
+            this.searchLookUpEditFundamento.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.searchLookUpEditFundamento.OptionsView.ShowGroupPanel = false;
+            // 
+            // gridColumn10
+            // 
+            this.gridColumn10.Caption = "Clave";
+            this.gridColumn10.FieldName = "CveFundamento";
+            this.gridColumn10.Name = "gridColumn10";
+            this.gridColumn10.UnboundType = DevExpress.Data.UnboundColumnType.Integer;
+            this.gridColumn10.Visible = true;
+            this.gridColumn10.VisibleIndex = 0;
+            this.gridColumn10.Width = 87;
+            // 
+            // gridColumn11
+            // 
+            this.gridColumn11.Caption = "Descripcion";
+            this.gridColumn11.FieldName = "DesFundamento";
+            this.gridColumn11.Name = "gridColumn11";
+            this.gridColumn11.UnboundType = DevExpress.Data.UnboundColumnType.String;
+            this.gridColumn11.Visible = true;
+            this.gridColumn11.VisibleIndex = 1;
+            this.gridColumn11.Width = 874;
+            // 
+            // cmdMostrarProc
+            // 
+            this.cmdMostrarProc.Location = new System.Drawing.Point(3, 3);
+            this.cmdMostrarProc.Name = "cmdMostrarProc";
+            this.cmdMostrarProc.Size = new System.Drawing.Size(103, 18);
+            this.cmdMostrarProc.TabIndex = 11;
+            this.cmdMostrarProc.Text = "Ver Procedimiento";
+            this.cmdMostrarProc.Click += new System.EventHandler(this.cmdMostrarProc_Click);
+            // 
             // lblObservacion
             // 
             this.lblObservacion.AutoSize = true;
@@ -954,7 +1003,7 @@ namespace Adquisiciones.View.Modulos
             this.repositoryItemSearchLookUpEdit2,
             this.repositoryItemPopupContainerEdit1,
             this.repositoryItemButtonEdit1});
-            this.gcPedidoDetalle.Size = new System.Drawing.Size(1121, 196);
+            this.gcPedidoDetalle.Size = new System.Drawing.Size(1121, 198);
             this.gcPedidoDetalle.TabIndex = 0;
             this.gcPedidoDetalle.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvPedidoDetalle});
@@ -1276,9 +1325,6 @@ namespace Adquisiciones.View.Modulos
             this.tableLayoutPanel2.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.searchLookUpFundamento.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bsFundamento)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEditFundamento)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.searchLookUpAnexo.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsAnexo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEditAnexo)).EndInit();
@@ -1291,6 +1337,10 @@ namespace Adquisiciones.View.Modulos
             ((System.ComponentModel.ISupportInitialize)(this.searchLookUpPartida.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsPartida)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEditPartida)).EndInit();
+            this.tableLayoutPanel4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.searchLookUpFundamento.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsFundamento)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEditFundamento)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtObservaciones.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gcPedidoDetalle)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsPedidoDetalle)).EndInit();
@@ -1324,10 +1374,6 @@ namespace Adquisiciones.View.Modulos
         private DevExpress.XtraEditors.LabelControl labelControl5;
         private System.Windows.Forms.ComboBox cbxIva;
         private DevExpress.XtraEditors.LabelControl labelControl10;
-        private DevExpress.XtraEditors.SearchLookUpEdit searchLookUpFundamento;
-        private DevExpress.XtraGrid.Views.Grid.GridView searchLookUpEditFundamento;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn10;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn11;
         private System.Windows.Forms.Label lblControl;
         private System.Windows.Forms.ComboBox cbxActividad;
         private DevExpress.XtraEditors.LabelControl labelControl8;
@@ -1398,5 +1444,12 @@ namespace Adquisiciones.View.Modulos
         private DevExpress.XtraEditors.DateEdit deFecha;
         private DevExpress.XtraEditors.SpinEdit txtNumero;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
+        private ctlTipoProcedimiento.ctlTipoProcedimiento plProcedimiento;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
+        private DevExpress.XtraEditors.SimpleButton cmdMostrarProc;
+        private DevExpress.XtraEditors.SearchLookUpEdit searchLookUpFundamento;
+        private DevExpress.XtraGrid.Views.Grid.GridView searchLookUpEditFundamento;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn10;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn11;
     }
 }

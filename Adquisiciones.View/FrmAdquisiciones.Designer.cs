@@ -76,6 +76,7 @@
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
+            this.barButtonPedidoAjuste = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemHyperLinkEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemHyperLinkEdit2)).BeginInit();
@@ -119,9 +120,10 @@
             this.barButtonItem9,
             this.barButtonItem10,
             this.barButtonItem11,
-            this.barButtonItem13});
+            this.barButtonItem13,
+            this.barButtonPedidoAjuste});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
-            this.ribbon.MaxItemId = 42;
+            this.ribbon.MaxItemId = 43;
             this.ribbon.Name = "ribbon";
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1,
@@ -380,6 +382,7 @@
             this.ribbonPagePedido.ItemLinks.Add(this.barButtonPedidoMenor);
             this.ribbonPagePedido.ItemLinks.Add(this.barButtonPedidoDonacion);
             this.ribbonPagePedido.ItemLinks.Add(this.barButtonPedidoExtra);
+            this.ribbonPagePedido.ItemLinks.Add(this.barButtonPedidoAjuste);
             this.ribbonPagePedido.Name = "ribbonPagePedido";
             this.ribbonPagePedido.Text = "Pedidos";
             this.ribbonPagePedido.Visible = false;
@@ -502,6 +505,14 @@
             // 
             this.defaultLookAndFeel1.LookAndFeel.SkinName = "Black";
             // 
+            // barButtonPedidoAjuste
+            // 
+            this.barButtonPedidoAjuste.Caption = "Ajuste";
+            this.barButtonPedidoAjuste.Id = 42;
+            this.barButtonPedidoAjuste.LargeGlyph = global::Adquisiciones.View.Properties.Resources.icon_pedidos_guia1;
+            this.barButtonPedidoAjuste.Name = "barButtonPedidoAjuste";
+            this.barButtonPedidoAjuste.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonPedidoAjuste_ItemClick);
+            // 
             // FrmAdquisiciones
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -583,5 +594,6 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemHyperLinkEdit repositoryItemHyperLinkEdit4;
         private DevExpress.XtraBars.BarButtonItem barButtonItem11;
         private DevExpress.XtraBars.BarButtonItem barButtonItem13;
+        private DevExpress.XtraBars.BarButtonItem barButtonPedidoAjuste;
     }
 }

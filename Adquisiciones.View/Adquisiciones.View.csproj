@@ -15,7 +15,7 @@
     </TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>\\192.168.10.14\app%24\Adquisiciones\</PublishUrl>
+    <PublishUrl>\\192.168.10.14\app%24\Adquisiciones\Procedimiento\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Unc</InstallFrom>
     <UpdateEnabled>true</UpdateEnabled>
@@ -30,7 +30,7 @@
     <PublisherName>INR</PublisherName>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publicacion.htm</WebPage>
-    <ApplicationRevision>78</ApplicationRevision>
+    <ApplicationRevision>73</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -605,6 +605,10 @@
     <ProjectReference Include="..\Adquisiciones.Data\Adquisiciones.Data.csproj">
       <Project>{B7B2B69E-049B-43DB-B323-A130D532581F}</Project>
       <Name>Adquisiciones.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ctlTipoProcedimiento\Adquisiciones.Controls.csproj">
+      <Project>{4cefd90c-2e75-417b-a07b-e62ecb397daa}</Project>
+      <Name>Adquisiciones.Controls</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

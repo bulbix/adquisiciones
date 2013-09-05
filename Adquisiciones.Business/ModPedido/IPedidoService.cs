@@ -74,6 +74,18 @@ namespace Adquisiciones.Business.ModPedido
         /// <summary>
         /// 
         /// </summary>
+        /// <param name="combo"></param>
+        /// <param name="bloque"></param>
+        /// <param name="tipoPedido"></param>
+        /// <param name="condicionColumn"></param>
+        /// <param name="condicionValor"></param>
+        /// <param name="condicionBloque"></param>
+        void CatalogoTipoProcedimiento(ComboBox combo, string bloque, CatTipopedido tipoPedido, string condicionColumn = null, string condicionValor = null);
+
+
+        /// <summary>
+        /// 
+        /// </summary>
         /// <param name="pedido"></param>
         /// <param name="requisicion"></param>
         /// <param name="fechaInicial"></param>
