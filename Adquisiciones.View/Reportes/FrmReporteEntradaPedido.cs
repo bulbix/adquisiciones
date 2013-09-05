@@ -28,6 +28,7 @@ namespace Adquisiciones.View.Reportes
 
         private void CmdReporteClick(object sender, EventArgs e)
         {
+            Cursor.Current = Cursors.WaitCursor;
             var forma = new FrmModuloReportes();
 
             var idTipoPedido = 1;
@@ -55,6 +56,8 @@ namespace Adquisiciones.View.Reportes
                     break;
 
             }
+
+            Cursor.Current = Cursors.Default;
 
 
             

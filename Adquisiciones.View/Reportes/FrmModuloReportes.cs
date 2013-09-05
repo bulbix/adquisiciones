@@ -65,6 +65,7 @@ namespace Adquisiciones.View
 
         private void GenerarReporte()
         {
+            Cursor.Current = Cursors.WaitCursor; 
             switch (NombreReporte)
             {
                 case "reporteAnexo":
@@ -98,6 +99,8 @@ namespace Adquisiciones.View
                     ReportePedidoEntradaCompleto(Entity as List<Pedido>);
                     break;
             }
+
+            Cursor.Current = Cursors.Default;
         }
        
         private void ReporteAnexo(Anexo anexo){

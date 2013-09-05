@@ -31,6 +31,7 @@ namespace Adquisiciones.View.Busquedas
 
         private void CmdBusquedaClick(object sender, EventArgs e)
         {
+            Cursor.Current = Cursors.WaitCursor;
             var tiposList = new List<int>();
             if(cbMayor.Checked)
                 tiposList.Add(1);
@@ -73,7 +74,9 @@ namespace Adquisiciones.View.Busquedas
             
             bsSource.DataSource = source;
 
-            XtraMessageBox.Show(@"Busqueda Finalizada",
+            Cursor.Current = Cursors.Default;
+
+            XtraMessageBox.Show(@"Busqueda Finalizada, " + source.Count + " registros encontrados.",
                              @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             this.Close();
