@@ -288,9 +288,9 @@ namespace ctlTipoProcedimiento
                     if (_tipoPedido != null)
                     {
                         service.CatalogoTipoProcedimiento(cb1, "Bloque1", _tipoPedido);
-                        service.CatalogoTipoProcedimiento(cb2, "Bloque2", _tipoPedido,
-                            "Bloque1", cb1.SelectedValue.ToString());
-                        cb1.SelectedIndex = cb1.FindStringExact("Licitación Publica Nacional");
+                        cb1.SelectedIndex = cb1.FindStringExact("Adjudicación Directa");
+                        service.CatalogoTipoProcedimiento(cb2, "Bloque2", _tipoPedido,"Bloque1", cb1.SelectedValue.ToString());
+                        cb2.SelectedIndex = cb2.FindStringExact("Art. 42");
                     }
                 }
                 catch (Exception ex)
