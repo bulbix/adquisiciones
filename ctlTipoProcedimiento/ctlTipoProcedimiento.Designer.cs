@@ -192,6 +192,7 @@
             this.txt4.Size = new System.Drawing.Size(55, 21);
             this.txt4.TabIndex = 18;
             this.txt4.Visible = false;
+            this.txt4.SelectedIndexChanged += new System.EventHandler(this.txt4_SelectedIndexChanged);
             // 
             // txt5
             // 
@@ -227,7 +228,7 @@
             this.Controls.Add(this.cb1);
             this.Name = "ctlTipoProcedimiento";
             this.Size = new System.Drawing.Size(833, 117);
-            this.Load += new System.EventHandler(this.ctlTipoProcedimiento_Load);
+            
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -168,7 +168,7 @@ namespace Adquisiciones.Data.Entities
 
 	    public override string ToString()
         {
-            return Rfc.Trim() + "/" + Nombre.Trim();
+            return Nombre.Trim();
         }
 
 

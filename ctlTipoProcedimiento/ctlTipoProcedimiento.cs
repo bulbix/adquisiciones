@@ -29,7 +29,7 @@ namespace ctlTipoProcedimiento
 
         public string[] Numeros =
         {
-            "1ra", "2da", "3ra", "4ta", "5ta", "6ta", "7ma", "8va", "9na", "10ma",
+            "Ninguno","1ra", "2da", "3ra", "4ta", "5ta", "6ta", "7ma", "8va", "9na", "10ma",
             "11ra", "12da", "13ra", "14ta", "15ta", "16ta", "17ma", "18va", "19na", "20ma"
         };
 
@@ -218,7 +218,7 @@ namespace ctlTipoProcedimiento
             ClearCombos(6);
             if (cb6.SelectedValue != null)
             {
-                if (cb6.SelectedValue.ToString().Equals("sesion del Comite de Adquisiciones"))
+                if (cb6.SelectedValue.ToString().Contains("sesion"))
                 {
                     DisplayControles(6,5,false);
                 }
@@ -343,6 +343,7 @@ namespace ctlTipoProcedimiento
                     numero = txt3.Text;
                     break;
                 case 7:
+                case 14:
 
                     if (txt2.Text.Length == 0 || txt4.Text.Length == 0)
                         error = true;
@@ -421,7 +422,7 @@ namespace ctlTipoProcedimiento
                     txt3.Text = tipoProcedimiento.NumOrdinal;
                     txt3.Visible = true;
                     break;
-                case 7:
+                case 7: case 14:
                     txt2.Text = tipoProcedimiento.Fraccion;
                     txt4.Text = tipoProcedimiento.NumOrdinal;
                     txt4.Visible = true;
@@ -431,9 +432,17 @@ namespace ctlTipoProcedimiento
 
         }
 
-        private void ctlTipoProcedimiento_Load(object sender, EventArgs e)
+        private void txt4_SelectedIndexChanged(object sender, EventArgs e)
         {
-           
+            if (txt4.SelectedItem.ToString().Equals("Ninguno"))
+            {
+                cb6.Visible = false;
+            }
+            else
+            {
+                cb6.Visible = true;
+
+            }
 
         }
     }

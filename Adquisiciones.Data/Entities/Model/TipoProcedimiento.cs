@@ -34,10 +34,21 @@ namespace Adquisiciones.Data.Entities
                     Catalogo.Bloque1, Catalogo.Bloque2, NumLicitacion, Catalogo.Bloque3,
                     NumOrdinal,Catalogo.Bloque5);
                     break;
-                case 7:
-                    result = string.Format("{0} {1} {2} {3} {4} {5} {6}",
-                    Catalogo.Bloque1, Catalogo.Bloque2, Catalogo.Bloque3, Fraccion, Catalogo.Bloque4,
-                    NumOrdinal,Catalogo.Bloque6);
+                case 7: case 14:
+
+                    if (!NumOrdinal.Equals("Ninguno"))
+                    {
+                        result = string.Format("{0} {1} {2} {3} {4} {5} {6}",
+                            Catalogo.Bloque1, Catalogo.Bloque2, Catalogo.Bloque3, Fraccion, Catalogo.Bloque4,
+                            NumOrdinal, Catalogo.Bloque6);
+                    }
+                    else
+                    {
+                        result = string.Format("{0} {1} {2} {3} {4} {5} {6}",
+                            Catalogo.Bloque1, Catalogo.Bloque2, Catalogo.Bloque3, Fraccion, Catalogo.Bloque4,
+                            "", "");
+                    }
+
                     break;
                 case 8:
                     result = string.Format("{0} {1} {2}",
