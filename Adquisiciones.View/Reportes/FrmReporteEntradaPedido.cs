@@ -14,15 +14,17 @@ namespace Adquisiciones.View.Reportes
     public partial class FrmReporteEntradaPedido : DevExpress.XtraEditors.XtraForm
     {
         private string reporte;
+        private Form parent;
 
         public FrmReporteEntradaPedido()
         {
             InitializeComponent();
         }
 
-        public FrmReporteEntradaPedido(string reporte):this()
+        public FrmReporteEntradaPedido(string reporte, Form parent):this()
         {
             this.reporte = reporte;
+            this.parent = parent;
         }
 
 
@@ -42,23 +44,25 @@ namespace Adquisiciones.View.Reportes
 
             if (rbProveedor.Checked)
                 ordenado = Ordenado.Proveedor;
-            
-            forma.MdiParent = this.MdiParent;
+
+            forma.MdiParent = parent;
             forma.Show();
 
             switch(reporte)
             {
                 case "reporteEntradaPedido":
-                    forma.ReporteEntradaPedido(deInicial.DateTime, deFinal.DateTime, tipoPedido, ordenado);
+                    forma.ReporteEntradaPedido(deInicial.DateTime, deFinal.DateTime, tipoPedido,
+                        ordenado);
                     break;
                 case "reporteEntradaPedidoCompleto":
-                    forma.ReporteEntradaPedidoCompleto(deInicial.DateTime, deFinal.DateTime, tipoPedido, ordenado);
+                    forma.ReporteEntradaPedidoCompleto(deInicial.DateTime, deFinal.DateTime, tipoPedido,
+                        ordenado);
                     break;
 
             }
 
             Cursor.Current = Cursors.Default;
-
+            this.Close();
 
             
         }

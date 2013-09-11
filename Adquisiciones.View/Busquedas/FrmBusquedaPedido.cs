@@ -109,24 +109,21 @@ namespace Adquisiciones.View.Busquedas
 
         private void entradaVsPedidoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var forma = new FrmReporteEntradaPedido("reporteEntradaPedido");
-            forma.MdiParent = this.MdiParent;
-            forma.Show();
+            var forma = new FrmReporteEntradaPedido("reporteEntradaPedido",this.MdiParent);
+            forma.ShowDialog();
         }
 
         private void pedidoVsEntradaCompletoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var pedidos = GetPedidosFiltrado();
-            var forma = new FrmModuloReportes("reportePedidoEntradaCompleto", pedidos);
-            forma.MdiParent = this.MdiParent;
-            forma.Show();
+            var forma = new FrmReportePedidoEntrada("reportePedidoEntradaCompleto",pedidos,this.MdiParent);
+            forma.ShowDialog();
         }
 
         private void entradaVsPedidoCompletoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var forma = new FrmReporteEntradaPedido("reporteEntradaPedidoCompleto");
-            forma.MdiParent = this.MdiParent;
-            forma.Show();
+            var forma = new FrmReporteEntradaPedido("reporteEntradaPedidoCompleto",this.MdiParent);
+            forma.ShowDialog();
 
         }
 

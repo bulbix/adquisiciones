@@ -179,7 +179,7 @@ namespace Adquisiciones.Data.Dao.ModPedido
             return CargarPedidos(FechaServidor().Year, almacen, fechaInicial, fechaFinal, numeroInicial, numeroFinal, tipos);
         }
 
-         [Transaction(ReadOnly = true)]
+        [Transaction(ReadOnly = true)]
         public IList<Entrada> CargarEntradas(Pedido pedido)
         {
             var criteria = CurrentSession.CreateCriteria(typeof(Entrada));
@@ -188,14 +188,7 @@ namespace Adquisiciones.Data.Dao.ModPedido
             return criteria.List<Entrada>();
         }
 
-
-
-
-        
-
-
-
-         [Transaction(ReadOnly = true)]
+        [Transaction(ReadOnly = true)]
         public String[] CargarPartidaAlmacen(Pedido pedido)
          {
              var result = new String[] {"", ""};
@@ -334,6 +327,20 @@ namespace Adquisiciones.Data.Dao.ModPedido
 
             return result;
             
+        }
+
+        [Transaction(ReadOnly = true)]
+        public string PedidoOneDetalleDescripcion(Pedido pedido)
+        {
+            const string queryNativo = @"SELECT a.des_articulo[1,50] 
+            FROM pedido_detalle pd, articulo a 
+            WHERE a.cve_art = pd.cve_art AND a.id_almacen = pd.id_almacen AND id_pedido = :idpedido 
+            AND pd.renglon_pedido = 1";
+
+            var query = CurrentSession.CreateSQLQuery(queryNativo);
+            query.SetParameter("idpedido", pedido.IdPedido);
+            var descripcion = query.UniqueResult<string>();
+            return descripcion;
         }
     }
 }

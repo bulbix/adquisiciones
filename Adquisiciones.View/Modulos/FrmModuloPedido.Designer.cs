@@ -310,7 +310,7 @@ namespace Adquisiciones.View.Modulos
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 60F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 85F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 134F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 135F));
             this.tableLayoutPanel3.Controls.Add(this.cbxIva, 7, 1);
             this.tableLayoutPanel3.Controls.Add(this.labelControl10, 6, 1);
             this.tableLayoutPanel3.Controls.Add(this.cbxCargo, 5, 1);
@@ -342,7 +342,7 @@ namespace Adquisiciones.View.Modulos
             // 
             this.cbxIva.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxIva.FormattingEnabled = true;
-            this.cbxIva.Location = new System.Drawing.Point(626, 35);
+            this.cbxIva.Location = new System.Drawing.Point(625, 35);
             this.cbxIva.Name = "cbxIva";
             this.cbxIva.Size = new System.Drawing.Size(79, 21);
             this.cbxIva.TabIndex = 5;
@@ -350,7 +350,7 @@ namespace Adquisiciones.View.Modulos
             // 
             // labelControl10
             // 
-            this.labelControl10.Location = new System.Drawing.Point(566, 35);
+            this.labelControl10.Location = new System.Drawing.Point(565, 35);
             this.labelControl10.Name = "labelControl10";
             this.labelControl10.Size = new System.Drawing.Size(21, 13);
             this.labelControl10.TabIndex = 16;
@@ -360,7 +360,7 @@ namespace Adquisiciones.View.Modulos
             // 
             this.cbxCargo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxCargo.FormattingEnabled = true;
-            this.cbxCargo.Location = new System.Drawing.Point(426, 35);
+            this.cbxCargo.Location = new System.Drawing.Point(425, 35);
             this.cbxCargo.Name = "cbxCargo";
             this.cbxCargo.Size = new System.Drawing.Size(134, 21);
             this.cbxCargo.TabIndex = 4;
@@ -368,7 +368,7 @@ namespace Adquisiciones.View.Modulos
             // lblCargo
             // 
             this.lblCargo.AutoSize = true;
-            this.lblCargo.Location = new System.Drawing.Point(337, 32);
+            this.lblCargo.Location = new System.Drawing.Point(336, 32);
             this.lblCargo.Name = "lblCargo";
             this.lblCargo.Size = new System.Drawing.Size(45, 13);
             this.lblCargo.TabIndex = 14;
@@ -378,14 +378,14 @@ namespace Adquisiciones.View.Modulos
             // 
             this.cbxActividad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxActividad.FormattingEnabled = true;
-            this.cbxActividad.Location = new System.Drawing.Point(194, 35);
+            this.cbxActividad.Location = new System.Drawing.Point(193, 35);
             this.cbxActividad.Name = "cbxActividad";
             this.cbxActividad.Size = new System.Drawing.Size(137, 21);
             this.cbxActividad.TabIndex = 3;
             // 
             // labelControl8
             // 
-            this.labelControl8.Location = new System.Drawing.Point(130, 35);
+            this.labelControl8.Location = new System.Drawing.Point(129, 35);
             this.labelControl8.Name = "labelControl8";
             this.labelControl8.Size = new System.Drawing.Size(44, 13);
             this.labelControl8.TabIndex = 12;
@@ -393,7 +393,7 @@ namespace Adquisiciones.View.Modulos
             // 
             // txtReserva
             // 
-            this.txtReserva.Location = new System.Drawing.Point(49, 35);
+            this.txtReserva.Location = new System.Drawing.Point(48, 35);
             this.txtReserva.Name = "txtReserva";
             this.txtReserva.Size = new System.Drawing.Size(51, 20);
             this.txtReserva.TabIndex = 2;
@@ -410,7 +410,7 @@ namespace Adquisiciones.View.Modulos
             // 
             this.rbCantidad.AutoSize = true;
             this.rbCantidad.Checked = true;
-            this.rbCantidad.Location = new System.Drawing.Point(711, 3);
+            this.rbCantidad.Location = new System.Drawing.Point(710, 3);
             this.rbCantidad.Name = "rbCantidad";
             this.rbCantidad.Size = new System.Drawing.Size(68, 17);
             this.rbCantidad.TabIndex = 1500;
@@ -420,7 +420,7 @@ namespace Adquisiciones.View.Modulos
             // 
             // labelControl9
             // 
-            this.labelControl9.Location = new System.Drawing.Point(566, 3);
+            this.labelControl9.Location = new System.Drawing.Point(565, 3);
             this.labelControl9.Name = "labelControl9";
             this.labelControl9.Size = new System.Drawing.Size(51, 13);
             this.labelControl9.TabIndex = 6;
@@ -429,7 +429,7 @@ namespace Adquisiciones.View.Modulos
             // rbPorcentaje
             // 
             this.rbPorcentaje.AutoSize = true;
-            this.rbPorcentaje.Location = new System.Drawing.Point(626, 3);
+            this.rbPorcentaje.Location = new System.Drawing.Point(625, 3);
             this.rbPorcentaje.Name = "rbPorcentaje";
             this.rbPorcentaje.Size = new System.Drawing.Size(77, 17);
             this.rbPorcentaje.TabIndex = 7;
@@ -438,14 +438,14 @@ namespace Adquisiciones.View.Modulos
             // 
             // txtRequisicion
             // 
-            this.txtRequisicion.Location = new System.Drawing.Point(426, 3);
+            this.txtRequisicion.Location = new System.Drawing.Point(425, 3);
             this.txtRequisicion.Name = "txtRequisicion";
             this.txtRequisicion.Size = new System.Drawing.Size(93, 20);
             this.txtRequisicion.TabIndex = 0;
             // 
             // labelControl3
             // 
-            this.labelControl3.Location = new System.Drawing.Point(337, 3);
+            this.labelControl3.Location = new System.Drawing.Point(336, 3);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(53, 13);
             this.labelControl3.TabIndex = 4;
@@ -453,7 +453,7 @@ namespace Adquisiciones.View.Modulos
             // 
             // labelControl2
             // 
-            this.labelControl2.Location = new System.Drawing.Point(130, 3);
+            this.labelControl2.Location = new System.Drawing.Point(129, 3);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(37, 13);
             this.labelControl2.TabIndex = 2;
@@ -470,7 +470,7 @@ namespace Adquisiciones.View.Modulos
             // txtDescuento
             // 
             this.txtDescuento.EditValue = "";
-            this.txtDescuento.Location = new System.Drawing.Point(785, 3);
+            this.txtDescuento.Location = new System.Drawing.Point(784, 3);
             this.txtDescuento.Name = "txtDescuento";
             this.txtDescuento.Size = new System.Drawing.Size(84, 20);
             this.txtDescuento.TabIndex = 1;
@@ -478,7 +478,7 @@ namespace Adquisiciones.View.Modulos
             // 
             // cmdRefrescarTotal
             // 
-            this.cmdRefrescarTotal.Location = new System.Drawing.Point(785, 35);
+            this.cmdRefrescarTotal.Location = new System.Drawing.Point(784, 35);
             this.cmdRefrescarTotal.Name = "cmdRefrescarTotal";
             this.cmdRefrescarTotal.Size = new System.Drawing.Size(128, 23);
             this.cmdRefrescarTotal.TabIndex = 18;
@@ -490,7 +490,7 @@ namespace Adquisiciones.View.Modulos
             // deFecha
             // 
             this.deFecha.EditValue = null;
-            this.deFecha.Location = new System.Drawing.Point(49, 3);
+            this.deFecha.Location = new System.Drawing.Point(48, 3);
             this.deFecha.Name = "deFecha";
             this.deFecha.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -506,7 +506,7 @@ namespace Adquisiciones.View.Modulos
             0,
             0,
             0});
-            this.txtNumero.Location = new System.Drawing.Point(194, 3);
+            this.txtNumero.Location = new System.Drawing.Point(193, 3);
             this.txtNumero.Name = "txtNumero";
             this.txtNumero.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});

@@ -140,7 +140,7 @@
             // 
             // cmdReporte
             // 
-            this.cmdReporte.Location = new System.Drawing.Point(315, 270);
+            this.cmdReporte.Location = new System.Drawing.Point(379, 270);
             this.cmdReporte.Name = "cmdReporte";
             this.cmdReporte.Size = new System.Drawing.Size(150, 23);
             this.cmdReporte.TabIndex = 6;
@@ -167,7 +167,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(527, 347);
+            this.ClientSize = new System.Drawing.Size(568, 349);
             this.Controls.Add(this.labelControl2);
             this.Controls.Add(this.labelControl1);
             this.Controls.Add(this.cmdReporte);
@@ -176,6 +176,7 @@
             this.Controls.Add(this.deFinal);
             this.Controls.Add(this.deInicial);
             this.Name = "FrmReporteEntradaPedido";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Reporte de entradas contra pedidos";
             ((System.ComponentModel.ISupportInitialize)(this.deInicial.Properties.VistaTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.deInicial.Properties)).EndInit();

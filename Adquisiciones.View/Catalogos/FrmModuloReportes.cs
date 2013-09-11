@@ -95,9 +95,9 @@ namespace Adquisiciones.View
                 case "reporteFundamento":
                     ReporteFundamento(Entity as List<Fundamento>);
                     break;
-                case "reportePedidoEntradaCompleto":
+                /*case "reportePedidoEntradaCompleto":
                     ReportePedidoEntradaCompleto(Entity as List<Pedido>);
-                    break;
+                    break;*/
             }
 
             Cursor.Current = Cursors.Default;
@@ -390,7 +390,8 @@ namespace Adquisiciones.View
 
         }
        
-        public void ReporteEntradaPedido(DateTime fechaInicial, DateTime fechaFinal,CatTipopedido tipopedido, Ordenado ordenado)
+        public void ReporteEntradaPedido(DateTime fechaInicial, DateTime fechaFinal,
+            CatTipopedido tipopedido, Ordenado ordenado)
         {
             var listaPedidoEntrada = new List<PedidoEntrada>();
 
@@ -454,46 +455,75 @@ namespace Adquisiciones.View
             Text = @"ReporteFundamento";
 
         }
-    
-        private void ReportePedidoEntradaCompleto(List<Pedido> pedidos)
+        
+        private PedidoCompleto CargarPedidoCompleto(Pedido pedido, Entrada entrada = null)
+        {
+            var descripcionGasto = PedidoService.PedidoDao.PedidoOneDetalleDescripcion(pedido);
+
+            var pedidoCompleto = new PedidoCompleto
+            {
+                Estado = pedido.EstadoPedido,
+                Pedido = pedido.NumeroPedido.Value,
+                FechaPedido = pedido.FechaPedido.Value,
+                Factura = entrada != null?entrada.NumeroFactura:"",
+                Entrada = entrada!=null?entrada.NumeroEntrada.Value.ToString():"",
+                Almacen = pedido.AlmacenDestino,
+                FechaEntrada = entrada!=null?String.Format("{0:dd/MM/yyyy}", entrada.FechaEntrada.Value):"",
+                TotalFactura = entrada!=null?PedidoService.PedidoDao.ImporteEntrada(entrada):(decimal)0.0,
+                Proveedor = pedido.Proveedor.NombreFiscal,
+                RFCProveedor = pedido.Proveedor.Rfc,
+                AreaSolicitada = pedido.CatArea.DesArea,
+                Partida = pedido.PartidaString,
+                DescripcionGasto = descripcionGasto,
+                ImporteSinIVA = pedido.ImporteTotal.Value,
+                Req = pedido.NumeroRequisicion,
+                Elaboro = pedido.Usuario.Nombre,
+                Licitacion = "",
+                Procedimiento = pedido.TipoProcedimiento != null ? pedido.TipoProcedimiento.ToString() : "",
+                FundamentoLegal = pedido.Fundamento != null ? pedido.Fundamento.DesFundamento : "",
+                ImportePedido = pedido.Total,
+                TipoPedido = pedido.CatTipopedido.DesTipoped
+            };
+
+            return pedidoCompleto;
+
+        }
+        
+        public void ReportePedidoEntradaCompleto(List<Pedido> pedidos, EntradaPedido entradaPedido)
         {
             var listaPedidoCompleto = new List<PedidoCompleto>();
 
             foreach (var pedido in pedidos)
             {
                 var entradas = PedidoService.PedidoDao.CargarEntradas(pedido);
+                switch (entradaPedido) {
+                    case EntradaPedido.Ambos:
+                        if (entradas.Count > 0) {
+                            foreach (var entrada in entradas) {
+                                listaPedidoCompleto.Add(CargarPedidoCompleto(pedido,entrada));
+                            }
+                        }
+                        else {
+                            listaPedidoCompleto.Add(CargarPedidoCompleto(pedido));
+                        }
 
-                if (entradas.Count > 0){
-                    foreach (var entrada in entradas)
-                    {
-                        var pedidoCompleto = new PedidoCompleto
-                        {
-                            Estado = pedido.EstadoPedido,
-                            Pedido = pedido.NumeroPedido.Value,
-                            FechaPedido = pedido.FechaPedido.Value,
-                            Factura = entrada.NumeroFactura,
-                            Entrada = entrada.NumeroEntrada.Value,
-                            Almacen = pedido.AlmacenDestino,
-                            FechaEntrada = entrada.FechaEntrada.Value,
-                            TotalFactura = PedidoService.PedidoDao.ImporteEntrada(entrada),
-                            Proveedor = pedido.Proveedor.NombreFiscal,
-                            RFCProveedor = pedido.Proveedor.Rfc,
-                            AreaSolicitada = pedido.CatArea.DesArea,
-                            Partida = pedido.PartidaString,
-                            DescripcionGasto = "",
-                            ImporteSinIVA = pedido.ImporteTotal.Value,
-                            Req = pedido.NumeroRequisicion,
-                            Elaboro = pedido.Usuario.Nombre,
-                            Licitacion = "",
-                            FundamentoLegal = pedido.Fundamento.DesFundamento,
-                            ImportePedido = pedido.Total,
-                            TipoPedido = pedido.CatTipopedido.DesTipoped
-                        };
+                        break;
 
-                        listaPedidoCompleto.Add(pedidoCompleto);
-                    }
+                    case EntradaPedido.ConEntrada:
+                        if (entradas.Count > 0) {
+                            foreach (var entrada in entradas) {
+                                listaPedidoCompleto.Add(CargarPedidoCompleto(pedido, entrada));
+                            }
+                        }
+
+                        break;
+
+                    case EntradaPedido.SinEntrada:
+                        if (entradas.Count == 0) {
+                            listaPedidoCompleto.Add(CargarPedidoCompleto(pedido));
+                        }
+                        break;
                 }
-
             }
 
             ReportePedidoCompleto1.SetDataSource(listaPedidoCompleto);
@@ -504,7 +534,8 @@ namespace Adquisiciones.View
             
         }
 
-        public void ReporteEntradaPedidoCompleto(DateTime fechaInicial, DateTime fechaFinal,CatTipopedido tipopedido, Ordenado ordenado)
+        public void ReporteEntradaPedidoCompleto(DateTime fechaInicial, DateTime fechaFinal,
+            CatTipopedido tipopedido, Ordenado ordenado)
         {
             var listaPedidoCompleto = new List<PedidoCompleto>();
 
@@ -514,49 +545,17 @@ namespace Adquisiciones.View
             {
                 var pedidos = PedidoService.PedidoDao.CargarPedidos(entrada, tipopedido, ordenado);
 
-                if (pedidos.Count > 0)
-                {
+                if (pedidos.Count > 0) {
                     foreach (var pedido in pedidos)
                     {
-                        if (!pedido.EstadoPedido.Trim().Equals("C") 
-                            && !pedido.EstadoPedido.Trim().Equals("P"))
-                        {
-                            pedido.EstadoPedido = "A";
-                        }
-
                         try{
                             var partidaAlmacen = PedidoService.PedidoDao.CargarPartidaAlmacen(pedido);
                             pedido.AlmacenDestino = partidaAlmacen[0];
                             pedido.PartidaString = partidaAlmacen[1];
                         }
-                        catch (Exception ex)
-                        {}
+                        catch (Exception ex){}
 
-                        var pedidoCompleto = new PedidoCompleto
-                        {
-                            Estado = pedido.EstadoPedido,
-                            Pedido = pedido.NumeroPedido.Value,
-                            FechaPedido = pedido.FechaPedido.Value,
-                            Factura = entrada.NumeroFactura,
-                            Entrada = entrada.NumeroEntrada.Value,
-                            Almacen = pedido.AlmacenDestino,
-                            FechaEntrada = entrada.FechaEntrada.Value,
-                            TotalFactura = PedidoService.PedidoDao.ImporteEntrada(entrada),
-                            Proveedor = pedido.Proveedor.NombreFiscal,
-                            RFCProveedor = pedido.Proveedor.Rfc,
-                            AreaSolicitada = pedido.CatArea.DesArea,
-                            Partida = pedido.PartidaString,
-                            DescripcionGasto = "",
-                            ImporteSinIVA = pedido.ImporteTotal.Value,
-                            Req = pedido.NumeroRequisicion,
-                            Elaboro = pedido.Usuario.Nombre,
-                            Licitacion = "",
-                            FundamentoLegal = pedido.Fundamento.DesFundamento,
-                            ImportePedido = pedido.Total,
-                            TipoPedido = pedido.CatTipopedido.DesTipoped
-                        };
-
-                        listaPedidoCompleto.Add(pedidoCompleto);
+                        listaPedidoCompleto.Add(CargarPedidoCompleto(pedido, entrada));
                     }
                 }
             }
