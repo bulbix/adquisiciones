@@ -97,7 +97,7 @@ namespace Adquisiciones.View.Reportes
             result.DefaultCell.Border = 0;
             result.DefaultCell.HorizontalAlignment = Element.ALIGN_LEFT;
             result.AddCell(new Paragraph("PROVEEDOR:", fuente));
-            result.AddCell(new Paragraph("                      " + pedido.Proveedor.NombreFiscal, fuente));
+            result.AddCell(new Paragraph("                      " + pedido.Proveedor.NombreSinClave, fuente));
             result.AddCell(new Paragraph("                      " + pedido.Proveedor.Calle, fuente));
             result.AddCell(new Paragraph("                      COL. " + pedido.Proveedor.Colonia, fuente));
             result.AddCell(new Paragraph("                      DEL. " + pedido.Proveedor.Delegacion, fuente));

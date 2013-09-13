@@ -1,4 +1,4 @@
-﻿namespace Adquisiciones.View
+﻿namespace Adquisiciones.View.Reportes
 {
     partial class FrmModuloReportes
     {
@@ -40,6 +40,7 @@
             this.ReporteProveedor1 = new Adquisiciones.View.Reportes.Catalogos.ReporteProveedor();
             this.ReporteFundamento1 = new Adquisiciones.View.Reportes.Catalogos.ReporteFundamento();
             this.ReportePedidoCompleto1 = new Adquisiciones.View.Reportes.Pedidos.ReportePedidoCompleto();
+            this.ReporteListaPedido1 = new Adquisiciones.View.Reportes.Pedidos.ReporteListaPedido();
             this.SuspendLayout();
             // 
             // btnAceptar
@@ -55,7 +56,7 @@
             // 
             // crystalReportViewer
             // 
-            this.crystalReportViewer.ActiveViewIndex = 0;
+            this.crystalReportViewer.ActiveViewIndex = -1;
             this.crystalReportViewer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.crystalReportViewer.Cursor = System.Windows.Forms.Cursors.Default;
             this.crystalReportViewer.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -63,7 +64,6 @@
             this.crystalReportViewer.EnableToolTips = false;
             this.crystalReportViewer.Location = new System.Drawing.Point(0, 0);
             this.crystalReportViewer.Name = "crystalReportViewer";
-//            this.crystalReportViewer.ReportSource = this.ReporteCotizacion1;
             this.crystalReportViewer.ShowGroupTreeButton = false;
             this.crystalReportViewer.Size = new System.Drawing.Size(787, 634);
             this.crystalReportViewer.TabIndex = 8;
@@ -99,5 +99,6 @@
         private Reportes.Catalogos.ReporteProveedor ReporteProveedor1;
         private Reportes.Catalogos.ReporteFundamento ReporteFundamento1;
         private Reportes.Pedidos.ReportePedidoCompleto ReportePedidoCompleto1;
+        private Pedidos.ReporteListaPedido ReporteListaPedido1;
     }
 }

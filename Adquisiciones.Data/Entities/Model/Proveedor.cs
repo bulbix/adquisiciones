@@ -555,13 +555,22 @@ namespace Adquisiciones.Data.Entities
             get { return _fechamodificacion; }
             set { _fechamodificacion = value; }
         }
-
-
         
-
         public string ProveedorString
         {
             get { return ToString(); }
+        }
+
+        public string NombreSinClave{
+            get {
+                if (NombreFiscal.Trim().Length != 0)
+                    return NombreFiscal;
+
+                if (Paterno.Trim().Length != 0)
+                    return NombreCompleto;
+
+                return CveProveedor.ToString();
+            }
         }
 
         public string NombreCompleto

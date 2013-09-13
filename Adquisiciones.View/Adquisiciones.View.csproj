@@ -30,7 +30,7 @@
     <ProductName>Adquisiciones</ProductName>
     <PublisherName>INR</PublisherName>
     <WebPage>publicacion.htm</WebPage>
-    <ApplicationRevision>85</ApplicationRevision>
+    <ApplicationRevision>88</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -344,10 +344,10 @@
     <Compile Include="Reportes\Clases\PedidoDetallado.cs" />
     <Compile Include="Reportes\Clases\PedidoEntrada.cs" />
     <Compile Include="Reportes\Clases\ProveedorRep.cs" />
-    <Compile Include="Catalogos\FrmModuloReportes.cs">
+    <Compile Include="Reportes\FrmModuloReportes.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Catalogos\FrmModuloReportes.designer.cs">
+    <Compile Include="Reportes\FrmModuloReportes.designer.cs">
       <DependentUpon>FrmModuloReportes.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -363,6 +363,12 @@
     </Compile>
     <Compile Include="Reportes\FrmReportePedidoEntrada.Designer.cs">
       <DependentUpon>FrmReportePedidoEntrada.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\Pedidos\ReporteListaPedido.cs">
+      <DependentUpon>ReporteListaPedido.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Reportes\Pedidos\ReportePedidoCompleto.cs">
       <AutoGen>True</AutoGen>
@@ -499,7 +505,7 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>ReporteProveedor.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Catalogos\FrmModuloReportes.resx">
+    <EmbeddedResource Include="Reportes\FrmModuloReportes.resx">
       <DependentUpon>FrmModuloReportes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modulos\FrmPedidoEntrega.resx">
@@ -521,6 +527,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\FrmReportePedidoEntrada.resx">
       <DependentUpon>FrmReportePedidoEntrada.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\Pedidos\ReporteListaPedido.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ReporteListaPedido.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\Pedidos\ReportePedidoCompleto.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

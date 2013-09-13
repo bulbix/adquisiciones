@@ -9,6 +9,7 @@ using Adquisiciones.Business;
 using Adquisiciones.Data;
 using Adquisiciones.Data.Auxiliares;
 using Adquisiciones.Data.Entities;
+using Adquisiciones.View.Reportes;
 using DevExpress.XtraEditors;
 using DevExpress.XtraGrid.Views.Grid;
 using Spring.Context.Support;

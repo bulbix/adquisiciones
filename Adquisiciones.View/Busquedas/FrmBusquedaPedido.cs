@@ -127,6 +127,14 @@ namespace Adquisiciones.View.Busquedas
 
         }
 
+        private void pedidoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var pedidos = GetPedidosFiltrado();
+            var forma = new FrmModuloReportes("reporteListaPedido", pedidos);
+            forma.MdiParent = this.MdiParent;
+            forma.Show();
+        }
+
        
     }
 }

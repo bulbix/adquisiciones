@@ -306,6 +306,7 @@ namespace Adquisiciones.Data.Entities
 
         }
 
+        //public string Estado
 
 
 	    #region Equals And HashCode Overrides

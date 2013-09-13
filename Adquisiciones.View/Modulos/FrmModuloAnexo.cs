@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Windows.Forms;
 using Adquisiciones.Business;
 using Adquisiciones.Business.ModAnexo;
@@ -320,5 +321,34 @@ namespace Adquisiciones.View.Modulos
         }
 
         #endregion
+
+        private void cmdCargar_Click(object sender, EventArgs e)
+        {
+            Stream myStream = null;
+
+            openFileDialog1.InitialDirectory = "c:\\";
+            openFileDialog1.Filter = @"txt files (*.csv)|*.csv";
+            openFileDialog1.FilterIndex = 1;
+            openFileDialog1.RestoreDirectory = true;
+
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    if ((myStream = openFileDialog1.OpenFile()) != null)
+                    {
+                        using (myStream)
+                        {
+                            // Insert code to read the stream here.
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(@"Podria no leer el archivo");
+                }
+            }
+
+        }
     }
 }

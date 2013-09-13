@@ -10,6 +10,7 @@ using Adquisiciones.Business;
 using Adquisiciones.Data;
 using Adquisiciones.Data.Dao.Catalogos;
 using Adquisiciones.Data.Entities;
+using Adquisiciones.View.Reportes;
 using DevExpress.XtraEditors;
 using log4net;
 using Spring.Context.Support;

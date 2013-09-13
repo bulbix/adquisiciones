@@ -20,5 +20,9 @@ namespace Adquisiciones.View.Reportes.Clases
         public decimal Total { get; set; }
         public string PartidaArticulo { get; set; }
         public string TipoPedido { get; set; }
+
+        public int CveProveedor { get; set;}
+        public string Estado { get; set; }
+
     }
 }
