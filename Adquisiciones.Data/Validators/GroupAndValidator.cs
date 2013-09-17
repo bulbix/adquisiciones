@@ -20,6 +20,7 @@ namespace Adquisiciones.Data.Validators
             if (objeto.Precio != null && !string.IsNullOrEmpty(objeto.Marca))
                 return true;
 
-            return false;}
+            return false;
+        }
     }
 }

@@ -89,7 +89,7 @@ namespace Adquisiciones.View.Modulos
         {
             try
             {
-                gcCotizacionDetalle.Focus();//Para rebindeeen los campos
+                txtCentinela.Focus();//Para rebindeeen los campos
                 if (!Util.DatosValidos(CotizacionActual, lblNumErrors, listaError))
                 {
                     return;

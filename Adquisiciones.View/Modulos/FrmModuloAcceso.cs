@@ -254,6 +254,9 @@ namespace Adquisiciones.View
         {
             GenerarCaptcha();
             //txtCaptcha.Text = captcha.Text;
+            //txtRfc.Text = "SAIH940101";
+            //txtPassword.Text = "garbage";
+
         }
 #endregion
 

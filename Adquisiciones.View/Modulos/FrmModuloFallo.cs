@@ -53,7 +53,7 @@ namespace Adquisiciones.View.Modulos
         {
             try
             {
-
+                txtCentinela.Focus();//Para rebindeeen los campos
                 var falloCentinela = new Fallo();
                 falloCentinela.Anexo = AnexoSelect;
                 falloCentinela.FechaFallo = FalloService.AnexoDao.FechaServidor();

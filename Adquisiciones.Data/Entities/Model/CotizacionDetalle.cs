@@ -11,7 +11,6 @@ namespace Adquisiciones.Data.Entities
     /// CotizacionDetalle object for NHibernate mapped table 'cotizacion_detalle'.
     /// </summary>
     [Serializable]
-    [GroupAnd]
     public class CotizacionDetalle:IDetalle
     {
         #region Member Variables

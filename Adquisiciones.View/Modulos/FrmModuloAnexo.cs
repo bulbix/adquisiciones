@@ -1,14 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Web.UI.WebControls;
 using System.Windows.Forms;
 using Adquisiciones.Business;
 using Adquisiciones.Business.ModAnexo;
 using Adquisiciones.Business.ModFallo;
 using Adquisiciones.Data.Entities;
+using CrystalDecisions.Shared;
 using DevExpress.XtraBars;
 using DevExpress.XtraEditors;
 using DevExpress.XtraGrid.Views.Base;
+using DevExpress.XtraRichEdit.Import.OpenDocument;
 using Spring.Context.Support;
 using System.Linq;
 
@@ -21,6 +24,8 @@ namespace Adquisiciones.View.Modulos
         public IAnexoService AnexoService { get; set; }
         public IFalloService FalloService { get; set; }
         public Anexo AnexoActual;
+        private CatPartida PartidaActual;
+
         #endregion
 
         #region Constructores
@@ -72,6 +77,7 @@ namespace Adquisiciones.View.Modulos
         {
             AnexoService.TiposLicitacionesCombo(cbxTipolicitacion);
             AnexoService.IvasCombo(cbxIva);
+            bsPartida.DataSource = AnexoService.AnexoDao.CargarCatalogo<CatPartida>("Partida");
         }
 
         public override void Nuevo()
@@ -92,10 +98,13 @@ namespace Adquisiciones.View.Modulos
             txtnumlicitacion.Focus();
             LimpiarErrores();
             cbxAlmacen.Enabled = true;
+            searchLookUpPartida.Enabled = true;
+            searchLookUpPartida.EditValue = null;
+            PartidaActual = null;
         }
         public override void Guardar()
         {
-            gcAnexoDetalle.Focus();//Para rebindeeen los campos
+            txtCentinela.Focus();//Para rebindeeen los campos
             AnexoActual = bsAnexo.DataSource as Anexo;
             AnexoActual.AnexoDetalle = bsAnexoDetalle.DataSource as List<AnexoDetalle>;
 
@@ -154,6 +163,14 @@ namespace Adquisiciones.View.Modulos
 
                     lblFecha.Text = String.Format("{0:dd/MM/yyyy}", AnexoActual.FechaAnexo);
 
+                    var oneDetalle = AnexoActual.AnexoDetalle[0];
+                    PartidaActual = AnexoService.ArticuloDao.GetPartida(oneDetalle.Articulo);
+                    cbxAlmacen.SelectedIndex = cbxAlmacen.FindStringExact(oneDetalle.Articulo.Id.Almacen.ToString());
+
+                    //Centinela
+                    if (searchLookUpPartida.Handle != IntPtr.Zero)
+                        searchLookUpPartida.EditValue = PartidaActual.Partida;
+
                     LimpiarErrores();
 
                     base.EntityActual = AnexoActual;
@@ -169,6 +186,9 @@ namespace Adquisiciones.View.Modulos
 
                     if (FalloService.CotizacionDao.ExisteAnexoFallo(AnexoActual))
                         cmdMaximos.Enabled = true;
+
+                    searchLookUpPartida.Enabled = false;
+                    cbxAlmacen.Enabled = false;
 
                 }
                 else
@@ -236,9 +256,16 @@ namespace Adquisiciones.View.Modulos
                     {
                         var cveArt = (int) rowSelectValue;
                         var almacen = cbxAlmacen.SelectedValue as Almacen;
-                        var articuloid = new ArticuloId(cveArt, almacen);
 
-                        var articuloSelect = AnexoService.ArticuloDao.Get(articuloid);
+                        if (PartidaActual == null)
+                        {
+                            XtraMessageBox.Show(@"No ha seleccionado partida",
+                            @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+
+                        var articuloSelect = AnexoService.
+                            ArticuloDao.ArticuloPartida(cveArt, almacen, PartidaActual);
 
                         if (articuloSelect == null)
                         {
@@ -264,7 +291,7 @@ namespace Adquisiciones.View.Modulos
 
                     }
                     break;
-                case 4: //Cantidad Maxima
+                case 5: //Cantidad Maxima
 
                     try
                     {
@@ -273,12 +300,10 @@ namespace Adquisiciones.View.Modulos
                         if (cantidadMinimo > (decimal) rowSelectValue)
                         {
                             XtraMessageBox.Show(@"Cantidad Minimo > Cantidad Maximo",
-                                          @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                             gvAnexoDetalle.SetRowCellValue(e.RowHandle, "CantidadMinimo", 0);
                             gvAnexoDetalle.SetRowCellValue(e.RowHandle, "CantidadMaximo", 0);
-
-                            return;
                         }
                     }
                     catch(Exception ex)
@@ -324,8 +349,6 @@ namespace Adquisiciones.View.Modulos
 
         private void cmdCargar_Click(object sender, EventArgs e)
         {
-            Stream myStream = null;
-
             openFileDialog1.InitialDirectory = "c:\\";
             openFileDialog1.Filter = @"txt files (*.csv)|*.csv";
             openFileDialog1.FilterIndex = 1;
@@ -335,20 +358,90 @@ namespace Adquisiciones.View.Modulos
             {
                 try
                 {
-                    if ((myStream = openFileDialog1.OpenFile()) != null)
-                    {
-                        using (myStream)
-                        {
-                            // Insert code to read the stream here.
-                        }
-                    }
+                    bsAnexoDetalle.DataSource = new List<AnexoDetalle>();
+                    CargarExcel(openFileDialog1.FileName);
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(@"Podria no leer el archivo");
+                    XtraMessageBox.Show(ex.Message,
+                    @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    bsAnexoDetalle.DataSource = new List<AnexoDetalle>();
                 }
             }
 
         }
+
+
+        private void CargarExcel(string fileName)
+        {
+            var lines = File.ReadAllLines(fileName).Select(a => a.Split(','));
+
+            var numeroLinea = 1;
+
+            foreach (var line in lines)
+            {
+                int clave;
+                int minimo;
+                int maximo;
+
+                if (!int.TryParse(line[0], out clave))
+                    throw new Exception("Ocurrio un error en el formato de la clave linea " + numeroLinea);
+
+                if (!int.TryParse(line[1], out minimo))
+                    throw new Exception("Ocurrio un error en el formato del minimo linea " + numeroLinea);
+
+                if (!int.TryParse(line[2], out maximo))
+                    throw new Exception("Ocurrio un error en el formato del maximo linea " + numeroLinea);
+               
+
+                if (PartidaActual == null)
+                    throw new Exception("No ha seleccionado partida");
+                   
+
+                var almacen = cbxAlmacen.SelectedValue as Almacen;
+                var articulo = AnexoService.ArticuloDao.ArticuloPartida(clave, almacen, PartidaActual);
+
+                if (articulo == null)
+                    throw new Exception("No existe la clave linea " + numeroLinea);
+
+                if(minimo>maximo)
+                    throw new Exception("El minimo es mayor que el maximo linea "+ numeroLinea);
+
+                var list = bsAnexoDetalle.DataSource as List<AnexoDetalle>;
+                var anexoDetalle = new AnexoDetalle();
+                anexoDetalle.Articulo = articulo;
+                anexoDetalle.CveArt = clave;
+                anexoDetalle.DescripcionArt = articulo.DesArticulo;
+                anexoDetalle.UnidadArt = articulo.Unidad;
+                anexoDetalle.CantidadMinimo = minimo;
+                anexoDetalle.CantidadMaximo = maximo;
+                list.Add(anexoDetalle);
+
+                bsAnexoDetalle.DataSource = list;
+                gvAnexoDetalle.RefreshData();
+                ++numeroLinea;
+
+            }
+        }
+
+
+        private void SearchLookUpPartidaEditValueChanged(object sender, EventArgs e)
+        {
+
+            if (AnexoActual.IdAnexo == 0)//Nuevo
+                bsAnexoDetalle.DataSource = new List<AnexoDetalle>();
+
+            if (searchLookUpPartida.EditValue != null)
+            {
+                 var parSeleccionado= searchLookUpEditPartida.GetFocusedRow() as CatPartida;
+
+                if (parSeleccionado != null)
+                    PartidaActual = parSeleccionado;
+            }
+        }
+
+
     }
+
+
 }

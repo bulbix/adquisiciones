@@ -152,7 +152,7 @@ namespace Adquisiciones.View.Modulos
 
         public override void Guardar()
         {
-            gcPedidoDetalle.Focus(); //Para rebindeeen los campos
+            txtCentinela.Focus(); //Para rebindeeen los campos
             SumTotal();
             LimpiarErrores();
 

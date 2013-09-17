@@ -76,9 +76,10 @@
             // 
             // splitContainerControl1
             // 
+            this.splitContainerControl1.Location = new System.Drawing.Point(0, 68);
             this.splitContainerControl1.Panel1.Controls.Add(this.gcDatosGenerales);
             this.splitContainerControl1.Panel2.Controls.Add(this.gcCotizacionDetalle);
-            this.splitContainerControl1.Size = new System.Drawing.Size(1130, 328);
+            this.splitContainerControl1.Size = new System.Drawing.Size(1130, 333);
             this.splitContainerControl1.SplitterPosition = 91;
             // 
             // gcDatosGenerales
@@ -101,7 +102,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 297F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 79F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 359F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 142F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 143F));
             this.tableLayoutPanel1.Controls.Add(this.cmdConsultar, 6, 0);
             this.tableLayoutPanel1.Controls.Add(this.lblFechac, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.lblLicitacion, 2, 0);
@@ -118,7 +119,7 @@
             // 
             // cmdConsultar
             // 
-            this.cmdConsultar.Location = new System.Drawing.Point(937, 3);
+            this.cmdConsultar.Location = new System.Drawing.Point(936, 3);
             this.cmdConsultar.Name = "cmdConsultar";
             this.cmdConsultar.Size = new System.Drawing.Size(135, 38);
             this.cmdConsultar.TabIndex = 31;
@@ -137,7 +138,7 @@
             // lblLicitacion
             // 
             this.lblLicitacion.AutoSize = true;
-            this.lblLicitacion.Location = new System.Drawing.Point(152, 0);
+            this.lblLicitacion.Location = new System.Drawing.Point(151, 0);
             this.lblLicitacion.Name = "lblLicitacion";
             this.lblLicitacion.Size = new System.Drawing.Size(38, 13);
             this.lblLicitacion.TabIndex = 1;
@@ -146,7 +147,7 @@
             // searchLookUpAnexo
             // 
             this.searchLookUpAnexo.EditValue = "";
-            this.searchLookUpAnexo.Location = new System.Drawing.Point(202, 3);
+            this.searchLookUpAnexo.Location = new System.Drawing.Point(201, 3);
             this.searchLookUpAnexo.Name = "searchLookUpAnexo";
             this.searchLookUpAnexo.Properties.Appearance.ForeColor = System.Drawing.Color.Navy;
             this.searchLookUpAnexo.Properties.Appearance.Options.UseForeColor = true;
@@ -193,7 +194,7 @@
             // label45
             // 
             this.label45.AutoSize = true;
-            this.label45.Location = new System.Drawing.Point(499, 0);
+            this.label45.Location = new System.Drawing.Point(498, 0);
             this.label45.Name = "label45";
             this.label45.Size = new System.Drawing.Size(57, 13);
             this.label45.TabIndex = 23;
@@ -202,7 +203,7 @@
             // searchLookUpProv
             // 
             this.searchLookUpProv.EditValue = "";
-            this.searchLookUpProv.Location = new System.Drawing.Point(578, 3);
+            this.searchLookUpProv.Location = new System.Drawing.Point(577, 3);
             this.searchLookUpProv.Name = "searchLookUpProv";
             this.searchLookUpProv.Properties.Appearance.ForeColor = System.Drawing.Color.Navy;
             this.searchLookUpProv.Properties.Appearance.Options.UseForeColor = true;
@@ -282,7 +283,7 @@
             this.gcCotizacionDetalle.Location = new System.Drawing.Point(0, 0);
             this.gcCotizacionDetalle.MainView = this.gvCotizacionDetalle;
             this.gcCotizacionDetalle.Name = "gcCotizacionDetalle";
-            this.gcCotizacionDetalle.Size = new System.Drawing.Size(1130, 232);
+            this.gcCotizacionDetalle.Size = new System.Drawing.Size(1130, 236);
             this.gcCotizacionDetalle.TabIndex = 4;
             this.gcCotizacionDetalle.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvCotizacionDetalle});

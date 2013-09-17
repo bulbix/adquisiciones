@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmModulo));
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
+            this.txtCentinela = new System.Windows.Forms.TextBox();
             this.lblAlmacen = new System.Windows.Forms.Label();
             this.cbxAlmacen = new System.Windows.Forms.ComboBox();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
@@ -57,16 +58,25 @@
             // 
             this.splitContainerControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainerControl1.Horizontal = false;
-            this.splitContainerControl1.Location = new System.Drawing.Point(0, 70);
+            this.splitContainerControl1.Location = new System.Drawing.Point(0, 68);
             this.splitContainerControl1.Name = "splitContainerControl1";
+            this.splitContainerControl1.Panel1.Controls.Add(this.txtCentinela);
             this.splitContainerControl1.Panel1.Controls.Add(this.lblAlmacen);
             this.splitContainerControl1.Panel1.Controls.Add(this.cbxAlmacen);
             this.splitContainerControl1.Panel1.Text = "Panel1";
             this.splitContainerControl1.Panel2.Text = "panelDetalle";
-            this.splitContainerControl1.Size = new System.Drawing.Size(728, 330);
+            this.splitContainerControl1.Size = new System.Drawing.Size(728, 333);
             this.splitContainerControl1.SplitterPosition = 92;
             this.splitContainerControl1.TabIndex = 0;
             this.splitContainerControl1.Text = "splitContainerControl1";
+            // 
+            // txtCentinela
+            // 
+            this.txtCentinela.Location = new System.Drawing.Point(0, 0);
+            this.txtCentinela.Name = "txtCentinela";
+            this.txtCentinela.Size = new System.Drawing.Size(5, 21);
+            this.txtCentinela.TabIndex = 9;
+            this.txtCentinela.TabStop = false;
             // 
             // lblAlmacen
             // 
@@ -207,28 +217,28 @@
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Size = new System.Drawing.Size(728, 70);
+            this.barDockControlTop.Size = new System.Drawing.Size(728, 68);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 400);
-            this.barDockControlBottom.Size = new System.Drawing.Size(728, 23);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 401);
+            this.barDockControlBottom.Size = new System.Drawing.Size(728, 22);
             // 
             // barDockControlLeft
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 70);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 330);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 68);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 333);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(728, 70);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 330);
+            this.barDockControlRight.Location = new System.Drawing.Point(728, 68);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 333);
             // 
             // barButtonItem1
             // 
@@ -286,5 +296,6 @@
         protected DevExpress.XtraBars.BarButtonItem barButtonItem2;
         protected System.Windows.Forms.Label lblAlmacen;
         protected System.Windows.Forms.ComboBox cbxAlmacen;
+        protected System.Windows.Forms.TextBox txtCentinela;
     }
 }

@@ -30,6 +30,12 @@
         {
             this.components = new System.ComponentModel.Container();
             this.gcDatosGenerales = new DevExpress.XtraEditors.GroupControl();
+            this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
+            this.searchLookUpPartida = new DevExpress.XtraEditors.SearchLookUpEdit();
+            this.bsPartida = new System.Windows.Forms.BindingSource(this.components);
+            this.searchLookUpEditPartida = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn17 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn18 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.cmdCargar = new DevExpress.XtraEditors.SimpleButton();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.cbxIva = new System.Windows.Forms.ComboBox();
@@ -67,6 +73,9 @@
             this.splitContainerControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gcDatosGenerales)).BeginInit();
             this.gcDatosGenerales.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.searchLookUpPartida.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsPartida)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEditPartida)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtTechopresupuestal.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtnumlicitacion.Properties)).BeginInit();
@@ -83,7 +92,7 @@
             // 
             this.splitContainerControl1.Panel1.Controls.Add(this.gcDatosGenerales);
             this.splitContainerControl1.Panel2.Controls.Add(this.gcAnexoDetalle);
-            this.splitContainerControl1.Size = new System.Drawing.Size(1114, 600);
+            this.splitContainerControl1.Size = new System.Drawing.Size(1114, 603);
             this.splitContainerControl1.SplitterPosition = 169;
             // 
             // lblAlmacen
@@ -99,6 +108,8 @@
             // 
             // gcDatosGenerales
             // 
+            this.gcDatosGenerales.Controls.Add(this.labelControl3);
+            this.gcDatosGenerales.Controls.Add(this.searchLookUpPartida);
             this.gcDatosGenerales.Controls.Add(this.cmdCargar);
             this.gcDatosGenerales.Controls.Add(this.tableLayoutPanel1);
             this.gcDatosGenerales.Controls.Add(this.cmdMaximos);
@@ -109,27 +120,78 @@
             this.gcDatosGenerales.TabIndex = 2;
             this.gcDatosGenerales.Text = "Datos Generales";
             // 
+            // labelControl3
+            // 
+            this.labelControl3.Location = new System.Drawing.Point(293, 28);
+            this.labelControl3.Name = "labelControl3";
+            this.labelControl3.Size = new System.Drawing.Size(68, 13);
+            this.labelControl3.TabIndex = 18;
+            this.labelControl3.Text = "PartidaActual:";
+            // 
+            // searchLookUpPartida
+            // 
+            this.searchLookUpPartida.EditValue = "";
+            this.searchLookUpPartida.Location = new System.Drawing.Point(293, 44);
+            this.searchLookUpPartida.Name = "searchLookUpPartida";
+            this.searchLookUpPartida.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.searchLookUpPartida.Properties.DataSource = this.bsPartida;
+            this.searchLookUpPartida.Properties.DisplayMember = "CatPartidaString";
+            this.searchLookUpPartida.Properties.NullText = "";
+            this.searchLookUpPartida.Properties.ValueMember = "Partida";
+            this.searchLookUpPartida.Properties.View = this.searchLookUpEditPartida;
+            this.searchLookUpPartida.Size = new System.Drawing.Size(329, 20);
+            this.searchLookUpPartida.TabIndex = 17;
+            this.searchLookUpPartida.EditValueChanged += new System.EventHandler(this.SearchLookUpPartidaEditValueChanged);
+            // 
+            // searchLookUpEditPartida
+            // 
+            this.searchLookUpEditPartida.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn17,
+            this.gridColumn18});
+            this.searchLookUpEditPartida.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            this.searchLookUpEditPartida.Name = "searchLookUpEditPartida";
+            this.searchLookUpEditPartida.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.searchLookUpEditPartida.OptionsView.ShowGroupPanel = false;
+            // 
+            // gridColumn17
+            // 
+            this.gridColumn17.Caption = "Partida";
+            this.gridColumn17.FieldName = "Partida";
+            this.gridColumn17.Name = "gridColumn17";
+            this.gridColumn17.Visible = true;
+            this.gridColumn17.VisibleIndex = 0;
+            this.gridColumn17.Width = 107;
+            // 
+            // gridColumn18
+            // 
+            this.gridColumn18.Caption = "Descripcion";
+            this.gridColumn18.FieldName = "DesPartida";
+            this.gridColumn18.Name = "gridColumn18";
+            this.gridColumn18.Visible = true;
+            this.gridColumn18.VisibleIndex = 1;
+            this.gridColumn18.Width = 925;
+            // 
             // cmdCargar
             // 
-            this.cmdCargar.Location = new System.Drawing.Point(12, 28);
+            this.cmdCargar.Location = new System.Drawing.Point(150, 23);
             this.cmdCargar.Name = "cmdCargar";
             this.cmdCargar.Size = new System.Drawing.Size(137, 41);
             this.cmdCargar.TabIndex = 16;
             this.cmdCargar.Text = "Cargar Excel";
-            this.cmdCargar.Visible = false;
             this.cmdCargar.Click += new System.EventHandler(this.cmdCargar_Click);
             // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 8;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 36.81319F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 63.18681F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 56F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 234F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 105F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 377F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 51F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 104F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 41.37931F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 58.62069F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 59F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 228F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 109F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 362F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 112F));
             this.tableLayoutPanel1.Controls.Add(this.cbxIva, 7, 1);
             this.tableLayoutPanel1.Controls.Add(this.labelControl7, 6, 1);
             this.tableLayoutPanel1.Controls.Add(this.labelControl6, 4, 1);
@@ -155,14 +217,14 @@
             // 
             this.cbxIva.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxIva.FormattingEnabled = true;
-            this.cbxIva.Location = new System.Drawing.Point(1004, 44);
+            this.cbxIva.Location = new System.Drawing.Point(996, 44);
             this.cbxIva.Name = "cbxIva";
             this.cbxIva.Size = new System.Drawing.Size(83, 21);
             this.cbxIva.TabIndex = 7;
             // 
             // labelControl7
             // 
-            this.labelControl7.Location = new System.Drawing.Point(953, 44);
+            this.labelControl7.Location = new System.Drawing.Point(956, 44);
             this.labelControl7.Name = "labelControl7";
             this.labelControl7.Size = new System.Drawing.Size(31, 13);
             this.labelControl7.TabIndex = 12;
@@ -170,7 +232,7 @@
             // 
             // labelControl6
             // 
-            this.labelControl6.Location = new System.Drawing.Point(471, 44);
+            this.labelControl6.Location = new System.Drawing.Point(485, 44);
             this.labelControl6.Name = "labelControl6";
             this.labelControl6.Size = new System.Drawing.Size(94, 13);
             this.labelControl6.TabIndex = 10;
@@ -178,7 +240,7 @@
             // 
             // txtTechopresupuestal
             // 
-            this.txtTechopresupuestal.Location = new System.Drawing.Point(576, 44);
+            this.txtTechopresupuestal.Location = new System.Drawing.Point(594, 44);
             this.txtTechopresupuestal.Name = "txtTechopresupuestal";
             this.txtTechopresupuestal.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -199,7 +261,7 @@
             // lblFecha
             // 
             this.lblFecha.Appearance.ForeColor = System.Drawing.Color.Blue;
-            this.lblFecha.Location = new System.Drawing.Point(68, 3);
+            this.lblFecha.Location = new System.Drawing.Point(84, 3);
             this.lblFecha.Name = "lblFecha";
             this.lblFecha.Size = new System.Drawing.Size(63, 13);
             this.lblFecha.TabIndex = 13;
@@ -207,7 +269,7 @@
             // 
             // labelControl1
             // 
-            this.labelControl1.Location = new System.Drawing.Point(181, 3);
+            this.labelControl1.Location = new System.Drawing.Point(198, 3);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(43, 13);
             this.labelControl1.TabIndex = 1;
@@ -215,15 +277,15 @@
             // 
             // txtnumlicitacion
             // 
-            this.txtnumlicitacion.Location = new System.Drawing.Point(237, 3);
+            this.txtnumlicitacion.Location = new System.Drawing.Point(257, 3);
             this.txtnumlicitacion.Name = "txtnumlicitacion";
-            this.txtnumlicitacion.Size = new System.Drawing.Size(228, 20);
+            this.txtnumlicitacion.Size = new System.Drawing.Size(222, 20);
             this.txtnumlicitacion.TabIndex = 1;
             this.txtnumlicitacion.Leave += new System.EventHandler(this.TxtnumlicitacionLeave);
             // 
             // labelControl4
             // 
-            this.labelControl4.Location = new System.Drawing.Point(471, 3);
+            this.labelControl4.Location = new System.Drawing.Point(485, 3);
             this.labelControl4.Name = "labelControl4";
             this.labelControl4.Size = new System.Drawing.Size(54, 13);
             this.labelControl4.TabIndex = 6;
@@ -231,10 +293,10 @@
             // 
             // txtDesanexo
             // 
-            this.txtDesanexo.Location = new System.Drawing.Point(576, 3);
+            this.txtDesanexo.Location = new System.Drawing.Point(594, 3);
             this.txtDesanexo.Name = "txtDesanexo";
             this.txtDesanexo.Properties.LookAndFeel.SkinName = "Blue";
-            this.txtDesanexo.Size = new System.Drawing.Size(371, 20);
+            this.txtDesanexo.Size = new System.Drawing.Size(356, 20);
             this.txtDesanexo.TabIndex = 4;
             // 
             // labelControl5
@@ -249,15 +311,15 @@
             // 
             this.cbxTipolicitacion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxTipolicitacion.FormattingEnabled = true;
-            this.cbxTipolicitacion.Location = new System.Drawing.Point(68, 44);
+            this.cbxTipolicitacion.Location = new System.Drawing.Point(84, 44);
             this.cbxTipolicitacion.Name = "cbxTipolicitacion";
-            this.cbxTipolicitacion.Size = new System.Drawing.Size(107, 21);
+            this.cbxTipolicitacion.Size = new System.Drawing.Size(108, 21);
             this.cbxTipolicitacion.TabIndex = 5;
             // 
             // cmdMaximos
             // 
             this.cmdMaximos.Enabled = false;
-            this.cmdMaximos.Location = new System.Drawing.Point(231, 28);
+            this.cmdMaximos.Location = new System.Drawing.Point(0, 23);
             this.cmdMaximos.Name = "cmdMaximos";
             this.cmdMaximos.Size = new System.Drawing.Size(144, 41);
             this.cmdMaximos.TabIndex = 13;
@@ -273,7 +335,7 @@
             this.gcAnexoDetalle.Name = "gcAnexoDetalle";
             this.gcAnexoDetalle.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemSearchLookUpEdit2});
-            this.gcAnexoDetalle.Size = new System.Drawing.Size(1114, 426);
+            this.gcAnexoDetalle.Size = new System.Drawing.Size(1114, 428);
             this.gcAnexoDetalle.TabIndex = 8;
             this.gcAnexoDetalle.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvAnexoDetalle});
@@ -558,6 +620,10 @@
             this.splitContainerControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gcDatosGenerales)).EndInit();
             this.gcDatosGenerales.ResumeLayout(false);
+            this.gcDatosGenerales.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.searchLookUpPartida.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsPartida)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEditPartida)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtTechopresupuestal.Properties)).EndInit();
@@ -609,5 +675,11 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn9;
         private DevExpress.XtraEditors.SimpleButton cmdCargar;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private DevExpress.XtraEditors.LabelControl labelControl3;
+        private DevExpress.XtraEditors.SearchLookUpEdit searchLookUpPartida;
+        private DevExpress.XtraGrid.Views.Grid.GridView searchLookUpEditPartida;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn17;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn18;
+        private System.Windows.Forms.BindingSource bsPartida;
     }
 }
