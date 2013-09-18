@@ -71,7 +71,6 @@
             this.gvProveedor.GridControl = this.gcProveedor;
             this.gvProveedor.Name = "gvProveedor";
             this.gvProveedor.OptionsBehavior.Editable = false;
-            this.gvProveedor.OptionsFind.AlwaysVisible = true;
             this.gvProveedor.OptionsView.EnableAppearanceEvenRow = true;
             this.gvProveedor.OptionsView.ShowAutoFilterRow = true;
             this.gvProveedor.OptionsView.ShowGroupedColumns = true;

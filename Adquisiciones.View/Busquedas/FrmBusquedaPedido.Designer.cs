@@ -100,7 +100,6 @@
             this.gvPedido.GridControl = this.gcPedido;
             this.gvPedido.Name = "gvPedido";
             this.gvPedido.OptionsBehavior.Editable = false;
-            this.gvPedido.OptionsFind.AlwaysVisible = true;
             this.gvPedido.OptionsView.EnableAppearanceEvenRow = true;
             this.gvPedido.OptionsView.ShowAutoFilterRow = true;
             this.gvPedido.OptionsView.ShowGroupedColumns = true;

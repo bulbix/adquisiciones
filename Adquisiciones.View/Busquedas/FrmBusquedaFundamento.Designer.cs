@@ -31,10 +31,10 @@
             this.gcFundamento = new DevExpress.XtraGrid.GridControl();
             this.gvFundamento = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.bsSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gcFundamento)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvFundamento)).BeginInit();
@@ -63,7 +63,6 @@
             this.gvFundamento.GridControl = this.gcFundamento;
             this.gvFundamento.Name = "gvFundamento";
             this.gvFundamento.OptionsBehavior.Editable = false;
-            this.gvFundamento.OptionsFind.AlwaysVisible = true;
             this.gvFundamento.OptionsView.EnableAppearanceEvenRow = true;
             this.gvFundamento.OptionsView.ShowAutoFilterRow = true;
             this.gvFundamento.OptionsView.ShowGroupPanel = false;
@@ -77,16 +76,6 @@
             this.gridColumn2.Visible = true;
             this.gridColumn2.VisibleIndex = 0;
             this.gridColumn2.Width = 58;
-            // 
-            // gridColumn1
-            // 
-            this.gridColumn1.Caption = "Descripcion";
-            this.gridColumn1.FieldName = "DesFundamento";
-            this.gridColumn1.Name = "gridColumn1";
-            this.gridColumn1.UnboundType = DevExpress.Data.UnboundColumnType.String;
-            this.gridColumn1.Visible = true;
-            this.gridColumn1.VisibleIndex = 4;
-            this.gridColumn1.Width = 587;
             // 
             // gridColumn3
             // 
@@ -116,6 +105,16 @@
             this.gridColumn5.UnboundType = DevExpress.Data.UnboundColumnType.String;
             this.gridColumn5.Visible = true;
             this.gridColumn5.VisibleIndex = 3;
+            // 
+            // gridColumn1
+            // 
+            this.gridColumn1.Caption = "Descripcion";
+            this.gridColumn1.FieldName = "DesFundamento";
+            this.gridColumn1.Name = "gridColumn1";
+            this.gridColumn1.UnboundType = DevExpress.Data.UnboundColumnType.String;
+            this.gridColumn1.Visible = true;
+            this.gridColumn1.VisibleIndex = 4;
+            this.gridColumn1.Width = 587;
             // 
             // FrmBusquedaFundamento
             // 
