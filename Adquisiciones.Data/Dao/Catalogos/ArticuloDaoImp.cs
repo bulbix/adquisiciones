@@ -7,7 +7,7 @@ using NHibernate.SqlCommand;
 using Spring.Transaction.Interceptor;
 namespace Adquisiciones.Data.Dao.Catalogos
 {
-    public class ArticuloDaoImp:GenericDaoImp<Articulo,ArticuloId>,IArticuloDao
+    public class ArticuloDaoImp:GenericDaoImp<Articulo,ArticuloId>,IArticuloDao,IFormBusqueda
     {
         [Transaction(ReadOnly = true) ]
         public IList<ArticuloBusqueda> ArticulosByAlmacen(Almacen almacen)
@@ -48,5 +48,74 @@ namespace Adquisiciones.Data.Dao.Catalogos
             query.SetParameter("articulo", articulo);
             return query.UniqueResult<CatPartida>();
         }
+
+        [Transaction(ReadOnly = true)]
+        public object ConsultarEntityAll(Almacen almacen)
+        {
+            return CargarCatalogoSinEstatus<Articulo>("Id.CveArt");
+        }
+
+        public void EliminarEntity(object entity, string nombreEntity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool CancelarEntity(object entity)
+        {
+            throw new NotImplementedException();
+        }
+
+         [Transaction(ReadOnly = true)]
+        public IList<ArticuloBusqueda> ArticulosByPartidaDescripcion(CatPartida partida = null,
+            string aproxDescripcion = null)
+         {
+             string strQuery = "";
+
+             if (partida != null && aproxDescripcion == null)
+             {
+                 strQuery = @"select 
+                               new ArticuloBusqueda(a.Id.CveArt,a.DesArticulo,a.Unidad,
+                               a.Presentacion,ap.Id.CatPartida.Partida,a.Id.Almacen.IdAlmacen) from Articulo a 
+                               join a.ArticuloPartida ap 
+                               where ap.Id.CatPartida = :partida order by a.Id.CveArt";
+
+                 var query = CurrentSession.CreateQuery(strQuery);
+                 query.SetParameter("partida", partida);
+                 return query.List<ArticuloBusqueda>();
+            }
+
+             if (partida == null && aproxDescripcion != null)
+             {
+                 strQuery = @"select 
+                               new ArticuloBusqueda(a.Id.CveArt,a.DesArticulo,a.Unidad,
+                               a.Presentacion,ap.Id.CatPartida.Partida,a.Id.Almacen.IdAlmacen) from Articulo a 
+                               join a.ArticuloPartida ap 
+                               where a.DesArticulo like :aprox order by a.Id.CveArt";
+
+                 var query = CurrentSession.CreateQuery(strQuery);
+                 query.SetParameter("aprox", "%" + aproxDescripcion + "%");
+                 return query.List<ArticuloBusqueda>();
+             }
+
+             if (partida != null && aproxDescripcion != null)
+             {
+                 strQuery = @"select 
+                               new ArticuloBusqueda(a.Id.CveArt,a.DesArticulo,a.Unidad,
+                               a.Presentacion,ap.Id.CatPartida.Partida,a.Id.Almacen.IdAlmacen) from Articulo a 
+                               join a.ArticuloPartida ap 
+                               where a.DesArticulo like :aprox and 
+                               ap.Id.CatPartida = :partida order by a.Id.CveArt";
+
+                 var query = CurrentSession.CreateQuery(strQuery);
+                 query.SetParameter("partida", partida);
+                 query.SetParameter("aprox", "%" + aproxDescripcion + "%");
+                 return query.List<ArticuloBusqueda>();
+             }
+
+
+             return null;
+
+
+         }
     }
 }

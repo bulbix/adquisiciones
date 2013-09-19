@@ -43,13 +43,8 @@ namespace Adquisiciones.View.Busquedas
         #region Metodos
         protected override void Buscar()
         {
-
             var forma = new FrmFiltroBusquedaPedido(PedidoService,bsSource,AlmacenActual);
             forma.ShowDialog();
-
-
-            //base.Buscar();
-            
         }
 
         protected override void Eliminar()

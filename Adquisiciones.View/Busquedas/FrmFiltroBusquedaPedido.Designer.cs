@@ -31,6 +31,7 @@
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cbAjuste = new System.Windows.Forms.CheckBox();
             this.cbExtramuro = new System.Windows.Forms.CheckBox();
             this.cbDonacion = new System.Windows.Forms.CheckBox();
             this.cbMenor = new System.Windows.Forms.CheckBox();
@@ -42,7 +43,6 @@
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             this.cmdBusqueda = new DevExpress.XtraEditors.SimpleButton();
-            this.cbAjuste = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.deFinal.Properties.VistaTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.deFinal.Properties)).BeginInit();
@@ -82,6 +82,16 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Tipo";
             this.groupBox1.UseCompatibleTextRendering = true;
+            // 
+            // cbAjuste
+            // 
+            this.cbAjuste.AutoSize = true;
+            this.cbAjuste.Location = new System.Drawing.Point(15, 113);
+            this.cbAjuste.Name = "cbAjuste";
+            this.cbAjuste.Size = new System.Drawing.Size(57, 17);
+            this.cbAjuste.TabIndex = 4;
+            this.cbAjuste.Text = "Ajuste";
+            this.cbAjuste.UseVisualStyleBackColor = true;
             // 
             // cbExtramuro
             // 
@@ -204,16 +214,6 @@
             this.cmdBusqueda.TabIndex = 18;
             this.cmdBusqueda.Text = "Generar Busqueda";
             this.cmdBusqueda.Click += new System.EventHandler(this.CmdBusquedaClick);
-            // 
-            // cbAjuste
-            // 
-            this.cbAjuste.AutoSize = true;
-            this.cbAjuste.Location = new System.Drawing.Point(15, 113);
-            this.cbAjuste.Name = "cbAjuste";
-            this.cbAjuste.Size = new System.Drawing.Size(57, 17);
-            this.cbAjuste.TabIndex = 4;
-            this.cbAjuste.Text = "Ajuste";
-            this.cbAjuste.UseVisualStyleBackColor = true;
             // 
             // FrmFiltroBusquedaPedido
             // 

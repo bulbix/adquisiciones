@@ -251,6 +251,14 @@ namespace Adquisiciones.View
             forma.MdiParent = this;
             forma.Show();
         }
+
+        private void barButtonItem12_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            var forma = new FrmBusquedaArticulo(this);
+            forma.MdiParent = this;
+            forma.Show();
+
+        }
         
 
        

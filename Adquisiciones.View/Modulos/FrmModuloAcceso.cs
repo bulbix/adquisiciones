@@ -253,9 +253,9 @@ namespace Adquisiciones.View
         private void FrmModuloAcceso_Load(object sender, EventArgs e)
         {
             GenerarCaptcha();
-            //txtCaptcha.Text = captcha.Text;
-            //txtRfc.Text = "SAIH940101";
-            //txtPassword.Text = "garbage";
+            /*txtCaptcha.Text = captcha.Text;
+            txtRfc.Text = "SAIH940101";
+            txtPassword.Text = "garbage";*/
 
         }
 #endregion

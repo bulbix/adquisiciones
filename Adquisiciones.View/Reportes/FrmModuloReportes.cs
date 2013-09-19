@@ -232,13 +232,9 @@ namespace Adquisiciones.View.Reportes
 
         private void ReportePedido(Pedido pedido)
         {
-            pedido.PedidoDetalle = 
-                PedidoService.PedidoDao.CargarPedidoDetalle(pedido);
 
-            foreach (var pedidoDetalle in pedido.PedidoDetalle)
-            {
-                pedidoDetalle.PedidoEntrega = PedidoService.PedidoDao.CargarPedidoEntrega(pedidoDetalle);
-            }
+            pedido = PedidoService.
+            ConsultarPedido(pedido.NumeroPedido.Value, pedido.Almacen, pedido.CatTipopedido.IdTipoped);
 
             var reporte = new ReportePedido(pedido);
             reporte.GenerarReporteCompleto();

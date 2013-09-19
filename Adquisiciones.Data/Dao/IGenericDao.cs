@@ -15,6 +15,7 @@ namespace Adquisiciones.Data.Dao
         TE Get(TId id);
         IList<TE> FindAll();
         IList<T> CargarCatalogo<T>(string claveOrder, params object[] parametros);
+        IList<T> CargarCatalogoSinEstatus<T>(string claveOrder);
         DateTime FechaServidor();
     }
 }

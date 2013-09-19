@@ -208,8 +208,8 @@ namespace Adquisiciones.Business.ModPedido
             {
                 pedido.FechaCaptura = PedidoDao.FechaServidor();
                 pedido.EstadoPedido = "A";
-                /*pedido.NumeroPedido = PedidoDao.SiguienteNumeroPedido(pedido.Almacen,
-                pedido.CatTipopedido.IdTipoped);*/
+                pedido.NumeroPedido = PedidoDao.SiguienteNumeroPedido(pedido.Almacen,
+                pedido.CatTipopedido.IdTipoped);
             }
 
             //Le cargamos el Articulo y la llave compuesta)

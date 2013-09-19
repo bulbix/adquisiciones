@@ -94,7 +94,16 @@ namespace Adquisiciones.Data.Dao
             }
 
             var criteria = CurrentSession.CreateCriteria(typeof(T));
+            
             criteria.Add(Restrictions.Eq(campo.ToString(), valor));
+            criteria.AddOrder(Order.Desc(claveOrder));
+            return criteria.List<T>();
+        }
+
+        [Transaction(ReadOnly = true)]
+        public IList<T> CargarCatalogoSinEstatus<T>(string claveOrder)
+        {
+            var criteria = CurrentSession.CreateCriteria(typeof(T));
             criteria.AddOrder(Order.Desc(claveOrder));
             return criteria.List<T>();
         }

@@ -71,7 +71,7 @@
             this.gcPedido.Location = new System.Drawing.Point(0, 93);
             this.gcPedido.MainView = this.gvPedido;
             this.gcPedido.Name = "gcPedido";
-            this.gcPedido.Size = new System.Drawing.Size(860, 478);
+            this.gcPedido.Size = new System.Drawing.Size(860, 475);
             this.gcPedido.TabIndex = 4;
             this.gcPedido.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvPedido});
@@ -113,7 +113,7 @@
             this.gridColumn7.Name = "gridColumn7";
             this.gridColumn7.UnboundType = DevExpress.Data.UnboundColumnType.String;
             this.gridColumn7.Visible = true;
-            this.gridColumn7.VisibleIndex = 1;
+            this.gridColumn7.VisibleIndex = 2;
             this.gridColumn7.Width = 42;
             // 
             // gridColumn6
@@ -156,7 +156,7 @@
             this.gridColumn1.Name = "gridColumn1";
             this.gridColumn1.UnboundType = DevExpress.Data.UnboundColumnType.DateTime;
             this.gridColumn1.Visible = true;
-            this.gridColumn1.VisibleIndex = 0;
+            this.gridColumn1.VisibleIndex = 1;
             this.gridColumn1.Width = 52;
             // 
             // gridColumn3
@@ -166,7 +166,7 @@
             this.gridColumn3.Name = "gridColumn3";
             this.gridColumn3.UnboundType = DevExpress.Data.UnboundColumnType.Integer;
             this.gridColumn3.Visible = true;
-            this.gridColumn3.VisibleIndex = 2;
+            this.gridColumn3.VisibleIndex = 0;
             this.gridColumn3.Width = 43;
             // 
             // gridColumn2

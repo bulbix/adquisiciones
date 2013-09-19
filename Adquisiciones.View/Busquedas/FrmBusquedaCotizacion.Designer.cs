@@ -48,12 +48,12 @@
             // 
             this.gcCotizacion.DataSource = this.bsSource;
             this.gcCotizacion.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gcCotizacion.Location = new System.Drawing.Point(0, 69);
+            this.gcCotizacion.Location = new System.Drawing.Point(0, 67);
             this.gcCotizacion.MainView = this.gvCotizacion;
             this.gcCotizacion.Name = "gcCotizacion";
             this.gcCotizacion.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemButtonEdit1});
-            this.gcCotizacion.Size = new System.Drawing.Size(708, 305);
+            this.gcCotizacion.Size = new System.Drawing.Size(708, 308);
             this.gcCotizacion.TabIndex = 4;
             this.gcCotizacion.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvCotizacion});

@@ -11,5 +11,8 @@ namespace Adquisiciones.Data.Dao.Catalogos
         Articulo ArticuloPartida(int cveArt, Almacen almacen, CatPartida partida);
         CatPartida GetPartida(Articulo articulo);
 
+        IList<ArticuloBusqueda> ArticulosByPartidaDescripcion(CatPartida partida = null,
+            string aproxDescripcion = null);
+
     }
 }

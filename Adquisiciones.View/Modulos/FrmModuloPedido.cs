@@ -93,8 +93,8 @@ namespace Adquisiciones.View.Modulos
             txtReserva.DataBindings.Add(new Binding("Text", bsPedido, "IdReservaautoriza", true));
             txtObservaciones.DataBindings.Add(new Binding("Text", bsPedido, "Observaciones", false));
             
-            deFecha.DataBindings.Add(new Binding("DateTime", bsPedido, "FechaPedido", true));
-            txtNumero.DataBindings.Add(new Binding("Value", bsPedido, "NumeroPedido", true));
+            //deFecha.DataBindings.Add(new Binding("DateTime", bsPedido, "FechaPedido", true));
+            //txtNumero.DataBindings.Add(new Binding("Value", bsPedido, "NumeroPedido", true));
 
         }
 
@@ -118,18 +118,18 @@ namespace Adquisiciones.View.Modulos
             bsPedido.DataSource = PedidoActual;
             bsPedidoDetalle.DataSource = new List<PedidoDetalle>();
 
-            /****Esto es un cambio para la ultima version
+            //Esto es un cambio para la ultima version
             PedidoActual.NumeroPedido = PedidoService.PedidoDao.SiguienteNumeroPedido(AlmacenActual, this.tipoPedido);
             lblNumero.Text = PedidoActual.NumeroPedido.ToString();
             PedidoActual.FechaPedido = PedidoService.PedidoDao.FechaServidor();
             lblFecha.Text = String.Format("{0:dd/MM/yyyy}", PedidoActual.FechaPedido);
-            ******/
-            PedidoActual.FechaPedido = PedidoService.PedidoDao.FechaServidor();
-            PedidoActual.NumeroPedido = PedidoService.PedidoDao.SiguienteNumeroPedido(AlmacenActual, this.tipoPedido).Value;
 
+            /*PedidoActual.FechaPedido = PedidoService.PedidoDao.FechaServidor();
+            PedidoActual.NumeroPedido = PedidoService.PedidoDao.SiguienteNumeroPedido(AlmacenActual, this.tipoPedido).Value;
             deFecha.DateTime = PedidoActual.FechaPedido.Value;
             txtNumero.Value = PedidoActual.NumeroPedido.Value;
-
+            */
+             
             txtDescuento.Text = "0.00";
             Text = @"Pedido::" + PedidoActual;
 
@@ -175,6 +175,13 @@ namespace Adquisiciones.View.Modulos
                 return;
             }
 
+            if (tipoPedido == 1 && !ExisteFechaEntrega())
+            {
+                XtraMessageBox.Show(@"No ha capturado fechas de entrega para todas las claves",
+                    @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             if (plProcedimiento.Tipoprocedimiento != null && 
                 plProcedimiento.Tipoprocedimiento.Catalogo == null)
                 PedidoActual.TipoProcedimiento = null;
@@ -183,13 +190,13 @@ namespace Adquisiciones.View.Modulos
             
 
             //Nuevo
-            if (PedidoActual.IdPedido == 0 && PedidoService.PedidoDao.ExisteNumeroPedido(AlmacenActual, tipoPedido,
+            /*if (PedidoActual.IdPedido == 0 && PedidoService.PedidoDao.ExisteNumeroPedido(AlmacenActual, tipoPedido,
                 PedidoActual.NumeroPedido.Value)){
 
                     XtraMessageBox.Show(@"El Folio ya existe",
                         @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
-            }
+            }*/
 
             PedidoActual.PedidoDetalle = bsPedidoDetalle.DataSource as List<PedidoDetalle>;
 
@@ -198,7 +205,6 @@ namespace Adquisiciones.View.Modulos
                 PedidoService.GuardarPedido(ref PedidoActual);
 
                 Consultar();
-
                 base.EntityActual = PedidoActual;
 
                 XtraMessageBox.Show(@"Pedido Registrado o Actualizado Exitosamente",
@@ -221,8 +227,8 @@ namespace Adquisiciones.View.Modulos
                                                           AlmacenActual, this.tipoPedido);
                 if (PedidoActual != null)
                 {
-                    //lblNumero.Text = PedidoActual.NumeroPedido.ToString();
-                    //lblFecha.Text = String.Format("{0:dd/MM/yyyy}", PedidoActual.FechaPedido);
+                    lblNumero.Text = PedidoActual.NumeroPedido.ToString();
+                    lblFecha.Text = String.Format("{0:dd/MM/yyyy}", PedidoActual.FechaPedido);
 
                     bsPedido.DataSource = PedidoActual;
                     bsPedidoDetalle.DataSource = PedidoActual.PedidoDetalle;
@@ -377,6 +383,24 @@ namespace Adquisiciones.View.Modulos
 
             }
         }
+
+        /// <summary>
+        /// Verifica si existe al menos una fecha de entrega para todos los pedidos detalle
+        /// </summary>
+        /// <returns></returns>
+        private bool ExisteFechaEntrega()
+        {
+            var pedidoDetalle = bsPedidoDetalle.DataSource as List<PedidoDetalle>;
+            var result = false;
+            var index = pedidoDetalle.Count(detalle => detalle.PedidoEntrega.Count >= 1);
+
+            if (pedidoDetalle.Count == index)
+                result = true;
+
+            return result;
+
+        }
+
 
         private bool TieneRepetidoArticulo(int? articulo)
         {

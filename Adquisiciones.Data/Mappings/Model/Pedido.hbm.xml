@@ -8,8 +8,8 @@
       <generator class="increment" />
     </id>   
     
-    <property name="FechaPedido" column="fecha_pedido" type="DateTime" />
-    <property name="NumeroPedido" column="numero_pedido" type="int" />
+    <property name="FechaPedido" column="fecha_pedido" type="DateTime" update="false"  />
+    <property name="NumeroPedido" column="numero_pedido" type="int" update="false" />
     <many-to-one name="CatTipopedido" column="id_tipoped" fetch="join"  />
     <many-to-one name="Proveedor" column="cve_proveedor" fetch="join" />
     <many-to-one name="Anexo" column="id_anexo" fetch="join"  />

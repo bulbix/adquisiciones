@@ -30,7 +30,7 @@
     <ProductName>Adquisiciones</ProductName>
     <PublisherName>INR</PublisherName>
     <WebPage>publicacion.htm</WebPage>
-    <ApplicationRevision>89</ApplicationRevision>
+    <ApplicationRevision>91</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -163,6 +163,12 @@
     <Compile Include="Busquedas\FrmBusquedaAnexo.Designer.cs">
       <DependentUpon>FrmBusquedaAnexo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Busquedas\FrmBusquedaArticulo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Busquedas\FrmBusquedaArticulo.Designer.cs">
+      <DependentUpon>FrmBusquedaArticulo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Busquedas\FrmBusquedaCotizacion.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -198,6 +204,12 @@
     </Compile>
     <Compile Include="Busquedas\FrmBusquedaProveedor.Designer.cs">
       <DependentUpon>FrmBusquedaProveedor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Busquedas\FrmFiltroBusquedaArticulo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Busquedas\FrmFiltroBusquedaArticulo.Designer.cs">
+      <DependentUpon>FrmFiltroBusquedaArticulo.cs</DependentUpon>
     </Compile>
     <Compile Include="Busquedas\FrmFiltroBusquedaPedido.cs">
       <SubType>Form</SubType>
@@ -431,6 +443,9 @@
     <EmbeddedResource Include="Busquedas\FrmBusquedaAnexo.resx">
       <DependentUpon>FrmBusquedaAnexo.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Busquedas\FrmBusquedaArticulo.resx">
+      <DependentUpon>FrmBusquedaArticulo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Busquedas\FrmBusquedaCotizacion.resx">
       <DependentUpon>FrmBusquedaCotizacion.cs</DependentUpon>
     </EmbeddedResource>
@@ -448,6 +463,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Busquedas\FrmBusquedaProveedor.resx">
       <DependentUpon>FrmBusquedaProveedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Busquedas\FrmFiltroBusquedaArticulo.resx">
+      <DependentUpon>FrmFiltroBusquedaArticulo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Busquedas\FrmFiltroBusquedaPedido.resx">
       <DependentUpon>FrmFiltroBusquedaPedido.cs</DependentUpon>

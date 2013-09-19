@@ -41,10 +41,10 @@
             // 
             this.gcPartida.DataSource = this.bsSource;
             this.gcPartida.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gcPartida.Location = new System.Drawing.Point(0, 69);
+            this.gcPartida.Location = new System.Drawing.Point(0, 67);
             this.gcPartida.MainView = this.gvPartida;
             this.gcPartida.Name = "gcPartida";
-            this.gcPartida.Size = new System.Drawing.Size(665, 448);
+            this.gcPartida.Size = new System.Drawing.Size(665, 451);
             this.gcPartida.TabIndex = 5;
             this.gcPartida.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvPartida});
