@@ -104,12 +104,24 @@ namespace Adquisiciones.Business.ModFallo
                     IdFalloDetalle = FalloDetalleDao.MaximoId().Value,
                     Fallo = falloActual,
                     RenglonAnexo = cotizacionDetalle.RenglonAnexo,
-                    CantidadMax = anexoDetalle.CantidadMaximo,
-                    CantidadMin = anexoDetalle.CantidadMinimo,
+                    CantidadMax = 0,
+                    CantidadMin = 0,
                     CantidadPed = 0,
                     PrecioFallo = cotizacionDetalle.Precio,
                     Articulo = cotizacionDetalle.Articulo
                 };
+
+                if (anexo.TipoContrato == Contrato.ABIERTO)
+                {
+                    falloDetalle.CantidadMin = anexoDetalle.CantidadMinimo;
+                    falloDetalle.CantidadMax = anexoDetalle.CantidadMaximo;
+                }
+                else if (anexo.TipoContrato == Contrato.CERRADO)
+                {
+                    falloDetalle.CantidadMax = anexoDetalle.CantidadMaximo;
+                    falloDetalle.CantidadMin = anexoDetalle.CantidadMaximo.Value * (decimal)0.40;
+                }
+
 
                 FalloDetalleDao.Insert(falloDetalle);
 

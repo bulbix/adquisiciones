@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using Adquisiciones.Business.ModCotizacion;
 using Adquisiciones.Data.Entities;
 using Adquisiciones.View.Modulos;
+using DevExpress.XtraBars;
 using DevExpress.XtraEditors;
 
 namespace Adquisiciones.View.Busquedas
@@ -34,6 +35,7 @@ namespace Adquisiciones.View.Busquedas
             GetServicio();
             CotizacionService = base.Servicio as ICotizacionService;
             base.ObtenerPerfil();
+            cmdCancelar.Visibility = BarItemVisibility.Never;
         }
         #endregion
 

@@ -42,6 +42,8 @@
 
     <property name="Tipo" column="tipo" type="string" />
     <property name="Modificacion" column="modificacion" type="int" />
+
+    <many-to-one name="TipoProcedimiento" column="id_tipoprocedimiento"/>
     
     
   </class>

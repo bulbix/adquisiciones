@@ -119,7 +119,6 @@ namespace Adquisiciones.View.Modulos
                 if (anexoSeleccionado != null)
                 {
                     AnexoSelect = anexoSeleccionado;
-                    this.Text = @"Fallo-Anexo::" + AnexoSelect;
                 }
             }
             else

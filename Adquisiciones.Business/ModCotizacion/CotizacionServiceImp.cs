@@ -89,7 +89,8 @@ namespace Adquisiciones.Business.ModCotizacion
                 }
 
                 //Pintamos las propiedades de despliegue
-                cotizacionDetalle.Cantidad = anexoDetalle.CantidadMinimo;
+                cotizacionDetalle.CantidadMinimo = anexoDetalle.CantidadMinimo;
+                cotizacionDetalle.CantidadMaximo = anexoDetalle.CantidadMaximo;
                 cotizacionDetalle.RenglonAnexo = anexoDetalle.RenglonAnexo;
                 cotizacionDetalle.CveArt = anexoDetalle.Articulo.Id.CveArt;
                 cotizacionDetalle.DescripcionArt = anexoDetalle.Articulo.DesArticulo;

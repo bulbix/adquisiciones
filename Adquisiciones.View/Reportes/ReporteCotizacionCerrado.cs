@@ -16,14 +16,14 @@ namespace Adquisiciones.View.Reportes {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class ReporteCotizacion : ReportClass {
+    public class ReporteCotizacionCerrado : ReportClass {
         
-        public ReporteCotizacion() {
+        public ReporteCotizacionCerrado() {
         }
         
         public override string ResourceName {
             get {
-                return "ReporteCotizacion.rpt";
+                return "ReporteCotizacionCerrado.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace Adquisiciones.View.Reportes {
         
         public override string FullResourceName {
             get {
-                return "Adquisiciones.View.Reportes.ReporteCotizacion.rpt";
+                return "Adquisiciones.View.Reportes.ReporteCotizacionCerrado.rpt";
             }
             set {
                 // Do nothing
@@ -90,9 +90,9 @@ namespace Adquisiciones.View.Reportes {
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedReporteCotizacion : Component, ICachedReport {
+    public class CachedReporteCotizacionCerrado : Component, ICachedReport {
         
-        public CachedReporteCotizacion() {
+        public CachedReporteCotizacionCerrado() {
         }
         
         [Browsable(false)]
@@ -129,7 +129,7 @@ namespace Adquisiciones.View.Reportes {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            ReporteCotizacion rpt = new ReporteCotizacion();
+            ReporteCotizacionCerrado rpt = new ReporteCotizacionCerrado();
             rpt.Site = this.Site;
             return rpt;
         }

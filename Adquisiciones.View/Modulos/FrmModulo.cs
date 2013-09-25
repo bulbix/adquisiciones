@@ -34,6 +34,11 @@ namespace Adquisiciones.View.Modulos
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Habilita los controlres del tipo SearchLookUpEdit
+        /// </summary>
+        /// <param name="controls">Todos los controles de la forma</param>
+        /// <param name="habilitar">Bandera para habilitar</param>
         private static void HabilitarBuscadores(Control controls, bool habilitar)
         {
             foreach (var control  in controls.Controls)
@@ -45,12 +50,21 @@ namespace Adquisiciones.View.Modulos
             }
         }
 
+        /// <summary>
+        /// Blanquea los errores de la lista
+        /// </summary>
         protected void LimpiarErrores()
         {
             listaError.Strings.Clear();
             lblNumErrors.Caption = string.Empty;
         }
 
+        /// <summary>
+        /// Carga los tipos de almacenes disponibles para la carga
+        /// de acuerdo al almacenAdq
+        /// </summary>
+        /// <param name="combo">Donde se cargaran los objetos</param>
+        /// <param name="almacenAdq">El tipo de almacen inicial</param>
         protected void AlmacenesCombo(ComboBox combo, Almacen almacenAdq)
         {
 
@@ -65,6 +79,9 @@ namespace Adquisiciones.View.Modulos
             Util.Dicc2Combo(dicc, combo);
         }
 
+        /// <summary>
+        /// Habilita los permisos de manera generica
+        /// </summary>
         protected void ObtenerPerfil()
         {
             var nombreModulo = TypeEntity.Name.ToLower();
@@ -98,6 +115,9 @@ namespace Adquisiciones.View.Modulos
             }
         }
 
+        /// <summary>
+        /// Colorea la lista si hay errores
+        /// </summary>
         protected void HayErrores()
         {
             if (listaError.Strings.Count > 0)
@@ -106,38 +126,68 @@ namespace Adquisiciones.View.Modulos
                 listaError.Appearance.ForeColor = Color.White;
         }
 
+        /// <summary>
+        /// Boton Nuevo generico
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected virtual void CmdNuevoClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             Nuevo();
         }
 
+        /// <summary>
+        /// Boton guardar generico
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected virtual void CmdGuardarClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             Guardar();
             HayErrores();
         }
 
+        /// <summary>
+        /// Boton Consultar Generico
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected virtual void CmdConsultarClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             Consultar();
             HayErrores();
         }
 
+        /// <summary>
+        /// Enlaza los controles de la forma
+        /// </summary>
         public virtual void BindearCampos()
         {
         }
 
+        /// <summary>
+        /// Carga los catalogos de la forma
+        /// </summary>
         public virtual void InicializarCatalogos()
         {
         }
 
+        /// <summary>
+        /// Nuevo
+        /// </summary>
         public virtual void Nuevo(){
         }
 
+        /// <summary>
+        /// Guardar
+        /// </summary>
         public virtual void Guardar()
         {
         }
 
+        /// <summary>
+        /// Se realiza la consulta con previa verificacion de usuario
+        /// </summary>
         public virtual void Consultar()
         {
             var usuarioModifico = (Usuario)TypeEntity.GetProperty("Usuario").GetValue(EntityActual, null);
@@ -145,7 +195,6 @@ namespace Adquisiciones.View.Modulos
             if (FrmModuloAcceso.UsuarioLog.IdUsuario != usuarioModifico.IdUsuario)
             {
                 cmdGuardar.Enabled = false;
-                //splitContainerControl1.Panel1.Enabled = false;
             }
 
             if(EntityActual is Pedido)
@@ -153,19 +202,24 @@ namespace Adquisiciones.View.Modulos
                 if((EntityActual as Pedido).EstadoPedido == "C")
                 {
                     cmdGuardar.Enabled = false;
-                    //splitContainerControl1.Panel1.Enabled = false;
                 }
             }
 
 
         }
 
+        /// <summary>
+        /// Obtiene el servicio asociado almodulo
+        /// </summary>
         protected void GetServicio()
         {
             var ctx = ContextRegistry.GetContext();
             Servicio = ctx[NombreService] as IFormBusqueda;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         protected virtual void Eliminar()
         {
             try
@@ -194,6 +248,11 @@ namespace Adquisiciones.View.Modulos
             Eliminar();
         }
 
+        /// <summary>
+        /// Reporte asociado al modulo
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected virtual void CmdReporteItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             try

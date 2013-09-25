@@ -65,25 +65,17 @@ namespace Adquisiciones.Business.ModAnexo
             {
                 anexo.FechaCaptura = AnexoDao.FechaServidor();
             }
-            
-            
+
             anexo.FechaModificacion = AnexoDao.FechaServidor();
             anexo.IpTerminal = Util.IpTerminal();
             ++anexo.Modificacion;
             
-            //Le cargamos el Articulo y la llave compuesta
-            for (var index = 0; index < anexo.AnexoDetalle.Count; index++)
+            foreach (var anexoDetalle in anexo.AnexoDetalle)
             {
-                var anexoDetalle = anexo.AnexoDetalle[index];
-
-                anexoDetalle.RenglonAnexo = (short)(index + 1);
                 anexoDetalle.Anexo = anexo;
             }
 
-            
             anexo = AnexoDao.Merge(anexo);
-
-          
         }
 
         [Transaction(ReadOnly = true)]
@@ -103,6 +95,7 @@ namespace Adquisiciones.Business.ModAnexo
                     var anexoDetalle = new AnexoDetalle
                     {
                         IdAnexoDetalle = anexoDetalleConsulta.IdAnexoDetalle,
+                        RenglonAnexo = anexoDetalleConsulta.RenglonAnexo,
                         Articulo = anexoDetalleConsulta.Articulo,
                         CveArt = anexoDetalleConsulta.Articulo.Id.CveArt,
                         DescripcionArt = anexoDetalleConsulta.Articulo.DesArticulo,

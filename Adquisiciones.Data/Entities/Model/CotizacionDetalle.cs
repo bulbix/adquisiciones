@@ -55,21 +55,18 @@ namespace Adquisiciones.Data.Entities
             get { return _articulo; }
             set { _articulo = value; }
         }
-
-       
+        
         public virtual string Marca
         {
             get { return _marca; }
             set { _marca = value; }
         }
 
-      
         public virtual decimal? Precio
         {
             get { return _precio; }
             set { _precio = value; }
         }
-
       
         public virtual string Observaciones
         {
@@ -77,50 +74,40 @@ namespace Adquisiciones.Data.Entities
             set { _observaciones = value; }
         }
 
-      
-
         #endregion
 
         #region propiedades intermedias de bindeo
-        private int cveArt;
 
         public int CveArt
         {
-            get { return cveArt; }
-            set { cveArt = value; }
+            get; set;
         }
-
-        private string descripcionArt;
 
         public string DescripcionArt
         {
-            get { return descripcionArt; }
-            set { descripcionArt = value; }
+            get; set;
         }
-        private string presentacionArt;
 
         public string PresentacionArt
         {
-            get { return presentacionArt; }
-            set { presentacionArt = value; }
+            get;set;
         }
 
-        protected decimal? _cantidad;
-
-        public virtual decimal? Cantidad
+        public decimal? CantidadMinimo
         {
-            get { return _cantidad; }
-            set { _cantidad = value; }
+            get; set;
         }
 
-        private string unidadArt;
+        public decimal? CantidadMaximo
+        {
+            get; set;
+        }
+
         public string UnidadArt
         {
-            get { return unidadArt; }
-            set { unidadArt = value; }
+            get; set;
         }
         
-
         #endregion
 
         #region Equals And HashCode Overrides

@@ -7,6 +7,7 @@ using System.Text;
 using System.Windows.Forms;
 using Adquisiciones.Business.ModFallo;
 using Adquisiciones.Data.Entities;
+using DevExpress.XtraBars;
 using DevExpress.XtraEditors;
 
 namespace Adquisiciones.View.Busquedas
@@ -32,6 +33,9 @@ namespace Adquisiciones.View.Busquedas
             GetServicio();
             FalloService = base.Servicio as IFalloService;
             base.ObtenerPerfil();
+
+            cmdConsultar.Visibility =BarItemVisibility.Never;
+            cmdCancelar.Visibility = BarItemVisibility.Never;
         }
         #endregion
 

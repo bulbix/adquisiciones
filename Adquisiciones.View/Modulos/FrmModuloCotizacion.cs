@@ -75,8 +75,6 @@ namespace Adquisiciones.View.Modulos
             CotizacionActual.FechaCotizacion = CotizacionService.CotizacionDao.FechaServidor();
             lblFecha.Text = String.Format("{0:dd/MM/yyyy}", CotizacionActual.FechaCotizacion);
 
-            Text = "Cotizacion::" + CotizacionActual;
-
             BindearCampos();
 
             bsCotizacionDetalle.DataSource = new List<CotizacionDetalle>();
@@ -155,7 +153,6 @@ namespace Adquisiciones.View.Modulos
                     }
 
                     gcDatosGenerales.Enabled = false;
-                    this.Text = AnexoActual + "@" + ProveedorActual;
                 }
             }
             catch (Exception ee)
@@ -177,6 +174,18 @@ namespace Adquisiciones.View.Modulos
                 {
                     AnexoActual = anexoSeleccionado;
                     CotizacionActual.Anexo = AnexoActual;
+
+                    if (AnexoActual.TipoContrato == Contrato.ABIERTO)
+                    {
+                        gridColumnCantidadMax.Caption = @"Cantidad Max";
+                        gridColumnCantidadMin.Visible = true;
+                    }
+                    else if (AnexoActual.TipoContrato == Contrato.CERRADO)
+                    {
+                        gridColumnCantidadMax.Caption = @"Cantidad";
+                        gridColumnCantidadMin.Visible = false;
+                    }
+
                 }
             }
             else
@@ -219,6 +228,11 @@ namespace Adquisiciones.View.Modulos
             Consultar();
         }
         #endregion
+
+        private void gcCotizacionDetalle_Click(object sender, EventArgs e)
+        {
+
+        }
 
     }
 }

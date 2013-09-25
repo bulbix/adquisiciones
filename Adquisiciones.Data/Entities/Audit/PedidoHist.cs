@@ -198,6 +198,12 @@ namespace Adquisiciones.Data.Entities
             set { _idexterno = value; }
         }
 
+        public virtual TipoProcedimiento TipoProcedimiento
+        {
+            get;
+            set;
+        }
+
 
 	    #endregion
 		

@@ -71,6 +71,15 @@
     <Compile Include="Audit\IAuditService.cs" />
     <Compile Include="Audit\UpdateAfterHistorico.cs" />
     <Compile Include="Audit\UpdateBeforeHistorico.cs" />
+    <Compile Include="CotizacionDS.cs">
+      <DependentUpon>CotizacionDS.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CotizacionDS.Designer.cs">
+      <DependentUpon>CotizacionDS.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Excepciones\PedidoException.cs" />
     <Compile Include="ModAnexo\AnexoServiceImp.cs" />
     <Compile Include="ModAnexo\IAnexoService.cs" />
@@ -94,6 +103,17 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="CotizacionDS.xsc">
+      <DependentUpon>CotizacionDS.xsd</DependentUpon>
+    </None>
+    <None Include="CotizacionDS.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>CotizacionDS.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="CotizacionDS.xss">
+      <DependentUpon>CotizacionDS.xsd</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Adquisiciones.Data\Adquisiciones.Data.csproj">

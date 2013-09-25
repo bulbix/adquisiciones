@@ -193,7 +193,7 @@ namespace Adquisiciones.Data.Entities
             }
         }
 
-        [StringOptional]
+        //[StringOptional]
         [NotNullNotEmpty(Message = ("Campo Requerido"))]
         public virtual string Colonia
         {
@@ -338,7 +338,7 @@ namespace Adquisiciones.Data.Entities
             }
         }
 
-        [NotNullNotEmpty(Message = ("Campo Requerido"))]
+        //[NotNullNotEmpty(Message = ("Campo Requerido"))]
         [Email(Message = "Correo no valido")]
         public virtual string Correo
         {

@@ -27,6 +27,7 @@
     <property name="IpTerminal" column="ip_terminal" type="string" />
     <property name="Tipo" column="tipo" type="string" />
     <property name="Modificacion" column="modificacion" type="int" />
+    <property name="TipoContrato" column="tipo_contrato"/>
 
   </class>
 </hibernate-mapping>

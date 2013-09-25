@@ -132,6 +132,8 @@ namespace Adquisiciones.Data.Entities
 	        set { _tipo = value; }
 	    }
 
+        public virtual Contrato TipoContrato { get; set; }
+
 	 
 
 	    #endregion

@@ -21,29 +21,33 @@ namespace Adquisiciones.View.Modulos
     {
 
         #region Variables
+
         public IAnexoService AnexoService { get; set; }
         public IFalloService FalloService { get; set; }
         public Anexo AnexoActual;
         private CatPartida PartidaActual;
+        private Contrato Contrato =Contrato.ABIERTO;
+
 
         #endregion
 
         #region Constructores
+
         public FrmModuloAnexo(FrmAdquisiciones padre)
         {
             InitializeComponent();
 
             ModulosUsuario = padre.ModulosUsuario;
             AlmacenActual = padre.AlmacenSelect;
-            AlmacenesCombo(cbxAlmacen,AlmacenActual);
+            AlmacenesCombo(cbxAlmacen, AlmacenActual);
 
-            base.TypeEntity = typeof(Anexo);
+            base.TypeEntity = typeof (Anexo);
             base.NombreReporte = "reporteAnexo";
             base.NombreService = "anexoService";
             base.GetServicio();
-            
+
             AnexoService = base.Servicio as IAnexoService;
-            
+
             var ctx = ContextRegistry.GetContext();
             FalloService = ctx["falloService"] as IFalloService;
 
@@ -53,24 +57,26 @@ namespace Adquisiciones.View.Modulos
             base.ObtenerPerfil();
         }
 
-        public FrmModuloAnexo(Anexo anexo,FrmAdquisiciones padre): this(padre)
+        public FrmModuloAnexo(Anexo anexo, FrmAdquisiciones padre) : this(padre)
         {
             AnexoActual = anexo;
             Consultar();
         }
+
         #endregion
 
         #region Metodos
+
         public override void BindearCampos()
         {
             bsAnexoDetalle.DataSource = new List<AnexoDetalle>();
-            txtnumlicitacion.DataBindings.Add(new Binding("Text", bsAnexo, "NumeroAnexo",false));
-            txtDesanexo.DataBindings.Add(new Binding("Text", bsAnexo, "DesAnexo",true));
+            txtnumlicitacion.DataBindings.Add(new Binding("Text", bsAnexo, "NumeroAnexo", false));
+            txtDesanexo.DataBindings.Add(new Binding("Text", bsAnexo, "DesAnexo", true));
             //cbxTipolicitacion.DataBindings.Add(new Binding("SelectedValue", bsAnexo, "TipoLicitacion", true));
             //cbxIva.DataBindings.Add(new Binding("SelectedValue", bsAnexo, "Iva", true));
             txtTechopresupuestal.DataBindings.Add(new Binding("Text", bsAnexo, "TechoPresupuestal", true));
             bsAnexo.DataSource = AnexoActual;
-           
+
         }
 
         public override void InicializarCatalogos()
@@ -89,8 +95,6 @@ namespace Adquisiciones.View.Modulos
             AnexoActual.FechaAnexo = AnexoService.AnexoDao.FechaServidor();
             lblFecha.Text = String.Format("{0:dd/MM/yyyy}", AnexoActual.FechaAnexo);
 
-            Text = @"Anexo::" + AnexoActual;
-
             txtnumlicitacion.Enabled = true;
             cmdGuardar.Enabled = true;
             cmdMaximos.Enabled = false;
@@ -102,9 +106,10 @@ namespace Adquisiciones.View.Modulos
             searchLookUpPartida.EditValue = null;
             PartidaActual = null;
         }
+
         public override void Guardar()
         {
-            txtCentinela.Focus();//Para rebindeeen los campos
+            txtCentinela.Focus(); //Para rebindeeen los campos
             AnexoActual = bsAnexo.DataSource as Anexo;
             AnexoActual.AnexoDetalle = bsAnexoDetalle.DataSource as List<AnexoDetalle>;
 
@@ -121,13 +126,14 @@ namespace Adquisiciones.View.Modulos
                 if (!Util.DatosValidos(AnexoActual, lblNumErrors, listaError))
                     return;
 
-              
+
+                AnexoActual.TipoContrato = Contrato;
                 AnexoService.GuardarAnexo(ref AnexoActual);
 
                 Consultar();
 
                 XtraMessageBox.Show(@"Licitación Registrada o Actualizada Exitosamente",
-               @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             }
             catch (Exception ee)
@@ -141,25 +147,30 @@ namespace Adquisiciones.View.Modulos
 
         public override void Consultar()
         {
-           try
+            try
             {
-               if(AnexoActual.NumeroAnexo == null)
-                   AnexoActual.NumeroAnexo = txtnumlicitacion.Text;
+                if (AnexoActual.NumeroAnexo == null)
+                    AnexoActual.NumeroAnexo = txtnumlicitacion.Text;
 
                 AnexoActual = AnexoService.ConsultarAnexo(AnexoActual.NumeroAnexo,
-                                                          AlmacenActual);
+                    AlmacenActual);
                 if (AnexoActual != null)
                 {
                     bsAnexo.DataSource = AnexoActual;
                     bsAnexoDetalle.DataSource = AnexoActual.AnexoDetalle;
 
                     //Combos que no vincula
-                    if(AnexoActual.TipoLicitacion != null)
+                    if (AnexoActual.TipoLicitacion != null)
                         cbxTipolicitacion.SelectedIndex = cbxTipolicitacion.
                             FindStringExact(AnexoActual.TipoLicitacion.DesTipolicitacion);
 
-                    if(AnexoActual.Iva != null)
+                    if (AnexoActual.Iva != null)
                         cbxIva.SelectedIndex = cbxIva.FindStringExact(AnexoActual.Iva.Id.Porcentaje.ToString());
+
+                    if (AnexoActual.TipoContrato == Contrato.ABIERTO)
+                        rbContratoAbierto.Checked = true;
+                    else if (AnexoActual.TipoContrato == Contrato.CERRADO)
+                        rbContratoCerrado.Checked = true;
 
                     lblFecha.Text = String.Format("{0:dd/MM/yyyy}", AnexoActual.FechaAnexo);
 
@@ -176,12 +187,12 @@ namespace Adquisiciones.View.Modulos
                     base.EntityActual = AnexoActual;
                     base.Consultar();
                     if (AnexoService.AnexoDao.ExisteAnexoCotizacion(AnexoActual) ||
-                    AnexoService.AnexoDao.ExisteAnexoPedido(AnexoActual))
+                        AnexoService.AnexoDao.ExisteAnexoPedido(AnexoActual))
                     {
                         XtraMessageBox.Show(@"El anexo tiene asociadas cotizaciones o pedidos",
-                        @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         cmdGuardar.Enabled = false;
-                        
+
                     }
 
                     if (FalloService.CotizacionDao.ExisteAnexoFallo(AnexoActual))
@@ -194,7 +205,7 @@ namespace Adquisiciones.View.Modulos
                 else
                 {
                     XtraMessageBox.Show(@"Folio no existe", @"Adquisiciones",
-                                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
                     txtnumlicitacion.Select();
                 }
             }
@@ -207,7 +218,7 @@ namespace Adquisiciones.View.Modulos
             }
 
             cbxAlmacen.Enabled = false;
-           Text = @"Anexo::" + AnexoActual.NumeroAnexo;
+            
 
         }
 
@@ -216,9 +227,11 @@ namespace Adquisiciones.View.Modulos
             var numOcurrencia = AnexoActual.AnexoDetalle.Count(p => p.CveArt == articulo);
             return numOcurrencia > 1;
         }
+
         #endregion
 
         #region Eventos
+
         protected override void CmdConsultarClick(object sender, ItemClickEventArgs e)
         {
             Consultar();
@@ -233,20 +246,20 @@ namespace Adquisiciones.View.Modulos
             }
         }
 
-        private void DgvAnexoCellValueChanged(object sender,CellValueChangedEventArgs e)
+        private void DgvAnexoCellValueChanged(object sender, CellValueChangedEventArgs e)
         {
             var rowSelectValue = e.Value;
 
             //Para realizar las validaciones
             AnexoActual.AnexoDetalle = bsAnexoDetalle.DataSource as List<AnexoDetalle>;
 
-            switch(e.Column.AbsoluteIndex)
+            switch (e.Column.AbsoluteIndex)
             {
                 case 0: //Articulo
                     if (TieneRepetidoArticulo((int?) (rowSelectValue)))
                     {
                         XtraMessageBox.Show(@"Articulo repetido clave " + rowSelectValue,
-                                        @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         gvAnexoDetalle.SetRowCellValue(e.RowHandle, "DescripcionArt", "");
                         gvAnexoDetalle.SetRowCellValue(e.RowHandle, "UnidadArt", "");
                         return;
@@ -260,7 +273,7 @@ namespace Adquisiciones.View.Modulos
                         if (PartidaActual == null)
                         {
                             XtraMessageBox.Show(@"No ha seleccionado partida",
-                            @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
 
@@ -270,7 +283,7 @@ namespace Adquisiciones.View.Modulos
                         if (articuloSelect == null)
                         {
                             XtraMessageBox.Show(@"No existe la clave", @"Adquisiciones",
-                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                             gvAnexoDetalle.SetRowCellValue(e.RowHandle, "DescripcionArt", "");
                             gvAnexoDetalle.SetRowCellValue(e.RowHandle, "UnidadArt", "");
@@ -284,7 +297,8 @@ namespace Adquisiciones.View.Modulos
                         gvAnexoDetalle.SetRowCellValue(e.RowHandle, "CantidadMinimo", 0);
                         gvAnexoDetalle.SetRowCellValue(e.RowHandle, "CantidadMaximo", 0);
 
-                    }catch (Exception ee)
+                    }
+                    catch (Exception ee)
                     {
                         gvAnexoDetalle.SetRowCellValue(e.RowHandle, "DescripcionArt", "");
                         gvAnexoDetalle.SetRowCellValue(e.RowHandle, "UnidadArt", "");
@@ -300,17 +314,17 @@ namespace Adquisiciones.View.Modulos
                         if (cantidadMinimo > (decimal) rowSelectValue)
                         {
                             XtraMessageBox.Show(@"Cantidad Minimo > Cantidad Maximo",
-                            @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                             gvAnexoDetalle.SetRowCellValue(e.RowHandle, "CantidadMinimo", 0);
                             gvAnexoDetalle.SetRowCellValue(e.RowHandle, "CantidadMaximo", 0);
                         }
                     }
-                    catch(Exception ex)
+                    catch (Exception ex)
                     {
                         gvAnexoDetalle.SetRowCellValue(e.RowHandle, "CantidadMinimo", 0);
                         gvAnexoDetalle.SetRowCellValue(e.RowHandle, "CantidadMaximo", 0);
-                        
+
                     }
 
                     break;
@@ -322,18 +336,19 @@ namespace Adquisiciones.View.Modulos
         {
             FalloService.ActualizarFallo(AnexoActual);
             XtraMessageBox.Show(@"Se actualizaron los maximos del fallo asociado",
-                       @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void TxtnumlicitacionLeave(object sender, EventArgs e)
         {
-            
-            if((AnexoActual.NumeroAnexo != txtnumlicitacion.Text && AnexoActual.IdAnexo != 0)
-                || AnexoActual.IdAnexo == 0 ){
+
+            if (AnexoActual!=null && (AnexoActual.NumeroAnexo != txtnumlicitacion.Text && AnexoActual.IdAnexo != 0)
+                || AnexoActual.IdAnexo == 0)
+            {
                 if (AnexoService.AnexoDao.ExisteAnexo(txtnumlicitacion.Text, AlmacenActual))
                 {
                     XtraMessageBox.Show(@"El folio ya existe para este año NO SIGA CAPTURANDO!!",
-                                  @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     txtnumlicitacion.Select();
                 }
             }
@@ -341,7 +356,7 @@ namespace Adquisiciones.View.Modulos
 
         private void CbxAlmacenSelectedIndexChanged(object sender, EventArgs e)
         {
-            if(AnexoActual == null || AnexoActual.IdAnexo == 0)
+            if (AnexoActual == null || AnexoActual.IdAnexo == 0)
                 bsAnexoDetalle.DataSource = new List<AnexoDetalle>();
         }
 
@@ -359,20 +374,19 @@ namespace Adquisiciones.View.Modulos
                 try
                 {
                     bsAnexoDetalle.DataSource = new List<AnexoDetalle>();
-                    CargarExcel(openFileDialog1.FileName);
+                    CargarExcel(openFileDialog1.FileName,Contrato);
                 }
                 catch (Exception ex)
                 {
                     XtraMessageBox.Show(ex.Message,
-                    @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     bsAnexoDetalle.DataSource = new List<AnexoDetalle>();
                 }
             }
 
         }
 
-
-        private void CargarExcel(string fileName)
+        private void CargarExcel(string fileName,Contrato contrato)
         {
             var lines = File.ReadAllLines(fileName).Select(a => a.Split(','));
 
@@ -381,22 +395,23 @@ namespace Adquisiciones.View.Modulos
             foreach (var line in lines)
             {
                 int clave;
-                int minimo;
+                int minimo = -1;
                 int maximo;
 
                 if (!int.TryParse(line[0], out clave))
                     throw new Exception("Ocurrio un error en el formato de la clave linea " + numeroLinea);
 
-                if (!int.TryParse(line[1], out minimo))
-                    throw new Exception("Ocurrio un error en el formato del minimo linea " + numeroLinea);
+                if (contrato == Contrato.ABIERTO) {
+                    if (!int.TryParse(line[1], out minimo))
+                        throw new Exception("Ocurrio un error en el formato del minimo linea " + numeroLinea);
+                }
 
                 if (!int.TryParse(line[2], out maximo))
-                    throw new Exception("Ocurrio un error en el formato del maximo linea " + numeroLinea);
-               
+                        throw new Exception("Ocurrio un error en el formato del maximo linea " + numeroLinea);
 
                 if (PartidaActual == null)
                     throw new Exception("No ha seleccionado partida");
-                   
+
 
                 var almacen = cbxAlmacen.SelectedValue as Almacen;
                 var articulo = AnexoService.ArticuloDao.ArticuloPartida(clave, almacen, PartidaActual);
@@ -404,17 +419,26 @@ namespace Adquisiciones.View.Modulos
                 if (articulo == null)
                     throw new Exception("No existe la clave linea " + numeroLinea);
 
-                if(minimo>maximo)
-                    throw new Exception("El minimo es mayor que el maximo linea "+ numeroLinea);
+                if (contrato == Contrato.ABIERTO)
+                {
+                    if (minimo > maximo)
+                        throw new Exception("El minimo es mayor que el maximo linea " + numeroLinea);
+                }
 
                 var list = bsAnexoDetalle.DataSource as List<AnexoDetalle>;
                 var anexoDetalle = new AnexoDetalle();
+                anexoDetalle.RenglonAnexo = (short) numeroLinea;
                 anexoDetalle.Articulo = articulo;
                 anexoDetalle.CveArt = clave;
                 anexoDetalle.DescripcionArt = articulo.DesArticulo;
                 anexoDetalle.UnidadArt = articulo.Unidad;
-                anexoDetalle.CantidadMinimo = minimo;
                 anexoDetalle.CantidadMaximo = maximo;
+
+                if (contrato == Contrato.ABIERTO)
+                    anexoDetalle.CantidadMinimo = minimo;
+                else if(contrato == Contrato.CERRADO)
+                    anexoDetalle.CantidadMinimo = null;
+
                 list.Add(anexoDetalle);
 
                 bsAnexoDetalle.DataSource = list;
@@ -424,23 +448,40 @@ namespace Adquisiciones.View.Modulos
             }
         }
 
-
         private void SearchLookUpPartidaEditValueChanged(object sender, EventArgs e)
         {
 
-            if (AnexoActual.IdAnexo == 0)//Nuevo
+            if (AnexoActual.IdAnexo == 0) //Nuevo
                 bsAnexoDetalle.DataSource = new List<AnexoDetalle>();
 
             if (searchLookUpPartida.EditValue != null)
             {
-                 var parSeleccionado= searchLookUpEditPartida.GetFocusedRow() as CatPartida;
+                var parSeleccionado = searchLookUpEditPartida.GetFocusedRow() as CatPartida;
 
                 if (parSeleccionado != null)
                     PartidaActual = parSeleccionado;
             }
         }
 
+        private void rbContrato_CheckedChanged(object sender, EventArgs e)
+        {
+            var radio = sender as System.Windows.Forms.RadioButton;
+            if (radio.Checked) {
 
+                if (radio.Name == "rbContratoAbierto")
+                {
+                    gridColumnCantidadMax.Caption = "Cantidad Max";
+                    gridColumnCantidadMin.Visible = true;
+                    Contrato = Contrato.ABIERTO;
+                }
+                else if (radio.Name == "rbContratoCerrado"){
+                    gridColumnCantidadMax.Caption = "Cantidad";
+                    gridColumnCantidadMin.Visible = false;
+                    Contrato = Contrato.CERRADO;
+                }
+            }
+
+        }
     }
 
 

@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using Adquisiciones.Business.ModAnexo;
 using Adquisiciones.Data.Entities;
 using Adquisiciones.View.Modulos;
+using DevExpress.XtraBars;
 using DevExpress.XtraEditors;
 
 namespace Adquisiciones.View.Busquedas
@@ -34,6 +35,7 @@ namespace Adquisiciones.View.Busquedas
             GetServicio();
             AnexoService = base.Servicio as IAnexoService;
             base.ObtenerPerfil();
+            cmdCancelar.Visibility = BarItemVisibility.Never;
         }
         #endregion
 

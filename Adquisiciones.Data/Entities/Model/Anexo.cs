@@ -6,6 +6,8 @@ using NHibernate.Validator.Constraints;
 
 namespace Adquisiciones.Data.Entities
 {
+
+    public enum Contrato {ABIERTO = 1, CERRADO  = 2 }
     /// <summary>
     /// Anexo object for NHibernate mapped table 'anexo'.
     /// </summary>
@@ -195,6 +197,9 @@ namespace Adquisiciones.Data.Entities
             set { _fechacaptura = value; }
         }
 
+
+        public virtual Contrato TipoContrato { get; set; }
+
         public virtual string IpTerminal
         {
             get { return _ipterminal; }
@@ -226,7 +231,7 @@ namespace Adquisiciones.Data.Entities
 
         public override string ToString()
         {
-            return NumeroAnexo + " - " + DesAnexo;
+            return NumeroAnexo + " - " + DesAnexo + " - " + TipoContrato;
         }
 
         #region Equals And HashCode Overrides

@@ -115,22 +115,34 @@ namespace Adquisiciones.View.Reportes
             {
                 DataRow filaDetalle = anexoDs.Tables["AnexoDetalle"].NewRow();
                 filaDetalle["Id"] = anexo.IdAnexo;
+                filaDetalle["Renglon"] = detalle.RenglonAnexo;
                 filaDetalle["Articulo"] = detalle.Articulo.Id.CveArt;
                 filaDetalle["Descripcion"] = detalle.Articulo.DesArticulo;
                 filaDetalle["Unidad"] = detalle.Articulo.Unidad;
-                filaDetalle["CantidadMinimo"] = detalle.CantidadMinimo;
+                filaDetalle["CantidadMinimo"] = detalle.CantidadMinimo??0;
                 filaDetalle["CantidadMaximo"] = detalle.CantidadMaximo;
                 anexoDs.Tables["AnexoDetalle"].Rows.Add(filaDetalle);
             }
 
             anexoDs.Tables["AnexoDetalle"].AcceptChanges();
-            ReporteAnexo1.SetDataSource(anexoDs);
-            crystalReportViewer.ReportSource = ReporteAnexo1;
+
+            if (anexo.TipoContrato == Contrato.ABIERTO)
+            {
+                ReporteAnexoAbierto1.SetDataSource(anexoDs);
+                crystalReportViewer.ReportSource = ReporteAnexoAbierto1;
+            }
+            else if (anexo.TipoContrato == Contrato.CERRADO)
+            {
+                ReporteAnexoCerrado1.SetDataSource(anexoDs);
+                crystalReportViewer.ReportSource = ReporteAnexoCerrado1;
+            }
+
+            
             crystalReportViewer.Refresh();
 
-            Text = @"ReporteAnexo::" + anexo;
+            Text = @"ReporteAnexo";
         }
-
+        
         private void ReporteCotizacion(Cotizacion cotizacion)
         {
            
@@ -152,25 +164,36 @@ namespace Adquisiciones.View.Reportes
                 {
                     DataRow filaDetalle = cotizacionDs.Tables["CotizacionDetalle"].NewRow();
                     filaDetalle["Id"] = cotizacion.IdCotizacion;
+                    filaDetalle["Renglon"] = detalle.RenglonAnexo;
                     filaDetalle["Articulo"] = detalle.Articulo.Id.CveArt;
                     filaDetalle["Descripcion"] = detalle.Articulo.DesArticulo;
                     filaDetalle["Unidad"] = detalle.Articulo.Unidad;
                     filaDetalle["Marca"] = detalle.Marca;
                     filaDetalle["Unidad"] = detalle.Articulo.Unidad;
-                    filaDetalle["Cantidad"] = detalle.Cantidad;
+                    filaDetalle["CantidadMinimo"] = detalle.CantidadMinimo??0;
+                    filaDetalle["CantidadMaximo"] = detalle.CantidadMaximo;
                     filaDetalle["Precio"] = detalle.Precio;
-                    filaDetalle["Importe"] = detalle.Cantidad*detalle.Precio;
                     filaDetalle["Observaciones"] = detalle.Observaciones;
                     cotizacionDs.Tables["CotizacionDetalle"].Rows.Add(filaDetalle);
                 }
             }
 
             cotizacionDs.Tables["Cotizacion"].AcceptChanges();
-            ReporteCotizacion1.SetDataSource(cotizacionDs);
-            crystalReportViewer.ReportSource = ReporteCotizacion1;
+
+            if (cotizacion.Anexo.TipoContrato == Contrato.ABIERTO)
+            {
+                ReporteCotizacionAbierto1.SetDataSource(cotizacionDs);
+                crystalReportViewer.ReportSource = ReporteCotizacionAbierto1;
+            }
+            else if (cotizacion.Anexo.TipoContrato == Contrato.CERRADO)
+            {
+                ReporteCotizacionCerrado1.SetDataSource(cotizacionDs);
+                crystalReportViewer.ReportSource = ReporteCotizacionCerrado1;
+            }
+            
             crystalReportViewer.Refresh();
 
-            Text = @"ReporteCotizacion::" + cotizacion;
+            Text = @"ReporteCotizacion";
         }
 
         private void ReporteFallo(Fallo fallo)
@@ -197,7 +220,18 @@ namespace Adquisiciones.View.Reportes
                 filaDetalle["Descripcion"] = articulo.Id.CveArt + " / " + articulo.DesArticulo;
                 filaDetalle["Unidad"] = articulo.Unidad;
                 filaDetalle["Presentacion"] = articulo.Presentacion;
-                filaDetalle["Cantidad"] = detalle.CantidadMinimo;
+
+                if (anexo.TipoContrato == Contrato.ABIERTO)
+                {
+                    filaDetalle["CantidadMaximo"] = detalle.CantidadMaximo;
+                    filaDetalle["CantidadMinimo"] = detalle.CantidadMinimo;
+                }
+                else if (anexo.TipoContrato == Contrato.CERRADO)
+                {
+                    filaDetalle["CantidadMaximo"] = detalle.CantidadMaximo;
+                    filaDetalle["CantidadMinimo"] = detalle.CantidadMaximo * (decimal)0.40;
+                }
+
                 falloDs.Tables["AnexoDetalle"].Rows.Add(filaDetalle);
 
                 var cotizacionDetalles =
@@ -212,7 +246,21 @@ namespace Adquisiciones.View.Reportes
                     filaSubDetalle["ClaveArticulo"] = subdetalle.Articulo.Id.CveArt;
                     filaSubDetalle["Descripcion"] = asterisk + subdetalle.Cotizacion.Proveedor.NombreFiscal;
                     filaSubDetalle["Precio"] = subdetalle.Precio;
-                    filaSubDetalle["Total"] = subdetalle.Precio * detalle.CantidadMinimo;
+
+
+                    if (anexo.TipoContrato == Contrato.ABIERTO)
+                    {
+                        filaSubDetalle["TotalMax"] = subdetalle.Precio * detalle.CantidadMaximo;
+                        filaSubDetalle["TotalMin"] = subdetalle.Precio * detalle.CantidadMinimo;
+                        
+                    }
+                    else if (anexo.TipoContrato == Contrato.CERRADO)
+                    {
+                        filaSubDetalle["TotalMax"] = subdetalle.Precio * detalle.CantidadMaximo;
+                        filaSubDetalle["TotalMin"] = subdetalle.Precio * (detalle.CantidadMaximo * (decimal)0.40);
+                    }
+
+                    
                     filaSubDetalle["Marca"] = subdetalle.Marca;
                     filaSubDetalle["Porcentaje"] = DBNull.Value;
                     filaSubDetalle["Observaciones"] = subdetalle.Observaciones;
@@ -223,10 +271,12 @@ namespace Adquisiciones.View.Reportes
 
             falloDs.Tables["Proveedor"].AcceptChanges();
             falloDs.Tables["AnexoDetalle"].AcceptChanges();
+
             ReporteFallo1.SetDataSource(falloDs);
             crystalReportViewer.ReportSource = ReporteFallo1;
+
             crystalReportViewer.Refresh();
-            Text = @"ReporteTabla::" + anexo;
+            Text = @"ReporteTabla";
 
         }
 
@@ -239,7 +289,7 @@ namespace Adquisiciones.View.Reportes
             var reporte = new ReportePedido(pedido);
             reporte.GenerarReporteCompleto();
             crystalReportViewer.ReportSource = null;
-            crystalReportViewer.Refresh();Text = @"ReportePedido::" + pedido;
+            crystalReportViewer.Refresh();Text = @"ReportePedido";
         }
 
         private void ReportePedidoConcentrado(List<Pedido> pedidos)
@@ -572,8 +622,7 @@ namespace Adquisiciones.View.Reportes
             Text = @"ReporteEntradaPedidoCompleto";
             
         }
-
-
+        
         private void ReporteListadoPedido(List<Pedido> pedidos)
         {
             var listaPedidoConcentrado = new List<PedidoConcentrado>();

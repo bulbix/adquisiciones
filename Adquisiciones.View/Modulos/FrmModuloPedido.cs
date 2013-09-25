@@ -17,6 +17,9 @@ using DevExpress.XtraGrid.Views.Grid.ViewInfo;
 
 namespace Adquisiciones.View.Modulos
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public partial class FrmModuloPedido : FrmModulo
     {
         #region Variables
@@ -28,6 +31,12 @@ namespace Adquisiciones.View.Modulos
         #endregion
 
         #region Constructores
+
+        /// <summary>
+        /// Modulo Pedido creado a partir de la forma padre principal
+        /// que dara los permisos y el almacen elegido
+        /// </summary>
+        /// <param name="padre"></param>
         public FrmModuloPedido(FrmAdquisiciones padre)
         {
             InitializeComponent();
@@ -44,6 +53,12 @@ namespace Adquisiciones.View.Modulos
             base.ObtenerPerfil();
         }
 
+        /// <summary>
+        /// Constructor que crea el modulo a partir del contenedor principal 
+        /// heredado del principal constructor
+        /// </summary>
+        /// <param name="tipoPedido">El tipo a ser creado</param>
+        /// <param name="padre">Forma padre principal</param>
         public FrmModuloPedido(int tipoPedido,FrmAdquisiciones padre):this(padre)
         {
             this.tipoPedido = tipoPedido;
@@ -70,7 +85,14 @@ namespace Adquisiciones.View.Modulos
 
         }
 
-         public FrmModuloPedido(Pedido pedido,FrmAdquisiciones padre):this(pedido.CatTipopedido.IdTipoped,padre)
+        /// <summary>
+        /// Constructor creado a partir del segundo constructor 
+        /// es creado a partir de una consulta de pedido
+        /// </summary>
+        /// <param name="pedido">Pedido consultado</param>
+        /// <param name="padre">Forma Padre Principal</param>
+        public FrmModuloPedido(Pedido pedido,FrmAdquisiciones padre):
+            this(pedido.CatTipopedido.IdTipoped,padre)
          {
             PedidoActual = pedido;
             plProcedimiento.TipoPedido = PedidoActual.CatTipopedido;
@@ -85,7 +107,7 @@ namespace Adquisiciones.View.Modulos
         #endregion
 
         #region Metodos
-         public override void BindearCampos()
+        public override void BindearCampos()
         {
             bsPedidoDetalle.DataSource = new List<PedidoDetalle>();
             txtRequisicion.DataBindings.Add(new Binding("Text", bsPedido, "NumeroRequisicion", true));

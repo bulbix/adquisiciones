@@ -64,8 +64,7 @@ namespace Adquisiciones.Data.Entities
 			set {_presentacion= value; }
 		}
        
-        [NotNull(Message = ("Campo Requerido"))]
-		public  virtual decimal? CantidadMinimo
+        public  virtual decimal? CantidadMinimo
 		{
 			get { return _cantidadminimo; }
 			set {_cantidadminimo= value; }

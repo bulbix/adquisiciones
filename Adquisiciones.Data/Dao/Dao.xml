@@ -25,7 +25,7 @@
         <entry key="dialect" value="NHibernate.Dialect.InformixDialect1000"/>
         <entry key="connection.driver_class" value="NHibernate.Driver.IfxDriver"/>
         <entry key="connection.connection_string" value="Server=ol_inrserver;
-               DataBase=almacenes; User Id=informix; Password=informix; Host=192.168.10.1;
+               DataBase=almacenes_dev; User Id=informix; Password=informix; Host=192.168.10.1;
                Protocol=olsoctcp; service=1526;"/>       
        
         <!--<entry key="dialect" value="NHibernate.Dialect.PostgreSQLDialect"/>

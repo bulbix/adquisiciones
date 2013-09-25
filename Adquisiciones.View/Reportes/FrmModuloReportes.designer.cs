@@ -30,9 +30,6 @@
         {
             this.btnAceptar = new System.Windows.Forms.Button();
             this.crystalReportViewer = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
-            this.ReporteCotizacion1 = new Adquisiciones.View.Reportes.ReporteCotizacion();
-            this.ReporteAnexo1 = new Adquisiciones.View.Reportes.ReporteAnexo();
-            this.ReporteFallo1 = new Adquisiciones.View.Reportes.ReporteFallo();
             this.ReporteSubFallo1 = new Adquisiciones.View.Reportes.ReporteSubFallo();
             this.ReportePedidoDetallado1 = new Adquisiciones.View.Reportes.Pedidos.ReportePedidoDetallado();
             this.ReportePedidoConcentrado1 = new Adquisiciones.View.Reportes.Pedidos.ReportePedidoConcentrado();
@@ -41,6 +38,11 @@
             this.ReporteFundamento1 = new Adquisiciones.View.Reportes.Catalogos.ReporteFundamento();
             this.ReportePedidoCompleto1 = new Adquisiciones.View.Reportes.Pedidos.ReportePedidoCompleto();
             this.ReporteListaPedido1 = new Adquisiciones.View.Reportes.Pedidos.ReporteListaPedido();
+            this.ReporteAnexoCerrado1 = new Adquisiciones.View.Reportes.ReporteAnexoCerrado();
+            this.ReporteAnexoAbierto1 = new Adquisiciones.View.Reportes.ReporteAnexoAbierto();
+            this.ReporteCotizacionAbierto1 = new Adquisiciones.View.Reportes.ReporteCotizacionAbierto();
+            this.ReporteCotizacionCerrado1 = new Adquisiciones.View.Reportes.ReporteCotizacionCerrado();
+            this.ReporteFallo1 = new Adquisiciones.View.Reportes.ReporteFallo();
             this.SuspendLayout();
             // 
             // btnAceptar
@@ -89,9 +91,6 @@
 
         private System.Windows.Forms.Button btnAceptar;
         private CrystalDecisions.Windows.Forms.CrystalReportViewer crystalReportViewer;
-        private Reportes.ReporteCotizacion ReporteCotizacion1;
-        private Reportes.ReporteAnexo ReporteAnexo1;
-        private Reportes.ReporteFallo ReporteFallo1;
         private Reportes.ReporteSubFallo ReporteSubFallo1;
         private Reportes.Pedidos.ReportePedidoDetallado ReportePedidoDetallado1;
         private Reportes.Pedidos.ReportePedidoConcentrado ReportePedidoConcentrado1;
@@ -100,5 +99,10 @@
         private Reportes.Catalogos.ReporteFundamento ReporteFundamento1;
         private Reportes.Pedidos.ReportePedidoCompleto ReportePedidoCompleto1;
         private Pedidos.ReporteListaPedido ReporteListaPedido1;
+        private ReporteAnexoAbierto ReporteAnexoAbierto1;
+        private ReporteAnexoCerrado ReporteAnexoCerrado1;
+        private ReporteCotizacionAbierto ReporteCotizacionAbierto1;
+        private ReporteCotizacionCerrado ReporteCotizacionCerrado1;
+        private ReporteFallo ReporteFallo1;
     }
 }

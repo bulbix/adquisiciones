@@ -143,7 +143,7 @@ namespace Adquisiciones.Data.Dao.ModPedido
                           {0}
                           {1} 
                           {2}
-                          order by p.NumeroPedido desc, p.FechaPedido desc, p.CatTipopedido asc";
+                          order by p.NumeroPedido desc";
 
             string rangoFecha = "", rangoNumero = "", rangoTipo = "";
 
