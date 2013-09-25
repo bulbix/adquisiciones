@@ -53,7 +53,6 @@
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.rbContratoAbierto = new System.Windows.Forms.RadioButton();
             this.rbContratoCerrado = new System.Windows.Forms.RadioButton();
-            this.cmdMaximos = new DevExpress.XtraEditors.SimpleButton();
             this.gcAnexoDetalle = new DevExpress.XtraGrid.GridControl();
             this.bsAnexoDetalle = new System.Windows.Forms.BindingSource(this.components);
             this.gvAnexoDetalle = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -94,10 +93,9 @@
             // 
             // splitContainerControl1
             // 
-            this.splitContainerControl1.Location = new System.Drawing.Point(0, 70);
             this.splitContainerControl1.Panel1.Controls.Add(this.gcDatosGenerales);
             this.splitContainerControl1.Panel2.Controls.Add(this.gcAnexoDetalle);
-            this.splitContainerControl1.Size = new System.Drawing.Size(1114, 600);
+            this.splitContainerControl1.Size = new System.Drawing.Size(1114, 603);
             this.splitContainerControl1.SplitterPosition = 138;
             // 
             // lblAlmacen
@@ -117,7 +115,6 @@
             this.gcDatosGenerales.Controls.Add(this.searchLookUpPartida);
             this.gcDatosGenerales.Controls.Add(this.cmdCargar);
             this.gcDatosGenerales.Controls.Add(this.tableLayoutPanel1);
-            this.gcDatosGenerales.Controls.Add(this.cmdMaximos);
             this.gcDatosGenerales.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gcDatosGenerales.Location = new System.Drawing.Point(0, 0);
             this.gcDatosGenerales.Name = "gcDatosGenerales";
@@ -179,7 +176,7 @@
             // 
             // cmdCargar
             // 
-            this.cmdCargar.Location = new System.Drawing.Point(150, 23);
+            this.cmdCargar.Location = new System.Drawing.Point(70, 26);
             this.cmdCargar.Name = "cmdCargar";
             this.cmdCargar.Size = new System.Drawing.Size(137, 41);
             this.cmdCargar.TabIndex = 16;
@@ -196,7 +193,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 82F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 294F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 177F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 179F));
             this.tableLayoutPanel1.Controls.Add(this.labelControl2, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.lblFecha, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.labelControl1, 2, 0);
@@ -230,7 +227,7 @@
             // lblFecha
             // 
             this.lblFecha.Appearance.ForeColor = System.Drawing.Color.Blue;
-            this.lblFecha.Location = new System.Drawing.Point(97, 3);
+            this.lblFecha.Location = new System.Drawing.Point(96, 3);
             this.lblFecha.Name = "lblFecha";
             this.lblFecha.Size = new System.Drawing.Size(63, 13);
             this.lblFecha.TabIndex = 13;
@@ -238,7 +235,7 @@
             // 
             // labelControl1
             // 
-            this.labelControl1.Location = new System.Drawing.Point(183, 3);
+            this.labelControl1.Location = new System.Drawing.Point(181, 3);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(43, 13);
             this.labelControl1.TabIndex = 1;
@@ -246,7 +243,7 @@
             // 
             // txtnumlicitacion
             // 
-            this.txtnumlicitacion.Location = new System.Drawing.Point(257, 3);
+            this.txtnumlicitacion.Location = new System.Drawing.Point(255, 3);
             this.txtnumlicitacion.Name = "txtnumlicitacion";
             this.txtnumlicitacion.Size = new System.Drawing.Size(218, 20);
             this.txtnumlicitacion.TabIndex = 1;
@@ -254,7 +251,7 @@
             // 
             // labelControl4
             // 
-            this.labelControl4.Location = new System.Drawing.Point(481, 3);
+            this.labelControl4.Location = new System.Drawing.Point(479, 3);
             this.labelControl4.Name = "labelControl4";
             this.labelControl4.Size = new System.Drawing.Size(54, 13);
             this.labelControl4.TabIndex = 6;
@@ -262,7 +259,7 @@
             // 
             // txtDesanexo
             // 
-            this.txtDesanexo.Location = new System.Drawing.Point(563, 3);
+            this.txtDesanexo.Location = new System.Drawing.Point(561, 3);
             this.txtDesanexo.Name = "txtDesanexo";
             this.txtDesanexo.Properties.LookAndFeel.SkinName = "Blue";
             this.txtDesanexo.Size = new System.Drawing.Size(288, 20);
@@ -270,7 +267,7 @@
             // 
             // labelControl5
             // 
-            this.labelControl5.Location = new System.Drawing.Point(857, 3);
+            this.labelControl5.Location = new System.Drawing.Point(855, 3);
             this.labelControl5.Name = "labelControl5";
             this.labelControl5.Size = new System.Drawing.Size(66, 13);
             this.labelControl5.TabIndex = 8;
@@ -280,7 +277,7 @@
             // 
             this.cbxTipolicitacion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxTipolicitacion.FormattingEnabled = true;
-            this.cbxTipolicitacion.Location = new System.Drawing.Point(931, 3);
+            this.cbxTipolicitacion.Location = new System.Drawing.Point(929, 3);
             this.cbxTipolicitacion.Name = "cbxTipolicitacion";
             this.cbxTipolicitacion.Size = new System.Drawing.Size(159, 21);
             this.cbxTipolicitacion.TabIndex = 5;
@@ -295,19 +292,19 @@
             // 
             // txtTechopresupuestal
             // 
-            this.txtTechopresupuestal.Location = new System.Drawing.Point(97, 34);
+            this.txtTechopresupuestal.Location = new System.Drawing.Point(96, 34);
             this.txtTechopresupuestal.Name = "txtTechopresupuestal";
             this.txtTechopresupuestal.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.txtTechopresupuestal.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.txtTechopresupuestal.Properties.LookAndFeel.SkinName = "Blue";
             this.txtTechopresupuestal.Properties.Mask.EditMask = "c";
-            this.txtTechopresupuestal.Size = new System.Drawing.Size(80, 20);
+            this.txtTechopresupuestal.Size = new System.Drawing.Size(79, 20);
             this.txtTechopresupuestal.TabIndex = 6;
             // 
             // labelControl7
             // 
-            this.labelControl7.Location = new System.Drawing.Point(183, 34);
+            this.labelControl7.Location = new System.Drawing.Point(181, 34);
             this.labelControl7.Name = "labelControl7";
             this.labelControl7.Size = new System.Drawing.Size(31, 13);
             this.labelControl7.TabIndex = 12;
@@ -317,7 +314,7 @@
             // 
             this.cbxIva.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxIva.FormattingEnabled = true;
-            this.cbxIva.Location = new System.Drawing.Point(257, 34);
+            this.cbxIva.Location = new System.Drawing.Point(255, 34);
             this.cbxIva.Name = "cbxIva";
             this.cbxIva.Size = new System.Drawing.Size(99, 21);
             this.cbxIva.TabIndex = 7;
@@ -327,7 +324,7 @@
             this.flowLayoutPanel1.Controls.Add(this.rbContratoAbierto);
             this.flowLayoutPanel1.Controls.Add(this.rbContratoCerrado);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(563, 34);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(561, 34);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(288, 28);
             this.flowLayoutPanel1.TabIndex = 14;
@@ -356,16 +353,6 @@
             this.rbContratoCerrado.UseVisualStyleBackColor = true;
             this.rbContratoCerrado.CheckedChanged += new System.EventHandler(this.rbContrato_CheckedChanged);
             // 
-            // cmdMaximos
-            // 
-            this.cmdMaximos.Enabled = false;
-            this.cmdMaximos.Location = new System.Drawing.Point(3, 23);
-            this.cmdMaximos.Name = "cmdMaximos";
-            this.cmdMaximos.Size = new System.Drawing.Size(144, 41);
-            this.cmdMaximos.TabIndex = 13;
-            this.cmdMaximos.Text = "Ampliar Maximos";
-            this.cmdMaximos.Click += new System.EventHandler(this.CmdMaximosClick);
-            // 
             // gcAnexoDetalle
             // 
             this.gcAnexoDetalle.DataSource = this.bsAnexoDetalle;
@@ -375,7 +362,7 @@
             this.gcAnexoDetalle.Name = "gcAnexoDetalle";
             this.gcAnexoDetalle.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemSearchLookUpEdit2});
-            this.gcAnexoDetalle.Size = new System.Drawing.Size(1114, 457);
+            this.gcAnexoDetalle.Size = new System.Drawing.Size(1114, 459);
             this.gcAnexoDetalle.TabIndex = 8;
             this.gcAnexoDetalle.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvAnexoDetalle});
@@ -708,7 +695,6 @@
         private System.Windows.Forms.BindingSource bsAnexo;
         private System.Windows.Forms.BindingSource bsAnexoDetalle;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumnCantidadMax;
-        private DevExpress.XtraEditors.SimpleButton cmdMaximos;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;

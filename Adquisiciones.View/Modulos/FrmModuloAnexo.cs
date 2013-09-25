@@ -97,7 +97,6 @@ namespace Adquisiciones.View.Modulos
 
             txtnumlicitacion.Enabled = true;
             cmdGuardar.Enabled = true;
-            cmdMaximos.Enabled = false;
 
             txtnumlicitacion.Focus();
             LimpiarErrores();
@@ -194,9 +193,6 @@ namespace Adquisiciones.View.Modulos
                         cmdGuardar.Enabled = false;
 
                     }
-
-                    if (FalloService.CotizacionDao.ExisteAnexoFallo(AnexoActual))
-                        cmdMaximos.Enabled = true;
 
                     searchLookUpPartida.Enabled = false;
                     cbxAlmacen.Enabled = false;
@@ -330,13 +326,6 @@ namespace Adquisiciones.View.Modulos
                     break;
 
             }
-        }
-
-        private void CmdMaximosClick(object sender, EventArgs e)
-        {
-            FalloService.ActualizarFallo(AnexoActual);
-            XtraMessageBox.Show(@"Se actualizaron los maximos del fallo asociado",
-                @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void TxtnumlicitacionLeave(object sender, EventArgs e)

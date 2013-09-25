@@ -60,5 +60,20 @@ namespace Adquisiciones.View.Busquedas
             XtraMessageBox.Show("Genere el reporte");
         }
         #endregion
+
+        
+
+        private void repositoryItemButtonEdit1_Click(object sender, EventArgs e)
+        {
+            if (XtraMessageBox.Show(@"Esta seguro de ampliar los maximos?", @"Adquisiciones",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                var falloSelect = gvAnexo.GetFocusedRow() as Fallo;
+                FalloService.ActualizarFallo(falloSelect.Anexo);
+                XtraMessageBox.Show(@"Se actualizaron los maximos del fallo asociado",
+                    @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
+        }
     }
 }
