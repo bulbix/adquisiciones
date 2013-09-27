@@ -357,7 +357,7 @@ namespace Adquisiciones.Business
                     if (y == 4)
                     {
                         ////							if (entero.Substring(5, 1) != "0" || entero.Substring(4, 1) != "0" || entero.Substring(3, 1) != "0" || (entero.Substring(5, 1) == "0" && entero.Substring(4, 1) == "0" && entero.Substring(3, 1) == "0" && entero.Length  <= 5))
-                        if (entero.Substring(3, 1) != "0" || (entero.Substring(3, 1) == "0" && entero.Length <= 5))
+                        if (entero.Substring(3, 1) != "0" || (entero.Substring(3, 1) == "0" && entero.Length <= 6))
                         {
 
                             if (entero.Substring(0, 1) == "1" && entero.Substring(1, 1) == "0" && entero.Substring(2, 1) == "0" && entero.Substring(3, 1) == "0")
@@ -378,7 +378,7 @@ namespace Adquisiciones.Business
                     if (y == 7)
                     {
                         if (entero.Length == 7 && entero.Substring(0, 1) == "1")
-                            palabras = palabras + " UN MILLÓN ";
+                            palabras = "UN MILLÓN ";
                         else
                             palabras = palabras + "MILLONES ";
                     }
