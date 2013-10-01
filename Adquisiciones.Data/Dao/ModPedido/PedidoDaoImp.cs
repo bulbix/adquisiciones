@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Adquisiciones.Data.Auxiliares;
 using Adquisiciones.Data.Entities;
 using NHibernate;
 using NHibernate.Criterion;
@@ -78,7 +79,7 @@ namespace Adquisiciones.Data.Dao.ModPedido
             return pedidos.Count != 0 ? true : false;
         }
 
-         [Transaction(ReadOnly = true)]
+        [Transaction(ReadOnly = true)]
         public bool ExisteEntradaPedido(Pedido pedido)
         {
             var query = CurrentSession.GetNamedQuery("Pedido.ExisteEntradaPedido");
@@ -172,7 +173,6 @@ namespace Adquisiciones.Data.Dao.ModPedido
             return query.List<Pedido>();
         }
         
-
         [Transaction(ReadOnly = true)]
         public IList<Pedido> CargarPedidos(Almacen almacen, object fechaInicial, object fechaFinal, int numeroInicial, int numeroFinal, int[] tipos)
         {
@@ -234,6 +234,30 @@ namespace Adquisiciones.Data.Dao.ModPedido
             return suma;
         }
 
+        [Transaction(ReadOnly = true)]
+        public decimal ImporteEntradaSinIva(Entrada entrada)
+        {
+            var strQuery = @"select ed from EntradaDetalle ed 
+            join fetch ed.Entrada e 
+            join fetch e.Pedido p 
+            where ed.Entrada = :entrada ";
+            var query = CurrentSession.CreateQuery(strQuery);
+            query.SetParameter("entrada", entrada);
+            var entradaDetalle = (List<EntradaDetalle>) query.List<EntradaDetalle>();
+            var suma = (decimal)0.0;
+
+            foreach(var detalle in entradaDetalle )
+            {
+                var criteria = CurrentSession.CreateCriteria(typeof(PedidoDetalle));
+                criteria.Add(Restrictions.Eq("Pedido", detalle.Entrada.Pedido));
+                criteria.Add(Restrictions.Eq("Articulo", detalle.Articulo));
+                var pedidoDetalle = criteria.UniqueResult<PedidoDetalle>();
+                suma += detalle.Cantidad.Value * pedidoDetalle.PrecioUnitario.Value;
+            }
+
+            return suma;
+        }
+
         [Transaction]
         public void CancelarPedido(Pedido pedido)
         {
@@ -251,7 +275,7 @@ namespace Adquisiciones.Data.Dao.ModPedido
 
         }
 
-         [Transaction(ReadOnly = true)]
+        [Transaction(ReadOnly = true)]
         public IList<Pedido> CargarPedidos(Entrada entrada, CatTipopedido tipopedido, Ordenado ordenado)
          {
              var strquery =
@@ -341,6 +365,25 @@ namespace Adquisiciones.Data.Dao.ModPedido
             query.SetParameter("idpedido", pedido.IdPedido);
             var descripcion = query.UniqueResult<string>();
             return descripcion;
+        }
+
+        [Transaction(ReadOnly = true)]
+        public IList<PrecioBusqueda> CargarPrecios(int clave, Almacen almacen)
+        {
+            var query = CurrentSession.CreateQuery(@"
+            select new PrecioBusqueda(pd.Articulo,p.FechaPedido,pd.PrecioUnitario,pd.Marca,p.Proveedor) 
+            from PedidoDetalle pd 
+            join pd.Pedido p             
+            join pd.Articulo a              
+            where a.Id.CveArt = :clave 
+            and p.Almacen = :almacen 
+            order by p.FechaPedido desc");
+            query.SetParameter("clave", clave);
+            query.SetParameter("almacen", almacen);
+
+            return query.List<PrecioBusqueda>();
+
+            
         }
     }
 }

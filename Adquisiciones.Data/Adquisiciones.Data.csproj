@@ -78,6 +78,7 @@
     <Compile Include="Auxiliares\ICatalogo.cs" />
     <Compile Include="Auxiliares\IDetalle.cs" />
     <Compile Include="Auxiliares\IPadre.cs" />
+    <Compile Include="Auxiliares\PrecioBusqueda.cs" />
     <Compile Include="Dao\IObjectDao.cs" />
     <Compile Include="Dao\Catalogos\AlmacenDaoImp.cs" />
     <Compile Include="Dao\Catalogos\ArticuloDaoImp.cs" />

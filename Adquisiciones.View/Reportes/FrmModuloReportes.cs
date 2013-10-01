@@ -306,7 +306,7 @@ namespace Adquisiciones.View.Reportes
                     FechaPedido = String.Format("{0:dd/MM/yyyy}", pedido.FechaPedido),
                     NumeroRequisicion = pedido.NumeroRequisicion,
                     PartidaArticulo = pedido.PartidaString,
-                    Proveedor = pedido.Proveedor.NombreSinClave,
+                    Proveedor = pedido.Proveedor.NombreFiscal,
                     Elaboro = pedido.Usuario.Nombre,
                     Importe = pedido.ImporteTotal.Value,
                     Descuento = pedido.ImporteDescuento.Value,
@@ -343,7 +343,7 @@ namespace Adquisiciones.View.Reportes
                         NumeroPedido = pedido.NumeroPedido.Value,
                         FechaPedido = String.Format("{0:dd/MM/yyyy}", pedido.FechaPedido),
                         NumeroRequisicion = pedido.NumeroRequisicion,
-                        Proveedor = pedido.Proveedor.NombreSinClave,
+                        Proveedor = pedido.Proveedor.NombreFiscal,
                         DescripcionArticulo = pedidoDetalle.Articulo.ToString(),
                         UnidadArticulo  = pedidoDetalle.Articulo.Unidad,
                         PartidaArticulo = pedido.PartidaString,
@@ -387,7 +387,7 @@ namespace Adquisiciones.View.Reportes
                         {
                             NumeroPedido = pedido.NumeroPedido.Value,
                             FechaPedido = String.Format("{0:dd/MM/yyyy}", pedido.FechaPedido),
-                            Proveedor = pedido.Proveedor.NombreSinClave,
+                            Proveedor = pedido.Proveedor.NombreFiscal,
                             Total = total,
                             NumeroEntrada = entrada.NumeroEntrada.Value,
                             Factura = entrada.NumeroFactura,
@@ -405,7 +405,7 @@ namespace Adquisiciones.View.Reportes
                     {
                         NumeroPedido = pedido.NumeroPedido.Value,
                         FechaPedido = String.Format("{0:dd/MM/yyyy}", pedido.FechaPedido),
-                        Proveedor = pedido.Proveedor.NombreSinClave,
+                        Proveedor = pedido.Proveedor.NombreFiscal,
                         Total = total,
                         NumeroEntrada = 0,
                         Factura = "",
@@ -449,7 +449,7 @@ namespace Adquisiciones.View.Reportes
                         {
                             NumeroPedido = pedido.NumeroPedido.Value,
                             FechaPedido = String.Format("{0:dd/MM/yyyy}", pedido.FechaPedido),
-                            Proveedor = pedido.Proveedor.NombreSinClave,
+                            Proveedor = pedido.Proveedor.NombreFiscal,
                             Total = total,
                             NumeroEntrada = entrada.NumeroEntrada.Value,
                             Factura = entrada.NumeroFactura,
@@ -509,6 +509,10 @@ namespace Adquisiciones.View.Reportes
                 importeSinIva = (decimal) 0.0;
             }
 
+            
+            var totalFactura = entrada != null ? PedidoService.PedidoDao.ImporteEntrada(entrada) : (decimal) 0.0;
+            var importeSinIVAEntrada = entrada != null ? PedidoService.PedidoDao.ImporteEntradaSinIva(entrada) : (decimal)0.0;
+
             var pedidoCompleto = new PedidoCompleto
             {
                 Estado = pedido.EstadoPedido,
@@ -518,8 +522,9 @@ namespace Adquisiciones.View.Reportes
                 Entrada = entrada!=null?entrada.NumeroEntrada.Value.ToString():"",
                 Almacen = pedido.AlmacenDestino,
                 FechaEntrada = entrada!=null?String.Format("{0:dd/MM/yyyy}", entrada.FechaEntrada.Value):"",
-                TotalFactura = entrada!=null?PedidoService.PedidoDao.ImporteEntrada(entrada):(decimal)0.0,
-                Proveedor = pedido.Proveedor.NombreSinClave,
+                TotalFactura = totalFactura,
+                ImporteSinIVAEntrada = importeSinIVAEntrada,
+                Proveedor = pedido.Proveedor.NombreFiscal,
                 RFCProveedor = pedido.Proveedor.Rfc,
                 AreaSolicitada = pedido.CatArea.DesArea,
                 Partida = pedido.PartidaString,
@@ -633,7 +638,7 @@ namespace Adquisiciones.View.Reportes
                     NumeroPedido = pedido.NumeroPedido.Value,
                     FechaPedido = String.Format("{0:dd/MM/yyyy}", pedido.FechaPedido),
                     CveProveedor = pedido.Proveedor.CveProveedor,
-                    Proveedor = pedido.Proveedor.NombreSinClave,
+                    Proveedor = pedido.Proveedor.NombreFiscal,
                     Estado = pedido.EstadoPedido,
                     Elaboro = pedido.Usuario.Nombre,
                     TipoPedido = pedido.CatTipopedido.DesTipoped

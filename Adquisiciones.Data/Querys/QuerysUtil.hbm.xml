@@ -6,12 +6,11 @@
   <!-- select current_date -->
 
   <import class="ArticuloBusqueda" /> 
+  <import class="PrecioBusqueda" /> 
 
   <sql-query name="Util.FechaServidor">    
-    <![CDATA[
-    
-      select current from Almacen group by 1
-      
+    <![CDATA[    
+      select current from Almacen group by 1      
      ]]>
   </sql-query>
 

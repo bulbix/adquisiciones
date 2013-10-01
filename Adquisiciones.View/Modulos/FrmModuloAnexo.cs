@@ -42,6 +42,7 @@ namespace Adquisiciones.View.Modulos
             AlmacenesCombo(cbxAlmacen, AlmacenActual);
 
             base.TypeEntity = typeof (Anexo);
+            base.NombreModulo = "Anexo";
             base.NombreReporte = "reporteAnexo";
             base.NombreService = "anexoService";
             base.GetServicio();

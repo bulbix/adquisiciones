@@ -32,6 +32,7 @@ namespace Adquisiciones.View.Modulos
             AlmacenActual = padre.AlmacenSelect;
 
             base.TypeEntity = typeof(Cotizacion);
+            base.NombreModulo = "Cotizacion";
             base.NombreReporte = "reporteCotizacion";
             base.NombreService = "cotizacionService";
             base.GetServicio();

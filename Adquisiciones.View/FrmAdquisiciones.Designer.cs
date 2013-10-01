@@ -56,6 +56,7 @@
             this.barButtonItem11 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem13 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonPedidoAjuste = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem12 = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup5 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -77,7 +78,8 @@
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
-            this.barButtonItem12 = new DevExpress.XtraBars.BarButtonItem();
+            this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.barButtonItem14 = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemHyperLinkEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemHyperLinkEdit2)).BeginInit();
@@ -123,9 +125,10 @@
             this.barButtonItem11,
             this.barButtonItem13,
             this.barButtonPedidoAjuste,
-            this.barButtonItem12});
+            this.barButtonItem12,
+            this.barButtonItem14});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
-            this.ribbon.MaxItemId = 45;
+            this.ribbon.MaxItemId = 47;
             this.ribbon.Name = "ribbon";
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1,
@@ -135,7 +138,7 @@
             this.repositoryItemHyperLinkEdit2,
             this.repositoryItemHyperLinkEdit3,
             this.repositoryItemHyperLinkEdit4});
-            this.ribbon.SelectedPage = this.ribbonPage2;
+            this.ribbon.SelectedPage = this.ribbonPage1;
             this.ribbon.Size = new System.Drawing.Size(1131, 148);
             this.ribbon.StatusBar = this.ribbonStatusBar;
             // 
@@ -362,12 +365,22 @@
             this.barButtonPedidoAjuste.Name = "barButtonPedidoAjuste";
             this.barButtonPedidoAjuste.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonPedidoAjuste_ItemClick);
             // 
+            // barButtonItem12
+            // 
+            this.barButtonItem12.Caption = "Articulo";
+            this.barButtonItem12.Id = 44;
+            this.barButtonItem12.LargeGlyph = global::Adquisiciones.View.Properties.Resources.busqueda;
+            this.barButtonItem12.LargeWidth = 75;
+            this.barButtonItem12.Name = "barButtonItem12";
+            this.barButtonItem12.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem12_ItemClick);
+            // 
             // ribbonPage1
             // 
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
             this.ribbonPageGroup5,
             this.ribbonPageGroup1,
             this.ribbonPagePedido,
+            this.ribbonPageGroup3,
             this.ribbonPageCatalogo});
             this.ribbonPage1.Name = "ribbonPage1";
             this.ribbonPage1.Text = "Adquisiciones";
@@ -516,14 +529,20 @@
             // 
             this.defaultLookAndFeel1.LookAndFeel.SkinName = "Black";
             // 
-            // barButtonItem12
+            // ribbonPageGroup3
             // 
-            this.barButtonItem12.Caption = "Articulo";
-            this.barButtonItem12.Id = 44;
-            this.barButtonItem12.LargeGlyph = global::Adquisiciones.View.Properties.Resources.busqueda;
-            this.barButtonItem12.LargeWidth = 75;
-            this.barButtonItem12.Name = "barButtonItem12";
-            this.barButtonItem12.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem12_ItemClick);
+            this.ribbonPageGroup3.ItemLinks.Add(this.barButtonItem14);
+            this.ribbonPageGroup3.Name = "ribbonPageGroup3";
+            this.ribbonPageGroup3.Text = "Precios";
+            // 
+            // barButtonItem14
+            // 
+            this.barButtonItem14.Caption = "Precios";
+            this.barButtonItem14.Id = 46;
+            this.barButtonItem14.LargeGlyph = global::Adquisiciones.View.Properties.Resources.icon_money2;
+            this.barButtonItem14.LargeWidth = 75;
+            this.barButtonItem14.Name = "barButtonItem14";
+            this.barButtonItem14.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem14_ItemClick);
             // 
             // FrmAdquisiciones
             // 
@@ -608,5 +627,7 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem13;
         private DevExpress.XtraBars.BarButtonItem barButtonPedidoAjuste;
         private DevExpress.XtraBars.BarButtonItem barButtonItem12;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem14;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup3;
     }
 }

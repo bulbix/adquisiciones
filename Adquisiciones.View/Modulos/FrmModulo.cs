@@ -23,6 +23,7 @@ namespace Adquisiciones.View.Modulos
         protected static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         protected Type TypeEntity { get; set; }
         protected IFormBusqueda Servicio { get; set; }
+        protected string NombreModulo { get; set; }
         protected string NombreReporte { get; set; }
         protected string NombreService { get; set; }
         protected object EntityActual { get; set; }
@@ -84,7 +85,7 @@ namespace Adquisiciones.View.Modulos
         /// </summary>
         protected void ObtenerPerfil()
         {
-            var nombreModulo = TypeEntity.Name.ToLower();
+            var nombreModulo = NombreModulo.ToLower();
 
             foreach (var moduloUsuario in ModulosUsuario)
             {

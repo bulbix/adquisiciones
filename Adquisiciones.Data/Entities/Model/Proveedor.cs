@@ -12,6 +12,11 @@ using NHibernate.Validator.Constraints;
 
 namespace Adquisiciones.Data.Entities
 {
+    public enum TipoPersona
+    {
+        FISICA= 1,MORAL=2
+    }
+
     /// <summary>
     /// Proveedor object for NHibernate mapped table 'proveedor'.
     /// </summary>
@@ -453,6 +458,11 @@ namespace Adquisiciones.Data.Entities
             get;set;
         }
 
+        public virtual TipoPersona TipoPersona
+        {
+            get; set;
+        }
+
         public string TipoEmpresa
         {
             get
@@ -535,13 +545,8 @@ namespace Adquisiciones.Data.Entities
 
         public override string ToString()
         {
-            if (NombreFiscal.Trim().Length != 0)
-                return CveProveedor + " - " + NombreFiscal;
             
-            if (Paterno.Trim().Length != 0)
-                return CveProveedor + " - " + NombreCompleto;
-            
-             return CveProveedor.ToString();
+           return CveProveedor + " - " + NombreFiscal;
         }
 
         public virtual int Modificacion
@@ -559,18 +564,6 @@ namespace Adquisiciones.Data.Entities
         public string ProveedorString
         {
             get { return ToString(); }
-        }
-
-        public string NombreSinClave{
-            get {
-                if (NombreFiscal.Trim().Length != 0)
-                    return NombreFiscal;
-
-                if (Paterno.Trim().Length != 0)
-                    return NombreCompleto;
-
-                return CveProveedor.ToString();
-            }
         }
 
         public string NombreCompleto

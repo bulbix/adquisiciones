@@ -19,6 +19,7 @@ namespace Adquisiciones.View.Catalogos
         #region Variables
         public IProveedorDao ProveedorDao { private get; set; }
         public Proveedor ProveedorActual { get; private set; }
+
         #endregion
 
         #region Constructores
@@ -98,19 +99,32 @@ namespace Adquisiciones.View.Catalogos
             txtClave.Focus();
             LimpiarValidacion();
             ProveedorActual.Pais = "MEXICO";
+            cbxTipo.SelectedItem = "MORAL";
         }
 
         private bool validarPersona()
         {
-            bool result = true;
+            var result = true;
+
             if(txtPaterno.Text.Length == 0 && txtMaterno.Text.Length == 0 
                 && txtNombre.Text.Length == 0)//Persona Fisica
             {
-                //Persona Moral
-                if(txtNombreFiscal.Text.Length == 0)
+                if (ProveedorActual.TipoPersona == TipoPersona.FISICA)
                 {
-                    XtraMessageBox.Show(@"No ha capturado ninguna Persona Fisica o Moral",
-                       @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    XtraMessageBox.Show(@"No ha capturado Persona Fisica",
+                    @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    result = false;
+                }
+            }
+
+
+            //Persona Moral
+            if (txtNombreFiscal.Text.Length == 0)
+            {
+                if (ProveedorActual.TipoPersona == TipoPersona.MORAL)
+                {
+                    XtraMessageBox.Show(@"No ha capturado Persona Moral",
+                    @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     result = false;
                 }
             }
@@ -141,6 +155,18 @@ namespace Adquisiciones.View.Catalogos
                 {
                     if (validarPersona())
                     {
+                        if (ProveedorActual.TipoPersona == TipoPersona.FISICA)
+                        {
+                            ProveedorActual.NombreFiscal = ProveedorActual.NombreCompleto;
+                            ProveedorActual.Rnombre = ".";
+                        }
+                        else if (ProveedorActual.TipoPersona == TipoPersona.MORAL)
+                        {
+                            ProveedorActual.Paterno = null;
+                            ProveedorActual.Materno = null;
+                            ProveedorActual.Nombre = null;
+                        }
+
                         ProveedorActual.FechaModificacion = ProveedorDao.FechaServidor();
                         ProveedorActual.Modificacion++;
 
@@ -162,12 +188,13 @@ namespace Adquisiciones.View.Catalogos
         public override void Consultar()
         {
             try
-            {
+                {
                 LimpiarValidacion();
                 ProveedorActual = ProveedorDao.Get(Int32.Parse(txtClave.Value.ToString()));
 
                 if (ProveedorActual != null)
                 {
+                    cbxTipo.SelectedItem = ProveedorActual.TipoPersona.ToString();
                     cmdGuardar.Enabled = true;
                     txtClave.Enabled = false;
                     txtRfc.Enabled = false;
@@ -176,7 +203,7 @@ namespace Adquisiciones.View.Catalogos
                     if(ProveedorActual.CatEmpresa!= null)
                         cbxEmpresa.SelectedIndex = cbxEmpresa.FindStringExact(ProveedorActual.CatEmpresa.DesEmpresa);
 
-                    Text = @"Proveedor::" + ProveedorActual;
+                    Text = @"Proveedor::" + ProveedorActual.CveProveedor;
 
                     base.Consultar();
 
@@ -202,5 +229,37 @@ namespace Adquisiciones.View.Catalogos
             e.KeyChar = Char.ToUpper(e.KeyChar);
         }
         #endregion
+
+        private void cbxTipo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbxTipo.SelectedItem.ToString() == "FISICA")
+            {
+                txtNombreFiscal.Enabled = false;
+                
+                txtRpaterno.Enabled = false;
+                txtRmaterno.Enabled = false;
+                txtRnombre.Enabled = false;
+                
+                txtPaterno.Enabled = true;
+                txtMaterno.Enabled = true;
+                txtNombre.Enabled = true;
+                ProveedorActual.TipoPersona = TipoPersona.FISICA;
+            }
+            else if (cbxTipo.SelectedItem.ToString() == "MORAL")
+            {
+                txtNombreFiscal.Enabled = true;
+                
+                txtRpaterno.Enabled = true;
+                txtRmaterno.Enabled = true;
+                txtRnombre.Enabled = true;
+               
+                txtPaterno.Enabled = false;
+                txtMaterno.Enabled = false;
+                txtNombre.Enabled = false;
+                ProveedorActual.TipoPersona = TipoPersona.MORAL;
+            }
+
+        }
+
     }
 }

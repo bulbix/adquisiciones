@@ -32,6 +32,7 @@ namespace Adquisiciones.View.Modulos
             this.MdiParent = padre;
 
             base.TypeEntity = typeof(Fallo);
+            base.NombreModulo = "Fallo";
             base.NombreService = "falloService";
             base.NombreReporte = "reporteTabla";
             base.GetServicio();

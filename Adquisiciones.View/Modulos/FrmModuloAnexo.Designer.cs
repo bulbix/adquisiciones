@@ -193,7 +193,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 82F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 294F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 179F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 182F));
             this.tableLayoutPanel1.Controls.Add(this.labelControl2, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.lblFecha, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.labelControl1, 2, 0);
@@ -227,7 +227,7 @@
             // lblFecha
             // 
             this.lblFecha.Appearance.ForeColor = System.Drawing.Color.Blue;
-            this.lblFecha.Location = new System.Drawing.Point(96, 3);
+            this.lblFecha.Location = new System.Drawing.Point(94, 3);
             this.lblFecha.Name = "lblFecha";
             this.lblFecha.Size = new System.Drawing.Size(63, 13);
             this.lblFecha.TabIndex = 13;
@@ -235,7 +235,7 @@
             // 
             // labelControl1
             // 
-            this.labelControl1.Location = new System.Drawing.Point(181, 3);
+            this.labelControl1.Location = new System.Drawing.Point(178, 3);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(43, 13);
             this.labelControl1.TabIndex = 1;
@@ -243,7 +243,7 @@
             // 
             // txtnumlicitacion
             // 
-            this.txtnumlicitacion.Location = new System.Drawing.Point(255, 3);
+            this.txtnumlicitacion.Location = new System.Drawing.Point(252, 3);
             this.txtnumlicitacion.Name = "txtnumlicitacion";
             this.txtnumlicitacion.Size = new System.Drawing.Size(218, 20);
             this.txtnumlicitacion.TabIndex = 1;
@@ -251,7 +251,7 @@
             // 
             // labelControl4
             // 
-            this.labelControl4.Location = new System.Drawing.Point(479, 3);
+            this.labelControl4.Location = new System.Drawing.Point(476, 3);
             this.labelControl4.Name = "labelControl4";
             this.labelControl4.Size = new System.Drawing.Size(54, 13);
             this.labelControl4.TabIndex = 6;
@@ -259,7 +259,7 @@
             // 
             // txtDesanexo
             // 
-            this.txtDesanexo.Location = new System.Drawing.Point(561, 3);
+            this.txtDesanexo.Location = new System.Drawing.Point(558, 3);
             this.txtDesanexo.Name = "txtDesanexo";
             this.txtDesanexo.Properties.LookAndFeel.SkinName = "Blue";
             this.txtDesanexo.Size = new System.Drawing.Size(288, 20);
@@ -267,7 +267,7 @@
             // 
             // labelControl5
             // 
-            this.labelControl5.Location = new System.Drawing.Point(855, 3);
+            this.labelControl5.Location = new System.Drawing.Point(852, 3);
             this.labelControl5.Name = "labelControl5";
             this.labelControl5.Size = new System.Drawing.Size(66, 13);
             this.labelControl5.TabIndex = 8;
@@ -277,7 +277,7 @@
             // 
             this.cbxTipolicitacion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxTipolicitacion.FormattingEnabled = true;
-            this.cbxTipolicitacion.Location = new System.Drawing.Point(929, 3);
+            this.cbxTipolicitacion.Location = new System.Drawing.Point(926, 3);
             this.cbxTipolicitacion.Name = "cbxTipolicitacion";
             this.cbxTipolicitacion.Size = new System.Drawing.Size(159, 21);
             this.cbxTipolicitacion.TabIndex = 5;
@@ -292,19 +292,19 @@
             // 
             // txtTechopresupuestal
             // 
-            this.txtTechopresupuestal.Location = new System.Drawing.Point(96, 34);
+            this.txtTechopresupuestal.Location = new System.Drawing.Point(94, 34);
             this.txtTechopresupuestal.Name = "txtTechopresupuestal";
             this.txtTechopresupuestal.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.txtTechopresupuestal.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.txtTechopresupuestal.Properties.LookAndFeel.SkinName = "Blue";
             this.txtTechopresupuestal.Properties.Mask.EditMask = "c";
-            this.txtTechopresupuestal.Size = new System.Drawing.Size(79, 20);
+            this.txtTechopresupuestal.Size = new System.Drawing.Size(78, 20);
             this.txtTechopresupuestal.TabIndex = 6;
             // 
             // labelControl7
             // 
-            this.labelControl7.Location = new System.Drawing.Point(181, 34);
+            this.labelControl7.Location = new System.Drawing.Point(178, 34);
             this.labelControl7.Name = "labelControl7";
             this.labelControl7.Size = new System.Drawing.Size(31, 13);
             this.labelControl7.TabIndex = 12;
@@ -314,7 +314,7 @@
             // 
             this.cbxIva.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxIva.FormattingEnabled = true;
-            this.cbxIva.Location = new System.Drawing.Point(255, 34);
+            this.cbxIva.Location = new System.Drawing.Point(252, 34);
             this.cbxIva.Name = "cbxIva";
             this.cbxIva.Size = new System.Drawing.Size(99, 21);
             this.cbxIva.TabIndex = 7;
@@ -324,7 +324,7 @@
             this.flowLayoutPanel1.Controls.Add(this.rbContratoAbierto);
             this.flowLayoutPanel1.Controls.Add(this.rbContratoCerrado);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(561, 34);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(558, 34);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(288, 28);
             this.flowLayoutPanel1.TabIndex = 14;

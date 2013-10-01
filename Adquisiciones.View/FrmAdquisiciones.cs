@@ -259,6 +259,14 @@ namespace Adquisiciones.View
             forma.Show();
 
         }
+
+        private void barButtonItem14_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            var forma = new FrmModuloPrecio(this);
+            forma.MdiParent = this;
+            forma.Show();
+
+        }
         
 
        

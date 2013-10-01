@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Adquisiciones.Data.Auxiliares;
 using Adquisiciones.Data.Entities;
 
 namespace Adquisiciones.Data.Dao.ModPedido
@@ -25,12 +26,15 @@ namespace Adquisiciones.Data.Dao.ModPedido
         IList<Entrada> CargarEntradas(Pedido pedido);
         string[] CargarPartidaAlmacen(Pedido pedido);
         decimal ImporteEntrada(Entrada entrada);
+        decimal ImporteEntradaSinIva(Entrada entrada);
+
         void CancelarPedido(Pedido pedido);
         IList<Entrada> CargarEntradas(DateTime fechaInicial, DateTime fechaFinal);
         IList<Pedido> CargarPedidos(Entrada entrada,CatTipopedido tipopedido, Ordenado ordenado);
         IList<string> CatalogoTipoProcedimiento(string bloque, CatTipopedido tipoPedido, string condicionColumn = null, string condicionValor = null);
         CatTipoprocedimiento CatTipoprocedimientoByBloques(string[] bloquesNombre, object[] bloquesValor);
         string PedidoOneDetalleDescripcion(Pedido pedido);
+        IList<PrecioBusqueda> CargarPrecios(int clave, Almacen almacen);
 
     }
 }

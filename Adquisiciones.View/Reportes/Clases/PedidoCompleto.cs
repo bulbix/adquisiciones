@@ -14,6 +14,7 @@ namespace Adquisiciones.View.Reportes.Clases
         public string Entrada { get; set; }
         public string Almacen { get; set; }
         public string FechaEntrada { get; set; }
+        public decimal ImporteSinIVAEntrada { get; set; }
         public decimal TotalFactura { get; set; }
         public string Proveedor { get; set; }
         public string RFCProveedor { get; set; }

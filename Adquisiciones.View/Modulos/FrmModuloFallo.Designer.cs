@@ -54,10 +54,9 @@
             // 
             // splitContainerControl1
             // 
-            this.splitContainerControl1.Location = new System.Drawing.Point(0, 70);
             this.splitContainerControl1.Panel1.Controls.Add(this.groupControl1);
             this.splitContainerControl1.Panel2.Controls.Add(this.pgbFallo);
-            this.splitContainerControl1.Size = new System.Drawing.Size(770, 330);
+            this.splitContainerControl1.Size = new System.Drawing.Size(770, 333);
             this.splitContainerControl1.SplitterPosition = 128;
             // 
             // groupControl1
@@ -76,7 +75,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 31.50183F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 68.49817F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 391F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 392F));
             this.tableLayoutPanel1.Controls.Add(this.lblFecha, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.lblLicitacion, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.lblFechac, 0, 0);
@@ -91,7 +90,7 @@
             // lblFecha
             // 
             this.lblFecha.Appearance.ForeColor = System.Drawing.Color.Blue;
-            this.lblFecha.Location = new System.Drawing.Point(57, 3);
+            this.lblFecha.Location = new System.Drawing.Point(56, 3);
             this.lblFecha.Name = "lblFecha";
             this.lblFecha.Size = new System.Drawing.Size(63, 13);
             this.lblFecha.TabIndex = 28;
@@ -100,7 +99,7 @@
             // lblLicitacion
             // 
             this.lblLicitacion.AutoSize = true;
-            this.lblLicitacion.Location = new System.Drawing.Point(174, 0);
+            this.lblLicitacion.Location = new System.Drawing.Point(173, 0);
             this.lblLicitacion.Name = "lblLicitacion";
             this.lblLicitacion.Size = new System.Drawing.Size(38, 13);
             this.lblLicitacion.TabIndex = 27;
@@ -118,7 +117,7 @@
             // searchLookUpAnexo
             // 
             this.searchLookUpAnexo.EditValue = "";
-            this.searchLookUpAnexo.Location = new System.Drawing.Point(224, 3);
+            this.searchLookUpAnexo.Location = new System.Drawing.Point(223, 3);
             this.searchLookUpAnexo.Name = "searchLookUpAnexo";
             this.searchLookUpAnexo.Properties.Appearance.ForeColor = System.Drawing.Color.Navy;
             this.searchLookUpAnexo.Properties.Appearance.Options.UseForeColor = true;
@@ -177,7 +176,7 @@
             this.pgbFallo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pgbFallo.Location = new System.Drawing.Point(0, 0);
             this.pgbFallo.Name = "pgbFallo";
-            this.pgbFallo.Size = new System.Drawing.Size(770, 197);
+            this.pgbFallo.Size = new System.Drawing.Size(770, 199);
             this.pgbFallo.TabIndex = 34;
             // 
             // FrmModuloFallo

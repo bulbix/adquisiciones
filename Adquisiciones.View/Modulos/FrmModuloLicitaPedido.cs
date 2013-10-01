@@ -32,6 +32,7 @@ namespace Adquisiciones.View.Modulos
             AlmacenActual = padre.AlmacenSelect;
             this.MdiParent = padre;
             base.TypeEntity = typeof(Pedido);
+            base.NombreModulo = "Pedido";
             var ctx = ContextRegistry.GetContext();
             PedidoService = ctx["pedidoService"] as IPedidoService;
             InicializarCatalogos();
