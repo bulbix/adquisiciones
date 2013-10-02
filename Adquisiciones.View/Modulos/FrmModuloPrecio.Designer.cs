@@ -234,6 +234,8 @@
             // gridColumn2
             // 
             this.gridColumn2.Caption = "Costo";
+            this.gridColumn2.DisplayFormat.FormatString = "c4";
+            this.gridColumn2.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.gridColumn2.FieldName = "Costo";
             this.gridColumn2.Name = "gridColumn2";
             this.gridColumn2.UnboundType = DevExpress.Data.UnboundColumnType.Decimal;
@@ -374,7 +376,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(843, 674);
             this.Name = "FrmModuloPrecio";
-            this.Text = "FrmModuloPrecio";
+            this.Text = "Busqueda::Precio";
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();
             this.splitContainerControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gcPrecioDetalle)).EndInit();
