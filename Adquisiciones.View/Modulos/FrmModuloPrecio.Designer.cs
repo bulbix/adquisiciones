@@ -46,6 +46,8 @@
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
             this.txtPreseCant = new DevExpress.XtraEditors.LabelControl();
             this.txtPreseUnid = new DevExpress.XtraEditors.LabelControl();
+            this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             this.splitContainerControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gcPrecioDetalle)).BeginInit();
@@ -67,7 +69,7 @@
             this.splitContainerControl1.Panel1.Controls.Add(this.labelControl1);
             this.splitContainerControl1.Panel1.Controls.Add(this.txtClave);
             this.splitContainerControl1.Panel2.Controls.Add(this.gcPrecioDetalle);
-            this.splitContainerControl1.Size = new System.Drawing.Size(843, 584);
+            this.splitContainerControl1.Size = new System.Drawing.Size(1284, 584);
             this.splitContainerControl1.SplitterPosition = 123;
             // 
             // lblAlmacen
@@ -85,10 +87,11 @@
             this.gcPrecioDetalle.Location = new System.Drawing.Point(0, 0);
             this.gcPrecioDetalle.MainView = this.gvPrecioDetalle;
             this.gcPrecioDetalle.Name = "gcPrecioDetalle";
-            this.gcPrecioDetalle.Size = new System.Drawing.Size(843, 455);
+            this.gcPrecioDetalle.Size = new System.Drawing.Size(1284, 455);
             this.gcPrecioDetalle.TabIndex = 9;
             this.gcPrecioDetalle.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvPrecioDetalle});
+            this.gcPrecioDetalle.Click += new System.EventHandler(this.gcPrecioDetalle_Click);
             // 
             // gvPrecioDetalle
             // 
@@ -204,6 +207,8 @@
             this.gvPrecioDetalle.Appearance.VertLine.Options.UseBackColor = true;
             this.gvPrecioDetalle.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.gridColumn1,
+            this.gridColumn6,
+            this.gridColumn5,
             this.gridColumn2,
             this.gridColumn3,
             this.gridColumn4});
@@ -240,8 +245,8 @@
             this.gridColumn2.Name = "gridColumn2";
             this.gridColumn2.UnboundType = DevExpress.Data.UnboundColumnType.Decimal;
             this.gridColumn2.Visible = true;
-            this.gridColumn2.VisibleIndex = 1;
-            this.gridColumn2.Width = 84;
+            this.gridColumn2.VisibleIndex = 3;
+            this.gridColumn2.Width = 83;
             // 
             // gridColumn3
             // 
@@ -250,7 +255,7 @@
             this.gridColumn3.Name = "gridColumn3";
             this.gridColumn3.UnboundType = DevExpress.Data.UnboundColumnType.String;
             this.gridColumn3.Visible = true;
-            this.gridColumn3.VisibleIndex = 2;
+            this.gridColumn3.VisibleIndex = 4;
             this.gridColumn3.Width = 100;
             // 
             // gridColumn4
@@ -260,7 +265,7 @@
             this.gridColumn4.Name = "gridColumn4";
             this.gridColumn4.UnboundType = DevExpress.Data.UnboundColumnType.String;
             this.gridColumn4.Visible = true;
-            this.gridColumn4.VisibleIndex = 3;
+            this.gridColumn4.VisibleIndex = 5;
             this.gridColumn4.Width = 566;
             // 
             // txtClave
@@ -370,11 +375,31 @@
             this.txtPreseUnid.TabIndex = 19;
             this.txtPreseUnid.Text = ".";
             // 
+            // gridColumn6
+            // 
+            this.gridColumn6.Caption = "Numero";
+            this.gridColumn6.FieldName = "NumeroPedido";
+            this.gridColumn6.Name = "gridColumn6";
+            this.gridColumn6.UnboundType = DevExpress.Data.UnboundColumnType.Integer;
+            this.gridColumn6.Visible = true;
+            this.gridColumn6.VisibleIndex = 1;
+            this.gridColumn6.Width = 71;
+            // 
+            // gridColumn5
+            // 
+            this.gridColumn5.Caption = "Tipo";
+            this.gridColumn5.FieldName = "CatTipopedido";
+            this.gridColumn5.Name = "gridColumn5";
+            this.gridColumn5.UnboundType = DevExpress.Data.UnboundColumnType.String;
+            this.gridColumn5.Visible = true;
+            this.gridColumn5.VisibleIndex = 2;
+            this.gridColumn5.Width = 78;
+            // 
             // FrmModuloPrecio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(843, 674);
+            this.ClientSize = new System.Drawing.Size(1284, 674);
             this.Name = "FrmModuloPrecio";
             this.Text = "Busqueda::Precio";
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();
@@ -406,5 +431,7 @@
         private DevExpress.XtraEditors.LabelControl txtPrese;
         private DevExpress.XtraEditors.LabelControl labelControl5;
         private DevExpress.XtraEditors.LabelControl txtDescripcion;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
     }
 }

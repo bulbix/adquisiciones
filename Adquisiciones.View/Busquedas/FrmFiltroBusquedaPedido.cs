@@ -11,7 +11,7 @@ using DevExpress.XtraEditors;
 
 namespace Adquisiciones.View.Busquedas
 {
-    public partial class FrmFiltroBusquedaPedido : DevExpress.XtraEditors.XtraForm
+    public partial class FrmFiltroBusquedaPedido : XtraForm
     {
         private IPedidoService service;
         private BindingSource bsSource;
@@ -27,6 +27,19 @@ namespace Adquisiciones.View.Busquedas
             this.service = service;
             this.bsSource = bsSource;
             this.almacen = almacen;
+
+            Inicializar();
+        }
+
+        private void Inicializar()
+        {
+            var fechatemp = DateTime.Today;
+            var fecha1 = new DateTime(fechatemp.Year, fechatemp.Month, 1);
+            deInicial.DateTime = fecha1;
+            deFinal.DateTime = DateTime.Now;
+
+            bsProveedor.DataSource = service.PedidoDao.CargarCatalogo<Proveedor>("CveProveedor");
+            
         }
 
         private void CmdBusquedaClick(object sender, EventArgs e)
@@ -50,8 +63,14 @@ namespace Adquisiciones.View.Busquedas
 
             var tipos = tiposList.ToArray();
 
+            Proveedor provSeleccionado = null;
+
+            if (searchLookUpProveedor.EditValue != null)
+                provSeleccionado = searchLookUpEditProveedor.GetFocusedRow() as Proveedor;
+
             var source = service.PedidoDao.CargarPedidos(almacen,
-            deInicial.EditValue,deFinal.EditValue,(int)seInicial.Value,(int)seFinal.Value,tipos );
+            deInicial.EditValue,deFinal.EditValue,(int)seInicial.Value,(int)seFinal.Value,tipos,
+            provSeleccionado );
 
             foreach (Pedido pedido in source)
             {
@@ -78,22 +97,25 @@ namespace Adquisiciones.View.Busquedas
 
             XtraMessageBox.Show(@"Busqueda Finalizada, " + source.Count + " registros encontrados.",
                              @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-            this.Close();
-
         }
 
-        private void FrmFiltroBusquedaPedido_Load(object sender, EventArgs e)
+        private void FrmFiltroBusquedaPedido_FormClosing(object sender, FormClosingEventArgs e)
         {
-            var fechatemp = DateTime.Today;
-            var fecha1 = new DateTime(fechatemp.Year, fechatemp.Month, 1);
-            deInicial.DateTime = fecha1;
-            deFinal.DateTime = DateTime.Now;
+            e.Cancel = false;
+            this.Hide();
         }
 
-        private void cbExtramuro_CheckedChanged(object sender, EventArgs e)
+        private void cmdLimpiar_Click(object sender, EventArgs e)
         {
-
+            Inicializar();
+            seInicial.Value = 0;
+            seFinal.Value = 0;
+            searchLookUpProveedor.EditValue = null;
+            cbMayor.Checked = true;
+            cbMenor.Checked = false;
+            cbDonacion.Checked = false;
+            cbAjuste.Checked = false;
         }
+
     }
 }

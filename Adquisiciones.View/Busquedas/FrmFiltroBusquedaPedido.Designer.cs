@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -43,6 +44,13 @@
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             this.cmdBusqueda = new DevExpress.XtraEditors.SimpleButton();
+            this.bsProveedor = new System.Windows.Forms.BindingSource(this.components);
+            this.searchLookUpProveedor = new DevExpress.XtraEditors.SearchLookUpEdit();
+            this.searchLookUpEditProveedor = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
+            this.cmdLimpiar = new DevExpress.XtraEditors.SimpleButton();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.deFinal.Properties.VistaTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.deFinal.Properties)).BeginInit();
@@ -50,6 +58,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.deInicial.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.seInicial.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.seFinal.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsProveedor)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.searchLookUpProveedor.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEditProveedor)).BeginInit();
             this.SuspendLayout();
             // 
             // labelControl2
@@ -75,7 +86,7 @@
             this.groupBox1.Controls.Add(this.cbDonacion);
             this.groupBox1.Controls.Add(this.cbMenor);
             this.groupBox1.Controls.Add(this.cbMayor);
-            this.groupBox1.Location = new System.Drawing.Point(26, 79);
+            this.groupBox1.Location = new System.Drawing.Point(16, 95);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(200, 163);
             this.groupBox1.TabIndex = 11;
@@ -102,7 +113,6 @@
             this.cbExtramuro.TabIndex = 3;
             this.cbExtramuro.Text = "Extramuro";
             this.cbExtramuro.UseVisualStyleBackColor = true;
-            this.cbExtramuro.CheckedChanged += new System.EventHandler(this.cbExtramuro_CheckedChanged);
             // 
             // cbDonacion
             // 
@@ -167,7 +177,7 @@
             0,
             0,
             0});
-            this.seInicial.Location = new System.Drawing.Point(72, 47);
+            this.seInicial.Location = new System.Drawing.Point(72, 35);
             this.seInicial.Name = "seInicial";
             this.seInicial.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
@@ -182,7 +192,7 @@
             0,
             0,
             0});
-            this.seFinal.Location = new System.Drawing.Point(228, 46);
+            this.seFinal.Location = new System.Drawing.Point(228, 34);
             this.seFinal.Name = "seFinal";
             this.seFinal.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
@@ -192,7 +202,7 @@
             // 
             // labelControl3
             // 
-            this.labelControl3.Location = new System.Drawing.Point(16, 49);
+            this.labelControl3.Location = new System.Drawing.Point(16, 37);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(54, 13);
             this.labelControl3.TabIndex = 16;
@@ -200,7 +210,7 @@
             // 
             // labelControl4
             // 
-            this.labelControl4.Location = new System.Drawing.Point(203, 49);
+            this.labelControl4.Location = new System.Drawing.Point(203, 37);
             this.labelControl4.Name = "labelControl4";
             this.labelControl4.Size = new System.Drawing.Size(8, 13);
             this.labelControl4.TabIndex = 17;
@@ -208,18 +218,83 @@
             // 
             // cmdBusqueda
             // 
-            this.cmdBusqueda.Location = new System.Drawing.Point(232, 84);
+            this.cmdBusqueda.Location = new System.Drawing.Point(222, 103);
             this.cmdBusqueda.Name = "cmdBusqueda";
             this.cmdBusqueda.Size = new System.Drawing.Size(150, 23);
             this.cmdBusqueda.TabIndex = 18;
             this.cmdBusqueda.Text = "Generar Busqueda";
             this.cmdBusqueda.Click += new System.EventHandler(this.CmdBusquedaClick);
             // 
+            // searchLookUpProveedor
+            // 
+            this.searchLookUpProveedor.EditValue = "<Null>";
+            this.searchLookUpProveedor.Location = new System.Drawing.Point(72, 65);
+            this.searchLookUpProveedor.Name = "searchLookUpProveedor";
+            this.searchLookUpProveedor.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.searchLookUpProveedor.Properties.DataSource = this.bsProveedor;
+            this.searchLookUpProveedor.Properties.DisplayMember = "ProveedorString";
+            this.searchLookUpProveedor.Properties.NullText = "";
+            this.searchLookUpProveedor.Properties.ValueMember = "CveProveedor";
+            this.searchLookUpProveedor.Properties.View = this.searchLookUpEditProveedor;
+            this.searchLookUpProveedor.Size = new System.Drawing.Size(328, 20);
+            this.searchLookUpProveedor.TabIndex = 19;
+            // 
+            // searchLookUpEditProveedor
+            // 
+            this.searchLookUpEditProveedor.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn3,
+            this.gridColumn4});
+            this.searchLookUpEditProveedor.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            this.searchLookUpEditProveedor.Name = "searchLookUpEditProveedor";
+            this.searchLookUpEditProveedor.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.searchLookUpEditProveedor.OptionsView.ShowGroupPanel = false;
+            // 
+            // gridColumn3
+            // 
+            this.gridColumn3.Caption = "Clave";
+            this.gridColumn3.FieldName = "CveProveedor";
+            this.gridColumn3.Name = "gridColumn3";
+            this.gridColumn3.UnboundType = DevExpress.Data.UnboundColumnType.Integer;
+            this.gridColumn3.Visible = true;
+            this.gridColumn3.VisibleIndex = 0;
+            this.gridColumn3.Width = 86;
+            // 
+            // gridColumn4
+            // 
+            this.gridColumn4.Caption = "Nombre";
+            this.gridColumn4.FieldName = "NombreFiscal";
+            this.gridColumn4.Name = "gridColumn4";
+            this.gridColumn4.UnboundType = DevExpress.Data.UnboundColumnType.String;
+            this.gridColumn4.Visible = true;
+            this.gridColumn4.VisibleIndex = 1;
+            this.gridColumn4.Width = 766;
+            // 
+            // labelControl5
+            // 
+            this.labelControl5.Location = new System.Drawing.Point(16, 68);
+            this.labelControl5.Name = "labelControl5";
+            this.labelControl5.Size = new System.Drawing.Size(50, 13);
+            this.labelControl5.TabIndex = 20;
+            this.labelControl5.Text = "Proveedor";
+            // 
+            // cmdLimpiar
+            // 
+            this.cmdLimpiar.Location = new System.Drawing.Point(222, 134);
+            this.cmdLimpiar.Name = "cmdLimpiar";
+            this.cmdLimpiar.Size = new System.Drawing.Size(150, 23);
+            this.cmdLimpiar.TabIndex = 21;
+            this.cmdLimpiar.Text = "Limpiar Busqueda";
+            this.cmdLimpiar.Click += new System.EventHandler(this.cmdLimpiar_Click);
+            // 
             // FrmFiltroBusquedaPedido
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(412, 268);
+            this.ClientSize = new System.Drawing.Size(412, 269);
+            this.Controls.Add(this.cmdLimpiar);
+            this.Controls.Add(this.labelControl5);
+            this.Controls.Add(this.searchLookUpProveedor);
             this.Controls.Add(this.cmdBusqueda);
             this.Controls.Add(this.labelControl4);
             this.Controls.Add(this.labelControl3);
@@ -232,8 +307,9 @@
             this.Controls.Add(this.deInicial);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "FrmFiltroBusquedaPedido";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Filtro Busqueda Pedido";
-            this.Load += new System.EventHandler(this.FrmFiltroBusquedaPedido_Load);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmFiltroBusquedaPedido_FormClosing);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.deFinal.Properties.VistaTimeProperties)).EndInit();
@@ -242,6 +318,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.deInicial.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.seInicial.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.seFinal.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsProveedor)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.searchLookUpProveedor.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEditProveedor)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -264,5 +343,12 @@
         private DevExpress.XtraEditors.SimpleButton cmdBusqueda;
         private System.Windows.Forms.CheckBox cbExtramuro;
         private System.Windows.Forms.CheckBox cbAjuste;
+        private System.Windows.Forms.BindingSource bsProveedor;
+        private DevExpress.XtraEditors.SearchLookUpEdit searchLookUpProveedor;
+        private DevExpress.XtraGrid.Views.Grid.GridView searchLookUpEditProveedor;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
+        private DevExpress.XtraEditors.LabelControl labelControl5;
+        private DevExpress.XtraEditors.SimpleButton cmdLimpiar;
     }
 }

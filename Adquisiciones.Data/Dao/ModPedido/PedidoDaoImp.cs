@@ -123,8 +123,8 @@ namespace Adquisiciones.Data.Dao.ModPedido
         }
 
         [Transaction(ReadOnly = true)]
-        public IList<Pedido> CargarPedidos(int anio, Almacen almacen, object fechaInicial,
-            object fechaFinal, int numeroInicial, int numeroFinal, int[] tipos)
+        public IList<Pedido> CargarPedidos(Almacen almacen, object fechaInicial,
+            object fechaFinal, int numeroInicial, int numeroFinal, int[] tipos, Proveedor proveedor = null)
         {
 
             var strquery =
@@ -139,14 +139,14 @@ namespace Adquisiciones.Data.Dao.ModPedido
                           left join fetch p.Anexo 
                           left join fetch p.Requisicion 
                           left join fetch p.Usuario 
-                          where year(p.FechaPedido) = :anioActual 
-                          and p.Almacen = :almacen  
+                          where p.Almacen = :almacen  
                           {0}
                           {1} 
                           {2}
+                          {3}
                           order by p.NumeroPedido desc";
 
-            string rangoFecha = "", rangoNumero = "", rangoTipo = "";
+            string rangoFecha = "", rangoNumero = "", rangoTipo = "", proveedorCondition = "";
 
             if (fechaInicial != null && fechaFinal != null)
                 rangoFecha = " and p.FechaPedido between :fInicial and :fFinal ";
@@ -157,10 +157,13 @@ namespace Adquisiciones.Data.Dao.ModPedido
             if(tipos.Length > 0)
                 rangoTipo = string.Format(" and p.CatTipopedido.IdTipoped in ({0}) ", String.Join(",", tipos));
 
-            strquery = string.Format(strquery, rangoFecha, rangoNumero, rangoTipo);
+            if (proveedor != null)
+                proveedorCondition = " and p.Proveedor = :proveedor ";
+
+            strquery = string.Format(strquery, rangoFecha, rangoNumero, rangoTipo, proveedorCondition);
 
             var query = CurrentSession.CreateQuery(strquery);
-            query.SetParameter("anioActual", anio);
+            
             query.SetParameter("almacen", almacen);
 
             if (fechaInicial != null && fechaFinal != null)
@@ -169,14 +172,13 @@ namespace Adquisiciones.Data.Dao.ModPedido
                 query.SetParameter("fFinal", fechaFinal);
             }
 
+            if (proveedor != null)
+            {
+                query.SetParameter("proveedor", proveedor);
+            }
+
 
             return query.List<Pedido>();
-        }
-        
-        [Transaction(ReadOnly = true)]
-        public IList<Pedido> CargarPedidos(Almacen almacen, object fechaInicial, object fechaFinal, int numeroInicial, int numeroFinal, int[] tipos)
-        {
-            return CargarPedidos(FechaServidor().Year, almacen, fechaInicial, fechaFinal, numeroInicial, numeroFinal, tipos);
         }
 
         [Transaction(ReadOnly = true)]
@@ -371,7 +373,8 @@ namespace Adquisiciones.Data.Dao.ModPedido
         public IList<PrecioBusqueda> CargarPrecios(int clave, Almacen almacen)
         {
             var query = CurrentSession.CreateQuery(@"
-            select new PrecioBusqueda(pd.Articulo,p.FechaPedido,pd.PrecioUnitario,pd.Marca,p.Proveedor) 
+            select new PrecioBusqueda(pd.Articulo,p.FechaPedido,p.NumeroPedido,p.CatTipopedido,
+            pd.PrecioUnitario,pd.Marca,p.Proveedor) 
             from PedidoDetalle pd 
             join pd.Pedido p             
             join pd.Articulo a              

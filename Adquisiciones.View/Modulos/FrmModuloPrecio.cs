@@ -73,5 +73,10 @@ namespace Adquisiciones.View.Modulos
             txtPreseUnid.Text = "";
             bsPrecioDetalle.DataSource = null;
         }
+
+        private void gcPrecioDetalle_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

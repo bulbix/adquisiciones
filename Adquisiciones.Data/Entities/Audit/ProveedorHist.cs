@@ -226,6 +226,12 @@ namespace Adquisiciones.Data.Entities
             set;
         }
 
+        public virtual TipoPersona TipoPersona
+        {
+            get;
+            set;
+        }
+
         public virtual string Tipo { get; set; }
 
     }

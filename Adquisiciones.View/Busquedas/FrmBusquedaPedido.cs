@@ -19,6 +19,8 @@ namespace Adquisiciones.View.Busquedas
     {
         #region Variables
         public IPedidoService PedidoService { get; set; }
+        private FrmFiltroBusquedaPedido filtroBusquedaPedido;
+        
         #endregion
 
         #region Constructores
@@ -43,8 +45,10 @@ namespace Adquisiciones.View.Busquedas
         #region Metodos
         protected override void Buscar()
         {
-            var forma = new FrmFiltroBusquedaPedido(PedidoService,bsSource,AlmacenActual);
-            forma.ShowDialog();
+            if(filtroBusquedaPedido == null)
+                filtroBusquedaPedido = new FrmFiltroBusquedaPedido(PedidoService, bsSource, AlmacenActual);
+
+            filtroBusquedaPedido.ShowDialog();
         }
 
         protected override void Eliminar()

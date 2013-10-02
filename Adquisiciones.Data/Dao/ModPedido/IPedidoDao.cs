@@ -21,8 +21,8 @@ namespace Adquisiciones.Data.Dao.ModPedido
         Pedido ConsultaPedido(int numPedido, Almacen almacen, int tipo);
         IList<PedidoDetalle> CargarPedidoDetalle(Pedido pedido);
         IList<PedidoEntrega> CargarPedidoEntrega(PedidoDetalle pedidoDetalle);
-        IList<Pedido> CargarPedidos(int anio, Almacen almacen, object fechaInicial, object fechaFinal, int numeroInicial, int numeroFinal, int[] tipos);
-        IList<Pedido> CargarPedidos(Almacen almacen, object fechaInicial, object fechaFinal, int numeroInicial, int numeroFinal, int[] tipos);
+        IList<Pedido> CargarPedidos(Almacen almacen, object fechaInicial,
+        object fechaFinal, int numeroInicial, int numeroFinal, int[] tipos, Proveedor proveedor = null);
         IList<Entrada> CargarEntradas(Pedido pedido);
         string[] CargarPartidaAlmacen(Pedido pedido);
         decimal ImporteEntrada(Entrada entrada);

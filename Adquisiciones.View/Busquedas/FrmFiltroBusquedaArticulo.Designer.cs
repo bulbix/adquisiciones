@@ -31,17 +31,17 @@
             this.components = new System.ComponentModel.Container();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.searchLookUpPartida = new DevExpress.XtraEditors.SearchLookUpEdit();
+            this.bsPartida = new System.Windows.Forms.BindingSource(this.components);
             this.searchLookUpEditPartida = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.cmdBusqueda = new DevExpress.XtraEditors.SimpleButton();
             this.txtAprox = new DevExpress.XtraEditors.TextEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
-            this.bsPartida = new System.Windows.Forms.BindingSource(this.components);
             this.gridColumn17 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn18 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.searchLookUpPartida.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsPartida)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEditPartida)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtAprox.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bsPartida)).BeginInit();
             this.SuspendLayout();
             // 
             // labelControl3
@@ -132,11 +132,12 @@
             this.Controls.Add(this.labelControl3);
             this.Controls.Add(this.searchLookUpPartida);
             this.Name = "FrmFiltroBusquedaArticulo";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Filtro Busqueda Articulo";
             ((System.ComponentModel.ISupportInitialize)(this.searchLookUpPartida.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsPartida)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEditPartida)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtAprox.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bsPartida)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
