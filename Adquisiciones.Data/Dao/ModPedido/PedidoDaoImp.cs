@@ -90,12 +90,12 @@ namespace Adquisiciones.Data.Dao.ModPedido
         }
 
         [Transaction(ReadOnly = true)]
-        public Pedido ConsultaPedido(int numPedido, Almacen almacen, int tipo)
+        public Pedido ConsultaPedido(int numPedido, DateTime fechaPedido, Almacen almacen, int tipo)
         {
             var query = CurrentSession.GetNamedQuery("Pedido.CargaPedido");
             query.SetParameter("numero", numPedido);
-            var fecha = FechaServidor().Year;
-            query.SetParameter("anioActual", fecha);
+            var anio = fechaPedido.Year;
+            query.SetParameter("anioActual", anio);
             query.SetParameter("almacen", almacen);
             query.SetParameter("tipoPedido", tipo);
 
@@ -144,7 +144,7 @@ namespace Adquisiciones.Data.Dao.ModPedido
                           {1} 
                           {2}
                           {3}
-                          order by p.NumeroPedido desc";
+                          order by p.NumeroPedido desc, p.FechaPedido desc";
 
             string rangoFecha = "", rangoNumero = "", rangoTipo = "", proveedorCondition = "";
 

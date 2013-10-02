@@ -108,7 +108,7 @@ namespace Adquisiciones.Business.ModPedido
         /// <summary>
         /// Consulta el pedido en base el id solicitado
         /// </summary>
-        Pedido ConsultarPedido(int numPedido, Almacen almacen, int tipo);
+        Pedido ConsultarPedido(int numPedido,DateTime fechaPedido, Almacen almacen, int tipo);
 
         /// <summary>
         /// Carga un pedidodetalle apartir del anexodetalle

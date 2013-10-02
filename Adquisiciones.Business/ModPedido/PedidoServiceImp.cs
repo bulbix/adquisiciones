@@ -237,9 +237,9 @@ namespace Adquisiciones.Business.ModPedido
         }
 
         [Transaction(ReadOnly = true)]
-        public Pedido ConsultarPedido(int numPedido, Almacen almacen, int tipo)
+        public Pedido ConsultarPedido(int numPedido, DateTime fechaPedido, Almacen almacen, int tipo)
         {
-            var pedidoConsulta = PedidoDao.ConsultaPedido(numPedido, almacen, tipo);
+            var pedidoConsulta = PedidoDao.ConsultaPedido(numPedido,fechaPedido, almacen, tipo);
 
             if (pedidoConsulta == null)
                 return null;

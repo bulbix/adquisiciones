@@ -284,7 +284,8 @@ namespace Adquisiciones.View.Reportes
         {
 
             pedido = PedidoService.
-            ConsultarPedido(pedido.NumeroPedido.Value, pedido.Almacen, pedido.CatTipopedido.IdTipoped);
+            ConsultarPedido(pedido.NumeroPedido.Value, pedido.FechaPedido.Value,
+            pedido.Almacen, pedido.CatTipopedido.IdTipoped);
 
             var reporte = new ReportePedido(pedido);
             reporte.GenerarReporteCompleto();

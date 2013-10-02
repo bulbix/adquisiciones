@@ -246,7 +246,7 @@ namespace Adquisiciones.View.Modulos
         {
             try
             {
-                PedidoActual = PedidoService.ConsultarPedido(PedidoActual.NumeroPedido.Value,
+                PedidoActual = PedidoService.ConsultarPedido(PedidoActual.NumeroPedido.Value,PedidoActual.FechaPedido.Value,
                                                           AlmacenActual, this.tipoPedido);
                 if (PedidoActual != null)
                 {

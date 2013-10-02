@@ -62,9 +62,9 @@ namespace Adquisiciones.Test.Anexo
             //pedido.Anexo = new Anexo();
         }
 
-        public void GenerarReportePedido(int numPedido, int tipo, string almacen)
+        public void GenerarReportePedido(int numPedido, DateTime fechaPedido, int tipo, string almacen)
         {
-            var pedido = PedidoService.ConsultarPedido(numPedido, new Almacen(almacen), tipo);
+            var pedido = PedidoService.ConsultarPedido(numPedido, fechaPedido, new Almacen(almacen), tipo);
             pedido.PedidoDetalle = PedidoService.PedidoDao.CargarPedidoDetalle(pedido);
 
             foreach (var pedidoDetalle in pedido.PedidoDetalle)
@@ -99,26 +99,26 @@ namespace Adquisiciones.Test.Anexo
         [Test]
         public  void GenerarReportePedidoMayor()
         {
-            GenerarReportePedido(530, 1, "P2");
+            GenerarReportePedido(530,DateTime.Now, 1, "P2");
         }
 
         [Test]
         public void GenerarReportePedidoMenor()
         {
-            GenerarReportePedido(317, 2, "P2");
+            GenerarReportePedido(317, DateTime.Now, 2, "P2");
         
         }
 
         [Test]
         public void GenerarReportePedidoDonacion()
         {
-            GenerarReportePedido(3, 0, "P2");
+            GenerarReportePedido(3, DateTime.Now, 0, "P2");
         }
 
         [Test]
         public void GenerarReportePedidoExtraMuro()
         {
-            GenerarReportePedido(4, 0, "P2");
+            GenerarReportePedido(4, DateTime.Now, 0, "P2");
         }
         
         [Test]
@@ -180,7 +180,7 @@ namespace Adquisiciones.Test.Anexo
         [Test]
         public void TestConsultarPedido()
         {
-            var pedido  = PedidoService.ConsultarPedido(1, new Almacen("C5"), 0);
+            var pedido  = PedidoService.ConsultarPedido(1,DateTime.Now, new Almacen("C5"), 0);
             Assert.NotNull(pedido);
         }
 
