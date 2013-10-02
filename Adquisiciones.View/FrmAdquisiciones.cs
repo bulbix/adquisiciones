@@ -68,6 +68,12 @@ namespace Adquisiciones.View
                     ribbonPagePedido.Visible = true;
                 }
 
+                if (desModulo.Contains("precio trabajar"))
+                {
+
+                    ribbonPagePrecio.Visible = true;
+                }
+
                 if (desModulo.Contains("catalogo trabajar"))
                 {
 

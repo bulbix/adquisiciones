@@ -34,6 +34,8 @@ namespace Adquisiciones.View.Modulos
             base.ObtenerPerfil();
 
             cmdGuardar.Visibility = BarItemVisibility.Never;
+            listaError.Visibility = BarItemVisibility.Never;
+            lblNumErrors.Visibility = BarItemVisibility.Never;
         }
 
         private void txtClave_KeyDown(object sender, KeyEventArgs e)
