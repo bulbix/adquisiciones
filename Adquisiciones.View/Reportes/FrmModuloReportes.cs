@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Linq;
 using System.Windows.Forms;
 using Adquisiciones.Business.ModAnexo;
 using Adquisiciones.Business.ModCotizacion;
@@ -67,7 +68,7 @@ namespace Adquisiciones.View.Reportes
                     ReporteCotizacion(Entity as Cotizacion);
                     break;
                 case "reporteTabla":
-                    ReporteFallo(Entity as Fallo);
+                    ReporteTabla(Entity as Anexo);
                     break;
                 case "reportePedido":
                     ReportePedido(Entity as Pedido);
@@ -196,87 +197,170 @@ namespace Adquisiciones.View.Reportes
             Text = @"ReporteCotizacion";
         }
 
-        private void ReporteFallo(Fallo fallo)
+
+        private void AsignarProveedores(IList<CotizacionDetalle> cotizacionesDetalle)
         {
 
-            var anexo = fallo.Anexo;
-            anexo = FalloService.AnexoDao.
+            var cuantos = 0;
+            var count = 0;
+            var precioGanador = cotizacionesDetalle[0].Precio;//Ganador Centinela
+
+            foreach (var detalle in cotizacionesDetalle)
+            {
+                var precio = detalle.Precio;
+
+                if (count == 0)
+                {
+                    detalle.Ganador = true;
+                    ++cuantos;
+                }
+                else
+                {
+                    if (precioGanador == precio) {
+                        detalle.Ganador = true;
+                        ++cuantos;
+                    }
+                    else
+                    {
+                        detalle.Ganador = false;
+                    }
+                }
+
+                ++count;
+            }
+
+
+            foreach (var detalle in cotizacionesDetalle)
+            {
+                if (detalle.Ganador){
+                    detalle.Porcentaje = (decimal)(100/cuantos);
+                }
+            }
+
+        }
+
+
+        private void ReporteTabla(Anexo anexo)
+        {
+            anexo = AnexoService.AnexoDao.
                      ConsultaAnexo(anexo.NumeroAnexo, anexo.Almacen);
 
-            var falloDs = new FalloDS();
+            var anexoDs = new AnexoDS();
+
+            decimal? totalAsignadoMin = 0, totalAsignadoMax = 0;
+            int renglonesDesiertos = 0;
 
             foreach (var detalle in anexo.AnexoDetalle)
             {
-                var filaDetalle = falloDs.Tables["AnexoDetalle"].NewRow();
+                var filaDetalle = anexoDs.Tables["AnexoDetalleTabla"].NewRow();
 
                 filaDetalle["Anexo"] = detalle.Anexo;
-                filaDetalle["Fecha"] = String.Format("{0:dd/MM/yyyy}",fallo.FechaFallo);
+                filaDetalle["Presupuesto"] = detalle.Anexo.TechoPresupuestal;
+                filaDetalle["AsignadoConIvaEtiquetaMin"] = "ASIGNADO MIN CON " 
+                    + detalle.Anexo.Iva.Id.Porcentaje + " % DE IVA:";
+
+                if (anexo.TipoContrato == Contrato.ABIERTO){
+                    filaDetalle["AsignadoConIvaEtiquetaMax"] = "ASIGNADO MAX CON "
+                    + detalle.Anexo.Iva.Id.Porcentaje + " % DE IVA:";
+                }
+                else if (anexo.TipoContrato == Contrato.CERRADO) {
+                    filaDetalle["AsignadoConIvaEtiquetaMax"] = "ASIGNADO CON "
+                    + detalle.Anexo.Iva.Id.Porcentaje + " % DE IVA:";
+                }
+
+                var renglonesLicitados = anexo.AnexoDetalle.Max(d => d.RenglonAnexo);
+                filaDetalle["RenglonesLicitados"] = renglonesLicitados;
+
+
                 filaDetalle["ClaveArticulo"] = detalle.Articulo.Id.CveArt;
 
                 var articulo = detalle.Articulo;
-                //FalloService.ArticuloDao.Get(new ArticuloId(detalle.Articulo.Id.CveArt, anexo.Almacen));
-
                 filaDetalle["Renglon"] = detalle.RenglonAnexo;
                 filaDetalle["Descripcion"] = articulo.Id.CveArt + " / " + articulo.DesArticulo;
                 filaDetalle["Unidad"] = articulo.Unidad;
                 filaDetalle["Presentacion"] = articulo.Presentacion;
 
-                if (anexo.TipoContrato == Contrato.ABIERTO)
+                filaDetalle["CantidadMaximo"] = detalle.CantidadMaximo;
+                filaDetalle["CantidadMinimo"] = detalle.CantidadMinimo??0;
+
+                var cotizacionDetalles = CotizacionService.CotizacionDao.
+                    CargarCotizacionDetalle(anexo, detalle.Articulo, anexo.Almacen);
+
+                if (cotizacionDetalles.Count > 0)
                 {
-                    filaDetalle["CantidadMaximo"] = detalle.CantidadMaximo;
-                    filaDetalle["CantidadMinimo"] = detalle.CantidadMinimo;
-                }
-                else if (anexo.TipoContrato == Contrato.CERRADO)
-                {
-                    filaDetalle["CantidadMaximo"] = detalle.CantidadMaximo;
-                    filaDetalle["CantidadMinimo"] = detalle.CantidadMaximo * (decimal)0.40;
-                }
+                    AsignarProveedores(cotizacionDetalles);
 
-                falloDs.Tables["AnexoDetalle"].Rows.Add(filaDetalle);
+                    var count = 0;
 
-                var cotizacionDetalles =
-                    FalloService.CotizacionDao.CargarCotizacionDetalle(anexo, detalle.Articulo, anexo.Almacen);
-
-                var count = 0;
-
-                foreach (var subdetalle in cotizacionDetalles)
-                {
-                    string asterisk = count == 0 ? "* " : "";
-                    var filaSubDetalle = falloDs.Tables["Proveedor"].NewRow();
-                    filaSubDetalle["ClaveArticulo"] = subdetalle.Articulo.Id.CveArt;
-                    filaSubDetalle["Descripcion"] = asterisk + subdetalle.Cotizacion.Proveedor.NombreFiscal;
-                    filaSubDetalle["Precio"] = subdetalle.Precio;
-
-
-                    if (anexo.TipoContrato == Contrato.ABIERTO)
+                    foreach (var subdetalle in cotizacionDetalles)
                     {
-                        filaSubDetalle["TotalMax"] = subdetalle.Precio * detalle.CantidadMaximo;
-                        filaSubDetalle["TotalMin"] = subdetalle.Precio * detalle.CantidadMinimo;
-                        
-                    }
-                    else if (anexo.TipoContrato == Contrato.CERRADO)
-                    {
-                        filaSubDetalle["TotalMax"] = subdetalle.Precio * detalle.CantidadMaximo;
-                        filaSubDetalle["TotalMin"] = subdetalle.Precio * (detalle.CantidadMaximo * (decimal)0.40);
-                    }
+                        if (count == 0)
+                        {
+                            totalAsignadoMin += subdetalle.Precio*detalle.CantidadMinimo??0;
+                            totalAsignadoMax += subdetalle.Precio * detalle.CantidadMaximo;
+                        }
 
-                    
-                    filaSubDetalle["Marca"] = subdetalle.Marca;
-                    filaSubDetalle["Porcentaje"] = DBNull.Value;
-                    filaSubDetalle["Observaciones"] = subdetalle.Observaciones;
-                    falloDs.Tables["Proveedor"].Rows.Add(filaSubDetalle);
-                    ++count;
+                        var asterisco = subdetalle.Ganador ? "* " : "";
+                        var filaSubDetalle = anexoDs.Tables["Proveedor"].NewRow();
+                        filaSubDetalle["ClaveArticulo"] = subdetalle.Articulo.Id.CveArt;
+                        filaSubDetalle["Descripcion"] = asterisco + subdetalle.Cotizacion.Proveedor.NombreFiscal;
+                        filaSubDetalle["Precio"] = subdetalle.Precio;
+                        filaSubDetalle["TotalMax"] = subdetalle.Precio*detalle.CantidadMaximo;
+                        filaSubDetalle["TotalMin"] = subdetalle.Precio*detalle.CantidadMinimo??0;
+                        filaSubDetalle["Marca"] = subdetalle.Marca;
+                        filaSubDetalle["Porcentaje"] = subdetalle.Porcentaje;
+                        filaSubDetalle["Observaciones"] = subdetalle.Observaciones;
+                        anexoDs.Tables["Proveedor"].Rows.Add(filaSubDetalle);
+
+                        ++count;
+                    }
                 }
+                else
+                {
+                    var filaSubDetalle = anexoDs.Tables["Proveedor"].NewRow();
+                    filaSubDetalle["ClaveArticulo"] = detalle.Articulo.Id.CveArt;
+                    filaSubDetalle["Descripcion"] = "<<<<< D E S I E R T O >>>>>";
+                    anexoDs.Tables["Proveedor"].Rows.Add(filaSubDetalle);
+                    ++renglonesDesiertos;
+                }
+
+
+                filaDetalle["RenglonesDesiertos"] = renglonesDesiertos;
+                var renglonesAdjudicados = renglonesLicitados - renglonesDesiertos;
+                filaDetalle["RenglonesAdjudicados"] = renglonesAdjudicados;
+
+                var asignadoConIvaMin = (totalAsignadoMin * detalle.Anexo.Iva.Id.Porcentaje/100) 
+                            + totalAsignadoMin;
+                var asignadoConIvaMax = (totalAsignadoMax * detalle.Anexo.Iva.Id.Porcentaje / 100)
+                            + totalAsignadoMax;
+
+                filaDetalle["AsignadoConIvaMin"] = asignadoConIvaMin;
+                filaDetalle["AsignadoConIvaMax"] = asignadoConIvaMax;
+
+                var diferenciaMin = detalle.Anexo.TechoPresupuestal - asignadoConIvaMin;
+                var diferenciaMax = detalle.Anexo.TechoPresupuestal - asignadoConIvaMax;
+
+                filaDetalle["DiferenciaMin"] = diferenciaMin;
+                filaDetalle["DiferenciaMax"] = diferenciaMax;
+
+                anexoDs.Tables["AnexoDetalleTabla"].Rows.Add(filaDetalle);
             }
 
-            falloDs.Tables["Proveedor"].AcceptChanges();
-            falloDs.Tables["AnexoDetalle"].AcceptChanges();
 
-            ReporteFallo1.SetDataSource(falloDs);
-            crystalReportViewer.ReportSource = ReporteFallo1;
+            anexoDs.Tables["Proveedor"].AcceptChanges();
+            anexoDs.Tables["AnexoDetalle"].AcceptChanges();
+
+            if (anexo.TipoContrato == Contrato.ABIERTO){
+                ReporteTablaAbierto1.SetDataSource(anexoDs);
+                crystalReportViewer.ReportSource = ReporteTablaAbierto1;
+            }
+            else if (anexo.TipoContrato == Contrato.CERRADO){
+                ReporteTablaCerrado1.SetDataSource(anexoDs);
+                crystalReportViewer.ReportSource = ReporteTablaCerrado1;
+            }
 
             crystalReportViewer.Refresh();
-            Text = @"ReporteTabla";
+            Text = @"ReporteTablaComparativa";
 
         }
 
@@ -514,6 +598,14 @@ namespace Adquisiciones.View.Reportes
             var totalFactura = entrada != null ? PedidoService.PedidoDao.ImporteEntrada(entrada) : (decimal) 0.0;
             var importeSinIVAEntrada = entrada != null ? PedidoService.PedidoDao.ImporteEntradaSinIva(entrada) : (decimal)0.0;
 
+            var fundamentoProcedimiento = "";
+
+            if (pedido.Fundamento != null)
+                fundamentoProcedimiento = pedido.Fundamento.DesFundamento;
+
+            if (pedido.TipoProcedimiento != null)
+                fundamentoProcedimiento = pedido.TipoProcedimiento.ToString();
+
             var pedidoCompleto = new PedidoCompleto
             {
                 Estado = pedido.EstadoPedido,
@@ -534,8 +626,7 @@ namespace Adquisiciones.View.Reportes
                 Req = pedido.NumeroRequisicion,
                 Elaboro = pedido.Usuario.Nombre,
                 Licitacion = "",
-                Procedimiento = pedido.TipoProcedimiento != null ? pedido.TipoProcedimiento.ToString() : "",
-                FundamentoLegal = pedido.Fundamento != null ? pedido.Fundamento.DesFundamento : "",
+                Procedimiento = fundamentoProcedimiento,
                 ImportePedido = importePedido,
                 TipoPedido = pedido.CatTipopedido.DesTipoped
             };

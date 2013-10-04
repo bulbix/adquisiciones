@@ -16,14 +16,14 @@ namespace Adquisiciones.View.Reportes {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class ReporteFallo : ReportClass {
+    public class ReporteSubTablaAbierto : ReportClass {
         
-        public ReporteFallo() {
+        public ReporteSubTablaAbierto() {
         }
         
         public override string ResourceName {
             get {
-                return "ReporteFallo.rpt";
+                return "ReporteSubTablaAbierto.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace Adquisiciones.View.Reportes {
         
         public override string FullResourceName {
             get {
-                return "Adquisiciones.View.Reportes.ReporteFallo.rpt";
+                return "Adquisiciones.View.Reportes.ReporteSubTablaAbierto.rpt";
             }
             set {
                 // Do nothing
@@ -90,9 +90,9 @@ namespace Adquisiciones.View.Reportes {
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedReporteFallo : Component, ICachedReport {
+    public class CachedReporteSubTablaAbierto : Component, ICachedReport {
         
-        public CachedReporteFallo() {
+        public CachedReporteSubTablaAbierto() {
         }
         
         [Browsable(false)]
@@ -129,7 +129,7 @@ namespace Adquisiciones.View.Reportes {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            ReporteFallo rpt = new ReporteFallo();
+            ReporteSubTablaAbierto rpt = new ReporteSubTablaAbierto();
             rpt.Site = this.Site;
             return rpt;
         }

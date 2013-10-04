@@ -20,8 +20,7 @@ namespace Adquisiciones.Data.Dao.ModCotizacion
 
         [Transaction(ReadOnly = true)]
         public IList<CotizacionDetalle> CargarCotizacionDetalle(Anexo anexo, Articulo articulo,
-            Almacen almacen)
-        {
+            Almacen almacen) {
 
             var query = CurrentSession.GetNamedQuery("Cotizacion.CargaDetalleByIdAnexoArtAlmacen");
             query.SetParameter("anexo", anexo);

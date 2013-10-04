@@ -30,7 +30,7 @@
     <ProductName>Adquisiciones</ProductName>
     <PublisherName>INR</PublisherName>
     <WebPage>publicacion.htm</WebPage>
-    <ApplicationRevision>107</ApplicationRevision>
+    <ApplicationRevision>110</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -260,15 +260,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>CotizacionDS.xsd</DependentUpon>
     </Compile>
-    <Compile Include="DataSets\FalloDS.cs">
-      <DependentUpon>FalloDS.xsd</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="DataSets\FalloDS.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>FalloDS.xsd</DependentUpon>
-    </Compile>
     <Compile Include="FrmAyuda.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -366,14 +357,26 @@
     <Compile Include="Reportes\Clases\PedidoDetallado.cs" />
     <Compile Include="Reportes\Clases\PedidoEntrada.cs" />
     <Compile Include="Reportes\Clases\ProveedorRep.cs" />
+    <Compile Include="Reportes\ReporteSubTablaCerrado.cs">
+      <DependentUpon>ReporteSubTablaCerrado.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Reportes\ReporteTablaCerrado.cs">
+      <DependentUpon>ReporteTablaCerrado.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Reportes\ReporteCotizacionCerrado.cs">
       <DependentUpon>ReporteCotizacionCerrado.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Reportes\ReporteFallo.cs">
-      <DependentUpon>ReporteFallo.rpt</DependentUpon>
+    <Compile Include="Reportes\ReporteTablaAbierto.cs">
+      <DependentUpon>ReporteTablaAbierto.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
@@ -453,10 +456,10 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Reportes\ReportePedido.cs" />
-    <Compile Include="Reportes\ReporteSubFallo.cs">
+    <Compile Include="Reportes\ReporteSubTablaAbierto.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ReporteSubFallo.rpt</DependentUpon>
+      <DependentUpon>ReporteSubTablaAbierto.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <EmbeddedResource Include="Busquedas\FrmBusqueda.resx">
@@ -548,13 +551,21 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>ReporteProveedor.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\ReporteSubTablaCerrado.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ReporteSubTablaCerrado.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\ReporteTablaCerrado.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ReporteTablaCerrado.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reportes\ReporteCotizacionCerrado.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>ReporteCotizacionCerrado.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reportes\ReporteFallo.rpt">
+    <EmbeddedResource Include="Reportes\ReporteTablaAbierto.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>ReporteFallo.cs</LastGenOutput>
+      <LastGenOutput>ReporteTablaAbierto.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\ReporteAnexoAbierto.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -615,9 +626,9 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>ReporteCotizacionAbierto.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reportes\ReporteSubFallo.rpt">
+    <EmbeddedResource Include="Reportes\ReporteSubTablaAbierto.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>ReporteSubFallo.cs</LastGenOutput>
+      <LastGenOutput>ReporteSubTablaAbierto.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="App.config">
       <SubType>Designer</SubType>
@@ -643,17 +654,6 @@
     </None>
     <None Include="DataSets\CotizacionDS.xss">
       <DependentUpon>CotizacionDS.xsd</DependentUpon>
-    </None>
-    <None Include="DataSets\FalloDS.xsc">
-      <DependentUpon>FalloDS.xsd</DependentUpon>
-    </None>
-    <None Include="DataSets\FalloDS.xsd">
-      <SubType>Designer</SubType>
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>FalloDS.Designer.cs</LastGenOutput>
-    </None>
-    <None Include="DataSets\FalloDS.xss">
-      <DependentUpon>FalloDS.xsd</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\Adquisiciones.Data.Entities.Anexo.datasource" />

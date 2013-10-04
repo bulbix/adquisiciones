@@ -110,6 +110,15 @@ namespace Adquisiciones.Data.Entities
         
         #endregion
 
+
+        #region  propiedades tabla comparativa
+
+        public bool Ganador { get; set;}
+        public decimal Porcentaje { get; set; }
+
+
+        #endregion
+
         #region Equals And HashCode Overrides
         /// <summary>
         /// local implementation of Equals based on unique value members

@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using Adquisiciones.Business.ModAnexo;
 using Adquisiciones.Data.Entities;
 using Adquisiciones.View.Modulos;
+using Adquisiciones.View.Reportes;
 using DevExpress.XtraBars;
 using DevExpress.XtraEditors;
 
@@ -48,5 +49,14 @@ namespace Adquisiciones.View.Busquedas
 
         }
         #endregion
+
+        private void tablaComparativaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var anexo = GvGeneral.GetFocusedRow() as Anexo;
+            var forma = new FrmModuloReportes("reporteTabla", anexo);
+            forma.MdiParent = this.MdiParent;
+            forma.Show();
+
+        }
     }
 }

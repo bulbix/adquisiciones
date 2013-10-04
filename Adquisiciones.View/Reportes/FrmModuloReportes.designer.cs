@@ -30,7 +30,6 @@
         {
             this.btnAceptar = new System.Windows.Forms.Button();
             this.crystalReportViewer = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
-            this.ReporteSubFallo1 = new Adquisiciones.View.Reportes.ReporteSubFallo();
             this.ReportePedidoDetallado1 = new Adquisiciones.View.Reportes.Pedidos.ReportePedidoDetallado();
             this.ReportePedidoConcentrado1 = new Adquisiciones.View.Reportes.Pedidos.ReportePedidoConcentrado();
             this.ReportePedidoEntrada1 = new Adquisiciones.View.Reportes.Pedidos.ReportePedidoEntrada();
@@ -42,7 +41,8 @@
             this.ReporteAnexoAbierto1 = new Adquisiciones.View.Reportes.ReporteAnexoAbierto();
             this.ReporteCotizacionAbierto1 = new Adquisiciones.View.Reportes.ReporteCotizacionAbierto();
             this.ReporteCotizacionCerrado1 = new Adquisiciones.View.Reportes.ReporteCotizacionCerrado();
-            this.ReporteFallo1 = new Adquisiciones.View.Reportes.ReporteFallo();
+            this.ReporteTablaAbierto1 = new Adquisiciones.View.Reportes.ReporteTablaAbierto();
+            this.ReporteTablaCerrado1 = new Adquisiciones.View.Reportes.ReporteTablaCerrado();
             this.SuspendLayout();
             // 
             // btnAceptar
@@ -91,7 +91,6 @@
 
         private System.Windows.Forms.Button btnAceptar;
         private CrystalDecisions.Windows.Forms.CrystalReportViewer crystalReportViewer;
-        private Reportes.ReporteSubFallo ReporteSubFallo1;
         private Reportes.Pedidos.ReportePedidoDetallado ReportePedidoDetallado1;
         private Reportes.Pedidos.ReportePedidoConcentrado ReportePedidoConcentrado1;
         private Reportes.Pedidos.ReportePedidoEntrada ReportePedidoEntrada1;
@@ -103,6 +102,8 @@
         private ReporteAnexoCerrado ReporteAnexoCerrado1;
         private ReporteCotizacionAbierto ReporteCotizacionAbierto1;
         private ReporteCotizacionCerrado ReporteCotizacionCerrado1;
-        private ReporteFallo ReporteFallo1;
+        private ReporteTablaAbierto ReporteTablaAbierto1;
+        private ReporteTablaCerrado ReporteTablaCerrado1;
+        
     }
 }

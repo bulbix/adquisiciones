@@ -118,8 +118,8 @@ namespace Adquisiciones.Business.ModFallo
                 }
                 else if (anexo.TipoContrato == Contrato.CERRADO)
                 {
+                    falloDetalle.CantidadMin = anexoDetalle.CantidadMaximo;
                     falloDetalle.CantidadMax = anexoDetalle.CantidadMaximo;
-                    falloDetalle.CantidadMin = anexoDetalle.CantidadMaximo.Value * (decimal)0.40;
                 }
 
 

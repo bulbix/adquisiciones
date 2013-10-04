@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using Adquisiciones.Business.ModAnexo;
 using Adquisiciones.Business.ModPedido;
+using Adquisiciones.Data.Entities;
 using DevExpress.XtraBars;
 using DevExpress.XtraEditors;
 
@@ -24,6 +25,7 @@ namespace Adquisiciones.View.Modulos
 
             ModulosUsuario = padre.ModulosUsuario;
             AlmacenActual = padre.AlmacenSelect;
+            AlmacenesCombo(cbxAlmacen, AlmacenActual);
 
             //base.TypeEntity = typeof(Cotizacion);
             //base.NombreReporte = "reporteCotizacion";
@@ -36,6 +38,19 @@ namespace Adquisiciones.View.Modulos
             cmdGuardar.Visibility = BarItemVisibility.Never;
             listaError.Visibility = BarItemVisibility.Never;
             lblNumErrors.Visibility = BarItemVisibility.Never;
+
+           
+        }
+
+        private void SetDatosArticulo(Articulo articulo)
+        {
+            txtPartida.Text = PedidoService.AnexoService.ArticuloDao.GetPartida(articulo).ToString();
+            txtDescripcion.Text = articulo.DesArticulo;
+            txtPrese.Text = articulo.Presentacion;
+            txtPreseCant.Text = articulo.PresentacionCant.ToString();
+            txtPreseUnid.Text = articulo.PresentacionUnid;
+            txtClave.Enabled = false;
+            cbxAlmacen.Enabled = false;
         }
 
         private void txtClave_KeyDown(object sender, KeyEventArgs e)
@@ -49,16 +64,24 @@ namespace Adquisiciones.View.Modulos
                  if (detalle.Count > 0)
                  {
                      var articulo = detalle[0].Articulo;
-                     txtPartida.Text = PedidoService.AnexoService.ArticuloDao.GetPartida(articulo).ToString();
-                     txtDescripcion.Text = articulo.DesArticulo;
-                     txtPrese.Text = articulo.Presentacion;
-                     txtPreseCant.Text = articulo.PresentacionCant.ToString();
-                     txtPreseUnid.Text = articulo.PresentacionUnid;
+                     SetDatosArticulo(articulo);
                  }
                  else
                  {
-                     XtraMessageBox.Show(@"No se encontraron registros",
-                    @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                     var almacen = cbxAlmacen.SelectedValue as Almacen;
+                     var articuloId = new ArticuloId((int) txtClave.Value, almacen);
+                     var articulo = PedidoService.AnexoService.
+                         ArticuloDao.Get(articuloId);
+
+                     if (articulo != null){
+                         SetDatosArticulo(articulo);
+                     }
+                     else
+                     {
+                         XtraMessageBox.Show(@"No existe la clave",
+                        @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        Nuevo();
+                     }
                  }
              }
         }
@@ -70,13 +93,11 @@ namespace Adquisiciones.View.Modulos
             txtDescripcion.Text = "";
             txtPrese.Text = "";
             txtPreseCant.Text = "";
-            txtPreseUnid.Text = "";
+            txtPreseUnid.Text = ""; 
             bsPrecioDetalle.DataSource = null;
-        }
-
-        private void gcPrecioDetalle_Click(object sender, EventArgs e)
-        {
-
+            txtClave.Enabled = true;
+            cbxAlmacen.Enabled = true;
+            txtClave.Focus();
         }
     }
 }

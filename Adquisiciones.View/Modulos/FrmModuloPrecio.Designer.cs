@@ -33,6 +33,8 @@
             this.bsPrecioDetalle = new System.Windows.Forms.BindingSource(this.components);
             this.gvPrecioDetalle = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -40,14 +42,12 @@
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.txtPartida = new DevExpress.XtraEditors.LabelControl();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
-            this.txtDescripcion = new DevExpress.XtraEditors.LabelControl();
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
             this.txtPrese = new DevExpress.XtraEditors.LabelControl();
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
             this.txtPreseCant = new DevExpress.XtraEditors.LabelControl();
             this.txtPreseUnid = new DevExpress.XtraEditors.LabelControl();
-            this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.txtDescripcion = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             this.splitContainerControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gcPrecioDetalle)).BeginInit();
@@ -58,27 +58,31 @@
             // 
             // splitContainerControl1
             // 
+            this.splitContainerControl1.Location = new System.Drawing.Point(0, 70);
+            this.splitContainerControl1.Panel1.Controls.Add(this.txtDescripcion);
             this.splitContainerControl1.Panel1.Controls.Add(this.txtPreseUnid);
             this.splitContainerControl1.Panel1.Controls.Add(this.txtPreseCant);
             this.splitContainerControl1.Panel1.Controls.Add(this.labelControl7);
             this.splitContainerControl1.Panel1.Controls.Add(this.txtPrese);
             this.splitContainerControl1.Panel1.Controls.Add(this.labelControl5);
-            this.splitContainerControl1.Panel1.Controls.Add(this.txtDescripcion);
             this.splitContainerControl1.Panel1.Controls.Add(this.labelControl3);
             this.splitContainerControl1.Panel1.Controls.Add(this.txtPartida);
             this.splitContainerControl1.Panel1.Controls.Add(this.labelControl1);
             this.splitContainerControl1.Panel1.Controls.Add(this.txtClave);
             this.splitContainerControl1.Panel2.Controls.Add(this.gcPrecioDetalle);
-            this.splitContainerControl1.Size = new System.Drawing.Size(1284, 584);
-            this.splitContainerControl1.SplitterPosition = 123;
+            this.splitContainerControl1.Size = new System.Drawing.Size(1284, 578);
+            this.splitContainerControl1.SplitterPosition = 132;
             // 
             // lblAlmacen
             // 
-            this.lblAlmacen.Location = new System.Drawing.Point(599, 11);
+            this.lblAlmacen.Location = new System.Drawing.Point(156, 33);
+            this.lblAlmacen.Visible = true;
             // 
             // cbxAlmacen
             // 
-            this.cbxAlmacen.Location = new System.Drawing.Point(666, 3);
+            this.cbxAlmacen.Location = new System.Drawing.Point(213, 26);
+            this.cbxAlmacen.TabIndex = 1;
+            this.cbxAlmacen.Visible = true;
             // 
             // gcPrecioDetalle
             // 
@@ -87,11 +91,10 @@
             this.gcPrecioDetalle.Location = new System.Drawing.Point(0, 0);
             this.gcPrecioDetalle.MainView = this.gvPrecioDetalle;
             this.gcPrecioDetalle.Name = "gcPrecioDetalle";
-            this.gcPrecioDetalle.Size = new System.Drawing.Size(1284, 455);
+            this.gcPrecioDetalle.Size = new System.Drawing.Size(1284, 440);
             this.gcPrecioDetalle.TabIndex = 9;
             this.gcPrecioDetalle.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvPrecioDetalle});
-            this.gcPrecioDetalle.Click += new System.EventHandler(this.gcPrecioDetalle_Click);
             // 
             // gvPrecioDetalle
             // 
@@ -236,6 +239,26 @@
             this.gridColumn1.VisibleIndex = 0;
             this.gridColumn1.Width = 94;
             // 
+            // gridColumn6
+            // 
+            this.gridColumn6.Caption = "Numero";
+            this.gridColumn6.FieldName = "NumeroPedido";
+            this.gridColumn6.Name = "gridColumn6";
+            this.gridColumn6.UnboundType = DevExpress.Data.UnboundColumnType.Integer;
+            this.gridColumn6.Visible = true;
+            this.gridColumn6.VisibleIndex = 1;
+            this.gridColumn6.Width = 71;
+            // 
+            // gridColumn5
+            // 
+            this.gridColumn5.Caption = "Tipo";
+            this.gridColumn5.FieldName = "CatTipopedido";
+            this.gridColumn5.Name = "gridColumn5";
+            this.gridColumn5.UnboundType = DevExpress.Data.UnboundColumnType.String;
+            this.gridColumn5.Visible = true;
+            this.gridColumn5.VisibleIndex = 2;
+            this.gridColumn5.Width = 78;
+            // 
             // gridColumn2
             // 
             this.gridColumn2.Caption = "Costo";
@@ -281,13 +304,13 @@
             new DevExpress.XtraEditors.Controls.EditorButton()});
             this.txtClave.Properties.Mask.EditMask = "n0";
             this.txtClave.Size = new System.Drawing.Size(78, 20);
-            this.txtClave.TabIndex = 10;
+            this.txtClave.TabIndex = 0;
             this.txtClave.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtClave_KeyDown);
             // 
             // labelControl1
             // 
             this.labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl1.Location = new System.Drawing.Point(192, 30);
+            this.labelControl1.Location = new System.Drawing.Point(399, 28);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(47, 16);
             this.labelControl1.TabIndex = 11;
@@ -298,7 +321,7 @@
             this.txtPartida.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPartida.Appearance.ForeColor = System.Drawing.Color.Blue;
             this.txtPartida.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
-            this.txtPartida.Location = new System.Drawing.Point(245, 29);
+            this.txtPartida.Location = new System.Drawing.Point(452, 27);
             this.txtPartida.Name = "txtPartida";
             this.txtPartida.Size = new System.Drawing.Size(7, 17);
             this.txtPartida.TabIndex = 12;
@@ -313,21 +336,10 @@
             this.labelControl3.TabIndex = 13;
             this.labelControl3.Text = "Clave";
             // 
-            // txtDescripcion
-            // 
-            this.txtDescripcion.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDescripcion.Appearance.ForeColor = System.Drawing.Color.Blue;
-            this.txtDescripcion.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
-            this.txtDescripcion.Location = new System.Drawing.Point(22, 53);
-            this.txtDescripcion.Name = "txtDescripcion";
-            this.txtDescripcion.Size = new System.Drawing.Size(7, 17);
-            this.txtDescripcion.TabIndex = 14;
-            this.txtDescripcion.Text = ".";
-            // 
             // labelControl5
             // 
             this.labelControl5.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl5.Location = new System.Drawing.Point(22, 90);
+            this.labelControl5.Location = new System.Drawing.Point(22, 111);
             this.labelControl5.Name = "labelControl5";
             this.labelControl5.Size = new System.Drawing.Size(41, 16);
             this.labelControl5.TabIndex = 15;
@@ -338,7 +350,7 @@
             this.txtPrese.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPrese.Appearance.ForeColor = System.Drawing.Color.Blue;
             this.txtPrese.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
-            this.txtPrese.Location = new System.Drawing.Point(69, 89);
+            this.txtPrese.Location = new System.Drawing.Point(69, 110);
             this.txtPrese.Name = "txtPrese";
             this.txtPrese.Size = new System.Drawing.Size(7, 17);
             this.txtPrese.TabIndex = 16;
@@ -347,7 +359,7 @@
             // labelControl7
             // 
             this.labelControl7.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl7.Location = new System.Drawing.Point(192, 89);
+            this.labelControl7.Location = new System.Drawing.Point(192, 110);
             this.labelControl7.Name = "labelControl7";
             this.labelControl7.Size = new System.Drawing.Size(15, 16);
             this.labelControl7.TabIndex = 17;
@@ -358,7 +370,7 @@
             this.txtPreseCant.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPreseCant.Appearance.ForeColor = System.Drawing.Color.Blue;
             this.txtPreseCant.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
-            this.txtPreseCant.Location = new System.Drawing.Point(213, 90);
+            this.txtPreseCant.Location = new System.Drawing.Point(213, 111);
             this.txtPreseCant.Name = "txtPreseCant";
             this.txtPreseCant.Size = new System.Drawing.Size(7, 17);
             this.txtPreseCant.TabIndex = 18;
@@ -369,31 +381,22 @@
             this.txtPreseUnid.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPreseUnid.Appearance.ForeColor = System.Drawing.Color.Blue;
             this.txtPreseUnid.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
-            this.txtPreseUnid.Location = new System.Drawing.Point(256, 90);
+            this.txtPreseUnid.Location = new System.Drawing.Point(256, 111);
             this.txtPreseUnid.Name = "txtPreseUnid";
             this.txtPreseUnid.Size = new System.Drawing.Size(7, 17);
             this.txtPreseUnid.TabIndex = 19;
             this.txtPreseUnid.Text = ".";
             // 
-            // gridColumn6
+            // txtDescripcion
             // 
-            this.gridColumn6.Caption = "Numero";
-            this.gridColumn6.FieldName = "NumeroPedido";
-            this.gridColumn6.Name = "gridColumn6";
-            this.gridColumn6.UnboundType = DevExpress.Data.UnboundColumnType.Integer;
-            this.gridColumn6.Visible = true;
-            this.gridColumn6.VisibleIndex = 1;
-            this.gridColumn6.Width = 71;
-            // 
-            // gridColumn5
-            // 
-            this.gridColumn5.Caption = "Tipo";
-            this.gridColumn5.FieldName = "CatTipopedido";
-            this.gridColumn5.Name = "gridColumn5";
-            this.gridColumn5.UnboundType = DevExpress.Data.UnboundColumnType.String;
-            this.gridColumn5.Visible = true;
-            this.gridColumn5.VisibleIndex = 2;
-            this.gridColumn5.Width = 78;
+            this.txtDescripcion.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDescripcion.ForeColor = System.Drawing.Color.Blue;
+            this.txtDescripcion.Location = new System.Drawing.Point(22, 54);
+            this.txtDescripcion.Multiline = true;
+            this.txtDescripcion.Name = "txtDescripcion";
+            this.txtDescripcion.ReadOnly = true;
+            this.txtDescripcion.Size = new System.Drawing.Size(819, 51);
+            this.txtDescripcion.TabIndex = 20;
             // 
             // FrmModuloPrecio
             // 
@@ -430,8 +433,8 @@
         private DevExpress.XtraEditors.LabelControl labelControl7;
         private DevExpress.XtraEditors.LabelControl txtPrese;
         private DevExpress.XtraEditors.LabelControl labelControl5;
-        private DevExpress.XtraEditors.LabelControl txtDescripcion;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
+        private System.Windows.Forms.TextBox txtDescripcion;
     }
 }

@@ -103,7 +103,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 297F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 79F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 359F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 153F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 154F));
             this.tableLayoutPanel1.Controls.Add(this.cmdConsultar, 6, 0);
             this.tableLayoutPanel1.Controls.Add(this.lblFechac, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.lblLicitacion, 2, 0);
@@ -120,7 +120,7 @@
             // 
             // cmdConsultar
             // 
-            this.cmdConsultar.Location = new System.Drawing.Point(926, 3);
+            this.cmdConsultar.Location = new System.Drawing.Point(925, 3);
             this.cmdConsultar.Name = "cmdConsultar";
             this.cmdConsultar.Size = new System.Drawing.Size(135, 38);
             this.cmdConsultar.TabIndex = 31;
@@ -139,7 +139,7 @@
             // lblLicitacion
             // 
             this.lblLicitacion.AutoSize = true;
-            this.lblLicitacion.Location = new System.Drawing.Point(141, 0);
+            this.lblLicitacion.Location = new System.Drawing.Point(140, 0);
             this.lblLicitacion.Name = "lblLicitacion";
             this.lblLicitacion.Size = new System.Drawing.Size(38, 13);
             this.lblLicitacion.TabIndex = 1;
@@ -148,7 +148,7 @@
             // searchLookUpAnexo
             // 
             this.searchLookUpAnexo.EditValue = "";
-            this.searchLookUpAnexo.Location = new System.Drawing.Point(191, 3);
+            this.searchLookUpAnexo.Location = new System.Drawing.Point(190, 3);
             this.searchLookUpAnexo.Name = "searchLookUpAnexo";
             this.searchLookUpAnexo.Properties.Appearance.ForeColor = System.Drawing.Color.Navy;
             this.searchLookUpAnexo.Properties.Appearance.Options.UseForeColor = true;
@@ -206,7 +206,7 @@
             // label45
             // 
             this.label45.AutoSize = true;
-            this.label45.Location = new System.Drawing.Point(488, 0);
+            this.label45.Location = new System.Drawing.Point(487, 0);
             this.label45.Name = "label45";
             this.label45.Size = new System.Drawing.Size(57, 13);
             this.label45.TabIndex = 23;
@@ -215,7 +215,7 @@
             // searchLookUpProv
             // 
             this.searchLookUpProv.EditValue = "";
-            this.searchLookUpProv.Location = new System.Drawing.Point(567, 3);
+            this.searchLookUpProv.Location = new System.Drawing.Point(566, 3);
             this.searchLookUpProv.Name = "searchLookUpProv";
             this.searchLookUpProv.Properties.Appearance.ForeColor = System.Drawing.Color.Navy;
             this.searchLookUpProv.Properties.Appearance.Options.UseForeColor = true;
@@ -262,7 +262,7 @@
             // lblFecha
             // 
             this.lblFecha.Appearance.ForeColor = System.Drawing.Color.Blue;
-            this.lblFecha.Location = new System.Drawing.Point(62, 3);
+            this.lblFecha.Location = new System.Drawing.Point(61, 3);
             this.lblFecha.Name = "lblFecha";
             this.lblFecha.Size = new System.Drawing.Size(63, 13);
             this.lblFecha.TabIndex = 24;
@@ -492,6 +492,8 @@
             this.gridColumnCantidadMax.Caption = "Cantidad Max";
             this.gridColumnCantidadMax.FieldName = "CantidadMaximo";
             this.gridColumnCantidadMax.Name = "gridColumnCantidadMax";
+            this.gridColumnCantidadMax.OptionsColumn.AllowEdit = false;
+            this.gridColumnCantidadMax.OptionsColumn.ReadOnly = true;
             this.gridColumnCantidadMax.UnboundType = DevExpress.Data.UnboundColumnType.Decimal;
             this.gridColumnCantidadMax.Visible = true;
             this.gridColumnCantidadMax.VisibleIndex = 5;
