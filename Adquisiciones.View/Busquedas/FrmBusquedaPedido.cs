@@ -134,6 +134,15 @@ namespace Adquisiciones.View.Busquedas
             forma.Show();
         }
 
+        private void saldoPendienteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var pedidos = GetPedidosFiltrado();
+            var forma = new FrmModuloReportes("reportePedidoSaldo", pedidos);
+            forma.MdiParent = this.MdiParent;
+            forma.Show();
+
+        }
+
        
     }
 }

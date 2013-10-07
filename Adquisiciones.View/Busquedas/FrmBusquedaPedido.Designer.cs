@@ -57,6 +57,7 @@
             this.pedidoVsEntradaCompletoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.entradaVsPedidoCompletoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pedidoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saldoPendienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.bsSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gcPedido)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvPedido)).BeginInit();
@@ -67,10 +68,10 @@
             // 
             this.gcPedido.DataSource = this.bsSource;
             this.gcPedido.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gcPedido.Location = new System.Drawing.Point(0, 91);
+            this.gcPedido.Location = new System.Drawing.Point(0, 93);
             this.gcPedido.MainView = this.gvPedido;
             this.gcPedido.Name = "gcPedido";
-            this.gcPedido.Size = new System.Drawing.Size(860, 481);
+            this.gcPedido.Size = new System.Drawing.Size(860, 478);
             this.gcPedido.TabIndex = 4;
             this.gcPedido.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvPedido});
@@ -289,7 +290,7 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.reportesToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 67);
+            this.menuStrip1.Location = new System.Drawing.Point(0, 69);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(860, 24);
             this.menuStrip1.TabIndex = 7;
@@ -304,7 +305,8 @@
             this.entradaVsPedidoToolStripMenuItem,
             this.pedidoVsEntradaCompletoToolStripMenuItem,
             this.entradaVsPedidoCompletoToolStripMenuItem,
-            this.pedidoToolStripMenuItem});
+            this.pedidoToolStripMenuItem,
+            this.saldoPendienteToolStripMenuItem});
             this.reportesToolStripMenuItem.Name = "reportesToolStripMenuItem";
             this.reportesToolStripMenuItem.Size = new System.Drawing.Size(63, 20);
             this.reportesToolStripMenuItem.Text = "Reportes";
@@ -357,6 +359,13 @@
             this.pedidoToolStripMenuItem.Size = new System.Drawing.Size(209, 22);
             this.pedidoToolStripMenuItem.Text = "Listado Pedidos";
             this.pedidoToolStripMenuItem.Click += new System.EventHandler(this.pedidoToolStripMenuItem_Click);
+            // 
+            // saldoPendienteToolStripMenuItem
+            // 
+            this.saldoPendienteToolStripMenuItem.Name = "saldoPendienteToolStripMenuItem";
+            this.saldoPendienteToolStripMenuItem.Size = new System.Drawing.Size(209, 22);
+            this.saldoPendienteToolStripMenuItem.Text = "Saldo Pendiente";
+            this.saldoPendienteToolStripMenuItem.Click += new System.EventHandler(this.saldoPendienteToolStripMenuItem_Click);
             // 
             // FrmBusquedaPedido
             // 
@@ -411,5 +420,6 @@
         private System.Windows.Forms.ToolStripMenuItem pedidoVsEntradaCompletoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem entradaVsPedidoCompletoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pedidoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem saldoPendienteToolStripMenuItem;
     }
 }

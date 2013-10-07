@@ -43,6 +43,8 @@
             this.ReporteCotizacionCerrado1 = new Adquisiciones.View.Reportes.ReporteCotizacionCerrado();
             this.ReporteTablaAbierto1 = new Adquisiciones.View.Reportes.ReporteTablaAbierto();
             this.ReporteTablaCerrado1 = new Adquisiciones.View.Reportes.ReporteTablaCerrado();
+            this.ReporteFallo1 = new Adquisiciones.View.Reportes.ReporteFallo();
+            this.ReportePedidoSaldo1 = new Adquisiciones.View.Reportes.Pedidos.ReportePedidoSaldo();
             this.SuspendLayout();
             // 
             // btnAceptar
@@ -104,6 +106,8 @@
         private ReporteCotizacionCerrado ReporteCotizacionCerrado1;
         private ReporteTablaAbierto ReporteTablaAbierto1;
         private ReporteTablaCerrado ReporteTablaCerrado1;
+        private ReporteFallo ReporteFallo1;
+        private Pedidos.ReportePedidoSaldo ReportePedidoSaldo1;
         
     }
 }

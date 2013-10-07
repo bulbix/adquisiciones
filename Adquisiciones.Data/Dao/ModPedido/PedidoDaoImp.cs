@@ -260,6 +260,22 @@ namespace Adquisiciones.Data.Dao.ModPedido
             return suma;
         }
 
+        [Transaction(ReadOnly = true)]
+        public decimal ImporteEntradas(Pedido pedido)
+        {
+            decimal total = 0;
+            var criteria = CurrentSession.CreateCriteria(typeof(Entrada));
+            criteria.Add(Restrictions.Eq("Pedido", pedido));
+            criteria.SetFetchMode("EntradaDetalle", FetchMode.Lazy);
+            var entradas = criteria.List<Entrada>();
+
+            foreach (var entrada in entradas){
+                total += ImporteEntrada(entrada);
+            }
+
+            return total;
+        }
+
         [Transaction]
         public void CancelarPedido(Pedido pedido)
         {

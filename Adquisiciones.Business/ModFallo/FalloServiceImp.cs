@@ -139,7 +139,7 @@ namespace Adquisiciones.Business.ModFallo
         [Transaction(ReadOnly = true)]
         public IList<Fallo> ConsultarFallo(Anexo anexo)
         {
-            return FalloDao.ConsultarFalloCompleto(anexo);
+            return FalloDao.ConsultarFalloByAnexo(anexo);
         }
 
          [Transaction]

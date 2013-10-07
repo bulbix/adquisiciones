@@ -70,6 +70,9 @@ namespace Adquisiciones.View.Reportes
                 case "reporteTabla":
                     ReporteTabla(Entity as Anexo);
                     break;
+                case "reporteFallo":
+                    ReporteFallo(Entity as Fallo);
+                    break;
                 case "reportePedido":
                     ReportePedido(Entity as Pedido);
                     break;
@@ -91,6 +94,11 @@ namespace Adquisiciones.View.Reportes
                 case "reporteListaPedido":
                     ReporteListadoPedido(Entity as List<Pedido>);
                     break;
+                case "reportePedidoSaldo":
+                    ReportePedidoSaldo(Entity as List<Pedido>);
+                    break;
+
+
             }
 
             Cursor.Current = Cursors.Default;
@@ -196,8 +204,7 @@ namespace Adquisiciones.View.Reportes
 
             Text = @"ReporteCotizacion";
         }
-
-
+        
         private void AsignarProveedores(IList<CotizacionDetalle> cotizacionesDetalle)
         {
 
@@ -238,8 +245,7 @@ namespace Adquisiciones.View.Reportes
             }
 
         }
-
-
+        
         private void ReporteTabla(Anexo anexo)
         {
             anexo = AnexoService.AnexoDao.
@@ -364,6 +370,46 @@ namespace Adquisiciones.View.Reportes
 
         }
 
+        /// <summary>
+        /// Reporte Final de la adjudicacion por proveedor
+        /// </summary>
+        /// <param name="fallo"></param>
+        private void ReporteFallo(Fallo fallo)
+        {
+            var listaFalloRep = new List<FalloRep>();
+            
+            var fallosConsulta  = FalloService.ConsultarFallo(fallo.Anexo);
+
+            foreach (var falloConsulta in fallosConsulta) {
+                
+                var falloRep = new FalloRep{
+                    FechaFallo = falloConsulta.FechaFallo.Value,
+                    TipoLicitacion = "LICITACION PUBLICA " + fallo.Anexo.TipoLicitacion + " O INVITACION RESTRINGIDA",
+                    Anexo = fallo.Anexo.ToString(),
+                    Proveedor = falloConsulta.Proveedor.NombreFiscal
+                };
+
+                falloConsulta.FalloDetalle = FalloService.FalloDao.
+                    ConsultarFalloDetalle(falloConsulta);
+
+                foreach (var falloDetalleConsulta in falloConsulta.FalloDetalle) {
+                    falloRep.Renglones += falloDetalleConsulta.RenglonAnexo + ",";
+                    falloRep.TotalAdjudicado += falloDetalleConsulta.CantidadMin.Value
+                        *falloDetalleConsulta.PrecioFallo.Value;
+                }
+
+                //Quitar la utima coma
+                falloRep.Renglones = falloRep.Renglones.Substring(0, falloRep.Renglones.Length - 1);
+                listaFalloRep.Add(falloRep);
+            }
+
+            ReporteFallo1.SetDataSource(listaFalloRep);
+            crystalReportViewer.ReportSource = ReporteFallo1;
+            crystalReportViewer.Refresh();
+
+            Text = @"ReporteFallo";
+        }
+        
         private void ReportePedido(Pedido pedido)
         {
 
@@ -746,6 +792,36 @@ namespace Adquisiciones.View.Reportes
             Text = @"ReporteListaPedido";
             
         }
+
+        private void ReportePedidoSaldo(List<Pedido> pedidos)
+        {
+             var listaPedidoSaldo = new List<PedidoSaldo>();
+
+            foreach (var pedido in pedidos) {
+                var pedidoSaldo = new PedidoSaldo{
+                    Partida = pedido.PartidaString,
+                    NumeroPedido = pedido.NumeroPedido.Value,
+                    FechaPedido = pedido.FechaPedido.Value,
+                    NumeroReq = pedido.NumeroRequisicion,
+                    Proveedor = pedido.Proveedor.NombreFiscal,
+                    ImporteTotalPedido = pedido.Total,
+                    ImporteTotalEntrada = PedidoService.PedidoDao.ImporteEntradas(pedido),
+                    TipoPedido = pedido.CatTipopedido.ToString()
+                };
+
+                listaPedidoSaldo.Add(pedidoSaldo);
+            }
+
+            ReportePedidoSaldo1.SetDataSource(listaPedidoSaldo);
+            crystalReportViewer.ReportSource = ReportePedidoSaldo1;
+            crystalReportViewer.Refresh();
+
+            Text = @"ReportePedidoSaldo";
+
+
+
+        }
+
 
     }
 }

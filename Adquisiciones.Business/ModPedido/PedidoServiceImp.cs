@@ -103,7 +103,7 @@ namespace Adquisiciones.Business.ModPedido
              Requisicion requisicion, DateTime fechaInicial, DateTime fechaFinal)
          {
 
-             var fallos = FalloDao.FallosByAnexoEager(requisicion.Anexo);
+             var fallos = FalloDao.ConsultarFalloByAnexo(requisicion.Anexo);
 
              foreach (var fallo in fallos)
             {
@@ -185,7 +185,7 @@ namespace Adquisiciones.Business.ModPedido
         public bool TieneFalloRequisicion(Requisicion requisicion)
         {
             bool result = false;
-            var fallos = FalloDao.FallosByAnexoEager(requisicion.Anexo);
+            var fallos = FalloDao.ConsultarFalloByAnexo(requisicion.Anexo);
             result = fallos.Count > 0;
             return result;
         }

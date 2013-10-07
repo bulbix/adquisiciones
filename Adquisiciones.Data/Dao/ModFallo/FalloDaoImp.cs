@@ -26,18 +26,9 @@ namespace Adquisiciones.Data.Dao.ModFallo
         [Transaction(ReadOnly = true)]
         public IList<Fallo> FallosByAnexo(Anexo anexo)
         {
-
             var criteria = CurrentSession.CreateCriteria(typeof(Fallo));
             criteria.Add(Restrictions.Eq("Anexo", anexo));
             return criteria.List<Fallo>();
-        }
-
-        [Transaction(ReadOnly = true)]
-        public IList<Fallo> FallosByAnexoEager(Anexo anexo)
-        {
-            var query = CurrentSession.GetNamedQuery("Fallo.CargarByAnexoEager");
-            query.SetParameter("anexo", anexo);
-            return query.List<Fallo>();
         }
 
         [Transaction(ReadOnly = true)]
@@ -50,11 +41,19 @@ namespace Adquisiciones.Data.Dao.ModFallo
         }
 
         [Transaction(ReadOnly = true)]
-        public IList<Fallo> ConsultarFalloCompleto(Anexo anexo)
+        public IList<Fallo> ConsultarFalloByAnexo(Anexo anexo)
         {
-            var query = CurrentSession.GetNamedQuery("Fallo.CargarByAnexoCompleto");
+            var query = CurrentSession.GetNamedQuery("Fallo.CargarByAnexo");
             query.SetParameter("anexo", anexo);
             return query.List<Fallo>();
+        }
+
+        [Transaction(ReadOnly = true)]
+        public IList<FalloDetalle> ConsultarFalloDetalle(Fallo fallo)
+        {
+            var query = CurrentSession.GetNamedQuery("Fallo.CargaDetalle");
+            query.SetParameter("fallo", fallo);
+            return query.List<FalloDetalle>();
         }
 
         [Transaction(ReadOnly = true)]
@@ -68,8 +67,7 @@ namespace Adquisiciones.Data.Dao.ModFallo
             var lista = query.List<Fallo>();
             return lista.GroupBy(x => x.Anexo.NumeroAnexo).Select(y => y.First()).ToList();
         }
-
-
+        
         [Transaction(ReadOnly = true)]
         public IList<Fallo> CargarFallos(Almacen almacen)
         {

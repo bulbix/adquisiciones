@@ -28,7 +28,7 @@ namespace Adquisiciones.View.Busquedas
 
             base.TypeEntity = typeof(Fallo);
             base.NombreService = "falloService";
-            base.NombreReporte = "reporteTabla";
+            base.NombreReporte = "reporteFallo";
             base.GvGeneral = gvAnexo;
             GetServicio();
             FalloService = base.Servicio as IFalloService;
@@ -54,14 +54,6 @@ namespace Adquisiciones.View.Busquedas
         }
         #endregion
 
-        #region Eventos
-        protected override void CmdConsultarItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            XtraMessageBox.Show("Genere el reporte");
-        }
-        #endregion
-
-        
 
         private void repositoryItemButtonEdit1_Click(object sender, EventArgs e)
         {

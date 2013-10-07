@@ -28,6 +28,8 @@ namespace Adquisiciones.Data.Dao.ModPedido
         decimal ImporteEntrada(Entrada entrada);
         decimal ImporteEntradaSinIva(Entrada entrada);
 
+        decimal ImporteEntradas(Pedido pedido);
+
         void CancelarPedido(Pedido pedido);
         IList<Entrada> CargarEntradas(DateTime fechaInicial, DateTime fechaFinal);
         IList<Pedido> CargarPedidos(Entrada entrada,CatTipopedido tipopedido, Ordenado ordenado);

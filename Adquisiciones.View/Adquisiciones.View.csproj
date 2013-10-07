@@ -30,7 +30,7 @@
     <ProductName>Adquisiciones</ProductName>
     <PublisherName>INR</PublisherName>
     <WebPage>publicacion.htm</WebPage>
-    <ApplicationRevision>110</ApplicationRevision>
+    <ApplicationRevision>111</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -351,12 +351,26 @@
       <DependentUpon>ReporteProveedor.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Reportes\Clases\FalloRep.cs" />
     <Compile Include="Reportes\Clases\FundamentoRep.cs" />
     <Compile Include="Reportes\Clases\PedidoCompleto.cs" />
     <Compile Include="Reportes\Clases\PedidoConcentrado.cs" />
     <Compile Include="Reportes\Clases\PedidoDetallado.cs" />
     <Compile Include="Reportes\Clases\PedidoEntrada.cs" />
+    <Compile Include="Reportes\Clases\PedidoSaldo.cs" />
     <Compile Include="Reportes\Clases\ProveedorRep.cs" />
+    <Compile Include="Reportes\Pedidos\ReportePedidoSaldo.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReportePedidoSaldo.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\ReporteFallo.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReporteFallo.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Reportes\ReporteSubTablaCerrado.cs">
       <DependentUpon>ReporteSubTablaCerrado.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -550,6 +564,14 @@
     <EmbeddedResource Include="Reportes\Catalogos\ReporteProveedor.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>ReporteProveedor.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\Pedidos\ReportePedidoSaldo.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ReportePedidoSaldo.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\ReporteFallo.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ReporteFallo.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\ReporteSubTablaCerrado.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

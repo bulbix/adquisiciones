@@ -8,14 +8,14 @@ namespace Adquisiciones.Data.Dao.ModFallo
     {
         long? MaximoId ();
         IList<Fallo> FallosByAnexo(Anexo anexo);
-        IList<Fallo> FallosByAnexoEager(Anexo anexo);
-        Fallo ExisteProvCotiz(Cotizacion cotizacion, Proveedor prov);
-        IList<Fallo> ConsultarFalloCompleto(Anexo anexo);
+        IList<Fallo> ConsultarFalloByAnexo(Anexo anexo);
+        IList<FalloDetalle> ConsultarFalloDetalle(Fallo fallo);
         IList<Fallo> CargarFallos(int anio, Almacen almacen);
         IList<Fallo> CargarFallos(Almacen almacen);
 
         void BorrarFallos(Anexo anexo);
         bool ExisteFalloRequisicion(Anexo anexo);
+        Fallo ExisteProvCotiz(Cotizacion cotizacion, Proveedor prov);
 
         
     }
