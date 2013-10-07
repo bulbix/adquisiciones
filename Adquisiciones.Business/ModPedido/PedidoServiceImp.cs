@@ -141,6 +141,8 @@ namespace Adquisiciones.Business.ModPedido
 
                 foreach (var requisicionDetalle in requisicionesDetalle)
                 {
+                    fallo.FalloDetalle = FalloDao.ConsultarFalloDetalle(fallo);
+
                     foreach (var falloDetalle in fallo.FalloDetalle)
                     {
                         if(requisicionDetalle.Articulo == falloDetalle.Articulo)
