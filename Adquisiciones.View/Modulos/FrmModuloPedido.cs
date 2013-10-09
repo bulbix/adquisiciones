@@ -300,11 +300,17 @@ namespace Adquisiciones.View.Modulos
 
 
                     LimpiarErrores();
-                   
 
                     if(PedidoService.PedidoDao.ExisteEntradaPedido(PedidoActual))
                     {
                         XtraMessageBox.Show(@"Ya Existe entrada asociada al pedido",
+                        @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        cmdGuardar.Enabled = false;
+                    }
+
+                    if (PedidoActual.EstadoPedido == "C")
+                    {
+                        XtraMessageBox.Show(@"El pedido esta cancelado",
                         @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         cmdGuardar.Enabled = false;
                     }

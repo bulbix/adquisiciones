@@ -30,7 +30,7 @@
     <ProductName>Adquisiciones</ProductName>
     <PublisherName>INR</PublisherName>
     <WebPage>publicacion.htm</WebPage>
-    <ApplicationRevision>112</ApplicationRevision>
+    <ApplicationRevision>121</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
