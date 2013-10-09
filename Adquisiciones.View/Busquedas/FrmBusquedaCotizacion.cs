@@ -35,7 +35,6 @@ namespace Adquisiciones.View.Busquedas
             GetServicio();
             CotizacionService = base.Servicio as ICotizacionService;
             base.ObtenerPerfil();
-            cmdCancelar.Visibility = BarItemVisibility.Never;
         }
         #endregion
 

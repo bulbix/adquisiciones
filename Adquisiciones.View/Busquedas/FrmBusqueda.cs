@@ -202,7 +202,6 @@ namespace Adquisiciones.View.Busquedas
                 {
                     XtraMessageBox.Show(@"Elemento seleccionado cancelado", @"Adquisiciones",
                                 MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    Buscar();
                 }
                 else
                 {

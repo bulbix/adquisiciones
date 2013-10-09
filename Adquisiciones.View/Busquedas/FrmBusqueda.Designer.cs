@@ -35,9 +35,9 @@
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.cmdBuscar = new DevExpress.XtraBars.BarButtonItem();
             this.cmdConsultar = new DevExpress.XtraBars.BarButtonItem();
+            this.cmdCancelar = new DevExpress.XtraBars.BarButtonItem();
             this.cmdReporte = new DevExpress.XtraBars.BarButtonItem();
             this.cmdEliminar = new DevExpress.XtraBars.BarButtonItem();
-            this.cmdCancelar = new DevExpress.XtraBars.BarButtonItem();
             this.bar3 = new DevExpress.XtraBars.Bar();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
@@ -90,8 +90,8 @@
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.cmdBuscar, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.cmdConsultar, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.cmdReporte, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.cmdEliminar, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.cmdCancelar, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.cmdCancelar, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.cmdEliminar, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
             this.bar2.OptionsBar.MultiLine = true;
             this.bar2.OptionsBar.UseWholeRow = true;
             this.bar2.Text = "Main menu";
@@ -118,6 +118,17 @@
             this.cmdConsultar.Name = "cmdConsultar";
             this.cmdConsultar.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.CmdConsultarItemClick);
             // 
+            // cmdCancelar
+            // 
+            this.cmdCancelar.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmdCancelar.Appearance.Options.UseFont = true;
+            this.cmdCancelar.Caption = "Cancelar";
+            this.cmdCancelar.Glyph = ((System.Drawing.Image)(resources.GetObject("cmdCancelar.Glyph")));
+            this.cmdCancelar.Id = 5;
+            this.cmdCancelar.Name = "cmdCancelar";
+            this.cmdCancelar.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+            this.cmdCancelar.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.CmdCancelarItemClick);
+            // 
             // cmdReporte
             // 
             this.cmdReporte.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -139,16 +150,6 @@
             this.cmdEliminar.Id = 4;
             this.cmdEliminar.Name = "cmdEliminar";
             this.cmdEliminar.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.CmdEliminarItemClick);
-            // 
-            // cmdCancelar
-            // 
-            this.cmdCancelar.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmdCancelar.Appearance.Options.UseFont = true;
-            this.cmdCancelar.Caption = "Cancelar";
-            this.cmdCancelar.Glyph = ((System.Drawing.Image)(resources.GetObject("cmdCancelar.Glyph")));
-            this.cmdCancelar.Id = 5;
-            this.cmdCancelar.Name = "cmdCancelar";
-            this.cmdCancelar.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.CmdCancelarItemClick);
             // 
             // bar3
             // 

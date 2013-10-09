@@ -35,7 +35,6 @@ namespace Adquisiciones.View.Busquedas
             base.ObtenerPerfil();
 
             cmdConsultar.Visibility =BarItemVisibility.Never;
-            cmdCancelar.Visibility = BarItemVisibility.Never;
         }
         #endregion
 

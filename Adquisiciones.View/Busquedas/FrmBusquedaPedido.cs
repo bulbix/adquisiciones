@@ -39,6 +39,7 @@ namespace Adquisiciones.View.Busquedas
             GetServicio();
             PedidoService = base.Servicio as IPedidoService;
             base.ObtenerPerfil();
+            cmdCancelar.Visibility = BarItemVisibility.Always;
         }
         #endregion
 
@@ -55,10 +56,10 @@ namespace Adquisiciones.View.Busquedas
         {
             var pedido = GvGeneral.GetFocusedRow() as Pedido;
 
-            if (PedidoService.PedidoDao.ExisteEntradaPedido(pedido))
+            if (pedido != null && pedido.EstadoPedido != "C")
             {
-                XtraMessageBox.Show(@"Ya Existe entrada asociada al pedido",
-                       @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                XtraMessageBox.Show(@"Debe cancelar primero el pedido", @"Adquisiciones",
+                          MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 

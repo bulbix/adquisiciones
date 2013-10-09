@@ -38,7 +38,6 @@ namespace Adquisiciones.View.Busquedas
             cmdConsultar.Visibility = BarItemVisibility.Never;
             cmdReporte.Visibility = BarItemVisibility.Never;
             cmdEliminar.Visibility = BarItemVisibility.Never;
-            cmdCancelar.Visibility = BarItemVisibility.Never;
         }
 
 

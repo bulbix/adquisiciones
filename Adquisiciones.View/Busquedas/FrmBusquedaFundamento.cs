@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using Adquisiciones.Data.Entities;
 using Adquisiciones.View.Catalogos;
 using Adquisiciones.View.Reportes;
+using DevExpress.XtraBars;
 using DevExpress.XtraEditors;
 
 namespace Adquisiciones.View.Busquedas

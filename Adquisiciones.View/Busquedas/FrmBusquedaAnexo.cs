@@ -36,7 +36,6 @@ namespace Adquisiciones.View.Busquedas
             GetServicio();
             AnexoService = base.Servicio as IAnexoService;
             base.ObtenerPerfil();
-            cmdCancelar.Visibility = BarItemVisibility.Never;
         }
         #endregion
 
