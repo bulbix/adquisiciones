@@ -93,7 +93,8 @@
   <query name="Pedido.ExisteEntradaPedido">
     <![CDATA[    
       from Entrada e
-      where Pedido  = :pedido
+      where Pedido  = :pedido and EstadoEntrada <> 'C'
+      
     ]]>
   </query>
 
