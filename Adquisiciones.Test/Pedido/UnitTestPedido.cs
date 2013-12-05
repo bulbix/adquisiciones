@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using Adquisiciones.Business;
 using Adquisiciones.Business.ModPedido;
 using Adquisiciones.Data.Dao.Catalogos;
 using Adquisiciones.Data.Dao.ModPedido;
@@ -10,7 +11,7 @@ using NUnit.Framework;
 namespace Adquisiciones.Test.Anexo
 {
     [TestFixture]
-    public class UnitTestPedido:AbstractDaoIntegrationTests
+    public class UnitTestPedido//:AbstractDaoIntegrationTests
     {
         public IRequisicionDao RequisicionDao { private get; set; }
         public IPedidoDao PedidoDao { private get; set; }
@@ -184,10 +185,17 @@ namespace Adquisiciones.Test.Anexo
             Assert.NotNull(pedido);
         }
 
+        [Test]
+        public void TestNumalet()
+        {
+            var result = Numalet.ToCardinal(1001.12);
+            Assert.AreEqual(result, "");
+        }
+
         [SetUp]
         public void SetUp()
         {
-            base.SetComplete();
+            //base.SetComplete();
         }
 
         [TearDown]

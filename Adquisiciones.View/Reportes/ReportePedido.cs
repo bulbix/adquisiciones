@@ -535,10 +535,7 @@ namespace Adquisiciones.View.Reportes
             cabeza.DefaultCell.Colspan = 2;cabeza.AddCell(this.CabeceraDetalle());
             anverso.AddCell(cabeza);
             anverso.AddCell(this.Detalle());
-
-            
-            var let = new  Aletras();
-
+           
             var totales = new PdfPTable(3);
             totales.DefaultCell.Border = 0;
             totales.DefaultCell.HorizontalAlignment = Element.ALIGN_RIGHT;
@@ -585,9 +582,12 @@ namespace Adquisiciones.View.Reportes
             decimal total = pedido.Total;
             totales.DefaultCell.HorizontalAlignment = Element.ALIGN_LEFT;
 
+            var numeroLetra = Numalet.ToCardinal(Math.Round(total, 2)) + "/100 M.N.";
+
+
             totales.DefaultCell.Colspan = 2;
             totales.AddCell(new Paragraph("CARGO A: "+pedido.CatPresupuesto.DesPresupuesto+
-                "( " + let.Letras(Math.Round(total,2).ToString()).ToUpper() + " )",fuente));
+                "( " + numeroLetra.ToUpper() + " )", fuente));
             totales.DefaultCell.HorizontalAlignment = Element.ALIGN_RIGHT;
             
             totales.DefaultCell.Colspan = 1;
