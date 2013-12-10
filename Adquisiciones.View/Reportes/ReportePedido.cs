@@ -226,6 +226,10 @@ namespace Adquisiciones.View.Reportes
                     contrato.AddCell(new Paragraph("CONTRATO/ PEDIDO DE EXTRAMUROS", fuente));
                     contrato.AddCell(new Paragraph("NUMERO: " + pedido.NumeroPedido, fuenteBold));
                     break;
+                case 5: //AJUSTE
+                    contrato.AddCell(new Paragraph("CONTRATO/ PEDIDO DE AJUSTE", fuente));
+                    contrato.AddCell(new Paragraph("NUMERO: " + pedido.NumeroPedido, fuenteBold));
+                    break;
 
             }
             
