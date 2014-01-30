@@ -205,28 +205,27 @@ namespace Adquisiciones.View.Reportes
             contrato.DefaultCell.Border = 0;
             
 
-            switch(pedido.CatTipopedido.IdTipoped)
+            switch(pedido.CatTipopedido.DesTipoped)
             {
-                case 1: //MAYOR
+                case "MAYOR":
                     contrato.AddCell(new Paragraph("CONTRATO/ PEDIDO DE ADQUISICION", fuente));
                     contrato.AddCell(new Paragraph("NUMERO: INR/" + pedido.FechaPedido.Value.Year + "/" 
                         + pedido.NumeroPedido, fuenteBold));
-
                     break;
-                case 2: //MENOR
+                case "MENOR":
                     contrato.AddCell(new Paragraph("CONTRATO/ PEDIDO DE ADQUISICION POR MONTO:", fuente));
                     contrato.AddCell(new Paragraph("ART. 42 LA LEY DE ADQUISICIONES, ARRENDAMIENTOS Y SERVICIOS DEL SECTOR PUBLICO.", fuente));
                     contrato.AddCell(new Paragraph("NUMERO: " + pedido.NumeroPedido, fuenteBold));
                     break;
-                case 3: //DONACION
+                case "DONACION":
                     contrato.AddCell(new Paragraph("CONTRATO/ PEDIDO DE DONACION", fuente));
                     contrato.AddCell(new Paragraph("NUMERO: " + pedido.NumeroPedido, fuenteBold));
                     break;
-                case 4: //EXTRAMUROS
+                case "EXTRAMUROS":
                     contrato.AddCell(new Paragraph("CONTRATO/ PEDIDO DE EXTRAMUROS", fuente));
                     contrato.AddCell(new Paragraph("NUMERO: " + pedido.NumeroPedido, fuenteBold));
                     break;
-                case 5: //AJUSTE
+                case "AJUSTE":
                     contrato.AddCell(new Paragraph("CONTRATO/ PEDIDO DE AJUSTE", fuente));
                     contrato.AddCell(new Paragraph("NUMERO: " + pedido.NumeroPedido, fuenteBold));
                     break;

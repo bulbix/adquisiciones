@@ -184,6 +184,29 @@ namespace Adquisiciones.Business
             return hex;
         }
 
+        /// <summary>
+        /// Regresa el tipo de area de acuerdo al almacen
+        /// </summary>
+        /// <param name="almacen"></param>
+        /// <returns></returns>
+        public static string TipoArea(Almacen almacen)
+        {
+            string tipo = "";
+
+            switch (almacen.IdAlmacen)
+            {
+                case "P2":
+                    tipo = "N";
+                    break;
+                case "C2":
+                    tipo = "C";
+                    break;
+            }
+
+            return tipo;
+
+        }
+
 
 
     }

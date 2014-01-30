@@ -11,7 +11,7 @@ using NUnit.Framework;
 namespace Adquisiciones.Test.Anexo
 {
     [TestFixture]
-    public class UnitTestPedido//:AbstractDaoIntegrationTests
+    public class UnitTestPedido:AbstractDaoIntegrationTests
     {
         public IRequisicionDao RequisicionDao { private get; set; }
         public IPedidoDao PedidoDao { private get; set; }

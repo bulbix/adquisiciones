@@ -24,7 +24,7 @@ namespace Adquisiciones.Data.Dao.ModPedido
             query.SetParameter("almacen", almacen);
             query.SetParameter("tipoPedido", tipo);
 
-            if(query.UniqueResult() != null)
+            if (query.UniqueResult() != null)
             {
                 result = (int)query.UniqueResult() + 1;
             }
@@ -109,7 +109,7 @@ namespace Adquisiciones.Data.Dao.ModPedido
               GetNamedQuery("Pedido.CargaPedidoDetalle");
             query.SetParameter("pedido", pedido);
             return query.List<PedidoDetalle>();
-          
+
         }
 
         [Transaction(ReadOnly = true)]
@@ -151,10 +151,10 @@ namespace Adquisiciones.Data.Dao.ModPedido
             if (fechaInicial != null && fechaFinal != null)
                 rangoFecha = " and p.FechaPedido between :fInicial and :fFinal ";
 
-            if(numeroInicial!= 0 && numeroFinal != 0)
+            if (numeroInicial != 0 && numeroFinal != 0)
                 rangoNumero = string.Format(" and p.NumeroPedido between {0} and {1} ", numeroInicial, numeroFinal);
 
-            if(tipos.Length > 0)
+            if (tipos.Length > 0)
                 rangoTipo = string.Format(" and p.CatTipopedido.IdTipoped in ({0}) ", String.Join(",", tipos));
 
             if (proveedor != null)
@@ -163,7 +163,7 @@ namespace Adquisiciones.Data.Dao.ModPedido
             strquery = string.Format(strquery, rangoFecha, rangoNumero, rangoTipo, proveedorCondition);
 
             var query = CurrentSession.CreateQuery(strquery);
-            
+
             query.SetParameter("almacen", almacen);
 
             if (fechaInicial != null && fechaFinal != null)
@@ -192,36 +192,38 @@ namespace Adquisiciones.Data.Dao.ModPedido
 
         [Transaction(ReadOnly = true)]
         public String[] CargarPartidaAlmacen(Pedido pedido)
-         {
-             var result = new String[] {"", ""};
+        {
+            var result = new String[] { "", "" };
 
-             const string queryNativo = @"SELECT FIRST 1 cve_art,id_almacen FROM pedido_detalle WHERE id_pedido = :idpedido";
-             var query = CurrentSession.CreateSQLQuery(queryNativo);
-             query.SetParameter("idpedido", pedido.IdPedido);
-             var claveAlmacen =query.UniqueResult<Object[]>();
-             switch(claveAlmacen[1].ToString().Trim())
-             {
-                 case "F":
-                     result[0] = "FARMACIA";
-                     break;
-                 case "G":
-                     result[0] = "GENERAL";
-                     break;
-                 case "P":
-                     result[0] = "PROTESIS";
-                     break;
-             } 
+            const string queryNativo = @"SELECT FIRST 1 cve_art,id_almacen FROM pedido_detalle WHERE id_pedido = :idpedido";
+            var query = CurrentSession.CreateSQLQuery(queryNativo);
+            query.SetParameter("idpedido", pedido.IdPedido);
+            var claveAlmacen = query.UniqueResult<Object[]>();
 
-             const string strQuery = "SELECT partida FROM articulo_partida WHERE cve_art = :articulo and id_almacen = :almacen";
-             var criteria = CurrentSession.CreateSQLQuery(strQuery);
-             criteria.SetParameter("articulo", (int)claveAlmacen[0]);
-             criteria.SetParameter("almacen", claveAlmacen[1].ToString());
-             var partida  = criteria.UniqueResult<string>();
 
-             result[1] = partida;
+            switch (claveAlmacen[1].ToString().Trim()[0])//Tomamos el primer caracter
+            {
+                case 'F':
+                    result[0] = "FARMACIA";
+                    break;
+                case 'G':
+                    result[0] = "GENERAL";
+                    break;
+                case 'P':
+                    result[0] = "PROTESIS";
+                    break;
+            }
 
-             return result;
-         }
+            const string strQuery = "SELECT partida FROM articulo_partida WHERE cve_art = :articulo and id_almacen = :almacen";
+            var criteria = CurrentSession.CreateSQLQuery(strQuery);
+            criteria.SetParameter("articulo", (int)claveAlmacen[0]);
+            criteria.SetParameter("almacen", claveAlmacen[1].ToString());
+            var partida = criteria.UniqueResult<string>();
+
+            result[1] = partida;
+
+            return result;
+        }
 
         [Transaction(ReadOnly = true)]
         public decimal ImporteEntrada(Entrada entrada)
@@ -245,10 +247,10 @@ namespace Adquisiciones.Data.Dao.ModPedido
             where ed.Entrada = :entrada ";
             var query = CurrentSession.CreateQuery(strQuery);
             query.SetParameter("entrada", entrada);
-            var entradaDetalle = (List<EntradaDetalle>) query.List<EntradaDetalle>();
+            var entradaDetalle = (List<EntradaDetalle>)query.List<EntradaDetalle>();
             var suma = (decimal)0.0;
 
-            foreach(var detalle in entradaDetalle )
+            foreach (var detalle in entradaDetalle)
             {
                 var criteria = CurrentSession.CreateCriteria(typeof(PedidoDetalle));
                 criteria.Add(Restrictions.Eq("Pedido", detalle.Entrada.Pedido));
@@ -269,7 +271,8 @@ namespace Adquisiciones.Data.Dao.ModPedido
             criteria.SetFetchMode("EntradaDetalle", FetchMode.Lazy);
             var entradas = criteria.List<Entrada>();
 
-            foreach (var entrada in entradas){
+            foreach (var entrada in entradas)
+            {
                 total += ImporteEntrada(entrada);
             }
 
@@ -287,7 +290,7 @@ namespace Adquisiciones.Data.Dao.ModPedido
         public IList<Entrada> CargarEntradas(DateTime fechaInicial, DateTime fechaFinal)
         {
             var criteria = CurrentSession.CreateCriteria(typeof(Entrada));
-            criteria.Add(Restrictions.Between("FechaEntrada", fechaInicial,fechaFinal));
+            criteria.Add(Restrictions.Between("FechaEntrada", fechaInicial, fechaFinal));
             criteria.SetFetchMode("EntradaDetalle", FetchMode.Lazy);
             return criteria.List<Entrada>();
 
@@ -295,9 +298,9 @@ namespace Adquisiciones.Data.Dao.ModPedido
 
         [Transaction(ReadOnly = true)]
         public IList<Pedido> CargarPedidos(Entrada entrada, CatTipopedido tipopedido, Ordenado ordenado)
-         {
-             var strquery =
-             @" select p from Pedido p 
+        {
+            var strquery =
+            @" select p from Pedido p 
                 join p.Entradas e 
                 join fetch p.Proveedor 
                 join fetch p.Usuario 
@@ -307,7 +310,8 @@ namespace Adquisiciones.Data.Dao.ModPedido
                 where e.IdEntrada = :idEntrada 
                 and p.CatTipopedido = :tipoPedido ";
 
-            switch (ordenado){
+            switch (ordenado)
+            {
                 case Ordenado.Proveedor:
                     strquery += " order by p.Proveedor";
                     break;
@@ -316,11 +320,11 @@ namespace Adquisiciones.Data.Dao.ModPedido
                     break;
             }
 
-             var query = CurrentSession.CreateQuery(strquery);
-             query.SetParameter("idEntrada", entrada.IdEntrada);
-             query.SetParameter("tipoPedido", tipopedido);
-             var pedidos = query.List<Pedido>();
-             return pedidos;
+            var query = CurrentSession.CreateQuery(strquery);
+            query.SetParameter("idEntrada", entrada.IdEntrada);
+            query.SetParameter("tipoPedido", tipopedido);
+            var pedidos = query.List<Pedido>();
+            return pedidos;
         }
 
         [Transaction(ReadOnly = true)]
@@ -329,22 +333,24 @@ namespace Adquisiciones.Data.Dao.ModPedido
             var criteria = CurrentSession.CreateCriteria(typeof(CatTipoprocedimiento));
             criteria.SetProjection(Projections.Distinct(Projections.Property(bloque)));
 
-             if (condicionColumn != null && condicionValor != null )
-             {
-                 criteria.Add(Restrictions.Eq(condicionColumn, condicionValor));
-             }
+            if (condicionColumn != null && condicionValor != null)
+            {
+                criteria.Add(Restrictions.Eq(condicionColumn, condicionValor));
+            }
 
-            if (tipoPedido.IdTipoped == 1){ //Pedido Mayor
+            if (tipoPedido.IdTipoped == 1)
+            { //Pedido Mayor
                 criteria.Add(Restrictions.Eq("Mayor", true));
             }
-            else if (tipoPedido.IdTipoped == 2){ //Pedido Menor
+            else if (tipoPedido.IdTipoped == 2)
+            { //Pedido Menor
                 criteria.Add(Restrictions.Eq("Menor", true));
             }
 
 
             //criteria.AddOrder(Order.Asc("Id"));
 
-             return criteria.List<string>();
+            return criteria.List<string>();
         }
 
         [Transaction(ReadOnly = true)]
@@ -354,7 +360,7 @@ namespace Adquisiciones.Data.Dao.ModPedido
 
             var criteria = CurrentSession.CreateCriteria(typeof(CatTipoprocedimiento));
 
-            for (var index =0; index < bloquesNombre.Length; index++)
+            for (var index = 0; index < bloquesNombre.Length; index++)
             {
                 if (bloquesValor[index] != null)
                     criteria.Add(Restrictions.Eq(bloquesNombre[index], bloquesValor[index]));
@@ -362,13 +368,13 @@ namespace Adquisiciones.Data.Dao.ModPedido
                     criteria.Add(Restrictions.IsNull(bloquesNombre[index]));
             }
 
-            if(criteria.UniqueResult() != null)
+            if (criteria.UniqueResult() != null)
             {
                 result = criteria.UniqueResult<CatTipoprocedimiento>();
             }
 
             return result;
-            
+
         }
 
         [Transaction(ReadOnly = true)]
@@ -402,7 +408,7 @@ namespace Adquisiciones.Data.Dao.ModPedido
 
             return query.List<PrecioBusqueda>();
 
-            
+
         }
     }
 }

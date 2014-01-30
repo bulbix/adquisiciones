@@ -127,7 +127,10 @@ namespace Adquisiciones.View.Modulos
             PedidoService.AnexoService.IvasCombo(cbxIva);
             PedidoService.CatalogoPresupuestal(cbxCargo);
             bsFundamento.DataSource = PedidoService.PedidoDao.CargarCatalogo<Fundamento>("CveFundamento");
-            bsArea.DataSource = PedidoService.PedidoDao.CargarCatalogo<CatArea>("CveArea","Estatus", 1);
+            
+            string tipoArea = Util.TipoArea(AlmacenActual);
+
+            bsArea.DataSource = PedidoService.PedidoDao.CargarCatalogo<CatArea>("CveArea","Estatus", 1,"Tipo",tipoArea);
             bsProveedor.DataSource = PedidoService.PedidoDao.CargarCatalogo<Proveedor>("CveProveedor");
             bsAnexo.DataSource = PedidoService.AnexoDao.CargarAnexos(AlmacenActual);
             bsPartida.DataSource = PedidoService.PedidoDao.CargarCatalogo<CatPartida>("Partida");

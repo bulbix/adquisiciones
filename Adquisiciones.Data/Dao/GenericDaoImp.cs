@@ -80,22 +80,39 @@ namespace Adquisiciones.Data.Dao
             return query.UniqueResult<DateTime>();
         }
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="claveOrder"></param>
+        /// <param name="parametros"></param>
+        /// <returns></returns>
         [Transaction(ReadOnly = true)]
         public IList<T> CargarCatalogo<T>(string claveOrder, params object[] parametros)
         {
 
             object campo = "Estatus";
             object valor = "A";
-            if(parametros.Count() == 2)
-            {
-                campo = parametros[0];
-                valor = parametros[1];
-            }
 
             var criteria = CurrentSession.CreateCriteria(typeof(T));
-            
-            criteria.Add(Restrictions.Eq(campo.ToString(), valor));
+
+            if (!parametros.Any()) {
+                criteria.Add(Restrictions.Eq(campo.ToString(), valor));
+            }
+            else
+            {
+                if (parametros.Count() % 2 == 0){ //Clave Valo{
+                    int index = 0;
+                    while (index < parametros.Count())
+                    {
+                        campo = parametros[index];
+                        valor = parametros[++index];
+                        criteria.Add(Restrictions.Eq(campo.ToString(), valor));
+                        ++index;
+                    }
+                }
+            }
+
             criteria.AddOrder(Order.Desc(claveOrder));
             return criteria.List<T>();
         }

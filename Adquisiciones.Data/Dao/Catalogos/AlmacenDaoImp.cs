@@ -17,9 +17,9 @@ namespace Adquisiciones.Data.Dao.Catalogos
             switch (almacenAdq.IdAlmacen)
             {
                 case "C2":
-                    almacenes.Add(Get("PC"));
-                    almacenes.Add(Get("GC"));
                     almacenes.Add(Get("FC"));
+                    almacenes.Add(Get("GC"));
+                    almacenes.Add(Get("PC"));
                     break;
                 case "C5":
                     almacenes.Add(Get("AC"));
