@@ -186,6 +186,7 @@ namespace Adquisiciones.Data.Dao.ModPedido
         {
             var criteria = CurrentSession.CreateCriteria(typeof(Entrada));
             criteria.Add(Restrictions.Eq("Pedido", pedido));
+            criteria.Add(Restrictions.Not(Restrictions.Eq("EstadoEntrada", "C")));
             criteria.SetFetchMode("EntradaDetalle", FetchMode.Lazy);
             return criteria.List<Entrada>();
         }
@@ -229,7 +230,7 @@ namespace Adquisiciones.Data.Dao.ModPedido
         public decimal ImporteEntrada(Entrada entrada)
         {
             var strQuery = @"select sum(ed.PrecioEntrada * ed.Cantidad) 
-            from EntradaDetalle ed where ed.Entrada = :entrada ";
+            from EntradaDetalle ed where ed.Entrada = :entrada and ed.Entrada.EstadoEntrada <> 'C'";
 
             var query = CurrentSession.CreateQuery(strQuery);
             query.SetParameter("entrada", entrada);
@@ -244,7 +245,7 @@ namespace Adquisiciones.Data.Dao.ModPedido
             var strQuery = @"select ed from EntradaDetalle ed 
             join fetch ed.Entrada e 
             join fetch e.Pedido p 
-            where ed.Entrada = :entrada ";
+            where ed.Entrada = :entrada and e.EstadoEntrada <> 'C'";
             var query = CurrentSession.CreateQuery(strQuery);
             query.SetParameter("entrada", entrada);
             var entradaDetalle = (List<EntradaDetalle>)query.List<EntradaDetalle>();
@@ -268,6 +269,7 @@ namespace Adquisiciones.Data.Dao.ModPedido
             decimal total = 0;
             var criteria = CurrentSession.CreateCriteria(typeof(Entrada));
             criteria.Add(Restrictions.Eq("Pedido", pedido));
+            criteria.Add(Restrictions.Not(Restrictions.Eq("EstadoEntrada", "C")));
             criteria.SetFetchMode("EntradaDetalle", FetchMode.Lazy);
             var entradas = criteria.List<Entrada>();
 
@@ -277,6 +279,15 @@ namespace Adquisiciones.Data.Dao.ModPedido
             }
 
             return total;
+        }
+
+        [Transaction(ReadOnly = true)]
+        public decimal SumaCantidadEntradaArticulo(PedidoDetalle pedidoDetalle)
+        {
+            var query = CurrentSession.GetNamedQuery("Pedido.SumaCantidadEntradaArticulo");
+            query.SetParameter("pedido", pedidoDetalle.Pedido);
+            query.SetParameter("articulo", pedidoDetalle.Articulo);
+            return query.UniqueResult<decimal>();
         }
 
         [Transaction]
@@ -291,6 +302,7 @@ namespace Adquisiciones.Data.Dao.ModPedido
         {
             var criteria = CurrentSession.CreateCriteria(typeof(Entrada));
             criteria.Add(Restrictions.Between("FechaEntrada", fechaInicial, fechaFinal));
+            criteria.Add(Restrictions.Not(Restrictions.Eq("EstadoEntrada", "C")));
             criteria.SetFetchMode("EntradaDetalle", FetchMode.Lazy);
             return criteria.List<Entrada>();
 

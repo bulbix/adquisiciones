@@ -228,13 +228,24 @@ namespace Adquisiciones.View.Modulos
 
             try
             {
-                PedidoService.GuardarPedido(ref PedidoActual);
+                var errores = PedidoService.GuardarPedido(ref PedidoActual);
 
-                Consultar();
-                base.EntityActual = PedidoActual;
+                if (errores.Count == 0)
+                {
+                    Consultar();
+                    base.EntityActual = PedidoActual;
 
-                XtraMessageBox.Show(@"Pedido Registrado o Actualizado Exitosamente",
-                                @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    XtraMessageBox.Show(@"Pedido Registrado o Actualizado Exitosamente",
+                        @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    XtraMessageBox.Show(@"Existen errores consulte su lista",
+                       @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    listaError.Strings.AddRange(errores.ToArray());
+                }
+                
             }
             catch (Exception ee)
             {
@@ -306,9 +317,8 @@ namespace Adquisiciones.View.Modulos
 
                     if(PedidoService.PedidoDao.ExisteEntradaPedido(PedidoActual))
                     {
-                        XtraMessageBox.Show(@"Ya Existe entrada asociada al pedido",
-                        @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        cmdGuardar.Enabled = false;
+                        lblMensaje.Text = @"Existe entrada asociada al pedido";
+                        //cmdGuardar.Enabled = false;
                     }
 
                     if (PedidoActual.EstadoPedido == "C")
@@ -595,24 +605,16 @@ namespace Adquisiciones.View.Modulos
 
                     //Agregar un pedido entrega default
                     var pedidoDetalleSelect = gvPedidoDetalle.GetFocusedRow() as PedidoDetalle;
-                    pedidoDetalleSelect.PedidoEntrega.Clear();
 
                     if (deFechaInicial.EditValue != null && deFechaFinal.EditValue != null)
                     {
+                        pedidoDetalleSelect.PedidoEntrega.Clear();
                         var pedidoEntrega = new PedidoEntrega(deFechaInicial.DateTime,
                                                     deFechaFinal.DateTime, cantidad);
                         pedidoDetalleSelect.PedidoEntrega.Add(pedidoEntrega);
                     }
                 }
-                //var articulo = gvPedidoDetalle.GetRowCellValue(e.RowHandle, "Articulo");
-                //decimal? sumaPedidoEntrega = PedidoActual.PedidoDetalle.
-                //First(detalle=>detalle.Articulo == articulo).
-                //PedidoEntrega.Sum(entrega => entrega.Cantidad);
-                //if (sumaPedidoEntrega > cantidad)
-                //{
-                //    XtraMessageBox.Show(@"La suma de los renglones del pedido entrega debe coincidir con " + cantidad,
-                //             @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                //}
+                
             }
 
             SumTotal();
@@ -625,13 +627,42 @@ namespace Adquisiciones.View.Modulos
             forma.ShowDialog();
         }
 
+        /// <summary>
+        /// Borrado de claves sin entradas 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void GcPedidoDetalleKeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Delete)
             {
                 if (PedidoActual.Anexo == null) // Solo si no tiene anexo
                 {
-                    gvPedidoDetalle.DeleteRow(gvPedidoDetalle.FocusedRowHandle);
+                    if (PedidoActual.IdPedido == 0) //Nuevo
+                    {
+                        gvPedidoDetalle.DeleteRow(gvPedidoDetalle.FocusedRowHandle);
+                    }
+                    else
+                    {
+                        var pedidoDetalleSelect = gvPedidoDetalle.GetFocusedRow() as PedidoDetalle;
+                        pedidoDetalleSelect.Pedido = PedidoActual;
+                        var sumaCantidadEntrada = PedidoService.PedidoDao.SumaCantidadEntradaArticulo(pedidoDetalleSelect);
+
+                        if (sumaCantidadEntrada == 0)
+                        {
+                            gvPedidoDetalle.DeleteRow(gvPedidoDetalle.FocusedRowHandle);
+                        }
+                        else
+                        {
+                            XtraMessageBox.Show(@"No puede eliminar la clave, Cantidad Entrada:" + sumaCantidadEntrada,
+                            @"Adquisiciones", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                        }
+                        
+                    }
+
+                   
+
                 }
             }
         }

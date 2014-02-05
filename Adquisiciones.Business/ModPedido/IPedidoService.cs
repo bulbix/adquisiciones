@@ -102,7 +102,7 @@ namespace Adquisiciones.Business.ModPedido
         /// </summary>
         /// <param name="pedido"></param>
         /// <param name="importeTotal"></param>
-        void GuardarPedido(ref Pedido pedido);
+        IList<string> GuardarPedido(ref Pedido pedido);
 
 
         /// <summary>

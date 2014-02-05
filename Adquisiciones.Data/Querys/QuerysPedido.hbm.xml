@@ -107,6 +107,15 @@
         and p.NumeroPedido = :numPedido 
     ]]>
   </query>
+  
+  
+  <query name="Pedido.SumaCantidadEntradaArticulo">
+    <![CDATA[        
+        select sum(Cantidad) from EntradaDetalle ed where ed.Entrada.IdEntrada 
+        in (select IdEntrada from Entrada where Pedido = :pedido) and ed.Articulo = :articulo 
+        and ed.Entrada.EstadoEntrada <> 'C'
+    ]]>
+  </query>
 
 
 </hibernate-mapping>
