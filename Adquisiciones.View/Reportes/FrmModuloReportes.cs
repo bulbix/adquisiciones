@@ -420,11 +420,14 @@ namespace Adquisiciones.View.Reportes
             var reporte = new ReportePedido(pedido);
             reporte.GenerarReporteCompleto();
             crystalReportViewer.ReportSource = null;
-            crystalReportViewer.Refresh();Text = @"ReportePedido";
+            crystalReportViewer.Refresh();
+            Text = @"ReportePedido";
         }
 
         private void ReportePedidoConcentrado(List<Pedido> pedidos)
         {
+            pedidos = pedidos.Where(p => p.EstadoPedido != "C").ToList();
+
             var listaPedidoConcentrado = new List<PedidoConcentrado>();
 
             foreach (var pedido in pedidos) {
@@ -459,6 +462,8 @@ namespace Adquisiciones.View.Reportes
 
         private void ReportePedidoDetallado(List<Pedido> pedidos)
         {
+            pedidos = pedidos.Where(p => p.EstadoPedido != "C").ToList();
+
             var listaPedidoDetallado = new List<PedidoDetallado>();
 
             foreach (var pedido in pedidos) {
@@ -501,6 +506,8 @@ namespace Adquisiciones.View.Reportes
         
         private void ReportePedidoEntrada(List<Pedido> pedidos)
         {
+             pedidos = pedidos.Where(p => p.EstadoPedido != "C").ToList();
+
              var listaPedidoEntrada = new List<PedidoEntrada>();
 
              foreach (var pedido in pedidos)
@@ -689,6 +696,8 @@ namespace Adquisiciones.View.Reportes
         /// <param name="entradaPedido"></param>
         public void ReportePedidoEntradaCompleto(List<Pedido> pedidos, EntradaPedido entradaPedido)
         {
+            pedidos = pedidos.Where(p => p.EstadoPedido != "C").ToList();
+
             var listaPedidoCompleto = new List<PedidoCompleto>();
 
             foreach (var pedido in pedidos)
@@ -768,6 +777,8 @@ namespace Adquisiciones.View.Reportes
         
         private void ReporteListadoPedido(List<Pedido> pedidos)
         {
+            pedidos = pedidos.Where(p => p.EstadoPedido != "C").ToList();
+
             var listaPedidoConcentrado = new List<PedidoConcentrado>();
 
             foreach (var pedido in pedidos){
@@ -795,6 +806,8 @@ namespace Adquisiciones.View.Reportes
 
         private void ReportePedidoSaldo(List<Pedido> pedidos)
         {
+            pedidos = pedidos.Where(p => p.EstadoPedido != "C").ToList();
+
              var listaPedidoSaldo = new List<PedidoSaldo>();
 
             foreach (var pedido in pedidos) {

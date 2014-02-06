@@ -100,7 +100,7 @@ namespace Adquisiciones.Test.Anexo
         [Test]
         public  void GenerarReportePedidoMayor()
         {
-            GenerarReportePedido(530,DateTime.Now, 1, "P2");
+            GenerarReportePedido(60, new DateTime(2014,1,4), 1, "P2");
         }
 
         [Test]

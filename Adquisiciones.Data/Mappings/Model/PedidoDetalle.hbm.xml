@@ -27,6 +27,11 @@
       <key column="id_pedidodetalle" />
       <one-to-many class="Adquisiciones.Data.Entities.PedidoEntrega,Adquisiciones.Data" />
     </bag>
+
+    <!--<bag name="PedidoEntrega" inverse="true" lazy="true">
+      <key column="id_pedidodetalle" />
+      <one-to-many class="Adquisiciones.Data.Entities.PedidoEntrega,Adquisiciones.Data" />
+    </bag>-->
     
   </class>  
   

@@ -47,6 +47,11 @@
       <one-to-many class="Adquisiciones.Data.Entities.PedidoDetalle,Adquisiciones.Data" />
     </bag>
 
+    <!--<bag name="PedidoDetalle" inverse="true" lazy="true" fetch="join">
+      <key column="id_pedido" />
+      <one-to-many class="Adquisiciones.Data.Entities.PedidoDetalle,Adquisiciones.Data" />
+    </bag>-->
+
     <property name="NumeroRequisicion" column="numero_requisicion" type="string" />
 
     <many-to-one name="TipoProcedimiento" column="id_tipoprocedimiento" fetch="join" cascade="all" />

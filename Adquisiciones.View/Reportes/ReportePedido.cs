@@ -117,13 +117,14 @@ namespace Adquisiciones.View.Reportes
             var result = new PdfPTable(new float[] { 3, 20, 5, 5, 6, 6 });
             //result.DefaultCell.Border = 1;
             result.DefaultCell.HorizontalAlignment = Element.ALIGN_CENTER;
+            result.DefaultCell.Border = 0;
 
-            result.AddCell(new Paragraph("CLAVE", fuente));
-            result.AddCell(new Paragraph("DESCRIPCION DE LOS BIENES", fuente));
-            result.AddCell(new Paragraph("CANTIDAD", fuente));
-            result.AddCell(new Paragraph("UNIDAD", fuente));
-            result.AddCell(new Paragraph("PRECIO UNITARIO\nNETO M.N.", fuente));
-            result.AddCell(new Paragraph("PRECIO TOTAL\nNETO M.N.", fuente));
+            result.AddCell(new Paragraph("CLAVE", fuenteBold));
+            result.AddCell(new Paragraph("DESCRIPCION DE LOS BIENES", fuenteBold));
+            result.AddCell(new Paragraph("CANTIDAD", fuenteBold));
+            result.AddCell(new Paragraph("UNIDAD", fuenteBold));
+            result.AddCell(new Paragraph("PRECIO UNITARIO\nNETO M.N.", fuenteBold));
+            result.AddCell(new Paragraph("PRECIO TOTAL\nNETO M.N.", fuenteBold));
             return result;
 
         }
@@ -134,8 +135,7 @@ namespace Adquisiciones.View.Reportes
             
             result.DefaultCell.HorizontalAlignment = Element.ALIGN_CENTER;
 
-            result.DefaultCell.BorderWidthBottom = 0;
-            result.DefaultCell.BorderWidthTop = 0;
+            result.DefaultCell.Border = 0;
 
             var ctx = ContextRegistry.GetContext();
             var articuloDao = ctx["articuloDao"] as IArticuloDao;
@@ -527,24 +527,31 @@ namespace Adquisiciones.View.Reportes
 
             var anverso = new PdfPTable(1);
             anverso.WidthPercentage = 100;
-            //anverso.DefaultCell.Border = 1;
-
+            anverso.DefaultCell.Border = 0;
             anverso.HeaderRows = 1;
+            anverso.DefaultCell.PaddingTop = 0;
 
-            var cabeza = new PdfPTable(new float[] { 60, 40 });
+            var cabeza = new PdfPTable(new float[] {60, 40});
             cabeza.DefaultCell.Border = 0;
             cabeza.AddCell(this.Encabezado());
             cabeza.AddCell(this.Etiquetas());
-            cabeza.DefaultCell.Colspan = 2;cabeza.AddCell(this.CabeceraDetalle());
+            cabeza.DefaultCell.Colspan = 2;
+            cabeza.AddCell(this.CabeceraDetalle());
             anverso.AddCell(cabeza);
-            anverso.AddCell(this.Detalle());
+
+            var tablaDetalle = new PdfPTable(new float[] { 100 });
+            tablaDetalle.DefaultCell.Border = 0;
+            tablaDetalle.AddCell(this.Detalle());
+
+            
+            anverso.AddCell(tablaDetalle);
            
             var totales = new PdfPTable(3);
             totales.DefaultCell.Border = 0;
             totales.DefaultCell.HorizontalAlignment = Element.ALIGN_RIGHT;
             totales.AddCell("");
             totales.AddCell("");
-            totales.AddCell(new Paragraph("SUBTOTAL  " + pedido.ImporteTotal.Value.ToString("C"), fuente));
+            totales.AddCell(new Paragraph("SUBTOTAL  " + pedido.ImporteTotal.Value.ToString("C"), fuenteBold));
             
             totales.DefaultCell.HorizontalAlignment = Element.ALIGN_LEFT;
             totales.DefaultCell.Colspan = 2;
@@ -559,7 +566,7 @@ namespace Adquisiciones.View.Reportes
             
             totales.DefaultCell.HorizontalAlignment = Element.ALIGN_RIGHT;
             totales.DefaultCell.Colspan = 1;
-            totales.AddCell(new Paragraph("DESCUENTO  " + pedido.ImporteDescuento.Value.ToString("C") , fuente));
+            totales.AddCell(new Paragraph("DESCUENTO  " + pedido.ImporteDescuento.Value.ToString("C"), fuenteBold));
             
             decimal subTotalDesc = pedido.SubTotalDesc;
             
@@ -568,7 +575,7 @@ namespace Adquisiciones.View.Reportes
             totales.AddCell(new Paragraph("PARTIDA PRESUPUESTAL: " + partida.Partida, fuente));
             totales.DefaultCell.HorizontalAlignment = Element.ALIGN_RIGHT;
             totales.DefaultCell.Colspan = 1;
-            totales.AddCell(new Paragraph("SUBT-DESC.  " + subTotalDesc.ToString("C"), fuente));
+            totales.AddCell(new Paragraph("SUBT-DESC.  " + subTotalDesc.ToString("C"), fuenteBold));
             
 
             totales.DefaultCell.HorizontalAlignment = Element.ALIGN_LEFT;
@@ -580,7 +587,7 @@ namespace Adquisiciones.View.Reportes
 
             decimal cantidadIva = pedido.IvaCantidad;
 
-            totales.AddCell(new Paragraph("I.V.A.  " + cantidadIva.ToString("C"), fuente));
+            totales.AddCell(new Paragraph("I.V.A.  " + cantidadIva.ToString("C"), fuenteBold));
 
             decimal total = pedido.Total;
             totales.DefaultCell.HorizontalAlignment = Element.ALIGN_LEFT;
@@ -594,7 +601,7 @@ namespace Adquisiciones.View.Reportes
             totales.DefaultCell.HorizontalAlignment = Element.ALIGN_RIGHT;
             
             totales.DefaultCell.Colspan = 1;
-            totales.AddCell(new Paragraph("TOTAL  " + total.ToString("C"), fuente));
+            totales.AddCell(new Paragraph("TOTAL  " + total.ToString("C"), fuenteBold));
 
 
             //Observaciones

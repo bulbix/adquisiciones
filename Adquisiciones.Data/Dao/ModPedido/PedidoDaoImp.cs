@@ -186,6 +186,7 @@ namespace Adquisiciones.Data.Dao.ModPedido
         {
             var criteria = CurrentSession.CreateCriteria(typeof(Entrada));
             criteria.Add(Restrictions.Eq("Pedido", pedido));
+            criteria.Add(Restrictions.Not(Restrictions.Eq("EstadoEntrada", "C")));
             criteria.SetFetchMode("EntradaDetalle", FetchMode.Lazy);
             return criteria.List<Entrada>();
         }
@@ -229,7 +230,7 @@ namespace Adquisiciones.Data.Dao.ModPedido
         public decimal ImporteEntrada(Entrada entrada)
         {
             var strQuery = @"select sum(ed.PrecioEntrada * ed.Cantidad) 
-            from EntradaDetalle ed where ed.Entrada = :entrada ";
+            from EntradaDetalle ed where ed.Entrada = :entrada and ed.Entrada.EstadoEntrada <> 'C'";
 
             var query = CurrentSession.CreateQuery(strQuery);
             query.SetParameter("entrada", entrada);
@@ -244,7 +245,8 @@ namespace Adquisiciones.Data.Dao.ModPedido
             var strQuery = @"select ed from EntradaDetalle ed 
             join fetch ed.Entrada e 
             join fetch e.Pedido p 
-            where ed.Entrada = :entrada ";
+            where ed.Entrada = :entrada 
+            and ed.Entrada.EstadoEntrada <> 'C'";
             var query = CurrentSession.CreateQuery(strQuery);
             query.SetParameter("entrada", entrada);
             var entradaDetalle = (List<EntradaDetalle>)query.List<EntradaDetalle>();
@@ -269,6 +271,7 @@ namespace Adquisiciones.Data.Dao.ModPedido
             var criteria = CurrentSession.CreateCriteria(typeof(Entrada));
             criteria.Add(Restrictions.Eq("Pedido", pedido));
             criteria.SetFetchMode("EntradaDetalle", FetchMode.Lazy);
+            criteria.Add(Restrictions.Not(Restrictions.Eq("EstadoEntrada", "C")));
             var entradas = criteria.List<Entrada>();
 
             foreach (var entrada in entradas)
@@ -292,6 +295,7 @@ namespace Adquisiciones.Data.Dao.ModPedido
             var criteria = CurrentSession.CreateCriteria(typeof(Entrada));
             criteria.Add(Restrictions.Between("FechaEntrada", fechaInicial, fechaFinal));
             criteria.SetFetchMode("EntradaDetalle", FetchMode.Lazy);
+            criteria.Add(Restrictions.Not(Restrictions.Eq("EstadoEntrada", "C")));
             return criteria.List<Entrada>();
 
         }
@@ -308,7 +312,8 @@ namespace Adquisiciones.Data.Dao.ModPedido
                 join fetch p.Fundamento
                 join fetch p.CatTipopedido  
                 where e.IdEntrada = :idEntrada 
-                and p.CatTipopedido = :tipoPedido ";
+                and p.CatTipopedido = :tipoPedido 
+                and p.EstadoPedido <> 'C'";
 
             switch (ordenado)
             {
