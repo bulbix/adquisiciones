@@ -595,10 +595,10 @@ namespace Adquisiciones.View.Modulos
 
                     //Agregar un pedido entrega default
                     var pedidoDetalleSelect = gvPedidoDetalle.GetFocusedRow() as PedidoDetalle;
-                    pedidoDetalleSelect.PedidoEntrega.Clear();
 
                     if (deFechaInicial.EditValue != null && deFechaFinal.EditValue != null)
                     {
+                        pedidoDetalleSelect.PedidoEntrega.Clear();
                         var pedidoEntrega = new PedidoEntrega(deFechaInicial.DateTime,
                                                     deFechaFinal.DateTime, cantidad);
                         pedidoDetalleSelect.PedidoEntrega.Add(pedidoEntrega);
