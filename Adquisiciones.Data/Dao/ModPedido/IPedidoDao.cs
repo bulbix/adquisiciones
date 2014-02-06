@@ -25,11 +25,10 @@ namespace Adquisiciones.Data.Dao.ModPedido
         object fechaFinal, int numeroInicial, int numeroFinal, int[] tipos, Proveedor proveedor = null);
         IList<Entrada> CargarEntradas(Pedido pedido);
         string[] CargarPartidaAlmacen(Pedido pedido);
-        
         decimal ImporteEntrada(Entrada entrada);
         decimal ImporteEntradaSinIva(Entrada entrada);
+
         decimal ImporteEntradas(Pedido pedido);
-        decimal SumaCantidadEntradaArticulo(PedidoDetalle pedidoDetalle);
 
         void CancelarPedido(Pedido pedido);
         IList<Entrada> CargarEntradas(DateTime fechaInicial, DateTime fechaFinal);

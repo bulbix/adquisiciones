@@ -199,7 +199,7 @@ namespace Adquisiciones.Business.ModPedido
         /// <param name="importeTotal1"></param>
         /// <param name="pedidoDetalles"></param>
         [Transaction]
-        public IList<string> GuardarPedido(ref Pedido pedido)
+        public void GuardarPedido(ref Pedido pedido)
         {
             //Genere un id nuevo
             pedido.FechaModificacion = PedidoDao.FechaServidor();
@@ -234,49 +234,9 @@ namespace Adquisiciones.Business.ModPedido
 
             pedido.ImporteTotal = pedido.PedidoDetalle.Sum(detalle => detalle.Importe);
 
-            var errores = new List<string>();
-
-            if (pedido.IdPedido != 0) //Actualizar
-            {
-                errores = ValidarCantidadesPedido(pedido.PedidoDetalle);
-
-                if (errores.Count == 0){
-                    PedidoDao.Merge(pedido);
-                }
-            }
-            else //Nuevo
-            {
-                PedidoDao.Merge(pedido);
-            }
-
-            return errores;
-        }
-
-        /// <summary>
-        /// Valida contra las entradas de almacen que puedan ser modificadas 
-        /// </summary>
-        [Transaction(ReadOnly = true)]
-        private List<string> ValidarCantidadesPedido(IEnumerable<PedidoDetalle> pedidoDetalles )
-        {
-            var errores = new List<string>();
-
-            foreach (var pedidoDetalle in pedidoDetalles)
-            {
-                var cantidadEntrada = PedidoDao.SumaCantidadEntradaArticulo(pedidoDetalle);
-
-                if (pedidoDetalle.Cantidad < cantidadEntrada) {
-                    var mensaje = string.Format("Clave: {0} Cantidad Entrada: {1}", pedidoDetalle.Articulo.Id.CveArt,
-                        cantidadEntrada);
-                    
-                    errores.Add(mensaje);
-                }
-            }
-
-            return errores;
+            PedidoDao.Merge(pedido);
 
         }
-
-
 
         [Transaction(ReadOnly = true)]
         public Pedido ConsultarPedido(int numPedido, DateTime fechaPedido, Almacen almacen, int tipo)

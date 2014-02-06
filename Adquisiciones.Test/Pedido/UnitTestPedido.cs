@@ -53,19 +53,6 @@ namespace Adquisiciones.Test.Anexo
         }
 
         [Test]
-        public void TestSumaCantidadEntrada()
-        {
-            var pedidoDetalle = PedidoDetalleDao.Get(1698);
-            PedidoDao.SumaCantidadEntradaArticulo(pedidoDetalle);
-            var pedido = new Pedido();
-            pedido.NumeroPedido = PedidoService.PedidoDao.SiguienteNumeroPedido(new Almacen("C5"), 1);
-            pedido.FechaPedido = PedidoService.PedidoDao.FechaServidor();
-            pedido.Almacen = new Almacen("C5");
-            pedido.Iva = new Iva(new IvaId(1, 16));
-            //pedido.Anexo = new Anexo();
-        }
-
-        [Test]
         public void GuardarPedido()
         {
             var pedido = new Pedido();
